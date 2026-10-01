@@ -19,6 +19,7 @@ final class ProfileStore {
         // UI tests start from a fresh install state.
         if ProcessInfo.processInfo.arguments.contains("-resetProfile") {
             UserDefaults.standard.removeObject(forKey: Self.key)
+            UserDefaults.standard.removeObject(forKey: "searchOptions")
         }
         #endif
         if let data = UserDefaults.standard.data(forKey: Self.key) {
