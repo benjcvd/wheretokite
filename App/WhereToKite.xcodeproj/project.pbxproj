@@ -10,14 +10,16 @@
 		284C70C8E4ABA0E4A7F75C0D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F5C20E40546E26686279F0 /* Location.swift */; };
 		30A877DA17A905957EF8D298 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F8F5A2E1A5CE0B9DE4F25 /* ResultsView.swift */; };
 		3115EA2AD24EBA409D1B83FB /* SpotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD9CFE4AAF26F58E94873F1 /* SpotDetailView.swift */; };
+		3134C6E4EF37278EC526C4EC /* spots.json in Resources */ = {isa = PBXBuildFile; fileRef = A12A04CF4CA2668485850630 /* spots.json */; };
 		31F251B2E2A16AC72728B10B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0549C24B51E5637246937D /* ProfileView.swift */; };
 		374B81E769D416C899A89FB6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75377D57D07882D0668DAB7 /* SearchView.swift */; };
 		4186BF72B3FE16EFB4898830 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1827AF8EDFF5D3992BB12C /* Components.swift */; };
 		4CC5F9367099D89569E182DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C5E2E8BA8DA3D0A25B0DF88 /* Assets.xcassets */; };
+		4D38FA78524DC9FE297B1E67 /* UserSpotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8CEE36F18BFF49D48A748 /* UserSpotStore.swift */; };
 		4F483B10023938DE4ABED516 /* KiteCore in Frameworks */ = {isa = PBXBuildFile; productRef = 13C8EC6774F86A9FA8DA0606 /* KiteCore */; };
 		74D228B8A399ECAF1133D419 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A01B4CE0810383D176FFA /* SearchModel.swift */; };
+		8014EBB88D41746E8117AF2E /* MySpotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026921E739C6680077EFE36 /* MySpotsView.swift */; };
 		A869F315B8BC8DA8303F5B73 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6C9E3460D173F0CFC23F0D /* SmokeTests.swift */; };
-		AF1688263CBAF0A3CF59E6B8 /* spots_barcelona.json in Resources */ = {isa = PBXBuildFile; fileRef = B50443E62BCCE5913A66B34A /* spots_barcelona.json */; };
 		C21C7AD71B7201BBCFAFAA54 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */; };
 		E382C9BF6E85FA58BC21B22D /* WhereToKiteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F345D2CC8B0885A814F117E /* WhereToKiteApp.swift */; };
 /* End PBXBuildFile section */
@@ -42,10 +44,12 @@
 		78E352EF510DCE05C57699A2 /* wheretokite */ = {isa = PBXFileReference; lastKnownFileType = folder; name = wheretokite; path = ..; sourceTree = SOURCE_ROOT; };
 		8BD9CFE4AAF26F58E94873F1 /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
 		9F4A01B4CE0810383D176FFA /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
-		B50443E62BCCE5913A66B34A /* spots_barcelona.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = spots_barcelona.json; sourceTree = "<group>"; };
+		A12A04CF4CA2668485850630 /* spots.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = spots.json; sourceTree = "<group>"; };
+		B7F8CEE36F18BFF49D48A748 /* UserSpotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSpotStore.swift; sourceTree = "<group>"; };
 		CD1827AF8EDFF5D3992BB12C /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		E75377D57D07882D0668DAB7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		EE0549C24B51E5637246937D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F026921E739C6680077EFE36 /* MySpotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpotsView.swift; sourceTree = "<group>"; };
 		F24F8F5A2E1A5CE0B9DE4F25 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		FDD21EC0343EEB4D71E7F9C1 /* WhereToKiteUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WhereToKiteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,6 +83,7 @@
 				45F5C20E40546E26686279F0 /* Location.swift */,
 				3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */,
 				9F4A01B4CE0810383D176FFA /* SearchModel.swift */,
+				B7F8CEE36F18BFF49D48A748 /* UserSpotStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,7 +102,7 @@
 		7A6110A934214E877FD43C31 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				B50443E62BCCE5913A66B34A /* spots_barcelona.json */,
+				A12A04CF4CA2668485850630 /* spots.json */,
 			);
 			name = Data;
 			path = ../Data;
@@ -132,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				CD1827AF8EDFF5D3992BB12C /* Components.swift */,
+				F026921E739C6680077EFE36 /* MySpotsView.swift */,
 				EE0549C24B51E5637246937D /* ProfileView.swift */,
 				F24F8F5A2E1A5CE0B9DE4F25 /* ResultsView.swift */,
 				E75377D57D07882D0668DAB7 /* SearchView.swift */,
@@ -227,7 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC5F9367099D89569E182DF /* Assets.xcassets in Resources */,
-				AF1688263CBAF0A3CF59E6B8 /* spots_barcelona.json in Resources */,
+				3134C6E4EF37278EC526C4EC /* spots.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,12 +254,14 @@
 			files = (
 				4186BF72B3FE16EFB4898830 /* Components.swift in Sources */,
 				284C70C8E4ABA0E4A7F75C0D /* Location.swift in Sources */,
+				8014EBB88D41746E8117AF2E /* MySpotsView.swift in Sources */,
 				C21C7AD71B7201BBCFAFAA54 /* ProfileStore.swift in Sources */,
 				31F251B2E2A16AC72728B10B /* ProfileView.swift in Sources */,
 				30A877DA17A905957EF8D298 /* ResultsView.swift in Sources */,
 				74D228B8A399ECAF1133D419 /* SearchModel.swift in Sources */,
 				374B81E769D416C899A89FB6 /* SearchView.swift in Sources */,
 				3115EA2AD24EBA409D1B83FB /* SpotDetailView.swift in Sources */,
+				4D38FA78524DC9FE297B1E67 /* UserSpotStore.swift in Sources */,
 				E382C9BF6E85FA58BC21B22D /* WhereToKiteApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -86,7 +86,7 @@ final class SearchModel {
     let spotCount: Int
 
     init() {
-        let url = Bundle.main.url(forResource: "spots_barcelona", withExtension: "json")!
+        let url = Bundle.main.url(forResource: "spots", withExtension: "json")!
         let spots = (try? SpotCatalog.load(from: url).spots) ?? []
         spotCount = spots.count
         recommender = Recommender(

@@ -14,7 +14,7 @@ import KiteCore
 //   --style X             chill | intense | all | 0…1 (default all)
 //   --distance-matters    penalise far spots (default off)
 //   --weight KG --kites 9,12 --level L   update the saved rider profile
-//   --spots FILE          spot catalogue (default Data/spots_barcelona.json)
+//   --spots FILE          spot catalogue (default Data/spots.json)
 //   --straight-line       skip Apple Maps, estimate drive times
 //   --hourly N            print the hourly breakdown for the top N spots
 //   --all                 also list spots scoring 0
@@ -96,7 +96,7 @@ let request = SearchRequest(
     intensity: intensity,
     distanceMatters: flags.contains("distance-matters"))
 
-let spotsURL = URL(fileURLWithPath: args["spots"] ?? "Data/spots_barcelona.json")
+let spotsURL = URL(fileURLWithPath: args["spots"] ?? "Data/spots.json")
 let catalog: SpotCatalog
 do { catalog = try SpotCatalog.load(from: spotsURL) } catch { fail("can't load spots from \(spotsURL.path): \(error)") }
 
