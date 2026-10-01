@@ -8,16 +8,19 @@ import KiteCore
 //
 // Options:
 //   --from LAT,LON        search origin (default: Barcelona centre)
-//   --drive MIN           max drive time in minutes (default 60)
+//   --drive MIN           max drive time in minutes, 1…600 (default 60)
 //   --day D               today | tomorrow | +N | yyyy-MM-dd (default today)
 //   --slot S              morning | afternoon | full (default full)
 //   --style X             chill | intense | all | 0…1 (default all)
 //   --distance-matters    penalise far spots (default off)
 //   --weight KG --kites 9,12 --level L   update the saved rider profile
 //   --spots FILE          spot catalogue (default Data/spots_barcelona.json)
-//   --straight-line       skip Apple Maps, estimate drive times
+//   --straight-line       skip Apple Maps, estimate all drive times (shown as ~)
 //   --hourly N            print the hourly breakdown for the top N spots
-//   --all                 also list spots scoring 0
+//   --all                 also list spots scoring 0, and every excluded spot
+//
+// Without --straight-line, only the top ~35 spots get a real Apple Maps ETA; the others
+// keep a straight-line estimate, shown as "~".
 
 func fail(_ msg: String) -> Never {
     FileHandle.standardError.write(Data("error: \(msg)\n".utf8))
@@ -90,7 +93,8 @@ case let s: Double(s).map { min(1, max(0, $0)) } ?? fail("style: chill|intense|a
 
 let request = SearchRequest(
     origin: origin,
-    maxDriveMinutes: Double(args["drive"] ?? "60") ?? fail("bad --drive"),
+    maxDriveMinutes: Double(args["drive"] ?? "60").flatMap { (1...600).contains($0) ? $0 : nil }
+        ?? fail("--drive: 1…600 minutes"),
     day: resolveDay(args["day"] ?? "today"),
     slot: slot,
     intensity: intensity,
@@ -121,7 +125,9 @@ Rider: \(Int(profile.weightKg)) kg · kites \(kitesText) m · \(profile.level.ra
 Kite ranges: \(Scorer(profile: profile, intensity: intensity).kiteRanges.map { String(format: "%g m %.0f–%.0f kn", $0.size, $0.minKn, $0.maxKn) }.joined(separator: " · "))
 """)
 if let c = result.confidence { print("Forecast: \(c.summary)") }
-print(String(format: "(%d spots searched in %.1fs)\n", result.recommendations.count, elapsed))
+let s = result.stats
+print(String(format: "(%d spots ranked in %.1fs · %d in reach · %d forecast · %d/%d real ETAs)\n",
+             result.recommendations.count, elapsed, s.inReach, s.forecastSpots, s.etaReceived, s.etaRequested))
 
 let shown = result.recommendations.filter { flags.contains("all") || $0.finalScore > 0 }
 if shown.isEmpty { print("No kiteable spot found. Use --all to see why each spot fails.") }
@@ -146,6 +152,8 @@ for r in shown.prefix(hourlyCount) {
 }
 
 if !result.excluded.isEmpty {
-    print("\nExcluded: " + result.excluded.map { "\($0.0.name) (\($0.1))" }.joined(separator: ", "))
+    let limit = flags.contains("all") ? result.excluded.count : 20
+    let more = result.excluded.count > limit ? ", … \(result.excluded.count - limit) more (--all)" : ""
+    print("\nExcluded: " + result.excluded.prefix(limit).map { "\($0.0.name) (\($0.1))" }.joined(separator: ", ") + more)
 }
 print("\nSpot data \(catalog.attribution ?? "") · Weather data by Open-Meteo.com")

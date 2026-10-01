@@ -17,12 +17,28 @@ public enum ForecastError: Error, CustomStringConvertible {
 
 // MARK: - Open-Meteo
 
+/// Open-Meteo forecast client.
+///
+/// Many locations go in one request (comma-separated coordinates), sent as a form-encoded
+/// POST (supported by both the forecast and historical-forecast endpoints) so request size
+/// is never an issue. A GET with 100 locations would be ~1.8 kB of query string — fine — but
+/// URLs past ~8 kB get rejected by proxies, which a GET with a few hundred would hit.
+/// Batches run a few at a time.
+///
+/// Quota (free tier, per client IP): 600 calls/min, 5,000/hour, 10,000/day, 300,000/month,
+/// and EACH location in a request counts as one call (our 3 hourly variables over 1 day add
+/// nothing extra). A 400-spot search therefore costs 400 calls — see
+/// `Recommender.maxForecastSpots` for the per-search cap, and `CachedForecastProvider`
+/// (2 h TTL) for why re-running a search is nearly free.
 public struct OpenMeteoProvider: ForecastProvider {
     public var model: String
     /// "sea" picks the nearest water grid cell: that's where you ride, and coastal land cells
     /// under-read the wind.
     public var cellSelection = "sea"
-    public var batchSize = 50
+    /// Locations per request. Measured: 100 → ~0.4 s, 200 → ~0.5 s per request.
+    public var batchSize = 100
+    /// Requests in flight at once (400 spots = 4 requests = one round trip).
+    public var maxConcurrent = 4
     public var session: URLSession = .shared
 
     public init(model: String = "best_match") {
@@ -39,29 +55,58 @@ public struct OpenMeteoProvider: ForecastProvider {
         var hourly: Hourly
     }
 
+    /// Batches that fail (e.g. HTTP 429 when over quota) are skipped — their spots are just
+    /// missing from the result — as long as one batch succeeds; if all fail, the first error
+    /// is thrown.
     public func forecasts(for spots: [Spot], day: String) async throws -> [String: DayForecast] {
+        let size = max(1, batchSize)
+        let batches = stride(from: 0, to: spots.count, by: size).map {
+            Array(spots[$0..<min($0 + size, spots.count)])
+        }
         var result: [String: DayForecast] = [:]
-        for start in stride(from: 0, to: spots.count, by: batchSize) {
-            let batch = Array(spots[start..<min(start + batchSize, spots.count)])
-            let responses = try await fetch(batch, day: day)
-            for (spot, response) in zip(batch, responses) {
-                let h = response.hourly
-                var hours: [HourlyWind] = []
-                for i in h.time.indices {
-                    guard let s = h.wind_speed_10m[i], let g = h.wind_gusts_10m[i],
-                          let d = h.wind_direction_10m[i] else { continue }
-                    hours.append(HourlyWind(localTime: h.time[i], speedKn: s, gustKn: g, directionDeg: d))
+        var firstError: Error?
+        var succeeded = 0
+        await withTaskGroup(of: Result<[(String, DayForecast)], Error>.self) { group in
+            var next = 0
+            while next < min(max(1, maxConcurrent), batches.count) {
+                let batch = batches[next]; next += 1
+                group.addTask { await capture { try await fetchBatch(batch, day: day) } }
+            }
+            while let r = await group.next() {
+                switch r {
+                case .success(let pairs):
+                    succeeded += 1
+                    for (id, f) in pairs { result[id] = f }
+                case .failure(let e):
+                    if firstError == nil { firstError = e }
                 }
-                result[spot.id] = DayForecast(day: day, hours: hours)
+                if next < batches.count {
+                    let batch = batches[next]; next += 1
+                    group.addTask { await capture { try await fetchBatch(batch, day: day) } }
+                }
             }
         }
+        if succeeded == 0, let firstError { throw firstError }
         return result
     }
 
-    private func fetch(_ spots: [Spot], day: String) async throws -> [Response] {
-        // Past days come from the archive of what the model actually forecast back then,
-        // which lets us check the scoring against sessions the user remembers.
-        var c = URLComponents(string: Self.endpoint(for: day))!
+    private func fetchBatch(_ batch: [Spot], day: String) async throws -> [(String, DayForecast)] {
+        let responses = try await fetch(batch, day: day)
+        return zip(batch, responses).map { spot, response in
+            let h = response.hourly
+            var hours: [HourlyWind] = []
+            for i in h.time.indices {
+                guard let s = h.wind_speed_10m[safe: i] ?? nil, let g = h.wind_gusts_10m[safe: i] ?? nil,
+                      let d = h.wind_direction_10m[safe: i] ?? nil else { continue }
+                hours.append(HourlyWind(localTime: h.time[i], speedKn: s, gustKn: g, directionDeg: d))
+            }
+            return (spot.id, DayForecast(day: day, hours: hours))
+        }
+    }
+
+    /// Form-encoded request body (same parameters as the GET query string).
+    func formBody(_ spots: [Spot], day: String) -> String {
+        var c = URLComponents()
         c.queryItems = [
             .init(name: "latitude", value: spots.map { String(format: "%.4f", $0.latitude) }.joined(separator: ",")),
             .init(name: "longitude", value: spots.map { String(format: "%.4f", $0.longitude) }.joined(separator: ",")),
@@ -73,7 +118,17 @@ public struct OpenMeteoProvider: ForecastProvider {
             .init(name: "models", value: model),
             .init(name: "cell_selection", value: cellSelection),
         ]
-        let (data, response) = try await session.data(from: c.url!)
+        return c.percentEncodedQuery ?? ""
+    }
+
+    private func fetch(_ spots: [Spot], day: String) async throws -> [Response] {
+        // Past days come from the archive of what the model actually forecast back then,
+        // which lets us check the scoring against sessions the user remembers.
+        var request = URLRequest(url: URL(string: Self.endpoint(for: day))!)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpBody = Data(formBody(spots, day: day).utf8)
+        let (data, response) = try await session.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
             throw ForecastError.badResponse(String(data: data, encoding: .utf8) ?? "HTTP error")
         }
@@ -81,8 +136,16 @@ public struct OpenMeteoProvider: ForecastProvider {
         if spots.count == 1 {
             return [try JSONDecoder().decode(Response.self, from: data)]
         }
-        return try JSONDecoder().decode([Response].self, from: data)
+        let decoded = try JSONDecoder().decode([Response].self, from: data)
+        guard decoded.count == spots.count else {
+            throw ForecastError.badResponse("expected \(spots.count) locations, got \(decoded.count)")
+        }
+        return decoded
     }
+}
+
+private func capture<T>(_ body: () async throws -> T) async -> Result<T, Error> {
+    do { return .success(try await body()) } catch { return .failure(error) }
 }
 
 extension OpenMeteoProvider {
@@ -129,9 +192,10 @@ public struct CachedForecastProvider: ForecastProvider {
     public func forecasts(for spots: [Spot], day: String) async throws -> [String: DayForecast] {
         var result: [String: DayForecast] = [:]
         var missing: [Spot] = []
+        let decoder = JSONDecoder()
         for spot in spots {
             if let data = try? Data(contentsOf: file(for: spot, day: day)),
-               let entry = try? JSONDecoder().decode(Entry.self, from: data),
+               let entry = try? decoder.decode(Entry.self, from: data),
                Date().timeIntervalSince(entry.fetchedAt) < ttl {
                 result[spot.id] = entry.forecast
             } else {
@@ -142,10 +206,12 @@ public struct CachedForecastProvider: ForecastProvider {
 
         let fresh = try await upstream.forecasts(for: missing, day: day)
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        let encoder = JSONEncoder()
+        let now = Date()
         for spot in missing {
             guard let forecast = fresh[spot.id] else { continue }
             result[spot.id] = forecast
-            if let data = try? JSONEncoder().encode(Entry(fetchedAt: Date(), forecast: forecast)) {
+            if let data = try? encoder.encode(Entry(fetchedAt: now, forecast: forecast)) {
                 try? data.write(to: file(for: spot, day: day))
             }
         }
