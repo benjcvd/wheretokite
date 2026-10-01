@@ -7,3 +7,4 @@ __pycache__/
 tools/.osm_cache/
 xcuserdata/
 *.xcresult
+.claude/
