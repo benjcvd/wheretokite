@@ -50,10 +50,18 @@ public struct MapKitDriveTime: DriveTimeProvider {
         return result
     }
 
+    private static func mapItem(_ c: Coordinate) -> MKMapItem {
+        let location = CLLocation(latitude: c.latitude, longitude: c.longitude)
+        if #available(iOS 26, macOS 26, *) {
+            return MKMapItem(location: location, address: nil)
+        }
+        return MKMapItem(placemark: MKPlacemark(coordinate: location.coordinate))
+    }
+
     private static func eta(from a: Coordinate, to b: Coordinate) async -> Double? {
         let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: a.latitude, longitude: a.longitude)))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: b.latitude, longitude: b.longitude)))
+        request.source = mapItem(a)
+        request.destination = mapItem(b)
         request.transportType = .automobile
         do {
             let response = try await MKDirections(request: request).calculateETA()

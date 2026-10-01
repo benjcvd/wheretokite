@@ -1,6 +1,7 @@
 import Foundation
 
-public struct SpotRecommendation: Sendable {
+public struct SpotRecommendation: Sendable, Identifiable {
+    public var id: String { spot.id }
     public var spot: Spot
     public var driveMinutes: Double
     /// Wind quality of the best session window, 0...100.
@@ -11,6 +12,12 @@ public struct SpotRecommendation: Sendable {
     public var window: (start: Int, end: Int)?
     public var hours: [HourScore]
     public var reason: String
+
+    /// Kite suggested for the best window.
+    public var suggestedKite: KiteRange? {
+        guard let window else { return nil }
+        return hours.first { $0.wind.hour >= window.start && $0.kite != nil }?.kite
+    }
 }
 
 public struct SearchResult: Sendable {
@@ -131,7 +138,7 @@ public struct Recommender: Sendable {
         return String(format: "%02d:00–%02d:00 · ", window.0, window.1) + wind + " \(dir)\(side)\(kite) · \(driveText)\(extra)"
     }
 
-    static func angleName(_ a: Double) -> String {
+    public static func angleName(_ a: Double) -> String {
         switch a {
         case ..<25: "onshore"
         case ..<70: "side-onshore"

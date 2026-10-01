@@ -2,7 +2,17 @@
 
 Tells a kiter where to go on a given day: give a location, max drive time, day and session slot, get a ranked list of spots.
 
-## Status: v0 — validate the scoring model (CLI, no UI)
+## iPhone app (v1)
+
+```
+cd App && xcodegen          # regenerate WhereToKite.xcodeproj after adding/removing files
+open WhereToKite.xcodeproj  # run on a simulator or your iPhone (set your Team under Signing)
+```
+SwiftUI, iOS 17+. Saved rider profile → search (start point, max drive, day, morning/afternoon/full day,
+style, distance matters) → forecast confidence + ranked spots → spot detail (map, hourly wind chart, Directions).
+`WhereToKiteUITests` walks the whole flow against the live API and attaches screenshots.
+
+## CLI (v0, for checking the scoring model)
 
 ```
 swift run kite --weight 75 --kites 9,12 --level intermediate      # once: saves ~/.wheretokite/profile.json
@@ -18,6 +28,7 @@ swift run kite --day 2026-08-25 --hourly 3                         # past day �
   - `Scoring.swift` — **all tunable rules** (`ScoringRules`): kite wind ranges, level limits, direction curve, gust tolerance.
   - `Recommender.swift` — filter by drive time → fetch → score hours → best 2 h window → distance penalty → rank.
 - `Sources/kite` — v0 command-line front-end.
+- `App/` — iPhone app (`project.yml` is the XcodeGen spec; `WhereToKite/Models`, `WhereToKite/Views`).
 - `tools/build_spots.py` → `Data/spots_barcelona.json` — spots from OpenStreetMap, beach orientation computed from the OSM coastline. Hand-edit `seaFacingDeg` to correct a spot.
 
 ## Scoring (v0)
@@ -30,8 +41,8 @@ Per hour, score = strength × gustiness × direction (each 0…1):
 Spot score = best 2 consecutive hours in the slot. With "distance matters", up to −30 % at the max drive time.
 
 ## Roadmap
-- **v0** scoring model validated against real days (now)
-- **v1** SwiftUI app: inputs + saved profile, confidence banner, ranked list, spot detail with hourly wind
+- **v0** scoring model validated against real days
+- **v1** SwiftUI app: inputs + saved profile, confidence banner, ranked list, spot detail with hourly wind (built)
 - **v2** tides, foil, model choice, user spot corrections
 - **v3** backend, notifications, worldwide spots
 

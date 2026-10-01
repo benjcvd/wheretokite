@@ -5,3 +5,5 @@ DerivedData/
 .DS_Store
 __pycache__/
 tools/.osm_cache/
+xcuserdata/
+*.xcresult
