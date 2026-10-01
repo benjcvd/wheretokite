@@ -46,6 +46,19 @@ targets:
         SWIFT_VERSION: "6.0"
         GENERATE_INFOPLIST_FILE: YES
         TEST_TARGET_NAME: WhereToKite
+  WhereToKiteTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: WhereToKiteTests
+    dependencies:
+      - target: WhereToKite
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/WhereToKite.app/WhereToKite"
+        BUNDLE_LOADER: "$(TEST_HOST)"
 schemes:
   WhereToKite:
     build:
@@ -53,4 +66,5 @@ schemes:
         WhereToKite: all
     test:
       targets:
+        - WhereToKiteTests
         - WhereToKiteUITests

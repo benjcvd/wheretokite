@@ -44,6 +44,17 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "620EE3FA240783F841B86DBB"
+               BuildableName = "WhereToKiteTests.xctest"
+               BlueprintName = "WhereToKiteTests"
+               ReferencedContainer = "container:WhereToKite.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA146BA63CE3C2C61BEE4BBC"
                BuildableName = "WhereToKiteUITests.xctest"
                BlueprintName = "WhereToKiteUITests"

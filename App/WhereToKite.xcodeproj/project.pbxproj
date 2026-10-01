@@ -17,14 +17,25 @@
 		4CC5F9367099D89569E182DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C5E2E8BA8DA3D0A25B0DF88 /* Assets.xcassets */; };
 		4D38FA78524DC9FE297B1E67 /* UserSpotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8CEE36F18BFF49D48A748 /* UserSpotStore.swift */; };
 		4F483B10023938DE4ABED516 /* KiteCore in Frameworks */ = {isa = PBXBuildFile; productRef = 13C8EC6774F86A9FA8DA0606 /* KiteCore */; };
+		5C8142654A0B9DBA7BF0CF94 /* UserSpotStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277E1AB34764B92F4C025FD /* UserSpotStoreTests.swift */; };
 		74D228B8A399ECAF1133D419 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A01B4CE0810383D176FFA /* SearchModel.swift */; };
 		8014EBB88D41746E8117AF2E /* MySpotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026921E739C6680077EFE36 /* MySpotsView.swift */; };
+		8398D6ECE120CF911C21091A /* CoastlineGuess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF133A500C253B3DD84ED7 /* CoastlineGuess.swift */; };
+		92919730AA0B3F2A7D455E50 /* AddSpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77C5012EC97C3B94A2310A4 /* AddSpotView.swift */; };
 		A869F315B8BC8DA8303F5B73 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6C9E3460D173F0CFC23F0D /* SmokeTests.swift */; };
+		B067B2B1D8A42AC08748E2D2 /* MySpotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F2B2E178B9BA8888EBD62 /* MySpotsTests.swift */; };
 		C21C7AD71B7201BBCFAFAA54 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */; };
 		E382C9BF6E85FA58BC21B22D /* WhereToKiteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F345D2CC8B0885A814F117E /* WhereToKiteApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3947947E10603CFC2CE0D5B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A3943CBE0FF9C62D8770095 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB40B7B8886AD99187E741D2;
+			remoteInfo = WhereToKite;
+		};
 		ED11A2FC668CBB470B5EED7F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A3943CBE0FF9C62D8770095 /* Project object */;
@@ -41,8 +52,12 @@
 		4631580E28E5B68ABCC5A177 /* WhereToKite.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = WhereToKite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F345D2CC8B0885A814F117E /* WhereToKiteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereToKiteApp.swift; sourceTree = "<group>"; };
 		5D6C9E3460D173F0CFC23F0D /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
+		6155DD4168F65D0B50EAF58A /* WhereToKiteTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WhereToKiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E352EF510DCE05C57699A2 /* wheretokite */ = {isa = PBXFileReference; lastKnownFileType = folder; name = wheretokite; path = ..; sourceTree = SOURCE_ROOT; };
+		89AF133A500C253B3DD84ED7 /* CoastlineGuess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastlineGuess.swift; sourceTree = "<group>"; };
 		8BD9CFE4AAF26F58E94873F1 /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
+		9277E1AB34764B92F4C025FD /* UserSpotStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSpotStoreTests.swift; sourceTree = "<group>"; };
+		929F2B2E178B9BA8888EBD62 /* MySpotsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpotsTests.swift; sourceTree = "<group>"; };
 		9F4A01B4CE0810383D176FFA /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		A12A04CF4CA2668485850630 /* spots.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = spots.json; sourceTree = "<group>"; };
 		B7F8CEE36F18BFF49D48A748 /* UserSpotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSpotStore.swift; sourceTree = "<group>"; };
@@ -51,6 +66,7 @@
 		EE0549C24B51E5637246937D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F026921E739C6680077EFE36 /* MySpotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpotsView.swift; sourceTree = "<group>"; };
 		F24F8F5A2E1A5CE0B9DE4F25 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		F77C5012EC97C3B94A2310A4 /* AddSpotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpotView.swift; sourceTree = "<group>"; };
 		FDD21EC0343EEB4D71E7F9C1 /* WhereToKiteUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WhereToKiteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -72,6 +88,7 @@
 				7A6110A934214E877FD43C31 /* Data */,
 				A9DF4B51EFCC2FCA1D90139D /* Packages */,
 				678C728647A5CB18D02E4B9D /* WhereToKite */,
+				776A45B748B139FF0D3B3D7C /* WhereToKiteTests */,
 				CD42102D2295024D6CCE2313 /* WhereToKiteUITests */,
 				8CF7B66B607B41FE5E778D74 /* Products */,
 			);
@@ -80,6 +97,7 @@
 		1E455D4BF836D9596798CE63 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				89AF133A500C253B3DD84ED7 /* CoastlineGuess.swift */,
 				45F5C20E40546E26686279F0 /* Location.swift */,
 				3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */,
 				9F4A01B4CE0810383D176FFA /* SearchModel.swift */,
@@ -99,6 +117,14 @@
 			path = WhereToKite;
 			sourceTree = "<group>";
 		};
+		776A45B748B139FF0D3B3D7C /* WhereToKiteTests */ = {
+			isa = PBXGroup;
+			children = (
+				9277E1AB34764B92F4C025FD /* UserSpotStoreTests.swift */,
+			);
+			path = WhereToKiteTests;
+			sourceTree = "<group>";
+		};
 		7A6110A934214E877FD43C31 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				4631580E28E5B68ABCC5A177 /* WhereToKite.app */,
+				6155DD4168F65D0B50EAF58A /* WhereToKiteTests.xctest */,
 				FDD21EC0343EEB4D71E7F9C1 /* WhereToKiteUITests.xctest */,
 			);
 			name = Products;
@@ -128,6 +155,7 @@
 		CD42102D2295024D6CCE2313 /* WhereToKiteUITests */ = {
 			isa = PBXGroup;
 			children = (
+				929F2B2E178B9BA8888EBD62 /* MySpotsTests.swift */,
 				5D6C9E3460D173F0CFC23F0D /* SmokeTests.swift */,
 			);
 			path = WhereToKiteUITests;
@@ -136,6 +164,7 @@
 		EFBCE5475AE39803B852328D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F77C5012EC97C3B94A2310A4 /* AddSpotView.swift */,
 				CD1827AF8EDFF5D3992BB12C /* Components.swift */,
 				F026921E739C6680077EFE36 /* MySpotsView.swift */,
 				EE0549C24B51E5637246937D /* ProfileView.swift */,
@@ -149,6 +178,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		620EE3FA240783F841B86DBB /* WhereToKiteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EA428DE3242FF0FE68BB9D8 /* Build configuration list for PBXNativeTarget "WhereToKiteTests" */;
+			buildPhases = (
+				56DF85DA9905C59E454AD873 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06BE78A313ACB43D424D8B8B /* PBXTargetDependency */,
+			);
+			name = WhereToKiteTests;
+			packageProductDependencies = (
+			);
+			productName = WhereToKiteTests;
+			productReference = 6155DD4168F65D0B50EAF58A /* WhereToKiteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AA146BA63CE3C2C61BEE4BBC /* WhereToKiteUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C86978BC205D43F14B547A08 /* Build configuration list for PBXNativeTarget "WhereToKiteUITests" */;
@@ -223,6 +270,7 @@
 			targets = (
 				DB40B7B8886AD99187E741D2 /* WhereToKite */,
 				AA146BA63CE3C2C61BEE4BBC /* WhereToKiteUITests */,
+				620EE3FA240783F841B86DBB /* WhereToKiteTests */,
 			);
 		};
 /* End PBXProject section */
@@ -244,7 +292,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B067B2B1D8A42AC08748E2D2 /* MySpotsTests.swift in Sources */,
 				A869F315B8BC8DA8303F5B73 /* SmokeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56DF85DA9905C59E454AD873 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C8142654A0B9DBA7BF0CF94 /* UserSpotStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +309,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92919730AA0B3F2A7D455E50 /* AddSpotView.swift in Sources */,
+				8398D6ECE120CF911C21091A /* CoastlineGuess.swift in Sources */,
 				4186BF72B3FE16EFB4898830 /* Components.swift in Sources */,
 				284C70C8E4ABA0E4A7F75C0D /* Location.swift in Sources */,
 				8014EBB88D41746E8117AF2E /* MySpotsView.swift in Sources */,
@@ -269,6 +328,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		06BE78A313ACB43D424D8B8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB40B7B8886AD99187E741D2 /* WhereToKite */;
+			targetProxy = 3947947E10603CFC2CE0D5B8 /* PBXContainerItemProxy */;
+		};
 		76499DB33933B543DF33B8D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DB40B7B8886AD99187E741D2 /* WhereToKite */;
@@ -277,6 +341,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		115A061234F726302BC52276 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benjcvd.WhereToKiteTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhereToKite.app/WhereToKite";
+			};
+			name = Release;
+		};
 		1A8138351FD9CD7550A3671A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -484,9 +566,36 @@
 			};
 			name = Release;
 		};
+		F1C9AE7A8F40C239AE4B5BD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.benjcvd.WhereToKiteTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhereToKite.app/WhereToKite";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0EA428DE3242FF0FE68BB9D8 /* Build configuration list for PBXNativeTarget "WhereToKiteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1C9AE7A8F40C239AE4B5BD2 /* Debug */,
+				115A061234F726302BC52276 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		3BCFBD74C5AE027403DB3259 /* Build configuration list for PBXProject "WhereToKite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
