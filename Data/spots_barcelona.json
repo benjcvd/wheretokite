@@ -1,0 +1,249 @@
+{
+  "generatedAt": "2026-10-01T13:33:05Z",
+  "region": "barcelona",
+  "attribution": "© OpenStreetMap contributors (ODbL)",
+  "spots": [
+    {
+      "id": "curated-trabucador",
+      "name": "Platja del Trabucador (Ebro delta)",
+      "latitude": 40.60919,
+      "longitude": 0.7233,
+      "seaFacingDeg": 305.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 78.4,
+      "source": "curated",
+      "notes": "Ebro delta sandbar with water on both sides (open sea to the E/SE, flat-water Badia dels Alfacs to the W/NW). seaFacingDeg is from the nearest coastline only."
+    },
+    {
+      "id": "curated-eucaliptus",
+      "name": "Platja dels Eucaliptus (Ebro delta)",
+      "latitude": 40.6532,
+      "longitude": 0.77977,
+      "seaFacingDeg": 151.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 272.7,
+      "source": "curated",
+      "notes": "Ebro delta beach."
+    },
+    {
+      "id": "curated-riumar",
+      "name": "Riumar (Ebro delta)",
+      "latitude": 40.73131,
+      "longitude": 0.8364,
+      "seaFacingDeg": 13.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 17.2,
+      "source": "curated",
+      "notes": "Ebro delta, next to the river mouth."
+    },
+    {
+      "id": "curated-la-marquesa",
+      "name": "Platja de la Marquesa (Ebro delta)",
+      "latitude": 40.75807,
+      "longitude": 0.80201,
+      "seaFacingDeg": 50.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 20.2,
+      "source": "curated",
+      "notes": "Ebro delta beach."
+    },
+    {
+      "id": "curated-la-pineda",
+      "name": "Platja de la Pineda (Vila-seca)",
+      "latitude": 41.07621,
+      "longitude": 1.18537,
+      "seaFacingDeg": 118.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 171.6,
+      "source": "curated",
+      "notes": null
+    },
+    {
+      "id": "curated-altafulla",
+      "name": "Platja d'Altafulla",
+      "latitude": 41.13301,
+      "longitude": 1.37674,
+      "seaFacingDeg": 164.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 51.2,
+      "source": "curated",
+      "notes": null
+    },
+    {
+      "id": "curated-torredembarra",
+      "name": "Platja de Torredembarra",
+      "latitude": 41.15012,
+      "longitude": 1.4282,
+      "seaFacingDeg": 150.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 5.4,
+      "source": "curated",
+      "notes": null
+    },
+    {
+      "id": "curated-cunit",
+      "name": "Platja de Cunit",
+      "latitude": 41.19272,
+      "longitude": 1.63303,
+      "seaFacingDeg": 170.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 0.4,
+      "source": "curated",
+      "notes": "Zig-zag shoreline near spot (groynes/jetties); orientation less certain (resultant 0.44)."
+    },
+    {
+      "id": "curated-cubelles",
+      "name": "Platja de Cubelles",
+      "latitude": 41.20095,
+      "longitude": 1.68035,
+      "seaFacingDeg": 149.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 18.0,
+      "source": "curated",
+      "notes": null
+    },
+    {
+      "id": "osm-way-1084529243",
+      "name": "Platja de Castelldefels",
+      "latitude": 41.26421,
+      "longitude": 1.97907,
+      "seaFacingDeg": 180.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 37.0,
+      "source": "osm",
+      "notes": "also: Escola Garbi"
+    },
+    {
+      "id": "curated-gava",
+      "name": "Platja de Gavà",
+      "latitude": 41.26755,
+      "longitude": 2.02406,
+      "seaFacingDeg": 170.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 132.6,
+      "source": "curated",
+      "notes": null
+    },
+    {
+      "id": "curated-el-prat",
+      "name": "Platja del Prat",
+      "latitude": 41.278,
+      "longitude": 2.07803,
+      "seaFacingDeg": 158.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 24.5,
+      "source": "curated",
+      "notes": null
+    },
+    {
+      "id": "osm-relation-9445543",
+      "name": "Platja de Can Camins",
+      "latitude": 41.28478,
+      "longitude": 2.10452,
+      "seaFacingDeg": 156.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 171.3,
+      "source": "osm",
+      "notes": null
+    },
+    {
+      "id": "curated-barceloneta",
+      "name": "Platja de la Barceloneta",
+      "latitude": 41.37938,
+      "longitude": 2.1934,
+      "seaFacingDeg": 133.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 12.6,
+      "source": "curated",
+      "notes": "City beach; kiting is generally restricted here during the bathing season. Included mainly as an orientation reference."
+    },
+    {
+      "id": "curated-sant-adria",
+      "name": "Platja de Sant Adrià",
+      "latitude": 41.41675,
+      "longitude": 2.23153,
+      "seaFacingDeg": 103.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 36.3,
+      "source": "curated",
+      "notes": null
+    },
+    {
+      "id": "curated-badalona",
+      "name": "Platja de Badalona",
+      "latitude": 41.43887,
+      "longitude": 2.24486,
+      "seaFacingDeg": 109.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 37.5,
+      "source": "curated",
+      "notes": null
+    },
+    {
+      "id": "osm-node-4409310492",
+      "name": "Platja de l'Estartit",
+      "latitude": 42.04077,
+      "longitude": 3.19326,
+      "seaFacingDeg": 97.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 262.4,
+      "source": "osm",
+      "notes": "OSM object: eoliskite"
+    },
+    {
+      "id": "curated-sant-marti-empuries",
+      "name": "Platja de Sant Martí d'Empúries",
+      "latitude": 42.14111,
+      "longitude": 3.11862,
+      "seaFacingDeg": 75.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 11.1,
+      "source": "curated",
+      "notes": null
+    },
+    {
+      "id": "osm-way-436115079",
+      "name": "Platja des les Dunes",
+      "latitude": 42.15654,
+      "longitude": 3.11414,
+      "seaFacingDeg": 81.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 6.9,
+      "source": "osm",
+      "notes": "also: ION Club Golf De Roses"
+    },
+    {
+      "id": "osm-node-11062578789",
+      "name": "Platja de Can Sopa",
+      "latitude": 42.18073,
+      "longitude": 3.10942,
+      "seaFacingDeg": 87.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 169.4,
+      "source": "osm",
+      "notes": "OSM object: Impulse - Kitesurf School"
+    },
+    {
+      "id": "osm-way-110579310",
+      "name": "Platja de Sant Pere Pescador",
+      "latitude": 42.18867,
+      "longitude": 3.10803,
+      "seaFacingDeg": 89.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 269.5,
+      "source": "osm",
+      "notes": "OSM object: Kiteexperience"
+    },
+    {
+      "id": "curated-roses-salatar",
+      "name": "Platja del Salatar (Roses)",
+      "latitude": 42.26377,
+      "longitude": 3.15988,
+      "seaFacingDeg": 159.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 21.5,
+      "source": "curated",
+      "notes": null
+    }
+  ]
+}
