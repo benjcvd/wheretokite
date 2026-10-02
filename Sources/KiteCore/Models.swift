@@ -23,6 +23,12 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
     public var distanceToShoreM: Double?
     public var source: String?
     public var notes: String?
+    /// ISO 3166-1 alpha-2 country code, e.g. "FR".
+    public var country: String?
+    /// Human-readable area, e.g. "Côte d'Opale".
+    public var region: String?
+    /// "sea" | "lagoon" | "lake".
+    public var waterType: String?
 
     public var coordinate: Coordinate { Coordinate(latitude: latitude, longitude: longitude) }
 }
