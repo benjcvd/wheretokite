@@ -1,0 +1,162 @@
+country,region,name,water,locate,hint,notes
+# Hand-curated list of well-known kite spots (WhereToKite).
+# Coordinates are never typed here. `locate` is one of:
+#   q:<free text>   Nominatim search (restricted to `country`), first result
+#   osm:<n|w|r><id> an OpenStreetMap element (its centre)
+# `water`: sea | lagoon | lake. sea -> orientation from natural=coastline;
+#   lagoon/lake -> from the nearest natural=water polygon (fallback coastline).
+# `hint`: rough expected sea-facing direction (16-point compass), used ONLY as
+#   a sanity check and to pick the right shore on sandbars/isthmuses; the
+#   published seaFacingDeg is always computed from OSM geometry.
+# Lines starting with # are comments.
+#
+# ---------------------------------------------------------------- France
+FR,Côte d'Opale,Malo-les-Bains (Dunkerque),sea,q:Plage de Malo-les-Bains,N,
+FR,Côte d'Opale,Calais – Blériot-Plage,sea,q:Blériot-Plage,NNW,
+FR,Côte d'Opale,Wissant,sea,q:Plage de Wissant,NW,
+FR,Côte d'Opale,Wimereux,sea,q:Wimereux,W,
+FR,Côte d'Opale,Hardelot,sea,q:Hardelot-Plage,W,
+FR,Côte d'Opale,Le Touquet,sea,q:Le Touquet-Paris-Plage,W,
+FR,Côte d'Opale,Berck-sur-Mer,sea,q:Berck plage,W,
+FR,Baie de Somme,Fort-Mahon-Plage,sea,q:Fort-Mahon-Plage,W,
+FR,Baie de Somme,Le Crotoy,sea,q:Le Crotoy plage,SW,Tidal bay: rideable around high tide only.
+FR,Baie de Somme,Cayeux-sur-Mer,sea,q:Cayeux plage,W,
+FR,Normandie,Ouistreham – Riva-Bella,sea,q:Plage de Riva-Bella,N,
+FR,Normandie,Merville-Franceville,sea,q:Merville-Franceville-Plage,N,
+FR,Normandie,Houlgate,sea,osm:w108806424,N,
+FR,Normandie,Asnelles,sea,q:Asnelles,N,
+FR,Normandie,Utah Beach,sea,q:Utah Beach,E,
+FR,Normandie,Siouville-Hague,sea,q:Plage de Siouville,W,
+FR,Normandie,Gouville-sur-Mer,sea,q:Plage de Gouville-sur-Mer,W,
+FR,Normandie,Agon-Coutainville,sea,q:Plage de Coutainville,W,
+FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,Bay of Mont-Saint-Michel: huge tidal range; ride around high tide.
+FR,Bretagne,Saint-Lunaire – Longchamp,sea,q:Plage de Longchamp Saint-Lunaire,N,
+FR,Bretagne,Saint-Michel-en-Grève (Lieue de Grève),sea,q:Lieue de Grève,N,
+FR,Bretagne,Santec – Le Dossen,sea,q:Plage du Dossen,NW,
+FR,Bretagne,Le Conquet – Blancs Sablons,sea,q:Plage des Blancs Sablons Le Conquet,W,
+FR,Bretagne,Pentrez,sea,q:Plage de Pentrez,W,
+FR,Bretagne,La Torche,sea,q:Plage de la Torche,W,
+FR,Bretagne,Mousterlin,sea,q:Plage de Mousterlin,S,
+FR,Bretagne,Gâvres,sea,"q:Grande Plage, Gâvres",SW,
+FR,Bretagne,Erdeven – Kerhillio,sea,q:Plage de Kerhillio,SW,
+FR,Bretagne,Penthièvre (Quiberon bay side),sea,osm:w1546689396,E,Bay side of the Penthièvre isthmus (flat water); the ocean side faces W.
+FR,Bretagne,Plouharnel – Les Sables Blancs,sea,q:Sables Blancs Plouharnel,SE,
+FR,Bretagne,Carnac – Saint-Colomban,sea,q:Plage de Saint-Colomban Carnac,S,
+FR,Pays de la Loire,La Baule,sea,q:Plage de La Baule,S,Town beach: kiting restricted in summer bathing hours.
+FR,Pays de la Loire,Saint-Brevin-les-Pins,sea,q:Plage de Saint-Brevin-l'Océan,W,
+FR,Pays de la Loire,Notre-Dame-de-Monts,sea,q:Plage de Notre-Dame-de-Monts,W,
+FR,Pays de la Loire,Bretignolles-sur-Mer,sea,osm:n13123697769,W,
+FR,Pays de la Loire,La Tranche-sur-Mer,sea,q:Plage de La Tranche-sur-Mer,SW,
+FR,Charente-Maritime,Châtelaillon-Plage,sea,q:Plage de Châtelaillon,W,
+FR,Charente-Maritime,Oléron – Vert-Bois,sea,q:Plage de Vert Bois Dolus,W,
+FR,Charente-Maritime,Oléron – Gatseau,sea,q:Plage de Gatseau,S,
+FR,Gironde,Lac d'Hourtin-Carcans,lake,q:Hourtin Port,W,Lake: flat water.
+FR,Gironde,Lac de Lacanau,lake,osm:w340755108,,Lake: flat water.
+FR,Gironde,Bassin d'Arcachon – La Hume,sea,q:Plage de la Hume Gujan-Mestras,N,Tidal basin: ride around high tide.
+FR,Languedoc-Roussillon,Le Barcarès,sea,q:Plage du Barcarès,E,
+FR,Languedoc-Roussillon,Leucate – Les Coussoules / La Franqui,sea,q:Plage des Coussoules,ESE,Famous tramontane spot; the tramontane (NW) is offshore here: experts only.
+FR,Languedoc-Roussillon,Étang de La Palme,lagoon,osm:n4299104622,NW,Shallow flat-water lagoon; launch on the south-east shore.
+FR,Languedoc-Roussillon,Port-la-Nouvelle,sea,q:Plage de Port-la-Nouvelle,E,
+FR,Languedoc-Roussillon,Gruissan – Les Chalets,sea,q:Plage des Chalets Gruissan,SE,
+FR,Languedoc-Roussillon,Sète – Lido,sea,q:Plage des Trois Digues Sète,SE,
+FR,Languedoc-Roussillon,Le Grau-du-Roi – L'Espiguette,sea,q:Plage de l'Espiguette,S,
+FR,Provence,Saintes-Maries-de-la-Mer – Beauduc,sea,q:Plage de Beauduc,SW,Remote beach (track access).
+FR,Provence,Salin-de-Giraud – Piémanson,sea,q:Plage de Piémanson,S,
+FR,Provence,Port-Saint-Louis – Plage Napoléon,sea,q:Plage Napoléon Port-Saint-Louis-du-Rhône,S,
+FR,Provence,Carro,sea,q:Plage de Carro Martigues,W,
+FR,Provence,Marseille – Pointe Rouge,sea,q:Plage de la Pointe Rouge Marseille,W,
+FR,Provence,Six-Fours – Le Brusc,sea,q:Plage du Brusc,W,
+FR,Provence,Hyères – L'Almanarre,sea,q:Plage de l'Almanarre,W,
+FR,Corse,Bonifacio – Piantarella,sea,q:Piantarella,E,
+FR,Corse,Bonifacio – Tonnara,sea,q:Plage de la Tonnara Bonifacio,W,
+FR,Alpes,Lac de Serre-Ponçon – Boscodon / Crots,lake,osm:n1128590012,,Thermal wind from late morning; kiting forbidden near the bridge and in bathing areas.
+FR,Alpes,Lac de Monteynard,lake,osm:n4390731413,,Famous thermal spot (south wind in the afternoon).
+FR,Grand Est,Lac du Der – Giffaumont,lake,q:Plage de Giffaumont-Champaubert,,Kite zone regulated (check the club at Port d'Arrigny); forbidden zone in summer.
+#
+# ---------------------------------------------------------------- Spain
+ES,Catalunya,Sant Pere Pescador,sea,osm:w110579310,E,Authorised summer kite zone (piscifactoria area).
+ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,City beach: kiting banned 1 Jun–30 Sep; off-season only.
+ES,Catalunya,Castelldefels,sea,osm:w1084529243,S,Authorised summer kite zone (online registration required).
+ES,Catalunya,Torredembarra,sea,q:Platja dels Muntanyans,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).
+ES,Catalunya,La Pineda,sea,q:Platja de la Pineda Vila-seca,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).
+ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,E,Year-round (no seasonal ban).
+ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,q:Platja dels Eucaliptus,SE,
+ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W,Authorised summer kite zone; flat water on the Badia dels Alfacs (west) side.
+ES,Comunitat Valenciana,Valencia – Pinedo,sea,q:Platja de Pinedo,E,
+ES,Comunitat Valenciana,Oliva,sea,q:Platja d'Oliva,E,
+ES,Comunitat Valenciana,Santa Pola – La Gola,sea,q:Playa de La Gola Santa Pola,E,
+ES,Murcia,Mar Menor – Los Narejos,lagoon,q:Playa de Los Narejos,E,Flat-water lagoon.
+ES,Andalucía,Tarifa – Los Lances,sea,osm:w1465288739,SW,
+ES,Andalucía,Tarifa – Valdevaqueros,sea,osm:w186110526,S,
+ES,Galicia,Doniños (Ferrol),sea,q:Praia de Doniños,W,
+ES,Galicia,Razo (Carballo),sea,q:Praia de Razo,NW,
+ES,Galicia,A Lanzada,sea,osm:w173598722,W,
+ES,Canarias,Fuerteventura – Sotavento,sea,q:Risco del Paso,SE,
+ES,Canarias,Fuerteventura – Flag Beach (Corralejo),sea,q:Grandes Playas de Corralejo,E,
+ES,Canarias,Lanzarote – Famara,sea,q:Playa de Famara,NW,
+ES,Canarias,Gran Canaria – Pozo Izquierdo,sea,q:Pozo Izquierdo,E,
+ES,Canarias,Tenerife – El Médano,sea,q:Playa de El Médano,SE,
+ES,Illes Balears,Mallorca – Son Serra de Marina,sea,q:Platja de Son Serra de Marina,N,
+#
+# ---------------------------------------------------------------- Portugal
+PT,Norte,Viana do Castelo – Cabedelo,sea,osm:w1384166636,W,
+PT,Centro,Lagoa de Óbidos,lagoon,osm:n1828415085,,Flat-water lagoon.
+PT,Lisboa,Guincho,sea,q:Praia do Guincho,W,
+PT,Lisboa,Fonte da Telha,sea,osm:w222678478,W,
+PT,Lisboa,Lagoa de Albufeira,lagoon,q:Lagoa de Albufeira,N,Flat-water lagoon.
+PT,Algarve,Alvor,sea,q:Praia de Alvor,S,
+PT,Algarve,Lagos – Meia Praia,sea,q:Meia Praia Lagos,SE,
+#
+# ---------------------------------------------------------------- Italy
+IT,Sardegna,Porto Pollo,sea,q:Porto Pollo Palau,W,
+IT,Sicilia,Lo Stagnone (Marsala),lagoon,osm:n12407041259,W,Flat-water lagoon.
+IT,Calabria,Gizzeria – Hang Loose Beach,sea,q:Gizzeria Lido,W,
+IT,Veneto,Lago di Garda – Malcesine,lake,osm:n458123631,W,
+#
+# ---------------------------------------------------------------- Netherlands
+NL,Zeeland,Brouwersdam,sea,q:Brouwersdam strand,NW,
+NL,Zuid-Holland,Hoek van Holland,sea,q:Hoek van Holland,W,
+NL,Noord-Holland,Zandvoort,sea,q:Strand Zandvoort,W,
+NL,Noord-Holland,IJmuiden,sea,osm:n4508458788,W,
+NL,Noord-Holland,Texel – Paal 17,sea,q:Paal 17 Texel,W,
+NL,Friesland,Workum (IJsselmeer),lake,q:Workum strand,W,
+#
+# ---------------------------------------------------------------- Belgium
+BE,Westkust,De Panne,sea,q:Strand De Panne,NW,
+BE,Oostkust,Oostende,sea,osm:n7834988905,NW,
+BE,Oostkust,Knokke-Heist,sea,q:Strand Knokke,NW,
+#
+# ---------------------------------------------------------------- United Kingdom
+GB,England,Camber Sands,sea,q:Camber Sands,S,
+GB,England,Hayling Island,sea,"q:Beachlands, Hayling Island",S,
+GB,England,Poole Harbour – Shore Road,lagoon,"q:Shore Road, Poole",W,
+GB,England,Weymouth – Portland Harbour,sea,q:Sandsfoot,SE,
+GB,England,Exmouth,sea,q:Exmouth Beach,S,
+GB,England,Marazion,sea,q:Marazion Beach,S,
+GB,England,Saunton Sands,sea,q:Saunton Sands,W,
+GB,England,Hunstanton,sea,q:Hunstanton Beach,W,
+GB,England,West Kirby,sea,q:West Kirby Beach,W,
+GB,Wales,Rhosneigr,sea,q:Rhosneigr Beach,W,
+#
+# ---------------------------------------------------------------- Germany
+DE,Schleswig-Holstein,Sankt Peter-Ording,sea,q:Strand Sankt Peter-Ording,W,
+DE,Schleswig-Holstein,Sylt – Westerland,sea,q:Strand Westerland,W,
+DE,Schleswig-Holstein,Fehmarn – Gold,sea,"q:Gold, Fehmarn",S,
+#
+# ---------------------------------------------------------------- Denmark
+DK,Jylland,Hvide Sande,sea,q:Hvide Sande Nordstrand,W,
+DK,Jylland,Klitmøller,sea,q:Klitmøller,NW,
+DK,Jylland,Rømø – Lakolk,sea,q:Lakolk Strand,W,
+DK,Sjælland,Copenhagen – Amager Strandpark,sea,q:Amager Strandpark,E,
+#
+# ---------------------------------------------------------------- Greece
+GR,Rhodes,Prasonisi,sea,q:Prasonisi Rhodes,W,Isthmus with two sides: waves on the west side and flatter water on the east side.
+GR,Naxos,Mikri Vigla,sea,q:Mikri Vigla,W,
+GR,Paros,Pounta,sea,q:Pounta Paros,W,
+GR,Kos,Marmari,sea,osm:n6677200338,N,
+GR,Lemnos,Keros,sea,osm:w263844492,E,
+#
+# ---------------------------------------------------------------- Morocco
+MA,Dakhla,Dakhla lagoon,lagoon,q:Lassarga,E,Flat-water lagoon (the peninsula's lagoon shore; many camps along it).
+MA,Essaouira,Essaouira,sea,osm:w243397848,W,
+MA,Essaouira,Moulay Bouzerktoun,sea,q:Moulay Bouzerktoun,W,

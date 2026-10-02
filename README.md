@@ -29,7 +29,7 @@ swift run kite --day 2026-08-25 --hourly 3                         # past day �
   - `Recommender.swift` — filter by drive time → fetch → score hours → best 2 h window → distance penalty → rank.
 - `Sources/kite` — v0 command-line front-end.
 - `App/` — iPhone app (`project.yml` is the XcodeGen spec; `WhereToKite/Models`, `WhereToKite/Views`).
-- `tools/build_spots.py` → `Data/spots_barcelona.json` — spots from OpenStreetMap, beach orientation computed from the OSM coastline. Hand-edit `seaFacingDeg` to correct a spot.
+- `tools/build_spots.py` → `Data/spots.json` — catalogue of **well-known** kite spots (France, Spain, Portugal, Italy, Benelux, UK, Germany, Denmark, Greece, Morocco). The selection lives in `tools/curated_spots.csv` (name, country, how to find it in OpenStreetMap — never raw coordinates); positions come from Nominatim / OSM elements and `seaFacingDeg` from the OSM coastline (lakes/lagoons: the water polygon). The script prints a review table, checks reference orientations (Castelldefels, Leucate, Wissant, Tarifa…) and fails if one is off by > 30°. To fix a spot, edit the CSV row (better locator or `hint` for the shore) and re-run: `python3 tools/build_spots.py --also Data/spots_barcelona.json` (the copy keeps the app/CLI's current file name working). Raw OSM responses are cached in `tools/.osm_cache/`.
 
 ## Scoring (v0)
 Per hour, score = strength × gustiness × direction (each 0…1):
