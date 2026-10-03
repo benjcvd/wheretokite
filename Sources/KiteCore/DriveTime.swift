@@ -50,12 +50,104 @@ public struct StraightLineDriveTime: DriveTimeProvider {
         return road / averageKmh(roadKm: road) * 60
     }
 
+    /// Like `minutes(straightLineKm:)`, but a trip to or from an island (Great Britain,
+    /// Corsica, Morocco…) goes through its usual ferry or tunnel: drive to the port, cross
+    /// (`SeaCrossing.minutes`, boarding included), drive on from the port on the other side.
+    public func minutes(from origin: Coordinate, to destination: Coordinate) -> Double {
+        let from = SeaCrossing.landmass(of: origin), to = SeaCrossing.landmass(of: destination)
+        guard from?.name != to?.name else {
+            return minutes(straightLineKm: Geo.distanceKm(origin, destination))
+        }
+        var total = 0.0
+        var here = origin
+        if let from {   // leave the origin's island
+            total += minutes(straightLineKm: Geo.distanceKm(here, from.islandPort)) + from.minutes
+            here = from.mainlandPort
+        }
+        if let to {     // reach the destination's island
+            total += minutes(straightLineKm: Geo.distanceKm(here, to.mainlandPort)) + to.minutes
+            here = to.islandPort
+        }
+        return total + minutes(straightLineKm: Geo.distanceKm(here, destination))
+    }
+
     public func minutes(from origin: Coordinate, to spot: Spot) -> Double {
-        minutes(straightLineKm: Geo.distanceKm(origin, spot.coordinate))
+        minutes(from: origin, to: spot.coordinate)
     }
 
     public func driveMinutes(from origin: Coordinate, to spots: [Spot]) async -> [String: Double] {
         Dictionary(spots.map { ($0.id, minutes(from: origin, to: $0)) }, uniquingKeysWith: { a, _ in a })
+    }
+}
+
+/// A landmass reached from mainland Europe by ferry or tunnel, for drive estimates. Apple
+/// Maps routes through these crossings itself; the table only keeps the offline estimate
+/// (which decides which spots get a real ETA) from treating the sea as road.
+///
+/// Areas are coarse boxes / polygons, good enough to tell which side of the water a point
+/// is on. Anything outside every area counts as mainland Europe.
+public struct SeaCrossing: Sendable {
+    public var name: String
+    /// (latitude, longitude) vertices; a closed polygon, or a box when two corners are given.
+    public var area: [(Double, Double)]
+    public var mainlandPort: Coordinate
+    public var islandPort: Coordinate
+    /// Crossing plus check-in / boarding.
+    public var minutes: Double
+
+    static func c(_ lat: Double, _ lon: Double) -> Coordinate { Coordinate(latitude: lat, longitude: lon) }
+
+    /// Order matters: the first area containing a point wins (Canaries before Africa).
+    public static let all: [SeaCrossing] = [
+        // Le Shuttle Calais–Folkestone, 35 min + ~45 min check-in. Ireland is outside the polygon.
+        SeaCrossing(name: "Great Britain",
+                    area: [(49.8, -6.5), (50.6, 1.0), (51.0, 1.6), (51.6, 2.0), (53.0, 2.0), (61.0, 0.0),
+                           (58.6, -8.0), (56.0, -6.5), (55.3, -5.9), (54.6, -5.3), (53.2, -4.9), (51.6, -5.5)],
+                    mainlandPort: c(50.94, 1.84), islandPort: c(51.09, 1.13), minutes: 80),
+        SeaCrossing(name: "Corsica", area: [(41.3, 8.5), (43.1, 9.6)],
+                    mainlandPort: c(43.70, 7.28), islandPort: c(42.70, 9.45), minutes: 390),       // Nice–Bastia
+        SeaCrossing(name: "Sardinia", area: [(38.8, 8.1), (41.3, 9.9)],
+                    mainlandPort: c(43.55, 10.30), islandPort: c(40.92, 9.52), minutes: 600),      // Livorno–Olbia
+        SeaCrossing(name: "Sicily", area: [(36.6, 12.3), (38.35, 15.6)],
+                    mainlandPort: c(38.22, 15.64), islandPort: c(38.19, 15.55), minutes: 60),      // Villa S. G.–Messina
+        SeaCrossing(name: "Balearic Islands", area: [(38.6, 1.1), (40.1, 4.4)],
+                    mainlandPort: c(41.35, 2.17), islandPort: c(39.56, 2.63), minutes: 540),       // Barcelona–Palma
+        SeaCrossing(name: "Canary Islands", area: [(27.5, -18.3), (29.5, -13.3)],
+                    mainlandPort: c(37.25, -6.95), islandPort: c(28.14, -15.43), minutes: 2200),   // Huelva–Las Palmas
+        SeaCrossing(name: "Africa", area: [(15.0, -18.0), (35.95, 11.0)],
+                    mainlandPort: c(36.01, -5.60), islandPort: c(35.78, -5.81), minutes: 150),     // Tarifa–Tanger
+        SeaCrossing(name: "Rhodes", area: [(35.85, 27.6), (36.5, 28.3)],
+                    mainlandPort: c(37.94, 23.64), islandPort: c(36.45, 28.23), minutes: 1000),    // Piraeus
+        SeaCrossing(name: "Kos", area: [(36.6, 26.9), (36.95, 27.4)],
+                    mainlandPort: c(37.94, 23.64), islandPort: c(36.90, 27.29), minutes: 720),
+        SeaCrossing(name: "Naxos", area: [(36.9, 25.3), (37.2, 25.6)],
+                    mainlandPort: c(37.94, 23.64), islandPort: c(37.10, 25.37), minutes: 420),
+        SeaCrossing(name: "Paros", area: [(36.95, 25.0), (37.15, 25.3)],
+                    mainlandPort: c(37.94, 23.64), islandPort: c(37.09, 25.15), minutes: 360),
+        SeaCrossing(name: "Lemnos", area: [(39.75, 25.0), (40.05, 25.5)],
+                    mainlandPort: c(40.93, 24.41), islandPort: c(39.87, 25.06), minutes: 330),     // Kavala–Myrina
+    ]
+
+    public func contains(_ p: Coordinate) -> Bool {
+        if area.count == 2 {
+            return (area[0].0...area[1].0).contains(p.latitude) && (area[0].1...area[1].1).contains(p.longitude)
+        }
+        var inside = false
+        var j = area.count - 1
+        for i in area.indices {
+            let (yi, xi) = area[i], (yj, xj) = area[j]
+            if (yi > p.latitude) != (yj > p.latitude),
+               p.longitude < (xj - xi) * (p.latitude - yi) / (yj - yi) + xi {
+                inside.toggle()
+            }
+            j = i
+        }
+        return inside
+    }
+
+    /// nil = mainland Europe.
+    public static func landmass(of p: Coordinate) -> SeaCrossing? {
+        all.first { $0.contains(p) }
     }
 }
 

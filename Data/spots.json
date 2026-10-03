@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T08:02:40Z",
+  "generatedAt": "2026-10-03T18:41:00Z",
   "region": "europe",
   "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); spot selection curated by WhereToKite",
   "spots": [
@@ -127,7 +127,17 @@
       "notes": null,
       "country": "DK",
       "region": "Jylland",
-      "waterType": "sea"
+      "waterType": "sea",
+      "sides": [
+        {
+          "name": "North Sea side",
+          "seaFacingDeg": 260.9
+        },
+        {
+          "name": "Ringkøbing Fjord side",
+          "seaFacingDeg": 99.8
+        }
+      ]
     },
     {
       "id": "dk-klitmller",
@@ -188,11 +198,11 @@
     {
       "id": "es-fuerteventura-flag-beach-corralejo",
       "name": "Fuerteventura – Flag Beach (Corralejo)",
-      "latitude": 28.7322,
-      "longitude": -13.86799,
-      "seaFacingDeg": 57.5,
+      "latitude": 28.71629,
+      "longitude": -13.83944,
+      "seaFacingDeg": 66.8,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 217.2,
+      "distanceToShoreM": 65.3,
       "source": "curated",
       "notes": null,
       "country": "ES",
@@ -323,7 +333,17 @@
       "notes": "Authorised summer kite zone; flat water on the Badia dels Alfacs (west) side.",
       "country": "ES",
       "region": "Catalunya",
-      "waterType": "sea"
+      "waterType": "sea",
+      "sides": [
+        {
+          "name": "bay side",
+          "seaFacingDeg": 305.5
+        },
+        {
+          "name": "sea side",
+          "seaFacingDeg": 125.6
+        }
+      ]
     },
     {
       "id": "es-platja-dels-eucaliptus-ebro-delta",
@@ -608,13 +628,13 @@
     {
       "id": "fr-carro",
       "name": "Carro",
-      "latitude": 43.33254,
-      "longitude": 5.04391,
-      "seaFacingDeg": 171.2,
+      "latitude": 43.33597,
+      "longitude": 5.03064,
+      "seaFacingDeg": 226.6,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 115.0,
+      "distanceToShoreM": 6.9,
       "source": "curated",
-      "notes": "Irregular shoreline near the spot; orientation less certain.",
+      "notes": null,
       "country": "FR",
       "region": "Provence",
       "waterType": "sea"
@@ -872,8 +892,8 @@
       "waterType": "sea"
     },
     {
-      "id": "fr-penthievre-quiberon-bay-side",
-      "name": "Penthièvre (Quiberon bay side)",
+      "id": "fr-penthievre",
+      "name": "Penthièvre",
       "latitude": 47.54218,
       "longitude": -3.13427,
       "seaFacingDeg": 79.8,
@@ -883,7 +903,17 @@
       "notes": "Bay side of the Penthièvre isthmus (flat water); the ocean side faces W.",
       "country": "FR",
       "region": "Bretagne",
-      "waterType": "sea"
+      "waterType": "sea",
+      "sides": [
+        {
+          "name": "bay side",
+          "seaFacingDeg": 79.8
+        },
+        {
+          "name": "ocean side",
+          "seaFacingDeg": 291.0
+        }
+      ]
     },
     {
       "id": "fr-carnac-saint-colomban",
@@ -1471,7 +1501,17 @@
       "notes": "Isthmus with two sides: waves on the west side and flatter water on the east side. Irregular shoreline near the spot; orientation less certain.",
       "country": "GR",
       "region": "Rhodes",
-      "waterType": "sea"
+      "waterType": "sea",
+      "sides": [
+        {
+          "name": "west side (waves)",
+          "seaFacingDeg": 285.5
+        },
+        {
+          "name": "east side (flat)",
+          "seaFacingDeg": 136.2
+        }
+      ]
     },
     {
       "id": "gr-marmari",
@@ -1569,7 +1609,17 @@
       "notes": null,
       "country": "IT",
       "region": "Sardegna",
-      "waterType": "sea"
+      "waterType": "sea",
+      "sides": [
+        {
+          "name": "west side",
+          "seaFacingDeg": 299.2
+        },
+        {
+          "name": "east side",
+          "seaFacingDeg": 47.7
+        }
+      ]
     },
     {
       "id": "it-lago-di-garda-malcesine",
@@ -1586,15 +1636,57 @@
       "waterType": "lake"
     },
     {
-      "id": "ma-dakhla-lagoon",
-      "name": "Dakhla lagoon",
+      "id": "ma-dakhla-lassarga",
+      "name": "Dakhla – Lassarga",
       "latitude": 23.65233,
       "longitude": -15.97539,
       "seaFacingDeg": 36.1,
       "orientationSource": "osm-water",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Flat-water lagoon (the peninsula's lagoon shore; many camps along it). Irregular shoreline near the spot; orientation less certain. Shoreline bends here (36° locally vs 151° over ±1.5 km).",
+      "notes": "Lagoon shore by the fishing village near the peninsula tip. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (36° locally vs 151° over ±1.5 km).",
+      "country": "MA",
+      "region": "Dakhla",
+      "waterType": "lagoon"
+    },
+    {
+      "id": "ma-dakhla-oum-labouir-westpoint",
+      "name": "Dakhla – Oum Labouir (Westpoint)",
+      "latitude": 23.76292,
+      "longitude": -15.92176,
+      "seaFacingDeg": 272.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 12.8,
+      "source": "curated",
+      "notes": "Atlantic side: waves; wind lighter and gustier in the bay.",
+      "country": "MA",
+      "region": "Dakhla",
+      "waterType": "sea"
+    },
+    {
+      "id": "ma-dakhla-dune-blanche",
+      "name": "Dakhla – Dune Blanche",
+      "latitude": 23.822,
+      "longitude": -15.74476,
+      "seaFacingDeg": 217.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 178.0,
+      "source": "curated",
+      "notes": "Flat water behind the white dune; best at high tide. Irregular shoreline near the spot; orientation less certain.",
+      "country": "MA",
+      "region": "Dakhla",
+      "waterType": "lagoon"
+    },
+    {
+      "id": "ma-dakhla-speed-spot-pk25-camps",
+      "name": "Dakhla – Speed Spot (PK25 camps)",
+      "latitude": 23.89393,
+      "longitude": -15.77138,
+      "seaFacingDeg": 268.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 45.9,
+      "source": "curated",
+      "notes": "Flat shallow lagoon in front of the PK25 camps (Dakhla Attitude, Dakhla Club); best at low tide.",
       "country": "MA",
       "region": "Dakhla",
       "waterType": "lagoon"
@@ -1630,16 +1722,26 @@
     {
       "id": "nl-brouwersdam",
       "name": "Brouwersdam",
-      "latitude": 51.76382,
-      "longitude": 3.84574,
-      "seaFacingDeg": 310.6,
+      "latitude": 51.75796,
+      "longitude": 3.83829,
+      "seaFacingDeg": 321.2,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 0.7,
       "source": "curated",
       "notes": null,
       "country": "NL",
       "region": "Zeeland",
-      "waterType": "sea"
+      "waterType": "sea",
+      "sides": [
+        {
+          "name": "North Sea side",
+          "seaFacingDeg": 321.2
+        },
+        {
+          "name": "Grevelingen side",
+          "seaFacingDeg": 172.1
+        }
+      ]
     },
     {
       "id": "nl-hoek-van-holland",
@@ -1686,13 +1788,13 @@
     {
       "id": "nl-workum-ijsselmeer",
       "name": "Workum (IJsselmeer)",
-      "latitude": 52.97316,
-      "longitude": 5.40992,
-      "seaFacingDeg": 254.9,
+      "latitude": 52.9847,
+      "longitude": 5.4036,
+      "seaFacingDeg": 252.0,
       "orientationSource": "osm-water",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Irregular shoreline near the spot; orientation less certain.",
+      "notes": null,
       "country": "NL",
       "region": "Friesland",
       "waterType": "lake"

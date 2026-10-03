@@ -56,6 +56,8 @@ public struct HourScore: Sendable {
     public var kite: KiteRange?
     public var relativeAngle: Double?  // 0 onshore … 180 offshore
     public var flags: [String]
+    /// Side of a multi-sided spot this hour was scored on (nil for single-sided spots).
+    public var side: String?
 }
 
 public struct Scorer: Sendable {
@@ -72,6 +74,20 @@ public struct Scorer: Sendable {
 
     public var kiteRanges: [KiteRange] {
         profile.kites.map { KiteRange.make(size: $0, weightKg: profile.weightKg, rules: rules) }
+    }
+
+    /// Scores the hour on each side and keeps the best one. Ties (e.g. too light everywhere)
+    /// go to the side where the wind is most onshore, the safest one.
+    public func score(_ w: HourlyWind, sides: [SpotSide]) -> HourScore {
+        guard sides.count > 1 else { return score(w, seaFacingDeg: sides.first?.seaFacingDeg) }
+        let scored = sides.map { side -> HourScore in
+            var h = score(w, seaFacingDeg: side.seaFacingDeg)
+            h.side = side.name
+            return h
+        }
+        return scored.min { a, b in
+            a.score != b.score ? a.score > b.score : (a.relativeAngle ?? 180) < (b.relativeAngle ?? 180)
+        }!
     }
 
     public func score(_ w: HourlyWind, seaFacingDeg: Double?) -> HourScore {

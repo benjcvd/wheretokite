@@ -109,7 +109,7 @@ private struct UserSpotRow: View {
     }
 
     private var subtitle: String {
-        let facing = spot.seaFacingDeg.map { "Faces \(Geo.compassName($0))" } ?? "Direction unknown"
+        let facing = spot.facingSummary.map { "Faces \($0)" } ?? "Direction unknown"
         if let notes = spot.notes, !notes.isEmpty { return "\(facing) · \(notes)" }
         return facing
     }

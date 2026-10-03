@@ -292,7 +292,9 @@ private struct SpotDetailsForm: View {
 
             Section {
                 if let coordinate = draft.coordinate {
-                    orientationMap(coordinate)
+                    orientationMap(coordinate, bearing: Binding(
+                        get: { draft.seaFacingDeg },
+                        set: { draft.seaFacingDeg = $0; draft.orientationSource = "user" }))
                         .listRowInsets(EdgeInsets())
                 }
                 orientationStatus
@@ -300,6 +302,34 @@ private struct SpotDetailsForm: View {
                 Text("Which way does the beach face?")
             } footer: {
                 Text("Point the arrow from the beach toward the open water. It tells onshore, side-shore and offshore wind apart.")
+            }
+
+            Section {
+                Toggle("Kitable from another side too", isOn: Binding(
+                    get: { draft.otherSideDeg != nil },
+                    set: { on in
+                        withAnimation(.snappy) {
+                            draft.otherSideDeg = on ? ((draft.seaFacingDeg ?? 0) + 180).truncatingRemainder(dividingBy: 360) : nil
+                        }
+                    }))
+                    .accessibilityIdentifier("otherSideToggle")
+                if let deg = draft.otherSideDeg, let coordinate = draft.coordinate {
+                    orientationMap(coordinate, bearing: Binding(get: { draft.otherSideDeg },
+                                                                set: { draft.otherSideDeg = $0 }))
+                        .listRowInsets(EdgeInsets())
+                    HStack(spacing: 12) {
+                        FacingBadge(bearing: deg, size: 36)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Other side faces \(Self.longName(deg))").font(.headline)
+                            Text("\(Int(deg.rounded()))° · drag the arrow to adjust")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .accessibilityElement(children: .combine)
+                }
+            } footer: {
+                Text("For a sandbar, an isthmus or a beach with a lagoon behind it. Each hour is scored on the side where the wind works best.")
             }
 
             Section {
@@ -339,7 +369,7 @@ private struct SpotDetailsForm: View {
         .task(id: draft.coordinate) { await suggestOrientation() }
     }
 
-    private func orientationMap(_ c: Coordinate) -> some View {
+    private func orientationMap(_ c: Coordinate, bearing: Binding<Double?>) -> some View {
         let center = CLLocationCoordinate2D(latitude: c.latitude, longitude: c.longitude)
         return Map(initialPosition: .region(MKCoordinateRegion(center: center, latitudinalMeters: 900,
                                                                 longitudinalMeters: 900)),
@@ -348,9 +378,7 @@ private struct SpotDetailsForm: View {
             .id(c)
             .frame(height: 280)
             .overlay {
-                OrientationDial(bearing: Binding(
-                    get: { draft.seaFacingDeg },
-                    set: { draft.seaFacingDeg = $0; draft.orientationSource = "user" }))
+                OrientationDial(bearing: bearing)
             }
             .overlay(alignment: .topTrailing) {
                 if isGuessing {

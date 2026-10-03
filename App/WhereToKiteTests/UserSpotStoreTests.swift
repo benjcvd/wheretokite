@@ -83,6 +83,27 @@ final class UserSpotStoreTests: XCTestCase {
         // Editing keeps the id.
         let again = SpotDraft(s!).makeSpot()
         XCTAssertEqual(again?.id, s?.id)
+        XCTAssertNil(again?.sides)
+    }
+
+    func testTwoSidedSpot() throws {
+        var d = SpotDraft()
+        d.name = "Sandbar"
+        d.coordinate = Coordinate(latitude: 41, longitude: 2)
+        d.seaFacingDeg = 270
+        d.otherSideDeg = 450
+        let s = try XCTUnwrap(d.makeSpot())
+        XCTAssertEqual(s.sides?.map(\.seaFacingDeg), [270, 90])
+        XCTAssertEqual(s.sides?.map(\.name), ["W side", "E side"])
+        XCTAssertEqual(s.facingSummary, "W & E")
+
+        // Survives a save / load and an edit.
+        let data = try JSONEncoder().encode(s)
+        let loaded = try JSONDecoder().decode(Spot.self, from: data)
+        XCTAssertEqual(SpotDraft(loaded).otherSideDeg, 90)
+        var back = SpotDraft(loaded)
+        back.otherSideDeg = nil
+        XCTAssertNil(back.makeSpot()?.sides)
     }
 
     func testSeaBearingFromSamples() {

@@ -139,7 +139,9 @@ for (i, r) in shown.enumerated() {
 
 let hourlyCount = Int(args["hourly"] ?? "0") ?? 0
 for r in shown.prefix(hourlyCount) {
-    let facing = r.spot.seaFacingDeg.map { String(format: "beach faces %.0f° %@", $0, Geo.compassName($0)) } ?? "orientation unknown"
+    let facing = r.spot.allSides.isEmpty ? "orientation unknown" : r.spot.allSides.map {
+        String(format: "%@faces %.0f° %@", $0.name.map { "\($0) " } ?? "beach ", $0.seaFacingDeg, Geo.compassName($0.seaFacingDeg))
+    }.joined(separator: ", ")
     print("\n\(r.spot.name) — \(facing)")
     for h in r.hours {
         let angle = h.relativeAngle.map { String(format: "%3.0f°", $0) } ?? "  ?"
@@ -147,7 +149,7 @@ for r in shown.prefix(hourlyCount) {
         print(String(format: "  %02d:00  %4.1f kn  g%4.1f  from %3.0f° %-3@  rel %@  %@  %3.0f  %@",
                      h.wind.hour, h.wind.speedKn, h.wind.gustKn, h.wind.directionDeg,
                      Geo.compassName(h.wind.directionDeg), angle, kite, h.score * 100,
-                     h.flags.joined(separator: ", ")))
+                     ((h.side.map { [$0] } ?? []) + h.flags).joined(separator: ", ")))
     }
 }
 

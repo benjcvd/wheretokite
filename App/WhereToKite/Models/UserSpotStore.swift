@@ -122,6 +122,8 @@ struct SpotDraft: Equatable {
     var coordinate: Coordinate?
     /// Compass bearing from the beach out to the water.
     var seaFacingDeg: Double?
+    /// Second kitable shore (sandbar, isthmus, lagoon behind the beach). nil = one side.
+    var otherSideDeg: Double?
     /// "user" when set by hand, "user-suggested" when the coastline guess was kept as is.
     var orientationSource = "user"
     var notes = ""
@@ -133,6 +135,7 @@ struct SpotDraft: Equatable {
         name = spot.name
         coordinate = spot.coordinate
         seaFacingDeg = spot.seaFacingDeg
+        if let sides = spot.sides, sides.count > 1 { otherSideDeg = sides[1].seaFacingDeg }
         orientationSource = spot.orientationSource ?? "user"
         notes = spot.notes ?? ""
     }
@@ -152,11 +155,20 @@ struct SpotDraft: Equatable {
     func makeSpot() -> Spot? {
         guard isValid, let coordinate, let seaFacingDeg else { return nil }
         let n = notes.trimmingCharacters(in: .whitespacesAndNewlines)
-        var bearing = seaFacingDeg.truncatingRemainder(dividingBy: 360)
-        if bearing < 0 { bearing += 360 }
-        return .userSpot(id: id ?? "user-" + UUID().uuidString.lowercased(), name: trimmedName,
-                         latitude: coordinate.latitude, longitude: coordinate.longitude,
-                         seaFacingDeg: bearing, orientationSource: orientationSource,
-                         notes: n.isEmpty ? nil : n)
+        func normalized(_ deg: Double) -> Double {
+            let d = deg.truncatingRemainder(dividingBy: 360)
+            return d < 0 ? d + 360 : d
+        }
+        let bearing = normalized(seaFacingDeg)
+        var spot = Spot.userSpot(id: id ?? "user-" + UUID().uuidString.lowercased(), name: trimmedName,
+                                 latitude: coordinate.latitude, longitude: coordinate.longitude,
+                                 seaFacingDeg: bearing, orientationSource: orientationSource,
+                                 notes: n.isEmpty ? nil : n)
+        if let otherSideDeg {
+            let other = normalized(otherSideDeg)
+            spot.sides = [SpotSide(name: "\(Geo.compassName(bearing)) side", seaFacingDeg: bearing),
+                          SpotSide(name: "\(Geo.compassName(other)) side", seaFacingDeg: other)]
+        }
+        return spot
     }
 }

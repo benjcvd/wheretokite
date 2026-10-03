@@ -76,8 +76,8 @@ struct SpotDetailView: View {
             }
             GridRow {
                 Fact(title: "Drive", value: rec.driveLabel, icon: "car.fill", tint: .indigo)
-                Fact(title: "Beach faces",
-                     value: rec.spot.seaFacingDeg.map { Geo.compassName($0) } ?? "Unknown",
+                Fact(title: rec.spot.allSides.count > 1 ? "Sides face" : "Beach faces",
+                     value: rec.spot.facingSummary ?? "Unknown",
                      icon: "water.waves", tint: .cyan)
             }
         }
@@ -167,6 +167,7 @@ struct SpotDetailView: View {
     private func hourDetail(_ h: HourScore) -> String {
         var parts = [Geo.compassName(h.wind.directionDeg)]
         if let a = h.relativeAngle { parts[0] += " " + Recommender.angleName(a) }
+        if let side = h.side, h.score > 0 { parts.append(side) }
         if let k = h.kite { parts.append("\(k.size.formatted()) m") }
         parts += h.flags
         return parts.joined(separator: " · ")

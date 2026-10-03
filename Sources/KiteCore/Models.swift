@@ -17,8 +17,12 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
     public var name: String
     public var latitude: Double
     public var longitude: Double
-    /// Compass bearing pointing from the beach out to open water. nil = unknown.
+    /// Compass bearing pointing from the beach out to open water, of the main side.
+    /// nil = unknown.
     public var seaFacingDeg: Double?
+    /// Every side the spot can be kited from, when there is more than one (isthmus, sandbar,
+    /// sea + lagoon). nil = a single side, `seaFacingDeg`.
+    public var sides: [SpotSide]?
     public var orientationSource: String?
     public var distanceToShoreM: Double?
     public var source: String?
@@ -31,6 +35,31 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
     public var waterType: String?
 
     public var coordinate: Coordinate { Coordinate(latitude: latitude, longitude: longitude) }
+
+    /// "W", "W & E" (one compass point per side), nil if unknown.
+    public var facingSummary: String? {
+        let sides = allSides
+        return sides.isEmpty ? nil : sides.map { Geo.compassName($0.seaFacingDeg) }.joined(separator: " & ")
+    }
+
+    /// The sides to score: `sides` if set, else the single `seaFacingDeg` (if known).
+    public var allSides: [SpotSide] {
+        if let sides, !sides.isEmpty { return sides }
+        return seaFacingDeg.map { [SpotSide(name: nil, seaFacingDeg: $0)] } ?? []
+    }
+}
+
+/// One shore of a spot. Each hour is scored on the side where the wind works best.
+public struct SpotSide: Codable, Hashable, Sendable {
+    /// Short label, e.g. "west side", "lagoon". nil for a spot's only side.
+    public var name: String?
+    /// Compass bearing from this shore out to the water.
+    public var seaFacingDeg: Double
+
+    public init(name: String?, seaFacingDeg: Double) {
+        self.name = name
+        self.seaFacingDeg = seaFacingDeg
+    }
 }
 
 public struct SpotCatalog: Codable, Sendable {

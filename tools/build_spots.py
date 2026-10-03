@@ -23,6 +23,9 @@ Pipeline
        multipolygon relations); each boundary segment's normal is oriented
        into the water with a point-in-polygon test. Falls back to coastline
        (lagoons such as bays are often inside the coastline).
+     Multi-sided spots (isthmus, sandbar, sea + lagoon) list one hint per side,
+     `W:west side|E:lagoon side:lagoon` (direction, label, optional water type);
+     each side is oriented separately and published in `sides`.
      The CSV `hint` (rough expected direction) is used only to (a) pick the
      correct shore when the located point is on an isthmus / sandbar / in the
      water, by snapping to the nearest shore facing within 60 deg of the hint,
@@ -620,10 +623,34 @@ def read_curated(path):
         r = {k: (v or "").strip() for k, v in r.items()}
         if r["water"] not in ("sea", "lagoon", "lake"):
             raise SystemExit("bad water type in row %r" % r)
-        if r["hint"] and r["hint"] not in COMPASS16:
+        r["sides"] = parse_sides(r["hint"], r["water"])
+        if r["sides"] is None:
             raise SystemExit("bad hint in row %r" % r)
+        if len(r["sides"]) > 1:
+            r["hint"] = r["sides"][0][0]
         rows.append(r)
     return rows
+
+
+def parse_sides(hint, water):
+    """'W' -> [('W', None, water)]; 'W:sea side|E:lagoon:lagoon' -> one tuple per side.
+    None if malformed."""
+    if not hint:
+        return [("", None, water)]
+    sides = []
+    for part in hint.split("|"):
+        bits = [b.strip() for b in part.split(":")]
+        if bits[0] not in COMPASS16 or len(bits) > 3:
+            return None
+        w = bits[2] if len(bits) == 3 else water
+        if w not in ("sea", "lagoon", "lake"):
+            return None
+        sides.append((bits[0], (bits[1] or None) if len(bits) > 1 else None, w))
+    if len(sides) > 1 and any(name is None for _, name, _ in sides):
+        return None
+    if sides[0][2] != water:   # the row's water type is the first side's
+        return None
+    return sides
 
 
 def locate(locator, country):
@@ -775,6 +802,21 @@ def main():
         if o["snapped"]:
             warnings.append("%s: moved to the %s-facing shore (located point %.5f,%.5f)" % (
                 sid, r["hint"] or "nearest", lat, lon))
+        if len(r["sides"]) > 1:
+            sides = []
+            for h, name, w in r["sides"]:
+                so = o if (h, w) == (r["sides"][0][0], r["sides"][0][2]) else orient(lat, lon, w, hint_deg(h))
+                if so is None or so["dist"] > MAX_SHORE_DIST + HINT_SNAP_RADIUS:
+                    problems.append("%s: no %s shore for side '%s'" % (sid, h, name))
+                    continue
+                if angdiff(so["facing"], hint_deg(h)) > 45:
+                    problems.append("%s: side '%s' faces %.0f° (%s) but hint %s" % (
+                        sid, name, so["facing"], compass(so["facing"]), h))
+                sides.append({"name": name, "seaFacingDeg": round(so["facing"], 1)})
+                warnings.append("%s: side '%s' faces %.0f° (%s, %s, %.0f m from the located point)" % (
+                    sid, name, so["facing"], compass(so["facing"]), so["src"],
+                    haversine(lat, lon, so["lat"], so["lon"])))
+            spot["sides"] = sides
 
     # duplicates
     ids = set()

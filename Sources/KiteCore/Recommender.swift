@@ -104,10 +104,10 @@ public struct Recommender: Sendable {
         var inReach: [Candidate] = []
         for spot in spots {
             let km = Geo.distanceKm(origin, spot.coordinate)
-            let est = estimator.minutes(straightLineKm: km)
+            let est = estimator.minutes(from: origin, to: spot)
             if est <= maxDriveMinutes * slack { inReach.append(Candidate(spot: spot, km: km, estimate: est)) }
         }
-        inReach.sort { ($0.km, $0.spot.id) < ($1.km, $1.spot.id) }
+        inReach.sort { ($0.estimate, $0.spot.id) < ($1.estimate, $1.spot.id) }
         let n = max(0, maxForecastSpots)
         return (Array(inReach.prefix(n)), Array(inReach.dropFirst(n)))
     }
@@ -159,7 +159,7 @@ public struct Recommender: Sendable {
             guard let day = forecasts[c.spot.id] else { excluded.append((c.spot, "no forecast")); continue }
             c.hours = day.hours
                 .filter { request.slot.hours.contains($0.hour) }
-                .map { scorer.score($0, seaFacingDeg: c.spot.seaFacingDeg) }
+                .map { scorer.score($0, sides: c.spot.allSides) }
             c.estimate = estimates[c.spot.id] ?? c.estimate
             c.rec = recommend(c.spot, hours: c.hours, drive: c.estimate, request: request, driveIsEstimate: true)
             cands[c.spot.id] = c
@@ -270,8 +270,15 @@ public struct Recommender: Sendable {
         let angles = slice.compactMap(\.relativeAngle)
         let side = angles.isEmpty ? "" : " " + Self.angleName(angles.reduce(0, +) / Double(angles.count))
         let kite = slice.compactMap(\.kite).first.map { String(format: " · %g m", $0.size) } ?? ""
+        let sideName = Self.mainSide(slice).map { " · \($0)" } ?? ""
         let extra = Set(slice.flatMap(\.flags)).sorted().map { " · ⚠︎ \($0)" }.joined()
-        return String(format: "%02d:00–%02d:00 · ", window.0, window.1) + wind + " \(dir)\(side)\(kite) · \(driveText)\(extra)"
+        return String(format: "%02d:00–%02d:00 · ", window.0, window.1) + wind + " \(dir)\(side)\(sideName)\(kite) · \(driveText)\(extra)"
+    }
+
+    /// Side of a multi-sided spot used most often in these hours.
+    public static func mainSide(_ hours: some Sequence<HourScore>) -> String? {
+        let counts = Dictionary(hours.compactMap(\.side).map { ($0, 1) }, uniquingKeysWith: +)
+        return counts.max { ($0.value, $1.key) < ($1.value, $0.key) }?.key
     }
 
     public static func angleName(_ a: Double) -> String {
