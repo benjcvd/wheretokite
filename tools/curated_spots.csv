@@ -102,21 +102,41 @@ ES,Canarias,Gran Canaria – Pozo Izquierdo,sea,q:Pozo Izquierdo,E,
 ES,Canarias,Tenerife – El Médano,sea,q:Playa de El Médano,SE,
 ES,Illes Balears,Mallorca – Son Serra de Marina,sea,q:Platja de Son Serra de Marina,N,
 #
+ES,Andalucía,El Palmar (Vejer),sea,q:Playa de El Palmar Vejer de la Frontera,SW,
+ES,Andalucía,Los Caños de Meca,sea,q:Playa de Los Caños de Meca,S,
+ES,Andalucía,Bolonia,sea,q:Playa de Bolonia,S,
+ES,Cantabria,Somo,sea,q:Playa de Somo,N,
+ES,Cantabria,Laredo – Salvé,sea,q:Playa de Salvé Laredo,N,
+
 # ---------------------------------------------------------------- Portugal
 PT,Norte,Viana do Castelo – Cabedelo,sea,osm:w1384166636,W,
-PT,Centro,Lagoa de Óbidos,lagoon,osm:n1828415085,,Flat-water lagoon.
+PT,Centro,Lagoa de Óbidos,lagoon,osm:n1828415085,N,Flat-water lagoon.
 PT,Lisboa,Guincho,sea,q:Praia do Guincho,W,
 PT,Lisboa,Fonte da Telha,sea,osm:w222678478,W,
 PT,Lisboa,Lagoa de Albufeira,lagoon,q:Lagoa de Albufeira,N,Flat-water lagoon.
 PT,Algarve,Alvor,sea,q:Praia de Alvor,S,
 PT,Algarve,Lagos – Meia Praia,sea,q:Meia Praia Lagos,SE,
 #
+PT,Norte,Esposende – Ofir,sea,q:Praia de Ofir,W,
+PT,Centro,Aveiro – Praia da Barra,sea,q:Praia da Barra Ílhavo,W,
+PT,Centro,Peniche – Baleal,sea,q:Praia do Baleal,NW,North side of the Baleal isthmus.
+PT,Algarve,Fuseta (Ria Formosa),lagoon,osm:w78427662,S,Lagoon: flat water; tide matters.
+
 # ---------------------------------------------------------------- Italy
 IT,Sardegna,Porto Pollo,sea,q:Porto Pollo Palau,W:west side|E:east side,
 IT,Sicilia,Lo Stagnone (Marsala),lagoon,osm:n12407041259,W,Flat-water lagoon.
 IT,Calabria,Gizzeria – Hang Loose Beach,sea,q:Gizzeria Lido,W,
 IT,Veneto,Lago di Garda – Malcesine,lake,osm:n458123631,W,
 #
+IT,Puglia,Porto Cesareo – Torre Lapillo,sea,q:Torre Lapillo,SW,
+IT,Puglia,Torre Canne,sea,q:Torre Canne,NE,
+IT,Veneto,Rosolina Mare,sea,q:Rosolina Mare,E,
+IT,Lombardia,Lago di Garda – Campione,lake,q:Campione del Garda,E,"Thermal winds: Pelèr (N) in the morning, Ora (S) in the afternoon."
+IT,Lombardia,Lago di Como – Colico,lake,q:Colico,,Thermal Breva (S) in the afternoon.
+IT,Sardegna,Porto Botte,sea,q:Porto Botte,S,
+IT,Sardegna,Cagliari – Poetto,sea,q:Spiaggia del Poetto,S,
+IT,Sardegna,San Teodoro – La Cinta,sea,q:Spiaggia La Cinta,E,
+
 # ---------------------------------------------------------------- Netherlands
 NL,Zeeland,Brouwersdam,sea,q:Brouwersdam strand,NW:North Sea side|SE:Grevelingen side:lake,
 NL,Zuid-Holland,Hoek van Holland,sea,q:Hoek van Holland,W,
@@ -125,6 +145,17 @@ NL,Noord-Holland,IJmuiden,sea,osm:n4508458788,W,
 NL,Noord-Holland,Texel – Paal 17,sea,q:Paal 17 Texel,W,
 NL,Friesland,Workum (IJsselmeer),lake,q:Workum strand,W,
 #
+NL,Zeeland,Domburg,sea,q:Strand Domburg,NW,
+NL,Zeeland,Vrouwenpolder,sea,q:Strand Vrouwenpolder,NW,
+NL,Zuid-Holland,Oostvoorne,sea,q:Strand Oostvoorne,NW,
+NL,Zuid-Holland,Maasvlakte – Slufter,sea,q:Slufterstrand,W,
+NL,Zuid-Holland,Kijkduin,sea,q:Strand Kijkduin,NW,
+NL,Zuid-Holland,Scheveningen,sea,q:Strand Scheveningen,NW,
+NL,Zuid-Holland,Noordwijk,sea,q:Strand Noordwijk,W,
+NL,Noord-Holland,Wijk aan Zee,sea,q:Strand Wijk aan Zee,W,
+NL,Noord-Holland,Callantsoog,sea,q:Strand Callantsoog,W,
+NL,Friesland,Makkum (IJsselmeer),lake,"q:Makkum, Súdwest-Fryslân",W,
+
 # ---------------------------------------------------------------- Belgium
 BE,Westkust,De Panne,sea,q:Strand De Panne,NW,
 BE,Oostkust,Oostende,sea,osm:n7834988905,NW,
@@ -142,17 +173,62 @@ GB,England,Hunstanton,sea,q:Hunstanton Beach,W,
 GB,England,West Kirby,sea,q:West Kirby Beach,W,
 GB,Wales,Rhosneigr,sea,q:Rhosneigr Beach,W,
 #
+GB,England,Brancaster,sea,q:Brancaster Beach,N,
+GB,England,Fraisthorpe,sea,q:Fraisthorpe Beach,E,
+GB,England,Tynemouth – Longsands,sea,q:Longsands Tynemouth,E,
+GB,England,Seasalter (Whitstable),sea,q:Seasalter,N,
+GB,England,Joss Bay,sea,q:Joss Bay,E,
+GB,England,Lancing,sea,q:Lancing Beach,S,
+GB,England,Pevensey Bay,sea,q:Pevensey Bay,S,
+GB,England,West Wittering,sea,q:West Wittering Beach,S,Kiting restricted in the summer season.
+GB,England,Avon Beach (Mudeford),sea,q:Avon Beach,S,
+GB,England,Gwithian,sea,q:Gwithian,NW,
+GB,England,Perranporth,sea,q:Perranporth Beach,W,
+GB,England,Brean,sea,q:Brean Beach,W,
+GB,Wales,Rest Bay (Porthcawl),sea,q:Rest Bay Porthcawl,SW,
+GB,Wales,Cefn Sidan (Pembrey),sea,q:Cefn Sidan,SW,
+GB,Wales,Abersoch – Hell's Mouth,sea,q:Porth Neigwl,S,
+GB,Wales,Llandudno – West Shore,sea,q:West Shore Llandudno,W,
+GB,Wales,Newgale,sea,q:Newgale,W,
+GB,Scotland,Longniddry Bents,sea,q:Longniddry Bents,N,
+GB,Scotland,Belhaven Bay,sea,q:Belhaven Bay,N,
+GB,Scotland,St Andrews – West Sands,sea,q:West Sands St Andrews,NE,
+GB,Scotland,Aberdeen Beach,sea,q:Aberdeen Beach,E,
+GB,Scotland,Lossiemouth – East Beach,sea,q:Lossiemouth East Beach,NE,
+GB,Scotland,Dunnet Bay,sea,q:Dunnet Bay,NW,
+GB,Scotland,Troon – South Beach,sea,q:Troon South Beach,W,
+GB,Scotland,Tiree – Gott Bay,sea,q:Gott Bay,SE,
+GB,Scotland,Tiree – Balevullin,sea,q:Balevullin,NW,
+GB,Northern Ireland,Portstewart Strand,sea,q:Portstewart Strand,NW,
+GB,Northern Ireland,Benone Strand,sea,q:Benone Strand,N,
+
 # ---------------------------------------------------------------- Germany
 DE,Schleswig-Holstein,Sankt Peter-Ording,sea,q:Strand Sankt Peter-Ording,W,
 DE,Schleswig-Holstein,Sylt – Westerland,sea,q:Strand Westerland,W,
 DE,Schleswig-Holstein,Fehmarn – Gold,sea,"q:Gold, Fehmarn",S,
 #
+DE,Schleswig-Holstein,Fehmarn – Grüner Brink,sea,q:Grüner Brink Fehmarn,N,
+DE,Schleswig-Holstein,Fehmarn – Wulfener Hals,sea,q:Wulfener Hals,S,
+DE,Schleswig-Holstein,Heiligenhafen,sea,q:Steinwarder Heiligenhafen,N,
+DE,Schleswig-Holstein,Laboe,sea,q:Strand Laboe,N,
+DE,Mecklenburg-Vorpommern,Rerik – Salzhaff,lagoon,q:Rerik Salzhaff,,Flat-water lagoon.
+DE,Niedersachsen,Norddeich,sea,q:Norddeich Strand,NW,Wadden Sea: ride around high tide.
+DE,Niedersachsen,Schillig,sea,q:Strand Schillig,NE,Wadden Sea: ride around high tide.
+DE,Niedersachsen,Hooksiel,sea,q:Hooksiel Strand,E,
+DE,Niedersachsen,Dümmer,lake,q:Hüde Dümmer,,
+DE,Niedersachsen,Steinhuder Meer,lake,q:Badeinsel Steinhude,,
+
 # ---------------------------------------------------------------- Denmark
 DK,Jylland,Hvide Sande,sea,q:Hvide Sande Nordstrand,W:North Sea side|E:Ringkøbing Fjord side:lagoon,
 DK,Jylland,Klitmøller,sea,q:Klitmøller,NW,
 DK,Jylland,Rømø – Lakolk,sea,q:Lakolk Strand,W,
 DK,Sjælland,Copenhagen – Amager Strandpark,sea,q:Amager Strandpark,E,
 #
+DK,Jylland,Løkken,sea,q:Løkken Strand,W,
+DK,Jylland,Nørre Vorupør,sea,q:Nørre Vorupør,W,
+DK,Jylland,Agger Tange,sea,q:Agger Tange,W,
+DK,Jylland,Hejlsminde,sea,q:Hejlsminde Strand,E,
+
 # ---------------------------------------------------------------- Greece
 GR,Rhodes,Prasonisi,sea,q:Prasonisi Rhodes,W:west side (waves)|SE:east side (flat),Isthmus with two sides: waves on the west side and flatter water on the east side.
 GR,Naxos,Mikri Vigla,sea,q:Mikri Vigla,W,
@@ -160,10 +236,67 @@ GR,Paros,Pounta,sea,q:Pounta Paros,W,
 GR,Kos,Marmari,sea,osm:n6677200338,N,
 GR,Lemnos,Keros,sea,osm:w263844492,E,
 #
+GR,Lefkada,Lefkada – Agios Ioannis,sea,q:Agios Ioannis Lefkada,W,
+GR,Crete,Kouremenos (Palaikastro),sea,q:Kouremenos,E,
+
 # ---------------------------------------------------------------- Morocco
 MA,Dakhla,Dakhla – Speed Spot (PK25 camps),lagoon,q:Dakhla Attitude,W,"Flat shallow lagoon in front of the PK25 camps (Dakhla Attitude, Dakhla Club); best at low tide."
 MA,Dakhla,Dakhla – Dune Blanche,lagoon,q:La dune blanche,W,Flat water behind the white dune; best at high tide.
 MA,Dakhla,Dakhla – Oum Labouir (Westpoint),sea,q:Oum Labouir,W,"Atlantic side: waves; wind lighter and gustier in the bay."
-MA,Dakhla,Dakhla – Lassarga,lagoon,q:Lassarga,E,Lagoon shore by the fishing village near the peninsula tip.
+MA,Dakhla,Dakhla – Lassarga,lagoon,q:Lassarga,SE,Lagoon shore by the fishing village near the peninsula tip.
 MA,Essaouira,Essaouira,sea,osm:w243397848,W,
 MA,Essaouira,Moulay Bouzerktoun,sea,q:Moulay Bouzerktoun,W,
+
+# ---------------------------------------------------------------- Ireland
+IE,Dublin,Dollymount Strand,sea,q:Dollymount Strand,SE,
+IE,Wicklow,Brittas Bay,sea,q:Brittas Bay,E,
+IE,Wexford,Rosslare Strand,sea,q:Rosslare Strand,E,
+IE,Kerry,Inch Beach,sea,q:Inch Beach Kerry,W,
+IE,Kerry,Brandon Bay (Castlegregory),sea,q:Fermoyle Beach,NW,
+IE,Mayo,Achill – Keel Beach,sea,q:Keel Strand,SW,
+IE,Donegal,Rossnowlagh,sea,q:Rossnowlagh,W,
+IE,Donegal,Magheraroarty,sea,q:Magheraroarty,NW,
+# ---------------------------------------------------------------- Norway
+NO,Rogaland,Sola – Solastranden,sea,q:Solastranden,W,
+NO,Rogaland,Hellestø,sea,q:Hellestø,W,
+NO,Rogaland,Borestranda,sea,q:Borestranda,W,
+NO,Rogaland,Brusand,sea,q:Brusand,SW,
+# ---------------------------------------------------------------- Sweden
+SE,Halland,Varberg – Apelviken,sea,q:Apelviken,W,
+SE,Halland,Mellbystrand,sea,q:Mellbystrand,W,
+SE,Skåne,Skanör,sea,q:Skanörs strand,W,
+SE,Skåne,Lomma,sea,q:Lomma strand,W,
+SE,Skåne,Malmö – Ribersborg,sea,q:Ribersborgsstranden,W,
+SE,Kalmar,Öland – Böda,sea,q:Böda sand,E,
+SE,Gotland,Gotland – Tofta,sea,q:Tofta strand,W,
+# ---------------------------------------------------------------- Finland
+FI,Satakunta,Yyteri (Pori),sea,q:Yyteri,W,
+FI,Pohjois-Pohjanmaa,Kalajoki – Hiekkasärkät,sea,q:Kalajoen Hiekkasärkät,W,
+FI,Pohjois-Pohjanmaa,Oulu – Nallikari,sea,q:Nallikari,W,
+# ---------------------------------------------------------------- Baltic states
+EE,Pärnumaa,Pärnu,sea,q:Pärnu rand,SW,
+EE,Harjumaa,Tallinn – Pirita,sea,q:Pirita rand,W,
+LV,Rīga,Jūrmala – Bulduri,sea,q:Bulduru pludmale,N,
+LV,Kurzeme,Liepāja,sea,q:Liepāja,W,
+LT,Klaipėda,Svencelė (Curonian Lagoon),sea,osm:n2034557394,W,Flat-water lagoon.
+# ---------------------------------------------------------------- Poland
+PL,Pomorskie,Rewa,sea,q:Rewa Kosakowo,E,
+PL,Pomorskie,Chałupy (Hel Peninsula),sea,"q:Chałupy, Władysławowo",SW,Puck Bay side: flat water.
+PL,Pomorskie,Kuźnica (Hel Peninsula),sea,q:Kuźnica Jastarnia,SW,Puck Bay side: flat water.
+PL,Pomorskie,Jastarnia (Hel Peninsula),sea,q:Jastarnia,SW,Puck Bay side: flat water.
+# ---------------------------------------------------------------- Central Europe (lakes)
+AT,Burgenland,Podersdorf am See (Neusiedler See),lake,q:Strandbad Podersdorf am See,W,
+CH,Graubünden,Silvaplana,lake,q:Silvaplana,,Thermal Maloja wind in the afternoon.
+CZ,Jihomoravský,Nové Mlýny (Dolní Věstonice),lake,q:Dolní Věstonice,,
+HU,Somogy,Balaton – Siófok,lake,q:Ezüstpart Siófok,N,
+# ---------------------------------------------------------------- Balkans
+HR,Dubrovnik-Neretva,Viganj (Pelješac),sea,q:Viganj,SW,Afternoon maestral.
+HR,Dubrovnik-Neretva,Neretva delta,sea,osm:w193516528,SW,
+HR,Zadar,Nin – Ždrijac,sea,q:Plaža Ždrijac,W,
+HR,Split-Dalmatia,Bol (Brač),sea,q:Bol Brač,S,
+ME,Ulcinj,Velika Plaža (Ulcinj),sea,q:Velika plaža Ulcinj,SW,
+ME,Ulcinj,Ada Bojana,sea,q:Ada Bojana,SW,
+# ---------------------------------------------------------------- Black Sea
+BG,Varna,Shkorpilovtsi,sea,q:Shkorpilovtsi,E,
+RO,Constanța,Vadu,sea,q:Plaja Vadu,E,
+RO,Constanța,Corbu,sea,q:Plaja Corbu,E,

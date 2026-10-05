@@ -30,12 +30,22 @@ Pipeline
      correct shore when the located point is on an isthmus / sandbar / in the
      water, by snapping to the nearest shore facing within 60 deg of the hint,
      and (b) flag disagreements in the report.
-  3. Checks: distance to shore, duplicate spots (< 2 km), OSM kite objects
+  3. Direction cross-check against Apple Maps (macOS, tools/check_directions.swift):
+     Apple's map is rendered around each beach and its water pixels must lie on
+     the side OSM says. Verdict per spot in `directionCheck` (agrees / uncertain
+     / disagrees); everything not agreeing is listed in tools/review.md.
+  4. Access: a car route from the nearest mainland city with ferries avoided
+     (Valhalla, FOSSGIS server). If even that route needs a ferry, the spot gets
+     `access: "ferry"` and, when it lies on an OSM place=island, `island` plus
+     the island's simplified outline in the catalogue's `islands` (the app only
+     shows such spots to someone on the same island).
+  5. Checks: distance to shore, duplicate spots (< 2 km), OSM kite objects
      nearby (corroboration), and reference orientations; the script exits 1 if
      a reference is off by more than 30 deg or a spot is unusable.
 """
 
 import argparse
+import subprocess
 import csv
 import datetime
 import hashlib
@@ -653,6 +663,13 @@ def parse_sides(hint, water):
     return sides
 
 
+# Nominatim categories by how much they say about where the beach is.
+_LOCATE_RANK = {"natural": 0, "sport": 0, "water": 0, "waterway": 1, "leisure": 1, "place": 1,
+                "boundary": 1}
+_BAD_LOCATED = ("highway", "building", "amenity", "shop", "railway", "public_transport",
+                "landuse", "office")
+
+
 def locate(locator, country):
     """-> (lat, lon, description) or None."""
     kind, _, arg = locator.partition(":")
@@ -660,7 +677,8 @@ def locate(locator, country):
         res = nominatim_search(arg, country)
         if not res:
             return None
-        r = res[0]
+        # Prefer a beach / shore feature over a bus stop or street of the same name.
+        r = min(res, key=lambda x: _LOCATE_RANK.get(x.get("category"), 2))
         return float(r["lat"]), float(r["lon"]), "nominatim '%s' -> %s/%s %s=%s (%s)" % (
             arg, r.get("osm_type"), r.get("osm_id"), r.get("category"), r.get("type"),
             r.get("display_name", "")[:70])
@@ -736,6 +754,170 @@ def prefetch(rows):
         t.join()
 
 
+# ---------------------------------------------------------------- Apple Maps check
+
+def apple_checks(points):
+    """points: [(key, lat, lon, facing)] -> {key: {"front", "back", "mean"}} (cached).
+    {} when the checker can't run (not macOS / no Swift)."""
+    path = os.path.join(CACHE_DIR, "apple_checks.json")
+    cache = _cache_get(path) or {}
+    ck = lambda lat, lon, f: "%.5f,%.5f,%.1f" % (lat, lon, f)
+    todo = [{"key": ck(la, lo, f), "lat": la, "lon": lo, "facing": f}
+            for _, la, lo, f in points if ck(la, lo, f) not in cache]
+    if todo:
+        log("apple check: %d points" % len(todo))
+        tmp_in = os.path.join(CACHE_DIR, "_apple_in.json")
+        tmp_out = os.path.join(CACHE_DIR, "_apple_out.json")
+        with open(tmp_in, "w") as f:
+            json.dump(todo, f)
+        try:
+            subprocess.run(["swift", os.path.join(HERE, "check_directions.swift"), tmp_in, tmp_out],
+                           check=True, timeout=3600)
+            with open(tmp_out) as f:
+                cache.update(json.load(f))
+            _cache_put(path, cache)
+        except (OSError, subprocess.SubprocessError) as e:
+            log("apple check unavailable: %s" % e)
+    return {k: cache[ck(la, lo, f)] for k, la, lo, f in points if ck(la, lo, f) in cache}
+
+
+def direction_verdict(res, facing, multi_sided):
+    """Apple Maps vs OSM -> (verdict, detail)."""
+    if res is None:
+        return "unchecked", "no Apple Maps check"
+    front, back, mean = res.get("front"), res.get("back"), res.get("mean")
+    if mean is not None and not multi_sided:
+        d = angdiff(mean, facing)
+        detail = "Apple water at %.0f° vs OSM %.0f° (%.0f° apart)" % (mean, facing, d)
+        if d <= 35:
+            return "agrees", detail
+        return ("uncertain" if d <= 60 else "disagrees"), detail
+    # Water all around (spit, isthmus, lagoon) or a multi-sided spot: is the claimed side wet?
+    detail = "%.0f%% water on the claimed side" % (100 * (front or 0))
+    if front is not None and front >= 0.6:
+        return "agrees", detail
+    return ("disagrees" if front is None or front < 0.3 else "uncertain"), detail
+
+
+# ---------------------------------------------------------------- access (ferry?)
+
+VALHALLA = "https://valhalla1.openstreetmap.de/route"
+# Mainland cities to route from (all reachable from each other without a ferry).
+ANCHORS = [(48.857, 2.352), (40.417, -3.704), (38.722, -9.139), (37.389, -5.984), (43.296, 5.370),
+           (45.464, 9.190), (41.903, 12.496), (40.852, 14.268), (41.117, 16.872), (52.520, 13.405),
+           (53.551, 9.994), (55.676, 12.568), (57.049, 9.922), (59.329, 18.069), (59.913, 10.752),
+           (58.970, 5.733), (60.170, 24.938), (65.012, 25.465), (59.437, 24.754), (56.950, 24.105),
+           (54.687, 25.280), (52.230, 21.012), (54.352, 18.646), (48.208, 16.373), (47.498, 19.040),
+           (46.948, 7.447), (50.075, 14.438), (45.815, 15.982), (43.508, 16.440), (42.441, 19.264),
+           (44.787, 20.457), (42.698, 23.322), (44.427, 26.103), (40.640, 22.944), (37.984, 23.728),
+           (52.370, 4.895), (50.850, 4.352), (51.507, -0.128), (55.953, -3.188), (53.408, -2.991),
+           (36.013, -5.606)]
+
+
+def ferry_needed(lat, lon, start=None):
+    """True / False, or None when no route could be computed. From `start` (lat, lon), by
+    default the nearest mainland anchor. Cached."""
+    a = start or min(ANCHORS, key=lambda c: haversine(c[0], c[1], lat, lon))
+    q = {"locations": [{"lat": a[0], "lon": a[1]}, {"lat": round(lat, 5), "lon": round(lon, 5)}],
+         "costing": "auto", "costing_options": {"auto": {"use_ferry": 0.0}}, "directions_type": "none"}
+    body = json.dumps(q, sort_keys=True)
+    path = _cache_path("valhalla", body)
+    hit = _cache_get(path)
+    if hit is None:
+        for attempt in range(4):
+            time.sleep(1.2)
+            out = subprocess.run(["curl", "-s", "-m", "120", VALHALLA + "?json=" + urllib.parse.quote(body)],
+                                 capture_output=True, text=True).stdout
+            try:
+                hit = json.loads(out)
+            except ValueError:
+                time.sleep(5 * (attempt + 1))
+                continue
+            if "trip" in hit or "error_code" in hit:
+                break
+        if hit is None:
+            return None
+        _cache_put(path, hit)
+    if "trip" not in hit:
+        return None
+    return bool(hit["trip"]["summary"].get("has_ferry"))
+
+
+def point_in_ring(ring, lat, lon):
+    """Even-odd test; ring of (lat, lon)."""
+    inside, j = False, len(ring) - 1
+    for i in range(len(ring)):
+        (yi, xi), (yj, xj) = ring[i], ring[j]
+        if (yi > lat) != (yj > lat) and lon < (xj - xi) * (lat - yi) / (yj - yi) + xi:
+            inside = not inside
+        j = i
+    return inside
+
+
+def near_ring(ring, lat, lon, tol_m=1500.0):
+    """Inside the ring or within tol_m of it (the simplified outline can cut off beaches)."""
+    if point_in_ring(ring, lat, lon):
+        return True
+    p = LocalProj(lat, lon)
+    pts = [p.xy(a, b) for a, b in ring]
+    return any(point_seg(0.0, 0.0, ax, ay, bx, by)[0] <= tol_m
+               for (ax, ay), (bx, by) in zip(pts, pts[1:] + pts[:1]))
+
+
+def island_of(lat, lon):
+    """The OSM place=island/islet containing the point -> (id, name, outline) or None.
+    Candidates are islands whose outline passes within 2 km (cheap Overpass query; spots
+    are on the shore); containment is tested here on Nominatim's simplified polygon
+    (~500 m), outer ring of the largest part. An island strictly containing the point beats
+    one within 800 m of it; then the largest wins. Beaches still left out are matched
+    afterwards against the islands found for other spots (see main)."""
+    q = ('[out:json][timeout:120];(way["place"~"^(island|islet)$"](around:2000,%.5f,%.5f);'
+         'relation["place"~"^(island|islet)$"](around:2000,%.5f,%.5f););out ids tags;' % (lat, lon, lat, lon))
+    best = None
+    for el in overpass(q, "island@%.3f,%.3f" % (lat, lon)).get("elements", []):
+        ref = el["type"][0].upper() + str(el["id"])
+        res = _nominatim_get("/lookup", {"osm_ids": ref, "format": "json", "polygon_geojson": "1",
+                                         "polygon_threshold": "0.005"})
+        if not res or "geojson" not in res[0]:
+            continue
+        g = res[0]["geojson"]
+        polys = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"] if g["type"] == "MultiPolygon" else []
+        rings = [p[0] for p in polys if p]
+        if not rings:
+            continue
+        ring = [(c[1], c[0]) for c in max(rings, key=len)]
+        strict = point_in_ring(ring, lat, lon)
+        # Beaches are often just outside the simplified outline; allow 800 m for real
+        # islands, never for islets (rocks next to a beach).
+        if not strict and not (el.get("tags", {}).get("place") == "island" and near_ring(ring, lat, lon, 800.0)):
+            continue
+        size = (max(c[0] for c in ring) - min(c[0] for c in ring)) * (max(c[1] for c in ring) - min(c[1] for c in ring))
+        tags = el.get("tags", {})
+        cand = ((strict, size), ref.lower(), tags.get("name:en") or tags.get("name", ref),
+                [[round(c[0], 4), round(c[1], 4)] for c in ring])
+        if best is None or cand[0] > best[0]:
+            best = cand
+    return best[1:] if best else None
+
+
+def write_review(review, path):
+    """Spots whose direction Apple Maps doesn't confirm, with map links, for a human look."""
+    lines = ["# Spots to review", "",
+             "Generated by `tools/build_spots.py`. The beach direction of these spots (from OpenStreetMap)",
+             "is not confirmed by Apple Maps. Common harmless causes: huge tidal flats drawn as land,",
+             "a lagoon or an isthmus. Fix a wrong one in `tools/curated_spots.csv` (pin it with",
+             "`osm:<id>` or adjust the hint), then rebuild.", "",
+             "| Spot | Verdict | Faces | Detail | Map |", "|---|---|---|---|---|"]
+    for s_, detail in sorted(review, key=lambda x: x[0]["id"]):
+        faces = ", ".join("%s %.0f°" % (compass(x["seaFacingDeg"]), x["seaFacingDeg"])
+                          for x in (s_.get("sides") or [s_]))
+        lines.append("| %s | %s | %s | %s | [map](https://www.openstreetmap.org/?mlat=%.5f&mlon=%.5f#map=16/%.5f/%.5f) |" % (
+            s_["name"], s_["directionCheck"], faces, detail,
+            s_["latitude"], s_["longitude"], s_["latitude"], s_["longitude"]))
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+
+
 def main():
     global CACHE_DIR
     ap = argparse.ArgumentParser()
@@ -792,6 +974,9 @@ def main():
         spot["_snapped"] = o["snapped"]
         spot["_osm_kite"] = nearby
         spot["_R"] = o["R"]
+        cat = re.search(r"-> \w+/\d+ (\w+)=", how)
+        if cat and cat.group(1) in _BAD_LOCATED:
+            warnings.append("%s: located on a %s (%s); check it is the beach" % (sid, cat.group(1), how[:70]))
         spots.append(spot)
         if hint is not None and angdiff(o["facing"], hint) > 45:
             warnings.append("%s: facing %.0f° (%s) but hint %s" % (
@@ -813,10 +998,90 @@ def main():
                     problems.append("%s: side '%s' faces %.0f° (%s) but hint %s" % (
                         sid, name, so["facing"], compass(so["facing"]), h))
                 sides.append({"name": name, "seaFacingDeg": round(so["facing"], 1)})
+                spot.setdefault("_side_pts", []).append((so["lat"], so["lon"], so["facing"]))
                 warnings.append("%s: side '%s' faces %.0f° (%s, %s, %.0f m from the located point)" % (
                     sid, name, so["facing"], compass(so["facing"]), so["src"],
                     haversine(lat, lon, so["lat"], so["lon"])))
             spot["sides"] = sides
+
+    # direction cross-check (Apple Maps)
+    pts = []
+    for s_ in spots:
+        sp = s_.get("_side_pts") or [(s_["latitude"], s_["longitude"], s_["seaFacingDeg"])]
+        pts += [("%s#%d" % (s_["id"], i), la, lo, f) for i, (la, lo, f) in enumerate(sp)]
+    checks = apple_checks(pts)
+    review = []
+    order = {"agrees": 0, "corrected": 0, "unchecked": 1, "uncertain": 2, "disagrees": 3}
+    for s_ in spots:
+        sp = s_.get("_side_pts") or [(s_["latitude"], s_["longitude"], s_["seaFacingDeg"])]
+        verdicts = [direction_verdict(checks.get("%s#%d" % (s_["id"], i)), f, len(sp) > 1)
+                    for i, (_, _, f) in enumerate(sp)]
+        worst = max(verdicts, key=lambda v: order[v[0]])
+        s_["directionCheck"] = worst[0]
+        # OSM outvoted: Apple Maps and the curated hint agree with each other but not with
+        # OSM (typically a lagoon / harbour where the nearest OSM shore isn't the beach).
+        res = checks.get("%s#0" % s_["id"])
+        hint = hint_deg(s_["_hint"]) if s_.get("_hint") and "|" not in s_["_hint"] else None
+        if (len(sp) == 1 and worst[0] == "disagrees" and res and res.get("mean") is not None
+                and hint is not None and angdiff(res["mean"], hint) <= 45):
+            warnings.append("%s: OSM %.0f° overruled by Apple Maps %.0f° (hint %s)" % (
+                s_["id"], s_["seaFacingDeg"], res["mean"], s_["_hint"]))
+            s_["seaFacingDeg"] = round(res["mean"], 1)
+            s_["orientationSource"] = "apple-maps"
+            s_["directionCheck"] = "corrected"
+            problems[:] = [p_ for p_ in problems if not p_.startswith(s_["id"] + ": moved to the")]
+            worst = ("corrected", worst[1])
+        if worst[0] not in ("agrees", "corrected"):
+            review.append((s_, "; ".join(v[1] for v in verdicts)))
+
+    # access: ferry needed from the mainland?
+    islands = {}
+    for s_ in spots:
+        ferry = ferry_needed(s_["latitude"], s_["longitude"])
+        if ferry is None:
+            warnings.append("%s: no car route found; treated as needing a ferry" % s_["id"])
+            ferry = True
+        if ferry:
+            s_["access"] = "ferry"
+            # Reuse an outline already found (one is_in query per island, not per spot).
+            known = next((i for i in islands.values() if point_in_ring(
+                [(c[0], c[1]) for c in i["outline"]], s_["latitude"], s_["longitude"])), None)
+            isl = (known["id"], known["name"], known["outline"]) if known else island_of(
+                s_["latitude"], s_["longitude"])
+            if isl:
+                islands[isl[0]] = {"id": isl[0], "name": isl[1], "outline": isl[2]}
+                s_["island"] = isl[0]
+
+    # Beaches cut off by a simplified outline: within 1.5 km of an island found for another spot.
+    for s_ in spots:
+        if s_.get("access") == "ferry" and not s_.get("island"):
+            near = next((i for i in islands.values() if near_ring(
+                [(c[0], c[1]) for c in i["outline"]], s_["latitude"], s_["longitude"])), None)
+            if near:
+                s_["island"] = near["id"]
+
+    # Islands joined by road (bridge, causeway) are one island: same id, several outlines.
+    first_spot = {}
+    for s_ in spots:
+        if s_.get("island"):
+            first_spot.setdefault(s_["island"], s_)
+    ids_ = sorted(first_spot, key=lambda i: -len(islands[i]["outline"]))
+    alias = {}
+    for i, a_ in enumerate(ids_):
+        for b_ in ids_[i + 1:]:
+            if b_ in alias or a_ in alias:
+                continue
+            sa, sb = first_spot[a_], first_spot[b_]
+            if haversine(sa["latitude"], sa["longitude"], sb["latitude"], sb["longitude"]) > 300000:
+                continue
+            if ferry_needed(sb["latitude"], sb["longitude"], start=(sa["latitude"], sa["longitude"])) is False:
+                alias[b_] = a_
+                warnings.append("island %s is joined by road to %s: merged" % (islands[b_]["name"], islands[a_]["name"]))
+    for s_ in spots:
+        if s_.get("island") in alias:
+            s_["island"] = alias[s_["island"]]
+    for b_, a_ in alias.items():
+        islands[b_]["id"] = a_
 
     # duplicates
     ids = set()
@@ -866,6 +1131,12 @@ def main():
     for s in spots:
         counts[s["country"]] = counts.get(s["country"], 0) + 1
     print("\n%d spots: %s" % (len(spots), ", ".join("%s %d" % kv for kv in sorted(counts.items()))))
+    ferry = [s_ for s_ in spots if s_.get("access") == "ferry"]
+    print("\nNeed a ferry from the mainland (%d): %s" % (len(ferry), ", ".join(
+        "%s%s" % (s_["id"], "" if s_.get("island") else " (no island outline)") for s_ in ferry)))
+    print("\nDirection check vs Apple Maps: %s" % ", ".join(
+        "%s %d" % (k, sum(1 for s_ in spots if s_["directionCheck"] == k)) for k in order))
+    write_review(review, os.path.join(HERE, "review.md"))
     if problems:
         print("\nPROBLEMS:")
         for p in problems:
@@ -878,6 +1149,7 @@ def main():
         "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); "
                        "spot selection curated by WhereToKite",
         "spots": out_spots,
+        "islands": sorted(islands.values(), key=lambda i: (i["id"], -len(i["outline"]))),
     }
     for path in [args.out] + args.also:
         os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)

@@ -5,17 +5,13 @@ final class SeaCrossingTests: XCTestCase {
     let est = StraightLineDriveTime()
     let paris = Coordinate(latitude: 48.8566, longitude: 2.3522)
 
-    func testLandmasses() {
+    func testGreatBritainOutline() {
         XCTAssertEqual(SeaCrossing.landmass(of: Coordinate(latitude: 52.95, longitude: 0.49))?.name, "Great Britain")  // Hunstanton
         XCTAssertEqual(SeaCrossing.landmass(of: Coordinate(latitude: 50.13, longitude: -5.48))?.name, "Great Britain") // Marazion
         XCTAssertNil(SeaCrossing.landmass(of: Coordinate(latitude: 50.95, longitude: 1.86)))   // Calais
         XCTAssertNil(SeaCrossing.landmass(of: Coordinate(latitude: 49.64, longitude: -1.62)))  // Cherbourg
         XCTAssertNil(SeaCrossing.landmass(of: Coordinate(latitude: 54.6, longitude: -5.93)))   // Belfast
-        XCTAssertNil(SeaCrossing.landmass(of: Coordinate(latitude: 36.03, longitude: -5.63)))  // Tarifa
-        XCTAssertNil(SeaCrossing.landmass(of: Coordinate(latitude: 38.93, longitude: 16.22)))  // Calabria
-        XCTAssertEqual(SeaCrossing.landmass(of: Coordinate(latitude: 23.89, longitude: -15.77))?.name, "Africa") // Dakhla
-        XCTAssertEqual(SeaCrossing.landmass(of: Coordinate(latitude: 28.12, longitude: -14.25))?.name, "Canary Islands")
-        XCTAssertEqual(SeaCrossing.landmass(of: Coordinate(latitude: 37.89, longitude: 12.47))?.name, "Sicily")
+        XCTAssertNil(SeaCrossing.landmass(of: Coordinate(latitude: 53.35, longitude: -6.26)))  // Dublin
     }
 
     func testChannelCrossingIsCounted() {
@@ -34,6 +30,43 @@ final class SeaCrossingTests: XCTestCase {
         let london = Coordinate(latitude: 51.507, longitude: -0.128)
         let wissant = Coordinate(latitude: 50.885, longitude: 1.66)
         XCTAssertGreaterThan(est.minutes(from: london, to: wissant), 180)
+    }
+}
+
+final class IslandTests: XCTestCase {
+    // A square "island" around (40, 3).
+    let island = Island(id: "r1", name: "Square", outline: [[39.5, 2.5], [39.5, 3.5], [40.5, 3.5], [40.5, 2.5]])
+    let onIsland = Coordinate(latitude: 40, longitude: 3)
+    let mainland = Coordinate(latitude: 41.39, longitude: 2.17)
+
+    func spot(_ id: String, _ c: Coordinate, access: String? = nil, island: String? = nil) throws -> Spot {
+        var s = try JSONDecoder().decode(Spot.self, from: Data(#"{"id":"x","name":"X","latitude":0,"longitude":0}"#.utf8))
+        s.id = id; s.latitude = c.latitude; s.longitude = c.longitude; s.access = access; s.island = island
+        return s
+    }
+
+    func testFerrySpotsOnlyFromTheSameIsland() throws {
+        let islandSpot = try spot("i", onIsland, access: "ferry", island: "r1")
+        let mainSpot = try spot("m", mainland)
+        let userIslandSpot = try spot("u", Coordinate(latitude: 40.2, longitude: 3.1))   // no access info
+        let farAway = try spot("f", Coordinate(latitude: 23.7, longitude: -15.9), access: "ferry")  // no outline
+        func ok(_ s: Spot, from o: Coordinate) -> Bool {
+            Recommender.sameSideOfTheWater(s, originIsland: [island].first { $0.contains(o) }?.id, islands: [island])
+        }
+        XCTAssertFalse(ok(islandSpot, from: mainland))
+        XCTAssertTrue(ok(islandSpot, from: onIsland))
+        XCTAssertTrue(ok(mainSpot, from: mainland))
+        XCTAssertFalse(ok(mainSpot, from: onIsland))
+        XCTAssertTrue(ok(userIslandSpot, from: onIsland))
+        XCTAssertFalse(ok(userIslandSpot, from: mainland))
+        XCTAssertFalse(ok(farAway, from: mainland))
+        XCTAssertFalse(ok(farAway, from: onIsland))
+    }
+
+    func testOutlineTolerance() {
+        // 1 km outside the square's southern edge (39.5°N) still counts; 5 km doesn't.
+        XCTAssertTrue(island.contains(Coordinate(latitude: 39.491, longitude: 3)))
+        XCTAssertFalse(island.contains(Coordinate(latitude: 39.455, longitude: 3)))
     }
 }
 

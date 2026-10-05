@@ -115,13 +115,15 @@ final class SearchModel {
 
     init() {
         let url = Bundle.main.url(forResource: "spots", withExtension: "json")!
-        catalog = (try? SpotCatalog.load(from: url).spots) ?? []
+        let loaded = try? SpotCatalog.load(from: url)
+        catalog = loaded?.spots ?? []
         // MapKitDriveTime caches ETAs in memory, so changing day, session or style
         // doesn't ask Apple Maps for every route again.
         recommender = Recommender(
             spots: catalog,
             forecast: CachedForecastProvider(upstream: OpenMeteoProvider()),
             driveTime: MapKitDriveTime())
+        recommender.islands = loaded?.islands ?? []
     }
 
     func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot]) async {

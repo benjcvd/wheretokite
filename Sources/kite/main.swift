@@ -105,10 +105,11 @@ let catalog: SpotCatalog
 do { catalog = try SpotCatalog.load(from: spotsURL) } catch { fail("can't load spots from \(spotsURL.path): \(error)") }
 
 let driveTime: DriveTimeProvider = flags.contains("straight-line") ? StraightLineDriveTime() : MapKitDriveTime()
-let recommender = Recommender(
+var recommender = Recommender(
     spots: catalog.spots,
     forecast: CachedForecastProvider(upstream: OpenMeteoProvider()),
     driveTime: driveTime)
+recommender.islands = catalog.islands ?? []
 
 // MARK: Run
 

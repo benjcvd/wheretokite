@@ -27,6 +27,23 @@ public enum Geo {
         return (mean, 1 - sqrt(s * s + c * c))
     }
 
+    /// Point-in-polygon (even-odd) for (latitude, longitude) vertices; fine away from the poles
+    /// and the antimeridian.
+    public static func polygonContains(_ ring: [(Double, Double)], _ p: Coordinate) -> Bool {
+        guard ring.count >= 3 else { return false }
+        var inside = false
+        var j = ring.count - 1
+        for i in ring.indices {
+            let (yi, xi) = ring[i], (yj, xj) = ring[j]
+            if (yi > p.latitude) != (yj > p.latitude),
+               p.longitude < (xj - xi) * (p.latitude - yi) / (yj - yi) + xi {
+                inside.toggle()
+            }
+            j = i
+        }
+        return inside
+    }
+
     public static func compassName(_ deg: Double) -> String {
         let names = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
                      "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]

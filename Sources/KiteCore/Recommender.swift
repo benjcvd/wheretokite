@@ -62,6 +62,9 @@ public struct Recommender: Sendable {
     public var driveTime: DriveTimeProvider
     public var confidence: ConfidenceEstimator?
     public var rules = ScoringRules()
+    /// Islands only reachable by boat (`SpotCatalog.islands`). Their spots are searched only
+    /// from the same island, and mainland spots only from the mainland.
+    public var islands: [Island] = []
 
     /// Provisional drive times, and the reach pre-filter.
     public var estimator = StraightLineDriveTime()
@@ -102,7 +105,8 @@ public struct Recommender: Sendable {
     func reachable(from origin: Coordinate, maxDriveMinutes: Double, estimator: StraightLineDriveTime,
                    slack: Double) -> (kept: [Candidate], capped: [Candidate]) {
         var inReach: [Candidate] = []
-        for spot in spots {
+        let originIsland = islands.first { $0.contains(origin) }?.id
+        for spot in spots where Self.sameSideOfTheWater(spot, originIsland: originIsland, islands: islands) {
             let km = Geo.distanceKm(origin, spot.coordinate)
             let est = estimator.minutes(from: origin, to: spot)
             if est <= maxDriveMinutes * slack { inReach.append(Candidate(spot: spot, km: km, estimate: est)) }
@@ -110,6 +114,15 @@ public struct Recommender: Sendable {
         inReach.sort { ($0.estimate, $0.spot.id) < ($1.estimate, $1.spot.id) }
         let n = max(0, maxForecastSpots)
         return (Array(inReach.prefix(n)), Array(inReach.dropFirst(n)))
+    }
+
+    /// Reachable without a boat: the spot is on the origin's island, or both are on the
+    /// mainland. A ferry spot outside every known island outline is never reachable.
+    static func sameSideOfTheWater(_ spot: Spot, originIsland: String?, islands: [Island]) -> Bool {
+        let spotIsland = spot.island
+            ?? islands.first { $0.contains(spot.coordinate) }?.id   // user spots
+            ?? (spot.access == "ferry" ? "unknown island" : nil)
+        return spotIsland == originIsland
     }
 
     static func ranks(_ a: SpotRecommendation, before b: SpotRecommendation) -> Bool {

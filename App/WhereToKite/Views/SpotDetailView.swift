@@ -23,6 +23,12 @@ struct SpotDetailView: View {
                 if let notes = rec.spot.notes {
                     Text(notes).font(.footnote).foregroundStyle(.secondary)
                 }
+                if rec.spot.directionCheck == "uncertain" || rec.spot.directionCheck == "disagrees" {
+                    Label("The beach direction isn't confirmed by a second map yet, so on- and offshore may be off.",
+                          systemImage: "exclamationmark.triangle")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
             }
             .padding(.horizontal)
             .padding(.bottom, 24)

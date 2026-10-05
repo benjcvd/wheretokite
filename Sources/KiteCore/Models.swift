@@ -33,6 +33,13 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
     public var region: String?
     /// "sea" | "lagoon" | "lake".
     public var waterType: String?
+    /// "ferry" when a boat is needed to get there by car from the mainland; nil = by road.
+    public var access: String?
+    /// For ferry spots on an island: `SpotCatalog.islands` id. Shown only to someone there.
+    public var island: String?
+    /// Beach direction cross-checked against Apple Maps: "agrees" | "uncertain" |
+    /// "disagrees" | "unchecked". nil for user spots.
+    public var directionCheck: String?
 
     public var coordinate: Coordinate { Coordinate(latitude: latitude, longitude: longitude) }
 
@@ -67,9 +74,41 @@ public struct SpotCatalog: Codable, Sendable {
     public var region: String?
     public var attribution: String?
     public var spots: [Spot]
+    /// Islands only reachable by boat that have catalogue spots.
+    public var islands: [Island]?
 
     public static func load(from url: URL) throws -> SpotCatalog {
         try JSONDecoder().decode(SpotCatalog.self, from: Data(contentsOf: url))
+    }
+}
+
+/// An island only reachable by boat, with a coarse (~500 m) outline.
+public struct Island: Codable, Hashable, Sendable {
+    public var id: String
+    public var name: String
+    /// [latitude, longitude] pairs of the outer ring.
+    public var outline: [[Double]]
+
+    public init(id: String, name: String, outline: [[Double]]) {
+        self.id = id
+        self.name = name
+        self.outline = outline
+    }
+
+    /// Inside the outline, or within `toleranceM` of it: the outline is simplified (~500 m)
+    /// and would otherwise cut off beaches and harbours.
+    public func contains(_ p: Coordinate, toleranceM: Double = 1500) -> Bool {
+        let ring = outline.map { ($0[0], $0[1]) }
+        if Geo.polygonContains(ring, p) { return true }
+        // Distance to each edge in a local flat projection (metres).
+        let ky = 111_320.0, kx = 111_320.0 * cos(p.latitude * .pi / 180)
+        let pts = ring.map { (x: ($0.1 - p.longitude) * kx, y: ($0.0 - p.latitude) * ky) }
+        for (a, b) in zip(pts, pts.dropFirst() + pts.prefix(1)) {
+            let dx = b.x - a.x, dy = b.y - a.y, l2 = dx * dx + dy * dy
+            let t = l2 == 0 ? 0 : max(0, min(1, -(a.x * dx + a.y * dy) / l2))
+            if hypot(a.x + t * dx, a.y + t * dy) <= toleranceM { return true }
+        }
+        return false
     }
 }
 
