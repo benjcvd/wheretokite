@@ -86,6 +86,25 @@ final class UserSpotStoreTests: XCTestCase {
         XCTAssertNil(again?.sides)
     }
 
+    func testWaterSector() throws {
+        var d = SpotDraft()
+        d.name = "Pond"
+        d.coordinate = Coordinate(latitude: 41, longitude: 2)
+        d.seaFacingDeg = 90
+        XCTAssertNil(d.makeSpot()?.waterSectorDeg)          // 180 is the default, not stored
+        d.waterSectorDeg = 360
+        d.otherSideDeg = 270                               // pointless when water is all around
+        let s = try XCTUnwrap(d.makeSpot())
+        XCTAssertEqual(s.waterSectorDeg, 360)
+        XCTAssertNil(s.sides)
+        XCTAssertEqual(s.facingSummary, "all around")
+        XCTAssertEqual(SpotDraft(s).waterSectorDeg, 360)
+
+        d.waterSectorDeg = 90
+        d.otherSideDeg = nil
+        XCTAssertEqual(SpotDraft(try XCTUnwrap(d.makeSpot())).waterSectorDeg, 90)
+    }
+
     func testTwoSidedSpot() throws {
         var d = SpotDraft()
         d.name = "Sandbar"

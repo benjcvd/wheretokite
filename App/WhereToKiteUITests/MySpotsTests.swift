@@ -44,6 +44,12 @@ final class MySpotsTests: XCTestCase {
             dial.coordinate(withNormalizedOffset: CGVector(dx: 0.75, dy: 0.85)).tap()
             snapshot(app, "5b-details-adjusted")
         }
+        let sector = app.sliders["waterSector"]
+        if sector.waitForExistence(timeout: 3) {
+            sector.adjust(toNormalizedSliderPosition: 0.75)   // 270°: a point
+            sleep(1)
+            snapshot(app, "5c-sector-270")
+        }
         app.textFields["spotName"].tap()
         app.textFields["spotName"].typeText("Secret beach")
         let save = app.buttons["Save"]

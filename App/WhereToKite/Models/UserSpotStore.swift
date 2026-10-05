@@ -122,6 +122,9 @@ struct SpotDraft: Equatable {
     var coordinate: Coordinate?
     /// Compass bearing from the beach out to the water.
     var seaFacingDeg: Double?
+    /// Width of open water seen from the launch, 0–360° (180 = straight beach, 360 = small
+    /// lake kitable from any side).
+    var waterSectorDeg: Double = 180
     /// Second kitable shore (sandbar, isthmus, lagoon behind the beach). nil = one side.
     var otherSideDeg: Double?
     /// "user" when set by hand, "user-suggested" when the coastline guess was kept as is.
@@ -136,6 +139,7 @@ struct SpotDraft: Equatable {
         coordinate = spot.coordinate
         seaFacingDeg = spot.seaFacingDeg
         if let sides = spot.sides, sides.count > 1 { otherSideDeg = sides[1].seaFacingDeg }
+        waterSectorDeg = spot.waterSectorDeg ?? spot.sides?.first?.waterSectorDeg ?? 180
         orientationSource = spot.orientationSource ?? "user"
         notes = spot.notes ?? ""
     }
@@ -164,10 +168,12 @@ struct SpotDraft: Equatable {
                                  latitude: coordinate.latitude, longitude: coordinate.longitude,
                                  seaFacingDeg: bearing, orientationSource: orientationSource,
                                  notes: n.isEmpty ? nil : n)
-        if let otherSideDeg {
+        let sector = waterSectorDeg == 180 ? nil : min(360, max(0, waterSectorDeg))
+        spot.waterSectorDeg = sector
+        if let otherSideDeg, (sector ?? 180) < 360 {
             let other = normalized(otherSideDeg)
-            spot.sides = [SpotSide(name: "\(Geo.compassName(bearing)) side", seaFacingDeg: bearing),
-                          SpotSide(name: "\(Geo.compassName(other)) side", seaFacingDeg: other)]
+            spot.sides = [SpotSide(name: "\(Geo.compassName(bearing)) side", seaFacingDeg: bearing, waterSectorDeg: sector),
+                          SpotSide(name: "\(Geo.compassName(other)) side", seaFacingDeg: other, waterSectorDeg: sector)]
         }
         return spot
     }

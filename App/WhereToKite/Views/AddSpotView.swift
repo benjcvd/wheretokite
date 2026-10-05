@@ -294,16 +294,21 @@ private struct SpotDetailsForm: View {
                 if let coordinate = draft.coordinate {
                     orientationMap(coordinate, bearing: Binding(
                         get: { draft.seaFacingDeg },
-                        set: { draft.seaFacingDeg = $0; draft.orientationSource = "user" }))
+                        set: { draft.seaFacingDeg = $0; draft.orientationSource = "user" }),
+                                   sector: draft.waterSectorDeg)
                         .listRowInsets(EdgeInsets())
                 }
                 orientationStatus
+                if draft.seaFacingDeg != nil {
+                    sectorControl
+                }
             } header: {
                 Text("Which way does the beach face?")
             } footer: {
-                Text("Point the arrow from the beach toward the open water. It tells onshore, side-shore and offshore wind apart.")
+                Text("Point the arrow from the beach toward the open water, then set how much of the horizon is water: less than 180° for a cove, more for a point, 360° for a small lake you can ride from any side. It tells onshore, side-shore and offshore wind apart.")
             }
 
+            if draft.waterSectorDeg < 360 {
             Section {
                 Toggle("Kitable from another side too", isOn: Binding(
                     get: { draft.otherSideDeg != nil },
@@ -315,7 +320,8 @@ private struct SpotDetailsForm: View {
                     .accessibilityIdentifier("otherSideToggle")
                 if let deg = draft.otherSideDeg, let coordinate = draft.coordinate {
                     orientationMap(coordinate, bearing: Binding(get: { draft.otherSideDeg },
-                                                                set: { draft.otherSideDeg = $0 }))
+                                                                set: { draft.otherSideDeg = $0 }),
+                                   sector: draft.waterSectorDeg)
                         .listRowInsets(EdgeInsets())
                     HStack(spacing: 12) {
                         FacingBadge(bearing: deg, size: 36)
@@ -330,6 +336,7 @@ private struct SpotDetailsForm: View {
                 }
             } footer: {
                 Text("For a sandbar, an isthmus or a beach with a lagoon behind it. Each hour is scored on the side where the wind works best.")
+            }
             }
 
             Section {
@@ -369,7 +376,38 @@ private struct SpotDetailsForm: View {
         .task(id: draft.coordinate) { await suggestOrientation() }
     }
 
-    private func orientationMap(_ c: Coordinate, bearing: Binding<Double?>) -> some View {
+    private var sectorControl: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text("Open water")
+                Spacer()
+                Text("\(Int(draft.waterSectorDeg))° · \(Self.sectorName(draft.waterSectorDeg))")
+                    .foregroundStyle(.secondary)
+                    .monospacedDigit()
+            }
+            Slider(value: $draft.waterSectorDeg, in: 0...360, step: 10) {
+                Text("Open water")
+            } minimumValueLabel: {
+                Text("0°").font(.caption2)
+            } maximumValueLabel: {
+                Text("360°").font(.caption2)
+            }
+            .accessibilityValue("\(Int(draft.waterSectorDeg)) degrees, \(Self.sectorName(draft.waterSectorDeg))")
+            .accessibilityIdentifier("waterSector")
+        }
+        .sensoryFeedback(.selection, trigger: Self.sectorName(draft.waterSectorDeg))
+    }
+
+    static func sectorName(_ deg: Double) -> String {
+        switch deg {
+        case ..<150: "cove or narrow bay"
+        case ..<220: "straight beach"
+        case ..<350: "point or headland"
+        default: "all around, e.g. a small lake"
+        }
+    }
+
+    private func orientationMap(_ c: Coordinate, bearing: Binding<Double?>, sector: Double = 180) -> some View {
         let center = CLLocationCoordinate2D(latitude: c.latitude, longitude: c.longitude)
         return Map(initialPosition: .region(MKCoordinateRegion(center: center, latitudinalMeters: 900,
                                                                 longitudinalMeters: 900)),
@@ -378,7 +416,7 @@ private struct SpotDetailsForm: View {
             .id(c)
             .frame(height: 280)
             .overlay {
-                OrientationDial(bearing: bearing)
+                OrientationDial(bearing: bearing, sector: sector)
             }
             .overlay(alignment: .topTrailing) {
                 if isGuessing {
@@ -444,6 +482,8 @@ private struct SpotDetailsForm: View {
 /// the water half is tinted blue.
 struct OrientationDial: View {
     @Binding var bearing: Double?
+    /// Width of the tinted water area, degrees.
+    var sector: Double = 180
 
     var body: some View {
         GeometryReader { geo in
@@ -453,9 +493,10 @@ struct OrientationDial: View {
 
             ZStack {
                 if let bearing {
-                    WaterSide(bearing: bearing, radius: radius)
+                    WaterSide(bearing: bearing, sector: sector, radius: radius)
                         .fill(Color.blue.opacity(0.32))
-                        .overlay(WaterSide(bearing: bearing, radius: radius).stroke(.white.opacity(0.5), lineWidth: 1))
+                        .overlay(WaterSide(bearing: bearing, sector: sector, radius: radius)
+                            .stroke(.white.opacity(0.5), lineWidth: 1))
                 }
 
                 Circle()
@@ -513,6 +554,7 @@ struct OrientationDial: View {
             })
             .sensoryFeedback(.selection, trigger: bearing.map(Geo.compassName))
             .animation(.snappy(duration: 0.15), value: bearing)
+            .animation(.snappy(duration: 0.15), value: sector)
         }
         .accessibilityElement()
         .accessibilityLabel("Beach direction")
@@ -533,23 +575,28 @@ struct OrientationDial: View {
     }
 }
 
-/// Half disc on the water side of the beach.
+/// Pie slice of open water, `sector` degrees wide, centred on `bearing`.
 private struct WaterSide: Shape {
     var bearing: Double
+    var sector: Double
     var radius: CGFloat
 
-    var animatableData: Double {
-        get { bearing }
-        set { bearing = newValue }
+    var animatableData: AnimatablePair<Double, Double> {
+        get { AnimatablePair(bearing, sector) }
+        set { bearing = newValue.first; sector = newValue.second }
     }
 
     func path(in rect: CGRect) -> Path {
         let c = CGPoint(x: rect.midX, y: rect.midY)
         var p = Path()
+        if sector >= 359.9 {
+            p.addEllipse(in: CGRect(x: c.x - radius, y: c.y - radius, width: radius * 2, height: radius * 2))
+            return p
+        }
         p.move(to: c)
-        // Screen angle 0 = east; compass 0 = north.
-        p.addArc(center: c, radius: radius, startAngle: .degrees(bearing - 180), endAngle: .degrees(bearing),
-                 clockwise: false)
+        // Screen angle 0 = east; compass 0 = north, so screen = compass - 90.
+        p.addArc(center: c, radius: radius, startAngle: .degrees(bearing - 90 - sector / 2),
+                 endAngle: .degrees(bearing - 90 + sector / 2), clockwise: false)
         p.closeSubpath()
         return p
     }

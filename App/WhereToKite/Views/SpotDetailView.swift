@@ -83,7 +83,8 @@ struct SpotDetailView: View {
             GridRow {
                 Fact(title: "Drive", value: rec.driveLabel, icon: "car.fill", tint: .indigo)
                 Fact(title: rec.spot.allSides.count > 1 ? "Sides face" : "Beach faces",
-                     value: rec.spot.facingSummary ?? "Unknown",
+                     value: (rec.spot.facingSummary ?? "Unknown")
+                        + (rec.spot.waterSectorDeg.map { $0 < 360 ? " · \(Int($0))°" : "" } ?? ""),
                      icon: "water.waves", tint: .cyan)
             }
         }
