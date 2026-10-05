@@ -1,0 +1,9 @@
+country,region,name,water,locate,hint,notes,sector
+# Sweden — format: tools/spots/README.md
+SE,Halland,Varberg – Apelviken,sea,q:Apelviken,W,
+SE,Halland,Mellbystrand,sea,q:Mellbystrand,W,
+SE,Skåne,Skanör,sea,q:Skanörs strand,W,
+SE,Skåne,Lomma,sea,q:Lomma strand,W,
+SE,Skåne,Malmö – Ribersborg,sea,q:Ribersborgsstranden,W,
+SE,Kalmar,Öland – Böda,sea,q:Böda sand,E,
+SE,Gotland,Gotland – Tofta,sea,q:Tofta strand,W,

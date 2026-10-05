@@ -1,0 +1,3 @@
+country,region,name,water,locate,hint,notes,sector
+# Austria — format: tools/spots/README.md
+AT,Burgenland,Podersdorf am See (Neusiedler See),lake,q:Strandbad Podersdorf am See,W,

@@ -1,0 +1,10 @@
+country,region,name,water,locate,hint,notes,sector
+# Denmark — format: tools/spots/README.md
+DK,Jylland,Hvide Sande,sea,q:Hvide Sande Nordstrand,W:North Sea side|E:Ringkøbing Fjord side:lagoon,
+DK,Jylland,Klitmøller,sea,q:Klitmøller,NW,
+DK,Jylland,Rømø – Lakolk,sea,q:Lakolk Strand,W,
+DK,Sjælland,Copenhagen – Amager Strandpark,sea,q:Amager Strandpark,E,
+DK,Jylland,Løkken,sea,q:Løkken Strand,W,
+DK,Jylland,Nørre Vorupør,sea,q:Nørre Vorupør,W,
+DK,Jylland,Agger Tange,sea,q:Agger Tange,W,
+DK,Jylland,Hejlsminde,sea,q:Hejlsminde Strand,E,

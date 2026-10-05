@@ -106,3 +106,49 @@ final class MultiSideTests: XCTestCase {
         XCTAssertEqual(spot.allSides.count, 2)
     }
 }
+
+final class WaterSectorTests: XCTestCase {
+    let s = Scorer(profile: RiderProfile(weightKg: 75, kites: [9, 12], level: .intermediate), intensity: nil)
+
+    func wind(from dir: Double) -> HourlyWind {
+        HourlyWind(localTime: "2026-09-20T15:00", speedKn: 18, gustKn: 21, directionDeg: dir)
+    }
+
+    func testStraightBeachIsUnchanged() {
+        for dir in stride(from: 0.0, to: 360, by: 15) {
+            XCTAssertEqual(s.score(wind(from: dir), side: SpotSide(name: nil, seaFacingDeg: 180)).score,
+                           s.score(wind(from: dir), seaFacingDeg: 180).score, accuracy: 1e-9)
+        }
+    }
+
+    func testSmallLakeWorksInAnyWind() {
+        let lake = SpotSide(name: nil, seaFacingDeg: 0, waterSectorDeg: 360)
+        let best = s.score(wind(from: 225), seaFacingDeg: 225 + 50).score   // ideal side-onshore
+        for dir in stride(from: 0.0, to: 360, by: 15) {
+            XCTAssertEqual(s.score(wind(from: dir), side: lake).score, best, accuracy: 0.02, "wind from \(dir)")
+        }
+    }
+
+    func testCoveTurnsSideWindsOffshore() {
+        let beach = SpotSide(name: nil, seaFacingDeg: 180)
+        let cove = SpotSide(name: nil, seaFacingDeg: 180, waterSectorDeg: 60)
+        // Wind from the SW (45° off the axis): side-onshore on a straight beach, but in a 60° cove
+        // (open water ±30°) it comes over the land beside the opening: side-offshore.
+        XCTAssertGreaterThan(s.score(wind(from: 225), side: beach).score, 0.8)
+        XCTAssertEqual(s.score(wind(from: 225), side: cove).relativeAngle ?? 0, 105, accuracy: 0.01)
+        XCTAssertEqual(s.score(wind(from: 195), side: cove).relativeAngle ?? 0, 75, accuracy: 0.01)
+        XCTAssertEqual(s.score(wind(from: 270), side: cove).score, 0)   // cross-shore on a beach, offshore here
+    }
+
+    func testPointGivesMoreWindDirections() {
+        let beach = SpotSide(name: nil, seaFacingDeg: 180)
+        let point = SpotSide(name: nil, seaFacingDeg: 180, waterSectorDeg: 270)
+        // Wind from the W: cross-shore (90°) on the beach, side-onshore on part of the point.
+        XCTAssertGreaterThan(s.score(wind(from: 270), side: point).score, s.score(wind(from: 270), side: beach).score)
+        // A N wind is cross-shore on the flanks of a 270° point, mostly offshore on a 240° one.
+        XCTAssertGreaterThan(s.score(wind(from: 0), side: point).score, 0.5)
+        let narrower = SpotSide(name: nil, seaFacingDeg: 180, waterSectorDeg: 240)
+        XCTAssertLessThan(s.score(wind(from: 0), side: narrower).score, 0.2)
+    }
+}
+

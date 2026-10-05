@@ -1,0 +1,30 @@
+country,region,name,water,locate,hint,notes,sector
+# Spain — format: tools/spots/README.md
+ES,Catalunya,Sant Pere Pescador,sea,osm:w110579310,E,Authorised summer kite zone (piscifactoria area).
+ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,City beach: kiting banned 1 Jun–30 Sep; off-season only.
+ES,Catalunya,Castelldefels,sea,osm:w1084529243,S,Authorised summer kite zone (online registration required).
+ES,Catalunya,Torredembarra,sea,q:Platja dels Muntanyans,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).
+ES,Catalunya,La Pineda,sea,q:Platja de la Pineda Vila-seca,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).
+ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,NE,Year-round (no seasonal ban).
+ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,q:Platja dels Eucaliptus,SE,
+ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W:bay side|E:sea side,Authorised summer kite zone; flat water on the Badia dels Alfacs (west) side.
+ES,Comunitat Valenciana,Valencia – Pinedo,sea,q:Platja de Pinedo,E,
+ES,Comunitat Valenciana,Oliva,sea,q:Platja d'Oliva,ENE,
+ES,Comunitat Valenciana,Santa Pola – La Gola,sea,q:Playa de La Gola Santa Pola,E,
+ES,Murcia,Mar Menor – Los Narejos,lagoon,q:Playa de Los Narejos,E,Flat-water lagoon.
+ES,Andalucía,Tarifa – Los Lances,sea,osm:w1465288739,SW,
+ES,Andalucía,Tarifa – Valdevaqueros,sea,osm:w186110526,S,
+ES,Galicia,Doniños (Ferrol),sea,q:Praia de Doniños,W,
+ES,Galicia,Razo (Carballo),sea,q:Praia de Razo,NW,
+ES,Galicia,A Lanzada,sea,osm:w173598722,W,
+ES,Canarias,Fuerteventura – Sotavento,sea,q:Risco del Paso,SE,
+ES,Canarias,Fuerteventura – Flag Beach (Corralejo),sea,osm:w684867252,E,
+ES,Canarias,Lanzarote – Famara,sea,q:Playa de Famara,NW,
+ES,Canarias,Gran Canaria – Pozo Izquierdo,sea,q:Pozo Izquierdo,E,
+ES,Canarias,Tenerife – El Médano,sea,q:Playa de El Médano,SE,
+ES,Illes Balears,Mallorca – Son Serra de Marina,sea,q:Platja de Son Serra de Marina,N,
+ES,Andalucía,El Palmar (Vejer),sea,q:Playa de El Palmar Vejer de la Frontera,SW,
+ES,Andalucía,Los Caños de Meca,sea,q:Playa de Los Caños de Meca,S,
+ES,Andalucía,Bolonia,sea,q:Playa de Bolonia,S,
+ES,Cantabria,Somo,sea,q:Playa de Somo,N,
+ES,Cantabria,Laredo – Salvé,sea,q:Playa de Salvé Laredo,N,

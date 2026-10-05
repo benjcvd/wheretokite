@@ -1,0 +1,4 @@
+country,region,name,water,locate,hint,notes,sector
+# Romania — format: tools/spots/README.md
+RO,Constanța,Vadu,sea,q:Plaja Vadu,E,
+RO,Constanța,Corbu,sea,q:Plaja Corbu,E,

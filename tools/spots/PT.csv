@@ -1,0 +1,13 @@
+country,region,name,water,locate,hint,notes,sector
+# Portugal — format: tools/spots/README.md
+PT,Norte,Viana do Castelo – Cabedelo,sea,osm:w1384166636,W,
+PT,Centro,Lagoa de Óbidos,lagoon,osm:n1828415085,N,Flat-water lagoon.
+PT,Lisboa,Guincho,sea,q:Praia do Guincho,W,
+PT,Lisboa,Fonte da Telha,sea,osm:w222678478,W,
+PT,Lisboa,Lagoa de Albufeira,lagoon,q:Lagoa de Albufeira,N,Flat-water lagoon.
+PT,Algarve,Alvor,sea,q:Praia de Alvor,S,
+PT,Algarve,Lagos – Meia Praia,sea,q:Meia Praia Lagos,SE,
+PT,Norte,Esposende – Ofir,sea,q:Praia de Ofir,W,
+PT,Centro,Aveiro – Praia da Barra,sea,q:Praia da Barra Ílhavo,W,
+PT,Centro,Peniche – Baleal,sea,q:Praia do Baleal,NW,North side of the Baleal isthmus.
+PT,Algarve,Fuseta (Ria Formosa),lagoon,osm:w78427662,S,Lagoon: flat water; tide matters.

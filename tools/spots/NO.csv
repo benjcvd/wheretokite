@@ -1,0 +1,6 @@
+country,region,name,water,locate,hint,notes,sector
+# Norway — format: tools/spots/README.md
+NO,Rogaland,Sola – Solastranden,sea,q:Solastranden,W,
+NO,Rogaland,Hellestø,sea,q:Hellestø,W,
+NO,Rogaland,Borestranda,sea,q:Borestranda,W,
+NO,Rogaland,Brusand,sea,q:Brusand,SW,

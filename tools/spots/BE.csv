@@ -1,0 +1,5 @@
+country,region,name,water,locate,hint,notes,sector
+# Belgium — format: tools/spots/README.md
+BE,Westkust,De Panne,sea,q:Strand De Panne,NW,
+BE,Oostkust,Oostende,sea,osm:n7834988905,NW,
+BE,Oostkust,Knokke-Heist,sea,q:Strand Knokke,NW,

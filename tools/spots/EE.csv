@@ -1,0 +1,4 @@
+country,region,name,water,locate,hint,notes,sector
+# Estonia — format: tools/spots/README.md
+EE,Pärnumaa,Pärnu,sea,q:Pärnu rand,SW,
+EE,Harjumaa,Tallinn – Pirita,sea,q:Pirita rand,W,

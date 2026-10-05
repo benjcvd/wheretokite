@@ -1,0 +1,4 @@
+country,region,name,water,locate,hint,notes,sector
+# Montenegro — format: tools/spots/README.md
+ME,Ulcinj,Velika Plaža (Ulcinj),sea,q:Velika plaža Ulcinj,SW,
+ME,Ulcinj,Ada Bojana,sea,q:Ada Bojana,SW,

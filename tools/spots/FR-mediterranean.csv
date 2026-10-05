@@ -1,0 +1,20 @@
+country,region,name,water,locate,hint,notes,sector
+# France: Mediterranean coast, Corsica, Alps / south-eastern lakes — format: tools/spots/README.md
+FR,Languedoc-Roussillon,Le Barcarès,sea,q:Plage du Barcarès,E,
+FR,Languedoc-Roussillon,Leucate – Les Coussoules / La Franqui,sea,q:Plage des Coussoules,ESE,Famous tramontane spot; the tramontane (NW) is offshore here: experts only.
+FR,Languedoc-Roussillon,Étang de La Palme,lagoon,osm:n4299104622,NW,Shallow flat-water lagoon; launch on the south-east shore.
+FR,Languedoc-Roussillon,Port-la-Nouvelle,sea,q:Plage de Port-la-Nouvelle,E,
+FR,Languedoc-Roussillon,Gruissan – Les Chalets,sea,q:Plage des Chalets Gruissan,SE,
+FR,Languedoc-Roussillon,Sète – Lido,sea,q:Plage des Trois Digues Sète,SE,
+FR,Languedoc-Roussillon,Le Grau-du-Roi – L'Espiguette,sea,q:Plage de l'Espiguette,S,
+FR,Provence,Saintes-Maries-de-la-Mer – Beauduc,sea,q:Plage de Beauduc,SW,Remote beach (track access).
+FR,Provence,Salin-de-Giraud – Piémanson,sea,q:Plage de Piémanson,S,
+FR,Provence,Port-Saint-Louis – Plage Napoléon,sea,q:Plage Napoléon Port-Saint-Louis-du-Rhône,S,
+FR,Provence,Carro,sea,osm:w610782025,W,
+FR,Provence,Marseille – Pointe Rouge,sea,q:Plage de la Pointe Rouge Marseille,W,
+FR,Provence,Six-Fours – Le Brusc,sea,q:Plage du Brusc,W,
+FR,Provence,Hyères – L'Almanarre,sea,q:Plage de l'Almanarre,W,
+FR,Corse,Bonifacio – Piantarella,sea,q:Piantarella,E,
+FR,Corse,Bonifacio – Tonnara,sea,q:Plage de la Tonnara Bonifacio,W,
+FR,Alpes,Lac de Serre-Ponçon – Boscodon / Crots,lake,osm:n1128590012,,Thermal wind from late morning; kiting forbidden near the bridge and in bathing areas.
+FR,Alpes,Lac de Monteynard,lake,osm:n4390731413,,Famous thermal spot (south wind in the afternoon).

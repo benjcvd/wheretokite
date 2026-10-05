@@ -1,0 +1,15 @@
+country,region,name,water,locate,hint,notes,sector
+# Germany — format: tools/spots/README.md
+DE,Schleswig-Holstein,Sankt Peter-Ording,sea,q:Strand Sankt Peter-Ording,W,
+DE,Schleswig-Holstein,Sylt – Westerland,sea,q:Strand Westerland,W,
+DE,Schleswig-Holstein,Fehmarn – Gold,sea,"q:Gold, Fehmarn",S,
+DE,Schleswig-Holstein,Fehmarn – Grüner Brink,sea,q:Grüner Brink Fehmarn,N,
+DE,Schleswig-Holstein,Fehmarn – Wulfener Hals,sea,q:Wulfener Hals,S,
+DE,Schleswig-Holstein,Heiligenhafen,sea,q:Steinwarder Heiligenhafen,N,
+DE,Schleswig-Holstein,Laboe,sea,q:Strand Laboe,N,
+DE,Mecklenburg-Vorpommern,Rerik – Salzhaff,lagoon,q:Rerik Salzhaff,,Flat-water lagoon.
+DE,Niedersachsen,Norddeich,sea,q:Norddeich Strand,NW,Wadden Sea: ride around high tide.
+DE,Niedersachsen,Schillig,sea,q:Strand Schillig,NE,Wadden Sea: ride around high tide.
+DE,Niedersachsen,Hooksiel,sea,q:Hooksiel Strand,E,
+DE,Niedersachsen,Dümmer,lake,q:Hüde Dümmer,,
+DE,Niedersachsen,Steinhuder Meer,lake,q:Badeinsel Steinhude,,

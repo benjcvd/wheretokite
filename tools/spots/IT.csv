@@ -1,0 +1,14 @@
+country,region,name,water,locate,hint,notes,sector
+# Italy — format: tools/spots/README.md
+IT,Sardegna,Porto Pollo,sea,q:Porto Pollo Palau,W:west side|E:east side,
+IT,Sicilia,Lo Stagnone (Marsala),lagoon,osm:n12407041259,W,Flat-water lagoon.
+IT,Calabria,Gizzeria – Hang Loose Beach,sea,q:Gizzeria Lido,W,
+IT,Veneto,Lago di Garda – Malcesine,lake,osm:n458123631,W,
+IT,Puglia,Porto Cesareo – Torre Lapillo,sea,q:Torre Lapillo,SW,
+IT,Puglia,Torre Canne,sea,q:Torre Canne,NE,
+IT,Veneto,Rosolina Mare,sea,q:Rosolina Mare,E,
+IT,Lombardia,Lago di Garda – Campione,lake,q:Campione del Garda,E,"Thermal winds: Pelèr (N) in the morning, Ora (S) in the afternoon."
+IT,Lombardia,Lago di Como – Colico,lake,q:Colico,,Thermal Breva (S) in the afternoon.
+IT,Sardegna,Porto Botte,sea,q:Porto Botte,S,
+IT,Sardegna,Cagliari – Poetto,sea,q:Spiaggia del Poetto,S,
+IT,Sardegna,San Teodoro – La Cinta,sea,q:Spiaggia La Cinta,E,

@@ -1,0 +1,4 @@
+country,region,name,water,locate,hint,notes,sector
+# Latvia — format: tools/spots/README.md
+LV,Rīga,Jūrmala – Bulduri,sea,q:Bulduru pludmale,N,
+LV,Kurzeme,Liepāja,sea,q:Liepāja,W,

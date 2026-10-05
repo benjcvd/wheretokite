@@ -1,0 +1,6 @@
+country,region,name,water,locate,hint,notes,sector
+# Poland — format: tools/spots/README.md
+PL,Pomorskie,Rewa,sea,q:Rewa Kosakowo,E,
+PL,Pomorskie,Chałupy (Hel Peninsula),sea,"q:Chałupy, Władysławowo",SW,Puck Bay side: flat water.
+PL,Pomorskie,Kuźnica (Hel Peninsula),sea,q:Kuźnica Jastarnia,SW,Puck Bay side: flat water.
+PL,Pomorskie,Jastarnia (Hel Peninsula),sea,q:Jastarnia,SW,Puck Bay side: flat water.

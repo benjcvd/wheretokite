@@ -1,0 +1,18 @@
+country,region,name,water,locate,hint,notes,sector
+# Netherlands — format: tools/spots/README.md
+NL,Zeeland,Brouwersdam,sea,q:Brouwersdam strand,NW:North Sea side|SE:Grevelingen side:lake,
+NL,Zuid-Holland,Hoek van Holland,sea,q:Hoek van Holland,W,
+NL,Noord-Holland,Zandvoort,sea,q:Strand Zandvoort,W,
+NL,Noord-Holland,IJmuiden,sea,osm:n4508458788,W,
+NL,Noord-Holland,Texel – Paal 17,sea,q:Paal 17 Texel,W,
+NL,Friesland,Workum (IJsselmeer),lake,q:Workum strand,W,
+NL,Zeeland,Domburg,sea,q:Strand Domburg,NW,
+NL,Zeeland,Vrouwenpolder,sea,q:Strand Vrouwenpolder,NW,
+NL,Zuid-Holland,Oostvoorne,sea,q:Strand Oostvoorne,NW,
+NL,Zuid-Holland,Maasvlakte – Slufter,sea,q:Slufterstrand,W,
+NL,Zuid-Holland,Kijkduin,sea,q:Strand Kijkduin,NW,
+NL,Zuid-Holland,Scheveningen,sea,q:Strand Scheveningen,NW,
+NL,Zuid-Holland,Noordwijk,sea,q:Strand Noordwijk,W,
+NL,Noord-Holland,Wijk aan Zee,sea,q:Strand Wijk aan Zee,W,
+NL,Noord-Holland,Callantsoog,sea,q:Strand Callantsoog,W,
+NL,Friesland,Makkum (IJsselmeer),lake,"q:Makkum, Súdwest-Fryslân",W,

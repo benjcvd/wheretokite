@@ -45,6 +45,8 @@ Pipeline
 """
 
 import argparse
+import contextlib
+import fcntl
 import subprocess
 import csv
 import datetime
@@ -121,10 +123,42 @@ def _cache_get(path):
 
 def _cache_put(path, obj):
     os.makedirs(CACHE_DIR, exist_ok=True)
-    tmp = path + ".tmp"
+    tmp = "%s.%d.tmp" % (path, os.getpid())
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(obj, f)
     os.replace(tmp, path)
+
+
+@contextlib.contextmanager
+def service_slot(name, slots=1, min_interval=0.0):
+    """Hold one of `slots` machine-wide slots for a public service, spaced at least
+    `min_interval` s apart, so several builds running at once (e.g. one per region)
+    stay within the services' usage policies. Lock files live in the cache dir."""
+    os.makedirs(CACHE_DIR, exist_ok=True)
+    while True:
+        for i in range(slots):
+            f = open(os.path.join(CACHE_DIR, ".lock-%s-%d" % (name, i)), "a+")
+            try:
+                fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except OSError:
+                f.close()
+                continue
+            try:
+                f.seek(0)
+                last = float(f.read().strip() or 0)
+                wait = min_interval - (time.time() - last)
+                if wait > 0:
+                    time.sleep(wait)
+                yield
+            finally:
+                f.seek(0)
+                f.truncate()
+                f.write("%f" % time.time())
+                f.flush()
+                fcntl.flock(f, fcntl.LOCK_UN)
+                f.close()
+            return
+        time.sleep(0.5)
 
 
 def overpass(query, label="", endpoints=None):
@@ -143,8 +177,9 @@ def overpass(query, label="", endpoints=None):
                 "Content-Type": "application/x-www-form-urlencoded",
             })
             try:
-                with urllib.request.urlopen(req, timeout=60) as resp:
-                    body = resp.read()
+                with service_slot("overpass", slots=2, min_interval=1.0):
+                    with urllib.request.urlopen(req, timeout=60) as resp:
+                        body = resp.read()
                 text = body.decode("utf-8", errors="replace")
                 if not text.lstrip().startswith("{"):
                     raise ValueError("non-JSON response: " + re.sub(r"\s+", " ", text[:200]))
@@ -172,16 +207,11 @@ def _nominatim_get(endpoint, params):
     hit = _cache_get(path)
     if hit is not None:
         return hit
-    wait = 1.1 - (time.time() - _last_nominatim[0])
-    if wait > 0:
-        time.sleep(wait)
     url = NOMINATIM + endpoint + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    try:
+    with service_slot("nominatim", slots=1, min_interval=1.1):   # policy: max 1 request/s
         with urllib.request.urlopen(req, timeout=30) as resp:
             obj = json.loads(resp.read().decode("utf-8"))
-    finally:
-        _last_nominatim[0] = time.time()
     _cache_put(path, obj)
     return obj
 
@@ -625,12 +655,32 @@ def slugify(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
-def read_curated(path):
+def read_curated(paths):
+    """Rows of every CSV in `paths` (files or directories of *.csv)."""
+    files = []
+    for p in paths:
+        files += sorted(os.path.join(p, f) for f in os.listdir(p) if f.endswith(".csv")) if os.path.isdir(p) else [p]
+    rows = []
+    for path in files:
+        rows += _read_csv(path)
+    return rows
+
+
+def _read_csv(path):
     rows = []
     with open(path, "r", encoding="utf-8") as f:
         lines = [l for l in f if l.strip() and not l.lstrip().startswith("#")]
     for r in csv.DictReader(lines):
+        if None in r:
+            raise SystemExit("%s: too many fields (unquoted comma?) in row %r" % (path, r))
         r = {k: (v or "").strip() for k, v in r.items()}
+        r.setdefault("sector", "")
+        try:
+            r["sector"] = float(r["sector"]) if r["sector"] else 180.0
+        except ValueError:
+            raise SystemExit("%s: bad sector in row %r" % (path, r))
+        if not 0 <= r["sector"] <= 360:
+            raise SystemExit("%s: sector must be 0-360 in row %r" % (path, r))
         if r["water"] not in ("sea", "lagoon", "lake"):
             raise SystemExit("bad water type in row %r" % r)
         r["sides"] = parse_sides(r["hint"], r["water"])
@@ -766,16 +816,21 @@ def apple_checks(points):
             for _, la, lo, f in points if ck(la, lo, f) not in cache]
     if todo:
         log("apple check: %d points" % len(todo))
-        tmp_in = os.path.join(CACHE_DIR, "_apple_in.json")
-        tmp_out = os.path.join(CACHE_DIR, "_apple_out.json")
+        tmp_in = os.path.join(CACHE_DIR, "_apple_in.%d.json" % os.getpid())
+        tmp_out = os.path.join(CACHE_DIR, "_apple_out.%d.json" % os.getpid())
         with open(tmp_in, "w") as f:
             json.dump(todo, f)
         try:
             subprocess.run(["swift", os.path.join(HERE, "check_directions.swift"), tmp_in, tmp_out],
                            check=True, timeout=3600)
             with open(tmp_out) as f:
-                cache.update(json.load(f))
-            _cache_put(path, cache)
+                new = json.load(f)
+            with service_slot("apple-cache"):   # other builds may have added entries meanwhile
+                cache = _cache_get(path) or {}
+                cache.update(new)
+                _cache_put(path, cache)
+            for t in (tmp_in, tmp_out):
+                os.remove(t)
         except (OSError, subprocess.SubprocessError) as e:
             log("apple check unavailable: %s" % e)
     return {k: cache[ck(la, lo, f)] for k, la, lo, f in points if ck(la, lo, f) in cache}
@@ -825,9 +880,9 @@ def ferry_needed(lat, lon, start=None):
     hit = _cache_get(path)
     if hit is None:
         for attempt in range(4):
-            time.sleep(1.2)
-            out = subprocess.run(["curl", "-s", "-m", "120", VALHALLA + "?json=" + urllib.parse.quote(body)],
-                                 capture_output=True, text=True).stdout
+            with service_slot("valhalla", slots=1, min_interval=1.2):
+                out = subprocess.run(["curl", "-s", "-m", "120", VALHALLA + "?json=" + urllib.parse.quote(body)],
+                                     capture_output=True, text=True).stdout
             try:
                 hit = json.loads(out)
             except ValueError:
@@ -921,7 +976,9 @@ def write_review(review, path):
 def main():
     global CACHE_DIR
     ap = argparse.ArgumentParser()
-    ap.add_argument("--curated", default=os.path.join(HERE, "curated_spots.csv"))
+    ap.add_argument("--curated", nargs="+", default=[os.path.join(HERE, "spots")],
+                    help="CSV files or directories (default: tools/spots/)")
+    ap.add_argument("--review", default=os.path.join(HERE, "review.md"))
     ap.add_argument("--out", default=os.path.join(REPO, "Data", "spots.json"))
     ap.add_argument("--also", action="append", default=[],
                     help="also write an identical copy here (legacy file name)")
@@ -969,6 +1026,8 @@ def main():
             "region": r["region"],
             "waterType": r["water"],
         }
+        if r["sector"] != 180:
+            spot["waterSectorDeg"] = r["sector"]
         spot["_how"] = how
         spot["_hint"] = r["hint"]
         spot["_snapped"] = o["snapped"]
@@ -998,6 +1057,8 @@ def main():
                     problems.append("%s: side '%s' faces %.0f° (%s) but hint %s" % (
                         sid, name, so["facing"], compass(so["facing"]), h))
                 sides.append({"name": name, "seaFacingDeg": round(so["facing"], 1)})
+                if r["sector"] != 180:
+                    sides[-1]["waterSectorDeg"] = r["sector"]
                 spot.setdefault("_side_pts", []).append((so["lat"], so["lon"], so["facing"]))
                 warnings.append("%s: side '%s' faces %.0f° (%s, %s, %.0f m from the located point)" % (
                     sid, name, so["facing"], compass(so["facing"]), so["src"],
@@ -1110,6 +1171,8 @@ def main():
         f_ = None
         if ref.startswith("spot:"):
             s = by_id.get(ref[5:])
+            if s is None:   # partial build (--curated subset)
+                continue
             f_ = s["seaFacingDeg"] if s else None
         else:
             q, _, cc = ref[2:].rpartition("@")
@@ -1136,7 +1199,7 @@ def main():
         "%s%s" % (s_["id"], "" if s_.get("island") else " (no island outline)") for s_ in ferry)))
     print("\nDirection check vs Apple Maps: %s" % ", ".join(
         "%s %d" % (k, sum(1 for s_ in spots if s_["directionCheck"] == k)) for k in order))
-    write_review(review, os.path.join(HERE, "review.md"))
+    write_review(review, args.review)
     if problems:
         print("\nPROBLEMS:")
         for p in problems:

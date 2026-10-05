@@ -79,20 +79,48 @@ public struct Scorer: Sendable {
     /// Scores the hour on each side and keeps the best one. Ties (e.g. too light everywhere)
     /// go to the side where the wind is most onshore, the safest one.
     public func score(_ w: HourlyWind, sides: [SpotSide]) -> HourScore {
-        guard sides.count > 1 else { return score(w, seaFacingDeg: sides.first?.seaFacingDeg) }
-        let scored = sides.map { side -> HourScore in
-            var h = score(w, seaFacingDeg: side.seaFacingDeg)
+        guard sides.count > 1 else {
+            return sides.first.map { score(w, side: $0) } ?? score(w, relativeAngle: nil)
+        }
+        return Self.best(sides.map { side -> HourScore in
+            var h = score(w, side: side)
             h.side = side.name
             return h
+        })
+    }
+
+    /// One shore with its water sector (see `Spot.waterSectorDeg`):
+    /// - 180: the angle between the wind and the beach normal.
+    /// - < 180 (cove): open water only within ±sector/2, so the sector's edges count as
+    ///   cross-shore and winds beyond them as increasingly offshore.
+    /// - > 180 (point, headland, small lake): the shore curves, so its normals span
+    ///   2 × (sector − 180) (360° at 360); the best-placed part of the shore is used.
+    public func score(_ w: HourlyWind, side: SpotSide) -> HourScore {
+        let sector = min(360, max(0, side.waterSectorDeg ?? 180))
+        let off = Geo.angleDiff(w.directionDeg, side.seaFacingDeg)
+        if sector <= 180 {
+            return score(w, relativeAngle: min(180, max(0, off - sector / 2 + 90)))
         }
-        return scored.min { a, b in
+        let span = min(360, 2 * (sector - 180))
+        let steps = max(1, Int((span / 5).rounded(.up)))
+        let normals = (0...steps).map { side.seaFacingDeg - span / 2 + span * Double($0) / Double(steps) }
+        return Self.best(normals.map { score(w, relativeAngle: Geo.angleDiff(w.directionDeg, $0)) })
+    }
+
+    /// Highest score; ties (e.g. too light everywhere) go to the most onshore, safest angle.
+    static func best(_ hours: [HourScore]) -> HourScore {
+        hours.min { a, b in
             a.score != b.score ? a.score > b.score : (a.relativeAngle ?? 180) < (b.relativeAngle ?? 180)
         }!
     }
 
     public func score(_ w: HourlyWind, seaFacingDeg: Double?) -> HourScore {
+        score(w, relativeAngle: seaFacingDeg.map { Geo.angleDiff(w.directionDeg, $0) })
+    }
+
+    /// `angle`: 0 onshore … 180 offshore; nil = beach orientation unknown.
+    public func score(_ w: HourlyWind, relativeAngle angle: Double?) -> HourScore {
         var flags: [String] = []
-        let angle = seaFacingDeg.map { Geo.angleDiff(w.directionDeg, $0) }
         let limits = rules.limits(profile.level)
         if w.speedKn > limits.wind || w.gustKn > limits.gust {
             return HourScore(wind: w, score: 0, kite: nil, relativeAngle: angle, flags: ["too strong for level"])

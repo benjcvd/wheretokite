@@ -1,0 +1,10 @@
+country,region,name,water,locate,hint,notes,sector
+# Ireland — format: tools/spots/README.md
+IE,Dublin,Dollymount Strand,sea,q:Dollymount Strand,SE,
+IE,Wicklow,Brittas Bay,sea,q:Brittas Bay,E,
+IE,Wexford,Rosslare Strand,sea,q:Rosslare Strand,E,
+IE,Kerry,Inch Beach,sea,q:Inch Beach Kerry,W,
+IE,Kerry,Brandon Bay (Castlegregory),sea,q:Fermoyle Beach,NW,
+IE,Mayo,Achill – Keel Beach,sea,q:Keel Strand,SW,
+IE,Donegal,Rossnowlagh,sea,q:Rossnowlagh,W,
+IE,Donegal,Magheraroarty,sea,q:Magheraroarty,NW,

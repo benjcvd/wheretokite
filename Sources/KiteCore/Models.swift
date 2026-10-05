@@ -20,6 +20,9 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
     /// Compass bearing pointing from the beach out to open water, of the main side.
     /// nil = unknown.
     public var seaFacingDeg: Double?
+    /// Width in degrees of open water seen from the launch, centred on `seaFacingDeg`.
+    /// nil = 180 (straight beach). < 180: cove; > 180: point / headland; 360: small lake.
+    public var waterSectorDeg: Double?
     /// Every side the spot can be kited from, when there is more than one (isthmus, sandbar,
     /// sea + lagoon). nil = a single side, `seaFacingDeg`.
     public var sides: [SpotSide]?
@@ -43,16 +46,17 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
 
     public var coordinate: Coordinate { Coordinate(latitude: latitude, longitude: longitude) }
 
-    /// "W", "W & E" (one compass point per side), nil if unknown.
+    /// "W", "W & E" (one compass point per side), "all around" for a 360° sector, nil if unknown.
     public var facingSummary: String? {
         let sides = allSides
+        if sides.contains(where: { ($0.waterSectorDeg ?? 180) >= 360 }) { return "all around" }
         return sides.isEmpty ? nil : sides.map { Geo.compassName($0.seaFacingDeg) }.joined(separator: " & ")
     }
 
     /// The sides to score: `sides` if set, else the single `seaFacingDeg` (if known).
     public var allSides: [SpotSide] {
         if let sides, !sides.isEmpty { return sides }
-        return seaFacingDeg.map { [SpotSide(name: nil, seaFacingDeg: $0)] } ?? []
+        return seaFacingDeg.map { [SpotSide(name: nil, seaFacingDeg: $0, waterSectorDeg: waterSectorDeg)] } ?? []
     }
 }
 
@@ -62,10 +66,13 @@ public struct SpotSide: Codable, Hashable, Sendable {
     public var name: String?
     /// Compass bearing from this shore out to the water.
     public var seaFacingDeg: Double
+    /// Width of open water, see `Spot.waterSectorDeg`. nil = 180.
+    public var waterSectorDeg: Double?
 
-    public init(name: String?, seaFacingDeg: Double) {
+    public init(name: String?, seaFacingDeg: Double, waterSectorDeg: Double? = nil) {
         self.name = name
         self.seaFacingDeg = seaFacingDeg
+        self.waterSectorDeg = waterSectorDeg
     }
 }
 

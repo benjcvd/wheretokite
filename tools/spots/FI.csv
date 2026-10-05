@@ -1,0 +1,5 @@
+country,region,name,water,locate,hint,notes,sector
+# Finland — format: tools/spots/README.md
+FI,Satakunta,Yyteri (Pori),sea,q:Yyteri,W,
+FI,Pohjois-Pohjanmaa,Kalajoki – Hiekkasärkät,sea,q:Kalajoen Hiekkasärkät,W,
+FI,Pohjois-Pohjanmaa,Oulu – Nallikari,sea,q:Nallikari,W,

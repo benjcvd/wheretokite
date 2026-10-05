@@ -1,0 +1,9 @@
+country,region,name,water,locate,hint,notes,sector
+# Greece — format: tools/spots/README.md
+GR,Rhodes,Prasonisi,sea,q:Prasonisi Rhodes,W:west side (waves)|SE:east side (flat),Isthmus with two sides: waves on the west side and flatter water on the east side.
+GR,Naxos,Mikri Vigla,sea,q:Mikri Vigla,W,
+GR,Paros,Pounta,sea,q:Pounta Paros,W,
+GR,Kos,Marmari,sea,osm:n6677200338,N,
+GR,Lemnos,Keros,sea,osm:w263844492,E,
+GR,Lefkada,Lefkada – Agios Ioannis,sea,q:Agios Ioannis Lefkada,W,
+GR,Crete,Kouremenos (Palaikastro),sea,q:Kouremenos,E,
