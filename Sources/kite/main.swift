@@ -56,8 +56,7 @@ guard let profile else { fail("no saved profile yet: pass --weight KG --kites 9,
 
 // MARK: Request
 
-let dayFormatter = DateFormatter()
-dayFormatter.dateFormat = "yyyy-MM-dd"
+let dayFormatter = DayString.formatter()
 let today = dayFormatter.string(from: Date())
 func resolveDay(_ s: String) -> String {
     let offset: Int? = switch s {

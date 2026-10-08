@@ -192,9 +192,7 @@ private func capture<T>(_ body: () async throws -> T) async -> Result<T, Error> 
 
 extension OpenMeteoProvider {
     static func endpoint(for day: String) -> String {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd"
-        return day < f.string(from: Date())
+        day < DayString.from(Date())
             ? "https://historical-forecast-api.open-meteo.com/v1/forecast"
             : "https://api.open-meteo.com/v1/forecast"
     }

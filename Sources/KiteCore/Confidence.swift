@@ -102,9 +102,7 @@ public struct ConfidenceEstimator: Sendable {
     }
 
     static func daysBetween(_ a: String, _ b: String) -> Int {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd"
-        f.timeZone = TimeZone(identifier: "UTC")
+        let f = DayString.formatter(timeZone: TimeZone(identifier: "UTC")!)
         guard let da = f.date(from: a), let db = f.date(from: b) else { return 0 }
         return Int((db.timeIntervalSince(da) / 86400).rounded())
     }

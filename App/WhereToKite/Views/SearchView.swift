@@ -10,6 +10,9 @@ struct SearchView: View {
     @State private var model = SearchModel()
     @State private var path: [String] = []
     @State private var sheet: Sheet?
+    /// Bumped to re-run the search with unchanged options (back in the foreground later on).
+    @State private var refresh = 0
+    @Environment(\.scenePhase) private var scenePhase
     @Namespace private var zoom
 
     enum Sheet: String, Identifiable {
@@ -21,6 +24,7 @@ struct SearchView: View {
         var options: SearchOptions
         var profile: RiderProfile?
         var userSpots: [Spot]
+        var refresh: Int
     }
 
     var body: some View {
@@ -40,7 +44,17 @@ struct SearchView: View {
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Where to kite?")
             .refreshable { await run() }
-            .task(id: SearchKey(options: options, profile: profiles.profile, userSpots: userSpots.spots)) {
+            .onChange(of: scenePhase) { _, phase in
+                guard phase == .active else { return }
+                if DayOption.isPast(options.day) {
+                    // Left open past midnight: the selected day is gone from the strip.
+                    options.day = DayOption.today.id
+                } else if let at = model.finishedAt, Date().timeIntervalSince(at) > 3600 {
+                    refresh += 1   // an hour-old answer: forecasts may have moved
+                }
+            }
+            .task(id: SearchKey(options: options, profile: profiles.profile, userSpots: userSpots.spots,
+                                refresh: refresh)) {
                 // Short debounce so a burst of taps triggers one search.
                 if model.result != nil {
                     try? await Task.sleep(for: .milliseconds(350))
@@ -121,7 +135,8 @@ struct SearchView: View {
 
 private struct DayStrip: View {
     @Binding var selection: String
-    private let days = DayOption.next()
+    /// Computed on each render so the strip moves on after midnight.
+    private var days: [DayOption] { DayOption.next() }
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
