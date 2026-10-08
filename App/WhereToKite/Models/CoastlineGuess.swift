@@ -29,6 +29,7 @@ enum CoastlineGuess {
             for radius in [120.0, 200, 300, 420, 560] {
                 let c = offset(coordinate, bearing: bearing, meters: radius)
                 let p = snapshot.point(for: CLLocationCoordinate2D(latitude: c.latitude, longitude: c.longitude))
+                guard p.x.isFinite, p.y.isFinite else { continue }   // Int(_:) traps on NaN / inf (near the poles)
                 if let water = pixels.isWater(x: Int(p.x * snapshot.image.scale), y: Int(p.y * snapshot.image.scale)) {
                     samples.append((bearing, water))
                 }

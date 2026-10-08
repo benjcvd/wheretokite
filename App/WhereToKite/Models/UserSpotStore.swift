@@ -65,10 +65,21 @@ final class UserSpotStore {
         var spots: [Spot]
     }
 
-    private static func load(from url: URL) -> [Spot] {
-        guard let data = try? Data(contentsOf: url),
-              let file = try? JSONDecoder().decode(File.self, from: data) else { return [] }
-        return file.spots
+    /// Spots whose coordinates are off the globe are dropped (MapKit raises on an invalid
+    /// region). A file that exists but can't be decoded is moved aside instead of being
+    /// silently replaced by the next save, so the user's spots can still be recovered.
+    static func load(from url: URL) -> [Spot] {
+        guard let data = try? Data(contentsOf: url) else { return [] }
+        guard let file = try? JSONDecoder().decode(File.self, from: data) else {
+            let stamp = Int(Date().timeIntervalSince1970)
+            let backup = url.deletingPathExtension().appendingPathExtension("unreadable-\(stamp).json")
+            try? FileManager.default.moveItem(at: url, to: backup)
+            return []
+        }
+        return file.spots.filter {
+            (-90...90).contains($0.latitude) && (-180...180).contains($0.longitude)
+                && ($0.seaFacingDeg?.isFinite ?? true)
+        }
     }
 
     private func save() {
