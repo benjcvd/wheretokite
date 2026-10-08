@@ -146,6 +146,33 @@ final class SmokeTests: XCTestCase {
         snapshot(app, "score-info-2")
     }
 
+    /// An archived day is labelled with its own date (it used to say "Today"), and the Kite
+    /// screen and spot detail hold up at an accessibility text size.
+    @MainActor
+    func testSearchedDayLabelAndLargeText() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-searchDay", "2026-10-03", "-searchOrigin", "41.3874,2.1686",
+                               "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityL"]
+        app.launch()
+        let start = app.buttons["Start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 5))
+        snapshot(app, "xl-onboarding")
+        start.tap()
+        let summary = app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'Afternoon 13:00'")).firstMatch
+        XCTAssertTrue(summary.waitForExistence(timeout: 60))
+        XCTAssertFalse(summary.label.hasPrefix("Today"), summary.label)
+        XCTAssertTrue(summary.label.contains("3"), summary.label)
+        sleep(1)
+        snapshot(app, "xl-kite")
+        let row = app.buttons["topSpot"].exists ? app.buttons["topSpot"] : app.buttons["spotRow"].firstMatch
+        if row.waitForExistence(timeout: 5) {
+            row.tap()
+            XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
+            sleep(2)
+            snapshot(app, "xl-detail")
+        }
+    }
+
     @MainActor
     private func snapshot(_ app: XCUIApplication, _ name: String) {
         let a = XCTAttachment(screenshot: app.screenshot())
