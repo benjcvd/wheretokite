@@ -1,3 +1,3 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # Lithuania — format: tools/spots/README.md
 LT,Klaipėda,Svencelė (Curonian Lagoon),sea,osm:n2034557394,W,Flat-water lagoon.

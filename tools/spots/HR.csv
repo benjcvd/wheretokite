@@ -1,4 +1,4 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # Croatia — format: tools/spots/README.md
 HR,Dubrovnik-Neretva,Viganj (Pelješac),sea,q:Viganj,SW,Afternoon maestral.
 HR,Dubrovnik-Neretva,Neretva delta,sea,osm:w193516528,SW,

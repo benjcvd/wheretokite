@@ -1,4 +1,4 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # Denmark — format: tools/spots/README.md
 DK,Jylland,Hvide Sande,sea,q:Hvide Sande Nordstrand,W:North Sea side|E:Ringkøbing Fjord side:lagoon,
 DK,Jylland,Klitmøller,sea,q:Klitmøller,NW,

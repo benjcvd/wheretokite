@@ -1,4 +1,4 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # Poland — format: tools/spots/README.md
 PL,Pomorskie,Rewa,sea,q:Rewa Kosakowo,E,
 PL,Pomorskie,Chałupy (Hel Peninsula),sea,"q:Chałupy, Władysławowo",SW,Puck Bay side: flat water.
