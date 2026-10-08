@@ -126,11 +126,26 @@ final class SearchModel {
         recommender.islands = loaded?.islands ?? []
     }
 
-    /// UI tests: -searchOrigin "lat,lon" replaces the device location.
+    /// UI tests: -searchOrigin "lat,lon" replaces the device location. Debug builds only:
+    /// launch arguments land in UserDefaults, and a release build must not take them.
     private static var testOrigin: Coordinate? {
+        #if DEBUG
         guard let v = UserDefaults.standard.string(forKey: "searchOrigin")?.split(separator: ","), v.count == 2,
-              let lat = Double(v[0]), let lon = Double(v[1]) else { return nil }
+              let lat = Double(v[0]), let lon = Double(v[1]),
+              (-90...90).contains(lat), (-180...180).contains(lon) else { return nil }
         return Coordinate(latitude: lat, longitude: lon)
+        #else
+        return nil
+        #endif
+    }
+
+    /// UI tests can pin a past day with a windy forecast: -searchDay yyyy-MM-dd. Debug builds only.
+    private static var testDay: String? {
+        #if DEBUG
+        UserDefaults.standard.string(forKey: "searchDay")
+        #else
+        nil
+        #endif
     }
 
     func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot]) async {
@@ -148,9 +163,8 @@ final class SearchModel {
             }
             progress = "Checking the wind at nearby spots…"
             let request = SearchRequest(
-                // UI tests can pin a past day with a windy forecast: -searchDay yyyy-MM-dd.
                 origin: origin, maxDriveMinutes: options.maxDriveMinutes,
-                day: UserDefaults.standard.string(forKey: "searchDay") ?? options.day,
+                day: Self.testDay ?? options.day,
                 slot: options.slot, intensity: options.intensity, distanceMatters: options.distanceMatters)
             let result = try await recommender.search(request, profile: profile, today: DayOption.today.id)
             try Task.checkCancellation()

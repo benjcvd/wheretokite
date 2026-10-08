@@ -37,6 +37,25 @@ final class UserSpotStoreTests: XCTestCase {
         XCTAssertEqual(json?["version"] as? Int, 1)
     }
 
+    func testUnreadableFileIsKeptAside() throws {
+        try Data("not json".utf8).write(to: url)
+        let store = UserSpotStore(fileURL: url)
+        XCTAssertTrue(store.spots.isEmpty)
+        let dir = url.deletingLastPathComponent()
+        let stem = url.deletingPathExtension().lastPathComponent
+        let backups = try FileManager.default.contentsOfDirectory(atPath: dir.path)
+            .filter { $0.hasPrefix(stem + ".unreadable-") }
+        XCTAssertEqual(backups.count, 1)
+        for b in backups { try? FileManager.default.removeItem(at: dir.appendingPathComponent(b)) }
+    }
+
+    func testOffGlobeSpotsAreDropped() {
+        let store = UserSpotStore(fileURL: url)
+        store.add(spot("Ok"))
+        store.add(spot("Off", lat: 123))
+        XCTAssertEqual(UserSpotStore(fileURL: url).spots.map(\.name), ["Ok"])
+    }
+
     func testAddNormalizesSourceAndID() {
         let store = UserSpotStore(fileURL: url)
         var s = spot("Beach")
