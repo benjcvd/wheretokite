@@ -1,40 +1,102 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # United Kingdom — format: tools/spots/README.md
-GB,England,Camber Sands,sea,q:Camber Sands,S,
-GB,England,Hayling Island,sea,"q:Beachlands, Hayling Island",S,
-GB,England,Poole Harbour – Shore Road,lagoon,"q:Shore Road, Poole",W,
-GB,England,Weymouth – Portland Harbour,sea,q:Sandsfoot,SE,
-GB,England,Exmouth,sea,q:Exmouth Beach,S,
-GB,England,Marazion,sea,q:Marazion Beach,S,
-GB,England,Saunton Sands,sea,q:Saunton Sands,W,
-GB,England,Hunstanton,sea,q:Hunstanton Beach,W,
-GB,England,West Kirby,sea,q:West Kirby Beach,W,
-GB,Wales,Rhosneigr,sea,q:Rhosneigr Beach,W,
-GB,England,Brancaster,sea,q:Brancaster Beach,N,
-GB,England,Fraisthorpe,sea,q:Fraisthorpe Beach,E,
-GB,England,Tynemouth – Longsands,sea,q:Longsands Tynemouth,E,
-GB,England,Seasalter (Whitstable),sea,q:Seasalter,N,
-GB,England,Joss Bay,sea,q:Joss Bay,E,
-GB,England,Lancing,sea,q:Lancing Beach,S,
-GB,England,Pevensey Bay,sea,q:Pevensey Bay,S,
-GB,England,West Wittering,sea,q:West Wittering Beach,S,Kiting restricted in the summer season.
-GB,England,Avon Beach (Mudeford),sea,q:Avon Beach,S,
-GB,England,Gwithian,sea,q:Gwithian,NW,
-GB,England,Perranporth,sea,q:Perranporth Beach,W,
-GB,England,Brean,sea,q:Brean Beach,W,
-GB,Wales,Rest Bay (Porthcawl),sea,q:Rest Bay Porthcawl,SW,
-GB,Wales,Cefn Sidan (Pembrey),sea,q:Cefn Sidan,SW,
-GB,Wales,Abersoch – Hell's Mouth,sea,q:Porth Neigwl,S,
-GB,Wales,Llandudno – West Shore,sea,q:West Shore Llandudno,W,
-GB,Wales,Newgale,sea,q:Newgale,W,
-GB,Scotland,Longniddry Bents,sea,q:Longniddry Bents,N,
-GB,Scotland,Belhaven Bay,sea,q:Belhaven Bay,N,
-GB,Scotland,St Andrews – West Sands,sea,q:West Sands St Andrews,NE,
-GB,Scotland,Aberdeen Beach,sea,q:Aberdeen Beach,E,
-GB,Scotland,Lossiemouth – East Beach,sea,q:Lossiemouth East Beach,NE,
-GB,Scotland,Dunnet Bay,sea,q:Dunnet Bay,NW,
-GB,Scotland,Troon – South Beach,sea,q:Troon South Beach,W,
-GB,Scotland,Tiree – Gott Bay,sea,q:Gott Bay,SE,
-GB,Scotland,Tiree – Balevullin,sea,q:Balevullin,NW,
-GB,Northern Ireland,Portstewart Strand,sea,q:Portstewart Strand,NW,
-GB,Northern Ireland,Benone Strand,sea,q:Benone Strand,N,
+# --- Kent / Sussex / Hampshire / Isle of Wight
+GB,East Sussex,Camber Sands,sea,osm:n420415208,SSE,Launch only in the year-round kite zone at the eastern (Jury's Gap / Broomhill) end. Best 3 h either side of low tide; groynes and shore break near high water.,,not-high
+GB,Kent,Greatstone (Littlestone),sea,osm:w894569692,E,"Huge shallow bay, works in N–NE winds when the rest of the south coast does not. Long walk at low tide; avoid ±90 min around high tide if learning.",,not-high
+GB,Kent,Seasalter (Whitstable),sea,osm:w93759721,N,"Shallow estuary flats; mid to high tide, long walk at low water.",,not-low
+GB,Kent,Minnis Bay,sea,osm:n343219774,N,"Thanet designated kite site, flat water in northerlies. Beach closed to kites ±2 h around high tide (sea wall).",,not-high
+GB,Essex,Shoebury East Beach,sea,osm:w128291302,SE,"Designated kite area; shallow lagoons between sandbanks at low tide, flat water, beginner friendly.",,not-high
+GB,Essex,Frinton-on-Sea,sea,osm:w64902834,SE,Rig on the greensward. Ride mid to low tide: at high tide the sea reaches the sea wall.,,not-high
+GB,Suffolk,Felixstowe Ferry,sea,osm:w844058564,SE,Deben river mouth: mirror-flat lagoon on the ebb and at low tide; avoid the flood (current sets into the river).,,low
+GB,Suffolk,Kessingland,sea,q:Kessingland Beach Holiday Park,E,"Council-approved kite zone, no groynes; large shallow pool at low tide. (Lowestoft main beach: kites Sept–May only.)",,
+GB,Norfolk,Sea Palling,sea,q:Sea Palling,NE,"Artificial offshore reefs: flat lagoons inside, punchy waves outside; strong rips at the reef gaps.",,
+GB,Norfolk,Brancaster,sea,osm:w704673222,N,"National Trust beach: use the marked kite launch zone at the beach entrance. Strong tidal streams, experienced riders only.",,
+GB,Norfolk,Hunstanton,sea,osm:r9742449,W,Flat shallow water over the sandbar at low tide; do not launch between the groynes. Rare west-facing east-coast beach.,,not-high
+GB,Lincolnshire,Cleethorpes (Humberston),sea,q:Humberston Fitties,E,"Kites zoned south of the leisure centre (Thorpe Park / Humberston Fitties end). Lagoon around mid tide, beginner friendly.",,mid
+GB,East Yorkshire,Fraisthorpe,sea,osm:w1442992116,E,,,
+GB,North Yorkshire,Redcar – Majuba,sea,osm:w107881763,N,"Main Teesside spot, WNW through N to E. Rock reefs to the east uncover at low tide.",,
+GB,County Durham,Seaton Carew,sea,q:Seaton Carew,E,"Shallow, flattish water in southerlies (Tees estuary side).",,
+GB,Tyne and Wear,Tynemouth – Longsands,sea,osm:w221550704,E,Busy surf beach: keep clear of surfers and the lifeguard zone. Kiting banned at neighbouring Whitley Bay / Cullercoats.,,
+GB,Northumberland,Blyth – Seaton Sluice,sea,osm:w185846026,E,Kiters use the Seaton Sluice (south) end of the bay. Groynes and shore dump at high tide.,,
+GB,Northumberland,Beadnell Bay,sea,osm:n393322860,E,"Reef break plus lagoon, best mid to high tide; local BKSA school.",,
+GB,Northumberland,Budle Bay,lagoon,osm:n8906542954,NE,"Tidal lagoon: rideable from ~2 h before to a few hours after high water, chop only. Watersports zone open 1 Apr–31 Oct only (closed Nov–Mar for birds).",,high
+GB,Merseyside,Wallasey (New Brighton),sea,q:Wallasey Beach,NW,Low tide lagoon or mid tide; do not kite inside the summer swim flags. Launch by Wallasey Beach Club (Coastal Drive).,,not-high
+GB,Merseyside,Hoylake – Red Rocks,sea,osm:w362327471,NW,"Nature reserve, experienced riders. Mid to high tide on neaps; no beach left on big springs, long walk at low tide.",,not-low
+GB,Merseyside,West Kirby,sea,osm:w30822710,W,Dee estuary: kite only around high tide (no kitesurfing within 100 m of the tide line otherwise).,,high
+GB,Merseyside,Ainsdale,sea,osm:w257439515,W,Only Sefton beach where kitesurfing is allowed: free council permit plus BKSA insurance required.,,
+GB,Lancashire,St Annes,sea,osm:w56313968,W,"Club spot by the Beachcomber café. Launch ~2 h before high tide; no beach on big springs, long walk at low.",,not-low
+GB,Lancashire,Fleetwood – Marine Beach,sea,q:Fleetwood Beach,NW,,,
+GB,Cumbria,Walney Island – Earnse Bay,sea,q:Walney Island,W,"Gently shelving, exposed to the Irish Sea; kite school on the beach.",,
+# --- South West
+GB,Somerset,Brean,sea,osm:w682452846,W,Huge tidal range: very long walk over sand and mud at low water.,,
+GB,Somerset,Weston-super-Mare – Uphill,sea,osm:r16699239,W,Dedicated kite zone at the Uphill end. 10 m+ tides: ride ~3 h either side of high tide only.,,high
+GB,Devon,Westward Ho!,sea,osm:w151234392,W,1 Jun–30 Sep kites only in the designated sand-sports zone (right of the lifeguard hut). Best around low tide; no riding at high tide.,,low
+GB,Devon,Saunton Sands,sea,osm:r9452840,W,Kite zone starts past the White Rock marker ~400 m down the beach. No kitesurfing in July and August.,,
+GB,Cornwall,Watergate Bay,sea,q:Watergate Bay,WNW,Marked Kitesports Zone north of the rocks. No kiting 2 h either side of high tide; keep out of the lifeguard flags in season.,,not-high
+GB,Cornwall,Daymer Bay,sea,q:Daymer Bay,W,"Camel estuary, sheltered from swell. Kites banned 10:00–18:00 in July–August. Ride on the flood or slack; strong ebb.",,
+GB,Cornwall,Perranporth (Perran Sands),sea,q:Perran Sands,W,"Kiting banned at the Perranporth town end all year: use the Perran Sands (north) end. Exposed, rips in bigger swell.",,
+GB,Cornwall,Gwithian,sea,q:Gwithian,NW,St Ives Bay. Kites off limits 10:00–18:00 from mid-July to early September and between the lifeguard flags.,,
+GB,Cornwall,Marazion – Long Rock,sea,"q:Long Rock, Cornwall",SE,"Mount's Bay, beginner friendly in the prevailing SW (cross-on).",,
+GB,Devon,Bantham,sea,q:Bantham Beach,SW,"Avon estuary mouth opposite Bigbury. Low tide to 1–2 h before high; stay right of the RNLI flags, 50 m from swimmers/surfers.",,not-high
+GB,Devon,Exmouth,lagoon,"q:Imperial Recreation Ground, Exmouth",NW:Duck Pond (estuary):lagoon|SW:Seafront:sea,"Duck Pond: flat estuary lagoon, launch from the Imperial Recreation Ground; stay west of the yellow buoys 15 Sept–31 Dec (Brent geese). Seafront: ±2 h around high tide.",,
+# --- Dorset / Hampshire / Sussex
+GB,Dorset,Weymouth – Portland Harbour,sea,q:Hamm Beach,N,"Flat water in most winds, any tide. Launch Ferrybridge / Hamm Beach; Portland Port permit and third-party insurance required. Fast ebb through Ferrybridge.",,
+GB,Dorset,Weymouth – Overcombe,sea,"q:Overcombe, Weymouth",S,"Weymouth Bay: bump and jump, waves in easterlies.",,
+GB,Dorset,Studland – Knoll Beach,sea,q:Knoll Beach,E,National Trust kite zone at the north end of Knoll Beach (not Shell Bay); NT permit required. Easterly-wind spot.,,
+GB,Dorset,Poole Harbour – Shore Road,lagoon,"q:Shore Road, Poole",W,"Whitley Lake, Sandbanks: flat shallow harbour water; Poole Harbour Commissioners kite permit required. Best mid to high tide; boat traffic.",,not-low
+GB,Dorset,Avon Beach (Mudeford),sea,osm:n6578040739,SE,"Kite in the watersports area in front of the car park, never inside the summer swim zone.",,
+GB,Hampshire,Calshot,sea,q:Calshot Beach,E,"Spit at the mouth of Southampton Water: lagoons and sheltered water, kite school on site. Ship traffic in the channel.",,
+GB,Isle of Wight,Ryde – Appley,sea,q:Appley Beach,N,"Solent shore: shallow sandbars and pools at low tide, waist deep at half tide.",,
+GB,Hampshire,Hayling Island,sea,"q:Beachlands, Hayling Island",S,"Official kite beach just east of the Beachlands funfair (free, no safety cover); CBK club at the west end. Keep 2 line lengths off the shore in swim season.",,
+GB,West Sussex,West Wittering,sea,q:West Wittering Beach,S,"Private estate beach: kitesurfing for 2XS members only, year round, launch in the buoyed area; no launching at high tide.",,not-high
+GB,West Sussex,Bracklesham Bay,sea,q:Bracklesham Bay,S,"Long shallow beach, kite school; popular learning spot.",,
+GB,West Sussex,Littlehampton,sea,"q:East Beach, Littlehampton",S,"East Beach (Sea Road), BKSA school; flat knee- to waist-deep water around low tide.",,low
+GB,West Sussex,Lancing,sea,osm:w494402945,S,Designated kitesports zone (beginner and advanced sections); stay out of the swim zones 1 May–30 Sept. Best 3–4 h either side of high tide.,,not-low
+GB,East Sussex,Pevensey Bay,sea,q:Pevensey Bay,S,"Strict summer beach zoning (fines). Shingle at high tide, sand at low; bump and jump.",,not-low
+# --- Wales
+GB,North Wales,Kinmel Bay,sea,q:Kinmel Bay,N,Flat water in WSW through N to NE. Council kite permit required (day or annual).,,
+GB,North Wales,Llandudno – West Shore,sea,q:West Shore Llandudno,W,,,
+GB,Anglesey,Llanddwyn (Newborough),sea,q:Llanddwyn Beach,SW,Kites set up on the left-hand side of the beach only (turn left through the dunes). Any tide; boulders in places.,,
+GB,Anglesey,Rhosneigr,sea,osm:w367083960,SW,"Anglesey's main spot (Traeth Llydan / Crigyll): waves and big air. Rips near the river and the south end, yellow-buoyed lanes.",,
+GB,Gwynedd,Black Rock Sands,sea,q:Black Rock Sands,SW,"Kitesurfing allowed all year (land kiting banned Mar–Nov). Flat in light winds, small waves in strong ones.",,
+GB,Gwynedd,Abersoch – Hell's Mouth,sea,osm:w61720348,SW,"Porth Neigwl: waves, gusty; experienced riders.",,
+GB,Ceredigion,Borth – Ynyslas,sea,q:Ynyslas,W,"Dyfi estuary mouth: kite at high tide; strong tidal currents, no swimming.",,high
+GB,Pembrokeshire,Newgale,sea,q:Newgale,W,"Pembrokeshire's most popular kite beach, school on site. No launching at high tide.",,not-high
+GB,Pembrokeshire,Freshwater West,sea,q:Freshwater West,W,Big surf beach with reef and strong currents: experienced riders only.,,
+GB,Pembrokeshire,Tenby – South Beach,sea,"q:South Beach, Tenby",SE,"Sheltered, flat; works SW round to NE, any tide.",,
+GB,Carmarthenshire,Cefn Sidan (Pembrey),sea,osm:w309274969,SW,,,
+GB,Gower,Llangennith (Rhossili Bay),sea,q:Llangennith,W,"Zoned surf beach, most swell on Gower; respect the surf zone.",,
+GB,South Wales,Aberavon,sea,q:Aberavon Beach,SW,,,
+GB,South Wales,Rest Bay (Porthcawl),sea,osm:w204830972,SW,Any tide; Atlantic swell.,,
+# --- Scotland
+GB,East Lothian,Longniddry Bents,sea,osm:w238195404,NW,Edinburgh's main kite beach; best around low tide.,,not-high
+GB,East Lothian,Belhaven Bay,sea,q:Belhaven Bay,NE,,,
+GB,Fife,Pettycur Bay (Kinghorn),sea,q:Pettycur Bay,S,"Best in SW; tide comes in fast, beginners at low tide only.",,
+GB,Fife,Leven,sea,q:Leven Beach,SE,"One of the few east-coast spots for SW winds; shallow, beach parking.",,
+GB,Fife,St Andrews – West Sands,sea,osm:w26998937,NE,,,
+GB,Angus,Monifieth,sea,q:Monifieth Beach,S,"Tay estuary: SE–SW, wind accelerates in SW; flat, shallow, easy access.",,
+GB,Aberdeenshire,Aberdeen Beach,sea,osm:w949102150,E,"City beach for quick sessions: groynes, rip and onshore mess; Balmedie is usually better.",,
+GB,Aberdeenshire,Balmedie,sea,q:Balmedie Beach,E,"Flat lagoons at low tide; rip strongest at mid tide, submerged posts at high tide.",,
+GB,Aberdeenshire,Newburgh (Ythan),sea,osm:w314636606,E,"Ythan estuary flat water, 2–3 h either side of high tide.",,high
+GB,Aberdeenshire,Fraserburgh,sea,q:Fraserburgh Bay,N,"Large bay, best on the incoming tide; waves in W wind with NW swell.",,
+GB,Moray,Findhorn,sea,q:Findhorn Beach,N,Seaward beach; Findhorn Bay inside is flat around high tide.,,
+GB,Highland,Nairn,sea,q:Nairn East Beach,N,"Shallow, beginner friendly; kite school.",,
+GB,Moray,Lossiemouth – East Beach,sea,osm:r1523260,NE,,,
+GB,Caithness,Dunnet Bay,sea,q:Dunnet Beach,W,,,
+GB,Kintyre,Machrihanish,sea,q:Machrihanish,W,"Kintyre's big Atlantic beach: launch near the village in SW, at Westport in S–SE. Shore break in W–NW.",,
+GB,Ayrshire,Troon – South Beach,sea,osm:n12259453543,SW,,,
+GB,Ayrshire,Barassie,sea,q:Barassie Beach,W,"Troon's north bay; long, wide and flat, popular teaching spot.",,
+GB,Tiree,Tiree – Gott Bay,sea,q:Gott Bay,SE,"Long shallow bay: beginner, freestyle and freeride; flat water in SW.",,
+GB,Tiree,Tiree – Balephetrish,sea,q:Balephetrish Bay,N,"Reef-protected bay, flat water in most winds; big waves in N swell (experts).",,
+GB,Tiree,Tiree – Balevullin,sea,q:Balevullin,NW,"Tiree's best waves; limited kite space, rips at high tide, rocks.",,
+GB,Tiree,Tiree – The Maze,sea,q:Traigh Thodhrasdail,W,Open to all Atlantic swell; Tiree Wave Classic venue.,,
+GB,Tiree,Tiree – Balephuil,sea,q:Balephuil,SW,Down-the-line waves in W; wind shadow at high tide.,,
+GB,Tiree,Tiree – Crossapol,sea,q:Crossapol Bay,S,Large easy beach; jumping in westerlies. Avoid the buoyed wreck.,,
+# --- Northern Ireland
+GB,County Londonderry,Portstewart Strand,sea,osm:w305364153,NW,"3 km beach break, best W–SW with small swell; strong rips.",,
+GB,County Londonderry,Benone Strand,sea,q:Benone Strand,N,,,
+GB,County Down,Ballyholme (Bangor),sea,q:Ballyholme,N,Launch from the beach car park or yacht club; best in strong northerlies.,,
+GB,County Down,Strangford Lough – Newtownards,lagoon,q:Newtownards Sailing Club,SW,"Kite community at Newtownards Sailing Club; good in southerlies, patchy in northerlies. Keep clear of birds (overwintering Oct–Mar, Brent geese from late Aug).",,
+GB,County Down,Cloughey,sea,q:Cloughey Beach,E,Ards Peninsula: flat water at low tide in easterlies.,,
+GB,County Down,Tyrella,sea,q:Tyrella Beach,S,"Dundrum Bay: small kickers to medium waves, onshore beginner friendly in S.",,
+GB,County Down,Cranfield,sea,q:Cranfield Bay,S,"Carlingford Lough mouth: standing depth, boat traffic.",,
