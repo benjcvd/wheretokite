@@ -1,20 +1,61 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # France: Mediterranean coast, Corsica, Alps / south-eastern lakes — format: tools/spots/README.md
-FR,Languedoc-Roussillon,Le Barcarès,sea,q:Plage du Barcarès,E,
-FR,Languedoc-Roussillon,Leucate – Les Coussoules / La Franqui,sea,q:Plage des Coussoules,ESE,Famous tramontane spot; the tramontane (NW) is offshore here: experts only.
-FR,Languedoc-Roussillon,Étang de La Palme,lagoon,osm:n4299104622,NW,Shallow flat-water lagoon; launch on the south-east shore.
-FR,Languedoc-Roussillon,Port-la-Nouvelle,sea,q:Plage de Port-la-Nouvelle,E,
-FR,Languedoc-Roussillon,Gruissan – Les Chalets,sea,q:Plage des Chalets Gruissan,SE,
-FR,Languedoc-Roussillon,Sète – Lido,sea,q:Plage des Trois Digues Sète,SE,
-FR,Languedoc-Roussillon,Le Grau-du-Roi – L'Espiguette,sea,q:Plage de l'Espiguette,S,
-FR,Provence,Saintes-Maries-de-la-Mer – Beauduc,sea,q:Plage de Beauduc,SW,Remote beach (track access).
-FR,Provence,Salin-de-Giraud – Piémanson,sea,q:Plage de Piémanson,S,
-FR,Provence,Port-Saint-Louis – Plage Napoléon,sea,q:Plage Napoléon Port-Saint-Louis-du-Rhône,S,
-FR,Provence,Carro,sea,osm:w610782025,W,
-FR,Provence,Marseille – Pointe Rouge,sea,q:Plage de la Pointe Rouge Marseille,W,
-FR,Provence,Six-Fours – Le Brusc,sea,q:Plage du Brusc,W,
-FR,Provence,Hyères – L'Almanarre,sea,q:Plage de l'Almanarre,W,
-FR,Corse,Bonifacio – Piantarella,sea,q:Piantarella,E,
-FR,Corse,Bonifacio – Tonnara,sea,q:Plage de la Tonnara Bonifacio,W,
-FR,Alpes,Lac de Serre-Ponçon – Boscodon / Crots,lake,osm:n1128590012,,Thermal wind from late morning; kiting forbidden near the bridge and in bathing areas.
-FR,Alpes,Lac de Monteynard,lake,osm:n4390731413,,Famous thermal spot (south wind in the afternoon).
+# Roussillon (Pyrénées-Orientales)
+FR,Roussillon,Argelès-sur-Mer – Le Racou,sea,osm:w80445334,E,"Summer (June–Sept): kite only in the buoyed zone, reached through the marked channel. Waves with marin (SE), tramontane offshore.",,
+FR,Roussillon,Saint-Cyprien / Canet – Pont des Basses,sea,osm:n13075748610,E,Kite zone regulated by municipal decree from May to September (marked channel). Waves with SE / thermal; tramontane offshore: experienced riders.,,
+FR,Roussillon,Torreilles – Le Blockhaus,sea,osm:n343226792,E,"Summer kite zone left of the lifeguard post (north beach, towards the Agly mouth). Works with SE / thermal; tramontane offshore.",,
+FR,Roussillon,Le Barcarès – Les 3 Colonnes,sea,osm:w591387982,E,Official kite zone; narrow launch behind the dunes. Waves with marin (SE) and summer thermal; tramontane offshore.,,
+FR,Roussillon,Le Barcarès – Parc des Dosses (Étang de Leucate),lagoon,osm:w739431495,W,"Flat water by tramontane (offshore, often 30 kn+): experienced riders; no launching on the main lagoon side, keep clear of the wake cable. UCPA Éole (Cap Coudalère) next door suits intermediates.",,
+# Languedoc (Aude, Hérault, Gard)
+FR,Languedoc,Leucate – Le Goulet,lagoon,osm:w215452317,W,Shallow flat water on the Étang de Leucate below Leucate village; first place the tramontane hits. Helmet and impact vest recommended (shallow).,,
+FR,Languedoc,Leucate – Les Coussoules / La Franqui,sea,osm:r3158694,ESE,Famous tramontane spot (Mondial du Vent); the tramontane (NW) is offshore here: experts only. Waves with marin (SE). Summer: kite zones only.,,
+FR,Languedoc,Étang de La Palme,lagoon,osm:n4299104622,W,"Shallow flat-water lagoon, safe by tramontane (onshore at the launch); schools on site. Good for learning.",,
+FR,Languedoc,Port-la-Nouvelle,sea,osm:r5810590,ESE,Wide beach exposed to the tramontane (offshore: experienced riders) and to marin (waves). Summer: kite zone only.,,
+FR,Languedoc,Gruissan – La Vieille Nouvelle,sea,osm:w49202040,ESE,"Glassy water by tramontane, which is offshore and strong: experienced riders, drift risk, no lifeguards. Sandy track access (2.15 m height bar). No riding on the Étang de l'Ayrolle.",,
+FR,Languedoc,Gruissan – Les Chalets / Grazel,sea,osm:w49248872,SE:Plage des Chalets|NW:Étang du Grazel:lagoon,"Sea side: Défi Wind beach, waves with marin, tramontane offshore. Étang du Grazel: small enclosed shallow lagoon used by the kite school, flat in any wind.",,
+FR,Languedoc,Narbonne-Plage – Créneau Naturel,sea,osm:n1724005026,SE,"Wild beach west of Narbonne-Plage with a kite zone. Flat water by tramontane (offshore), waves with marin.",,
+FR,Languedoc,Saint-Pierre-la-Mer – Pissevaches,sea,osm:n12005699213,SE,"300 m kite-only zone run by a school (day pass and RC insurance required, open on tramontane days). Must be able to ride upwind.",,
+FR,Languedoc,Narbonne – La Nautique,lagoon,osm:n6815096936,SSW,Étang de Bages-Sigean nautical base; kite sector in the south-east part of the lagoon. Flat water by tramontane.,,
+FR,Languedoc,Lac de la Ganguise,lake,osm:r2079969,NE,"Kite tolerated only in a small zone reached via the Auberge Le Cathare (Belflou). Venturi with autan (SE), often 25–30 kn+. Not for beginners; leave the water when firefighting planes operate.",,
+FR,Languedoc,Sérignan – La Grande Maïre,sea,osm:n9022469891,SSE,Summer: kite only in the short zone between Sérignan-Plage and Portiragnes-Plage. Thermal / marin sea breeze.,,
+FR,Languedoc,Agde – La Tamarissière,sea,osm:w114843096,S,Only beach in Agde where kiting is allowed in summer (kite zone near the Hérault mouth). Works with W to SE winds.,,
+FR,Languedoc,Marseillan – Étang de Thau,lagoon,osm:w370485330,NW,Western Étang de Thau near Marseillan-Plage / Maldormir: flat shallow water by tramontane. Keep clear of oyster farms; check local rules (association Camikas).,,
+FR,Languedoc,Mèze – La Pinède,lagoon,osm:n8951413979,S,"North shore of the Étang de Thau; flat water, backup spot when the sea is too rough. School on site.",,
+FR,Languedoc,Sète – Pont-Levis,lagoon,osm:n8431319287,NW,"Étang de Thau reference flat-water spot. Launch from the sandbank safe zone, one kite at a time; tramontane (NW) onshore. Booties (urchins).",,
+FR,Languedoc,Sète – Les 3 Digues,sea,q:Plage des Trois Digues Sète,SE,"One of the few beaches where kiting is allowed in summer (kite zone). Thermal / SW onshore; avoid north wind (offshore, gusty).",,
+FR,Languedoc,Frontignan – Étang d'Ingril,lagoon,osm:n1305757756,N,Shallow lagoon behind Frontignan-Plage: you stand almost everywhere. Good for learning; flat by tramontane.,,
+FR,Languedoc,Villeneuve-lès-Maguelone – Maguelone,sea,osm:w389802445,S,Summer: kiting only in the Maguelone zone (Prévost beach banned in summer; little train from the car park). Tramontane is offshore: safety boat compulsory.,,
+FR,Languedoc,Carnon – Petit Travers,sea,osm:n3017067163,S,Long wild beach between Carnon and La Grande-Motte; works S to SW. Les Roquilles (Carnon west) is forbidden in summer.,,
+FR,Languedoc,La Grande-Motte,sea,osm:r5342689,S,Two designated kite zones: by the port / nautical club (Couchant) and at Grand Travers. Works S to SW; small waves.,,
+FR,Languedoc,Lac du Salagou,lake,osm:w264348544,NW,"Kite tolerated (Natura 2000). Small grassy launch with trees, left of the road before the campsite: advanced riders. Tramontane stronger than on the coast.",,
+FR,Languedoc,Le Grau-du-Roi – Le Boucanet,sea,osm:w66097905,S,"Experienced riders; best with west wind and waves, also S.",,
+FR,Languedoc,Port-Camargue – Plage Sud,sea,osm:w66033678,SW,Sheltered behind the long jetties; flat water by NW / mistral (offshore-ish): experienced riders.,,
+FR,Languedoc,Le Grau-du-Roi – L'Espiguette,sea,q:Plage de l'Espiguette,S,"Huge wild beach; works S, SE, SW and NW. Long walk from the car park; crowded in summer.",,
+# Camargue and Provence (Bouches-du-Rhône)
+FR,Camargue,Saintes-Maries-de-la-Mer – Plage Est,sea,osm:n11893130578,S,Only beach of Saintes-Maries where kiting is tolerated (paid access). Continues east towards Beauduc.,,
+FR,Camargue,Beauduc,sea,q:Plage de Beauduc,SW,"Legendary Camargue spot, huge beach and flat bay; mistral and S–SW. Remote: dirt track, vehicles max 2.10 m wide, no cars on the beach.",,
+FR,Camargue,Salin-de-Giraud – Piémanson,sea,q:Plage de Piémanson,SSW,Long wild beach; best S–SW. Strong currents near the Rhône mouth with SE wind.,,
+FR,Camargue,Port-Saint-Louis – Plage Napoléon,sea,q:Plage Napoléon Port-Saint-Louis-du-Rhône,SE,Isolated sand spit (protected area); works SE to SSW. All levels.,,
+FR,Camargue,Port-Saint-Louis – Carteau,sea,osm:n11612506178,E,"Closed bay of the Golfe de Fos: flat water with S / SE wind, beginner to intermediate. Mistral is gusty here; beware of drifting onto the mussel farms.",140,
+FR,Provence,Fos-sur-Mer – Le Cavaou,sea,osm:n11612506186,S,Beach at the end of the road; SE / E for waves. Kiting banned in summer (about mid-June to mid-September).,,
+FR,Provence,Marignane – Le Jaï,lagoon,osm:r18086573,NW,"5 km sand strip on the Étang de Berre, one of the windiest places in Provence; mistral (strong, gusty), SE and W thermal. Schools on site.",,
+FR,Provence,Carro,sea,osm:w610782025,SW,"Experienced riders only: tight rocky launch, big waves and currents. SE side-shore; mistral irregular.",,
+FR,Provence,Marseille – Pointe Rouge,sea,q:Plage de la Pointe Rouge Marseille,NW,Mistral spot (Pointe Rouge / Bonneveine): advanced riders. Kiting banned on the beaches in summer (about mid-June to mid-September).,,
+# Var
+FR,Var,Six-Fours – Le Brusc,sea,osm:w354842415,W,"Plage des Charmettes, sheltered from swell by the Embiez islands; SW to NW (mistral). Technical launch (rocks). Kiting banned June–September.",,
+FR,Var,Hyères – L'Almanarre,sea,q:Plage de l'Almanarre,W,World-famous W / SW spot. Kite zone between beach gates 16 and 21 with marked channel; ride beyond the 300 m buoys. Crowded in summer (15 June–15 Sept rules).,,
+FR,Var,Hyères – Le Mérou,sea,osm:w198196306,SE,"Hyères' second official kite zone (L'Ayguade), for east wind: flat by west wind, choppy by east wind. Small launch area: intermediate / advanced.",,
+FR,Var,Fréjus – Saint-Aygulf,sea,osm:w339192637,SE,Summer: kite zone at the Argens mouth (Base Nature side); late Sept to early June: Saint-Aygulf (Esclamandes) kite zone. Thermal S and E winds.,,
+# Côte d'Azur
+FR,Côte d'Azur,Cannes – Palm Beach,sea,osm:n2470907668,S,"Only kite spot of Cannes (Pointe de la Croisette, old heliport launch). Very narrow rocky launch, boat traffic: experienced riders only.",220,
+# Corse
+FR,Corse,Bonifacio – Piantarella,sea,q:Piantarella,E,"Shallow flat water behind the sandbank to Piana island; E / NE wind (avoid W). July–August: no room to rig, schools only.",,
+FR,Corse,Bonifacio – Tonnara,sea,q:Plage de la Tonnara Bonifacio,W,World-renowned W (libeccio) spot in the Ventilègne gulf; flat by east wind. The closed bay of Pont de Ventilègne next door suits beginners.,,
+FR,Corse,Figari – Baie de Figari,sea,osm:w372809399,W,"Closed, shallow bay, very safe: ideal for beginners. Works with W (thermal, libeccio, mistral). Large kite school.",120,
+FR,Corse,Bonifacio – Balistra,sea,osm:w188083468,E,"Wild beach with a shallow lagoon behind it. Flat water by W (offshore, venturi), small waves by E. The local school closed in 2023.",,
+FR,Corse,Porto-Pollo – Plage du Taravo,sea,osm:n896353589,SW,Summer thermal almost every afternoon; kite zone marked by yellow buoys (managed by an association). Good for beginners and foil.,,
+FR,Corse,Calvi – La Pinède,sea,osm:w40323298,NNE,"Big sandy bay; W (libeccio) and NE. Summer: head to the north-east end of the beach, away from swimmers.",,
+# Alps and south-eastern lakes
+FR,Alpes,Lac de Serre-Ponçon – Boscodon / Crots,lake,osm:n1128590012,NW,"Only kite spot of the lake (Plage des Eaux Douces, Crots, with school). Thermal wind from late morning; kiting forbidden near the bridge and in bathing areas.",,
+FR,Alpes,Lac de Monteynard,lake,osm:n4390731413,E,"Famous thermal spot: strong south wind in spring and summer afternoons, north return wind. Main launches at Treffort.",,
+FR,Alpes,Lac du Bourget – Aix-les-Bains,lake,osm:w37291746,W,"Kite club zone at Aix-les-Bains: ride fast and jump only beyond the yellow buoys (200 m). 'La Traverse' W thermal, late afternoon; erratic: advanced riders.",,
