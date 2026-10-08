@@ -1123,8 +1123,16 @@ def main():
     for s_ in spots:
         ferry = ferry_needed(s_["latitude"], s_["longitude"])
         if ferry is None:
-            warnings.append("%s: no car route found; treated as needing a ferry" % s_["id"])
-            ferry = True
+            # Routing hiccup (point snapped onto a dyke, server error…): retry from the second
+            # nearest city. Still nothing: only far from every mainland city (Dakhla) is
+            # that a sea crossing; otherwise keep the spot on the road network.
+            near2 = sorted(ANCHORS, key=lambda c: haversine(c[0], c[1], s_["latitude"], s_["longitude"]))
+            ferry = ferry_needed(s_["latitude"], s_["longitude"], start=near2[1])
+            if ferry is None:
+                far = haversine(near2[0][0], near2[0][1], s_["latitude"], s_["longitude"]) > 1000000
+                warnings.append("%s: no car route found; treated as %s" % (
+                    s_["id"], "needing a ferry (far from the mainland cities)" if far else "reachable by road"))
+                ferry = far
         if ferry:
             s_["access"] = "ferry"
             # Reuse an outline already found (one is_in query per island, not per spot).

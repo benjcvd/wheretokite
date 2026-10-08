@@ -1,5 +1,15 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # Belgium — format: tools/spots/README.md
-BE,Westkust,De Panne,sea,q:Strand De Panne,NW,
-BE,Oostkust,Oostende,sea,osm:n7834988905,NW,
-BE,Oostkust,Knokke-Heist,sea,q:Strand Knokke,NW,
+# Kiting on the Belgian coast is only allowed in the zone of a beach club (day membership
+# with insurance and a wristband). Sources: 35knots.com, bindy.world, club sites.
+BE,Westkust,De Panne,sea,osm:w173184566,NW,"Very wide beach at low tide. Kite zone of the beach club, day membership required.",,
+BE,Westkust,Oostduinkerke – Groenendijk,sea,osm:w264066223,NW,Surfclub Windekind (Sycod 1.5 km west). Club day membership required.,,
+BE,Westkust,Westende,sea,osm:w131306576,NW,Beachclub De Kwinte. Club day membership required.,,
+BE,Oostkust,Oostende,sea,osm:n14084411301,NW,"Mariakerke side, Surfclub Inside Outside. Club day membership required; often crowded.",,
+BE,Oostkust,Bredene,sea,osm:w88691259,NW,Twins Club. Club day membership required.,,
+BE,Oostkust,De Haan,sea,osm:w674535446,NW,Watersportclub De Windhaan. Club day membership required.,,
+BE,Oostkust,Wenduine,sea,osm:w963038656,NW,Surfing Elephant. Club day membership required.,,
+BE,Oostkust,Blankenberge,sea,osm:n4282831149,NW,Beachclub Blankenberge. Club day membership required.,,
+BE,Oostkust,Zeebrugge,sea,osm:w501178705,NW,"Surfclub Icarus, west of the port: flatter water. Club day membership required.",,
+BE,Oostkust,Knokke-Heist,sea,osm:w462299478,NW,Duinbergen (Beachclub Anemos). Wide beach at low tide; club day membership required.,,
+BE,Oostkust,Knokke – Het Zoute,sea,osm:n1237850032,NW,"Surfers Paradise, Het Zoute; advanced riders. Club day membership required.",,

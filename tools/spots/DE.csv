@@ -1,15 +1,58 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # Germany — format: tools/spots/README.md
-DE,Schleswig-Holstein,Sankt Peter-Ording,sea,q:Strand Sankt Peter-Ording,W,
-DE,Schleswig-Holstein,Sylt – Westerland,sea,q:Strand Westerland,W,
-DE,Schleswig-Holstein,Fehmarn – Gold,sea,"q:Gold, Fehmarn",S,
-DE,Schleswig-Holstein,Fehmarn – Grüner Brink,sea,q:Grüner Brink Fehmarn,N,
-DE,Schleswig-Holstein,Fehmarn – Wulfener Hals,sea,q:Wulfener Hals,S,
-DE,Schleswig-Holstein,Heiligenhafen,sea,q:Steinwarder Heiligenhafen,N,
-DE,Schleswig-Holstein,Laboe,sea,q:Strand Laboe,N,
-DE,Mecklenburg-Vorpommern,Rerik – Salzhaff,lagoon,q:Rerik Salzhaff,,Flat-water lagoon.
-DE,Niedersachsen,Norddeich,sea,q:Norddeich Strand,NW,Wadden Sea: ride around high tide.
-DE,Niedersachsen,Schillig,sea,q:Strand Schillig,NE,Wadden Sea: ride around high tide.
-DE,Niedersachsen,Hooksiel,sea,q:Hooksiel Strand,E,
-DE,Niedersachsen,Dümmer,lake,q:Hüde Dümmer,,
-DE,Niedersachsen,Steinhuder Meer,lake,q:Badeinsel Steinhude,,
+# Wadden Sea spots lie in the national park: kite only in the marked zones, mostly in a tide
+# window. Sources: kitesurftheworld.com, kitemagazin.de (Befahrensverordnung 2023 zones),
+# kite-and-windsurfing-guide.com, lifetravellerz.com, auf-nach-mv.de, kite schools.
+# Nordfriesland / Dithmarschen
+DE,Schleswig-Holstein,Sylt – Westerland,sea,osm:w73822988,W,"Brandenburger Strand: Germany's main wave spot, strong current between the groynes. Experienced riders.",,
+DE,Schleswig-Holstein,Sylt – List (Königshafen),sea,osm:w740019465,N,"Wadden Sea, shallow flat water. Nature reserve: launch only from the kite beach, ride inside the buoys, about 2–3 h either side of high tide.",,high
+DE,Schleswig-Holstein,Sylt – K4 (Hörnum),sea,osm:n1898635794,W,"West beach 4 km north of Hörnum: flat channels at low tide, waves at high tide; strong coastal current.",,
+DE,Schleswig-Holstein,Sylt – Hörnum Möwennest,sea,osm:w159636121,E,Wadden side behind the Möwennest hostel: flat shallow water for E winds. National park: only about 2–3 h either side of low tide.,,low
+DE,Schleswig-Holstein,Dagebüll,sea,osm:w1185945037,W,"Wadden Sea, by the ferry pier; around high tide only.",,high
+DE,Schleswig-Holstein,Nordstrand – Holmer Siel,sea,osm:w612388781,NW,Wadden Sea: about 5 h around high tide; groyne fields (Lahnungen) at low water.,,high
+DE,Schleswig-Holstein,Husum – Dockkoog,sea,osm:n5004487464,W,"Wadden Sea, around high tide. Busy in summer; no-go channel south of the point.",,high
+DE,Schleswig-Holstein,Sankt Peter-Ording,sea,osm:n9886501949,W,"Ording beach (kite world cup venue): huge beach, flat to small waves, tide-dependent; strong current at times.",,
+DE,Schleswig-Holstein,Büsum – Perlebucht,sea,osm:w731307804,SW,"Northern part of the Perlebucht lagoon only; tidal, ride around high tide.",,high
+# Niedersachsen
+DE,Niedersachsen,Cuxhaven – Kugelbake,sea,osm:n605290780,NE,"Elbe mouth: current and shipping lane. National park zone, about 3 h either side of high tide.",,high
+DE,Niedersachsen,Cuxhaven – Sahlenburg,sea,osm:w323037326,W,Large standing area; about 4 h either side of high tide.,,high
+DE,Niedersachsen,Otterndorf,sea,osm:w28802403,N,Elbe estuary: strong tidal current and shipping lane nearby; ride around high tide.,,high
+DE,Niedersachsen,Dorum-Neufeld,sea,osm:w35573602,W,"Wadden Sea, shallow: about 3 h either side of high tide. Channels are shipping lanes.",,high
+DE,Niedersachsen,Wremen,sea,osm:n12818896948,W,"Wadden Sea, large standing area: about 3.5 h either side of high tide.",,high
+DE,Niedersachsen,Butjadingen – Tossens,sea,osm:w224484806,W,"Wadden Sea, shallow; about 3 h either side of high tide.",,high
+DE,Niedersachsen,Hooksiel,sea,osm:n13261647068,E,"Jade, shallow; ride around high tide.",,high
+DE,Niedersachsen,Schillig,sea,osm:n6641317345,NE,"Wadden Sea, shallow; ride around high tide. Kite school on site.",,high
+DE,Niedersachsen,Neuharlingersiel,sea,osm:w179808917,N,Wadden Sea; about 3.5 h either side of high tide.,,high
+DE,Niedersachsen,Norddeich,sea,osm:w305445041,NW,"Wadden Sea, kite area by the surf school; ride around high tide.",,high
+DE,Niedersachsen,Norderney – Nordstrand,sea,osm:w29347670,N,Marked kite zone on the north beach; island rules limit the hours (not early morning).,,
+DE,Niedersachsen,Borkum – Nordstrand,sea,osm:w159750055,W,Marked kite zone on the north beach; island rules limit the hours (not early morning).,,
+DE,Niedersachsen,Langeoog – Nordstrand,sea,osm:w503592289,NW,"Sportstrand on the north beach: waves at high tide, shallow at low tide; island rules limit the hours.",,
+# Baltic Sea — Schleswig-Holstein
+DE,Schleswig-Holstein,Flensburger Förde – Holnis,sea,osm:w141637023,,"Fjord spot, shallow near shore; marked kite zone in summer.",,
+DE,Schleswig-Holstein,Flensburger Förde – Schausende,sea,osm:w85471971,N,Fjord spot with a small standing area; boat traffic and occasional nets.,,
+DE,Schleswig-Holstein,Laboe,sea,osm:w125149287,N,"Kiel Fjord mouth, shallow and flat near shore.",,
+DE,Schleswig-Holstein,Stein,sea,osm:w1018549156,N,"About 200 m of standing area, flat to wavy.",,
+DE,Schleswig-Holstein,Heiligenhafen,sea,osm:w1065266459,N,"Steinwarder, east of the pier: wind waves, beginner zone in the shallows.",,
+DE,Schleswig-Holstein,Großenbrode,sea,osm:w42734527,S,Flat water and small waves.,,
+DE,Schleswig-Holstein,Fehmarn – Gold,sea,osm:w221422670,W,"Huge shallow standing area, busy with schools; stones in the north part.",,
+DE,Schleswig-Holstein,Fehmarn – Lemkenhafen (Orther Reede),sea,osm:n261744611,S,Flat shallow water in the Orther Reede.,,
+DE,Schleswig-Holstein,Fehmarn – Wulfener Hals,sea,osm:w50165851,S,"Flat shallow water in the bay, small waves outside; best in E winds.",,
+DE,Schleswig-Holstein,Fehmarn – Grüner Brink,sea,osm:w35337519,N,North coast: works in E winds when other spots are offshore; shared with a dog beach.,,
+DE,Schleswig-Holstein,Pelzerhaken,sea,osm:w1053164197,SE,"Long sandy beach, shallow; flat to small waves.",,
+# Baltic Sea — Mecklenburg-Vorpommern
+DE,Mecklenburg-Vorpommern,Salzhaff – Pepelow,lagoon,osm:n11047825855,N,"Salzhaff: shallow flat-water lagoon, ideal for learning.",,
+DE,Mecklenburg-Vorpommern,Warnemünde,sea,osm:w775199496,N,"Kite access at beach access 13, west of the pier; rough waves in strong N–NW wind.",,
+DE,Mecklenburg-Vorpommern,Wustrow,sea,osm:w1343007831,NW:Baltic side|SE:Saaler Bodden side:lagoon,Baltic side: waves (German Kitesurf Open venue). Bodden side: flat shallow water.,,
+DE,Mecklenburg-Vorpommern,Saal (Saaler Bodden),lagoon,osm:w124255475,W,Shallow flat water almost everywhere; kite school on site.,,
+DE,Mecklenburg-Vorpommern,Zingst,sea,osm:n1577732852,N,"Sportstrand at the edge of town; choppy, deep enough for foiling.",,
+DE,Mecklenburg-Vorpommern,Rügen – Suhrendorf (Ummanz),lagoon,osm:n11961257106,W,"Bodden: shallow flat water, beginner-friendly.",,
+DE,Mecklenburg-Vorpommern,Rügen – Dranske,lagoon,osm:n1909577761,SE,Wieker Bodden side: flat water.,,
+DE,Mecklenburg-Vorpommern,Rügen – Wiek,lagoon,osm:n9045420052,W,Wieker Bodden: flat shallow water.,,
+DE,Mecklenburg-Vorpommern,Gahlkow,sea,osm:w436196705,N,"Greifswalder Bodden: narrow beach, choppy and gusty.",,
+DE,Mecklenburg-Vorpommern,Usedom – Peenemünde,sea,osm:w1422270438,N,"Choppy, deepens quickly; few facilities.",,
+DE,Mecklenburg-Vorpommern,Usedom – Karlshagen,sea,osm:n6648118700,NE,"Sportstrand with kite school; waves in E winds, W winds are offshore. Keep clear of the swimming zone.",,
+DE,Mecklenburg-Vorpommern,Usedom – Ückeritz (Achterwasser),sea,osm:w1467328466,W,"Achterwasser by the harbour: standing area, choppy; best W–S.",,
+# Inland lakes
+DE,Niedersachsen,Steinhuder Meer,lake,osm:n3635757331,S,Mardorf / Weißer Berg on the north shore: about 500 m of standing area. Kiting roughly 20 Mar–15 Nov in the marked zone.,,
+DE,Niedersachsen,Dümmer,lake,osm:n1364268526,,Shallow lake; launch at the surf entry point (Rohrdommel).,,
+DE,Bayern,Brombachsee,lake,osm:w171040640,,Großer Brombachsee: occasional afternoon thermals. Kiting April–June and September–November.,,
