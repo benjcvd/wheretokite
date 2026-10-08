@@ -220,6 +220,18 @@ public struct HourlyWind: Codable, Hashable, Sendable {
 
     public var hour: Int { Int(localTime.dropFirst(11).prefix(2)) ?? 0 }
 
+    /// False for values no real forecast produces (non-finite, negative, absurdly strong,
+    /// direction outside 0…360). Network responses and cache files are checked with this, so
+    /// a corrupt or hostile payload can't reach the scoring or the UI's Int conversions.
+    public static func isPlausible(speedKn: Double, gustKn: Double, directionDeg: Double) -> Bool {
+        (0...250).contains(speedKn) && (0...300).contains(gustKn) && (0...360).contains(directionDeg)
+    }
+
+    public var isPlausible: Bool {
+        Self.isPlausible(speedKn: speedKn, gustKn: gustKn, directionDeg: directionDeg)
+            && (seaLevelM.map { (-30...30).contains($0) } ?? true)
+    }
+
     public init(localTime: String, speedKn: Double, gustKn: Double, directionDeg: Double) {
         self.localTime = localTime
         self.speedKn = speedKn
@@ -231,6 +243,18 @@ public struct HourlyWind: Codable, Hashable, Sendable {
 public struct DayForecast: Codable, Sendable {
     public var day: String
     public var hours: [HourlyWind]
+
+    /// True for a local calendar day "yyyy-MM-dd" (digits and dashes only). The day goes
+    /// into request URLs and cache file names, so anything else is rejected.
+    public static func isValidDay(_ day: String) -> Bool {
+        let u = Array(day.utf8)
+        guard u.count == 10 else { return false }
+        for (i, c) in u.enumerated() {
+            if i == 4 || i == 7 { if c != UInt8(ascii: "-") { return false } }
+            else if !(UInt8(ascii: "0")...UInt8(ascii: "9")).contains(c) { return false }
+        }
+        return true
+    }
 }
 
 // MARK: - Days

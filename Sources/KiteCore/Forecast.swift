@@ -7,10 +7,13 @@ public protocol ForecastProvider: Sendable {
 
 public enum ForecastError: Error, CustomStringConvertible {
     case badResponse(String)
+    /// The day is not "yyyy-MM-dd".
+    case invalidDay(String)
 
     public var description: String {
         switch self {
         case .badResponse(let msg): "Forecast error: \(msg)"
+        case .invalidDay(let day): "Forecast error: invalid day \(day.debugDescription)"
         }
     }
 }
@@ -59,6 +62,7 @@ public struct OpenMeteoProvider: ForecastProvider {
     /// missing from the result — as long as one batch succeeds; if all fail, the first error
     /// is thrown.
     public func forecasts(for spots: [Spot], day: String) async throws -> [String: DayForecast] {
+        guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) }
         let size = max(1, batchSize)
         let batches = stride(from: 0, to: spots.count, by: size).map {
             Array(spots[$0..<min($0 + size, spots.count)])
@@ -101,7 +105,8 @@ public struct OpenMeteoProvider: ForecastProvider {
             var hours: [HourlyWind] = []
             for i in h.time.indices {
                 guard let s = h.wind_speed_10m[safe: i] ?? nil, let g = h.wind_gusts_10m[safe: i] ?? nil,
-                      let d = h.wind_direction_10m[safe: i] ?? nil else { continue }
+                      let d = h.wind_direction_10m[safe: i] ?? nil,
+                      HourlyWind.isPlausible(speedKn: s, gustKn: g, directionDeg: d) else { continue }
                 var w = HourlyWind(localTime: h.time[i], speedKn: s, gustKn: g, directionDeg: d)
                 w.seaLevelM = levels[h.time[i]]
                 hours.append(w)
@@ -140,7 +145,9 @@ public struct OpenMeteoProvider: ForecastProvider {
         var out: [String: [String: Double]] = [:]
         for (spot, r) in zip(spots, decoded) {
             var levels: [String: Double] = [:]
-            for (t, v) in zip(r.hourly.time, r.hourly.sea_level_height_msl) { if let v { levels[t] = v } }
+            for (t, v) in zip(r.hourly.time, r.hourly.sea_level_height_msl) {
+                if let v, (-30...30).contains(v) { levels[t] = v }
+            }
             out[spot.id] = levels
         }
         return out
@@ -233,13 +240,16 @@ public struct CachedForecastProvider: ForecastProvider {
     }
 
     public func forecasts(for spots: [Spot], day: String) async throws -> [String: DayForecast] {
+        // The day is part of the cache file name: never let "../" or the like through.
+        guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) }
         var result: [String: DayForecast] = [:]
         var missing: [Spot] = []
         let decoder = JSONDecoder()
         for spot in spots {
             if let data = try? Data(contentsOf: file(for: spot, day: day)),
                let entry = try? decoder.decode(Entry.self, from: data),
-               Date().timeIntervalSince(entry.fetchedAt) < ttl {
+               (0..<ttl).contains(Date().timeIntervalSince(entry.fetchedAt)),   // no future-dated entries
+               entry.forecast.hours.allSatisfy(\.isPlausible) {
                 result[spot.id] = entry.forecast
             } else {
                 missing.append(spot)

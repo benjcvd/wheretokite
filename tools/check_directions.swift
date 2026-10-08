@@ -3,13 +3,16 @@
 //   swift tools/check_directions.swift <points.json> <results.json>
 //
 // points.json: [{"key": "...", "lat": 43.3, "lon": 5.0, "facing": 227}, ...]
-// results.json: {"<key>": {"front": 0.9, "back": 0.1, "mean": 231.0}, ...}
+// results.json: {"<key>": {"front": 0.9, "back": 0.1, "mean": 231.0, "sectorNear": 180, "sectorFar": 190}, ...}
 //
 // The catalogue's directions come from OpenStreetMap's coastline. This renders Apple's map
 // (a separate data source) around each point and samples which pixels are water:
 //   front: share of water within ±40° of the claimed direction, 100–600 m out
 //   back:  share of water within ±40° of the opposite direction, 100–300 m out
 //   mean:  mean direction of all water within 600 m (null when water is all around / absent)
+//   sectorNear / sectorFar: width in degrees of the unbroken arc of water around the claimed
+//          direction at 250–350 m / 500–650 m (360 = water all around; null when the claimed
+//          direction itself is not water there)
 // build_spots.py turns these into a verdict. Same water test as the app's CoastlineGuess.
 
 import AppKit
@@ -17,7 +20,10 @@ import Foundation
 import MapKit
 
 struct Point: Decodable { let key: String; let lat: Double; let lon: Double; let facing: Double }
-struct Result: Encodable { let front: Double?; let back: Double?; let mean: Double? }
+struct Result: Encodable {
+    let front: Double?; let back: Double?; let mean: Double?
+    var sectorNear: Double? = nil; var sectorFar: Double? = nil
+}
 
 func offset(_ lat: Double, _ lon: Double, bearing: Double, meters: Double) -> CLLocationCoordinate2D {
     let b = bearing * .pi / 180
@@ -86,7 +92,25 @@ func check(_ p: Point) async -> Result {
             mean = d < 0 ? d + 360 : d
         }
     }
-    return Result(front: share(front), back: share(back), mean: mean)
+    // Water arc around the claimed direction: 5° steps, a bearing is water when most of the
+    // ring's samples are; grow left and right from the claimed direction while still water.
+    func sector(_ radii: [Double]) -> Double? {
+        let wet = (0..<72).map { step -> Bool? in
+            let votes = radii.compactMap { isWater(offset(p.lat, p.lon, bearing: Double(step) * 5, meters: $0)) }
+            return votes.isEmpty ? nil : votes.filter { $0 }.count * 2 > votes.count
+        }
+        let start = Int((p.facing / 5).rounded()) % 72
+        guard wet[start] == true else { return nil }
+        if wet.allSatisfy({ $0 == true }) { return 360 }
+        var width = 1
+        var i = start
+        while wet[(i + 71) % 72] == true && width < 72 { i = (i + 71) % 72; width += 1 }
+        i = start
+        while wet[(i + 1) % 72] == true && width < 72 { i = (i + 1) % 72; width += 1 }
+        return Double(width * 5)
+    }
+    return Result(front: share(front), back: share(back), mean: mean,
+                  sectorNear: sector([250, 300, 350]), sectorFar: sector([500, 575, 650]))
 }
 
 let args = CommandLine.arguments

@@ -1,4 +1,4 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # Sweden — format: tools/spots/README.md
 SE,Halland,Varberg – Apelviken,sea,q:Apelviken,W,
 SE,Halland,Mellbystrand,sea,q:Mellbystrand,W,

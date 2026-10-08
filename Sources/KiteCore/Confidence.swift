@@ -47,10 +47,13 @@ public struct ConfidenceEstimator: Sendable {
 
     public func estimate(at origin: Coordinate, day: String, slot: SessionSlot,
                          today: String) async throws -> ForecastConfidence {
+        guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) }
         var c = URLComponents(string: OpenMeteoProvider.endpoint(for: day))!
         c.queryItems = [
-            .init(name: "latitude", value: String(format: "%.4f", origin.latitude)),
-            .init(name: "longitude", value: String(format: "%.4f", origin.longitude)),
+            // The origin is usually the rider's own position: send only the area (0.1° ≈ 11 km,
+            // finer than the compared models' grids), not where they are.
+            .init(name: "latitude", value: String(format: "%.1f", origin.latitude)),
+            .init(name: "longitude", value: String(format: "%.1f", origin.longitude)),
             .init(name: "hourly", value: "wind_speed_10m,wind_direction_10m"),
             .init(name: "wind_speed_unit", value: "kn"),
             .init(name: "timezone", value: "auto"),
@@ -69,7 +72,8 @@ public struct ConfidenceEstimator: Sendable {
             var speeds: [Double] = [], dirs: [Double] = []
             for m in models {
                 if let s = hourly["wind_speed_10m_\(m)"]?[safe: hour] ?? nil,
-                   let d = hourly["wind_direction_10m_\(m)"]?[safe: hour] ?? nil {
+                   let d = hourly["wind_direction_10m_\(m)"]?[safe: hour] ?? nil,
+                   HourlyWind.isPlausible(speedKn: s, gustKn: s, directionDeg: d) {
                     speeds.append(s); dirs.append(d); used.insert(m)
                 }
             }

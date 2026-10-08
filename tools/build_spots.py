@@ -64,7 +64,7 @@ import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
-USER_AGENT = "wheretokite-dev/0.2 (spot catalogue builder)"
+USER_AGENT = "wheretokite-dev/0.2 (spot catalogue builder; +https://github.com/benjcvd/wheretokite)"
 OVERPASS_ENDPOINTS = [
     "https://overpass-api.de/api/interpreter",
     "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
@@ -684,6 +684,9 @@ def _read_csv(path):
             raise SystemExit("%s: bad sector in row %r" % (path, r))
         if not 0 <= r["sector"] <= 360:
             raise SystemExit("%s: sector must be 0-360 in row %r" % (path, r))
+        # An osm: ref is pasted into an Overpass QL query: only n/w/r + digits.
+        if r.get("locate", "").startswith("osm:") and not re.fullmatch(r"osm:[nwr][0-9]+", r["locate"]):
+            raise SystemExit("%s: osm locator must look like osm:n123 / osm:w45 / osm:r6 in row %r" % (path, r))
         r["tide"] = r.get("tide") or ""
         if r["tide"] not in TIDE_RULES:
             raise SystemExit("%s: tide must be one of %s in row %r" % (path, "/".join(TIDE_RULES[1:]), r))
@@ -817,7 +820,7 @@ def apple_checks(points):
     {} when the checker can't run (not macOS / no Swift)."""
     path = os.path.join(CACHE_DIR, "apple_checks.json")
     cache = _cache_get(path) or {}
-    ck = lambda lat, lon, f: "%.5f,%.5f,%.1f" % (lat, lon, f)
+    ck = lambda lat, lon, f: "v2:%.5f,%.5f,%.1f" % (lat, lon, f)   # v2: with water sectors
     todo = [{"key": ck(la, lo, f), "lat": la, "lon": lo, "facing": f}
             for _, la, lo, f in points if ck(la, lo, f) not in cache]
     if todo:
@@ -1102,6 +1105,18 @@ def main():
             worst = ("corrected", worst[1])
         if worst[0] not in ("agrees", "corrected"):
             review.append((s_, "; ".join(v[1] for v in verdicts)))
+
+    # Water arc measured on Apple Maps: a hint for curators only. Not published: from a point
+    # just behind the beach, straight beaches measure 120-160° (the sand isn't water), so it
+    # can't tell a cove from a beach reliably. Flag only the extremes worth a look.
+    for s_ in spots:
+        if s_.get("sides") or "waterSectorDeg" in s_:
+            continue
+        res = checks.get("%s#0" % s_["id"]) or {}
+        near, far = res.get("sectorNear"), res.get("sectorFar")
+        if near is not None and far is not None and (max(near, far) <= 90 or min(near, far) >= 270):
+            warnings.append("%s: water arc %.0f°/%.0f° (300/600 m) on Apple Maps: cove, point or lake? "
+                            "consider the `sector` column" % (s_["id"], near, far))
 
     # access: ferry needed from the mainland?
     islands = {}
