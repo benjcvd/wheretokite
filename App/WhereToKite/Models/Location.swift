@@ -38,6 +38,12 @@ final class LocationService {
                     if let c = update.location?.coordinate {
                         return Coordinate(latitude: c.latitude, longitude: c.longitude)
                     }
+                    // Answering "Don't Allow" to the first prompt: say so now rather than
+                    // after the 15 s timeout, with the generic "couldn't get" message.
+                    if #available(iOS 18, *),
+                       update.authorizationDenied || update.authorizationDeniedGlobally || update.authorizationRestricted {
+                        throw LocationError.denied
+                    }
                 }
                 throw LocationError.unavailable
             }
