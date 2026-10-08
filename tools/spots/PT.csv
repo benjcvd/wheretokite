@@ -1,13 +1,17 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # Portugal — format: tools/spots/README.md
-PT,Norte,Viana do Castelo – Cabedelo,sea,osm:w1384166636,W,
-PT,Centro,Lagoa de Óbidos,lagoon,osm:n1828415085,N,Flat-water lagoon.
-PT,Lisboa,Guincho,sea,q:Praia do Guincho,W,
-PT,Lisboa,Fonte da Telha,sea,osm:w222678478,W,
-PT,Lisboa,Lagoa de Albufeira,lagoon,q:Lagoa de Albufeira,N,Flat-water lagoon.
-PT,Algarve,Alvor,sea,q:Praia de Alvor,S,
-PT,Algarve,Lagos – Meia Praia,sea,q:Meia Praia Lagos,SE,
-PT,Norte,Esposende – Ofir,sea,q:Praia de Ofir,W,
-PT,Centro,Aveiro – Praia da Barra,sea,q:Praia da Barra Ílhavo,W,
-PT,Centro,Peniche – Baleal,sea,q:Praia do Baleal,NW,North side of the Baleal isthmus.
-PT,Algarve,Fuseta (Ria Formosa),lagoon,osm:w78427662,S,Lagoon: flat water; tide matters.
+PT,Norte,Caminha – Moledo,sea,osm:w1474542134,W,Waves; nortada (N) in summer.,,
+PT,Norte,Viana do Castelo – Cabedelo,sea,osm:w1384166636,W,"Windiest spot in Portugal (nortada): waves outside, flatter by the river-mouth pier.",,
+PT,Norte,Esposende – Ofir,sea,q:Praia de Ofir,W,"Flat knee-deep lagoon in the Cávado estuary behind the Ofir sandspit (walk or school boat), waves on the sea side.",,
+PT,Centro,Murtosa – Ria de Aveiro,lagoon,osm:w1107052996,W,"Flat shallow lagoon, nortada thermal Apr–Oct; school (Clube Nortada).",,not-low
+PT,Centro,Aveiro – Praia da Barra,sea,q:Praia da Barra Ílhavo,W,Waves on the ocean side.,,
+PT,Centro,Peniche – Baleal,sea,q:Praia do Baleal,NW,North side of the Baleal isthmus; works in N and S winds on different sides.,,
+PT,Centro,Lagoa de Óbidos,lagoon,osm:n1828415085,N,"Flat, waist-deep lagoon; lighter wind (big kites). Lagoon mouth area closed to kites 15 Jun–15 Sep.",,not-low
+PT,Lisboa,Guincho,sea,q:Praia do Guincho,W,"Very strong nortada, waves: advanced riders.",,
+PT,Lisboa,Fonte da Telha,sea,osm:w222678478,W,"Closest spot to Lisbon; all levels, lighter wind.",,
+PT,Lisboa,Lagoa de Albufeira,lagoon,q:Lagoa de Albufeira,N,Flat-water lagoon behind the sandbar; tricky at low tide.,,not-low
+PT,Algarve,Lagos – Meia Praia,sea,q:Meia Praia Lagos,SE,,,
+PT,Algarve,Alvor,lagoon,q:Ria de Alvor,S,"Ria de Alvor: flat, shallow lagoon with sandbars; gusty.",,not-low
+PT,Algarve,Praia de Faro,sea,osm:r12567393,S:ocean side|N:Ria Formosa side:lagoon,"Ilha de Faro: waves on the ocean, flat water in the Ria Formosa (tide matters); schools.",,
+PT,Algarve,Fuseta (Ria Formosa),lagoon,osm:w78427662,S,Lagoon: flat water; tide matters.,,not-low
+PT,Madeira,Porto Santo,sea,osm:w142721877,S,9 km beach; N wind is side-offshore and gusty in summer: experienced riders.,,

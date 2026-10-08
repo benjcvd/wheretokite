@@ -1,30 +1,88 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # Spain — format: tools/spots/README.md
-ES,Catalunya,Sant Pere Pescador,sea,osm:w110579310,E,Authorised summer kite zone (piscifactoria area).
-ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,City beach: kiting banned 1 Jun–30 Sep; off-season only.
-ES,Catalunya,Castelldefels,sea,osm:w1084529243,S,Authorised summer kite zone (online registration required).
-ES,Catalunya,Torredembarra,sea,q:Platja dels Muntanyans,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).
-ES,Catalunya,La Pineda,sea,q:Platja de la Pineda Vila-seca,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).
-ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,NE,Year-round (no seasonal ban).
-ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,q:Platja dels Eucaliptus,SE,
-ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W:bay side|E:sea side,Authorised summer kite zone; flat water on the Badia dels Alfacs (west) side.
-ES,Comunitat Valenciana,Valencia – Pinedo,sea,q:Platja de Pinedo,E,
-ES,Comunitat Valenciana,Oliva,sea,q:Platja d'Oliva,ENE,
-ES,Comunitat Valenciana,Santa Pola – La Gola,sea,q:Playa de La Gola Santa Pola,E,
-ES,Murcia,Mar Menor – Los Narejos,lagoon,q:Playa de Los Narejos,E,Flat-water lagoon.
-ES,Andalucía,Tarifa – Los Lances,sea,osm:w1465288739,SW,
-ES,Andalucía,Tarifa – Valdevaqueros,sea,osm:w186110526,S,
-ES,Galicia,Doniños (Ferrol),sea,q:Praia de Doniños,W,
-ES,Galicia,Razo (Carballo),sea,q:Praia de Razo,NW,
-ES,Galicia,A Lanzada,sea,osm:w173598722,W,
-ES,Canarias,Fuerteventura – Sotavento,sea,q:Risco del Paso,SE,
-ES,Canarias,Fuerteventura – Flag Beach (Corralejo),sea,osm:w684867252,E,
-ES,Canarias,Lanzarote – Famara,sea,q:Playa de Famara,NW,
-ES,Canarias,Gran Canaria – Pozo Izquierdo,sea,q:Pozo Izquierdo,E,
-ES,Canarias,Tenerife – El Médano,sea,q:Playa de El Médano,SE,
-ES,Illes Balears,Mallorca – Son Serra de Marina,sea,q:Platja de Son Serra de Marina,N,
-ES,Andalucía,El Palmar (Vejer),sea,q:Playa de El Palmar Vejer de la Frontera,SW,
-ES,Andalucía,Los Caños de Meca,sea,q:Playa de Los Caños de Meca,S,
-ES,Andalucía,Bolonia,sea,q:Playa de Bolonia,S,
-ES,Cantabria,Somo,sea,q:Playa de Somo,N,
-ES,Cantabria,Laredo – Salvé,sea,q:Playa de Salvé Laredo,N,
+# Catalunya: kiting is banned on all Catalan beaches 1 Jun–30 Sep except in authorised kite zones.
+ES,Catalunya,Empuriabrava – La Rubina,sea,osm:r2318195,SE,Authorised summer kite zone at the Santa Margarida end (natural park beach); best in easterlies.,,
+ES,Catalunya,Sant Pere Pescador,sea,osm:w110579310,E,Authorised summer kite zone (beginner and advanced sectors); tramuntana and summer thermal.,,
+ES,Catalunya,L'Estartit – Gola del Ter,sea,osm:n4409310492,E,Summer kite zone (1 Jun–30 Sep) run by the local school; kite pass / registration required.,,
+ES,Catalunya,Malgrat de Mar – La Pomareda,sea,osm:w702224528,SE,Municipal kite zone looked after by Club Kite Malgrat; SW thermal Mar–Sep.,,
+ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,No official kite zone: kiting banned 1 Jun–30 Sep; off-season levante / gregal days only.,,
+ES,Catalunya,Castelldefels,sea,osm:w1084529243,S,Authorised summer kite zone (online registration required).,,
+ES,Catalunya,Torredembarra,sea,osm:r12040184,SE,Off-season spot: kiting banned 1 Jun–30 Sep. Keep off the protected Muntanyans dunes east of town.,,
+ES,Catalunya,La Pineda,sea,q:Platja de la Pineda Vila-seca,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).,,
+ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,NE,"Authorised summer kite zone; best in mestral (NW, cross-shore), summer southerlies are offshore.",,
+ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,q:Platja dels Eucaliptus,SE,Shallow water at the root of the Trabucador; beginner-friendly.,,
+ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W:bay side|E:sea side,Authorised summer kite zone; flat water on the Badia dels Alfacs (west) side.,,
+# Comunitat Valenciana: summer kiting only in the few buoyed channels / zones.
+ES,Comunitat Valenciana,Burriana – El Arenal,sea,osm:r2155770,SE,Winter spot for southerlies; flat water between the harbour moles.,,
+ES,Comunitat Valenciana,Valencia – El Perellonet,sea,osm:w168406914,E,"Municipal buoyed kite zone south of the Perellonet river mouth, open year-round; Kitezone club.",,
+ES,Comunitat Valenciana,Sueca – Mareny de Barraquetes,sea,osm:r14908251,E,Summer channel (Jun–Aug) for Barraquetes Vent club members only; free off-season. Summer garbí thermal.,,
+ES,Comunitat Valenciana,Oliva,sea,osm:r21201264,ENE,Oliva Nova; in summer kiting only in the authorised zone (club rescue boat).,,
+ES,Comunitat Valenciana,Dénia – Les Deveses,sea,osm:r2172009,ENE,Marked kite zone at the north end of Dénia (Les Deveses); summer thermal and winter tramuntana.,,
+ES,Comunitat Valenciana,Elche – Arenales del Sol,sea,osm:w177395067,E,Municipal kite area with schools.,,
+ES,Comunitat Valenciana,Santa Pola – La Gola,sea,q:Playa de La Gola Santa Pola,SE,La Gola open to kites year-round; neighbouring Playa Lisa is closed to kites in summer.,,
+ES,Comunitat Valenciana,Guardamar – Els Tossals,sea,osm:w54057854,E,Designated kite area by the dunes.,,
+# Murcia
+ES,Murcia,Mar Menor – Los Narejos,lagoon,osm:w107723436,SE,"Flat-water lagoon, kite zone and school; E and SW (lebeche) most common.",,
+ES,Murcia,Mar Menor – Los Nietos,lagoon,osm:w294026685,N,"Shallow flat water, onshore in NE/E; beginner-friendly, no summer restriction at the end of the promenade.",,
+ES,Murcia,La Manga – Isla del Ciervo,lagoon,osm:r3974793,SW,Mar Menor side at km 3; summer jellyfish nets close the bathing areas (no riding inside).,,
+# Andalucía — Mediterranean
+ES,Andalucía,Almería – El Zapillo,sea,osm:w1289258387,S,"City beach, poniente side-shore; no kiting 15 Jun–15 Sep.",,
+ES,Andalucía,Roquetas de Mar – Las Salinas,sea,osm:w186053977,E,Long beach used in poniente and levante; restricted during the bathing season.,,
+ES,Andalucía,Almerimar,sea,osm:w1474402756,S,"Poniente (W) spot by the marina: flat between the breakwaters, waves further out.",,
+ES,Andalucía,Motril – Playa Granada,sea,osm:w96307227,S,Levante and poniente; shorebreak in strong poniente. School on the beach.,,
+ES,Andalucía,Málaga – Los Álamos,sea,osm:w1555163983,SE,"Official kite zone (Los Álamos / Guadalmar), moved during the bathing season; SW thermal Apr–Oct.",,
+ES,Andalucía,Marbella – Los Monteros,sea,osm:r1714644,S,Río Real: summer access only through the buoyed channel (levante); poniente waves in winter. Rocky entry.,,
+# Andalucía — Strait and Cádiz Atlantic coast
+ES,Andalucía,Algeciras – Palmones,sea,osm:w236560364,S,Strong-levante alternative to Tarifa (weaker wind); no kiting in summer; keep out of the river and marsh reserve.,,
+ES,Andalucía,Tarifa – Balneario,sea,osm:w672119807,SW,"Experts only (rocks, currents); levante freestyle, poniente waves. No kiting 15 Jun–15 Sep.",,
+ES,Andalucía,Tarifa – Los Lances,sea,osm:w1134220405,SW,"Los Lances Norte (Río Jara–Waves). Summer: school and free-rider zones only, no kiting from Río Jara to town 15 Jun–15 Sep.",,
+ES,Andalucía,Tarifa – Valdevaqueros,sea,osm:w186110526,S,Includes Punta Paloma; summer kite zone is crowded; rocks at low tide.,,
+ES,Andalucía,Bolonia,sea,q:Playa de Bolonia,S,No kiting in summer.,,
+ES,Andalucía,Los Caños de Meca,sea,q:Playa de Los Caños de Meca,SE,Levante spot; rocks towards the lighthouse at low tide; officially no kiting in summer.,,
+ES,Andalucía,El Palmar (Vejer),sea,q:Playa de El Palmar Vejer de la Frontera,SW,"Westerlies; ride the south end, watch surfers and bathers; rocks at low tide.",,
+ES,Andalucía,Chiclana – Sancti Petri,sea,osm:w198773943,SW,Winter: free; summer only inside the water-sports channels.,,
+ES,Andalucía,San Fernando – Camposoto,sea,osm:r16174862,SW,Westerlies; summer channel at the end of the promenade; local kite club.,,
+ES,Andalucía,Cádiz – Cortadura,sea,osm:w91048435,W,"Westerlies; rocky bottom, high tide recommended.",,not-low
+ES,Andalucía,El Puerto – Valdelagrana,sea,osm:w23911521,SW,Space in winter and summer (summer water-sports channel).,,
+ES,Andalucía,Rota – El Rompidillo,sea,osm:w194605149,SE,Winter spot for all levels; move elsewhere in the bathing season.,,
+# Andalucía — Huelva
+ES,Andalucía,Punta Umbría,sea,osm:w889930861,S,Long open beach with waves; SW thermal; summer restrictions near bathers.,,
+ES,Andalucía,El Portil,sea,osm:w1156218337,S,Flat water behind the El Rompido sandspit (cross the Río Piedras); strong currents.,,
+ES,Andalucía,Isla Cristina – La Casita Azul,sea,osm:w225560425,S,Designated kite zone; restricted from 15 Jun in summer.,,
+ES,Andalucía,Ayamonte – Isla Canela,sea,osm:w123911782,S,"Shallow sandbars by the Guadiana mouth, beginner-friendly; SW thermal Apr–Sep.",,
+# Galicia
+ES,Galicia,Doniños (Ferrol),sea,q:Praia de Doniños,W,"Exposed Atlantic beach: waves, experienced riders.",,
+ES,Galicia,Razo (Carballo),sea,q:Praia de Razo,NW,Open Atlantic (waves); the Baldaio lagoon next door is flat at high tide.,,
+ES,Galicia,A Lanzada,sea,osm:w173598722,W,Huge exposed beach; best autumn–winter.,,
+ES,Galicia,O Grove – A Mexilloeira,sea,osm:w51842113,N,Sheltered ría beach: flat water in N–NE; school.,,
+ES,Galicia,A Illa de Arousa – O Bao,sea,osm:r3019704,S,Flat water in the ría; works in S–SE (winter).,,
+ES,Galicia,Redondela – Cesantes,sea,osm:w161470986,W,Flat water at the head of the Vigo ría; SW summer thermal.,,
+ES,Galicia,Vigo – O Vao,sea,osm:r5294013,NW,Flat water behind the Toralla island in W–NW.,,
+# Asturias
+ES,Asturias,Salinas – San Juan de Nieva,sea,osm:w516073411,NW,Strong wind and waves; advanced riders.,,
+ES,Asturias,Gijón – El Arbeyal,sea,osm:r2324779,NE,"Sheltered by the breakwater, N–NE; all levels. Space depends on the tide.",,
+ES,Asturias,Gijón – San Lorenzo,sea,osm:w517332406,N,NE–E; launch space depends on the tide; summer restrictions.,,not-high
+ES,Asturias,Luanco – Santa Marina,sea,q:Playa de Luanco,E,Protected by jetties; works in E–SE and N.,,
+# Cantabria
+ES,Cantabria,Somo,sea,q:Playa de Somo,NW,"Waves on the open beach; flat water in La Poza (Miera estuary) at low–mid tide, schools there.",,
+ES,Cantabria,Santander – Los Peligros,sea,osm:w28423268,SE,"Bay beach for SW (gusty, choppy); no kiting 1 Jun–30 Sep.",,
+ES,Cantabria,Laredo – Salvé,sea,q:Playa de Salvé Laredo,NE,Flat water; stay upwind of bathers.,,
+# Inland
+ES,Aragón,Embalse de La Loteta,lake,osm:n1477213876,,"Reservoir ridden in the cierzo (NW), which blows along its length; south launch area with Club Kitesurf La Loteta. Shallow and rocky in places: check the water level.",360,
+# Illes Balears
+ES,Illes Balears,Mallorca – Pollença (Sa Marina),sea,osm:w100786510,E,Authorised kite zone and schools in the Bay of Pollença.,,
+ES,Illes Balears,Mallorca – Platja de Muro,sea,osm:w100010935,NE,"Small authorised channel; crowded in summer, best off-season.",,
+ES,Illes Balears,Mallorca – Son Serra de Marina,sea,q:Platja de Son Serra de Marina,N,Island's main kite beach Oct–May; summer restrictions.,,
+ES,Illes Balears,Menorca – Cala Tirant,sea,osm:r1591017,N,Waves with the tramuntana (N); summer: designated launch area only.,,
+ES,Illes Balears,Menorca – Son Bou,sea,osm:r1592814,S,Waves in westerlies; summer: designated launch area only.,,
+# Canarias
+ES,Canarias,Fuerteventura – Flag Beach (Corralejo),sea,osm:w684867252,E,,,
+ES,Canarias,Fuerteventura – Costa Calma,sea,osm:r1543928,SE,"Flatter water, fewer riders than Sotavento.",,
+ES,Canarias,Fuerteventura – Sotavento,sea,q:Risco del Paso,SE,"Lagoon at low tide (flat, knee-deep); open sea at high tide. World Cup venue.",,
+ES,Canarias,Lanzarote – Famara,sea,q:Playa de Famara,NW,"Waves, trade wind; currents.",,
+ES,Canarias,Lanzarote – Costa Teguise,sea,osm:w96680017,E,"Las Cucharas; waves, schools; gusty close to shore.",,
+ES,Canarias,Lanzarote – Playa Honda,sea,osm:r18367853,S,"Best Lanzarote option in easterlies: long beach, flat water.",,
+ES,Canarias,Gran Canaria – Vargas,sea,osm:w473890331,E,Strong trade wind Apr–Sep; waves.,,
+ES,Canarias,Gran Canaria – Bahía Feliz,sea,osm:w133266290,SE,Smaller waves than Pozo / Vargas; school (Club Mistral).,,
+ES,Canarias,Gran Canaria – Pozo Izquierdo,sea,q:Pozo Izquierdo,E,"Very strong wind, waves, rocky: experts.",,
+ES,Canarias,Tenerife – El Médano,sea,osm:w28492650,SE,Trade wind May–Oct; shallow water at the north end.,,
