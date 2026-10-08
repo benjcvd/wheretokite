@@ -83,15 +83,19 @@ struct ResultsSection: View {
                     Text(good.count > 1 ? "Also good" : "On the map")
                         .font(.title3.bold())
                     Spacer()
-                    Picker("View", selection: $mode.animation(.snappy)) {
-                        ForEach(Mode.allCases, id: \.self) { Text($0.rawValue) }
+                    // With a single good spot the list would be empty (the spot is the card
+                    // above): show the map only.
+                    if good.count > 1 {
+                        Picker("View", selection: $mode.animation(.snappy)) {
+                            ForEach(Mode.allCases, id: \.self) { Text($0.rawValue) }
+                        }
+                        .pickerStyle(.segmented)
+                        .fixedSize()
                     }
-                    .pickerStyle(.segmented)
-                    .fixedSize()
                 }
                 .padding(.top, 4)
 
-                switch mode {
+                switch good.count > 1 ? mode : .map {
                 case .list:
                     VStack(spacing: 10) {
                         ForEach(good.dropFirst()) { rec in

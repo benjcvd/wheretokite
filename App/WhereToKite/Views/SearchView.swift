@@ -174,9 +174,21 @@ private struct DayStrip: View {
 
 // MARK: - Session slot
 
+private struct TitleOnlyIf: LabelStyle {
+    let condition: Bool
+    @ViewBuilder func makeBody(configuration: Configuration) -> some View {
+        if condition {
+            configuration.title
+        } else {
+            HStack(spacing: 6) { configuration.icon; configuration.title }
+        }
+    }
+}
+
 private struct SlotPicker: View {
     @Binding var selection: SessionSlot
     @Namespace private var highlight
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
         HStack(spacing: 4) {
@@ -188,9 +200,11 @@ private struct SlotPicker: View {
                     VStack(spacing: 1) {
                         Label(slot.label, systemImage: slot.symbol)
                             .font(.subheadline.weight(.semibold))
-                            .labelStyle(.titleAndIcon)
+                            // Three across: at accessibility sizes the icon pushed the names
+                            // to "Mor…", "After…".
+                            .labelStyle(TitleOnlyIf(condition: typeSize >= .xxLarge))
                             .lineLimit(1)
-                            .minimumScaleFactor(0.8)
+                            .minimumScaleFactor(typeSize.isAccessibilitySize ? 0.6 : 0.8)
                         Text(slot.hoursLabel)
                             .font(.caption2)
                             .foregroundStyle(on ? Color.white.opacity(0.85) : Color.secondary)
