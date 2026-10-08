@@ -6,7 +6,7 @@ final class SmokeTests: XCTestCase {
     @MainActor
     func testMainFlow() throws {
         let app = XCUIApplication()
-        app.launchArguments = ["-resetProfile"]
+        app.launchArguments = ["-resetProfile", "-searchOrigin", "41.3874,2.1686"]   // Barcelona: the simulator may have no location
         app.launch()
 
         // Onboarding (first launch only).
