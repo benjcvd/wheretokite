@@ -401,10 +401,10 @@ private struct SpotDetailsForm: View {
                     .foregroundStyle(.secondary)
                     .monospacedDigit()
             }
-            Slider(value: $draft.waterSectorDeg, in: 0...360, step: 10) {
+            Slider(value: $draft.waterSectorDeg, in: 30...360, step: 10) {
                 Text("Open water")
             } minimumValueLabel: {
-                Text("0°").font(.caption2)
+                Text("30°").font(.caption2)
             } maximumValueLabel: {
                 Text("360°").font(.caption2)
             }

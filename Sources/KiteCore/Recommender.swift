@@ -299,10 +299,11 @@ public struct Recommender: Sendable {
         guard let window else {
             // Explain why it's not a go.
             let flags = Set(hours.flatMap(\.flags))
-            let why = flags.contains("too light") ? "too light"
+            // Safety first: offshore beats "too light" when both apply.
+            let why = flags.contains("offshore component") ? "offshore"
+                : flags.contains("too light") ? "too light"
                 : flags.contains("tide too low") ? "tide too low"
                 : flags.contains("tide too high") ? "tide too high"
-                : flags.contains("offshore component") ? "offshore"
                 : flags.first ?? "poor conditions"
             return "\(why) · \(wind) \(dir) · \(driveText)"
         }

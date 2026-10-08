@@ -33,12 +33,18 @@ struct ResultsSection: View {
         }
     }
 
+    /// Score from which the top spot gets the "go" card.
+    static let verdictMinimum = 40
+
     // MARK: Result
 
     @ViewBuilder
     private func content(_ result: SearchResult) -> some View {
         let good = result.recommendations.filter { $0.finalScore > 0 }
         let noGo = result.recommendations.filter { $0.finalScore == 0 }
+        // Only a real session earns the big "go" card; below that the options are marginal.
+        let hasVerdict = (good.first?.finalScore ?? 0) >= Self.verdictMinimum
+        let listed = hasVerdict ? Array(good.dropFirst()) : good
 
         VStack(alignment: .leading, spacing: 16) {
             HStack(spacing: 6) {
@@ -60,7 +66,7 @@ struct ResultsSection: View {
                     .foregroundStyle(.orange)
             }
 
-            if let top = good.first {
+            if hasVerdict, let top = good.first {
                 Button { open(top.id) } label: { VerdictCard(rec: top) }
                     .buttonStyle(PressableStyle())
                     .zoomSource(top.id, in: zoom)
@@ -69,6 +75,9 @@ struct ResultsSection: View {
             } else if result.recommendations.isEmpty {
                 NoSpotCard(title: "No spot in reach",
                            message: "No known spot within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(options.start.isCurrentLocation ? "you" : options.start.name). Allow a longer drive or pick another start point.")
+            } else if !good.isEmpty {
+                NoSpotCard(title: "Nothing great",
+                           message: "Only marginal conditions, listed below. Try another day or session, or allow a longer drive.")
             } else {
                 NoSpotCard(title: "No kiteable spot",
                            message: "Not enough good wind. Try another day or session, or allow a longer drive.")
@@ -80,12 +89,12 @@ struct ResultsSection: View {
 
             if !good.isEmpty {
                 HStack {
-                    Text(good.count > 1 ? "Also good" : "On the map")
+                    Text(!hasVerdict ? "Marginal" : good.count > 1 ? "Also good" : "On the map")
                         .font(.title3.bold())
                     Spacer()
                     // With a single good spot the list would be empty (the spot is the card
                     // above): show the map only.
-                    if good.count > 1 {
+                    if !listed.isEmpty {
                         Picker("View", selection: $mode.animation(.snappy)) {
                             ForEach(Mode.allCases, id: \.self) { Text($0.rawValue) }
                         }
@@ -95,10 +104,10 @@ struct ResultsSection: View {
                 }
                 .padding(.top, 4)
 
-                switch good.count > 1 ? mode : .map {
+                switch !listed.isEmpty ? mode : .map {
                 case .list:
                     VStack(spacing: 10) {
-                        ForEach(good.dropFirst()) { rec in
+                        ForEach(listed) { rec in
                             Button { open(rec.id) } label: { SpotCard(rec: rec) }
                                 .buttonStyle(PressableStyle())
                                 .zoomSource(rec.id, in: zoom)
