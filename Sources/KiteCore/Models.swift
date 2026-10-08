@@ -36,6 +36,9 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
     public var region: String?
     /// "sea" | "lagoon" | "lake".
     public var waterType: String?
+    /// When the spot works with the tide: "high" | "low" | "mid" | "not-low" | "not-high".
+    /// nil = any tide (or no tide).
+    public var tide: String?
     /// "ferry" when a boat is needed to get there by car from the mainland; nil = by road.
     public var access: String?
     /// For ferry spots on an island: `SpotCatalog.islands` id. Shown only to someone there.
@@ -126,11 +129,38 @@ public enum Level: String, Codable, CaseIterable, Sendable {
 }
 
 /// Persisted once, reused for every search.
+/// How much each part of the score matters to the rider: 0 = ignore, 1 = default, 2 = a lot.
+/// Applied as exponents on the 0…1 factors (and as a multiplier on the drive penalty), so 1
+/// everywhere is the standard score. Safety limits are not weighted.
+public struct ScoreWeights: Codable, Equatable, Sendable {
+    public var strength: Double = 1
+    public var steadiness: Double = 1
+    public var direction: Double = 1
+    public var distance: Double = 1
+
+    public init(strength: Double = 1, steadiness: Double = 1, direction: Double = 1, distance: Double = 1) {
+        self.strength = strength
+        self.steadiness = steadiness
+        self.direction = direction
+        self.distance = distance
+    }
+
+    public static let range: ClosedRange<Double> = 0...2
+    public var isDefault: Bool { self == ScoreWeights() }
+}
+
 public struct RiderProfile: Codable, Equatable, Sendable {
     public var weightKg: Double
     /// Kite sizes in m².
     public var kites: [Double]
     public var level: Level
+    /// nil = defaults (optional so profiles saved before weights existed still load).
+    public var weights: ScoreWeights?
+
+    public var scoreWeights: ScoreWeights {
+        get { weights ?? ScoreWeights() }
+        set { weights = newValue.isDefault ? nil : newValue }
+    }
 
     public init(weightKg: Double, kites: [Double], level: Level) {
         self.weightKg = weightKg
@@ -184,6 +214,9 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     public var gustKn: Double
     /// Direction the wind is coming FROM, compass degrees.
     public var directionDeg: Double
+    /// Sea level incl. tide (m, relative to mean sea level). Only fetched for spots with a
+    /// tide rule.
+    public var seaLevelM: Double?
 
     public var hour: Int { Int(localTime.dropFirst(11).prefix(2)) ?? 0 }
 

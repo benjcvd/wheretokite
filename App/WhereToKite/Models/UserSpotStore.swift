@@ -125,6 +125,8 @@ struct SpotDraft: Equatable {
     /// Width of open water seen from the launch, 0–360° (180 = straight beach, 360 = small
     /// lake kitable from any side).
     var waterSectorDeg: Double = 180
+    /// When the spot works with the tide ("high", "low", "mid", "not-low", "not-high"; "" = any).
+    var tide = ""
     /// Second kitable shore (sandbar, isthmus, lagoon behind the beach). nil = one side.
     var otherSideDeg: Double?
     /// "user" when set by hand, "user-suggested" when the coastline guess was kept as is.
@@ -140,6 +142,7 @@ struct SpotDraft: Equatable {
         seaFacingDeg = spot.seaFacingDeg
         if let sides = spot.sides, sides.count > 1 { otherSideDeg = sides[1].seaFacingDeg }
         waterSectorDeg = spot.waterSectorDeg ?? spot.sides?.first?.waterSectorDeg ?? 180
+        tide = spot.tide ?? ""
         orientationSource = spot.orientationSource ?? "user"
         notes = spot.notes ?? ""
     }
@@ -168,6 +171,7 @@ struct SpotDraft: Equatable {
                                  latitude: coordinate.latitude, longitude: coordinate.longitude,
                                  seaFacingDeg: bearing, orientationSource: orientationSource,
                                  notes: n.isEmpty ? nil : n)
+        spot.tide = tide.isEmpty ? nil : tide
         let sector = waterSectorDeg == 180 ? nil : min(360, max(0, waterSectorDeg))
         spot.waterSectorDeg = sector
         if let otherSideDeg, (sector ?? 180) < 360 {

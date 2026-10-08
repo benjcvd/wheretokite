@@ -15,6 +15,10 @@ public struct SpotRecommendation: Sendable, Identifiable {
     public var window: (start: Int, end: Int)?
     public var hours: [HourScore]
     public var reason: String
+    /// "High 14:20 · Low 08:05, 20:35" for spots with a tide rule (when the forecast has tides).
+    public var tideSummary: String? = nil
+    /// Share of the wind score kept after the drive penalty (1 = none), for the explanation.
+    public var distanceFactor: Double = 1
 
     /// Kite suggested for the best window.
     public var suggestedKite: KiteRange? {
@@ -98,6 +102,7 @@ public struct Recommender: Sendable {
         var estimate: Double
         var hours: [HourScore] = []
         var rec: SpotRecommendation?
+        var tideSummary: String?
     }
 
     /// Step 1–2: spots in straight-line reach, nearest first, capped. Returns the kept spots
@@ -173,8 +178,12 @@ public struct Recommender: Sendable {
             c.hours = day.hours
                 .filter { request.slot.hours.contains($0.hour) }
                 .map { scorer.score($0, sides: c.spot.allSides) }
+            c.hours = Self.applyTide(c.spot.tide, to: c.hours, day: day.hours, rules: rules)
             c.estimate = estimates[c.spot.id] ?? c.estimate
-            c.rec = recommend(c.spot, hours: c.hours, drive: c.estimate, request: request, driveIsEstimate: true)
+            c.rec = recommend(c.spot, hours: c.hours, drive: c.estimate, request: request, driveIsEstimate: true,
+                              weights: profile.scoreWeights)
+            if c.spot.tide != nil { c.rec?.tideSummary = Self.tideSummary(day.hours, rules: rules) }
+            c.tideSummary = c.rec?.tideSummary
             cands[c.spot.id] = c
         }
 
@@ -200,7 +209,8 @@ public struct Recommender: Sendable {
                         cands[id] = nil
                     } else {
                         cands[id]?.rec = recommend(c.spot, hours: c.hours, drive: minutes, request: request,
-                                                   driveIsEstimate: false)
+                                                   driveIsEstimate: false, weights: profile.scoreWeights)
+                        cands[id]?.rec?.tideSummary = c.tideSummary
                     }
                 }
             }
@@ -223,7 +233,7 @@ public struct Recommender: Sendable {
     }
 
     func recommend(_ spot: Spot, hours: [HourScore], drive: Double, request: SearchRequest,
-                   driveIsEstimate: Bool = false) -> SpotRecommendation {
+                   driveIsEstimate: Bool = false, weights: ScoreWeights = ScoreWeights()) -> SpotRecommendation {
         // Best run of `sessionHours` consecutive hours.
         let n = min(rules.sessionHours, hours.count)
         var bestStart = 0, bestMean = 0.0
@@ -246,15 +256,20 @@ public struct Recommender: Sendable {
         }
 
         var final = bestMean
+        var distanceFactor = 1.0
         if request.distanceMatters, request.maxDriveMinutes > 0 {
-            final *= 1 - rules.maxDistancePenalty * min(1, drive / request.maxDriveMinutes)
+            let penalty = rules.maxDistancePenalty * weights.distance
+            distanceFactor = max(0, 1 - penalty * min(1, drive / request.maxDriveMinutes))
+            final *= distanceFactor
         }
 
-        return SpotRecommendation(
+        var rec = SpotRecommendation(
             spot: spot, driveMinutes: drive, driveIsEstimate: driveIsEstimate, windScore: windScore,
             finalScore: Int((final * 100).rounded()), window: window, hours: hours,
             reason: reason(hours: hours, bestStart: bestStart, n: n, window: window,
                            driveText: Self.driveText(drive, estimate: driveIsEstimate)))
+        rec.distanceFactor = distanceFactor
+        return rec
     }
 
     /// "45 min", "7h05", "~3h20" (estimate).
@@ -275,6 +290,8 @@ public struct Recommender: Sendable {
             // Explain why it's not a go.
             let flags = Set(hours.flatMap(\.flags))
             let why = flags.contains("too light") ? "too light"
+                : flags.contains("tide too low") ? "tide too low"
+                : flags.contains("tide too high") ? "tide too high"
                 : flags.contains("offshore component") ? "offshore"
                 : flags.first ?? "poor conditions"
             return "\(why) · \(wind) \(dir) · \(driveText)"
@@ -286,6 +303,54 @@ public struct Recommender: Sendable {
         let sideName = Self.mainSide(slice).map { " · \($0)" } ?? ""
         let extra = Set(slice.flatMap(\.flags)).sorted().map { " · ⚠︎ \($0)" }.joined()
         return String(format: "%02d:00–%02d:00 · ", window.0, window.1) + wind + " \(dir)\(side)\(sideName)\(kite) · \(driveText)\(extra)"
+    }
+
+    /// Tide state per hour from the day's sea levels: 0 = low water, 1 = high water. nil when
+    /// the forecast has no tide or the tide is too small to matter.
+    static func tideStates(_ day: [HourlyWind], rules: ScoringRules) -> [String: Double]? {
+        let levels = day.compactMap(\.seaLevelM)
+        guard let lo = levels.min(), let hi = levels.max(), hi - lo >= rules.minTidalRange else { return nil }
+        var out: [String: Double] = [:]
+        for h in day { if let m = h.seaLevelM { out[h.localTime] = (m - lo) / (hi - lo) } }
+        return out
+    }
+
+    /// Scales each hour by the spot's tide window; hours outside it score 0 with a flag.
+    static func applyTide(_ rule: String?, to hours: [HourScore], day: [HourlyWind], rules: ScoringRules) -> [HourScore] {
+        guard let rule, let states = tideStates(day, rules: rules) else { return hours }
+        return hours.map { h in
+            guard let f = states[h.wind.localTime] else { return h }
+            let k = rules.tideFactor(rule: rule, f: f)
+            guard k < 1 else { var h = h; h.tideFactor = 1; return h }
+            var h = h
+            h.tideFactor = k
+            if h.score > 0 { h.flags.append(f < 0.5 ? "tide too low" : "tide too high") }
+            h.score *= k
+            return h
+        }
+    }
+
+    /// "High 14:20 · Low 08:05, 20:35": hourly extremes, refined with a parabola through the
+    /// neighbouring hours.
+    static func tideSummary(_ day: [HourlyWind], rules: ScoringRules) -> String? {
+        let pts = day.compactMap { h in h.seaLevelM.map { (h.hour, $0) } }
+        guard pts.count >= 3, let lo = pts.map(\.1).min(), let hi = pts.map(\.1).max(),
+              hi - lo >= rules.minTidalRange else { return nil }
+        var highs: [String] = [], lows: [String] = []
+        for i in 1..<(pts.count - 1) {
+            let (a, b, c) = (pts[i - 1].1, pts[i].1, pts[i + 1].1)
+            let isHigh = b >= a && b > c, isLow = b <= a && b < c
+            guard isHigh || isLow else { continue }
+            let denom = a - 2 * b + c
+            let shift = denom == 0 ? 0 : max(-0.5, min(0.5, 0.5 * (a - c) / denom))
+            let minutes = Int(((Double(pts[i].0) + shift) * 60).rounded())
+            let t = String(format: "%02d:%02d", (minutes / 60 + 24) % 24, (minutes % 60 + 60) % 60)
+            if isHigh { highs.append(t) } else { lows.append(t) }
+        }
+        var parts: [String] = []
+        if !highs.isEmpty { parts.append("High " + highs.joined(separator: ", ")) }
+        if !lows.isEmpty { parts.append("Low " + lows.joined(separator: ", ")) }
+        return parts.isEmpty ? nil : parts.joined(separator: " · ")
     }
 
     /// Side of a multi-sided spot used most often in these hours.

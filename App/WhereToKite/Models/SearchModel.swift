@@ -126,6 +126,13 @@ final class SearchModel {
         recommender.islands = loaded?.islands ?? []
     }
 
+    /// UI tests: -searchOrigin "lat,lon" replaces the device location.
+    private static var testOrigin: Coordinate? {
+        guard let v = UserDefaults.standard.string(forKey: "searchOrigin")?.split(separator: ","), v.count == 2,
+              let lat = Double(v[0]), let lon = Double(v[1]) else { return nil }
+        return Coordinate(latitude: lat, longitude: lon)
+    }
+
     func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot]) async {
         recommender.spots = UserSpotStore.merged(catalog: catalog, user: userSpots)
         error = nil
@@ -133,13 +140,17 @@ final class SearchModel {
             let origin: Coordinate
             if let c = options.start.coordinate {
                 origin = c
+            } else if let pinned = Self.testOrigin {
+                origin = pinned
             } else {
                 progress = "Finding your location…"
                 origin = try await location.currentCoordinate()
             }
             progress = "Checking the wind at nearby spots…"
             let request = SearchRequest(
-                origin: origin, maxDriveMinutes: options.maxDriveMinutes, day: options.day,
+                // UI tests can pin a past day with a windy forecast: -searchDay yyyy-MM-dd.
+                origin: origin, maxDriveMinutes: options.maxDriveMinutes,
+                day: UserDefaults.standard.string(forKey: "searchDay") ?? options.day,
                 slot: options.slot, intensity: options.intensity, distanceMatters: options.distanceMatters)
             let result = try await recommender.search(request, profile: profile, today: DayOption.today.id)
             try Task.checkCancellation()

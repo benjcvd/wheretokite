@@ -14,6 +14,24 @@ public struct ScoringRules: Sendable {
 
     public init() {}
 
+    /// Tides smaller than this (m, low to high water over the day) are ignored.
+    public var minTidalRange = 0.5
+
+    /// Score factor for a spot's tide rule at a tide state `f` (0 = the day's low water,
+    /// 1 = high water). Edges ramp over 0.15 so a window doesn't flip on one hour.
+    public func tideFactor(rule: String, f: Double) -> Double {
+        func atLeast(_ x: Double) -> Double { min(1, max(0, (f - (x - 0.15)) / 0.15)) }
+        func atMost(_ x: Double) -> Double { min(1, max(0, ((x + 0.15) - f) / 0.15)) }
+        switch rule {
+        case "high": return atLeast(0.6)
+        case "low": return atMost(0.4)
+        case "not-low": return atLeast(0.3)
+        case "not-high": return atMost(0.7)
+        case "mid": return min(atLeast(0.25), atMost(0.75))
+        default: return 1
+        }
+    }
+
     /// Hard safety limits per level: (max mean wind, max gust) in knots.
     public func limits(_ level: Level) -> (wind: Double, gust: Double) {
         switch level {
@@ -58,6 +76,13 @@ public struct HourScore: Sendable {
     public var flags: [String]
     /// Side of a multi-sided spot this hour was scored on (nil for single-sided spots).
     public var side: String?
+    /// The factors behind `score` (0…1, before the rider's weights), for the explanation.
+    /// nil when a hard limit decided (too light / too strong).
+    public var strengthFactor: Double?
+    public var steadinessFactor: Double?
+    public var directionFactor: Double?
+    /// Tide window factor (nil = no tide rule / no tide data).
+    public var tideFactor: Double?
 }
 
 public struct Scorer: Sendable {
@@ -159,7 +184,16 @@ public struct Scorer: Sendable {
             flags.append("beach orientation unknown")
         }
 
-        return HourScore(wind: w, score: strength * gust * direction, kite: kite, relativeAngle: angle, flags: flags)
+        // Rider's weights as exponents: 0 ignores a factor, 2 makes it count double. Offshore
+        // (direction 0) stays 0 whatever the weight: that's safety, not taste.
+        let wt = profile.scoreWeights
+        let total = direction == 0 ? 0
+            : pow(strength, wt.strength) * pow(gust, wt.steadiness) * pow(direction, wt.direction)
+        var h = HourScore(wind: w, score: total, kite: kite, relativeAngle: angle, flags: flags)
+        h.strengthFactor = strength
+        h.steadinessFactor = gust
+        h.directionFactor = direction
+        return h
     }
 
     /// Where in the kite's range the rider wants to be: chill = lower-middle, intense = top.

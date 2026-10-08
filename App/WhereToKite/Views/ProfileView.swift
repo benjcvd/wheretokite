@@ -15,6 +15,11 @@ extension ProfileStore {
     var editable: Binding<RiderProfile> {
         Binding(get: { self.profile ?? .starter }, set: { self.profile = $0 })
     }
+
+    var weightsBinding: Binding<ScoreWeights> {
+        Binding(get: { (self.profile ?? .starter).scoreWeights },
+                set: { var p = self.profile ?? .starter; p.scoreWeights = $0; self.profile = p })
+    }
 }
 
 // MARK: - Onboarding (first launch only)
@@ -75,6 +80,10 @@ struct MeView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     RiderHero(profile: profiles.profile ?? .starter)
                     ProfileFields(profile: profiles.editable)
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("What matters to you").font(.headline)
+                        WeightsEditor(weights: profiles.weightsBinding)
+                    }
                     Text("Changes are saved automatically and used for your next search.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -296,3 +305,57 @@ private struct KiteRangesChart: View {
         }
     }
 }
+
+// MARK: - Score weights
+
+/// One slider per score factor: ignore … a lot (0…2, 1 = default).
+struct WeightsEditor: View {
+    @Binding var weights: ScoreWeights
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            row("Wind strength", "Wind that fits your kites and style", \.strength, "wind")
+            row("Steady wind", "Few gusts", \.steadiness, "waveform.path")
+            row("Wind direction", "Side-onshore over onshore or cross-shore", \.direction, "location.north.line")
+            row("Short drive", "How much far spots lose when distance matters", \.distance, "car")
+            if !weights.isDefault {
+                Button("Reset to default") {
+                    withAnimation(.snappy) { weights = ScoreWeights() }
+                }
+                .font(.subheadline)
+            }
+        }
+        .padding(16)
+        .card()
+    }
+
+    private func row(_ title: String, _ subtitle: String, _ key: WritableKeyPath<ScoreWeights, Double>,
+                     _ icon: String) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Label(title, systemImage: icon).font(.subheadline.weight(.semibold))
+                Spacer()
+                Text(Self.label(weights[keyPath: key]))
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            Slider(value: Binding(get: { weights[keyPath: key] }, set: { weights[keyPath: key] = $0 }),
+                   in: ScoreWeights.range, step: 0.25)
+                .accessibilityLabel(title)
+                .accessibilityValue(Self.label(weights[keyPath: key]))
+            Text(subtitle).font(.caption).foregroundStyle(.secondary)
+        }
+        .sensoryFeedback(.selection, trigger: Self.label(weights[keyPath: key]))
+    }
+
+    static func label(_ w: Double) -> String {
+        switch w {
+        case ..<0.125: "Ignore"
+        case ..<0.75: "Less"
+        case ..<1.25: "Normal"
+        case ..<1.75: "More"
+        default: "A lot"
+        }
+    }
+}
+

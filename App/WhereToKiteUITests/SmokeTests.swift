@@ -53,6 +53,24 @@ final class SmokeTests: XCTestCase {
             XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
             sleep(2)  // let the map tiles load
             snapshot(app, "3-detail")
+            // How the score works, and the rider's weights.
+            let info = app.buttons["scoreInfo"]
+            if info.waitForExistence(timeout: 3) {
+                info.tap()
+                XCTAssertTrue(app.navigationBars["How is this scored?"].waitForExistence(timeout: 3))
+                sleep(1)
+                snapshot(app, "3b-score-info")
+                let weights = app.buttons["What matters to you"]
+                app.swipeUp()
+                if weights.waitForExistence(timeout: 3) {
+                    weights.tap()
+                    sleep(1)
+                    snapshot(app, "3c-weights")
+                    app.navigationBars.buttons.firstMatch.tap()
+                }
+                app.buttons["Done"].tap()
+                sleep(1)
+            }
             app.swipeUp()
             snapshot(app, "4-detail-hourly")
             app.navigationBars.buttons.firstMatch.tap()
@@ -90,6 +108,42 @@ final class SmokeTests: XCTestCase {
         app.tabBars.buttons["Me"].tap()
         XCTAssertTrue(app.navigationBars["Me"].waitForExistence(timeout: 3))
         snapshot(app, "8-me")
+        app.swipeUp()
+        sleep(1)
+        snapshot(app, "8b-me-weights")
+    }
+
+    /// The "How is this scored?" sheet, opened from any spot (calm days have no top spot).
+    @MainActor
+    func testScoreInfo() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-searchDay", "2026-10-03",   // a windy day near Barcelona
+                                "-searchOrigin", "41.3874,2.1686"]
+        app.launch()
+        app.buttons["Start"].tap()
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allow = springboard.buttons["Allow While Using App"]
+        if allow.waitForExistence(timeout: 4) { allow.tap() }
+
+        // The windy spots that day are ~2 h away.
+        app.buttons["optionsChip"].tap()
+        let slider = app.sliders["driveSlider"]
+        XCTAssertTrue(slider.waitForExistence(timeout: 3))
+        slider.adjust(toNormalizedSliderPosition: 1)
+        app.buttons["Done"].tap()
+
+        let topSpot = app.buttons["topSpot"], row = app.buttons["spotRow"].firstMatch
+        let deadline = Date().addingTimeInterval(60)
+        while !topSpot.exists && !row.exists && Date() < deadline { _ = row.waitForExistence(timeout: 1) }
+        if !topSpot.exists && !row.exists { app.swipeUp(); _ = row.waitForExistence(timeout: 5) }
+        (topSpot.exists ? topSpot : row).tap()
+        XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
+        app.buttons["scoreInfo"].tap()
+        XCTAssertTrue(app.navigationBars["How is this scored?"].waitForExistence(timeout: 3))
+        sleep(1)
+        snapshot(app, "score-info")
+        app.swipeUp()
+        snapshot(app, "score-info-2")
     }
 
     @MainActor

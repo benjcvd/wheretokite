@@ -655,6 +655,9 @@ def slugify(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
+TIDE_RULES = ("", "high", "low", "mid", "not-low", "not-high")
+
+
 def read_curated(paths):
     """Rows of every CSV in `paths` (files or directories of *.csv)."""
     files = []
@@ -681,6 +684,9 @@ def _read_csv(path):
             raise SystemExit("%s: bad sector in row %r" % (path, r))
         if not 0 <= r["sector"] <= 360:
             raise SystemExit("%s: sector must be 0-360 in row %r" % (path, r))
+        r["tide"] = r.get("tide") or ""
+        if r["tide"] not in TIDE_RULES:
+            raise SystemExit("%s: tide must be one of %s in row %r" % (path, "/".join(TIDE_RULES[1:]), r))
         if r["water"] not in ("sea", "lagoon", "lake"):
             raise SystemExit("bad water type in row %r" % r)
         r["sides"] = parse_sides(r["hint"], r["water"])
@@ -1028,6 +1034,8 @@ def main():
         }
         if r["sector"] != 180:
             spot["waterSectorDeg"] = r["sector"]
+        if r["tide"]:
+            spot["tide"] = r["tide"]
         spot["_how"] = how
         spot["_hint"] = r["hint"]
         spot["_snapped"] = o["snapped"]

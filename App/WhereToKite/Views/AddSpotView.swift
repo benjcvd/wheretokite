@@ -340,6 +340,22 @@ private struct SpotDetailsForm: View {
             }
 
             Section {
+                Picker("Rideable", selection: $draft.tide) {
+                    Text("At any tide").tag("")
+                    Text("Around high tide").tag("high")
+                    Text("Around low tide").tag("low")
+                    Text("At mid tide").tag("mid")
+                    Text("Except at low tide").tag("not-low")
+                    Text("Except at high tide").tag("not-high")
+                }
+                .accessibilityIdentifier("tidePicker")
+            } header: {
+                Text("Tide")
+            } footer: {
+                Text("For tidal flats, bays that dry out or sandbars. Hours outside the window score 0.")
+            }
+
+            Section {
                 TextField("Access, parking, hazards, best wind…", text: $draft.notes, axis: .vertical)
                     .lineLimit(2...5)
             } header: {

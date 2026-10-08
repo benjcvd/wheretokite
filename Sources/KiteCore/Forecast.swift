@@ -92,16 +92,58 @@ public struct OpenMeteoProvider: ForecastProvider {
 
     private func fetchBatch(_ batch: [Spot], day: String) async throws -> [(String, DayForecast)] {
         let responses = try await fetch(batch, day: day)
+        // Tides only where a spot depends on them; a failed tide request just leaves them out.
+        let tideSpots = batch.filter { $0.tide != nil }
+        let tides = tideSpots.isEmpty ? [:] : ((try? await fetchSeaLevels(tideSpots, day: day)) ?? [:])
         return zip(batch, responses).map { spot, response in
             let h = response.hourly
+            let levels = tides[spot.id] ?? [:]
             var hours: [HourlyWind] = []
             for i in h.time.indices {
                 guard let s = h.wind_speed_10m[safe: i] ?? nil, let g = h.wind_gusts_10m[safe: i] ?? nil,
                       let d = h.wind_direction_10m[safe: i] ?? nil else { continue }
-                hours.append(HourlyWind(localTime: h.time[i], speedKn: s, gustKn: g, directionDeg: d))
+                var w = HourlyWind(localTime: h.time[i], speedKn: s, gustKn: g, directionDeg: d)
+                w.seaLevelM = levels[h.time[i]]
+                hours.append(w)
             }
             return (spot.id, DayForecast(day: day, hours: hours))
         }
+    }
+
+    private struct MarineResponse: Decodable {
+        struct Hourly: Decodable {
+            var time: [String]
+            var sea_level_height_msl: [Double?]
+        }
+        var hourly: Hourly
+    }
+
+    /// Hourly sea level incl. tide (Open-Meteo Marine, ~8 km grid: good for the timing of high
+    /// and low water, approximate for heights) -> spot id -> local time -> metres.
+    func fetchSeaLevels(_ spots: [Spot], day: String) async throws -> [String: [String: Double]] {
+        var c = URLComponents(string: "https://marine-api.open-meteo.com/v1/marine")!
+        c.queryItems = [
+            .init(name: "latitude", value: spots.map { String(format: "%.4f", $0.latitude) }.joined(separator: ",")),
+            .init(name: "longitude", value: spots.map { String(format: "%.4f", $0.longitude) }.joined(separator: ",")),
+            .init(name: "hourly", value: "sea_level_height_msl"),
+            .init(name: "timezone", value: "auto"),
+            .init(name: "start_date", value: day),
+            .init(name: "end_date", value: day),
+        ]
+        let (data, response) = try await session.data(from: c.url!)
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw ForecastError.badResponse(String(data: data, encoding: .utf8) ?? "HTTP error")
+        }
+        let decoded = spots.count == 1
+            ? [try JSONDecoder().decode(MarineResponse.self, from: data)]
+            : try JSONDecoder().decode([MarineResponse].self, from: data)
+        var out: [String: [String: Double]] = [:]
+        for (spot, r) in zip(spots, decoded) {
+            var levels: [String: Double] = [:]
+            for (t, v) in zip(r.hourly.time, r.hourly.sea_level_height_msl) { if let v { levels[t] = v } }
+            out[spot.id] = levels
+        }
+        return out
     }
 
     /// Form-encoded request body (same parameters as the GET query string).

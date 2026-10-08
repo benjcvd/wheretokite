@@ -9,7 +9,7 @@ spots in the app.
 
 ## Columns
 
-`country,region,name,water,locate,hint,notes,sector`
+`country,region,name,water,locate,hint,notes,sector,tide`
 
 - `country`: ISO code (also restricts the Nominatim search).
 - `region`: human-readable area shown in the app ("Côte d'Opale").
@@ -34,6 +34,11 @@ spots in the app.
   180 = straight beach; < 180 = cove / narrow bay (side winds blow off the land);
   > 180 = point or headland (the shore curves, so more wind directions work);
   360 = small lake or spot kitable from any side.
+- `tide` (optional): when the spot works, for spots that genuinely depend on the tide
+  (tidal flats, bays that dry out, shallow lagoons, sandbars that cover): `high` (around
+  high water), `low` (around low water), `mid`, `not-low` (anything but low water),
+  `not-high`. Leave empty when any tide works or there is no tide. The app fetches the
+  tide forecast for these spots and scores hours outside the window as 0.
 
 ## Checking a file
 
