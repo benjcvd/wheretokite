@@ -684,6 +684,9 @@ def _read_csv(path):
             raise SystemExit("%s: bad sector in row %r" % (path, r))
         if not 0 <= r["sector"] <= 360:
             raise SystemExit("%s: sector must be 0-360 in row %r" % (path, r))
+        # An osm: ref is pasted into an Overpass QL query: only n/w/r + digits.
+        if r.get("locate", "").startswith("osm:") and not re.fullmatch(r"osm:[nwr][0-9]+", r["locate"]):
+            raise SystemExit("%s: osm locator must look like osm:n123 / osm:w45 / osm:r6 in row %r" % (path, r))
         r["tide"] = r.get("tide") or ""
         if r["tide"] not in TIDE_RULES:
             raise SystemExit("%s: tide must be one of %s in row %r" % (path, "/".join(TIDE_RULES[1:]), r))
