@@ -44,6 +44,23 @@ final class QAFixesTests: XCTestCase {
         XCTAssertEqual(rec.scoredHours?.start, 15)
         XCTAssertEqual(rec.scoredHours?.end, 17)
     }
+
+    /// One good hour next to a too-light one: the window is the good hour only.
+    func testWindowLeavesOutPoorHoursOfTheBestRun() {
+        let r = Recommender(spots: [], forecast: CountingProvider(), driveTime: StraightLineDriveTime(), confidence: nil)
+        let scorer = Scorer(profile: RiderProfile(weightKg: 75, kites: [9, 12], level: .intermediate), intensity: nil)
+        let hours = (13...17).map { h in
+            scorer.score(HourlyWind(localTime: String(format: "2026-10-03T%02d:00", h), speedKn: h == 17 ? 17 : 5,
+                                    gustKn: h == 17 ? 19 : 6, directionDeg: 225), seaFacingDeg: 180)
+        }
+        let spot = try! JSONDecoder().decode(Spot.self, from: Data(#"{"id":"a","name":"A","latitude":41,"longitude":2}"#.utf8))
+        let req = SearchRequest(origin: Coordinate(latitude: 41, longitude: 2), maxDriveMinutes: 60, day: "2026-10-03",
+                                slot: .afternoon, intensity: nil, distanceMatters: false)
+        let rec = r.recommend(spot, hours: hours, drive: 10, request: req)
+        XCTAssertEqual(rec.window?.start, 17)
+        XCTAssertEqual(rec.window?.end, 18)
+        XCTAssertEqual(rec.scoredHours?.start, 16)
+    }
 }
 
 private actor CountingProvider: ForecastProvider {

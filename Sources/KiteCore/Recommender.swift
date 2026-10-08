@@ -256,6 +256,10 @@ public struct Recommender: Sendable {
             var lo = bestStart, hi = bestStart + n - 1
             while lo > 0, hours[lo - 1].score >= threshold { lo -= 1 }
             while hi < hours.count - 1, hours[hi + 1].score >= threshold { hi += 1 }
+            // The best run itself may hold a poor hour (one great hour + one too light still
+            // averages 0.5): don't advertise it as part of the window.
+            while lo < hi, hours[lo].score < threshold { lo += 1 }
+            while hi > lo, hours[hi].score < threshold { hi -= 1 }
             window = (hours[lo].wind.hour, hours[hi].wind.hour + 1)
         }
 
