@@ -928,7 +928,17 @@ def near_ring(ring, lat, lon, tol_m=1500.0):
                for (ax, ay), (bx, by) in zip(pts, pts[1:] + pts[:1]))
 
 
-def island_of(lat, lon):
+def _real_island(isl):
+    """An island at least 5 km across (not an islet or a nature island next to a harbour)."""
+    if not isl:
+        return False
+    la = [c[0] for c in isl[2]]
+    lo = [c[1] for c in isl[2]]
+    span = max((max(la) - min(la)) * 111.0, (max(lo) - min(lo)) * 111.0 * math.cos(math.radians(la[0])))
+    return span >= 5.0
+
+
+def island_of(lat, lon, strict=False):
     """The OSM place=island/islet containing the point -> (id, name, outline) or None.
     Candidates are islands whose outline passes within 2 km (cheap Overpass query; spots
     are on the shore); containment is tested here on Nominatim's simplified polygon
@@ -950,14 +960,15 @@ def island_of(lat, lon):
         if not rings:
             continue
         ring = [(c[1], c[0]) for c in max(rings, key=len)]
-        strict = point_in_ring(ring, lat, lon)
         # Beaches are often just outside the simplified outline; allow 800 m for real
         # islands, never for islets (rocks next to a beach).
-        if not strict and not (el.get("tags", {}).get("place") == "island" and near_ring(ring, lat, lon, 800.0)):
+        inside = point_in_ring(ring, lat, lon)
+        if not inside and (strict or not (el.get("tags", {}).get("place") == "island"
+                                          and near_ring(ring, lat, lon, 800.0))):
             continue
         size = (max(c[0] for c in ring) - min(c[0] for c in ring)) * (max(c[1] for c in ring) - min(c[1] for c in ring))
         tags = el.get("tags", {})
-        cand = ((strict, size), ref.lower(), tags.get("name:en") or tags.get("name", ref),
+        cand = ((inside, size), ref.lower(), tags.get("name:en") or tags.get("name", ref),
                 [[round(c[0], 4), round(c[1], 4)] for c in ring])
         if best is None or cand[0] > best[0]:
             best = cand
@@ -1128,6 +1139,9 @@ def main():
             # that a sea crossing; otherwise keep the spot on the road network.
             near2 = sorted(ANCHORS, key=lambda c: haversine(c[0], c[1], s_["latitude"], s_["longitude"]))
             ferry = ferry_needed(s_["latitude"], s_["longitude"], start=near2[1])
+            if ferry is None and _real_island(island_of(s_["latitude"], s_["longitude"])):
+                ferry = True   # an island without a car route (car-free Langeoog, Porto Santo…)
+                warnings.append("%s: no car route found and on an island: needs a ferry" % s_["id"])
             if ferry is None:
                 far = haversine(near2[0][0], near2[0][1], s_["latitude"], s_["longitude"]) > 1000000
                 warnings.append("%s: no car route found; treated as %s" % (
