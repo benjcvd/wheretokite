@@ -64,7 +64,7 @@ import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
-USER_AGENT = "wheretokite-dev/0.2 (spot catalogue builder)"
+USER_AGENT = "wheretokite-dev/0.2 (spot catalogue builder; +https://github.com/benjcvd/wheretokite)"
 OVERPASS_ENDPOINTS = [
     "https://overpass-api.de/api/interpreter",
     "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
