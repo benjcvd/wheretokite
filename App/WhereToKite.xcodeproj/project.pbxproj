@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		284C70C8E4ABA0E4A7F75C0D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F5C20E40546E26686279F0 /* Location.swift */; };
+		3033035C3325D08E3B4D292A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 63BA10E59F4309F7C4893714 /* PrivacyInfo.xcprivacy */; };
 		30A877DA17A905957EF8D298 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F8F5A2E1A5CE0B9DE4F25 /* ResultsView.swift */; };
 		3115EA2AD24EBA409D1B83FB /* SpotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD9CFE4AAF26F58E94873F1 /* SpotDetailView.swift */; };
 		3134C6E4EF37278EC526C4EC /* spots.json in Resources */ = {isa = PBXBuildFile; fileRef = A12A04CF4CA2668485850630 /* spots.json */; };
@@ -47,13 +48,14 @@
 
 /* Begin PBXFileReference section */
 		1C5E2E8BA8DA3D0A25B0DF88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		78E352EF510DCE05C57699A2 /* wheretokite */ = {isa = PBXFileReference; lastKnownFileType = folder; name = wheretokite; path = ..; sourceTree = SOURCE_ROOT; };
 		3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		45F5C20E40546E26686279F0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4631580E28E5B68ABCC5A177 /* WhereToKite.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = WhereToKite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F345D2CC8B0885A814F117E /* WhereToKiteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereToKiteApp.swift; sourceTree = "<group>"; };
 		5D6C9E3460D173F0CFC23F0D /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		6155DD4168F65D0B50EAF58A /* WhereToKiteTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WhereToKiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		78E352EF510DCE05C57699A2 /* wheretokite */ = {isa = PBXFileReference; lastKnownFileType = folder; name = wheretokite; path = ..; sourceTree = SOURCE_ROOT; };
+		63BA10E59F4309F7C4893714 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		89AF133A500C253B3DD84ED7 /* CoastlineGuess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastlineGuess.swift; sourceTree = "<group>"; };
 		8BD9CFE4AAF26F58E94873F1 /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
 		9277E1AB34764B92F4C025FD /* UserSpotStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSpotStoreTests.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				1C5E2E8BA8DA3D0A25B0DF88 /* Assets.xcassets */,
+				63BA10E59F4309F7C4893714 /* PrivacyInfo.xcprivacy */,
 				4F345D2CC8B0885A814F117E /* WhereToKiteApp.swift */,
 				1E455D4BF836D9596798CE63 /* Models */,
 				EFBCE5475AE39803B852328D /* Views */,
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC5F9367099D89569E182DF /* Assets.xcassets in Resources */,
+				3033035C3325D08E3B4D292A /* PrivacyInfo.xcprivacy in Resources */,
 				3134C6E4EF37278EC526C4EC /* spots.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
