@@ -268,8 +268,11 @@ struct ScoreInfoSheet: View {
     @Environment(ProfileStore.self) private var profiles
     @Environment(\.dismiss) private var dismiss
 
+    /// The best window, or for a marginal spot (no window) the hours its score comes from.
+    private var explained: (start: Int, end: Int)? { rec.window ?? rec.scoredHours }
+
     private var windowHours: [HourScore] {
-        guard let w = rec.window else { return [] }
+        guard let w = explained else { return [] }
         return rec.hours.filter { $0.wind.hour >= w.start && $0.wind.hour < w.end }
     }
 
@@ -279,6 +282,11 @@ struct ScoreInfoSheet: View {
     }
 
     private var weights: ScoreWeights { (profiles.profile ?? .starter).scoreWeights }
+
+    /// 30 % by default, scaled by the "Short drive" weight (as in `Recommender.recommend`).
+    private var maxDistanceLoss: Int {
+        Int((min(1, ScoringRules().maxDistancePenalty * weights.distance) * 100).rounded())
+    }
 
     var body: some View {
         NavigationStack {
@@ -314,7 +322,8 @@ struct ScoreInfoSheet: View {
                                       detail: "\(rec.driveLabel) · distance matters is on")
                         }
                     } header: {
-                        Text("This spot, best window")
+                        Text(rec.window != nil ? "This spot, best window"
+                             : explained.map { "This spot, \($0.start)–\($0.end)h" } ?? "This spot")
                     } footer: {
                         Text("Averages over the window's hours. The score multiplies them, raised to your weights.")
                     }
@@ -326,7 +335,7 @@ struct ScoreInfoSheet: View {
                         Text("**Wind strength**: how well the wind fits the best kite in your quiver, and your style (chill or intense).")
                         Text("**Steady wind**: gusts compared with the mean wind.")
                         Text("**Direction**: side-onshore is best, straight onshore is fine, cross-shore is harder, offshore is 0.")
-                        Text("They are multiplied, using your weights. A spot's score is its best two hours in a row. Spots that need a certain tide lose the hours outside it, and with **Distance matters** far spots lose up to 30 %.")
+                        Text("They are multiplied, using your weights. A spot's score is its best two hours in a row. Spots that need a certain tide lose the hours outside it, and with **Distance matters** far spots lose up to \(maxDistanceLoss) %.")
                         Text("Some limits never bend: wind or gusts over your level's limit, and offshore wind, always score 0.")
                             .foregroundStyle(.secondary)
                     }

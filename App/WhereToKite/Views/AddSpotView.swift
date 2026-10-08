@@ -321,7 +321,7 @@ private struct SpotDetailsForm: View {
                 if let deg = draft.otherSideDeg, let coordinate = draft.coordinate {
                     orientationMap(coordinate, bearing: Binding(get: { draft.otherSideDeg },
                                                                 set: { draft.otherSideDeg = $0 }),
-                                   sector: draft.waterSectorDeg)
+                                   sector: draft.waterSectorDeg, label: "Other side direction")
                         .listRowInsets(EdgeInsets())
                     HStack(spacing: 12) {
                         FacingBadge(bearing: deg, size: 36)
@@ -423,7 +423,8 @@ private struct SpotDetailsForm: View {
         }
     }
 
-    private func orientationMap(_ c: Coordinate, bearing: Binding<Double?>, sector: Double = 180) -> some View {
+    private func orientationMap(_ c: Coordinate, bearing: Binding<Double?>, sector: Double = 180,
+                                label: String = "Beach direction") -> some View {
         let center = CLLocationCoordinate2D(latitude: c.latitude, longitude: c.longitude)
         return Map(initialPosition: .region(MKCoordinateRegion(center: center, latitudinalMeters: 900,
                                                                 longitudinalMeters: 900)),
@@ -432,7 +433,7 @@ private struct SpotDetailsForm: View {
             .id(c)
             .frame(height: 280)
             .overlay {
-                OrientationDial(bearing: bearing, sector: sector)
+                OrientationDial(bearing: bearing, sector: sector, label: label)
             }
             .overlay(alignment: .topTrailing) {
                 if isGuessing {
@@ -500,6 +501,8 @@ struct OrientationDial: View {
     @Binding var bearing: Double?
     /// Width of the tinted water area, degrees.
     var sector: Double = 180
+    /// VoiceOver name: two dials (main and other side) must not both read "Beach direction".
+    var label = "Beach direction"
 
     var body: some View {
         GeometryReader { geo in
@@ -573,7 +576,7 @@ struct OrientationDial: View {
             .animation(.snappy(duration: 0.15), value: sector)
         }
         .accessibilityElement()
-        .accessibilityLabel("Beach direction")
+        .accessibilityLabel(label)
         .accessibilityValue(bearing.map { "\(Geo.compassName($0)), \(Int($0)) degrees" } ?? "Not set")
         .accessibilityAdjustableAction { direction in
             let current = bearing ?? 0

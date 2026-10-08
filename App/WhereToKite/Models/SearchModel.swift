@@ -30,11 +30,8 @@ struct DayOption: Identifiable, Hashable {
     let id: String
     let date: Date
 
-    static let formatter: DateFormatter = {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd"
-        return f
-    }()
+    /// Gregorian whatever the device calendar: the id goes to the forecast API.
+    static let formatter = DayString.formatter()
 
     static var today: DayOption { next(1)[0] }
 
@@ -47,9 +44,15 @@ struct DayOption: Identifiable, Hashable {
         }
     }
 
+    /// The day an id stands for, also outside the coming week (a search made before midnight,
+    /// an archived day): labels must name the day that was searched, not today.
     static func with(id: String) -> DayOption {
-        next().first { $0.id == id } ?? .today
+        if let d = formatter.date(from: id) { return DayOption(id: id, date: d) }
+        return .today
     }
+
+    /// True when `id` is before today (e.g. the app stayed open past midnight).
+    static func isPast(_ id: String) -> Bool { id < today.id }
 
     var shortLabel: String {
         if Calendar.current.isDateInToday(date) { return "Today" }
@@ -108,6 +111,8 @@ final class SearchModel {
     private(set) var error: String?
     /// Bumped on every finished search (drives haptics).
     private(set) var generation = 0
+    /// When `result` arrived.
+    private(set) var finishedAt: Date?
 
     private let location = LocationService()
     private let catalog: [Spot]
@@ -169,6 +174,7 @@ final class SearchModel {
             let result = try await recommender.search(request, profile: profile, today: DayOption.today.id)
             try Task.checkCancellation()
             self.result = result
+            finishedAt = Date()
             progress = nil
             generation += 1
         } catch is CancellationError {

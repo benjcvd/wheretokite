@@ -10,6 +10,9 @@ struct SearchView: View {
     @State private var model = SearchModel()
     @State private var path: [String] = []
     @State private var sheet: Sheet?
+    /// Bumped to re-run the search with unchanged options (back in the foreground later on).
+    @State private var refresh = 0
+    @Environment(\.scenePhase) private var scenePhase
     @Namespace private var zoom
 
     enum Sheet: String, Identifiable {
@@ -21,6 +24,7 @@ struct SearchView: View {
         var options: SearchOptions
         var profile: RiderProfile?
         var userSpots: [Spot]
+        var refresh: Int
     }
 
     var body: some View {
@@ -40,7 +44,17 @@ struct SearchView: View {
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Where to kite?")
             .refreshable { await run() }
-            .task(id: SearchKey(options: options, profile: profiles.profile, userSpots: userSpots.spots)) {
+            .onChange(of: scenePhase) { _, phase in
+                guard phase == .active else { return }
+                if DayOption.isPast(options.day) {
+                    // Left open past midnight: the selected day is gone from the strip.
+                    options.day = DayOption.today.id
+                } else if let at = model.finishedAt, Date().timeIntervalSince(at) > 3600 {
+                    refresh += 1   // an hour-old answer: forecasts may have moved
+                }
+            }
+            .task(id: SearchKey(options: options, profile: profiles.profile, userSpots: userSpots.spots,
+                                refresh: refresh)) {
                 // Short debounce so a burst of taps triggers one search.
                 if model.result != nil {
                     try? await Task.sleep(for: .milliseconds(350))
@@ -121,7 +135,8 @@ struct SearchView: View {
 
 private struct DayStrip: View {
     @Binding var selection: String
-    private let days = DayOption.next()
+    /// Computed on each render so the strip moves on after midnight.
+    private var days: [DayOption] { DayOption.next() }
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -159,9 +174,21 @@ private struct DayStrip: View {
 
 // MARK: - Session slot
 
+private struct TitleOnlyIf: LabelStyle {
+    let condition: Bool
+    @ViewBuilder func makeBody(configuration: Configuration) -> some View {
+        if condition {
+            configuration.title
+        } else {
+            HStack(spacing: 6) { configuration.icon; configuration.title }
+        }
+    }
+}
+
 private struct SlotPicker: View {
     @Binding var selection: SessionSlot
     @Namespace private var highlight
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
         HStack(spacing: 4) {
@@ -173,9 +200,11 @@ private struct SlotPicker: View {
                     VStack(spacing: 1) {
                         Label(slot.label, systemImage: slot.symbol)
                             .font(.subheadline.weight(.semibold))
-                            .labelStyle(.titleAndIcon)
+                            // Three across: at accessibility sizes the icon pushed the names
+                            // to "Mor…", "After…".
+                            .labelStyle(TitleOnlyIf(condition: typeSize >= .xxLarge))
                             .lineLimit(1)
-                            .minimumScaleFactor(0.8)
+                            .minimumScaleFactor(typeSize.isAccessibilitySize ? 0.6 : 0.8)
                         Text(slot.hoursLabel)
                             .font(.caption2)
                             .foregroundStyle(on ? Color.white.opacity(0.85) : Color.secondary)

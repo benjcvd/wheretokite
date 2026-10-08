@@ -123,12 +123,18 @@ public struct MapKitDriveTime: DriveTimeProvider {
 
     public init() {}
 
+    /// Cache entries follow the spot's position, not just its id: moving a user spot's pin
+    /// must not keep the old drive time for 30 min.
+    static func cacheID(_ spot: Spot) -> String {
+        String(format: "%@@%.4f,%.4f", spot.id, spot.latitude, spot.longitude)
+    }
+
     public func driveMinutes(from origin: Coordinate, to spots: [Spot]) async -> [String: Double] {
         let cache = ETACache.shared
         var result: [String: Double] = [:]
         var todo: [Spot] = []
         for spot in spots {
-            if let m = await cache.get(origin, spot.id) { result[spot.id] = m } else { todo.append(spot) }
+            if let m = await cache.get(origin, Self.cacheID(spot)) { result[spot.id] = m } else { todo.append(spot) }
         }
         guard !todo.isEmpty, await !cache.isThrottled else { return result }
 
@@ -143,7 +149,7 @@ public struct MapKitDriveTime: DriveTimeProvider {
                 switch eta {
                 case .minutes(let m):
                     result[spot.id] = m
-                    await cache.set(origin, spot.id, m)
+                    await cache.set(origin, Self.cacheID(spot), m)
                 case .throttled:
                     throttled = true
                     await cache.markThrottled()

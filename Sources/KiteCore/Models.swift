@@ -256,3 +256,29 @@ public struct DayForecast: Codable, Sendable {
         return true
     }
 }
+
+// MARK: - Days
+
+/// "yyyy-MM-dd" day strings as the forecast API wants them: always Gregorian digits, whatever
+/// the device's calendar (a Buddhist or Japanese calendar would otherwise give "2569-…" or
+/// "0008-…").
+public enum DayString {
+    public static func formatter(timeZone: TimeZone = .current) -> DateFormatter {
+        let f = DateFormatter()
+        f.calendar = Calendar(identifier: .gregorian)
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.timeZone = timeZone
+        f.dateFormat = "yyyy-MM-dd"
+        return f
+    }
+
+    /// The local calendar day of `date`.
+    public static func from(_ date: Date, timeZone: TimeZone = .current) -> String {
+        formatter(timeZone: timeZone).string(from: date)
+    }
+
+    /// Local midnight of a "yyyy-MM-dd" day, nil if malformed.
+    public static func date(_ day: String, timeZone: TimeZone = .current) -> Date? {
+        formatter(timeZone: timeZone).date(from: day)
+    }
+}

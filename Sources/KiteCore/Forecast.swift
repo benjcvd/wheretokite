@@ -199,9 +199,7 @@ private func capture<T>(_ body: () async throws -> T) async -> Result<T, Error> 
 
 extension OpenMeteoProvider {
     static func endpoint(for day: String) -> String {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy-MM-dd"
-        return day < f.string(from: Date())
+        day < DayString.from(Date())
             ? "https://historical-forecast-api.open-meteo.com/v1/forecast"
             : "https://api.open-meteo.com/v1/forecast"
     }
@@ -234,7 +232,10 @@ public struct CachedForecastProvider: ForecastProvider {
     }
 
     private func file(for spot: Spot, day: String) -> URL {
+        // Tides are only fetched for spots with a tide rule: keep those entries apart, or a
+        // spot that just got a rule (user spot edited) would reuse a tideless entry.
         let key = String(format: "%.4f_%.4f_%@", spot.latitude, spot.longitude, day)
+            + (spot.tide == nil ? "" : "_tide")
         return directory.appendingPathComponent(key + ".json")
     }
 
