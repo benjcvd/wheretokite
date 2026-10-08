@@ -1,45 +1,96 @@
-country,region,name,water,locate,hint,notes,sector
+country,region,name,water,locate,hint,notes,sector,tide
 # France: North Sea, Channel, Atlantic coasts and northern / western inland lakes — format: tools/spots/README.md
-FR,Côte d'Opale,Malo-les-Bains (Dunkerque),sea,q:Plage de Malo-les-Bains,N,
-FR,Côte d'Opale,Calais – Blériot-Plage,sea,q:Blériot-Plage,NNW,
-FR,Côte d'Opale,Wissant,sea,q:Plage de Wissant,NW,
-FR,Côte d'Opale,Wimereux,sea,q:Wimereux,W,
-FR,Côte d'Opale,Hardelot,sea,q:Hardelot-Plage,W,
-FR,Côte d'Opale,Le Touquet,sea,q:Le Touquet-Paris-Plage,W,
-FR,Côte d'Opale,Berck-sur-Mer,sea,q:Berck plage,W,
-FR,Baie de Somme,Fort-Mahon-Plage,sea,q:Fort-Mahon-Plage,W,
-FR,Baie de Somme,Le Crotoy,sea,q:Le Crotoy plage,SW,Tidal bay: rideable around high tide only.
-FR,Baie de Somme,Cayeux-sur-Mer,sea,q:Cayeux plage,W,
-FR,Normandie,Ouistreham – Riva-Bella,sea,q:Plage de Riva-Bella,N,
-FR,Normandie,Merville-Franceville,sea,q:Merville-Franceville-Plage,N,
-FR,Normandie,Houlgate,sea,osm:w108806424,N,
-FR,Normandie,Asnelles,sea,q:Asnelles,N,
-FR,Normandie,Utah Beach,sea,q:Utah Beach,E,
-FR,Normandie,Siouville-Hague,sea,q:Plage de Siouville,W,
-FR,Normandie,Gouville-sur-Mer,sea,q:Plage de Gouville-sur-Mer,W,
-FR,Normandie,Agon-Coutainville,sea,q:Plage de Coutainville,W,
-FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,Bay of Mont-Saint-Michel: huge tidal range; ride around high tide.
-FR,Bretagne,Saint-Lunaire – Longchamp,sea,q:Plage de Longchamp Saint-Lunaire,N,
-FR,Bretagne,Saint-Michel-en-Grève (Lieue de Grève),sea,q:Lieue de Grève,N,
-FR,Bretagne,Santec – Le Dossen,sea,q:Plage du Dossen,NW,
-FR,Bretagne,Le Conquet – Blancs Sablons,sea,q:Plage des Blancs Sablons Le Conquet,W,
-FR,Bretagne,Pentrez,sea,q:Plage de Pentrez,W,
-FR,Bretagne,La Torche,sea,q:Plage de la Torche,W,
-FR,Bretagne,Mousterlin,sea,q:Plage de Mousterlin,S,
-FR,Bretagne,Gâvres,sea,"q:Grande Plage, Gâvres",SW,
-FR,Bretagne,Erdeven – Kerhillio,sea,q:Plage de Kerhillio,SW,
-FR,Bretagne,Penthièvre,sea,osm:w1546689396,E:bay side|W:ocean side,Bay side of the Penthièvre isthmus (flat water); the ocean side faces W.
-FR,Bretagne,Plouharnel – Les Sables Blancs,sea,q:Sables Blancs Plouharnel,SE,
-FR,Bretagne,Carnac – Saint-Colomban,sea,q:Plage de Saint-Colomban Carnac,S,
-FR,Pays de la Loire,La Baule,sea,q:Plage de La Baule,S,Town beach: kiting restricted in summer bathing hours.
-FR,Pays de la Loire,Saint-Brevin-les-Pins,sea,q:Plage de Saint-Brevin-l'Océan,W,
-FR,Pays de la Loire,Notre-Dame-de-Monts,sea,q:Plage de Notre-Dame-de-Monts,W,
-FR,Pays de la Loire,Bretignolles-sur-Mer,sea,osm:n13123697769,W,
-FR,Pays de la Loire,La Tranche-sur-Mer,sea,q:Plage de La Tranche-sur-Mer,SW,
-FR,Charente-Maritime,Châtelaillon-Plage,sea,q:Plage de Châtelaillon,W,
-FR,Charente-Maritime,Oléron – Vert-Bois,sea,q:Plage de Vert Bois Dolus,W,
-FR,Charente-Maritime,Oléron – Gatseau,sea,q:Plage de Gatseau,S,
-FR,Gironde,Lac d'Hourtin-Carcans,lake,q:Hourtin Port,W,Lake: flat water.
-FR,Gironde,Lac de Lacanau,lake,osm:w340755108,,Lake: flat water.
-FR,Gironde,Bassin d'Arcachon – La Hume,sea,q:Plage de la Hume Gujan-Mestras,N,Tidal basin: ride around high tide.
-FR,Grand Est,Lac du Der – Giffaumont,lake,q:Plage de Giffaumont-Champaubert,,Kite zone regulated (check the club at Port d'Arrigny); forbidden zone in summer.
+FR,Côte d'Opale,Bray-Dunes,sea,osm:r10626833,N,"Huge flat beach next to the Belgian border; shallow at low tide, more chop at high tide.",,
+FR,Côte d'Opale,Malo-les-Bains (Dunkerque),sea,osm:w520745148,N,Dunkerque Flysurfing Club beach; very wide at low tide.,,
+FR,Côte d'Opale,Gravelines – Petit-Fort-Philippe,sea,osm:w610168882,N,"'Petite mer' behind the sandbank: flat water around high tide with big coefficients, open sea outside. Buoyed kite zone.",,
+FR,Côte d'Opale,Les Hemmes de Marck,sea,osm:n7141980706,N,"Very wide gently sloping beach, flattish water behind sandbanks; best in NW to NE winds.",,
+FR,Côte d'Opale,Calais – Blériot-Plage,sea,osm:w35894485,NNW,Watch the wooden groynes at high tide.,,
+FR,Côte d'Opale,Sangatte,sea,osm:r12146698,NW,"Windiest spot of the Côte d'Opale, long waves; groynes on the beach. Kite school on site.",,
+FR,Côte d'Opale,Wissant,sea,osm:w106357501,NW,"Between the two capes (venturi): powerful wind and waves, experienced riders.",,
+FR,Côte d'Opale,Wimereux – Pointe aux Oies,sea,q:Pointe aux Oies,W,"Waves; Wimereux town beach only works at low tide, the Pointe aux Oies is the main launch.",,
+FR,Côte d'Opale,Le Portel,sea,osm:w1039834126,W,Kite school on the beach; waves in westerlies.,,
+FR,Côte d'Opale,Hardelot,sea,osm:n1723311510,W,Flat water in the low-tide pools (baïnes) and waves outside.,,
+FR,Côte d'Opale,Le Touquet,sea,q:Le Touquet-Paris-Plage,W,Launch north of Aqualud; the Canche bay works in E winds around high tide (strong currents).,,
+FR,Côte d'Opale,Berck-sur-Mer,sea,osm:w132196447,W,Huge beach; flat pools at low tide.,,
+FR,Baie de Somme,Fort-Mahon-Plage,sea,osm:w1237746823,W,Kite school zone north of the nautical base.,,
+FR,Baie de Somme,Le Crotoy,sea,q:Le Crotoy plage,SW,Tidal bay: rideable around high tide only. Do not cross the yellow buoys of the nature reserve.,,high
+FR,Baie de Somme,Cayeux-sur-Mer – La Mollière,sea,osm:n9450121482,WNW,Between Cayeux and Le Hourdel; kite schools and club in Cayeux.,,
+FR,Normandie,Quiberville,sea,osm:n8446819588,N,"Marked kite zone (mandatory); works WSW to NW. Pebble beach, sand at low tide.",,
+FR,Normandie,Le Havre,sea,osm:w804964900,W,"Urban pebble beach, kite schools; works in SW to NW winds.",,
+FR,Normandie,Merville-Franceville,sea,q:Merville-Franceville-Plage,N,Beach reserved for kitesurfing; allowed all year.,,
+FR,Normandie,Ouistreham – Riva-Bella,sea,q:Plage de Riva-Bella,N,Low tide only: at high tide the water reaches the sea wall.,,not-high
+FR,Normandie,Houlgate,sea,osm:w108806424,N,,,
+FR,Normandie,Asnelles,sea,q:Asnelles,N,Mulberry harbour remains offshore; summer: kiting usually only outside bathing hours.,,
+FR,Normandie,Utah Beach,sea,q:Utah Beach,E,Huge beach; best at low to mid tide.,,
+FR,Normandie,Cherbourg – Collignon,sea,osm:n13289366918,N,"Flat water inside the Cherbourg breakwater, around high tide; works W to NE.",,high
+FR,Normandie,Urville-Nacqueville,sea,osm:w219863717,N,,,
+FR,Normandie,Siouville-Hague,sea,osm:w210570710,W,"Wave spot, all tides.",,
+FR,Normandie,Gouville-sur-Mer,sea,q:Plage de Gouville-sur-Mer,W,,,
+FR,Normandie,Agon-Coutainville,sea,osm:w195421511,W,,,
+FR,Normandie,Jullouville,sea,osm:n14064270382,W,Best from mid to low tide.,,not-high
+FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,Bay of Mont-Saint-Michel: huge tidal range; ride around high tide.,,high
+FR,Bretagne,Saint-Malo – Le Sillon,sea,osm:w485330850,NW,1 Jul–1 Sep: mandatory launch zone between the Kyriad hotel and Avenue Fuentès. Beach disappears at high spring tides.,,not-high
+FR,Bretagne,Saint-Lunaire – Longchamp,sea,osm:w290703254,N,Banned 10:00–20:00 from 15 June to 15 September.,,
+FR,Bretagne,Lancieux,sea,osm:w385324966,N,"Flat, shallow bay; best at low tide. July–August: Saint-Sieu beach is closed, launch at Tête de Chien (low tide) or Roche Morin (high tide).",,
+FR,Bretagne,Sables-d'Or-les-Pins,sea,osm:w46505869,NW,"Wide shallow beach, mixed sand / shallow water.",,
+FR,Bretagne,Erquy – Caroual,sea,osm:w28750087,W,Kite zone away from the bathing area; best in SW to NW winds.,,
+FR,Bretagne,Hillion – Bon Abri,sea,osm:w425935259,N,"Bay of Saint-Brieuc: huge tidal range, ride mid to high tide. Nature reserve nearby.",,not-low
+FR,Bretagne,Plérin – Les Rosaires,sea,osm:w233870060,NE,"Easterly-wind spot; busy with families in summer, ride off-season.",,
+FR,Bretagne,Saint-Michel-en-Grève (Lieue de Grève),sea,q:Lieue de Grève,N,,,
+FR,Bretagne,Santec – Le Dossen,sea,q:Plage du Dossen,W,,,
+FR,Bretagne,Keremma,sea,osm:n1723311861,N,5 km of beach between the Kernic and Goulven bays; flat water at low tide.,,
+FR,Bretagne,Guissény – Le Vougot,sea,osm:w224287590,NW,,,
+FR,Bretagne,Landéda – Sainte-Marguerite,sea,osm:n1284316076,W,Sheltered; flat water at low tide. Summer kite zone.,,
+FR,Bretagne,Lampaul-Ploudalmézeau – Trois Moutons,sea,osm:w220203518,N,"Tréompan dunes; calm water, beach narrows at high tide. Summer kite zone.",,
+FR,Bretagne,Le Conquet – Blancs Sablons,sea,q:Plage des Blancs Sablons Le Conquet,NW,,,
+FR,Bretagne,Brest – Moulin Blanc,sea,osm:w23432320,S,"Flat water in the Rade de Brest, gusty wind. Closed 1 July–31 August 09:00–19:00.",,
+FR,Bretagne,Crozon – Goulien,sea,osm:w783301189,W,Waves; main kite beach of the Crozon peninsula.,,
+FR,Bretagne,Pentrez,sea,osm:w373179545,W,,,
+FR,Bretagne,La Torche,sea,q:Plage de la Torche,W,"Kiters launch north of the point (Tronoën), away from the surfers; waves.",,
+FR,Bretagne,Île-Tudy,sea,osm:r12863674,SE,Flat shallow water at low tide.,,
+FR,Bretagne,Bénodet – Lagune du Letty,lagoon,osm:r4027008,N,"Flat-water lagoon behind the Mousterlin dune spit, around high tide; works E to WNW.",,not-low
+FR,Bretagne,Mousterlin,sea,q:Plage de Mousterlin,SW,,,
+FR,Bretagne,Fort-Bloqué,sea,osm:w23860688,SW,"Waves; rocks mid-spot, best mid to low tide.",,
+FR,Bretagne,Gâvres,sea,"q:Grande Plage, Gâvres",SW:ocean side|NE:Petite Mer:lagoon,Ocean beach (waves) or the flat Petite Mer de Gâvres from mid tide.,,
+FR,Bretagne,Erdeven – Kerhillio,sea,q:Plage de Kerhillio,SW,Ride from 3 h before to 3 h after low tide. 15 June–15 September: kite zone at access 30 only; banned at high spring tides.,,not-high
+FR,Bretagne,Penthièvre,sea,osm:w1546689396,E:bay side|W:ocean side,"Bay side of the Penthièvre isthmus (flat water, oyster shells) and ocean side. Low tide only (3 h either side); summer kite zones.",,not-high
+FR,Bretagne,Plouharnel – Les Sables Blancs,sea,q:Sables Blancs Plouharnel,E,Flat water around high tide in E winds; oyster parks at low tide. Banned 1 November–31 March (bird reserve).,,high
+FR,Bretagne,Sarzeau – Penvins,sea,osm:w23049270,S,"Shallow basin, flat around high tide; beginner-friendly.",,not-low
+FR,Pays de la Loire,Assérac – Pont-Mahé,sea,osm:w467953849,W,"Shallow bay, you can stand almost everywhere; kite schools.",,
+FR,Pays de la Loire,La Turballe – Pen Bron,sea,osm:w440206827,W,"Wave spot, shore break; little beach at high tide (sea wall).",,
+FR,Pays de la Loire,La Baule,sea,q:Plage de La Baule,S,Launch at Plage Benoît (Le Pouliguen end): flat pools at low tide. Summer: kiting restricted in bathing hours.,,
+FR,Pays de la Loire,Saint-Brevin-les-Pins,sea,osm:w301713272,W,,,
+FR,Pays de la Loire,Fromentine,sea,osm:r2982134,W,"Flat water in the channel facing Noirmoutier, best 2 h either side of low tide. Summer: kite zone right of the bathing area; keep out of the ferry channel.",,not-high
+FR,Pays de la Loire,Notre-Dame-de-Monts,sea,q:Plage de Notre-Dame-de-Monts,W,Wide beach at low tide.,,
+FR,Pays de la Loire,Bretignolles-sur-Mer,sea,osm:n13123697769,W,"Kite zone on the Plage des Dunes, buoyed in July–August.",,
+FR,Pays de la Loire,La Tranche-sur-Mer,sea,q:Plage de La Tranche-sur-Mer,SW,Waves. May–September: kiting only at the Plage du Phare.,,
+FR,Charente-Maritime,Île de Ré – Rivedoux,sea,osm:w1497408059,N,"North beach, marked kite zone; flat, works NW to NE. Oyster beds reduce space at low tide.",,not-low
+FR,Charente-Maritime,Île de Ré – Les Portes (Trousse-Chemise),sea,osm:w260764654,NE,Flat shallow bay with a sandbank at low tide; works N to E. Strong currents near the Fier d'Ars.,,
+FR,Charente-Maritime,La Rochelle – Aytré,sea,osm:n6801705155,W,"Muddy shallow bay, ride 2 h either side of high tide; works SW to NW.",,high
+FR,Charente-Maritime,Châtelaillon-Plage,sea,osm:w131602195,W,Kite area south of the main beach; all tides.,,
+FR,Charente-Maritime,Oléron – Plage des Huttes,sea,osm:w1494402921,W,"Flat basin behind the reef around low tide, shore break at high tide. Avoid the bathing zones in summer.",,
+FR,Charente-Maritime,Oléron – Plaisance,sea,osm:w1238604909,NE,"Works N to E, all tides; marked kite zone in summer.",,
+FR,Charente-Maritime,Oléron – La Perroche,sea,osm:w176499349,SW,"Rocks, intermediate riders; banned in summer.",,
+FR,Charente-Maritime,Oléron – Gatseau,sea,q:Plage de Gatseau,S,Shallow south-facing bay; flat around high tide.,,not-low
+FR,Charente-Maritime,La Palmyre – Bonne Anse,sea,osm:r2953870,S,"Sheltered shallow bay, best on the rising tide (strong ebb currents).",,not-low
+FR,Gironde,Le Verdon – La Chambrette,sea,osm:w577835350,NE,"Estuary beach for E to NE winds, 2 h either side of high tide.",,high
+FR,Gironde,Lac d'Hourtin-Carcans,lake,q:Hourtin Port,W,Lake: flat water; stay south of the yellow buoy line.,,
+FR,Gironde,Lacanau-Océan,sea,osm:w697650794,W,"Waves, experienced riders. Summer: kiting before 19:00 only in the Super-Sud zone.",,
+FR,Gironde,Lac de Lacanau,lake,osm:w340755108,,Lake: flat water; use the marked channel in summer.,,
+FR,Gironde,Bassin d'Arcachon – Claouey,sea,osm:w570377210,SE,"Tidal basin, 2–3 h either side of high tide; muddy bottom, oyster shells. Closed July–August.",,high
+FR,Gironde,Bassin d'Arcachon – Andernos (Le Bétey),sea,osm:w540519748,SW,"Tidal basin, around high tide only. Closed July–August.",,high
+FR,Gironde,Bassin d'Arcachon – Les Arbousiers,sea,q:Plage des Arbousiers Arcachon,W,"Sandbank at low tide, strong current at high tide. Banned in summer.",,
+FR,Gironde,Bassin d'Arcachon – La Hume,sea,q:Plage de la Hume Gujan-Mestras,N,Tidal basin: ride around high tide. Closed in the hunting season (October–November).,,high
+FR,Gironde,La Teste – La Salie,sea,osm:n13034064294,W,Ocean beach at the south end of the basin entrance; supervised zone late June–early September.,,
+FR,Landes,Lac de Biscarrosse – Navarrosse,lake,osm:n8680293181,N,"Flat, shallow lake. Navarrosse launch September–May; in summer use the kite zone at Mayotte (just east).",,
+FR,Landes,Lac de Sanguinet – Port de l'Estey,lake,osm:n1771842358,NW,"Water launch, intermediate riders; avoid the buoyed zone to the north.",,
+FR,Landes,Biscarrosse-Plage,sea,osm:n8339012619,W,Waves; summer kite zone south of the bathing area.,,
+FR,Landes,Mimizan,sea,osm:w222354554,W,Plage Sud kite zone; keep away from the river mouth currents.,,
+FR,Landes,Contis,sea,osm:w329676289,W,Watch the jetties near the river mouth.,,
+FR,Landes,Moliets,sea,osm:w234222592,W,"Waves; large area near the Huchet river mouth, best at high tide.",,
+FR,Landes,Seignosse – Les Estagnots,sea,osm:n3053079146,W,"Waves, experienced riders. June–September: signposted kite zone during bathing hours.",,
+FR,Pays basque,Anglet – La Madrague,sea,osm:w157127409,W,"Waves, experienced riders. Allowed November–May; in season only early morning and after 19:00 via the marked channel.",,
+FR,Pays basque,Hendaye,sea,osm:n5228438622,N,Only Basque beach without cliffs. Banned 1 July–31 August.,,
+FR,Grand Est,Lac du Der – Giffaumont,lake,q:Plage de Giffaumont-Champaubert,,Kite zone regulated by the local club (KDA); red zone closed 15 June–15 September.,,
+FR,Grand Est,Lac d'Orient – Mesnil-Saint-Père,lake,q:Mesnil-Saint-Père,NW,"Experienced riders, March to October, through the local clubs (AWA, Flysurf10); beaches closed 15 June–15 September.",,
+FR,Grand Est,Lac de Madine,lake,osm:n6760961924,SW,"Club-only (AKL membership and FFVL licence required); main beach for SW–W winds, gusty.",,
