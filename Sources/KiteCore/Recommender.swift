@@ -19,6 +19,10 @@ public struct SpotRecommendation: Sendable, Identifiable {
     public var tideSummary: String? = nil
     /// Share of the wind score kept after the drive penalty (1 = none), for the explanation.
     public var distanceFactor: Double = 1
+    /// The `sessionHours` consecutive hours the wind score is the mean of, local hours
+    /// [start, end). Set even when there is no `window` (marginal spots), so the explanation
+    /// can show what the score is made of.
+    public var scoredHours: (start: Int, end: Int)? = nil
 
     /// Kite suggested for the best window.
     public var suggestedKite: KiteRange? {
@@ -269,6 +273,7 @@ public struct Recommender: Sendable {
             reason: reason(hours: hours, bestStart: bestStart, n: n, window: window,
                            driveText: Self.driveText(drive, estimate: driveIsEstimate)))
         rec.distanceFactor = distanceFactor
+        if n > 0 { rec.scoredHours = (hours[bestStart].wind.hour, hours[bestStart + n - 1].wind.hour + 1) }
         return rec
     }
 
@@ -283,7 +288,8 @@ public struct Recommender: Sendable {
         guard n > 0 else { return "no forecast · \(driveText)" }
         let slice = hours[bestStart..<bestStart + n]
         let speeds = slice.map(\.wind.speedKn), gusts = slice.map(\.wind.gustKn)
-        let wind = String(format: "%.0f–%.0f kn (gusts %.0f)", speeds.min()!, speeds.max()!, gusts.max()!)
+        let lo = Int(speeds.min()!.rounded()), hi = Int(speeds.max()!.rounded())
+        let wind = (lo == hi ? "\(hi)" : "\(lo)–\(hi)") + String(format: " kn (gusts %.0f)", gusts.max()!)
         let dir = Geo.compassName(Geo.circularStats(slice.map(\.wind.directionDeg)).mean)
 
         guard let window else {
