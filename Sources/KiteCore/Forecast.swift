@@ -225,7 +225,10 @@ public struct CachedForecastProvider: ForecastProvider {
     }
 
     private func file(for spot: Spot, day: String) -> URL {
+        // Tides are only fetched for spots with a tide rule: keep those entries apart, or a
+        // spot that just got a rule (user spot edited) would reuse a tideless entry.
         let key = String(format: "%.4f_%.4f_%@", spot.latitude, spot.longitude, day)
+            + (spot.tide == nil ? "" : "_tide")
         return directory.appendingPathComponent(key + ".json")
     }
 
