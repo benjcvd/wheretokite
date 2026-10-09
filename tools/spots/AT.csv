@@ -1,3 +1,6 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Austria — format: tools/spots/README.md
-AT,Burgenland,Podersdorf am See (Neusiedler See),lake,q:Strandbad Podersdorf am See,W,
+# Neusiedler See: very shallow steppe lake (mostly standing depth), kiting only in the marked zones; season roughly April–October.
+AT,Burgenland,Podersdorf am See (Neusiedler See),lake,osm:w233880218,W,"East shore: Austria's main kite spot, shallow standing water; best in NW winds. Kite zone with schools.",,
+AT,Burgenland,Neusiedl am See,lake,osm:w137318177,S,"North end of the lake: shallow water, kite zone by the Seebad at the end of the causeway through the reeds; best in NW and SE winds.",,
+AT,Burgenland,Breitenbrunn (Neusiedler See),lake,osm:n11330228936,SE,"West shore: shallow water, kite school; works in SE–E winds.",,

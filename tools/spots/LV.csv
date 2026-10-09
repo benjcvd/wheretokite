@@ -1,4 +1,6 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Latvia — format: tools/spots/README.md
-LV,Rīga,Jūrmala – Bulduri,sea,q:Bulduru pludmale,N,
-LV,Kurzeme,Liepāja,sea,q:Liepāja,W,
+LV,Rīga,Rīga – Vakarbuļļi,sea,osm:r12637847,NW,"Riga's main kite beach (Daugavgrīva): wide sandy beach, shallow, wind waves in onshore winds.",,
+LV,Rīga,Jūrmala – Bulduri,sea,q:Bulduru pludmale,N,"Long sandy beach on the Gulf of Riga: shallow sandbars, small waves.",,
+LV,Kurzeme,Liepāja,sea,q:Liepāja,W,"Open Baltic beach: waves in W winds, for confident riders in strong wind.",,
+LV,Kurzeme,Ventspils,sea,q:Ventspils pludmale,W,"Open Baltic beach south of the harbour mole: waves in W winds.",,

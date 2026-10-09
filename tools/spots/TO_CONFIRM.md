@@ -75,3 +75,12 @@ second pass with web research is worth doing.
 - Lista: one pin for a peninsula with several launches; SW hint.
 - Rømø Lakolk / Sønderstrand: is `not-low` right, or do the low-tide lagoons work?
 - Left out: Iceland, Ystad, Hanko, Gothenburg area.
+
+## Baltics / Poland / Central Europe (EE, LV, LT, PL, AT, CH, CZ, HU, DE Bavarian lakes)
+- Czarnocin (Szczecin Lagoon): really an established spot?
+- Nové Mlýny: is Pasohlávky (upper reservoir) where kiters launch?
+- Urnersee – Flüelen: kiting allowed, and is the Strandbad the launch?
+- Chałupy, Kuźnica: exact kite-camp beaches (pins are the villages).
+- Liepāja: pin is the town centre, moved to the beach by the build.
+- Neusiedl am See: zone rules. Siófok: only Hungarian spot (Velence, other Balaton launches?).
+- Left out: Walchensee, Kochelsee, Ammersee, Lipno (kite rules unclear), Slovakia, Slovenia.
