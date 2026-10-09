@@ -1,6 +1,7 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Croatia — format: tools/spots/README.md
-HR,Dubrovnik-Neretva,Viganj (Pelješac),sea,q:Viganj,SW,Afternoon maestral.
-HR,Dubrovnik-Neretva,Neretva delta,sea,osm:w193516528,SW,
-HR,Zadar,Nin – Ždrijac,sea,q:Plaža Ždrijac,W,
-HR,Split-Dalmatia,Bol (Brač),sea,q:Bol Brač,S,
+HR,Dubrovnik-Neretva,Viganj (Pelješac),sea,q:Viganj,SW,"Pelješac channel; reliable afternoon maestral (W–NW) in summer, very gusty under the mountain. Schools on site.",,
+HR,Dubrovnik-Neretva,Neretva delta,sea,osm:w193516528,SW,"Shallow river-mouth beach (Ušće Neretve); summer maestral in the afternoon, flat to small chop. Good for learning; schools on site.",,
+HR,Zadar,Nin – Kraljičina plaža,sea,q:Kraljičina plaža Nin,NW,"Shallow sandy lagoon-like beach; maestral (NW) and jugo. Standing depth, good for learning; schools on site.",,
+HR,Zadar,Pakoštane,sea,q:Pakoštane,SW,"Maestral (NW) side-shore in summer afternoons, bura also used by experienced riders (offshore). Kite school on site.",,
+HR,Istria,Premantura (Kamenjak),sea,q:Premantura,E,"Southern tip of Istria; works with jugo (SE) and maestral. Schools in season.",,

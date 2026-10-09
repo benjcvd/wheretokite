@@ -1,14 +1,28 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Italy — format: tools/spots/README.md
-IT,Sardegna,Porto Pollo,sea,q:Porto Pollo Palau,W:west side|E:east side,
-IT,Sicilia,Lo Stagnone (Marsala),lagoon,osm:n12407041259,W,Flat-water lagoon.
-IT,Calabria,Gizzeria – Hang Loose Beach,sea,q:Gizzeria Lido,W,
-IT,Veneto,Lago di Garda – Malcesine,lake,osm:n458123631,W,
-IT,Puglia,Porto Cesareo – Torre Lapillo,sea,q:Torre Lapillo,SW,
-IT,Puglia,Torre Canne,sea,q:Torre Canne,NE,
-IT,Veneto,Rosolina Mare,sea,q:Rosolina Mare,E,
-IT,Lombardia,Lago di Garda – Campione,lake,q:Campione del Garda,E,"Thermal winds: Pelèr (N) in the morning, Ora (S) in the afternoon."
-IT,Lombardia,Lago di Como – Colico,lake,q:Colico,,Thermal Breva (S) in the afternoon.
-IT,Sardegna,Porto Botte,sea,q:Porto Botte,S,
-IT,Sardegna,Cagliari – Poetto,sea,q:Spiaggia del Poetto,S,
-IT,Sardegna,San Teodoro – La Cinta,sea,q:Spiaggia La Cinta,E,
+# Sardegna
+IT,Sardegna,Porto Pollo,sea,osm:n454209465,W,"Kite zone on the Porto Liscia (west) side of the Isola dei Gabbiani isthmus; the Porto Pollo bay itself is windsurf only. Mistral (W–NW) and libeccio; schools on site.",,
+IT,Sardegna,Porto Botte,sea,q:Porto Botte,SW,"Very shallow bay with standing depth far out: flat water, good for learning. Mistral (NW) works best.",,
+IT,Sardegna,Cagliari – Poetto,sea,osm:r14404160,SE,"Long city beach; works with scirocco / SE and the summer sea breeze. Summer: kite only in the designated corridors.",,
+IT,Sardegna,San Teodoro – La Cinta,sea,q:Spiaggia La Cinta,E,"Long sandbar beach; works with levante / scirocco (onshore). Summer: kite corridor only.",,
+IT,Sardegna,Putzu Idu,sea,q:Putzu Idu,SW,"Sinis peninsula; mistral (NW) side-shore, chop to small waves. Schools on site.",,
+IT,Sardegna,Funtanamare,sea,osm:w1086210375,W,"Wave spot on the south-west coast; mistral (NW) cross-onshore. Experienced riders.",,
+IT,Sardegna,Platamona,sea,q:Platamona,N,"Long north-coast beach near Sassari; mistral (NW) cross-shore, chop and waves. Summer: kite corridors only.",,
+# Sicilia
+IT,Sicilia,Lo Stagnone (Marsala),lagoon,osm:n12407041259,W,"Shallow flat-water lagoon, standing almost everywhere; many schools. Thermal / scirocco / mistral all work. Keep clear of swimming areas.",,
+IT,Sicilia,Mazara del Vallo – Capo Feto,sea,osm:w154960274,SW,"Wild beach next to the Capo Feto nature reserve; flat water inside the reef with W–NW, chop further out. Schools in season.",,
+# Calabria
+IT,Calabria,Gizzeria – Hang Loose Beach,sea,q:Gizzeria Lido,W,"Very reliable thermal (W–NW) from spring to autumn, funnelled across the narrowest point of Italy. Large kite beach with schools.",,
+# Puglia
+IT,Puglia,Porto Cesareo – Torre Lapillo,sea,osm:r3205744,SW,"Ionian coast; works with W to S winds and the summer sea breeze. Summer: kite corridors only.",,
+IT,Puglia,Torre Canne,sea,q:Torre Canne,NE,"Adriatic beach; maestrale (NW) side-shore, flat to choppy. Summer: kite corridors only.",,
+IT,Puglia,Margherita di Savoia,sea,q:Margherita di Savoia,NE,"Long shallow Adriatic beach; maestrale (NW) side-shore and thermal. Schools on site.",,
+IT,Puglia,Manfredonia – Siponto,sea,osm:n493697888,SE,"Shallow beach on the Gulf of Manfredonia; summer thermal and maestrale. Flat water close in, good for learning.",,
+# Veneto / Trentino-Alto Adige / Lombardia
+IT,Veneto,Rosolina Mare,sea,q:Rosolina Mare,E,"Adriatic beach near the Po delta; bora (NE) and scirocco onshore. Summer: kite corridor only.",,
+IT,Veneto,Lago di Garda – Malcesine,lake,osm:n458123631,W,"East shore; Pelèr (N) in the morning, Ora (S) in the afternoon. Kiting on Garda is regulated (zones / times, often only via a kite centre with boat): check locally.",,
+IT,Lombardia,Lago di Garda – Campione,lake,q:Campione del Garda,E,"Thermal winds: Pelèr (N) in the morning, Ora (S) in the afternoon. Kiting via the local kite centre (boat launch).",,
+IT,Veneto,Lago di Santa Croce,lake,q:Lago di Santa Croce,E,"Small lake in the Alpago; reliable afternoon thermal in summer, Bora-type north wind in the morning. Kite schools on site.",360,
+IT,Trentino-Alto Adige,Lago di Resia (Reschensee),lake,q:Lago di Resia,ENE,"High-altitude reservoir (about 1,500 m) with a reliable valley wind in summer; cold water, full wetsuit. Kite schools at Graun / Reschen.",360,
+# Toscana
+IT,Toscana,Talamone,sea,q:Talamone,SW,"Bay north of the Argentario; libeccio (SW) and W thermal, flat to choppy. Schools on site.",,
