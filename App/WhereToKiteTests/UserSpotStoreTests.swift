@@ -165,3 +165,27 @@ final class UserSpotStoreTests: XCTestCase {
         XCTAssertFalse(CoastlineGuess.isWaterColor(r: 250, g: 235, b: 200))   // sand
     }
 }
+
+/// Window labels for spots in another time zone (e.g. Portugal seen from Spain).
+final class TimeZoneLabelTests: XCTestCase {
+    func rec(offset: Int?) throws -> SpotRecommendation {
+        let spot = try JSONDecoder().decode(Spot.self, from: Data(#"{"id":"x","name":"X","latitude":0,"longitude":0}"#.utf8))
+        var r = SpotRecommendation(spot: spot, driveMinutes: 60, driveIsEstimate: false, windScore: 80, finalScore: 80,
+                                   window: (14, 18), hours: [], reason: "")
+        r.utcOffsetSeconds = offset
+        return r
+    }
+
+    func testSameZoneHasNoLabel() throws {
+        let r = try rec(offset: TimeZone.current.secondsFromGMT())
+        XCTAssertEqual(r.windowLabel, "14–18h")
+        XCTAssertNil(r.windowInMyTime)
+        XCTAssertNil(try rec(offset: nil).windowInMyTime)
+    }
+
+    func testOneHourBehind() throws {
+        let r = try rec(offset: TimeZone.current.secondsFromGMT() - 3600)
+        XCTAssertEqual(r.windowLabel, "14–18h local")
+        XCTAssertEqual(r.windowInMyTime, "15–19h")   // 14:00 at the spot is 15:00 on the phone
+    }
+}

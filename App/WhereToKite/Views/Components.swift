@@ -197,7 +197,21 @@ extension View {
 
 extension SpotRecommendation {
     var windowLabel: String? {
-        window.map { "\($0.start)–\($0.end)h" }
+        window.map { "\($0.start)–\($0.end)h" + (timeZoneShiftHours == nil ? "" : " local") }
+    }
+
+    /// Spot local time minus the phone's time, in hours; nil when they're the same (or unknown).
+    var timeZoneShiftHours: Int? {
+        guard let spot = utcOffsetSeconds else { return nil }
+        let diff = (spot - TimeZone.current.secondsFromGMT()) / 3600
+        return diff == 0 ? nil : diff
+    }
+
+    /// The window in the phone's time, when the spot is in another time zone: "15–19h".
+    var windowInMyTime: String? {
+        guard let window, let d = timeZoneShiftHours else { return nil }
+        func h(_ x: Int) -> Int { ((x - d) % 24 + 24) % 24 }
+        return "\(h(window.start))–\(h(window.end))h"
     }
 
     /// "~" marks a straight-line estimate (only top candidates get a real Apple Maps ETA).

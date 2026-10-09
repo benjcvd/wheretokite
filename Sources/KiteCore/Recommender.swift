@@ -17,12 +17,26 @@ public struct SpotRecommendation: Sendable, Identifiable {
     public var reason: String
     /// "High 14:20 · Low 08:05, 20:35" for spots with a tide rule (when the forecast has tides).
     public var tideSummary: String? = nil
+    /// The spot's UTC offset: window and tide times are the spot's local time.
+    public var utcOffsetSeconds: Int? = nil
     /// Share of the wind score kept after the drive penalty (1 = none), for the explanation.
     public var distanceFactor: Double = 1
     /// The `sessionHours` consecutive hours the wind score is the mean of, local hours
     /// [start, end). Set even when there is no `window` (marginal spots), so the explanation
     /// can show what the score is made of.
     public var scoredHours: (start: Int, end: Int)? = nil
+
+    public init(spot: Spot, driveMinutes: Double, driveIsEstimate: Bool, windScore: Int, finalScore: Int,
+                window: (start: Int, end: Int)?, hours: [HourScore], reason: String) {
+        self.spot = spot
+        self.driveMinutes = driveMinutes
+        self.driveIsEstimate = driveIsEstimate
+        self.windScore = windScore
+        self.finalScore = finalScore
+        self.window = window
+        self.hours = hours
+        self.reason = reason
+    }
 
     /// Kite suggested for the best window.
     public var suggestedKite: KiteRange? {
@@ -107,6 +121,7 @@ public struct Recommender: Sendable {
         var hours: [HourScore] = []
         var rec: SpotRecommendation?
         var tideSummary: String?
+        var utcOffset: Int?
     }
 
     /// Step 1–2: spots in straight-line reach, nearest first, capped. Returns the kept spots
@@ -188,6 +203,8 @@ public struct Recommender: Sendable {
                               weights: profile.scoreWeights)
             if c.spot.tide != nil { c.rec?.tideSummary = Self.tideSummary(day.hours, rules: rules) }
             c.tideSummary = c.rec?.tideSummary
+            c.utcOffset = day.utcOffsetSeconds
+            c.rec?.utcOffsetSeconds = c.utcOffset
             cands[c.spot.id] = c
         }
 
@@ -215,6 +232,7 @@ public struct Recommender: Sendable {
                         cands[id]?.rec = recommend(c.spot, hours: c.hours, drive: minutes, request: request,
                                                    driveIsEstimate: false, weights: profile.scoreWeights)
                         cands[id]?.rec?.tideSummary = c.tideSummary
+                        cands[id]?.rec?.utcOffsetSeconds = c.utcOffset
                     }
                 }
             }

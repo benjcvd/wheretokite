@@ -87,7 +87,11 @@ struct SpotDetailView: View {
     private var facts: some View {
         Grid(horizontalSpacing: 10, verticalSpacing: 10) {
             GridRow {
-                Fact(title: "Best window", value: rec.windowLabel ?? "–", icon: "clock.fill", tint: .blue)
+                Fact(title: rec.windowInMyTime == nil ? "Best window" : "Best window · spot time",
+                     value: rec.window.map { w in
+                         "\(w.start)–\(w.end)h" + (rec.windowInMyTime.map { " · \($0) yours" } ?? "")
+                     } ?? "–",
+                     icon: "clock.fill", tint: .blue)
                 Fact(title: "Kite", value: rec.suggestedKite.map { "\($0.size.formatted()) m" } ?? "–",
                      icon: "wind", tint: .teal)
             }

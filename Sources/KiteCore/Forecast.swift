@@ -56,6 +56,7 @@ public struct OpenMeteoProvider: ForecastProvider {
             var wind_direction_10m: [Double?]
         }
         var hourly: Hourly
+        var utc_offset_seconds: Int?
     }
 
     /// Batches that fail (e.g. HTTP 429 when over quota) are skipped — their spots are just
@@ -111,7 +112,8 @@ public struct OpenMeteoProvider: ForecastProvider {
                 w.seaLevelM = levels[h.time[i]]
                 hours.append(w)
             }
-            return (spot.id, DayForecast(day: day, hours: hours))
+            let offset = response.utc_offset_seconds.flatMap { abs($0) <= 14 * 3600 ? $0 : nil }
+            return (spot.id, DayForecast(day: day, hours: hours, utcOffsetSeconds: offset))
         }
     }
 

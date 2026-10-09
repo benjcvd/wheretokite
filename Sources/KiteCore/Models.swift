@@ -243,6 +243,14 @@ public struct HourlyWind: Codable, Hashable, Sendable {
 public struct DayForecast: Codable, Sendable {
     public var day: String
     public var hours: [HourlyWind]
+    /// The spot's UTC offset that day (hours are the spot's local time). nil in old caches.
+    public var utcOffsetSeconds: Int?
+
+    public init(day: String, hours: [HourlyWind], utcOffsetSeconds: Int? = nil) {
+        self.day = day
+        self.hours = hours
+        self.utcOffsetSeconds = utcOffsetSeconds
+    }
 
     /// True for a local calendar day "yyyy-MM-dd" (digits and dashes only). The day goes
     /// into request URLs and cache file names, so anything else is rejected.
