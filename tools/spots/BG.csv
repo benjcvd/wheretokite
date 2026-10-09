@@ -1,3 +1,4 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Bulgaria — format: tools/spots/README.md
-BG,Varna,Shkorpilovtsi,sea,q:Shkorpilovtsi,E,
+BG,Varna,Shkorpilovtsi,sea,q:Shkorpilovtsi,E,"Long sandy beach; works with NE–SE onshore winds, waves. Schools in summer.",,
+BG,Dobrich,Krapets,sea,osm:w109876540,E,"North Black Sea coast; open beach exposed to NE winds, waves. Kite camps in summer.",,

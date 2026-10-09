@@ -1,9 +1,24 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Greece — format: tools/spots/README.md
-GR,Rhodes,Prasonisi,sea,q:Prasonisi Rhodes,W:west side (waves)|SE:east side (flat),Isthmus with two sides: waves on the west side and flatter water on the east side.
-GR,Naxos,Mikri Vigla,sea,q:Mikri Vigla,W,
-GR,Paros,Pounta,sea,q:Pounta Paros,W,
-GR,Kos,Marmari,sea,osm:n6677200338,N,
-GR,Lemnos,Keros,sea,osm:w263844492,E,
-GR,Lefkada,Lefkada – Agios Ioannis,sea,q:Agios Ioannis Lefkada,W,
-GR,Crete,Kouremenos (Palaikastro),sea,q:Kouremenos,E,
+# Dodecanese
+GR,Rhodes,Prasonisi,sea,q:Prasonisi Rhodes,W:west side (waves)|SE:east side (flat),"Isthmus with two sides: waves on the west side, flatter water on the east side. Meltemi (NW) May–Sept, often strong; schools on site.",,
+GR,Rhodes,Theologos,sea,osm:w1248930105,NW,"North-west coast near the airport; meltemi side-onshore, choppy. Schools on site in summer.",,
+GR,Kos,Marmari,sea,osm:n6677200338,N,"Long sandy beach on the north coast; meltemi (NW) side-onshore, chop and small waves. Several kite centres, good for learning.",,
+GR,Karpathos,Afiartis – Makry Gialos,sea,osm:w224546531,SE,"Bays near the airport (Chicken Bay, Devil's Bay): very strong and consistent meltemi (NW, offshore-ish over low land), flat water. Experienced riders; centres on site.",,
+# Cyclades
+GR,Naxos,Mikri Vigla,sea,q:Mikri Vigla,W,"Meltemi (N) side-shore; flat-ish water on the south side, waves on the north side. Kite centre on site.",,
+GR,Paros,Pounta,sea,q:Pounta Paros,W,"Channel towards Antiparos: meltemi (N) side-shore, flat to choppy water. Kite centre on site; watch the ferry route.",,
+GR,Paros,Golden Beach (Chrysi Akti),sea,osm:r453222,SE,"Long beach on the east coast; meltemi side-shore, chop. Windsurf and kite centres.",,
+GR,Mykonos,Korfos,sea,osm:w730283310,SW,"Bay near Mykonos town; meltemi (N) side-offshore, flat water. Kite school in summer.",,
+# North Aegean
+GR,Lemnos,Keros,sea,osm:w263844492,E,"Wide shallow bay on the east coast; meltemi (N) side-shore, flat to choppy water. Kite and windsurf club on site.",,
+# Ionian
+GR,Lefkada,Lefkada – Agios Ioannis,sea,q:Agios Ioannis Lefkada,W,"Beach next to Lefkada town and the windmills; afternoon NW thermal (maistro), onshore with waves. Schools on site.",,
+# Crete
+GR,Crete,Kouremenos (Palaikastro),sea,q:Kouremenos,E,"Funnelled meltemi (N–NW), side-offshore and gusty; flat to choppy water. Mostly a windsurf spot, experienced riders.",,
+# Macedonia
+GR,Thessaloniki,Epanomi – Potamos,sea,osm:w502565480,S,"Sandy spit south of Thessaloniki; works with N–NW and S winds, flat water inside the spit. Schools on site.",,
+GR,Thessaloniki,Angelochori,lagoon,q:Angelochori lagoon,W,"Shallow water by the Angelochori lagoon west of the airport; flat, good for learning. Works with S and N winds.",,
+# Attica
+GR,Attica,Loutsa (Artemida),sea,osm:w501162477,E,"East Attica; meltemi (N–NE) side-shore, chop. Popular Athens spot with schools.",,
+GR,Attica,Schinias,sea,osm:r1751267,SE,"Long beach in the Marathon bay; meltemi (N–NE) side-offshore, flat water near shore. Experienced riders on gusty days.",,

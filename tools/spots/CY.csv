@@ -1,0 +1,4 @@
+country,region,name,water,locate,hint,notes,sector,tide
+# Cyprus — format: tools/spots/README.md
+CY,Limassol,Lady's Mile,sea,q:Lady's Mile beach,SE,"Long beach south of Limassol; afternoon SW–W thermal side-onshore, flat to choppy. Schools on site.",,
+CY,Larnaca,Pervolia (Faros),sea,q:Faros beach Pervolia,SE,"South of Larnaca; W–SW thermal side-shore, chop. Kite centre on site.",,

@@ -1,4 +1,5 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Romania — format: tools/spots/README.md
-RO,Constanța,Vadu,sea,q:Plaja Vadu,E,
-RO,Constanța,Corbu,sea,q:Plaja Corbu,E,
+RO,Constanța,Vadu,sea,q:Plaja Vadu,E,"Wild beach north of Năvodari; shallow water, NE–SE winds onshore. Main Romanian kite spot, schools in summer.",,
+RO,Constanța,Corbu,sea,q:Plaja Corbu,E,"Wild beach next to Vadu; shallow, works with NE–SE winds.",,
+RO,Constanța,Mamaia Nord,sea,osm:n9497355155,E,"North end of Mamaia resort; NE–SE onshore winds, waves. Kite school in summer, crowded beach in July–August.",,
