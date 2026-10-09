@@ -1,9 +1,14 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Sweden — format: tools/spots/README.md
-SE,Halland,Varberg – Apelviken,sea,q:Apelviken,W,
-SE,Halland,Mellbystrand,sea,q:Mellbystrand,W,
-SE,Skåne,Skanör,sea,q:Skanörs strand,W,
-SE,Skåne,Lomma,sea,q:Lomma strand,W,
-SE,Skåne,Malmö – Ribersborg,sea,q:Ribersborgsstranden,W,
-SE,Kalmar,Öland – Böda,sea,q:Böda sand,E,
-SE,Gotland,Gotland – Tofta,sea,q:Tofta strand,W,
+# Not web-verified: well-known spots from general knowledge, pinned with OSM kite / beach features.
+# Halland
+SE,Halland,Varberg – Apelviken,sea,osm:r13068283,SW,"Sweden's best-known surf bay: waves in SW–W winds, rocks at the edges. Kite zone; keep clear of surfers and bathers.",,
+SE,Halland,Mellbystrand,sea,osm:r10230257,W,"Very long, shallow sand beach on Laholmsbukten; flat to small waves, good for learning. Summer bathing zones.",,
+# Skåne
+SE,Skåne,Skanör,sea,osm:w28640699,W,"Shallow sandbars off Falsterbonäset, flat to choppy; all levels. Seal and bird protection areas on the reefs.",,
+SE,Skåne,Kämpinge,sea,osm:w28640654,S,"Shallow sandy bay on the Baltic side of Höllviken, flat water close in; good for learning.",,
+SE,Skåne,Lomma,sea,osm:w69072856,W,"Shallow beach on Lommabukten, flat to choppy; popular with Malmö kiters. Kite zone outside the bathing area.",,
+SE,Skåne,Malmö – Ribersborg,sea,osm:w41173569,NW,"City beach, shallow and flat for a long way out; summer bathing zones.",,
+# Baltic islands
+SE,Kalmar,Öland – Böda,sea,osm:w1537654612,E,"Long sand beach on Böda bay, northern Öland; shallow, flat to small waves in easterlies.",,
+SE,Gotland,Gotland – Tofta,sea,osm:w116575228,W,"Long sand beach south of Visby, shallow; flat to small waves in westerlies.",,

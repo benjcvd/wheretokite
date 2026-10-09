@@ -1,5 +1,8 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Finland — format: tools/spots/README.md
-FI,Satakunta,Yyteri (Pori),sea,q:Yyteri,W,
-FI,Pohjois-Pohjanmaa,Kalajoki – Hiekkasärkät,sea,q:Kalajoen Hiekkasärkät,W,
-FI,Pohjois-Pohjanmaa,Oulu – Nallikari,sea,q:Nallikari,W,
+# Not web-verified: well-known spots from general knowledge, pinned with OSM beach features.
+# No tide. Ice from about December to April (snowkiting then).
+FI,Satakunta,Yyteri (Pori),sea,osm:r7699732,W,"Finland's best-known kite beach: long, shallow sand beach, flat to small waves. All levels; bathing area in summer.",,
+FI,Pohjois-Pohjanmaa,Kalajoki – Hiekkasärkät,sea,q:Kalajoen Hiekkasärkät,W,"Long, shallow dune beach on the Gulf of Bothnia; flat to small waves.",,
+FI,Pohjois-Pohjanmaa,Oulu – Nallikari,sea,osm:w28610630,W,"Shallow sand beach by Oulu, flat water; snowkiting on the sea ice in winter.",,
+FI,Uusimaa,Helsinki – Aurinkolahti,sea,osm:w33360539,S,"Vuosaari city beach, shallow and flat; best in southerly winds. Bathing area in summer.",,

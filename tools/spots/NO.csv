@@ -1,6 +1,11 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Norway — format: tools/spots/README.md
-NO,Rogaland,Sola – Solastranden,sea,q:Solastranden,W,
-NO,Rogaland,Hellestø,sea,q:Hellestø,W,
-NO,Rogaland,Borestranda,sea,q:Borestranda,W,
-NO,Rogaland,Brusand,sea,q:Brusand,SW,
+# Not web-verified: well-known spots from general knowledge, pinned with OSM kite / beach features.
+# Jæren (Rogaland)
+NO,Rogaland,Sola – Solastranden,sea,osm:r16642501,W,"Long sand beach by Stavanger airport; waves in westerlies, flatter in southerlies. Popular with local schools.",,
+NO,Rogaland,Hellestø,sea,osm:r16642494,W,"Jæren beach break, waves and chop; intermediate riders. Rocks at the ends of the beach.",,
+NO,Rogaland,Borestranda,sea,osm:n6779119177,W,"Long open Jæren beach, waves; one of the most used kite beaches in Rogaland.",,
+NO,Rogaland,Orrestranda,sea,osm:n6779119175,W,"Long Jæren beach between the sea and Orrevatnet; waves, intermediate riders. Nature reserve rules apply on the dunes.",,
+NO,Rogaland,Brusand,sea,osm:r16560547,SW,"Long sandy beach in south Jæren; waves, best in W–S winds.",,
+# Agder
+NO,Agder,Lista,sea,osm:n6779118042,SW,"Windy Lista peninsula near Vanse: shallow bays and beaches for many wind directions, waves on the exposed side. Bird reserves nearby.",,

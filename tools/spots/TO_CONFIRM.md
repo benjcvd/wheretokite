@@ -66,3 +66,12 @@ second pass with web research is worth doing.
 - Pounta (Paros): pinned on the village, not the beach.
 - Mamaia Nord: pinned on a beach venue (Plaja Curacao).
 - Left out: Lesvos, Naxos Laguna, Drepano, other Crete spots.
+
+## Nordics (DK.csv, NO.csv, SE.csv, FI.csv)
+- Sjællands Odde: launch on the Sejerø Bugt (south) side, or the north side?
+- Sønderby (Juelsminde): exact launch; computed facing SE.
+- Helsinki – Aurinkolahti: established kite spot, or mostly windsurf / bathing?
+- Öland – Böda: which beach (pin is a guess). Kalajoki: no beach in OSM, name search.
+- Lista: one pin for a peninsula with several launches; SW hint.
+- Rømø Lakolk / Sønderstrand: is `not-low` right, or do the low-tide lagoons work?
+- Left out: Iceland, Ystad, Hanko, Gothenburg area.

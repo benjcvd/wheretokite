@@ -1,10 +1,22 @@
 country,region,name,water,locate,hint,notes,sector,tide
 # Denmark — format: tools/spots/README.md
-DK,Jylland,Hvide Sande,sea,q:Hvide Sande Nordstrand,W:North Sea side|E:Ringkøbing Fjord side:lagoon,
-DK,Jylland,Klitmøller,sea,q:Klitmøller,NW,
-DK,Jylland,Rømø – Lakolk,sea,q:Lakolk Strand,W,
-DK,Sjælland,Copenhagen – Amager Strandpark,sea,q:Amager Strandpark,E,
-DK,Jylland,Løkken,sea,q:Løkken Strand,W,
-DK,Jylland,Nørre Vorupør,sea,q:Nørre Vorupør,W,
-DK,Jylland,Agger Tange,sea,q:Agger Tange,W,
-DK,Jylland,Hejlsminde,sea,q:Hejlsminde Strand,E,
+# Not web-verified: well-known spots from general knowledge, pinned with OSM kite / beach features.
+# North Jutland and Thy (Cold Hawaii)
+DK,Nordjylland,Løkken,sea,osm:n6781237092,W,"North Sea beach, waves and side-shore wind; intermediate riders. Keep clear of bathers in summer.",,
+DK,Thy,Klitmøller,sea,osm:w145583374,NW,"Cold Hawaii: reef and beach breaks, experienced wave riders only. Rocks and strong currents.",,
+DK,Thy,Nørre Vorupør,sea,osm:n11707726108,NW,"Wave spot either side of the fishing landing and its pier; experienced riders. Bathing zone in summer.",,
+DK,Thy,Agger Tange,sea,osm:w145417529,W,"North Sea side of the Agger Tange spit: waves and current, experienced riders. Bird reserve on the spit, follow the signs.",,
+DK,Thy,Krik Vig,sea,osm:n22700236,S,"Shallow flat-water bay of the Limfjord behind Agger, good for learning and freestyle. Launch at Krik.",,
+# West Jutland
+DK,Vestjylland,Hvide Sande,sea,osm:n11091857993,W:North Sea side|E:Ringkøbing Fjord side:lagoon,"North Sea side (Nordstrand): waves and currents near the harbour, experienced riders. Ringkøbing Fjord side (by the surf centres north of town): shallow flat water, schools and beginners.",,
+DK,Vestjylland,Bork Havn,lagoon,osm:w614716490,N,"South end of Ringkøbing Fjord: shallow, flat brackish water, standing depth far out. Kite schools; very beginner-friendly.",,
+# Wadden Sea
+DK,Vadehavet,Fanø – Rindby,sea,osm:n4408174136,W,"Very wide, flat sand beach; shallow sandbars and lagoons at lower tide. Reached by ferry from Esbjerg.",,
+DK,Vadehavet,Rømø – Lakolk,sea,osm:w1313657429,W,"Huge flat sand beach with car access; shallow water and lagoons, sandbars at low tide. Kite zone signposted.",,not-low
+DK,Vadehavet,Rømø – Sønderstrand,sea,osm:n13722097101,W,"Southern Rømø beach with the kite and landkite zone; shallow, flat between the sandbars.",,not-low
+# East Jutland and Funen
+DK,Østjylland,Sønderby,sea,osm:n11932345500,SE,"Shallow flat water near Juelsminde, standing depth far out; popular for learning and freestyle.",,
+DK,Sønderjylland,Hejlsminde,sea,osm:w1149061384,E,"Lillebælt: shallow flat water inside the bay, chop further out; good for beginners.",,
+# Zealand
+DK,Sjælland,Sjællands Odde,sea,osm:w473347884,S,"Sejerø Bugt side of the Odde peninsula: shallow sandy water, chop to small waves.",,
+DK,Sjælland,Copenhagen – Amager Strandpark,sea,osm:r12328102,E,"Artificial island beach with a shallow lagoon behind it. Kiting on the sea side outside the bathing zones; city spot, crowded in summer.",,
