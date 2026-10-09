@@ -25,7 +25,7 @@ struct Entitlements: Equatable {
     var advancedSpotSettings: Bool
 
     static let free = Entitlements(maxDriveMinutes: 180, forecastDays: 2, maxUserSpots: 1, maxResults: 5,
-                                   scoreWeights: false, advancedSpotSettings: false)
+                                   scoreWeights: false, advancedSpotSettings: true)
     static let pro = Entitlements(maxDriveMinutes: nil, forecastDays: 7, maxUserSpots: nil, maxResults: nil,
                                   scoreWeights: true, advancedSpotSettings: true)
 }
@@ -109,7 +109,6 @@ struct ProSheet: View {
         ("car.fill", "Drives up to 10 h", "Weekend trips, not just the local spots (3\u{00A0}h free)."),
         ("list.number", "Every spot", "The full ranking and map (top 5 free)."),
         ("mappin.and.ellipse", "Unlimited own spots", "Add all your secret spots (1 free)."),
-        ("scope", "Advanced spot settings", "Open-water sector, a second side and tide rules on your spots."),
         ("slider.horizontal.3", "What matters to you", "Weigh wind strength, steadiness, direction and drive your way."),
     ]
 
