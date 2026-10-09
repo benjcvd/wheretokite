@@ -270,6 +270,7 @@ private struct Fact: View {
 struct ScoreInfoSheet: View {
     let rec: SpotRecommendation
     @Environment(ProfileStore.self) private var profiles
+    @Environment(PlanStore.self) private var plan
     @Environment(\.dismiss) private var dismiss
 
     /// The best window, or for a marginal spot (no window) the hours its score comes from.
@@ -285,7 +286,9 @@ struct ScoreInfoSheet: View {
         return v.isEmpty ? nil : v.reduce(0, +) / Double(v.count)
     }
 
-    private var weights: ScoreWeights { (profiles.profile ?? .starter).scoreWeights }
+    private var weights: ScoreWeights {
+        plan.entitlements.scoreWeights ? (profiles.profile ?? .starter).scoreWeights : ScoreWeights()
+    }
 
     /// 30 % by default, scaled by the "Short drive" weight (as in `Recommender.recommend`).
     private var maxDistanceLoss: Int {
@@ -348,6 +351,9 @@ struct ScoreInfoSheet: View {
                 }
 
                 Section {
+                    if !plan.entitlements.scoreWeights {
+                        ProLockRow(title: "What matters to you", detail: "Your own weights with Pro")
+                    } else {
                     NavigationLink {
                         ScrollView {
                             WeightsEditor(weights: profiles.weightsBinding)
@@ -357,6 +363,7 @@ struct ScoreInfoSheet: View {
                         .navigationTitle("What matters to you")
                     } label: {
                         Label("What matters to you", systemImage: "slider.horizontal.3")
+                    }
                     }
                 } footer: {
                     Text("Changing your weights updates every score on your next search.")

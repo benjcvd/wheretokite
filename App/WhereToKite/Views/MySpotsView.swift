@@ -6,7 +6,18 @@ import KiteCore
 /// Includes its own NavigationStack.
 struct MySpotsView: View {
     @Environment(UserSpotStore.self) private var store
+    @Environment(PlanStore.self) private var plan
     @State private var isAdding = false
+    @State private var showPro = false
+
+    /// Free plan: one own spot. Spots added before stay; only adding more needs Pro.
+    private var canAdd: Bool {
+        plan.entitlements.maxUserSpots.map { store.spots.count < $0 } ?? true
+    }
+
+    private func add() {
+        if canAdd { isAdding = true } else { showPro = true }
+    }
     @State private var editing: Spot?
 
     private var sortedSpots: [Spot] {
@@ -26,13 +37,14 @@ struct MySpotsView: View {
             .toolbar {
                 if !store.spots.isEmpty {
                     ToolbarItem(placement: .primaryAction) {
-                        Button("Add spot", systemImage: "plus") { isAdding = true }
+                        Button("Add spot", systemImage: canAdd ? "plus" : "lock.fill") { add() }
                     }
                 }
             }
             .sheet(isPresented: $isAdding) {
                 AddSpotView()
             }
+            .sheet(isPresented: $showPro) { ProSheet() }
             .sheet(item: $editing) { spot in
                 AddSpotView(editing: spot)
             }
@@ -46,7 +58,7 @@ struct MySpotsView: View {
             Text("We list the well-known spots. Know a quieter one? Add it and it will be ranked in every search, just like the others.")
         } actions: {
             Button {
-                isAdding = true
+                add()
             } label: {
                 Label("Add a spot", systemImage: "plus")
                     .font(.headline)
@@ -60,6 +72,11 @@ struct MySpotsView: View {
 
     private var list: some View {
         List {
+            if !canAdd {
+                Section {
+                    ProLockRow(title: "Add more spots", detail: "One spot free, unlimited with Pro")
+                }
+            }
             Section {
                 ForEach(sortedSpots) { spot in
                     Button {

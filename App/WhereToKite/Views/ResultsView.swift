@@ -4,6 +4,7 @@ import KiteCore
 
 /// The answer: a verdict for the best spot, then the runners-up as a list or a map.
 struct ResultsSection: View {
+    @Environment(PlanStore.self) private var plan
     let model: SearchModel
     let options: SearchOptions
     let profile: RiderProfile
@@ -40,7 +41,10 @@ struct ResultsSection: View {
 
     @ViewBuilder
     private func content(_ result: SearchResult) -> some View {
-        let good = result.recommendations.filter { $0.finalScore > 0 }
+        let allGood = result.recommendations.filter { $0.finalScore > 0 }
+        // Free plan: the top spots only; the rest is a Pro line.
+        let good = plan.entitlements.maxResults.map { Array(allGood.prefix($0)) } ?? allGood
+        let hiddenCount = allGood.count - good.count
         let noGo = result.recommendations.filter { $0.finalScore == 0 }
         // Only a real session earns the big "go" card; below that the options are marginal.
         let hasVerdict = (good.first?.finalScore ?? 0) >= Self.verdictMinimum
@@ -119,6 +123,12 @@ struct ResultsSection: View {
                     SpotsMap(recs: good, origin: result.request.origin, open: open)
                         .id(model.generation)
                         .transition(.opacity)
+                }
+                if hiddenCount > 0 {
+                    ProLockRow(title: "+\(hiddenCount) more kiteable spot\(hiddenCount > 1 ? "s" : "")",
+                               detail: "The full ranking and map with Pro")
+                        .padding(14)
+                        .card()
                 }
             }
 

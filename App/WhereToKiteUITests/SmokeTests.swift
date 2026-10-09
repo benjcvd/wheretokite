@@ -6,7 +6,7 @@ final class SmokeTests: XCTestCase {
     @MainActor
     func testMainFlow() throws {
         let app = XCUIApplication()
-        app.launchArguments = ["-resetProfile", "-searchOrigin", "41.3874,2.1686"]   // Barcelona: the simulator may have no location
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchOrigin", "41.3874,2.1686"]   // Barcelona: the simulator may have no location
         app.launch()
 
         // Onboarding (first launch only).
@@ -117,7 +117,7 @@ final class SmokeTests: XCTestCase {
     @MainActor
     func testScoreInfo() throws {
         let app = XCUIApplication()
-        app.launchArguments = ["-resetProfile", "-searchDay", "2026-10-03",   // a windy day near Barcelona
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchDay", "2026-10-03",   // a windy day near Barcelona
                                 "-searchOrigin", "41.3874,2.1686"]
         app.launch()
         app.buttons["Start"].tap()
@@ -151,7 +151,7 @@ final class SmokeTests: XCTestCase {
     @MainActor
     func testSearchedDayLabelAndLargeText() throws {
         let app = XCUIApplication()
-        app.launchArguments = ["-resetProfile", "-searchDay", "2026-10-03", "-searchOrigin", "41.3874,2.1686",
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchDay", "2026-10-03", "-searchOrigin", "41.3874,2.1686",
                                "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityL"]
         app.launch()
         let start = app.buttons["Start"]
@@ -171,6 +171,41 @@ final class SmokeTests: XCTestCase {
             sleep(2)
             snapshot(app, "xl-detail")
         }
+    }
+
+    /// Free plan: drives capped at 3 h, two forecast days, weights locked.
+    @MainActor
+    func testFreePlanLimits() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-searchOrigin", "41.3874,2.1686"]   // no -unlockPro
+        app.launch()
+        app.buttons["Start"].tap()
+
+        // Day 3 is locked and opens the Pro sheet instead of searching.
+        let locked = app.buttons["day2"]
+        XCTAssertTrue(locked.waitForExistence(timeout: 5))
+        XCTAssertTrue(locked.label.hasSuffix("Pro"), locked.label)
+        locked.tap()
+        XCTAssertTrue(app.staticTexts["WhereToKite Pro"].waitForExistence(timeout: 3))
+        snapshot(app, "free-pro-sheet")
+        app.buttons["Close"].tap()
+
+        // The drive slider stops at 3 h.
+        app.buttons["optionsChip"].tap()
+        let slider = app.sliders["driveSlider"]
+        XCTAssertTrue(slider.waitForExistence(timeout: 3))
+        slider.adjust(toNormalizedSliderPosition: 1)
+        XCTAssertEqual(slider.value as? String, "3 h")
+        snapshot(app, "free-options")
+        app.buttons["Done"].tap()
+
+        // Weights are a Pro feature.
+        app.tabBars.buttons["Me"].tap()
+        app.swipeUp()
+        XCTAssertTrue(app.buttons.containing(NSPredicate(format: "label CONTAINS 'Weigh wind'")).firstMatch
+            .waitForExistence(timeout: 3))
+        XCTAssertFalse(app.sliders["Wind strength"].exists)
+        snapshot(app, "free-me")
     }
 
     @MainActor

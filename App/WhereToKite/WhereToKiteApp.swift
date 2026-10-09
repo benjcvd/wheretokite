@@ -4,12 +4,14 @@ import SwiftUI
 struct WhereToKiteApp: App {
     @State private var profiles = ProfileStore()
     @State private var userSpots = UserSpotStore()
+    @State private var plan = PlanStore()
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(profiles)
                 .environment(userSpots)
+                .environment(plan)
         }
     }
 }

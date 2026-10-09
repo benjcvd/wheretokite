@@ -8,7 +8,7 @@ final class MySpotsTests: XCTestCase {
     @MainActor
     func testAddSpotFlow() throws {
         let app = XCUIApplication()
-        app.launchArguments = ["-resetUserSpots"]
+        app.launchArguments = ["-resetUserSpots", "-unlockPro"]
         app.launch()
         // A fresh install opens on onboarding (this test used to skip itself there).
         let start = app.buttons["Start"]

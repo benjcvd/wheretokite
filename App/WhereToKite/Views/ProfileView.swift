@@ -73,6 +73,7 @@ struct OnboardingView: View {
 
 struct MeView: View {
     @Environment(ProfileStore.self) private var profiles
+    @Environment(PlanStore.self) private var plan
 
     var body: some View {
         NavigationStack {
@@ -82,8 +83,21 @@ struct MeView: View {
                     ProfileFields(profile: profiles.editable)
                     VStack(alignment: .leading, spacing: 10) {
                         Text("What matters to you").font(.headline)
-                        WeightsEditor(weights: profiles.weightsBinding)
+                        if plan.entitlements.scoreWeights {
+                            WeightsEditor(weights: profiles.weightsBinding)
+                        } else {
+                            ProLockRow(title: "Weigh wind, gusts, direction and drive your way",
+                                       detail: "Scores use the standard weights on the free plan")
+                                .padding(16)
+                                .card()
+                        }
                     }
+                    #if DEBUG
+                    Toggle("Unlock Pro (development builds only)",
+                           isOn: Binding(get: { plan.isPro }, set: { plan.isPro = $0 }))
+                        .font(.footnote)
+                        .accessibilityIdentifier("debugUnlockPro")
+                    #endif
                     Text("Changes are saved automatically and used for your next search.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)

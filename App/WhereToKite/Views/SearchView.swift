@@ -6,6 +6,7 @@ import KiteCore
 struct SearchView: View {
     @Environment(ProfileStore.self) private var profiles
     @Environment(UserSpotStore.self) private var userSpots
+    @Environment(PlanStore.self) private var plan
     @State private var options = SearchOptions.load()
     @State private var model = SearchModel()
     @State private var path: [String] = []
@@ -86,7 +87,10 @@ struct SearchView: View {
 
     private func run() async {
         guard let profile = profiles.profile else { return }
-        await model.run(options, profile: profile, userSpots: userSpots.spots)
+        // Options saved under another plan (e.g. a 10 h drive) are brought within this one.
+        let allowed = plan.clamp(options)
+        if allowed != options { options = allowed }
+        await model.run(allowed, profile: plan.scoringProfile(profile), userSpots: userSpots.spots)
     }
 
     // MARK: Controls
@@ -135,16 +139,19 @@ struct SearchView: View {
 
 private struct DayStrip: View {
     @Binding var selection: String
+    @Environment(PlanStore.self) private var plan
+    @State private var showPro = false
     /// Computed on each render so the strip moves on after midnight.
     private var days: [DayOption] { DayOption.next() }
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
-                ForEach(days) { day in
+                ForEach(Array(days.enumerated()), id: \.element.id) { index, day in
                     let on = selection == day.id
+                    let locked = index >= plan.entitlements.forecastDays
                     Button {
-                        withAnimation(.snappy) { selection = day.id }
+                        if locked { showPro = true } else { withAnimation(.snappy) { selection = day.id } }
                     } label: {
                         VStack(spacing: 2) {
                             Text(day.shortLabel).font(.subheadline.weight(.semibold))
@@ -158,9 +165,15 @@ private struct DayStrip: View {
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .fill(on ? AnyShapeStyle(Color.accentColor.gradient) : AnyShapeStyle(Color(.secondarySystemGroupedBackground)))
                         }
+                        .opacity(locked ? 0.45 : 1)
+                        .overlay(alignment: .topTrailing) {
+                            if locked {
+                                Image(systemName: "lock.fill").font(.caption2).foregroundStyle(.secondary).padding(5)
+                            }
+                        }
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel(day.longLabel)
+                    .accessibilityLabel(day.longLabel + (locked ? ", Pro" : ""))
                     .accessibilityIdentifier("day\(days.firstIndex(of: day) ?? 0)")
                     .accessibilityAddTraits(on ? .isSelected : [])
                 }
@@ -169,6 +182,7 @@ private struct DayStrip: View {
         }
         .scrollClipDisabled()
         .sensoryFeedback(.selection, trigger: selection)
+        .sheet(isPresented: $showPro) { ProSheet() }
     }
 }
 
@@ -236,6 +250,12 @@ private struct SlotPicker: View {
 
 struct SearchOptionsSheet: View {
     @Binding var options: SearchOptions
+    @Environment(PlanStore.self) private var plan
+
+    /// Last selectable drive step under the plan.
+    private var maxDriveIndex: Int {
+        plan.entitlements.maxDriveMinutes.map { DriveSteps.index(of: $0) } ?? DriveSteps.minutes.count - 1
+    }
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -252,15 +272,18 @@ struct SearchOptionsSheet: View {
                                 .foregroundStyle(.tint)
                                 .contentTransition(.numericText(value: options.maxDriveMinutes))
                         }
-                        Slider(value: driveIndex, in: 0...Double(DriveSteps.minutes.count - 1), step: 1) {
+                        Slider(value: driveIndex, in: 0...Double(maxDriveIndex), step: 1) {
                             Text("Max drive")
                         } minimumValueLabel: {
                             Text("15 min").font(.caption2)
                         } maximumValueLabel: {
-                            Text("10 h").font(.caption2)
+                            Text(DriveSteps.label(DriveSteps.minutes[maxDriveIndex])).font(.caption2)
                         }
                         .accessibilityValue(DriveSteps.label(options.maxDriveMinutes))
                         .accessibilityIdentifier("driveSlider")
+                    }
+                    if plan.entitlements.maxDriveMinutes != nil {
+                        ProLockRow(title: "Drives up to 10 h", detail: "Weekend trips with Pro")
                     }
                     Toggle("Closer is better", isOn: $options.distanceMatters)
                 } header: {

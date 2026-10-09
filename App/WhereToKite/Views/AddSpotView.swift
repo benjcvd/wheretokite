@@ -275,6 +275,7 @@ private struct SpotDetailsForm: View {
     let onDelete: (() -> Void)?
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(PlanStore.self) private var plan
     @State private var isGuessing = false
     @State private var confirmDelete = false
 
@@ -299,7 +300,7 @@ private struct SpotDetailsForm: View {
                         .listRowInsets(EdgeInsets())
                 }
                 orientationStatus
-                if draft.seaFacingDeg != nil {
+                if draft.seaFacingDeg != nil && plan.entitlements.advancedSpotSettings {
                     sectorControl
                 }
             } header: {
@@ -308,7 +309,14 @@ private struct SpotDetailsForm: View {
                 Text("Point the arrow from the beach toward the open water, then set how much of the horizon is water: less than 180° for a cove, more for a point, 360° for a small lake you can ride from any side. It tells onshore, side-shore and offshore wind apart.")
             }
 
-            if draft.waterSectorDeg < 360 {
+            if !plan.entitlements.advancedSpotSettings {
+                Section {
+                    ProLockRow(title: "Open water, second side, tide",
+                               detail: "Coves, points, lakes, sandbars and tide windows with Pro")
+                }
+            }
+
+            if draft.waterSectorDeg < 360 && plan.entitlements.advancedSpotSettings {
             Section {
                 Toggle("Kitable from another side too", isOn: Binding(
                     get: { draft.otherSideDeg != nil },
@@ -339,6 +347,7 @@ private struct SpotDetailsForm: View {
             }
             }
 
+            if plan.entitlements.advancedSpotSettings {
             Section {
                 Picker("Rideable", selection: $draft.tide) {
                     Text("At any tide").tag("")
@@ -353,6 +362,7 @@ private struct SpotDetailsForm: View {
                 Text("Tide")
             } footer: {
                 Text("For tidal flats, bays that dry out or sandbars. Hours outside the window score 0.")
+            }
             }
 
             Section {

@@ -27,6 +27,7 @@
 		B067B2B1D8A42AC08748E2D2 /* MySpotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F2B2E178B9BA8888EBD62 /* MySpotsTests.swift */; };
 		C21C7AD71B7201BBCFAFAA54 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */; };
 		E382C9BF6E85FA58BC21B22D /* WhereToKiteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F345D2CC8B0885A814F117E /* WhereToKiteApp.swift */; };
+		F1E0F5DD920D4B5CAA0408BA /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151D5C7C8622381AF708D4CF /* Plan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		151D5C7C8622381AF708D4CF /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		1C5E2E8BA8DA3D0A25B0DF88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		78E352EF510DCE05C57699A2 /* wheretokite */ = {isa = PBXFileReference; lastKnownFileType = folder; name = wheretokite; path = ..; sourceTree = SOURCE_ROOT; };
 		3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		45F5C20E40546E26686279F0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4631580E28E5B68ABCC5A177 /* WhereToKite.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = WhereToKite.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +57,7 @@
 		5D6C9E3460D173F0CFC23F0D /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		6155DD4168F65D0B50EAF58A /* WhereToKiteTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = WhereToKiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BA10E59F4309F7C4893714 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		78E352EF510DCE05C57699A2 /* wheretokite */ = {isa = PBXFileReference; lastKnownFileType = folder; name = wheretokite; path = ..; sourceTree = SOURCE_ROOT; };
 		89AF133A500C253B3DD84ED7 /* CoastlineGuess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastlineGuess.swift; sourceTree = "<group>"; };
 		8BD9CFE4AAF26F58E94873F1 /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
 		9277E1AB34764B92F4C025FD /* UserSpotStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSpotStoreTests.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				89AF133A500C253B3DD84ED7 /* CoastlineGuess.swift */,
 				45F5C20E40546E26686279F0 /* Location.swift */,
+				151D5C7C8622381AF708D4CF /* Plan.swift */,
 				3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */,
 				9F4A01B4CE0810383D176FFA /* SearchModel.swift */,
 				B7F8CEE36F18BFF49D48A748 /* UserSpotStore.swift */,
@@ -318,6 +321,7 @@
 				4186BF72B3FE16EFB4898830 /* Components.swift in Sources */,
 				284C70C8E4ABA0E4A7F75C0D /* Location.swift in Sources */,
 				8014EBB88D41746E8117AF2E /* MySpotsView.swift in Sources */,
+				F1E0F5DD920D4B5CAA0408BA /* Plan.swift in Sources */,
 				C21C7AD71B7201BBCFAFAA54 /* ProfileStore.swift in Sources */,
 				31F251B2E2A16AC72728B10B /* ProfileView.swift in Sources */,
 				30A877DA17A905957EF8D298 /* ResultsView.swift in Sources */,
