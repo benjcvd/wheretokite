@@ -61,7 +61,7 @@ struct ResultsSection: View {
             }
 
             if let error = model.error {
-                Label(error, systemImage: "wifi.exclamationmark")
+                Label(error, systemImage: Self.errorSymbol(error))
                     .font(.footnote)
                     .foregroundStyle(.orange)
             }
@@ -166,9 +166,14 @@ struct ResultsSection: View {
         return "\(day.longLabel) · \(result.request.slot.label) \(result.request.slot.hoursLabel) · within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(from)"
     }
 
+    /// Location problems get a location icon, everything else (network, forecast) wifi.
+    static func errorSymbol(_ message: String) -> String {
+        message.localizedCaseInsensitiveContains("location") ? "location.slash" : "wifi.exclamationmark"
+    }
+
     private func errorCard(_ message: String) -> some View {
         VStack(spacing: 12) {
-            Image(systemName: "wifi.exclamationmark").font(.largeTitle).foregroundStyle(.orange)
+            Image(systemName: Self.errorSymbol(message)).font(.largeTitle).foregroundStyle(.orange)
             Text("Search failed").font(.headline)
             Text(message).font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center)
             Button("Try again", action: retry).prominentButton()

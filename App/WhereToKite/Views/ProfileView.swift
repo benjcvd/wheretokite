@@ -149,6 +149,8 @@ private struct RiderHero: View {
 
 struct ProfileFields: View {
     @Binding var profile: RiderProfile
+    /// Set when the rider tries to remove their only kite.
+    @State private var keepOneKite = false
 
     private static let sizes: [Double] = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19]
 
@@ -173,7 +175,9 @@ struct ProfileFields: View {
                 .card()
             }
 
-            section("Your kites", footer: "Tap every size you own.") {
+            section("Your kites", footer: keepOneKite
+                    ? "Keep at least one kite: add another size before removing this one."
+                    : "Tap every size you own.") {
                 VStack(alignment: .leading, spacing: 14) {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 58), spacing: 8)], spacing: 8) {
                         ForEach(Self.sizes, id: \.self) { size in
@@ -219,9 +223,14 @@ struct ProfileFields: View {
             withAnimation(.snappy) {
                 if on {
                     // Keep at least one kite.
-                    if profile.kites.count > 1 { profile.kites.removeAll { $0 == size } }
+                    if profile.kites.count > 1 {
+                        profile.kites.removeAll { $0 == size }
+                    } else {
+                        keepOneKite = true
+                    }
                 } else {
                     profile.kites = (profile.kites + [size]).sorted()
+                    keepOneKite = false
                 }
             }
         } label: {
@@ -235,6 +244,7 @@ struct ProfileFields: View {
         }
         .buttonStyle(.plain)
         .accessibilityLabel("\(size.formatted()) square metre kite")
+        .sensoryFeedback(.warning, trigger: keepOneKite) { _, new in new }
         .accessibilityAddTraits(on ? .isSelected : [])
         .sensoryFeedback(.selection, trigger: on)
     }
