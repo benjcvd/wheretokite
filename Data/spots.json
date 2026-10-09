@@ -1,22 +1,52 @@
 {
-  "generatedAt": "2026-10-08T21:57:39Z",
+  "generatedAt": "2026-10-09T20:43:41Z",
   "region": "europe",
   "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); spot selection curated by WhereToKite",
   "spots": [
     {
       "id": "at-podersdorf-am-see-neusiedler-see",
       "name": "Podersdorf am See (Neusiedler See)",
-      "latitude": 47.86247,
-      "longitude": 16.83213,
-      "seaFacingDeg": 284.8,
+      "latitude": 47.8484,
+      "longitude": 16.81845,
+      "seaFacingDeg": 303.8,
       "orientationSource": "osm-water",
-      "distanceToShoreM": 66.0,
+      "distanceToShoreM": 63.0,
       "source": "curated",
-      "notes": "Irregular shoreline near the spot; orientation less certain.",
+      "notes": "East shore: Austria's main kite spot, shallow standing water; best in NW winds. Kite zone with schools. Irregular shoreline near the spot; orientation less certain.",
       "country": "AT",
       "region": "Burgenland",
       "waterType": "lake",
       "directionCheck": "agrees"
+    },
+    {
+      "id": "at-breitenbrunn-neusiedler-see",
+      "name": "Breitenbrunn (Neusiedler See)",
+      "latitude": 47.91622,
+      "longitude": 16.7685,
+      "seaFacingDeg": 159.9,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "West shore: shallow water, kite school; works in SE–E winds. Irregular shoreline near the spot; orientation less certain.",
+      "country": "AT",
+      "region": "Burgenland",
+      "waterType": "lake",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "at-neusiedl-am-see",
+      "name": "Neusiedl am See",
+      "latitude": 47.92852,
+      "longitude": 16.83501,
+      "seaFacingDeg": 183.8,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 4.8,
+      "source": "curated",
+      "notes": "North end of the lake: shallow water, kite zone by the Seebad at the end of the causeway through the reeds; best in NW and SE winds. Irregular shoreline near the spot; orientation less certain.",
+      "country": "AT",
+      "region": "Burgenland",
+      "waterType": "lake",
+      "directionCheck": "uncertain"
     },
     {
       "id": "be-de-panne",
@@ -192,41 +222,150 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 116.3,
       "source": "curated",
-      "notes": null,
+      "notes": "Long sandy beach; works with NE–SE onshore winds, waves. Schools in summer.",
       "country": "BG",
       "region": "Varna",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
     {
+      "id": "bg-krapets",
+      "name": "Krapets",
+      "latitude": 43.6539,
+      "longitude": 28.57196,
+      "seaFacingDeg": 76.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 275.8,
+      "source": "curated",
+      "notes": "North Black Sea coast; open beach exposed to NE winds, waves. Kite camps in summer.",
+      "country": "BG",
+      "region": "Dobrich",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "ch-silvaplana",
       "name": "Silvaplana",
-      "latitude": 46.45756,
-      "longitude": 9.79931,
-      "seaFacingDeg": 195.1,
+      "latitude": 46.4567,
+      "longitude": 9.79565,
+      "seaFacingDeg": 157.4,
       "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 142.2,
       "source": "curated",
-      "notes": "Thermal Maloja wind in the afternoon.",
+      "notes": "Alpine lake at 1800 m: reliable Maloja thermal wind from the SW in the afternoon in summer. Cold water, wetsuit all year; kite school. Shoreline bends here (157° locally vs 212° over ±1.5 km).",
       "country": "CH",
       "region": "Graubünden",
       "waterType": "lake",
-      "directionCheck": "uncertain"
+      "directionCheck": "agrees"
     },
     {
-      "id": "cz-nove-mlyny-dolni-vestonice",
-      "name": "Nové Mlýny (Dolní Věstonice)",
-      "latitude": 48.89265,
-      "longitude": 16.64423,
-      "seaFacingDeg": 60.8,
+      "id": "ch-lac-de-neuchatel-yvonand",
+      "name": "Lac de Neuchâtel – Yvonand",
+      "latitude": 46.80556,
+      "longitude": 6.73621,
+      "seaFacingDeg": 348.3,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 10.1,
+      "source": "curated",
+      "notes": "Plage des Pins on the south shore: works in NE (bise) and SW winds; shallow near shore.",
+      "country": "CH",
+      "region": "Vaud",
+      "waterType": "lake",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "ch-urnersee-fluelen",
+      "name": "Urnersee – Flüelen",
+      "latitude": 46.90957,
+      "longitude": 8.62248,
+      "seaFacingDeg": 249.0,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 5.1,
+      "source": "curated",
+      "notes": "Föhn spot: strong, gusty S wind between steep mountains. Experienced riders only. Shoreline bends here (249° locally vs 283° over ±1.5 km).",
+      "country": "CH",
+      "region": "Uri",
+      "waterType": "lake",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "cy-lady-s-mile",
+      "name": "Lady's Mile",
+      "latitude": 34.62204,
+      "longitude": 33.00597,
+      "seaFacingDeg": 94.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 11.5,
+      "source": "curated",
+      "notes": "Long beach south of Limassol; afternoon SW–W thermal side-onshore, flat to choppy. Schools on site.",
+      "country": "CY",
+      "region": "Limassol",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r3263732"
+    },
+    {
+      "id": "cy-pervolia-faros",
+      "name": "Pervolia (Faros)",
+      "latitude": 34.81955,
+      "longitude": 33.60474,
+      "seaFacingDeg": 95.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 18.9,
+      "source": "curated",
+      "notes": "South of Larnaca; W–SW thermal side-shore, chop. Kite centre on site. Shoreline bends here (96° locally vs 132° over ±1.5 km).",
+      "country": "CY",
+      "region": "Larnaca",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r3263732"
+    },
+    {
+      "id": "cz-nove-mlyny-pasohlavky",
+      "name": "Nové Mlýny (Pasohlávky)",
+      "latitude": 48.90143,
+      "longitude": 16.57591,
+      "seaFacingDeg": 102.8,
       "orientationSource": "osm-water",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Shoreline bends here (61° locally vs 87° over ±1.5 km).",
+      "notes": "Upper reservoir (Mušov): Czechia's main inland kite spot, open to winds from most directions; shallow areas near shore. Shoreline bends here (103° locally vs 195° over ±1.5 km).",
       "country": "CZ",
       "region": "Jihomoravský",
       "waterType": "lake",
-      "directionCheck": "disagrees"
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-chiemsee-ubersee-feldwies",
+      "name": "Chiemsee – Übersee (Feldwies)",
+      "latitude": 47.84753,
+      "longitude": 12.47531,
+      "seaFacingDeg": 256.5,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Kite zone at Feldwies on the south shore (Tiroler Achen delta): works in W–N winds. Kiting only in the marked zone. Shoreline bends here (257° locally vs 314° over ±1.5 km).",
+      "country": "DE",
+      "region": "Bayern",
+      "waterType": "lake",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-chiemsee-chieming",
+      "name": "Chiemsee – Chieming",
+      "latitude": 47.89612,
+      "longitude": 12.52783,
+      "seaFacingDeg": 241.5,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "East shore, KBC kite club area: works in W–NW winds. Kiting only in the marked zone.",
+      "country": "DE",
+      "region": "Bayern",
+      "waterType": "lake",
+      "directionCheck": "agrees"
     },
     {
       "id": "de-brombachsee",
@@ -981,45 +1120,124 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "dk-rm-snderstrand",
+      "name": "Rømø – Sønderstrand",
+      "latitude": 55.07146,
+      "longitude": 8.49372,
+      "seaFacingDeg": 229.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Southern Rømø beach with the kite and landkite zone; shallow, flat between the sandbars.",
+      "country": "DK",
+      "region": "Vadehavet",
+      "waterType": "sea",
+      "tide": "not-low",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "dk-rm-lakolk",
       "name": "Rømø – Lakolk",
-      "latitude": 55.15162,
-      "longitude": 8.48126,
+      "latitude": 55.1516,
+      "longitude": 8.478,
       "seaFacingDeg": 268.8,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 236.9,
+      "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Huge flat sand beach with car access; shallow water and lagoons, sandbars at low tide. Kite zone signposted.",
       "country": "DK",
-      "region": "Jylland",
+      "region": "Vadehavet",
       "waterType": "sea",
+      "tide": "not-low",
       "directionCheck": "agrees"
     },
     {
       "id": "dk-hejlsminde",
       "name": "Hejlsminde",
-      "latitude": 55.36258,
-      "longitude": 9.60154,
-      "seaFacingDeg": 127.2,
+      "latitude": 55.36261,
+      "longitude": 9.60204,
+      "seaFacingDeg": 110.6,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 22.0,
+      "distanceToShoreM": 7.3,
       "source": "curated",
-      "notes": null,
+      "notes": "Lillebælt: shallow flat water inside the bay, chop further out; good for beginners.",
       "country": "DK",
-      "region": "Jylland",
+      "region": "Sønderjylland",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
     {
-      "id": "dk-copenhagen-amager-strandpark",
-      "name": "Copenhagen – Amager Strandpark",
-      "latitude": 55.65678,
-      "longitude": 12.64574,
-      "seaFacingDeg": 47.8,
+      "id": "dk-fan-rindby",
+      "name": "Fanø – Rindby",
+      "latitude": 55.41838,
+      "longitude": 8.37131,
+      "seaFacingDeg": 236.7,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Very wide, flat sand beach; shallow sandbars and lagoons at lower tide. Reached by ferry from Esbjerg.",
+      "country": "DK",
+      "region": "Vadehavet",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6125571"
+    },
+    {
+      "id": "dk-copenhagen-amager-strandpark",
+      "name": "Copenhagen – Amager Strandpark",
+      "latitude": 55.65642,
+      "longitude": 12.64118,
+      "seaFacingDeg": 68.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 134.0,
+      "source": "curated",
+      "notes": "Artificial island beach with a shallow lagoon behind it. Kiting on the sea side outside the bathing zones; city spot, crowded in summer.",
+      "country": "DK",
+      "region": "Sjælland",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "dk-snderby",
+      "name": "Sønderby",
+      "latitude": 55.78106,
+      "longitude": 10.01718,
+      "seaFacingDeg": 127.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 159.8,
+      "source": "curated",
+      "notes": "Shallow flat water near Juelsminde, standing depth far out; popular for learning and freestyle.",
+      "country": "DK",
+      "region": "Østjylland",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "dk-bork-havn",
+      "name": "Bork Havn",
+      "latitude": 55.84851,
+      "longitude": 8.27789,
+      "seaFacingDeg": 315.5,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 34.2,
+      "source": "curated",
+      "notes": "South end of Ringkøbing Fjord: shallow, flat brackish water, standing depth far out. Kite schools; very beginner-friendly. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (316° locally vs 8° over ±1.5 km).",
+      "country": "DK",
+      "region": "Vestjylland",
+      "waterType": "lagoon",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "dk-sjllands-odde",
+      "name": "Sjællands Odde",
+      "latitude": 55.95814,
+      "longitude": 11.36386,
+      "seaFacingDeg": 210.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 13.0,
+      "source": "curated",
+      "notes": "Sejerø Bugt side of the Odde peninsula: shallow sandy water, chop to small waves.",
       "country": "DK",
       "region": "Sjælland",
       "waterType": "sea",
@@ -1034,9 +1252,9 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 204.3,
       "source": "curated",
-      "notes": null,
+      "notes": "North Sea side (Nordstrand): waves and currents near the harbour, experienced riders. Ringkøbing Fjord side (by the surf centres north of town): shallow flat water, schools and beginners.",
       "country": "DK",
-      "region": "Jylland",
+      "region": "Vestjylland",
       "waterType": "sea",
       "sides": [
         {
@@ -1053,45 +1271,60 @@
     {
       "id": "dk-agger-tange",
       "name": "Agger Tange",
-      "latitude": 56.73935,
-      "longitude": 8.22506,
-      "seaFacingDeg": 272.7,
+      "latitude": 56.74268,
+      "longitude": 8.22481,
+      "seaFacingDeg": 272.4,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 10.1,
       "source": "curated",
-      "notes": null,
+      "notes": "North Sea side of the Agger Tange spit: waves and current, experienced riders. Bird reserve on the spit, follow the signs.",
       "country": "DK",
-      "region": "Jylland",
+      "region": "Thy",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "dk-krik-vig",
+      "name": "Krik Vig",
+      "latitude": 56.7711,
+      "longitude": 8.27534,
+      "seaFacingDeg": 208.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 0.0,
+      "source": "curated",
+      "notes": "Shallow flat-water bay of the Limfjord behind Agger, good for learning and freestyle. Launch at Krik.",
+      "country": "DK",
+      "region": "Thy",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
     {
       "id": "dk-nrre-vorupr",
       "name": "Nørre Vorupør",
-      "latitude": 56.95796,
-      "longitude": 8.35933,
-      "seaFacingDeg": 293.2,
+      "latitude": 56.95945,
+      "longitude": 8.37242,
+      "seaFacingDeg": 340.8,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 43.4,
       "source": "curated",
-      "notes": null,
+      "notes": "Wave spot either side of the fishing landing and its pier; experienced riders. Bathing zone in summer.",
       "country": "DK",
-      "region": "Jylland",
+      "region": "Thy",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
     {
       "id": "dk-klitmller",
       "name": "Klitmøller",
-      "latitude": 57.0437,
-      "longitude": 8.49517,
-      "seaFacingDeg": 339.5,
+      "latitude": 57.04512,
+      "longitude": 8.49153,
+      "seaFacingDeg": 351.0,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 169.9,
       "source": "curated",
-      "notes": null,
+      "notes": "Cold Hawaii: reef and beach breaks, experienced wave riders only. Rocks and strong currents.",
       "country": "DK",
-      "region": "Jylland",
+      "region": "Thy",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
@@ -1104,24 +1337,39 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 39.5,
       "source": "curated",
-      "notes": null,
+      "notes": "North Sea beach, waves and side-shore wind; intermediate riders. Keep clear of bathers in summer.",
       "country": "DK",
-      "region": "Jylland",
+      "region": "Nordjylland",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
     {
       "id": "ee-parnu",
       "name": "Pärnu",
-      "latitude": 58.37388,
-      "longitude": 24.49649,
-      "seaFacingDeg": 204.0,
+      "latitude": 58.37391,
+      "longitude": 24.49504,
+      "seaFacingDeg": 203.9,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 48.2,
+      "distanceToShoreM": 13.6,
       "source": "curated",
-      "notes": null,
+      "notes": "Long shallow sandy beach on Pärnu Bay: flat to choppy, beginner-friendly in onshore SW winds.",
       "country": "EE",
       "region": "Pärnumaa",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "ee-tallinn-kakumae",
+      "name": "Tallinn – Kakumäe",
+      "latitude": 59.45012,
+      "longitude": 24.57588,
+      "seaFacingDeg": 276.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 17.5,
+      "source": "curated",
+      "notes": "Shallow bay west of Tallinn, popular with local kiters; flat to choppy.",
+      "country": "EE",
+      "region": "Harjumaa",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
@@ -1134,7 +1382,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 16.6,
       "source": "curated",
-      "notes": null,
+      "notes": "City beach on Tallinn Bay: choppy, best in W–NW winds. Keep clear of swimmers in summer.",
       "country": "EE",
       "region": "Harjumaa",
       "waterType": "sea",
@@ -2294,15 +2542,30 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "fi-helsinki-aurinkolahti",
+      "name": "Helsinki – Aurinkolahti",
+      "latitude": 60.2015,
+      "longitude": 25.15609,
+      "seaFacingDeg": 157.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 19.3,
+      "source": "curated",
+      "notes": "Vuosaari city beach, shallow and flat; best in southerly winds. Bathing area in summer. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (157° locally vs 187° over ±1.5 km).",
+      "country": "FI",
+      "region": "Uusimaa",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "fi-yyteri-pori",
       "name": "Yyteri (Pori)",
-      "latitude": 61.56679,
-      "longitude": 21.52327,
-      "seaFacingDeg": 240.3,
+      "latitude": 61.56459,
+      "longitude": 21.51762,
+      "seaFacingDeg": 244.4,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 213.1,
+      "distanceToShoreM": 158.3,
       "source": "curated",
-      "notes": null,
+      "notes": "Finland's best-known kite beach: long, shallow sand beach, flat to small waves. All levels; bathing area in summer.",
       "country": "FI",
       "region": "Satakunta",
       "waterType": "sea",
@@ -2317,7 +2580,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 143.4,
       "source": "curated",
-      "notes": "Irregular shoreline near the spot; orientation less certain. Shoreline bends here (288° locally vs 317° over ±1.5 km).",
+      "notes": "Long, shallow dune beach on the Gulf of Bothnia; flat to small waves. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (288° locally vs 317° over ±1.5 km).",
       "country": "FI",
       "region": "Pohjois-Pohjanmaa",
       "waterType": "sea",
@@ -2326,13 +2589,13 @@
     {
       "id": "fi-oulu-nallikari",
       "name": "Oulu – Nallikari",
-      "latitude": 65.03035,
-      "longitude": 25.41165,
-      "seaFacingDeg": 244.8,
+      "latitude": 65.03041,
+      "longitude": 25.40916,
+      "seaFacingDeg": 243.7,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 43.7,
+      "distanceToShoreM": 72.9,
       "source": "curated",
-      "notes": null,
+      "notes": "Shallow sand beach by Oulu, flat water; snowkiting on the sea ice in winter.",
       "country": "FI",
       "region": "Pohjois-Pohjanmaa",
       "waterType": "sea",
@@ -6078,13 +6341,30 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 18.2,
       "source": "curated",
-      "notes": null,
+      "notes": "Funnelled meltemi (N–NW), side-offshore and gusty; flat to choppy water. Mostly a windsurf spot, experienced riders.",
       "country": "GR",
       "region": "Crete",
       "waterType": "sea",
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r453129"
+    },
+    {
+      "id": "gr-afiartis-makry-gialos",
+      "name": "Afiartis – Makry Gialos",
+      "latitude": 35.4254,
+      "longitude": 27.15134,
+      "seaFacingDeg": 97.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 7.0,
+      "source": "curated",
+      "notes": "Bays near the airport (Chicken Bay, Devil's Bay): very strong and consistent meltemi (NW, offshore-ish over low land), flat water. Experienced riders; centres on site. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (97° locally vs 54° over ±1.5 km).",
+      "country": "GR",
+      "region": "Karpathos",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r452619"
     },
     {
       "id": "gr-prasonisi",
@@ -6095,7 +6375,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 0.0,
       "source": "curated",
-      "notes": "Isthmus with two sides: waves on the west side and flatter water on the east side.",
+      "notes": "Isthmus with two sides: waves on the west side, flatter water on the east side. Meltemi (NW) May–Sept, often strong; schools on site.",
       "country": "GR",
       "region": "Rhodes",
       "waterType": "sea",
@@ -6113,6 +6393,23 @@
       "access": "ferry"
     },
     {
+      "id": "gr-theologos",
+      "name": "Theologos",
+      "latitude": 36.38727,
+      "longitude": 28.03555,
+      "seaFacingDeg": 331.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 43.1,
+      "source": "curated",
+      "notes": "North-west coast near the airport; meltemi side-onshore, choppy. Schools on site in summer.",
+      "country": "GR",
+      "region": "Rhodes",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r452614"
+    },
+    {
       "id": "gr-marmari",
       "name": "Marmari",
       "latitude": 36.88621,
@@ -6121,13 +6418,29 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 61.8,
       "source": "curated",
-      "notes": null,
+      "notes": "Long sandy beach on the north coast; meltemi (NW) side-onshore, chop and small waves. Several kite centres, good for learning.",
       "country": "GR",
       "region": "Kos",
       "waterType": "sea",
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r536480"
+    },
+    {
+      "id": "gr-golden-beach-chrysi-akti",
+      "name": "Golden Beach (Chrysi Akti)",
+      "latitude": 37.00994,
+      "longitude": 25.2394,
+      "seaFacingDeg": 169.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.1,
+      "source": "curated",
+      "notes": "Long beach on the east coast; meltemi side-shore, chop. Windsurf and kite centres.",
+      "country": "GR",
+      "region": "Paros",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry"
     },
     {
       "id": "gr-mikri-vigla",
@@ -6138,7 +6451,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 12.6,
       "source": "curated",
-      "notes": null,
+      "notes": "Meltemi (N) side-shore; flat-ish water on the south side, waves on the north side. Kite centre on site.",
       "country": "GR",
       "region": "Naxos",
       "waterType": "sea",
@@ -6155,12 +6468,59 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 80.9,
       "source": "curated",
-      "notes": null,
+      "notes": "Channel towards Antiparos: meltemi (N) side-shore, flat to choppy water. Kite centre on site; watch the ferry route.",
       "country": "GR",
       "region": "Paros",
       "waterType": "sea",
       "directionCheck": "agrees",
       "access": "ferry"
+    },
+    {
+      "id": "gr-korfos",
+      "name": "Korfos",
+      "latitude": 37.42241,
+      "longitude": 25.32535,
+      "seaFacingDeg": 197.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Bay near Mykonos town; meltemi (N) side-offshore, flat water. Kite school in summer. Irregular shoreline near the spot; orientation less certain.",
+      "country": "GR",
+      "region": "Mykonos",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r531115"
+    },
+    {
+      "id": "gr-loutsa-artemida",
+      "name": "Loutsa (Artemida)",
+      "latitude": 37.98151,
+      "longitude": 24.01276,
+      "seaFacingDeg": 117.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 183.4,
+      "source": "curated",
+      "notes": "East Attica; meltemi (N–NE) side-shore, chop. Popular Athens spot with schools.",
+      "country": "GR",
+      "region": "Attica",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-schinias",
+      "name": "Schinias",
+      "latitude": 38.13969,
+      "longitude": 24.03493,
+      "seaFacingDeg": 161.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 211.6,
+      "source": "curated",
+      "notes": "Long beach in the Marathon bay; meltemi (N–NE) side-offshore, flat water near shore. Experienced riders on gusty days.",
+      "country": "GR",
+      "region": "Attica",
+      "waterType": "sea",
+      "directionCheck": "agrees"
     },
     {
       "id": "gr-lefkada-agios-ioannis",
@@ -6171,7 +6531,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 14.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Beach next to Lefkada town and the windmills; afternoon NW thermal (maistro), onshore with waves. Schools on site.",
       "country": "GR",
       "region": "Lefkada",
       "waterType": "sea",
@@ -6186,13 +6546,43 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 20.5,
       "source": "curated",
-      "notes": null,
+      "notes": "Wide shallow bay on the east coast; meltemi (N) side-shore, flat to choppy water. Kite and windsurf club on site.",
       "country": "GR",
       "region": "Lemnos",
       "waterType": "sea",
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r537221"
+    },
+    {
+      "id": "gr-epanomi-potamos",
+      "name": "Epanomi – Potamos",
+      "latitude": 40.38118,
+      "longitude": 22.92177,
+      "seaFacingDeg": 176.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 6.8,
+      "source": "curated",
+      "notes": "Sandy spit south of Thessaloniki; works with N–NW and S winds, flat water inside the spit. Schools on site.",
+      "country": "GR",
+      "region": "Thessaloniki",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-angelochori",
+      "name": "Angelochori",
+      "latitude": 40.48573,
+      "longitude": 22.82804,
+      "seaFacingDeg": 296.2,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Shallow water by the Angelochori lagoon west of the airport; flat, good for learning. Works with S and N winds. Shoreline bends here (296° locally vs 186° over ±1.5 km).",
+      "country": "GR",
+      "region": "Thessaloniki",
+      "waterType": "lagoon",
+      "directionCheck": "agrees"
     },
     {
       "id": "hr-viganj-peljesac",
@@ -6203,7 +6593,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 65.0,
       "source": "curated",
-      "notes": "Afternoon maestral.",
+      "notes": "Pelješac channel; reliable afternoon maestral (W–NW) in summer, very gusty under the mountain. Schools on site.",
       "country": "HR",
       "region": "Dubrovnik-Neretva",
       "waterType": "sea",
@@ -6218,41 +6608,54 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 0.3,
       "source": "curated",
-      "notes": "Irregular shoreline near the spot; orientation less certain.",
+      "notes": "Shallow river-mouth beach (Ušće Neretve); summer maestral in the afternoon, flat to small chop. Good for learning; schools on site. Irregular shoreline near the spot; orientation less certain.",
       "country": "HR",
       "region": "Dubrovnik-Neretva",
       "waterType": "sea",
       "directionCheck": "uncertain"
     },
     {
-      "id": "hr-bol-brac",
-      "name": "Bol (Brač)",
-      "latitude": 43.26293,
-      "longitude": 16.61389,
-      "seaFacingDeg": 195.1,
+      "id": "hr-pakostane",
+      "name": "Pakoštane",
+      "latitude": 43.90827,
+      "longitude": 15.50609,
+      "seaFacingDeg": 203.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 145.7,
+      "source": "curated",
+      "notes": "Maestral (NW) side-shore in summer afternoons, bura also used by experienced riders (offshore). Kite school on site. Irregular shoreline near the spot; orientation less certain.",
+      "country": "HR",
+      "region": "Zadar",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "hr-nin-kraljicina-plaza",
+      "name": "Nin – Kraljičina plaža",
+      "latitude": 44.24776,
+      "longitude": 15.18072,
+      "seaFacingDeg": 358.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 27.0,
+      "source": "curated",
+      "notes": "Shallow sandy lagoon-like beach; maestral (NW) and jugo. Standing depth, good for learning; schools on site. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (358° locally vs 332° over ±1.5 km).",
+      "country": "HR",
+      "region": "Zadar",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "hr-premantura-kamenjak",
+      "name": "Premantura (Kamenjak)",
+      "latitude": 44.80076,
+      "longitude": 13.91947,
+      "seaFacingDeg": 125.4,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Southern tip of Istria; works with jugo (SE) and maestral. Schools in season. Shoreline bends here (125° locally vs 97° over ±1.5 km).",
       "country": "HR",
-      "region": "Split-Dalmatia",
-      "waterType": "sea",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6114709"
-    },
-    {
-      "id": "hr-nin-zdrijac",
-      "name": "Nin – Ždrijac",
-      "latitude": 44.24757,
-      "longitude": 15.18091,
-      "seaFacingDeg": 211.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 43.3,
-      "source": "curated",
-      "notes": "Irregular shoreline near the spot; orientation less certain. Shoreline bends here (211° locally vs 321° over ±1.5 km).",
-      "country": "HR",
-      "region": "Zadar",
+      "region": "Istria",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
@@ -6265,7 +6668,7 @@
       "orientationSource": "osm-water",
       "distanceToShoreM": 93.8,
       "source": "curated",
-      "notes": null,
+      "notes": "South shore: shallow standing water, best in N–NW winds. Kiting only outside swimming areas.",
       "country": "HU",
       "region": "Somogy",
       "waterType": "lake",
@@ -6862,6 +7265,23 @@
       "island": "r7681896"
     },
     {
+      "id": "it-mazara-del-vallo-capo-feto",
+      "name": "Mazara del Vallo – Capo Feto",
+      "latitude": 37.65951,
+      "longitude": 12.52718,
+      "seaFacingDeg": 187.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 38.2,
+      "source": "curated",
+      "notes": "Wild beach next to the Capo Feto nature reserve; flat water inside the reef with W–NW, chop further out. Schools in season.",
+      "country": "IT",
+      "region": "Sicilia",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6197225"
+    },
+    {
       "id": "it-lo-stagnone-marsala",
       "name": "Lo Stagnone (Marsala)",
       "latitude": 37.88625,
@@ -6870,7 +7290,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 22.9,
       "source": "curated",
-      "notes": "Flat-water lagoon.",
+      "notes": "Shallow flat-water lagoon, standing almost everywhere; many schools. Thermal / scirocco / mistral all work. Keep clear of swimming areas.",
       "country": "IT",
       "region": "Sicilia",
       "waterType": "lagoon",
@@ -6887,7 +7307,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Very reliable thermal (W–NW) from spring to autumn, funnelled across the narrowest point of Italy. Large kite beach with schools.",
       "country": "IT",
       "region": "Calabria",
       "waterType": "sea",
@@ -6902,7 +7322,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 11.7,
       "source": "curated",
-      "notes": null,
+      "notes": "Very shallow bay with standing depth far out: flat water, good for learning. Mistral (NW) works best.",
       "country": "IT",
       "region": "Sardegna",
       "waterType": "sea",
@@ -6913,13 +7333,47 @@
     {
       "id": "it-cagliari-poetto",
       "name": "Cagliari – Poetto",
-      "latitude": 39.2139,
-      "longitude": 9.17732,
-      "seaFacingDeg": 140.1,
+      "latitude": 39.21141,
+      "longitude": 9.17337,
+      "seaFacingDeg": 135.1,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 8.7,
+      "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Long city beach; works with scirocco / SE and the summer sea breeze. Summer: kite only in the designated corridors.",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
+    },
+    {
+      "id": "it-funtanamare",
+      "name": "Funtanamare",
+      "latitude": 39.28736,
+      "longitude": 8.43609,
+      "seaFacingDeg": 283.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 18.4,
+      "source": "curated",
+      "notes": "Wave spot on the south-west coast; mistral (NW) cross-onshore. Experienced riders.",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
+    },
+    {
+      "id": "it-putzu-idu",
+      "name": "Putzu Idu",
+      "latitude": 40.02897,
+      "longitude": 8.40685,
+      "seaFacingDeg": 242.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 9.9,
+      "source": "curated",
+      "notes": "Sinis peninsula; mistral (NW) side-shore, chop to small waves. Schools on site. Shoreline bends here (243° locally vs 216° over ±1.5 km).",
       "country": "IT",
       "region": "Sardegna",
       "waterType": "sea",
@@ -6931,12 +7385,12 @@
       "id": "it-porto-cesareo-torre-lapillo",
       "name": "Porto Cesareo – Torre Lapillo",
       "latitude": 40.285,
-      "longitude": 17.85826,
-      "seaFacingDeg": 203.5,
+      "longitude": 17.85239,
+      "seaFacingDeg": 187.4,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 12.2,
+      "distanceToShoreM": 121.4,
       "source": "curated",
-      "notes": null,
+      "notes": "Ionian coast; works with W to S winds and the summer sea breeze. Summer: kite corridors only.",
       "country": "IT",
       "region": "Puglia",
       "waterType": "sea",
@@ -6951,7 +7405,24 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 34.7,
       "source": "curated",
-      "notes": null,
+      "notes": "Long sandbar beach; works with levante / scirocco (onshore). Summer: kite corridor only.",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
+    },
+    {
+      "id": "it-platamona",
+      "name": "Platamona",
+      "latitude": 40.8183,
+      "longitude": 8.46317,
+      "seaFacingDeg": 2.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 92.7,
+      "source": "curated",
+      "notes": "Long north-coast beach near Sassari; mistral (NW) cross-shore, chop and waves. Summer: kite corridors only.",
       "country": "IT",
       "region": "Sardegna",
       "waterType": "sea",
@@ -6968,7 +7439,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 222.4,
       "source": "curated",
-      "notes": "Shoreline bends here (79° locally vs 53° over ±1.5 km).",
+      "notes": "Adriatic beach; maestrale (NW) side-shore, flat to choppy. Summer: kite corridors only. Shoreline bends here (79° locally vs 53° over ±1.5 km).",
       "country": "IT",
       "region": "Puglia",
       "waterType": "sea",
@@ -6977,29 +7448,64 @@
     {
       "id": "it-porto-pollo",
       "name": "Porto Pollo",
-      "latitude": 41.1931,
-      "longitude": 9.31801,
-      "seaFacingDeg": 299.2,
+      "latitude": 41.19632,
+      "longitude": 9.31714,
+      "seaFacingDeg": 285.7,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 12.7,
       "source": "curated",
-      "notes": null,
+      "notes": "Kite zone on the Porto Liscia (west) side of the Isola dei Gabbiani isthmus; the Porto Pollo bay itself is windsurf only. Mistral (W–NW) and libeccio; schools on site. Shoreline bends here (286° locally vs 318° over ±1.5 km).",
       "country": "IT",
       "region": "Sardegna",
       "waterType": "sea",
-      "sides": [
-        {
-          "name": "west side",
-          "seaFacingDeg": 299.2
-        },
-        {
-          "name": "east side",
-          "seaFacingDeg": 47.7
-        }
-      ],
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r6847723"
+    },
+    {
+      "id": "it-margherita-di-savoia",
+      "name": "Margherita di Savoia",
+      "latitude": 41.37677,
+      "longitude": 16.15269,
+      "seaFacingDeg": 35.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Long shallow Adriatic beach; maestrale (NW) side-shore and thermal. Schools on site.",
+      "country": "IT",
+      "region": "Puglia",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-manfredonia-siponto",
+      "name": "Manfredonia – Siponto",
+      "latitude": 41.61231,
+      "longitude": 15.89682,
+      "seaFacingDeg": 107.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 272.5,
+      "source": "curated",
+      "notes": "Shallow beach on the Gulf of Manfredonia; summer thermal and maestrale. Flat water close in, good for learning.",
+      "country": "IT",
+      "region": "Puglia",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-talamone",
+      "name": "Talamone",
+      "latitude": 42.55355,
+      "longitude": 11.13252,
+      "seaFacingDeg": 205.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Bay north of the Argentario; libeccio (SW) and W thermal, flat to choppy. Schools on site. Irregular shoreline near the spot; orientation less certain.",
+      "country": "IT",
+      "region": "Toscana",
+      "waterType": "sea",
+      "directionCheck": "agrees"
     },
     {
       "id": "it-rosolina-mare",
@@ -7010,7 +7516,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Adriatic beach near the Po delta; bora (NE) and scirocco onshore. Summer: kite corridor only.",
       "country": "IT",
       "region": "Veneto",
       "waterType": "sea",
@@ -7025,7 +7531,7 @@
       "orientationSource": "osm-water",
       "distanceToShoreM": 132.3,
       "source": "curated",
-      "notes": "Thermal winds: Pelèr (N) in the morning, Ora (S) in the afternoon.",
+      "notes": "Thermal winds: Pelèr (N) in the morning, Ora (S) in the afternoon. Kiting via the local kite centre (boat launch).",
       "country": "IT",
       "region": "Lombardia",
       "waterType": "lake",
@@ -7040,39 +7546,86 @@
       "orientationSource": "osm-water",
       "distanceToShoreM": 19.1,
       "source": "curated",
-      "notes": null,
+      "notes": "East shore; Pelèr (N) in the morning, Ora (S) in the afternoon. Kiting on Garda is regulated (zones / times, often only via a kite centre with boat): check locally.",
       "country": "IT",
       "region": "Veneto",
       "waterType": "lake",
       "directionCheck": "agrees"
     },
     {
-      "id": "it-lago-di-como-colico",
-      "name": "Lago di Como – Colico",
-      "latitude": 46.13631,
-      "longitude": 9.37382,
-      "seaFacingDeg": 321.0,
+      "id": "it-lago-di-santa-croce",
+      "name": "Lago di Santa Croce",
+      "latitude": 46.10975,
+      "longitude": 12.32839,
+      "seaFacingDeg": 79.0,
       "orientationSource": "osm-water",
-      "distanceToShoreM": 246.3,
+      "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Thermal Breva (S) in the afternoon.",
+      "notes": "Small lake in the Alpago; reliable afternoon thermal in summer, Bora-type north wind in the morning. Kite schools on site. Shoreline bends here (79° locally vs 107° over ±1.5 km).",
       "country": "IT",
-      "region": "Lombardia",
+      "region": "Veneto",
       "waterType": "lake",
+      "waterSectorDeg": 360.0,
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-lago-di-resia-reschensee",
+      "name": "Lago di Resia (Reschensee)",
+      "latitude": 46.79961,
+      "longitude": 10.52454,
+      "seaFacingDeg": 66.7,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "High-altitude reservoir (about 1,500 m) with a reliable valley wind in summer; cold water, full wetsuit. Kite schools at Graun / Reschen. Shoreline bends here (67° locally vs 42° over ±1.5 km).",
+      "country": "IT",
+      "region": "Trentino-Alto Adige",
+      "waterType": "lake",
+      "waterSectorDeg": 360.0,
       "directionCheck": "agrees"
     },
     {
       "id": "lt-svencele-curonian-lagoon",
       "name": "Svencelė (Curonian Lagoon)",
-      "latitude": 55.49362,
-      "longitude": 21.24544,
-      "seaFacingDeg": 247.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 53.1,
+      "latitude": 55.50663,
+      "longitude": 21.23632,
+      "seaFacingDeg": 265.7,
+      "orientationSource": "apple-maps",
+      "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Flat-water lagoon.",
+      "notes": "Kite village on the Curonian Lagoon: shallow flat water, ideal for learning; kite schools on site. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (3° locally vs 43° over ±1.5 km).",
       "country": "LT",
       "region": "Klaipėda",
+      "waterType": "lagoon",
+      "directionCheck": "corrected"
+    },
+    {
+      "id": "lt-klaipeda-melnrage",
+      "name": "Klaipėda – Melnragė",
+      "latitude": 55.7361,
+      "longitude": 21.08576,
+      "seaFacingDeg": 265.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 16.4,
+      "source": "curated",
+      "notes": "Open Baltic beach north of the harbour: waves in W winds.",
+      "country": "LT",
+      "region": "Klaipėda",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "lt-sventoji",
+      "name": "Šventoji",
+      "latitude": 56.01134,
+      "longitude": 21.07238,
+      "seaFacingDeg": 266.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 35.5,
+      "source": "curated",
+      "notes": "Open Baltic beach: sandbars and waves in W winds.",
+      "country": "LT",
+      "region": "Palanga",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
@@ -7085,7 +7638,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Open Baltic beach: waves in W winds, for confident riders in strong wind.",
       "country": "LV",
       "region": "Kurzeme",
       "waterType": "sea",
@@ -7100,9 +7653,39 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 31.4,
       "source": "curated",
-      "notes": null,
+      "notes": "Long sandy beach on the Gulf of Riga: shallow sandbars, small waves.",
       "country": "LV",
       "region": "Rīga",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "lv-riga-vakarbulli",
+      "name": "Rīga – Vakarbuļļi",
+      "latitude": 57.02768,
+      "longitude": 23.98058,
+      "seaFacingDeg": 315.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Riga's main kite beach (Daugavgrīva): wide sandy beach, shallow, wind waves in onshore winds.",
+      "country": "LV",
+      "region": "Rīga",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "lv-ventspils",
+      "name": "Ventspils",
+      "latitude": 57.44083,
+      "longitude": 21.60073,
+      "seaFacingDeg": 289.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 15.5,
+      "source": "curated",
+      "notes": "Open Baltic beach south of the harbour mole: waves in W winds.",
+      "country": "LV",
+      "region": "Kurzeme",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
@@ -7211,7 +7794,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "River-mouth island at the Albanian border; afternoon thermal, flat water near the Bojana mouth. Kite centres on site.",
       "country": "ME",
       "region": "Ulcinj",
       "waterType": "sea",
@@ -7226,11 +7809,28 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 77.5,
       "source": "curated",
-      "notes": null,
+      "notes": "13 km sandy beach; reliable afternoon thermal (SW–W) in summer, small waves. Several kite schools.",
       "country": "ME",
       "region": "Ulcinj",
       "waterType": "sea",
       "directionCheck": "agrees"
+    },
+    {
+      "id": "mt-melliea-bay-gadira",
+      "name": "Mellieħa Bay (Għadira)",
+      "latitude": 35.97077,
+      "longitude": 14.35364,
+      "seaFacingDeg": 65.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 292.9,
+      "source": "curated",
+      "notes": "Main kite spot in Malta; works with NE (gregale) and E onshore. Mostly outside the bathing season (summer swimming zones).",
+      "country": "MT",
+      "region": "Malta",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r7118334"
     },
     {
       "id": "nl-terneuzen-put-van-terneuzen",
@@ -8327,15 +8927,45 @@
       "island": "r1636874"
     },
     {
+      "id": "no-lista",
+      "name": "Lista",
+      "latitude": 58.09635,
+      "longitude": 6.59323,
+      "seaFacingDeg": 224.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 9.2,
+      "source": "curated",
+      "notes": "Windy Lista peninsula near Vanse: shallow bays and beaches for many wind directions, waves on the exposed side. Bird reserves nearby. Irregular shoreline near the spot; orientation less certain.",
+      "country": "NO",
+      "region": "Agder",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "no-brusand",
       "name": "Brusand",
-      "latitude": 58.53639,
-      "longitude": 5.74224,
-      "seaFacingDeg": 197.2,
+      "latitude": 58.53586,
+      "longitude": 5.70762,
+      "seaFacingDeg": 183.4,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 45.4,
       "source": "curated",
-      "notes": null,
+      "notes": "Long sandy beach in south Jæren; waves, best in W–S winds.",
+      "country": "NO",
+      "region": "Rogaland",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "no-orrestranda",
+      "name": "Orrestranda",
+      "latitude": 58.71621,
+      "longitude": 5.52001,
+      "seaFacingDeg": 273.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 2.4,
+      "source": "curated",
+      "notes": "Long Jæren beach between the sea and Orrevatnet; waves, intermediate riders. Nature reserve rules apply on the dunes.",
       "country": "NO",
       "region": "Rogaland",
       "waterType": "sea",
@@ -8344,13 +8974,13 @@
     {
       "id": "no-borestranda",
       "name": "Borestranda",
-      "latitude": 58.79417,
-      "longitude": 5.54726,
-      "seaFacingDeg": 284.8,
+      "latitude": 58.81342,
+      "longitude": 5.54548,
+      "seaFacingDeg": 243.0,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 3.5,
       "source": "curated",
-      "notes": null,
+      "notes": "Long open Jæren beach, waves; one of the most used kite beaches in Rogaland.",
       "country": "NO",
       "region": "Rogaland",
       "waterType": "sea",
@@ -8359,13 +8989,13 @@
     {
       "id": "no-hellest",
       "name": "Hellestø",
-      "latitude": 58.84958,
-      "longitude": 5.55789,
-      "seaFacingDeg": 216.7,
+      "latitude": 58.84083,
+      "longitude": 5.55978,
+      "seaFacingDeg": 284.5,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 176.1,
+      "distanceToShoreM": 37.6,
       "source": "curated",
-      "notes": "Shoreline bends here (217° locally vs 246° over ±1.5 km).",
+      "notes": "Jæren beach break, waves and chop; intermediate riders. Rocks at the ends of the beach.",
       "country": "NO",
       "region": "Rogaland",
       "waterType": "sea",
@@ -8374,43 +9004,73 @@
     {
       "id": "no-sola-solastranden",
       "name": "Sola – Solastranden",
-      "latitude": 58.88489,
-      "longitude": 5.60296,
-      "seaFacingDeg": 263.3,
+      "latitude": 58.88484,
+      "longitude": 5.59905,
+      "seaFacingDeg": 260.1,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 25.1,
+      "distanceToShoreM": 188.1,
       "source": "curated",
-      "notes": null,
+      "notes": "Long sand beach by Stavanger airport; waves in westerlies, flatter in southerlies. Popular with local schools.",
       "country": "NO",
       "region": "Rogaland",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
     {
+      "id": "pl-czarnocin-szczecin-lagoon",
+      "name": "Czarnocin (Szczecin Lagoon)",
+      "latitude": 53.71991,
+      "longitude": 14.54901,
+      "seaFacingDeg": 280.2,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Szczecin Lagoon: shallow flat water, beginner-friendly.",
+      "country": "PL",
+      "region": "Zachodniopomorskie",
+      "waterType": "lagoon",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "pl-rewa",
       "name": "Rewa",
-      "latitude": 54.62948,
-      "longitude": 18.51201,
-      "seaFacingDeg": 102.6,
+      "latitude": 54.63356,
+      "longitude": 18.51381,
+      "seaFacingDeg": 102.8,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Puck Bay at the Rewa spit: shallow flat water, schools on site.",
+      "country": "PL",
+      "region": "Pomorskie",
+      "waterType": "sea",
+      "directionCheck": "uncertain"
+    },
+    {
+      "id": "pl-jastarnia-hel-peninsula",
+      "name": "Jastarnia (Hel Peninsula)",
+      "latitude": 54.70086,
+      "longitude": 18.66498,
+      "seaFacingDeg": 195.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 207.8,
+      "source": "curated",
+      "notes": "Puck Bay side: shallow flat water, kite schools.",
       "country": "PL",
       "region": "Pomorskie",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
     {
-      "id": "pl-jastarnia-hel-peninsula",
-      "name": "Jastarnia (Hel Peninsula)",
-      "latitude": 54.69893,
-      "longitude": 18.66703,
-      "seaFacingDeg": 207.4,
+      "id": "pl-puck",
+      "name": "Puck",
+      "latitude": 54.72377,
+      "longitude": 18.40583,
+      "seaFacingDeg": 35.3,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 5.8,
       "source": "curated",
-      "notes": "Puck Bay side: flat water.",
+      "notes": "Puck Bay, shallow flat water; kite schools by the town beach.",
       "country": "PL",
       "region": "Pomorskie",
       "waterType": "sea",
@@ -8425,7 +9085,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 129.8,
       "source": "curated",
-      "notes": "Puck Bay side: flat water.",
+      "notes": "Puck Bay side: shallow flat water, kite schools.",
       "country": "PL",
       "region": "Pomorskie",
       "waterType": "sea",
@@ -8440,7 +9100,37 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 95.7,
       "source": "curated",
-      "notes": "Puck Bay side: flat water.",
+      "notes": "Puck Bay side: shallow flat water, the main kite area of the peninsula with many schools and campsites. Busy in summer.",
+      "country": "PL",
+      "region": "Pomorskie",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "pl-eba",
+      "name": "Łeba",
+      "latitude": 54.76677,
+      "longitude": 17.54335,
+      "seaFacingDeg": 342.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 50.2,
+      "source": "curated",
+      "notes": "Open Baltic beach: waves in onshore winds, for confident riders.",
+      "country": "PL",
+      "region": "Pomorskie",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "pl-debki",
+      "name": "Dębki",
+      "latitude": 54.83246,
+      "longitude": 18.04288,
+      "seaFacingDeg": 356.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 43.7,
+      "source": "curated",
+      "notes": "Open Baltic beach: waves in N–NW winds, for confident riders.",
       "country": "PL",
       "region": "Pomorskie",
       "waterType": "sea",
@@ -8689,6 +9379,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "ro-mamaia-nord",
+      "name": "Mamaia Nord",
+      "latitude": 44.29517,
+      "longitude": 28.62495,
+      "seaFacingDeg": 100.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 56.8,
+      "source": "curated",
+      "notes": "North end of Mamaia resort; NE–SE onshore winds, waves. Kite school in summer, crowded beach in July–August.",
+      "country": "RO",
+      "region": "Constanța",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "ro-corbu",
       "name": "Corbu",
       "latitude": 44.37451,
@@ -8697,7 +9402,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 70.3,
       "source": "curated",
-      "notes": null,
+      "notes": "Wild beach next to Vadu; shallow, works with NE–SE winds.",
       "country": "RO",
       "region": "Constanța",
       "waterType": "sea",
@@ -8712,22 +9417,37 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 54.6,
       "source": "curated",
-      "notes": null,
+      "notes": "Wild beach north of Năvodari; shallow water, NE–SE winds onshore. Main Romanian kite spot, schools in summer.",
       "country": "RO",
       "region": "Constanța",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
     {
+      "id": "se-kampinge",
+      "name": "Kämpinge",
+      "latitude": 55.4008,
+      "longitude": 12.96067,
+      "seaFacingDeg": 169.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 113.5,
+      "source": "curated",
+      "notes": "Shallow sandy bay on the Baltic side of Höllviken, flat water close in; good for learning.",
+      "country": "SE",
+      "region": "Skåne",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "se-skanor",
       "name": "Skanör",
-      "latitude": 55.43199,
-      "longitude": 12.84112,
-      "seaFacingDeg": 274.9,
+      "latitude": 55.41351,
+      "longitude": 12.82831,
+      "seaFacingDeg": 264.1,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 8.3,
+      "distanceToShoreM": 13.5,
       "source": "curated",
-      "notes": null,
+      "notes": "Shallow sandbars off Falsterbonäset, flat to choppy; all levels. Seal and bird protection areas on the reefs.",
       "country": "SE",
       "region": "Skåne",
       "waterType": "sea",
@@ -8736,13 +9456,13 @@
     {
       "id": "se-malmo-ribersborg",
       "name": "Malmö – Ribersborg",
-      "latitude": 55.60242,
-      "longitude": 12.96369,
+      "latitude": 55.6024,
+      "longitude": 12.96045,
       "seaFacingDeg": 329.6,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 13.4,
+      "distanceToShoreM": 88.2,
       "source": "curated",
-      "notes": null,
+      "notes": "City beach, shallow and flat for a long way out; summer bathing zones.",
       "country": "SE",
       "region": "Skåne",
       "waterType": "sea",
@@ -8751,13 +9471,13 @@
     {
       "id": "se-lomma",
       "name": "Lomma",
-      "latitude": 55.6674,
-      "longitude": 13.06609,
-      "seaFacingDeg": 272.4,
+      "latitude": 55.68193,
+      "longitude": 13.05726,
+      "seaFacingDeg": 259.0,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 185.7,
+      "distanceToShoreM": 28.4,
       "source": "curated",
-      "notes": null,
+      "notes": "Shallow beach on Lommabukten, flat to choppy; popular with Malmö kiters. Kite zone outside the bathing area.",
       "country": "SE",
       "region": "Skåne",
       "waterType": "sea",
@@ -8766,13 +9486,28 @@
     {
       "id": "se-mellbystrand",
       "name": "Mellbystrand",
-      "latitude": 56.50527,
-      "longitude": 12.94004,
-      "seaFacingDeg": 278.9,
+      "latitude": 56.52255,
+      "longitude": 12.94444,
+      "seaFacingDeg": 276.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 22.5,
+      "source": "curated",
+      "notes": "Very long, shallow sand beach on Laholmsbukten; flat to small waves, good for learning. Summer bathing zones.",
+      "country": "SE",
+      "region": "Halland",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "se-varberg-apelviken",
+      "name": "Varberg – Apelviken",
+      "latitude": 57.08252,
+      "longitude": 12.25849,
+      "seaFacingDeg": 236.1,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Sweden's best-known surf bay: waves in SW–W winds, rocks at the edges. Kite zone; keep clear of surfers and bathers.",
       "country": "SE",
       "region": "Halland",
       "waterType": "sea",
@@ -8781,13 +9516,13 @@
     {
       "id": "se-oland-boda",
       "name": "Öland – Böda",
-      "latitude": 57.27456,
-      "longitude": 17.05381,
-      "seaFacingDeg": 97.1,
+      "latitude": 57.2375,
+      "longitude": 17.07481,
+      "seaFacingDeg": 68.0,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 146.6,
+      "distanceToShoreM": 17.0,
       "source": "curated",
-      "notes": null,
+      "notes": "Long sand beach on Böda bay, northern Öland; shallow, flat to small waves in easterlies. Irregular shoreline near the spot; orientation less certain.",
       "country": "SE",
       "region": "Kalmar",
       "waterType": "sea",
@@ -8796,34 +9531,19 @@
     {
       "id": "se-gotland-tofta",
       "name": "Gotland – Tofta",
-      "latitude": 57.48882,
-      "longitude": 18.1276,
-      "seaFacingDeg": 263.5,
+      "latitude": 57.48863,
+      "longitude": 18.12748,
+      "seaFacingDeg": 264.7,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 10.0,
+      "distanceToShoreM": 0.3,
       "source": "curated",
-      "notes": null,
+      "notes": "Long sand beach south of Visby, shallow; flat to small waves in westerlies.",
       "country": "SE",
       "region": "Gotland",
       "waterType": "sea",
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r5176205"
-    },
-    {
-      "id": "se-varberg-apelviken",
-      "name": "Varberg – Apelviken",
-      "latitude": 59.00815,
-      "longitude": 11.22954,
-      "seaFacingDeg": 275.7,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 28.9,
-      "source": "curated",
-      "notes": null,
-      "country": "SE",
-      "region": "Halland",
-      "waterType": "sea",
-      "directionCheck": "agrees"
     }
   ],
   "islands": [
@@ -11570,6 +12290,816 @@
       ]
     },
     {
+      "id": "r3263732",
+      "name": "Cyprus",
+      "outline": [
+        [
+          35.0703,
+          32.2692
+        ],
+        [
+          35.0371,
+          32.2755
+        ],
+        [
+          34.9959,
+          32.3138
+        ],
+        [
+          34.9627,
+          32.3134
+        ],
+        [
+          34.9561,
+          32.3015
+        ],
+        [
+          34.926,
+          32.3253
+        ],
+        [
+          34.9095,
+          32.3253
+        ],
+        [
+          34.8994,
+          32.316
+        ],
+        [
+          34.8946,
+          32.3232
+        ],
+        [
+          34.8922,
+          32.3243
+        ],
+        [
+          34.8902,
+          32.3239
+        ],
+        [
+          34.8905,
+          32.3258
+        ],
+        [
+          34.8876,
+          32.3287
+        ],
+        [
+          34.887,
+          32.3285
+        ],
+        [
+          34.8871,
+          32.329
+        ],
+        [
+          34.8857,
+          32.329
+        ],
+        [
+          34.8843,
+          32.3332
+        ],
+        [
+          34.8771,
+          32.3336
+        ],
+        [
+          34.8732,
+          32.3418
+        ],
+        [
+          34.8569,
+          32.3476
+        ],
+        [
+          34.8548,
+          32.3681
+        ],
+        [
+          34.8474,
+          32.3692
+        ],
+        [
+          34.8405,
+          32.3882
+        ],
+        [
+          34.7902,
+          32.3932
+        ],
+        [
+          34.7663,
+          32.4066
+        ],
+        [
+          34.7546,
+          32.4002
+        ],
+        [
+          34.7554,
+          32.416
+        ],
+        [
+          34.7354,
+          32.4339
+        ],
+        [
+          34.7339,
+          32.45
+        ],
+        [
+          34.7029,
+          32.4944
+        ],
+        [
+          34.7083,
+          32.5104
+        ],
+        [
+          34.6977,
+          32.5303
+        ],
+        [
+          34.698,
+          32.555
+        ],
+        [
+          34.6679,
+          32.6125
+        ],
+        [
+          34.6651,
+          32.632
+        ],
+        [
+          34.6544,
+          32.6569
+        ],
+        [
+          34.6517,
+          32.6786
+        ],
+        [
+          34.6402,
+          32.7033
+        ],
+        [
+          34.6498,
+          32.7231
+        ],
+        [
+          34.6463,
+          32.7447
+        ],
+        [
+          34.6643,
+          32.7911
+        ],
+        [
+          34.667,
+          32.8748
+        ],
+        [
+          34.6186,
+          32.9236
+        ],
+        [
+          34.5894,
+          32.938
+        ],
+        [
+          34.5747,
+          32.9406
+        ],
+        [
+          34.5659,
+          32.9331
+        ],
+        [
+          34.5733,
+          32.9736
+        ],
+        [
+          34.5625,
+          33.0286
+        ],
+        [
+          34.5676,
+          33.0364
+        ],
+        [
+          34.5936,
+          33.0087
+        ],
+        [
+          34.6189,
+          33.0059
+        ],
+        [
+          34.6413,
+          33.0108
+        ],
+        [
+          34.6443,
+          33.0139
+        ],
+        [
+          34.6445,
+          33.0202
+        ],
+        [
+          34.6504,
+          33.0329
+        ],
+        [
+          34.6448,
+          33.019
+        ],
+        [
+          34.6447,
+          33.0069
+        ],
+        [
+          34.6479,
+          33.0069
+        ],
+        [
+          34.6479,
+          33.0161
+        ],
+        [
+          34.6549,
+          33.0165
+        ],
+        [
+          34.6509,
+          33.0244
+        ],
+        [
+          34.6618,
+          33.0252
+        ],
+        [
+          34.6698,
+          33.0379
+        ],
+        [
+          34.6652,
+          33.0431
+        ],
+        [
+          34.6706,
+          33.0414
+        ],
+        [
+          34.6857,
+          33.0637
+        ],
+        [
+          34.7127,
+          33.149
+        ],
+        [
+          34.7052,
+          33.2594
+        ],
+        [
+          34.7246,
+          33.2914
+        ],
+        [
+          34.7227,
+          33.3066
+        ],
+        [
+          34.7217,
+          33.3038
+        ],
+        [
+          34.72,
+          33.3118
+        ],
+        [
+          34.7161,
+          33.3145
+        ],
+        [
+          34.715,
+          33.3189
+        ],
+        [
+          34.7191,
+          33.3143
+        ],
+        [
+          34.7309,
+          33.3699
+        ],
+        [
+          34.7471,
+          33.3933
+        ],
+        [
+          34.7499,
+          33.4128
+        ],
+        [
+          34.7641,
+          33.4292
+        ],
+        [
+          34.7771,
+          33.4955
+        ],
+        [
+          34.8192,
+          33.5514
+        ],
+        [
+          34.8158,
+          33.6027
+        ],
+        [
+          34.8345,
+          33.6083
+        ],
+        [
+          34.866,
+          33.6395
+        ],
+        [
+          34.878,
+          33.6351
+        ],
+        [
+          34.9186,
+          33.6395
+        ],
+        [
+          34.9266,
+          33.6484
+        ],
+        [
+          34.9271,
+          33.6402
+        ],
+        [
+          34.9274,
+          33.6455
+        ],
+        [
+          34.9445,
+          33.646
+        ],
+        [
+          34.9649,
+          33.6644
+        ],
+        [
+          34.9753,
+          33.6867
+        ],
+        [
+          34.9804,
+          33.776
+        ],
+        [
+          34.9631,
+          33.8301
+        ],
+        [
+          34.9426,
+          33.8585
+        ],
+        [
+          34.9546,
+          33.892
+        ],
+        [
+          34.9714,
+          33.8993
+        ],
+        [
+          34.9789,
+          33.9341
+        ],
+        [
+          34.9768,
+          33.9402
+        ],
+        [
+          34.9762,
+          33.9437
+        ],
+        [
+          34.9765,
+          33.9464
+        ],
+        [
+          34.9883,
+          33.9709
+        ],
+        [
+          34.9834,
+          34.0156
+        ],
+        [
+          34.9564,
+          34.0857
+        ],
+        [
+          34.9656,
+          34.0861
+        ],
+        [
+          34.9664,
+          34.0779
+        ],
+        [
+          34.9816,
+          34.0701
+        ],
+        [
+          34.9864,
+          34.0788
+        ],
+        [
+          35.003,
+          34.0634
+        ],
+        [
+          35.0125,
+          34.0646
+        ],
+        [
+          35.012,
+          34.0597
+        ],
+        [
+          35.0162,
+          34.0545
+        ],
+        [
+          35.0406,
+          34.0387
+        ],
+        [
+          35.0762,
+          33.9881
+        ],
+        [
+          35.107,
+          33.9616
+        ],
+        [
+          35.1213,
+          33.9582
+        ],
+        [
+          35.1325,
+          33.9372
+        ],
+        [
+          35.1631,
+          33.9119
+        ],
+        [
+          35.2039,
+          33.8997
+        ],
+        [
+          35.2573,
+          33.9066
+        ],
+        [
+          35.3045,
+          33.9424
+        ],
+        [
+          35.3218,
+          33.967
+        ],
+        [
+          35.3288,
+          34.0662
+        ],
+        [
+          35.3681,
+          34.0808
+        ],
+        [
+          35.4159,
+          34.1342
+        ],
+        [
+          35.444,
+          34.1834
+        ],
+        [
+          35.4893,
+          34.3003
+        ],
+        [
+          35.535,
+          34.3578
+        ],
+        [
+          35.5572,
+          34.4094
+        ],
+        [
+          35.5818,
+          34.4168
+        ],
+        [
+          35.6018,
+          34.4374
+        ],
+        [
+          35.6337,
+          34.5135
+        ],
+        [
+          35.6413,
+          34.5627
+        ],
+        [
+          35.6952,
+          34.5885
+        ],
+        [
+          35.6878,
+          34.5453
+        ],
+        [
+          35.6708,
+          34.5248
+        ],
+        [
+          35.6758,
+          34.5049
+        ],
+        [
+          35.6586,
+          34.4907
+        ],
+        [
+          35.6557,
+          34.4401
+        ],
+        [
+          35.6352,
+          34.4085
+        ],
+        [
+          35.6361,
+          34.3849
+        ],
+        [
+          35.623,
+          34.3466
+        ],
+        [
+          35.6034,
+          34.3387
+        ],
+        [
+          35.6041,
+          34.3264
+        ],
+        [
+          35.5916,
+          34.3199
+        ],
+        [
+          35.576,
+          34.2901
+        ],
+        [
+          35.5798,
+          34.2796
+        ],
+        [
+          35.5712,
+          34.2498
+        ],
+        [
+          35.5569,
+          34.2292
+        ],
+        [
+          35.5623,
+          34.1772
+        ],
+        [
+          35.5454,
+          34.1693
+        ],
+        [
+          35.54,
+          34.1545
+        ],
+        [
+          35.5052,
+          34.1262
+        ],
+        [
+          35.4956,
+          34.0799
+        ],
+        [
+          35.4743,
+          34.0482
+        ],
+        [
+          35.4458,
+          33.9775
+        ],
+        [
+          35.4446,
+          33.9517
+        ],
+        [
+          35.4128,
+          33.8499
+        ],
+        [
+          35.414,
+          33.7718
+        ],
+        [
+          35.3569,
+          33.6464
+        ],
+        [
+          35.3548,
+          33.6132
+        ],
+        [
+          35.3608,
+          33.6082
+        ],
+        [
+          35.3322,
+          33.4811
+        ],
+        [
+          35.3349,
+          33.3482
+        ],
+        [
+          35.345,
+          33.3329
+        ],
+        [
+          35.3405,
+          33.3277
+        ],
+        [
+          35.3402,
+          33.3264
+        ],
+        [
+          35.3407,
+          33.3086
+        ],
+        [
+          35.3506,
+          33.2919
+        ],
+        [
+          35.3447,
+          33.242
+        ],
+        [
+          35.3589,
+          33.1964
+        ],
+        [
+          35.3513,
+          33.1706
+        ],
+        [
+          35.3684,
+          33.114
+        ],
+        [
+          35.3538,
+          33.0972
+        ],
+        [
+          35.3552,
+          33.0637
+        ],
+        [
+          35.368,
+          33.0312
+        ],
+        [
+          35.3681,
+          32.9939
+        ],
+        [
+          35.3872,
+          32.9679
+        ],
+        [
+          35.4041,
+          32.9208
+        ],
+        [
+          35.3584,
+          32.9221
+        ],
+        [
+          35.3442,
+          32.9348
+        ],
+        [
+          35.2811,
+          32.9379
+        ],
+        [
+          35.2048,
+          32.9154
+        ],
+        [
+          35.1621,
+          32.8816
+        ],
+        [
+          35.1408,
+          32.8246
+        ],
+        [
+          35.1799,
+          32.7385
+        ],
+        [
+          35.194,
+          32.6682
+        ],
+        [
+          35.193,
+          32.6239
+        ],
+        [
+          35.1803,
+          32.6114
+        ],
+        [
+          35.1696,
+          32.5713
+        ],
+        [
+          35.1758,
+          32.5514
+        ],
+        [
+          35.153,
+          32.5398
+        ],
+        [
+          35.1381,
+          32.5186
+        ],
+        [
+          35.0835,
+          32.4876
+        ],
+        [
+          35.0448,
+          32.4285
+        ],
+        [
+          35.0395,
+          32.4
+        ],
+        [
+          35.0479,
+          32.3585
+        ],
+        [
+          35.0833,
+          32.3048
+        ],
+        [
+          35.1053,
+          32.2871
+        ],
+        [
+          35.1001,
+          32.2759
+        ],
+        [
+          35.0703,
+          32.2692
+        ]
+      ]
+    },
+    {
       "id": "r3788971",
       "name": "Borkum",
       "outline": [
@@ -11942,6 +13472,566 @@
         [
           50.6631,
           -1.5866
+        ]
+      ]
+    },
+    {
+      "id": "r452614",
+      "name": "Rhodes",
+      "outline": [
+        [
+          36.1527,
+          27.6836
+        ],
+        [
+          36.1439,
+          27.6908
+        ],
+        [
+          36.1483,
+          27.7073
+        ],
+        [
+          36.1317,
+          27.7164
+        ],
+        [
+          36.1202,
+          27.7069
+        ],
+        [
+          36.1131,
+          27.7104
+        ],
+        [
+          36.1056,
+          27.7502
+        ],
+        [
+          36.0911,
+          27.7598
+        ],
+        [
+          36.0134,
+          27.7552
+        ],
+        [
+          35.9408,
+          27.7182
+        ],
+        [
+          35.9368,
+          27.7267
+        ],
+        [
+          35.9156,
+          27.7342
+        ],
+        [
+          35.9039,
+          27.7596
+        ],
+        [
+          35.8865,
+          27.7717
+        ],
+        [
+          35.8904,
+          27.7984
+        ],
+        [
+          35.9157,
+          27.8291
+        ],
+        [
+          35.913,
+          27.8456
+        ],
+        [
+          35.9218,
+          27.8453
+        ],
+        [
+          35.9271,
+          27.8625
+        ],
+        [
+          35.9488,
+          27.8757
+        ],
+        [
+          35.959,
+          27.8922
+        ],
+        [
+          36.0101,
+          27.9222
+        ],
+        [
+          36.0452,
+          27.9536
+        ],
+        [
+          36.047,
+          27.9691
+        ],
+        [
+          36.0748,
+          28.0148
+        ],
+        [
+          36.0777,
+          28.0368
+        ],
+        [
+          36.0749,
+          28.0482
+        ],
+        [
+          36.0639,
+          28.0509
+        ],
+        [
+          36.0544,
+          28.0871
+        ],
+        [
+          36.0735,
+          28.0745
+        ],
+        [
+          36.0808,
+          28.0904
+        ],
+        [
+          36.0943,
+          28.0931
+        ],
+        [
+          36.0939,
+          28.0876
+        ],
+        [
+          36.0967,
+          28.0854
+        ],
+        [
+          36.1042,
+          28.0999
+        ],
+        [
+          36.1076,
+          28.0679
+        ],
+        [
+          36.1429,
+          28.0757
+        ],
+        [
+          36.1647,
+          28.0908
+        ],
+        [
+          36.1657,
+          28.1012
+        ],
+        [
+          36.1816,
+          28.1046
+        ],
+        [
+          36.1845,
+          28.1366
+        ],
+        [
+          36.2269,
+          28.1475
+        ],
+        [
+          36.2311,
+          28.159
+        ],
+        [
+          36.2488,
+          28.1666
+        ],
+        [
+          36.2486,
+          28.175
+        ],
+        [
+          36.2615,
+          28.1663
+        ],
+        [
+          36.2805,
+          28.1743
+        ],
+        [
+          36.3275,
+          28.216
+        ],
+        [
+          36.3383,
+          28.2051
+        ],
+        [
+          36.3491,
+          28.2073
+        ],
+        [
+          36.3868,
+          28.2476
+        ],
+        [
+          36.4036,
+          28.2283
+        ],
+        [
+          36.4328,
+          28.2409
+        ],
+        [
+          36.4476,
+          28.2389
+        ],
+        [
+          36.4436,
+          28.2295
+        ],
+        [
+          36.4582,
+          28.22
+        ],
+        [
+          36.4211,
+          28.1875
+        ],
+        [
+          36.4187,
+          28.1165
+        ],
+        [
+          36.398,
+          28.0537
+        ],
+        [
+          36.3527,
+          27.9592
+        ],
+        [
+          36.3429,
+          27.9154
+        ],
+        [
+          36.3226,
+          27.8784
+        ],
+        [
+          36.2806,
+          27.8414
+        ],
+        [
+          36.2705,
+          27.8055
+        ],
+        [
+          36.2423,
+          27.7893
+        ],
+        [
+          36.2193,
+          27.789
+        ],
+        [
+          36.188,
+          27.7673
+        ],
+        [
+          36.1877,
+          27.7543
+        ],
+        [
+          36.1687,
+          27.7351
+        ],
+        [
+          36.1527,
+          27.6836
+        ]
+      ]
+    },
+    {
+      "id": "r452619",
+      "name": "Karpathos",
+      "outline": [
+        [
+          35.5969,
+          27.0613
+        ],
+        [
+          35.5861,
+          27.0657
+        ],
+        [
+          35.582,
+          27.0788
+        ],
+        [
+          35.5686,
+          27.0776
+        ],
+        [
+          35.5598,
+          27.104
+        ],
+        [
+          35.5461,
+          27.1135
+        ],
+        [
+          35.536,
+          27.1033
+        ],
+        [
+          35.5303,
+          27.1093
+        ],
+        [
+          35.5124,
+          27.1049
+        ],
+        [
+          35.4805,
+          27.1184
+        ],
+        [
+          35.4766,
+          27.1041
+        ],
+        [
+          35.4692,
+          27.111
+        ],
+        [
+          35.4441,
+          27.08
+        ],
+        [
+          35.4378,
+          27.1008
+        ],
+        [
+          35.424,
+          27.1118
+        ],
+        [
+          35.4268,
+          27.1323
+        ],
+        [
+          35.4082,
+          27.1449
+        ],
+        [
+          35.4008,
+          27.1326
+        ],
+        [
+          35.3984,
+          27.1424
+        ],
+        [
+          35.4218,
+          27.1702
+        ],
+        [
+          35.4279,
+          27.173
+        ],
+        [
+          35.4252,
+          27.1512
+        ],
+        [
+          35.4625,
+          27.1739
+        ],
+        [
+          35.4626,
+          27.1932
+        ],
+        [
+          35.4814,
+          27.2018
+        ],
+        [
+          35.4825,
+          27.218
+        ],
+        [
+          35.4736,
+          27.23
+        ],
+        [
+          35.4943,
+          27.2425
+        ],
+        [
+          35.5087,
+          27.2303
+        ],
+        [
+          35.514,
+          27.2016
+        ],
+        [
+          35.5324,
+          27.2009
+        ],
+        [
+          35.5469,
+          27.2195
+        ],
+        [
+          35.5576,
+          27.2033
+        ],
+        [
+          35.5728,
+          27.2046
+        ],
+        [
+          35.5776,
+          27.1886
+        ],
+        [
+          35.5992,
+          27.1778
+        ],
+        [
+          35.602,
+          27.1598
+        ],
+        [
+          35.6164,
+          27.1504
+        ],
+        [
+          35.6236,
+          27.1635
+        ],
+        [
+          35.63,
+          27.1562
+        ],
+        [
+          35.6566,
+          27.1626
+        ],
+        [
+          35.6833,
+          27.1925
+        ],
+        [
+          35.6986,
+          27.1907
+        ],
+        [
+          35.7264,
+          27.2178
+        ],
+        [
+          35.7709,
+          27.2094
+        ],
+        [
+          35.7988,
+          27.2317
+        ],
+        [
+          35.8295,
+          27.2311
+        ],
+        [
+          35.8305,
+          27.21
+        ],
+        [
+          35.8243,
+          27.2056
+        ],
+        [
+          35.8239,
+          27.2186
+        ],
+        [
+          35.8211,
+          27.2224
+        ],
+        [
+          35.8208,
+          27.2027
+        ],
+        [
+          35.8022,
+          27.1883
+        ],
+        [
+          35.8078,
+          27.1745
+        ],
+        [
+          35.7992,
+          27.1693
+        ],
+        [
+          35.8027,
+          27.1628
+        ],
+        [
+          35.7252,
+          27.1632
+        ],
+        [
+          35.709,
+          27.1397
+        ],
+        [
+          35.6944,
+          27.1374
+        ],
+        [
+          35.6864,
+          27.1256
+        ],
+        [
+          35.667,
+          27.1173
+        ],
+        [
+          35.6628,
+          27.1259
+        ],
+        [
+          35.652,
+          27.1177
+        ],
+        [
+          35.6437,
+          27.121
+        ],
+        [
+          35.6268,
+          27.089
+        ],
+        [
+          35.6136,
+          27.0873
+        ],
+        [
+          35.5969,
+          27.0613
         ]
       ]
     },
@@ -14476,6 +16566,196 @@
       ]
     },
     {
+      "id": "r531115",
+      "name": "Mykonos",
+      "outline": [
+        [
+          37.4316,
+          25.2997
+        ],
+        [
+          37.4194,
+          25.3126
+        ],
+        [
+          37.4024,
+          25.3062
+        ],
+        [
+          37.4066,
+          25.3092
+        ],
+        [
+          37.4076,
+          25.3121
+        ],
+        [
+          37.4058,
+          25.3172
+        ],
+        [
+          37.4088,
+          25.3147
+        ],
+        [
+          37.4108,
+          25.3188
+        ],
+        [
+          37.4161,
+          25.318
+        ],
+        [
+          37.4225,
+          25.323
+        ],
+        [
+          37.411,
+          25.3309
+        ],
+        [
+          37.4133,
+          25.3457
+        ],
+        [
+          37.4031,
+          25.349
+        ],
+        [
+          37.4072,
+          25.3485
+        ],
+        [
+          37.41,
+          25.3553
+        ],
+        [
+          37.4073,
+          25.3677
+        ],
+        [
+          37.4143,
+          25.3683
+        ],
+        [
+          37.4127,
+          25.3776
+        ],
+        [
+          37.4225,
+          25.386
+        ],
+        [
+          37.4136,
+          25.4
+        ],
+        [
+          37.433,
+          25.405
+        ],
+        [
+          37.4297,
+          25.4191
+        ],
+        [
+          37.444,
+          25.4261
+        ],
+        [
+          37.4455,
+          25.4588
+        ],
+        [
+          37.4746,
+          25.4616
+        ],
+        [
+          37.4712,
+          25.429
+        ],
+        [
+          37.4827,
+          25.43
+        ],
+        [
+          37.4804,
+          25.4112
+        ],
+        [
+          37.4839,
+          25.4052
+        ],
+        [
+          37.4955,
+          25.404
+        ],
+        [
+          37.4965,
+          25.3868
+        ],
+        [
+          37.4921,
+          25.3793
+        ],
+        [
+          37.471,
+          25.3843
+        ],
+        [
+          37.4614,
+          25.3759
+        ],
+        [
+          37.4762,
+          25.3603
+        ],
+        [
+          37.4974,
+          25.3593
+        ],
+        [
+          37.5006,
+          25.3457
+        ],
+        [
+          37.497,
+          25.3382
+        ],
+        [
+          37.4979,
+          25.3298
+        ],
+        [
+          37.4926,
+          25.3118
+        ],
+        [
+          37.4832,
+          25.3077
+        ],
+        [
+          37.4717,
+          25.3093
+        ],
+        [
+          37.4634,
+          25.3285
+        ],
+        [
+          37.4272,
+          25.3239
+        ],
+        [
+          37.44,
+          25.3071
+        ],
+        [
+          37.4316,
+          25.2997
+        ]
+      ]
+    },
+    {
       "id": "r536480",
       "name": "Kos",
       "outline": [
@@ -15734,264 +18014,92 @@
       ]
     },
     {
-      "id": "r6114709",
-      "name": "Brač",
+      "id": "r6125571",
+      "name": "Fanø",
       "outline": [
         [
-          43.3199,
-          16.4081
+          55.4531,
+          8.3275
         ],
         [
-          43.309,
-          16.4294
+          55.4079,
+          8.382
         ],
         [
-          43.3159,
-          16.4352
+          55.3472,
+          8.4268
         ],
         [
-          43.3052,
-          16.4372
+          55.3398,
+          8.4591
         ],
         [
-          43.3038,
-          16.4463
+          55.3395,
+          8.4739
         ],
         [
-          43.313,
-          16.4475
+          55.3411,
+          8.4798
         ],
         [
-          43.3097,
-          16.456
+          55.3429,
+          8.4688
         ],
         [
-          43.2987,
-          16.4536
+          55.3512,
+          8.4772
         ],
         [
-          43.2977,
-          16.4635
+          55.3767,
+          8.4674
         ],
         [
-          43.308,
-          16.4656
+          55.393,
+          8.4479
         ],
         [
-          43.2967,
-          16.4693
+          55.406,
+          8.4661
         ],
         [
-          43.2965,
-          16.4833
+          55.4328,
+          8.4537
         ],
         [
-          43.2848,
-          16.4895
+          55.4377,
+          8.4405
         ],
         [
-          43.293,
-          16.497
+          55.4252,
+          8.4214
         ],
         [
-          43.2783,
-          16.4997
+          55.4288,
+          8.412
         ],
         [
-          43.2832,
-          16.5088
+          55.4363,
+          8.4058
         ],
         [
-          43.2736,
-          16.5147
+          55.464,
+          8.4091
         ],
         [
-          43.2553,
-          16.634
+          55.4685,
+          8.3937
         ],
         [
-          43.2712,
-          16.8551
+          55.4644,
+          8.3578
         ],
         [
-          43.2811,
-          16.8666
+          55.4726,
+          8.3603
         ],
         [
-          43.2883,
-          16.8606
-        ],
-        [
-          43.2806,
-          16.8736
-        ],
-        [
-          43.2841,
-          16.8829
-        ],
-        [
-          43.2957,
-          16.8805
-        ],
-        [
-          43.2993,
-          16.8946
-        ],
-        [
-          43.3078,
-          16.8854
-        ],
-        [
-          43.3139,
-          16.8995
-        ],
-        [
-          43.3252,
-          16.8637
-        ],
-        [
-          43.3298,
-          16.8663
-        ],
-        [
-          43.343,
-          16.8403
-        ],
-        [
-          43.3406,
-          16.8313
-        ],
-        [
-          43.3327,
-          16.837
-        ],
-        [
-          43.3305,
-          16.8298
-        ],
-        [
-          43.3403,
-          16.8226
-        ],
-        [
-          43.3353,
-          16.7994
-        ],
-        [
-          43.3399,
-          16.7912
-        ],
-        [
-          43.3462,
-          16.8196
-        ],
-        [
-          43.3546,
-          16.7985
-        ],
-        [
-          43.3491,
-          16.7821
-        ],
-        [
-          43.3573,
-          16.7815
-        ],
-        [
-          43.3619,
-          16.7427
-        ],
-        [
-          43.3467,
-          16.7436
-        ],
-        [
-          43.3469,
-          16.7351
-        ],
-        [
-          43.362,
-          16.7358
-        ],
-        [
-          43.3589,
-          16.7202
-        ],
-        [
-          43.3716,
-          16.6794
-        ],
-        [
-          43.3811,
-          16.6076
-        ],
-        [
-          43.3758,
-          16.6057
-        ],
-        [
-          43.3883,
-          16.5489
-        ],
-        [
-          43.3832,
-          16.5119
-        ],
-        [
-          43.3926,
-          16.4409
-        ],
-        [
-          43.3893,
-          16.4286
-        ],
-        [
-          43.3834,
-          16.4296
-        ],
-        [
-          43.3683,
-          16.4505
-        ],
-        [
-          43.3577,
-          16.4452
-        ],
-        [
-          43.3497,
-          16.464
-        ],
-        [
-          43.3534,
-          16.4541
-        ],
-        [
-          43.3448,
-          16.4337
-        ],
-        [
-          43.3303,
-          16.4344
-        ],
-        [
-          43.3286,
-          16.4482
-        ],
-        [
-          43.3253,
-          16.4493
-        ],
-        [
-          43.3227,
-          16.4244
-        ],
-        [
-          43.3336,
-          16.4093
-        ],
-        [
-          43.3199,
-          16.4081
+          55.4531,
+          8.3275
         ]
       ]
     },
@@ -21762,6 +23870,304 @@
         [
           42.2371,
           8.5399
+        ]
+      ]
+    },
+    {
+      "id": "r7118334",
+      "name": "Malta",
+      "outline": [
+        [
+          35.9715,
+          14.3189
+        ],
+        [
+          35.9703,
+          14.3355
+        ],
+        [
+          35.9603,
+          14.3417
+        ],
+        [
+          35.9406,
+          14.3285
+        ],
+        [
+          35.9343,
+          14.3438
+        ],
+        [
+          35.9273,
+          14.339
+        ],
+        [
+          35.9214,
+          14.3442
+        ],
+        [
+          35.9216,
+          14.3332
+        ],
+        [
+          35.9064,
+          14.3411
+        ],
+        [
+          35.9065,
+          14.3282
+        ],
+        [
+          35.8962,
+          14.3291
+        ],
+        [
+          35.8736,
+          14.3419
+        ],
+        [
+          35.8539,
+          14.3713
+        ],
+        [
+          35.8282,
+          14.4167
+        ],
+        [
+          35.8061,
+          14.5155
+        ],
+        [
+          35.8074,
+          14.5353
+        ],
+        [
+          35.8179,
+          14.5497
+        ],
+        [
+          35.8133,
+          14.543
+        ],
+        [
+          35.8145,
+          14.5423
+        ],
+        [
+          35.8177,
+          14.5464
+        ],
+        [
+          35.8188,
+          14.5468
+        ],
+        [
+          35.8205,
+          14.5469
+        ],
+        [
+          35.8213,
+          14.5388
+        ],
+        [
+          35.816,
+          14.542
+        ],
+        [
+          35.8235,
+          14.5294
+        ],
+        [
+          35.8323,
+          14.5308
+        ],
+        [
+          35.8293,
+          14.5447
+        ],
+        [
+          35.8412,
+          14.5456
+        ],
+        [
+          35.819,
+          14.5591
+        ],
+        [
+          35.8198,
+          14.5623
+        ],
+        [
+          35.8377,
+          14.5596
+        ],
+        [
+          35.8408,
+          14.5727
+        ],
+        [
+          35.8536,
+          14.5632
+        ],
+        [
+          35.8613,
+          14.5765
+        ],
+        [
+          35.8636,
+          14.5617
+        ],
+        [
+          35.8676,
+          14.5752
+        ],
+        [
+          35.8989,
+          14.5253
+        ],
+        [
+          35.8924,
+          14.5227
+        ],
+        [
+          35.8888,
+          14.5272
+        ],
+        [
+          35.8876,
+          14.5261
+        ],
+        [
+          35.8928,
+          14.5189
+        ],
+        [
+          35.8924,
+          14.5167
+        ],
+        [
+          35.891,
+          14.5197
+        ],
+        [
+          35.8855,
+          14.5213
+        ],
+        [
+          35.8814,
+          14.5201
+        ],
+        [
+          35.891,
+          14.5141
+        ],
+        [
+          35.8809,
+          14.5168
+        ],
+        [
+          35.8865,
+          14.5118
+        ],
+        [
+          35.8791,
+          14.5036
+        ],
+        [
+          35.879,
+          14.4966
+        ],
+        [
+          35.9027,
+          14.5207
+        ],
+        [
+          35.8929,
+          14.4975
+        ],
+        [
+          35.8951,
+          14.491
+        ],
+        [
+          35.8967,
+          14.5001
+        ],
+        [
+          35.9075,
+          14.4994
+        ],
+        [
+          35.9071,
+          14.5152
+        ],
+        [
+          35.9189,
+          14.4989
+        ],
+        [
+          35.9145,
+          14.4937
+        ],
+        [
+          35.9306,
+          14.4911
+        ],
+        [
+          35.938,
+          14.4593
+        ],
+        [
+          35.9541,
+          14.4375
+        ],
+        [
+          35.9447,
+          14.4212
+        ],
+        [
+          35.9599,
+          14.4302
+        ],
+        [
+          35.9609,
+          14.4283
+        ],
+        [
+          35.9451,
+          14.3849
+        ],
+        [
+          35.9678,
+          14.3971
+        ],
+        [
+          35.9711,
+          14.35
+        ],
+        [
+          35.9874,
+          14.3761
+        ],
+        [
+          35.9983,
+          14.3676
+        ],
+        [
+          35.9867,
+          14.3512
+        ],
+        [
+          35.9907,
+          14.3294
+        ],
+        [
+          35.9838,
+          14.3342
+        ],
+        [
+          35.9715,
+          14.3189
         ]
       ]
     },
