@@ -83,3 +83,18 @@ How to fill a row:
 Then run the check for the file(s) and fix every PROBLEM; review spots whose direction is
 `uncertain` / `disagrees` (tidal flats drawn as land and lakes behind a beach are common
 harmless causes — say so in the report).
+
+## Famous spots only (trimming)
+
+The catalogue lists **renowned** spots, not every beach where someone kites:
+- Keep spots with a national or international reputation among kiters (a travelling kiter
+  from elsewhere in the country would know the name), plus the main spot of each distinct
+  kite area so every coast stays covered.
+- Within ~10 km keep the best-known spot. Keep a second one only if it offers clearly
+  different conditions (flat lagoon vs ocean waves, a coast facing other wind directions)
+  and is famous in its own right. Mention alternative launches in the kept spot's notes.
+- Drop local or secondary beaches, school-only spots next to a famous one, club / permit
+  spots and minor lakes.
+
+Removed rows are kept in `tools/spots/reserve/<same file name>.csv` (not built), each under a
+`# removed: <reason>` comment, so they can be restored by moving them back.
