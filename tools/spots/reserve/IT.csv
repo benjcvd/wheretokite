@@ -1,0 +1,9 @@
+country,region,name,water,locate,hint,notes,sector,tide
+# removed: local / secondary beach — local south-west Sardinia wave spot, Porto Botte covers the area
+IT,Sardegna,Funtanamare,sea,osm:w1086210375,W,"Wave spot on the south-west coast; mistral (NW) cross-onshore. Experienced riders.",,
+# removed: local / secondary beach — local Sassari beach
+IT,Sardegna,Platamona,sea,q:Platamona,N,"Long north-coast beach near Sassari; mistral (NW) cross-shore, chop and waves. Summer: kite corridors only.",,
+# removed: near a kept spot — same gulf as Margherita di Savoia, which is better known
+IT,Puglia,Manfredonia – Siponto,sea,osm:n493697888,SE,"Shallow beach on the Gulf of Manfredonia; summer thermal and maestrale. Flat water close in, good for learning.",,
+# removed: near a kept spot — across the lake from Campione (kept), the reference Garda kite spot
+IT,Veneto,Lago di Garda – Malcesine,lake,osm:n458123631,W,"East shore; Pelèr (N) in the morning, Ora (S) in the afternoon. Kiting on Garda is regulated (zones / times, often only via a kite centre with boat): check locally.",,

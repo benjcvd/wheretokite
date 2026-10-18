@@ -1,0 +1,3 @@
+country,region,name,water,locate,hint,notes,sector,tide
+# removed: local / secondary beach — secondary Baltic beach, Melnragė kept for the open coast
+LT,Palanga,Šventoji,sea,q:Šventosios paplūdimys,W,"Open Baltic beach: sandbars and waves in W winds.",,

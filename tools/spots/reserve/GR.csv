@@ -1,0 +1,7 @@
+country,region,name,water,locate,hint,notes,sector,tide
+# removed: local / secondary beach — secondary Rhodes spot, Prasonisi covers the island
+GR,Rhodes,Theologos,sea,osm:w1248930105,NW,"North-west coast near the airport; meltemi side-onshore, choppy. Schools on site in summer.",,
+# removed: near a kept spot — mainly a windsurf spot; Pounta kept for Paros, mentioned in its notes
+GR,Paros,Golden Beach (Chrysi Akti),sea,osm:r453222,SE,"Long beach on the east coast; meltemi side-shore, chop. Windsurf and kite centres.",,
+# removed: near a kept spot — within ~10 km of Epanomi (kept), mentioned in its notes
+GR,Thessaloniki,Angelochori,lagoon,q:Angelochori lagoon,W,"Shallow water by the Angelochori lagoon west of the airport; flat, good for learning. Works with S and N winds.",,

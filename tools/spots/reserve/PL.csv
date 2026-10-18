@@ -1,0 +1,7 @@
+country,region,name,water,locate,hint,notes,sector,tide
+# removed: near a kept spot — ~10 km from Rewa (kept), mentioned in its notes
+PL,Pomorskie,Puck,sea,q:Plaża Puck,NE,"Puck Bay, shallow flat water; kite schools by the town beach.",,
+# removed: near a kept spot — between Chałupy and Jastarnia (kept), mentioned in Chałupy notes
+PL,Pomorskie,Kuźnica (Hel Peninsula),sea,q:Kuźnica Jastarnia,SW,"Puck Bay side: shallow flat water, kite schools.",,
+# removed: uncertain reputation — minor lagoon spot, reputation uncertain
+PL,Zachodniopomorskie,Czarnocin (Szczecin Lagoon),lagoon,osm:w26809438,W,"Szczecin Lagoon: shallow flat water, beginner-friendly.",,
