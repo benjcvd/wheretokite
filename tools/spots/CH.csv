@@ -1,4 +1,4 @@
-country,region,name,water,locate,hint,notes,sector,tide
+country,region,name,water,locate,hint,notes,sector,tide,tier
 # Switzerland — format: tools/spots/README.md
 CH,Graubünden,Silvaplana,lake,osm:w620080833,SSE,"Alpine lake at 1800 m: reliable Maloja thermal wind from the SW in the afternoon in summer. Cold water, wetsuit all year; kite school.",,
 CH,Uri,Urnersee – Flüelen,lake,q:Strandbad Flüelen,WSW,"Föhn spot: strong, gusty S wind between steep mountains. Experienced riders only.",,

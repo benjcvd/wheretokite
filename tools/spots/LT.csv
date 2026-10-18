@@ -1,4 +1,8 @@
-country,region,name,water,locate,hint,notes,sector,tide
+country,region,name,water,locate,hint,notes,sector,tide,tier
 # Lithuania — format: tools/spots/README.md
 LT,Klaipėda,Svencelė (Curonian Lagoon),lagoon,osm:n2034557394,W,"Kite village on the Curonian Lagoon: shallow flat water, ideal for learning; kite schools on site.",,
 LT,Klaipėda,Klaipėda – Melnragė,sea,q:Melnragės paplūdimys,W,"Open Baltic beach north of the harbour: waves in W winds.",,
+
+# ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
+# pro: local / secondary beach — secondary Baltic beach, Melnragė kept for the open coast
+LT,Palanga,Šventoji,sea,q:Šventosios paplūdimys,W,Open Baltic beach: sandbars and waves in W winds.,,,pro

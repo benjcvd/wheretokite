@@ -90,7 +90,8 @@ struct SearchView: View {
         // Options saved under another plan (e.g. a 10 h drive) are brought within this one.
         let allowed = plan.clamp(options)
         if allowed != options { options = allowed }
-        await model.run(allowed, profile: plan.scoringProfile(profile), userSpots: userSpots.spots)
+        await model.run(allowed, profile: plan.scoringProfile(profile), userSpots: userSpots.spots,
+                        proSpots: plan.entitlements.proSpots)
     }
 
     // MARK: Controls

@@ -1,7 +1,11 @@
-country,region,name,water,locate,hint,notes,sector,tide
+country,region,name,water,locate,hint,notes,sector,tide,tier
 # Morocco — format: tools/spots/README.md
 MA,Dakhla,Dakhla – Speed Spot (PK25 camps),lagoon,q:Dakhla Attitude,W,"Flat shallow lagoon in front of the PK25 camps (Dakhla Attitude, Dakhla Club); best at low tide. Also: Lassarga lagoon shore near the peninsula tip."
 MA,Dakhla,Dakhla – Dune Blanche,lagoon,q:La dune blanche,W,Flat water behind the white dune; best at high tide.
 MA,Dakhla,Dakhla – Oum Labouir (Westpoint),sea,q:Oum Labouir,W,"Atlantic side: waves; wind lighter and gustier in the bay."
 MA,Essaouira,Essaouira,sea,osm:w243397848,W,
 MA,Essaouira,Moulay Bouzerktoun,sea,q:Moulay Bouzerktoun,W,
+
+# ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
+# pro: local / secondary beach — secondary Dakhla lagoon launch, mentioned in Speed Spot notes
+MA,Dakhla,Dakhla – Lassarga,lagoon,q:Lassarga,SE,Lagoon shore by the fishing village near the peninsula tip.,,,pro

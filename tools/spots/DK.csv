@@ -1,4 +1,4 @@
-country,region,name,water,locate,hint,notes,sector,tide
+country,region,name,water,locate,hint,notes,sector,tide,tier
 # Denmark — format: tools/spots/README.md
 # Not web-verified: well-known spots from general knowledge, pinned with OSM kite / beach features.
 # North Jutland and Thy (Cold Hawaii)
@@ -16,3 +16,13 @@ DK,Østjylland,Sønderby,sea,osm:n11932345500,SE,"Shallow flat water near Juelsm
 DK,Sønderjylland,Hejlsminde,sea,osm:w1149061384,E,"Lillebælt: shallow flat water inside the bay, chop further out; good for beginners.",,
 # Zealand
 DK,Sjælland,Copenhagen – Amager Strandpark,sea,osm:r12328102,E,"Artificial island beach with a shallow lagoon behind it. Kiting on the sea side outside the bathing zones; city spot, crowded in summer.",,
+
+# ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
+# pro: near a kept spot — ~10 km from Klitmøller with the same wave conditions, mentioned in its notes
+DK,Thy,Nørre Vorupør,sea,osm:n11707726108,NW,Wave spot either side of the fishing landing and its pier; experienced riders. Bathing zone in summer.,,,pro
+# pro: near a kept spot — next to Krik Vig (kept), mentioned in its notes
+DK,Thy,Agger Tange,sea,osm:w145417529,W,"North Sea side of the Agger Tange spit: waves and current, experienced riders. Bird reserve on the spit, follow the signs.",,,pro
+# pro: near a kept spot — same island as Lakolk (kept), mentioned in its notes
+DK,Vadehavet,Rømø – Sønderstrand,sea,osm:n13722097101,W,"Southern Rømø beach with the kite and landkite zone; shallow, flat between the sandbars.",,not-low,pro
+# archived: uncertain reputation — reputation uncertain
+DK,Sjælland,Sjællands Odde,sea,osm:w473347884,S,"Sejerø Bugt side of the Odde peninsula: shallow sandy water, chop to small waves.",,,archived

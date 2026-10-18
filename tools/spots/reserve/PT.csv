@@ -1,9 +1,0 @@
-country,region,name,water,locate,hint,notes,sector,tide
-# removed: cluster duplicate — north of Viana do Castelo
-PT,Norte,Caminha – Moledo,sea,osm:w1474542134,W,Waves; nortada (N) in summer.,,
-# removed: local / secondary beach — ocean side of Aveiro, Ria de Aveiro kept
-PT,Centro,Aveiro – Praia da Barra,sea,q:Praia da Barra Ílhavo,W,Waves on the ocean side.,,
-# removed: local / secondary beach — mainly a surf spot; Lagoa de Óbidos kept
-PT,Centro,Peniche – Baleal,sea,q:Praia do Baleal,NW,North side of the Baleal isthmus; works in N and S winds on different sides.,,
-# removed: cluster duplicate — Ria Formosa, Praia de Faro kept
-PT,Algarve,Fuseta (Ria Formosa),lagoon,osm:w78427662,S,Lagoon: flat water; tide matters.,,not-low

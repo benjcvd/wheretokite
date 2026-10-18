@@ -1,4 +1,4 @@
-country,region,name,water,locate,hint,notes,sector,tide
+country,region,name,water,locate,hint,notes,sector,tide,tier
 # Ireland — format: tools/spots/README.md
 IE,Dublin,Dollymount Strand,sea,osm:w16137892,SE,"Designated set-up/launch/land area at the wooden bridge end; stay 200 m from swimmers. Flat at low tide, best in southerlies. Alternatives: Poolbeg / Shelly Banks (flat ~4 h around high tide), Sutton – Burrow Beach (N–NE), Portmarnock (SE or N–NE), Rush South Beach (waves in S–SW).",,
 IE,Wexford,Lady's Island Lake,lake,q:Lady's Island Lake,,"Brackish lagoon, standing depth, butter flat; best in southerlies. Keep away from the tern islands and the northern reserve (summer breeding). Alternative: Rosslare Strand (S–SE, groynes every ~300 m).",,
@@ -13,3 +13,47 @@ IE,Mayo,Achill – Keel,sea,osm:w177972966,SW:Keel Strand|N:Keel Lough:lake,"Kee
 IE,Sligo,Enniscrone,sea,q:Enniscrone Beach,W,"Wide sandy bay, flat water, popular with kiters.",,
 IE,Donegal,Rossnowlagh,sea,q:Rossnowlagh,W,"Versatile, kite school; narrow at high tide. Alternative: Bundoran – Tullan Strand (army range: obey red flags).",,
 IE,Donegal,Dunfanaghy – Killahoey,sea,q:Killahoey Beach,N,"Open beach plus the flat Dunfanaghy lagoon behind it. Alternative: Downings (Sheephaven Bay, sheltered; Carrigart lagoon).",,
+
+# ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
+# pro: Dublin: alternative to Dollymount
+IE,Dublin,Poolbeg (Shelly Banks),sea,q:Shelly Banks,E,"Between the power station and the port: flat shallow water ~4 h around high tide, long walk at low. Intermediate+.",,not-low,pro
+# pro: Dublin: alternative to Dollymount
+IE,Dublin,Sutton – Burrow Beach,sea,q:Burrow Beach,N,Flat at mid to low tide in N–NE; tidal currents.,,not-high,pro
+# pro: Dublin: alternative to Dollymount
+IE,Dublin,Portmarnock,sea,osm:w363359614,E,"Velvet Strand: SE or N–NE winds, jumping conditions.",,,pro
+# pro: Dublin: alternative to Dollymount
+IE,Dublin,Rush South Beach,sea,q:Rush South Beach,SE,Most powerful waves near Dublin in S–SW; any tide.,,,pro
+# pro: secondary local beach
+IE,Meath,Bettystown,sea,q:Bettystown Beach,E,S–SE cross-shore; strong currents.,,,pro
+# pro: secondary local beach
+IE,Wicklow,Brittas Bay,sea,osm:w16313794,E,Clean cross-shore in S wind; busy in summer.,,,pro
+# pro: within ~10 km of a better-known kept spot (Lady's Island Lake)
+IE,Wexford,Rosslare Strand,sea,q:Rosslare Strand,E,S–SE winds; rock groynes every ~300 m.,,,pro
+# pro: secondary local beach
+IE,Wexford,Duncannon,sea,q:Duncannon Beach,W,"Shallow flat water, kite school on the beach; choppy at high tide. W–S winds.",,,pro
+# pro: secondary Kerry beach near Brandon Bay
+IE,Kerry,Banna Strand,sea,q:Banna Strand,W,"Wide sandy beach, broad wind window; often choppy.",,,pro
+# pro: secondary local beach
+IE,Galway,Roundstone – Gurteen Bay,sea,q:Gurteen Bay,S,"Connemara: flat water, beginner friendly.",,,pro
+# pro: secondary Mayo beach, Achill kept
+IE,Mayo,Louisburgh – Carrownisky,sea,q:Carrownisky Strand,W,4 km swell magnet; small lake behind the beach for flat water in SW. High tide narrows the beach.,,,pro
+# pro: secondary local beach
+IE,Mayo,Mulranny,sea,q:Mulranny,S,"Clew Bay flat water, tide dependent.",,,pro
+# pro: remote secondary Mayo spot, Achill kept
+IE,Mayo,Belmullet – Elly Bay,sea,q:Elly Bay,E,"Totally sheltered bay, flat water for beginners; Elly Beach on the open side for waves in S–SW.",,,pro
+# pro: secondary Sligo beach, Enniscrone kept
+IE,Sligo,Rosses Point,sea,q:Rosses Point Beach,W,"Nearest kite beach to Sligo, school; best mid tide, NW–SW. Crowded in summer.",,,pro
+# pro: secondary local beach
+IE,Sligo,Streedagh,sea,q:Streedagh Beach,NW,Freeride; flat lagoon at high tide for freestyle.,,,pro
+# pro: within ~10 km of a better-known kept spot (Rossnowlagh)
+IE,Donegal,Bundoran – Tullan Strand,sea,q:Tullan Strand,NW,"Generally onshore, wide beach. Army range nearby: obey red flags.",,,pro
+# pro: secondary local beach
+IE,Donegal,Narin – Portnoo,sea,q:Portnoo,NW,"Sheltered 2 km beach, small waves, beginner friendly.",,,pro
+# pro: secondary local beach
+IE,Donegal,Magheraroarty,sea,q:Magheraroarty,NW,Remote north-west beach popular with kite and windsurfers.,,,pro
+# pro: within ~10 km of a better-known kept spot (Dunfanaghy)
+IE,Donegal,Downings,sea,q:Downings Beach,W,Sheephaven Bay: sheltered water; Carrigart lagoon nearby.,,,pro
+# pro: secondary local beach
+IE,Donegal,Ballyliffin – Pollan Bay,sea,q:Pollan Bay,NW,"3 km Inishowen beach, small waves.",,,pro
+# pro: secondary local beach
+IE,Donegal,Culdaff,sea,q:Culdaff Bay,NE,,,,pro

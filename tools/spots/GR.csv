@@ -1,4 +1,4 @@
-country,region,name,water,locate,hint,notes,sector,tide
+country,region,name,water,locate,hint,notes,sector,tide,tier
 # Greece — format: tools/spots/README.md
 # Dodecanese
 GR,Rhodes,Prasonisi,sea,q:Prasonisi Rhodes,W:west side (waves)|SE:east side (flat),"Isthmus with two sides: waves on the west side, flatter water on the east side. Meltemi (NW) May–Sept, often strong; schools on site.",,
@@ -19,3 +19,11 @@ GR,Thessaloniki,Epanomi – Potamos,sea,osm:w502565480,S,"Sandy spit south of Th
 # Attica
 GR,Attica,Loutsa (Artemida),sea,osm:w501162477,E,"East Attica; meltemi (N–NE) side-shore, chop. Popular Athens spot with schools.",,
 GR,Attica,Schinias,sea,osm:r1751267,SE,"Long beach in the Marathon bay; meltemi (N–NE) side-offshore, flat water near shore. Experienced riders on gusty days.",,
+
+# ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
+# pro: local / secondary beach — secondary Rhodes spot, Prasonisi covers the island
+GR,Rhodes,Theologos,sea,osm:w1248930105,NW,"North-west coast near the airport; meltemi side-onshore, choppy. Schools on site in summer.",,,pro
+# pro: near a kept spot — mainly a windsurf spot; Pounta kept for Paros, mentioned in its notes
+GR,Paros,Golden Beach (Chrysi Akti),sea,osm:r453222,SE,"Long beach on the east coast; meltemi side-shore, chop. Windsurf and kite centres.",,,pro
+# pro: near a kept spot — within ~10 km of Epanomi (kept), mentioned in its notes
+GR,Thessaloniki,Angelochori,lagoon,q:Angelochori lagoon,W,"Shallow water by the Angelochori lagoon west of the airport; flat, good for learning. Works with S and N winds.",,,pro

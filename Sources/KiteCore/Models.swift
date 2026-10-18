@@ -36,6 +36,8 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
     public var region: String?
     /// "sea" | "lagoon" | "lake".
     public var waterType: String?
+    /// "pro" for spots shown only to Pro users; nil = basic (everyone).
+    public var tier: String?
     /// When the spot works with the tide: "high" | "low" | "mid" | "not-low" | "not-high".
     /// nil = any tide (or no tide).
     public var tide: String?

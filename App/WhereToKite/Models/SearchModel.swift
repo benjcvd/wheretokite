@@ -153,8 +153,10 @@ final class SearchModel {
         #endif
     }
 
-    func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot]) async {
-        recommender.spots = UserSpotStore.merged(catalog: catalog, user: userSpots)
+    func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot], proSpots: Bool = true) async {
+        // Free plan: the famous spots only (Pro adds the secondary ones).
+        let available = proSpots ? catalog : catalog.filter { $0.tier != "pro" }
+        recommender.spots = UserSpotStore.merged(catalog: available, user: userSpots)
         error = nil
         do {
             let origin: Coordinate

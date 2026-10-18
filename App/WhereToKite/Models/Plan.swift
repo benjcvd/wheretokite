@@ -23,11 +23,13 @@ struct Entitlements: Equatable {
     var scoreWeights: Bool
     /// Water sector, second side and tide rule on the rider's own spots.
     var advancedSpotSettings: Bool
+    /// Catalogue spots with tier "pro" (secondary beaches, launches near a famous spot).
+    var proSpots: Bool = false
 
     static let free = Entitlements(maxDriveMinutes: 180, forecastDays: 2, maxUserSpots: 1, maxResults: 5,
                                    scoreWeights: false, advancedSpotSettings: true)
     static let pro = Entitlements(maxDriveMinutes: nil, forecastDays: 7, maxUserSpots: nil, maxResults: nil,
-                                  scoreWeights: true, advancedSpotSettings: true)
+                                  scoreWeights: true, advancedSpotSettings: true, proSpots: true)
 }
 
 @MainActor @Observable
@@ -107,7 +109,7 @@ struct ProSheet: View {
         ("bell.badge.fill", "It's on alerts", "A notification when your spots light up for your kites (coming with Pro)."),
         ("calendar", "7-day planning", "The whole week, not just today and tomorrow."),
         ("car.fill", "Drives up to 10 h", "Weekend trips, not just the local spots (3\u{00A0}h free)."),
-        ("list.number", "Every spot", "The full ranking and map (top 5 free)."),
+        ("list.number", "Every spot", "The full ranking and map (top 5 free), plus about 300 more local spots."),
         ("mappin.and.ellipse", "Unlimited own spots", "Add all your secret spots (1 free)."),
         ("slider.horizontal.3", "What matters to you", "Weigh wind strength, steadiness, direction and drive your way."),
     ]

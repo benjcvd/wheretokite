@@ -9,7 +9,7 @@ spots in the app.
 
 ## Columns
 
-`country,region,name,water,locate,hint,notes,sector,tide`
+`country,region,name,water,locate,hint,notes,sector,tide,tier`
 
 - `country`: ISO code (also restricts the Nominatim search).
 - `region`: human-readable area shown in the app ("Côte d'Opale").
@@ -34,6 +34,7 @@ spots in the app.
   180 = straight beach; < 180 = cove / narrow bay (side winds blow off the land);
   > 180 = point or headland (the shore curves, so more wind directions work);
   360 = small lake or spot kitable from any side.
+- `tier` (optional): `basic` (default), `pro` or `archived`; see "Famous spots only" below.
 - `tide` (optional): when the spot works, for spots that genuinely depend on the tide
   (tidal flats, bays that dry out, shallow lagoons, sandbars that cover): `high` (around
   high water), `low` (around low water), `mid`, `not-low` (anything but low water),
@@ -96,5 +97,8 @@ The catalogue lists **renowned** spots, not every beach where someone kites:
 - Drop local or secondary beaches, school-only spots next to a famous one, club / permit
   spots and minor lakes.
 
-Removed rows are kept in `tools/spots/reserve/<same file name>.csv` (not built), each under a
-`# removed: <reason>` comment, so they can be restored by moving them back.
+Each spot has a `tier` (last column):
+- `basic` (or empty): the famous spots, shown to everyone.
+- `pro`: extra spots for Pro users (secondary beaches, launches near a famous spot).
+- `archived`: kept for reference but never built (permit / members / paid-only spots,
+  uncertain reputation). A `# pro: …` / `# archived: …` comment above such rows gives the reason.

@@ -687,6 +687,11 @@ def _read_csv(path):
         # An osm: ref is pasted into an Overpass QL query: only n/w/r + digits.
         if r.get("locate", "").startswith("osm:") and not re.fullmatch(r"osm:[nwr][0-9]+", r["locate"]):
             raise SystemExit("%s: osm locator must look like osm:n123 / osm:w45 / osm:r6 in row %r" % (path, r))
+        r["tier"] = r.get("tier") or "basic"
+        if r["tier"] not in ("basic", "pro", "archived"):
+            raise SystemExit("%s: tier must be basic / pro / archived in row %r" % (path, r))
+        if r["tier"] == "archived":
+            continue   # kept in the CSV for reference, never built
         r["tide"] = r.get("tide") or ""
         if r["tide"] not in TIDE_RULES:
             raise SystemExit("%s: tide must be one of %s in row %r" % (path, "/".join(TIDE_RULES[1:]), r))
@@ -1050,6 +1055,8 @@ def main():
             spot["waterSectorDeg"] = r["sector"]
         if r["tide"]:
             spot["tide"] = r["tide"]
+        if r["tier"] == "pro":
+            spot["tier"] = "pro"
         spot["_how"] = how
         spot["_hint"] = r["hint"]
         spot["_snapped"] = o["snapped"]
@@ -1239,6 +1246,7 @@ def main():
     for s in spots:
         counts[s["country"]] = counts.get(s["country"], 0) + 1
     print("\n%d spots: %s" % (len(spots), ", ".join("%s %d" % kv for kv in sorted(counts.items()))))
+    print("of which Pro-only: %d" % sum(1 for s_ in spots if s_.get("tier") == "pro"))
     ferry = [s_ for s_ in spots if s_.get("access") == "ferry"]
     print("\nNeed a ferry from the mainland (%d): %s" % (len(ferry), ", ".join(
         "%s%s" % (s_["id"], "" if s_.get("island") else " (no island outline)") for s_ in ferry)))

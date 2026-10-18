@@ -1,4 +1,4 @@
-country,region,name,water,locate,hint,notes,sector,tide
+country,region,name,water,locate,hint,notes,sector,tide,tier
 # Sweden — format: tools/spots/README.md
 # Not web-verified: well-known spots from general knowledge, pinned with OSM kite / beach features.
 # Halland
@@ -11,3 +11,7 @@ SE,Skåne,Lomma,sea,osm:w69072856,W,"Shallow beach on Lommabukten, flat to chopp
 # Baltic islands
 SE,Kalmar,Öland – Böda,sea,osm:w1537654612,E,"Long sand beach on Böda bay, northern Öland; shallow, flat to small waves in easterlies.",,
 SE,Gotland,Gotland – Tofta,sea,osm:w116575228,W,"Long sand beach south of Visby, shallow; flat to small waves in westerlies.",,
+
+# ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
+# pro: near a kept spot — ~10 km from Lomma (kept), mentioned in its notes
+SE,Skåne,Malmö – Ribersborg,sea,osm:w41173569,NW,"City beach, shallow and flat for a long way out; summer bathing zones.",,,pro
