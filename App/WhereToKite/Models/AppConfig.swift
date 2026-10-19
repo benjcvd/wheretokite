@@ -8,7 +8,7 @@ enum AppConfig {
     /// The WhereToKite server (see server/README.md), e.g. URL(string: "https://wheretokite-api.<account>.workers.dev").
     /// nil = forecasts straight from Open-Meteo, no catalogue updates, reports open GitHub instead,
     /// and feedback / diagnostics stay on the phone.
-    static let serverURL: URL? = nil
+    static let serverURL: URL? = URL(string: "https://wheretokite-api.wheretokite-api.workers.dev")
 
     static var forecastServer: ForecastServer { serverURL.map(ForecastServer.wheretokite) ?? .openMeteo }
 
