@@ -23,6 +23,13 @@ struct SpotDetailView: View {
                 chart
                 hourly
 
+                if let bans = rec.spot.bans, !bans.isEmpty {
+                    Label("Kiting banned " + bans.map(Self.banLabel).joined(separator: "; "),
+                          systemImage: "nosign")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.orange)
+                        .accessibilityIdentifier("spotBans")
+                }
                 if let notes = rec.spot.notes {
                     Text(notes).font(.footnote).foregroundStyle(.secondary)
                 }
@@ -119,6 +126,19 @@ struct SpotDetailView: View {
                      icon: "water.waves", tint: .cyan)
             }
         }
+    }
+
+    /// "15 Jun – 15 Sep, 11–19 h" (month-days as in the catalogue, any year).
+    static func banLabel(_ ban: SpotBan) -> String {
+        func day(_ md: String) -> String {
+            let p = md.split(separator: "-").compactMap { Int($0) }
+            guard p.count == 2, let d = Calendar(identifier: .gregorian)
+                .date(from: DateComponents(year: 2001, month: p[0], day: p[1])) else { return md }
+            return d.formatted(.dateTime.day().month(.abbreviated))
+        }
+        var s = "\(day(ban.from)) – \(day(ban.to))"
+        if let a = ban.startHour, let b = ban.endHour { s += ", \(a)–\(b) h" }
+        return s
     }
 
     static func tideRuleLabel(_ rule: String?) -> String {

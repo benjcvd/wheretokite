@@ -109,7 +109,7 @@ struct ReportSpotSheet: View {
     @State private var sending = false
 
     private let problems = ["Wrong position", "Wrong beach direction", "Kiting banned / restricted here",
-                            "Not a known kite spot", "Other"]
+                            "Wrong ban or dates", "Not a known kite spot", "Other"]
     @State private var problem = "Wrong position"
 
     var body: some View {

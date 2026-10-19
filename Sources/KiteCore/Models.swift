@@ -269,11 +269,17 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     /// The middle of the hour is between sunrise and sunset. nil = unknown (treated as light).
     public var isDaylight: Bool?
 
-    /// Thunderstorm forecast, or air unstable enough for one: never a kite hour.
+    /// Thunderstorm forecast, or unstable air (high CAPE) with showers / rain in the same hour:
+    /// never a kite hour. High CAPE alone is common on calm summer afternoons and doesn't
+    /// count (see `unstableAir`).
     public var stormRisk: Bool {
         if let c = weatherCode, [95, 96, 99].contains(c) { return true }
-        return (capeJkg ?? 0) >= 1500
+        let showers = (weatherCode ?? 0) >= 80 || (precipitationMm ?? 0) >= 0.5
+        return (capeJkg ?? 0) >= 1500 && showers
     }
+
+    /// Air unstable enough for storms to build, without a storm forecast: a warning only.
+    public var unstableAir: Bool { !stormRisk && (capeJkg ?? 0) >= 1500 }
 
     public var hour: Int { Int(localTime.dropFirst(11).prefix(2)) ?? 0 }
 

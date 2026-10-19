@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T21:51:26Z",
+  "generatedAt": "2026-10-19T09:35:53Z",
   "region": "europe",
   "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); spot selection curated by WhereToKite",
   "spots": [
@@ -390,6 +390,16 @@
       "region": "Bayern",
       "waterType": "lake",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "07-01",
+          "to": "08-31"
+        },
+        {
+          "from": "12-01",
+          "to": "03-31"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -405,6 +415,12 @@
       "country": "DE",
       "region": "Niedersachsen",
       "waterType": "lake",
+      "bans": [
+        {
+          "from": "11-16",
+          "to": "03-19"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -1599,6 +1615,12 @@
       "region": "Andalucía",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "06-15",
+          "to": "09-15"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -1645,6 +1667,12 @@
       "region": "Andalucía",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "06-15",
+          "to": "09-15"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -1865,6 +1893,12 @@
       "region": "Andalucía",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "06-15",
+          "to": "09-15"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -2242,6 +2276,12 @@
       "region": "Catalunya",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -2258,6 +2298,12 @@
       "region": "Catalunya",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -2289,6 +2335,12 @@
       "region": "Catalunya",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -2492,6 +2544,12 @@
       "region": "Cantabria",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -2904,6 +2962,12 @@
       "country": "FR",
       "region": "Var",
       "waterType": "sea",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -2993,6 +3057,12 @@
       "country": "FR",
       "region": "Provence",
       "waterType": "sea",
+      "bans": [
+        {
+          "from": "06-15",
+          "to": "09-15"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -3152,6 +3222,12 @@
       "region": "Pays basque",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "07-01",
+          "to": "08-31"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -3228,6 +3304,12 @@
       "region": "Provence",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "06-15",
+          "to": "09-15"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -3561,6 +3643,12 @@
       "waterType": "sea",
       "tide": "high",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "10-01",
+          "to": "11-30"
+        }
+      ],
       "directionCheck": "corrected"
     },
     {
@@ -3577,6 +3665,12 @@
       "region": "Gironde",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "07-01",
+          "to": "08-31"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -3594,6 +3688,12 @@
       "waterType": "sea",
       "tide": "high",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "07-01",
+          "to": "08-31"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -3610,6 +3710,12 @@
       "region": "Gironde",
       "waterType": "sea",
       "tide": "high",
+      "bans": [
+        {
+          "from": "07-01",
+          "to": "08-31"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -3926,6 +4032,12 @@
       "country": "FR",
       "region": "Pays de la Loire",
       "waterType": "sea",
+      "bans": [
+        {
+          "from": "06-15",
+          "to": "09-15"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -4201,6 +4313,14 @@
       "region": "Bretagne",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "07-01",
+          "to": "08-31",
+          "startHour": 9,
+          "endHour": 19
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -4359,6 +4479,14 @@
       "region": "Bretagne",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "06-15",
+          "to": "09-15",
+          "startHour": 10,
+          "endHour": 20
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -4910,6 +5038,14 @@
       "country": "GB",
       "region": "Cornwall",
       "waterType": "sea",
+      "bans": [
+        {
+          "from": "07-15",
+          "to": "09-07",
+          "startHour": 10,
+          "endHour": 18
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -4974,6 +5110,14 @@
       "region": "Cornwall",
       "waterType": "sea",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "07-01",
+          "to": "08-31",
+          "startHour": 10,
+          "endHour": 18
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -5241,6 +5385,12 @@
       "country": "GB",
       "region": "Devon",
       "waterType": "sea",
+      "bans": [
+        {
+          "from": "07-01",
+          "to": "08-31"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -6029,6 +6179,12 @@
       "waterType": "lagoon",
       "tide": "high",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "11-01",
+          "to": "03-31"
+        }
+      ],
       "directionCheck": "disagrees"
     },
     {
@@ -8062,6 +8218,12 @@
       "region": "Zeeland",
       "waterType": "lagoon",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "05-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -8398,6 +8560,12 @@
       "region": "Gelderland",
       "waterType": "lake",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "10-01",
+          "to": "03-31"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -8523,6 +8691,12 @@
       "region": "Flevoland",
       "waterType": "lake",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "08-01",
+          "to": "03-31"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -8570,6 +8744,12 @@
       "region": "Noord-Holland",
       "waterType": "lake",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "10-01",
+          "to": "03-31"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -8618,6 +8798,12 @@
       "region": "Friesland",
       "waterType": "lake",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "05-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -8743,6 +8929,12 @@
       "country": "NL",
       "region": "Friesland",
       "waterType": "lake",
+      "bans": [
+        {
+          "from": "05-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -8760,6 +8952,12 @@
       "waterType": "sea",
       "tide": "high",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "10-01",
+          "to": "03-31"
+        }
+      ],
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r1545777"
@@ -8778,6 +8976,12 @@
       "region": "Friesland",
       "waterType": "lake",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "10-01",
+          "to": "04-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -8862,6 +9066,12 @@
       "region": "Groningen",
       "waterType": "lake",
       "tier": "pro",
+      "bans": [
+        {
+          "from": "05-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {

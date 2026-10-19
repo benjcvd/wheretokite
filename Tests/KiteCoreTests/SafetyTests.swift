@@ -28,9 +28,12 @@ final class SafetyTests: XCTestCase {
 
     func testHardLimits() throws {
         let s = try spot(bans: [SpotBan(from: "07-01", to: "08-31", startHour: 12, endHour: 14)])
-        let hours = [hour(10, code: 95), hour(11, cape: 2000), hour(12), hour(16, light: false), hour(17, rain: 2), hour(18)]
+        let hours = [hour(10, code: 95), hour(11, code: 80, cape: 2000), hour(12), hour(16, light: false), hour(17, rain: 2),
+                     hour(18, code: 1, cape: 3000)]
         let out = Recommender.applySafety(s, to: hours, day: "2026-07-14")
         XCTAssertEqual(out.map(\.score), [0, 0, 0, 0, 0.9, 0.9])
+        // High CAPE on a dry, clear afternoon (Barcelona in July): a warning, not a ban.
+        XCTAssertEqual(out[5].flags, ["unstable air"])
         XCTAssertEqual(out[0].flags.first, "thunderstorm risk")
         XCTAssertEqual(out[1].flags.first, "thunderstorm risk")
         XCTAssertEqual(out[2].flags.first, "kiting banned")

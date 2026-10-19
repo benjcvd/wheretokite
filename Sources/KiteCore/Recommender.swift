@@ -385,8 +385,9 @@ public struct Recommender: Sendable {
             if let reason {
                 h.score = 0
                 h.flags.insert(reason, at: 0)
-            } else if (h.wind.precipitationMm ?? 0) >= 1 {
-                h.flags.append("rain")
+            } else {
+                if (h.wind.precipitationMm ?? 0) >= 1 { h.flags.append("rain") }
+                if h.wind.unstableAir { h.flags.append("unstable air") }
             }
             return h
         }
