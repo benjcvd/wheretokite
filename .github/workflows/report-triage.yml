@@ -1,0 +1,147 @@
+# App reports → Claude → pull request for review.
+#
+# The server files each "Report an issue" from the app as an issue labelled `report`. This
+# workflow has Claude check the claim against independent sources, edit the catalogue,
+# validate the build and open a PR that closes the issue. Nothing is merged without the
+# owner. Merging rebuilds Data/spots.json (catalog-build.yml) and the apps pick it up within
+# about an hour, without an app release.
+#
+# Runs on: a new `report` issue filed by the server (as the repo owner), the owner adding the
+# `triage` label to any issue (e.g. one opened by a user through GitHub), or by hand.
+# Setup: the CLAUDE_CODE_OAUTH_TOKEN secret (`claude setup-token`), see server/README.md.
+
+name: Report triage
+
+on:
+  issues:
+    types: [opened, labeled]
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: Issue number
+        required: true
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: triage-${{ github.event.issue.number || inputs.issue }}
+
+jobs:
+  triage:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.sender.login == github.repository_owner &&
+       ((github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'report')) ||
+        (github.event.action == 'labeled' && github.event.label.name == 'triage')))
+    runs-on: macos-latest   # the build's Apple Maps direction check needs macOS
+    timeout-minutes: 60
+    env:
+      ISSUE: ${{ github.event.issue.number || inputs.issue }}
+    steps:
+      # No token in .git/config: the report is untrusted input, so the Claude step must not be
+      # able to read a credential. Pushes happen in the last step, after Claude has finished.
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Daily cap (spam guard)
+        id: cap
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          since=$(date -u -v-1d +%Y-%m-%dT%H:%M:%SZ)
+          n=$(gh issue list --label triaged --state all --search "updated:>$since" --json number --jq length)
+          echo "triaged in the last 24 h: $n"
+          if [ "$n" -ge 20 ]; then
+            gh issue edit "$ISSUE" --add-label triage-later
+            gh issue comment "$ISSUE" --body "Daily triage limit reached; add the \`triage\` label to run it later."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch the report
+        if: steps.cap.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .triage
+          gh issue view "$ISSUE" --json number,title,body,labels > .triage/issue.json
+
+      - uses: actions/cache@v4
+        if: steps.cap.outputs.skip != 'true'
+        with:
+          path: tools/.osm_cache
+          key: osm-${{ github.run_id }}
+          restore-keys: osm-
+
+      - name: Claude
+        if: steps.cap.outputs.skip != 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ github.token }}
+          prompt: |
+            Triage the app report in .triage/issue.json (issue #${{ env.ISSUE }}).
+            Follow .github/triage/prompt.md exactly.
+          claude_args: >-
+            --model claude-opus-5-5
+            --max-turns 60
+            --allowedTools "Read,Glob,Grep,WebSearch,WebFetch,Edit(tools/spots/**),Write(tools/spots/**),Write(.triage/**),Bash(python3 tools/build_spots.py:*),Bash(git diff:*),Bash(git status:*)"
+            --disallowedTools "Read(.git/**),Edit(tools/*.py),Edit(tools/*.swift)"
+
+      - name: Open the PR or answer the issue
+        if: steps.cap.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          result=.triage/result.md
+          if [ ! -f "$result" ]; then
+            decision=needs-human; title=""; echo "Triage produced no result; please look at the run." > .triage/body.md
+          else
+            decision=$(sed -n 's/^DECISION: *//p' "$result" | head -1 | tr -d '[:space:]')
+            title=$(sed -n 's/^TITLE: *//p' "$result" | head -1)
+            sed '1,/^---$/d' "$result" > .triage/body.md
+          fi
+          # Only the catalogue may change here; anything else is left to a human.
+          changed=$(git status --porcelain | awk '{print $2}')
+          allowed='^tools/spots/'
+          if echo "$changed" | grep -v '^$' | grep -Ev "$allowed" | grep -q .; then
+            echo "Unexpected files changed: $(echo "$changed" | grep -Ev "$allowed" | tr '\n' ' ')"
+            git checkout -- . && git clean -fdq -e .triage -e tools/.osm_cache
+            decision=needs-human
+            printf '\n\n_The proposed change touched files outside the catalogue and was discarded._\n' >> .triage/body.md
+          fi
+          if [ "$decision" = fix ] && [ -z "$changed" ]; then decision=needs-human; fi
+          case "$decision" in
+            fix)
+              branch="report/$ISSUE"
+              git config user.name "github-actions[bot]"
+              git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+              git checkout -B "$branch"
+              git add tools/spots
+              git commit -qm "${title:-Fix report #$ISSUE}" -m "Closes #$ISSUE"
+              git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "$branch"
+              printf '\n\nCloses #%s\n' "$ISSUE" >> .triage/body.md
+              url=$(gh pr list --head "$branch" --json url --jq '.[0].url')
+              if [ -z "$url" ]; then
+                url=$(gh pr create --head "$branch" --title "${title:-Fix report #$ISSUE}" --body-file .triage/body.md --label report-fix)
+              else
+                gh pr edit "$branch" --body-file .triage/body.md
+              fi
+              gh issue comment "$ISSUE" --body "Proposed fix: $url"
+              gh issue edit "$ISSUE" --add-label triaged --remove-label triage ;;
+            no-change)
+              gh issue comment "$ISSUE" --body-file .triage/body.md
+              gh issue edit "$ISSUE" --add-label triaged --remove-label triage
+              gh issue close "$ISSUE" --reason "not planned" ;;
+            app)
+              printf '\n\n_Reply \`@claude fix this\` to get a PR._\n' >> .triage/body.md
+              gh issue comment "$ISSUE" --body-file .triage/body.md
+              gh issue edit "$ISSUE" --add-label triaged --remove-label triage ;;
+            *)
+              gh issue comment "$ISSUE" --body-file .triage/body.md
+              gh issue edit "$ISSUE" --add-label triaged,needs-human --remove-label triage ;;
+          esac
+

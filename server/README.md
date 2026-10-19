@@ -157,3 +157,21 @@ edit. Mentions and links in the text are neutralised. Without the token, reports
 1. GitHub → Settings → Developer settings → Fine-grained tokens → Generate: repository access
    "Only select repositories" → `wheretokite`; permissions → Repository → Issues: Read and write.
 2. `npx wrangler secret put GITHUB_TOKEN` and paste it.
+
+### From report to fix, automatically
+
+1. The issue triggers `.github/workflows/report-triage.yml`. Claude checks the claim against
+   independent sources, edits the `tools/spots/` CSV, validates the build and opens a PR
+   (`report/<issue>`, "Closes #n") with its sources. Otherwise it answers the issue: closed
+   when nothing needs changing, `needs-human` when unsure, a diagnosis for app problems.
+2. You review the PR and merge it. To change it, comment `@claude …` on it
+   (`claude-followup.yml`; only your comments trigger it).
+3. The merge triggers `catalog-build.yml`, which rebuilds and commits `Data/spots.json`. The
+   Worker serves it within an hour and the apps download it on their next launch.
+
+Triage runs only on `report` issues filed by the Worker (as you), or when you add the `triage`
+label to an issue. It stops at 20 a day. Claude only gets read access plus edits to
+`tools/spots/` during triage, because the report text comes from anonymous users.
+
+Setup: run `claude setup-token` (uses your Claude subscription), then
+`gh secret set CLAUDE_CODE_OAUTH_TOKEN` and paste the token.

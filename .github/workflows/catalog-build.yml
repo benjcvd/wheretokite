@@ -1,0 +1,51 @@
+# Rebuilds Data/spots.json when the catalogue sources change on main (e.g. a merged triage PR),
+# so PRs only edit the CSVs and never conflict on the generated file. The server serves the new
+# catalogue within an hour and the apps download it on their next launch.
+
+name: Catalogue build
+
+on:
+  push:
+    branches: [main]
+    paths: [tools/spots/**, tools/build_spots.py, tools/check_directions.swift]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: catalog-build
+
+jobs:
+  build:
+    runs-on: macos-latest   # Apple Maps direction check
+    timeout-minutes: 120    # a cold OSM cache takes a while (Nominatim is 1 request/s)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: tools/.osm_cache
+          key: osm-${{ github.run_id }}
+          restore-keys: osm-
+      - name: Build
+        run: |
+          before=$(python3 -c "import json;print(len(json.load(open('Data/spots.json'))['spots']))")
+          python3 tools/build_spots.py 2>&1 | tee build.log
+          status=${PIPESTATUS[0]}
+          if grep -q "apple check unavailable" build.log; then
+            echo "::error::Apple Maps check unavailable; not publishing a catalogue with unchecked directions"; exit 1
+          fi
+          after=$(python3 -c "import json;print(len(json.load(open('Data/spots.json'))['spots']))")
+          echo "spots: $before -> $after"
+          if [ "$after" -lt $((before * 9 / 10)) ]; then
+            echo "::error::Spot count dropped from $before to $after; not publishing"; exit 1
+          fi
+          if [ "$status" -ne 0 ]; then echo "::error::Build reported problems (see PROBLEMS above)"; exit 1; fi
+      - name: Commit
+        run: |
+          git diff --quiet -- Data/spots.json tools/review.md && { echo "no change"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add Data/spots.json tools/review.md
+          git commit -qm "Rebuild the spot catalogue"
+          git push
