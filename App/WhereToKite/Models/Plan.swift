@@ -10,6 +10,9 @@ import SwiftUI
 ///   opens a "coming soon" sheet. Nothing can be bought yet.
 /// - `.proForSale`: same, and the sheet offers the subscription (StoreKit, to build).
 enum PaywallMode {
+    /// v1 on the App Store: the free plan with no visible Pro at all (no locks, no "coming
+    /// soon": review rejects promoting features that can't be bought).
+    case freeOnly
     case allFree, proComingSoon, proForSale
 }
 
@@ -35,7 +38,7 @@ struct Entitlements: Equatable {
 @MainActor @Observable
 final class PlanStore {
     /// The switch. Change to `.proForSale` once the subscription exists.
-    static let mode: PaywallMode = .proComingSoon
+    static let mode: PaywallMode = .freeOnly
 
     /// Bought Pro. Always false until the subscription exists; development builds can
     /// unlock it from the Me tab or with -unlockPro.
@@ -66,6 +69,9 @@ final class PlanStore {
     }
 
     var hasPro: Bool { entitlements == .pro }
+
+    /// Pro is visible in the UI (locks, Pro sheet, "+N more" line).
+    var showsPro: Bool { Self.mode == .proComingSoon || Self.mode == .proForSale }
 
     /// Search options within the plan: drive capped, day kept within the plan's forecast days.
     func clamp(_ options: SearchOptions) -> SearchOptions {
@@ -169,8 +175,13 @@ struct ProLockRow: View {
     let title: String
     var detail: String? = nil
     @State private var showPro = false
+    @Environment(PlanStore.self) private var plan
 
     var body: some View {
+        if plan.showsPro { row }
+    }
+
+    private var row: some View {
         Button { showPro = true } label: {
             HStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 2) {

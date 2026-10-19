@@ -8,6 +8,8 @@ struct SpotDetailView: View {
     let day: DayOption
     let profile: RiderProfile
     @State private var showScoreInfo = false
+    @State private var showReport = false
+    @Environment(FeedbackStore.self) private var feedback
 
     private var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: rec.spot.latitude, longitude: rec.spot.longitude)
@@ -24,6 +26,11 @@ struct SpotDetailView: View {
                 if let notes = rec.spot.notes {
                     Text(notes).font(.footnote).foregroundStyle(.secondary)
                 }
+                if rec.spot.source != UserSpotStore.source {
+                    Button("Report a problem with this spot", systemImage: "flag") { showReport = true }
+                        .font(.footnote)
+                        .accessibilityIdentifier("reportSpot")
+                }
                 if rec.spot.directionCheck == "uncertain" || rec.spot.directionCheck == "disagrees" {
                     Label("The beach direction isn't confirmed by a second map yet, so on- and offshore may be off.",
                           systemImage: "exclamationmark.triangle")
@@ -39,6 +46,8 @@ struct SpotDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom) { directionsButton }
         .sheet(isPresented: $showScoreInfo) { ScoreInfoSheet(rec: rec) }
+        .sheet(isPresented: $showReport) { ReportSpotSheet(spot: rec.spot) }
+        .onAppear { feedback.viewed(rec, day: day.id) }
         .toolbar(.hidden, for: .tabBar)
     }
 
@@ -350,6 +359,7 @@ struct ScoreInfoSheet: View {
                     .padding(.vertical, 4)
                 }
 
+                if plan.entitlements.scoreWeights || plan.showsPro {
                 Section {
                     if !plan.entitlements.scoreWeights {
                         ProLockRow(title: "What matters to you", detail: "Your own weights with Pro")
@@ -367,6 +377,7 @@ struct ScoreInfoSheet: View {
                     }
                 } footer: {
                     Text("Changing your weights updates every score on your next search.")
+                }
                 }
             }
             .navigationTitle("How is this scored?")

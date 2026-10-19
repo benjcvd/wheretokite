@@ -5,6 +5,7 @@ struct WhereToKiteApp: App {
     @State private var profiles = ProfileStore()
     @State private var userSpots = UserSpotStore()
     @State private var plan = PlanStore()
+    @State private var feedback = FeedbackStore()
 
     var body: some Scene {
         WindowGroup {
@@ -12,6 +13,11 @@ struct WhereToKiteApp: App {
                 .environment(profiles)
                 .environment(userSpots)
                 .environment(plan)
+                .environment(feedback)
+                .task {
+                    Diagnostics.shared.start()
+                    await CatalogStore.refresh()
+                }
         }
     }
 }
@@ -40,6 +46,9 @@ struct RootView: View {
                     .tag(Tab.me)
             }
             .transition(.opacity)
+            .sheet(isPresented: Binding(get: { !profiles.disclaimerAccepted }, set: { _ in })) {
+                DisclaimerSheet { profiles.disclaimerAccepted = true }
+            }
         }
     }
 }

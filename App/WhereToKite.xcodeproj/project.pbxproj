@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BFAC660668231DCF3CDBD59 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0933D9C88094846F2BC285 /* AboutView.swift */; };
 		284C70C8E4ABA0E4A7F75C0D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F5C20E40546E26686279F0 /* Location.swift */; };
 		3033035C3325D08E3B4D292A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 63BA10E59F4309F7C4893714 /* PrivacyInfo.xcprivacy */; };
 		30A877DA17A905957EF8D298 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F8F5A2E1A5CE0B9DE4F25 /* ResultsView.swift */; };
@@ -20,6 +21,7 @@
 		4F483B10023938DE4ABED516 /* KiteCore in Frameworks */ = {isa = PBXBuildFile; productRef = 13C8EC6774F86A9FA8DA0606 /* KiteCore */; };
 		5C8142654A0B9DBA7BF0CF94 /* UserSpotStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277E1AB34764B92F4C025FD /* UserSpotStoreTests.swift */; };
 		74D228B8A399ECAF1133D419 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A01B4CE0810383D176FFA /* SearchModel.swift */; };
+		76F4B08BDA4F515B48C056E1 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AEDABBBAD636DA97F841E /* AppConfig.swift */; };
 		8014EBB88D41746E8117AF2E /* MySpotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026921E739C6680077EFE36 /* MySpotsView.swift */; };
 		8398D6ECE120CF911C21091A /* CoastlineGuess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF133A500C253B3DD84ED7 /* CoastlineGuess.swift */; };
 		92919730AA0B3F2A7D455E50 /* AddSpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77C5012EC97C3B94A2310A4 /* AddSpotView.swift */; };
@@ -48,8 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A8AEDABBBAD636DA97F841E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		151D5C7C8622381AF708D4CF /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		1C5E2E8BA8DA3D0A25B0DF88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C0933D9C88094846F2BC285 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		45F5C20E40546E26686279F0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4631580E28E5B68ABCC5A177 /* WhereToKite.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = WhereToKite.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +105,7 @@
 		1E455D4BF836D9596798CE63 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0A8AEDABBBAD636DA97F841E /* AppConfig.swift */,
 				89AF133A500C253B3DD84ED7 /* CoastlineGuess.swift */,
 				45F5C20E40546E26686279F0 /* Location.swift */,
 				151D5C7C8622381AF708D4CF /* Plan.swift */,
@@ -170,6 +175,7 @@
 		EFBCE5475AE39803B852328D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2C0933D9C88094846F2BC285 /* AboutView.swift */,
 				F77C5012EC97C3B94A2310A4 /* AddSpotView.swift */,
 				CD1827AF8EDFF5D3992BB12C /* Components.swift */,
 				F026921E739C6680077EFE36 /* MySpotsView.swift */,
@@ -316,7 +322,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BFAC660668231DCF3CDBD59 /* AboutView.swift in Sources */,
 				92919730AA0B3F2A7D455E50 /* AddSpotView.swift in Sources */,
+				76F4B08BDA4F515B48C056E1 /* AppConfig.swift in Sources */,
 				8398D6ECE120CF911C21091A /* CoastlineGuess.swift in Sources */,
 				4186BF72B3FE16EFB4898830 /* Components.swift in Sources */,
 				284C70C8E4ABA0E4A7F75C0D /* Location.swift in Sources */,

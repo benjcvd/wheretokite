@@ -27,8 +27,11 @@ public struct ForecastConfidence: Sendable {
 public struct ConfidenceEstimator: Sendable {
     public var models = ["ecmwf_ifs025", "gfs_seamless", "icon_seamless", "meteofrance_seamless"]
     public var session: URLSession = .shared
+    public var server: ForecastServer
 
-    public init() {}
+    public init(server: ForecastServer = .openMeteo) {
+        self.server = server
+    }
 
     private struct Response: Decodable {
         var hourly: [String: [Double?]]
@@ -47,8 +50,13 @@ public struct ConfidenceEstimator: Sendable {
 
     public func estimate(at origin: Coordinate, day: String, slot: SessionSlot,
                          today: String) async throws -> ForecastConfidence {
+        try await estimate(at: origin, day: day, hours: slot.hours, today: today)
+    }
+
+    public func estimate(at origin: Coordinate, day: String, hours: ClosedRange<Int>,
+                         today: String) async throws -> ForecastConfidence {
         guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) }
-        var c = URLComponents(string: OpenMeteoProvider.endpoint(for: day))!
+        var c = URLComponents(url: server.endpoint(for: day), resolvingAgainstBaseURL: false)!
         c.queryItems = [
             // The origin is usually the rider's own position: send only the area (0.1° ≈ 11 km,
             // finer than the compared models' grids), not where they are.
@@ -68,7 +76,7 @@ public struct ConfidenceEstimator: Sendable {
         var speedSpreads: [Double] = []
         var dirSpreads: [Double] = []
         var used = Set<String>()
-        for hour in slot.hours {
+        for hour in hours {
             var speeds: [Double] = [], dirs: [Double] = []
             for m in models {
                 if let s = hourly["wind_speed_10m_\(m)"]?[safe: hour] ?? nil,

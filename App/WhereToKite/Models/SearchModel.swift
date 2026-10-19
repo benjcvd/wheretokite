@@ -7,6 +7,15 @@ struct SearchOptions: Codable, Equatable {
     var maxDriveMinutes = 60.0
     var day = DayOption.today.id
     var slot = SessionSlot.afternoon
+    /// The rider's own hours for the "Custom" slot (start hour, end hour exclusive). Optional so
+    /// options saved before still decode.
+    var customStart: Int?
+    var customEnd: Int?
+
+    var customHours: ClosedRange<Int> {
+        let s = min(23, max(0, customStart ?? 17)), e = min(24, max(s + 1, customEnd ?? 20))
+        return s...(e - 1)
+    }
     /// nil = all types.
     var intensity: Double? = nil
     var distanceMatters = true
@@ -70,7 +79,9 @@ extension SessionSlot {
         switch self {
         case .morning: "Morning"
         case .afternoon: "Afternoon"
+        case .evening: "Evening"
         case .fullDay: "Full day"
+        case .custom: "My hours"
         }
     }
 
@@ -78,11 +89,21 @@ extension SessionSlot {
         switch self {
         case .morning: "sunrise.fill"
         case .afternoon: "sun.max.fill"
+        case .evening: "sunset.fill"
         case .fullDay: "sun.horizon.fill"
+        case .custom: "clock.fill"
         }
     }
 
-    var hoursLabel: String { "\(hours.lowerBound):00–\(hours.upperBound + 1):00" }
+    var hoursLabel: String { Self.label(hours) }
+
+    static func label(_ hours: ClosedRange<Int>) -> String { "\(hours.lowerBound):00–\(hours.upperBound + 1):00" }
+}
+
+extension SearchOptions {
+    /// The slot's hours, or the rider's own ones.
+    var hours: ClosedRange<Int> { slot == .custom ? customHours : slot.hours }
+    var hoursLabel: String { SessionSlot.label(hours) }
 }
 
 /// Max-drive choices: fine steps for short trips, coarser ones for road trips (up to 10 h).
@@ -116,18 +137,21 @@ final class SearchModel {
 
     private let location = LocationService()
     private let catalog: [Spot]
+    /// When the catalogue in use was built (shown in About).
+    let catalogDate: String?
     private var recommender: Recommender
 
     init() {
-        let url = Bundle.main.url(forResource: "spots", withExtension: "json")!
-        let loaded = try? SpotCatalog.load(from: url)
+        let loaded = CatalogStore.current()
         catalog = loaded?.spots ?? []
+        catalogDate = loaded?.generatedAt
         // MapKitDriveTime caches ETAs in memory, so changing day, session or style
         // doesn't ask Apple Maps for every route again.
         recommender = Recommender(
             spots: catalog,
-            forecast: CachedForecastProvider(upstream: OpenMeteoProvider()),
-            driveTime: MapKitDriveTime())
+            forecast: CachedForecastProvider(upstream: OpenMeteoProvider(server: AppConfig.forecastServer)),
+            driveTime: MapKitDriveTime(),
+            confidence: ConfidenceEstimator(server: AppConfig.forecastServer))
         recommender.islands = loaded?.islands ?? []
     }
 
@@ -153,7 +177,11 @@ final class SearchModel {
         #endif
     }
 
-    func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot], proSpots: Bool = true) async {
+    /// When nothing is good on the searched day: the next day (within `lookaheadDays`) that is.
+    private(set) var nextWindow: (day: String, recommendation: SpotRecommendation)?
+
+    func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot], proSpots: Bool = true,
+             lookaheadDays: Int = 7) async {
         // Free plan: the famous spots only (Pro adds the secondary ones).
         let available = proSpots ? catalog : catalog.filter { $0.tier != "pro" }
         recommender.spots = UserSpotStore.merged(catalog: available, user: userSpots)
@@ -173,9 +201,23 @@ final class SearchModel {
                 origin: origin, maxDriveMinutes: options.maxDriveMinutes,
                 day: Self.testDay ?? options.day,
                 slot: options.slot, intensity: options.intensity, distanceMatters: options.distanceMatters)
-            let result = try await recommender.search(request, profile: profile, today: DayOption.today.id)
+            var req = request
+            req.customHours = options.customHours
+            let result = try await recommender.search(req, profile: profile, today: DayOption.today.id)
+            try Task.checkCancellation()
+            if result.stats.forecastMissing > 0 {
+                appLog.error("forecast missing for \(result.stats.forecastMissing) spots")
+            }
+            // Nothing worth the drive: look ahead (forecasts for the week are already cached).
+            var next: (day: String, recommendation: SpotRecommendation)?
+            if (result.recommendations.first?.finalScore ?? 0) < ResultsSection.verdictMinimum {
+                let later = DayOption.next(lookaheadDays).map(\.id).filter { $0 > req.day }
+                next = await recommender.nextGoodWindow(for: req, days: later, profile: profile,
+                                                        minimum: ResultsSection.verdictMinimum)
+            }
             try Task.checkCancellation()
             self.result = result
+            self.nextWindow = next
             finishedAt = Date()
             progress = nil
             generation += 1

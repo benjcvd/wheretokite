@@ -12,7 +12,12 @@ final class MySpotsTests: XCTestCase {
         app.launch()
         // A fresh install opens on onboarding (this test used to skip itself there).
         let start = app.buttons["Start"]
-        if start.waitForExistence(timeout: 3) { start.tap() }
+        if start.waitForExistence(timeout: 3) {
+            acceptTerms(app)
+            start.tap()
+        }
+        let accept = app.buttons["acceptDisclaimer"]
+        if accept.waitForExistence(timeout: 2) { accept.tap() }
         let tab = app.tabBars.buttons["My spots"]
         XCTAssertTrue(tab.waitForExistence(timeout: 5))
         tab.tap()
@@ -92,5 +97,15 @@ final class MySpotsTests: XCTestCase {
             try? FileManager.default.createDirectory(atPath: dir, withIntermediateDirectories: true)
             try? shot.pngRepresentation.write(to: URL(fileURLWithPath: dir).appendingPathComponent("\(name).png"))
         }
+    }
+
+    /// Ticks the onboarding terms checkbox (a toggle: not a plain button; may need scrolling).
+    @MainActor
+    func acceptTerms(_ app: XCUIApplication) {
+        let box = app.descendants(matching: .any)["acceptTerms"].firstMatch
+        XCTAssertTrue(box.waitForExistence(timeout: 5), "terms checkbox missing")
+        var tries = 0
+        while !box.isHittable && tries < 4 { app.swipeUp(); tries += 1 }
+        box.tap()
     }
 }

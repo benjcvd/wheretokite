@@ -36,7 +36,8 @@ struct SearchView: View {
                     if let profile = profiles.profile {
                         ResultsSection(model: model, options: options, profile: profile, zoom: zoom,
                                        open: { path.append($0) },
-                                       retry: { Task { await run() } })
+                                       retry: { Task { await run() } },
+                                       goToDay: { day in withAnimation(.snappy) { options.day = day } })
                     }
                 }
                 .padding(.horizontal)
@@ -91,7 +92,7 @@ struct SearchView: View {
         let allowed = plan.clamp(options)
         if allowed != options { options = allowed }
         await model.run(allowed, profile: plan.scoringProfile(profile), userSpots: userSpots.spots,
-                        proSpots: plan.entitlements.proSpots)
+                        proSpots: plan.entitlements.proSpots, lookaheadDays: plan.entitlements.forecastDays)
     }
 
     // MARK: Controls
@@ -119,7 +120,7 @@ struct SearchView: View {
             .scrollClipDisabled()
 
             DayStrip(selection: $options.day)
-            SlotPicker(selection: $options.slot)
+            SlotPicker(selection: $options.slot, customHours: options.customHours)
         }
     }
 
@@ -142,8 +143,9 @@ private struct DayStrip: View {
     @Binding var selection: String
     @Environment(PlanStore.self) private var plan
     @State private var showPro = false
-    /// Computed on each render so the strip moves on after midnight.
-    private var days: [DayOption] { DayOption.next() }
+    /// Computed on each render so the strip moves on after midnight. Without visible Pro, only
+    /// the plan's days are shown (no locked ones).
+    private var days: [DayOption] { DayOption.next(plan.showsPro ? 7 : plan.entitlements.forecastDays) }
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -202,6 +204,8 @@ private struct TitleOnlyIf: LabelStyle {
 
 private struct SlotPicker: View {
     @Binding var selection: SessionSlot
+    /// Shown under "My hours".
+    let customHours: ClosedRange<Int>
     @Namespace private var highlight
     @Environment(\.dynamicTypeSize) private var typeSize
 
@@ -212,15 +216,14 @@ private struct SlotPicker: View {
                 Button {
                     withAnimation(.snappy) { selection = slot }
                 } label: {
+                    let hours = slot == .custom ? customHours : slot.hours
                     VStack(spacing: 1) {
-                        Label(slot.label, systemImage: slot.symbol)
+                        // Five across: names only (the icons would push them to "Mor…").
+                        Text(slot.label)
                             .font(.subheadline.weight(.semibold))
-                            // Three across: at accessibility sizes the icon pushed the names
-                            // to "Mor…", "After…".
-                            .labelStyle(TitleOnlyIf(condition: typeSize >= .xxLarge))
                             .lineLimit(1)
-                            .minimumScaleFactor(typeSize.isAccessibilitySize ? 0.6 : 0.8)
-                        Text(slot.hoursLabel)
+                            .minimumScaleFactor(typeSize.isAccessibilitySize ? 0.55 : 0.7)
+                        Text("\(hours.lowerBound)–\(hours.upperBound + 1)h")
                             .font(.caption2)
                             .foregroundStyle(on ? Color.white.opacity(0.85) : Color.secondary)
                     }
@@ -237,7 +240,8 @@ private struct SlotPicker: View {
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("\(slot.label), \(slot.hoursLabel)")
+                .accessibilityLabel("\(slot.label), \(SessionSlot.label(slot == .custom ? customHours : slot.hours))")
+                .accessibilityIdentifier("slot-\(slot.rawValue)")
                 .accessibilityAddTraits(on ? .isSelected : [])
             }
         }
@@ -296,6 +300,15 @@ struct SearchOptionsSheet: View {
                 }
 
                 Section {
+                    Stepper("From \(options.customHours.lowerBound):00", value: customStart, in: 5...21)
+                    Stepper("Until \(options.customHours.upperBound + 1):00", value: customEnd, in: 6...22)
+                } header: {
+                    Text("My hours")
+                } footer: {
+                    Text("Used by the \u{201C}My hours\u{201D} session. Hours after sunset never count.")
+                }
+
+                Section {
                     Toggle("Any style", isOn: anyStyle.animation(.snappy))
                     if let intensity = options.intensity {
                         VStack {
@@ -329,6 +342,24 @@ struct SearchOptionsSheet: View {
     private var driveIndex: Binding<Double> {
         Binding(get: { Double(DriveSteps.index(of: options.maxDriveMinutes)) },
                 set: { options.maxDriveMinutes = DriveSteps.minutes[Int($0.rounded())] })
+    }
+
+    private var customStart: Binding<Int> {
+        Binding(get: { options.customHours.lowerBound },
+                set: { s in
+                    options.customStart = s
+                    if (options.customEnd ?? 20) <= s { options.customEnd = s + 1 }
+                    options.slot = .custom
+                })
+    }
+
+    private var customEnd: Binding<Int> {
+        Binding(get: { options.customHours.upperBound + 1 },
+                set: { e in
+                    options.customEnd = e
+                    if (options.customStart ?? 17) >= e { options.customStart = e - 1 }
+                    options.slot = .custom
+                })
     }
 
     private var anyStyle: Binding<Bool> {

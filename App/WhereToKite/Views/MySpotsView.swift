@@ -9,6 +9,7 @@ struct MySpotsView: View {
     @Environment(PlanStore.self) private var plan
     @State private var isAdding = false
     @State private var showPro = false
+    @State private var showLimit = false
 
     /// Free plan: one own spot. Spots added before stay; only adding more needs Pro.
     private var canAdd: Bool {
@@ -16,7 +17,7 @@ struct MySpotsView: View {
     }
 
     private func add() {
-        if canAdd { isAdding = true } else { showPro = true }
+        if canAdd { isAdding = true } else if plan.showsPro { showPro = true } else { showLimit = true }
     }
     @State private var editing: Spot?
 
@@ -45,6 +46,11 @@ struct MySpotsView: View {
                 AddSpotView()
             }
             .sheet(isPresented: $showPro) { ProSheet() }
+            .alert("One spot for now", isPresented: $showLimit) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text("You can keep one spot of your own. Edit it, or delete it to add another.")
+            }
             .sheet(item: $editing) { spot in
                 AddSpotView(editing: spot)
             }
@@ -72,7 +78,7 @@ struct MySpotsView: View {
 
     private var list: some View {
         List {
-            if !canAdd {
+            if !canAdd && plan.showsPro {
                 Section {
                     ProLockRow(title: "Add more spots", detail: "One spot free, unlimited with Pro")
                 }

@@ -27,6 +27,7 @@ extension ProfileStore {
 struct OnboardingView: View {
     @Environment(ProfileStore.self) private var profiles
     @State private var draft = RiderProfile.starter
+    @State private var accepted = false
 
     var body: some View {
         ScrollView {
@@ -46,6 +47,12 @@ struct OnboardingView: View {
                 .padding(.top, 24)
 
                 ProfileFields(profile: $draft)
+
+                Toggle(isOn: $accepted) {
+                    Text(Disclaimer.short).font(.footnote)
+                }
+                .toggleStyle(CheckboxToggleStyle())
+                .accessibilityIdentifier("acceptTerms")
             }
             .padding(.horizontal)
             .padding(.bottom, 24)
@@ -53,6 +60,7 @@ struct OnboardingView: View {
         .background(Color(.systemGroupedBackground))
         .safeAreaInset(edge: .bottom) {
             Button {
+                profiles.disclaimerAccepted = true
                 withAnimation(.snappy) { profiles.profile = draft }
             } label: {
                 Text("Start")
@@ -62,6 +70,7 @@ struct OnboardingView: View {
             }
             .prominentButton()
             .controlSize(.large)
+            .disabled(!accepted)
             .padding(.horizontal)
             .padding(.bottom, 8)
             .sensoryFeedback(.success, trigger: profiles.profile != nil)
@@ -81,6 +90,7 @@ struct MeView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     RiderHero(profile: profiles.profile ?? .starter)
                     ProfileFields(profile: profiles.editable)
+                    if plan.entitlements.scoreWeights || plan.showsPro {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("What matters to you").font(.headline)
                         if plan.entitlements.scoreWeights {
@@ -92,12 +102,23 @@ struct MeView: View {
                                 .card()
                         }
                     }
+                    }
                     #if DEBUG
                     Toggle("Unlock Pro (development builds only)",
                            isOn: Binding(get: { plan.isPro }, set: { plan.isPro = $0 }))
                         .font(.footnote)
                         .accessibilityIdentifier("debugUnlockPro")
                     #endif
+                    NavigationLink {
+                        AboutView()
+                    } label: {
+                        Label("About, safety & privacy", systemImage: "info.circle")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(14)
+                            .card()
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityIdentifier("about")
                     Text("Changes are saved automatically and used for your next search.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -380,6 +401,22 @@ struct WeightsEditor: View {
         case ..<1.75: "More"
         default: "A lot"
         }
+    }
+}
+
+/// A checkbox for agreeing to terms (a switch reads as a setting, not an agreement).
+struct CheckboxToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        Button { configuration.isOn.toggle() } label: {
+            HStack(alignment: .top, spacing: 10) {
+                Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
+                    .font(.title3)
+                    .foregroundStyle(configuration.isOn ? Color.accentColor : Color.secondary)
+                configuration.label.foregroundStyle(.primary).multilineTextAlignment(.leading)
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(configuration.isOn ? .isSelected : [])
     }
 }
 

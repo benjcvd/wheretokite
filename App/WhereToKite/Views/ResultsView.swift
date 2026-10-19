@@ -11,6 +11,9 @@ struct ResultsSection: View {
     let zoom: Namespace.ID
     let open: (String) -> Void
     let retry: () -> Void
+    /// Switches the search to another day (the "next good window" card).
+    var goToDay: (String) -> Void = { _ in }
+    @Environment(FeedbackStore.self) private var feedback
 
     @State private var mode = Mode.list
     @State private var showNoGo = false
@@ -70,6 +73,18 @@ struct ResultsSection: View {
                     .foregroundStyle(.orange)
             }
 
+            if let visit = feedback.due {
+                FeedbackCard(visit: visit, answer: { feedback.answer($0) })
+            }
+
+            if result.stats.forecastMissing > 0 {
+                Label("\(result.stats.forecastMissing) spot\(result.stats.forecastMissing > 1 ? "s" : "") couldn't be checked right now (forecast service busy). Pull to refresh in a minute.",
+                      systemImage: "exclamationmark.icloud")
+                    .font(.footnote)
+                    .foregroundStyle(.orange)
+                    .accessibilityIdentifier("forecastMissing")
+            }
+
             if hasVerdict, let top = good.first {
                 Button { open(top.id) } label: { VerdictCard(rec: top) }
                     .buttonStyle(PressableStyle())
@@ -85,6 +100,10 @@ struct ResultsSection: View {
             } else {
                 NoSpotCard(title: "No kiteable spot",
                            message: "Not enough good wind. Try another day or session, or allow a longer drive.")
+            }
+
+            if !hasVerdict, let next = model.nextWindow {
+                NextWindowCard(day: DayOption.with(id: next.day), rec: next.recommendation) { goToDay(next.day) }
             }
 
             if let confidence = result.confidence {
@@ -124,7 +143,7 @@ struct ResultsSection: View {
                         .id(model.generation)
                         .transition(.opacity)
                 }
-                if hiddenCount > 0 {
+                if hiddenCount > 0 && plan.showsPro {
                     ProLockRow(title: "+\(hiddenCount) more kiteable spot\(hiddenCount > 1 ? "s" : "")",
                                detail: "The full ranking and map with Pro")
                         .padding(14)
@@ -173,7 +192,7 @@ struct ResultsSection: View {
     private func summary(_ result: SearchResult) -> String {
         let day = DayOption.with(id: result.request.day)
         let from = options.start.isCurrentLocation ? "you" : options.start.name
-        return "\(day.longLabel) · \(result.request.slot.label) \(result.request.slot.hoursLabel) · within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(from)"
+        return "\(day.longLabel) · \(result.request.slot.label) \(SessionSlot.label(result.request.hours)) · within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(from)"
     }
 
     /// Location problems get a location icon, everything else (network, forecast) wifi.
@@ -244,6 +263,10 @@ struct VerdictCard: View {
                 Label(rec.warnings.joined(separator: ", "), systemImage: "exclamationmark.triangle.fill")
                     .font(.footnote.weight(.semibold))
             }
+
+            Text("Forecast-based estimate. Check conditions on site; you ride at your own risk.")
+                .font(.caption2)
+                .opacity(0.75)
         }
         .foregroundStyle(.white)
         .padding(20)
@@ -500,3 +523,67 @@ extension SpotRecommendation {
         Array(Set(windowHours.flatMap(\.flags))).sorted()
     }
 }
+
+/// "Nothing today, but Thursday 15–18h at Wissant": tapping switches the search to that day.
+private struct NextWindowCard: View {
+    let day: DayOption
+    let rec: SpotRecommendation
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 14) {
+                ScoreBadge(score: rec.finalScore, size: 44)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Next good window").font(.caption.weight(.semibold)).foregroundStyle(.secondary)
+                    Text("\(day.longLabel)\(rec.windowLabel.map { " · \($0)" } ?? "")").font(.headline)
+                    Text("\(rec.spot.name) · \(rec.driveLabel)").font(.subheadline).foregroundStyle(.secondary)
+                }
+                Spacer(minLength: 0)
+                Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
+            }
+            .padding(14)
+            .card()
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityIdentifier("nextWindow")
+        .accessibilityHint("Shows that day")
+    }
+}
+
+/// "How was Wissant on Saturday?" after the day the rider looked at a good spot.
+private struct FeedbackCard: View {
+    let visit: FeedbackStore.Visit
+    let answer: (String) -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("How was \(visit.spotName) on \(DayOption.with(id: visit.day).longLabel)?")
+                .font(.headline)
+            Text("Your answer helps tune the scores.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            HStack(spacing: 8) {
+                choice("Good", "hand.thumbsup.fill", "good")
+                choice("Not great", "hand.thumbsdown.fill", "bad")
+                choice("Didn't go", "xmark", "skipped")
+            }
+        }
+        .padding(14)
+        .card()
+        .accessibilityIdentifier("feedbackCard")
+    }
+
+    private func choice(_ title: String, _ icon: String, _ value: String) -> some View {
+        Button { withAnimation(.snappy) { answer(value) } } label: {
+            Label(title, systemImage: icon)
+                .font(.subheadline.weight(.semibold))
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)
+                .background(Color(.tertiarySystemFill), in: Capsule())
+        }
+        .buttonStyle(.plain)
+    }
+}
+

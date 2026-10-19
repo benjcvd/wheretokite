@@ -38,6 +38,14 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
     public var waterType: String?
     /// "pro" for spots shown only to Pro users; nil = basic (everyone).
     public var tier: String?
+    /// When kiting is not allowed (bathing season, bird protection…).
+    public var bans: [SpotBan]?
+
+    /// Kiting is banned at this spot on `day` ("yyyy-MM-dd") during local hour `hour`.
+    public func isBanned(day: String, hour: Int) -> Bool {
+        let md = String(day.dropFirst(5))   // "MM-dd"
+        return (bans ?? []).contains { $0.covers(monthDay: md, hour: hour) }
+    }
     /// When the spot works with the tide: "high" | "low" | "mid" | "not-low" | "not-high".
     /// nil = any tide (or no tide).
     public var tide: String?
@@ -124,6 +132,30 @@ public struct Island: Codable, Hashable, Sendable {
     }
 }
 
+/// A period when kiting is not allowed: inclusive month-days (may wrap over the new year),
+/// optionally only between two local hours (end exclusive).
+public struct SpotBan: Codable, Hashable, Sendable {
+    /// "MM-dd"
+    public var from: String
+    public var to: String
+    public var startHour: Int?
+    public var endHour: Int?
+
+    public init(from: String, to: String, startHour: Int? = nil, endHour: Int? = nil) {
+        self.from = from
+        self.to = to
+        self.startHour = startHour
+        self.endHour = endHour
+    }
+
+    public func covers(monthDay md: String, hour: Int) -> Bool {
+        let inDates = from <= to ? (from...to).contains(md) : (md >= from || md <= to)
+        guard inDates else { return false }
+        guard let s = startHour, let e = endHour else { return true }
+        return hour >= s && hour < e
+    }
+}
+
 // MARK: - Rider
 
 public enum Level: String, Codable, CaseIterable, Sendable {
@@ -174,14 +206,17 @@ public struct RiderProfile: Codable, Equatable, Sendable {
 // MARK: - Search
 
 public enum SessionSlot: String, Codable, CaseIterable, Sendable {
-    case morning, afternoon, fullDay
+    case morning, afternoon, evening, fullDay, custom
 
-    /// Local start hours included in the slot (an hour h covers h:00–h+1:00).
+    /// Local start hours included in the slot (an hour h covers h:00–h+1:00). `custom`
+    /// uses `SearchRequest.customHours`; this is its default.
     public var hours: ClosedRange<Int> {
         switch self {
         case .morning: 9...12      // 9–13
         case .afternoon: 13...17   // 13–18
+        case .evening: 17...20     // 17–21 (after work; dark hours drop out with daylight)
         case .fullDay: 9...17      // 9–18
+        case .custom: 9...17
         }
     }
 }
@@ -192,6 +227,8 @@ public struct SearchRequest: Sendable {
     /// Local calendar day, "yyyy-MM-dd".
     public var day: String
     public var slot: SessionSlot
+    /// The rider's own hours when `slot` is `.custom` (start hours, h covers h:00–h+1:00).
+    public var customHours: ClosedRange<Int>?
     /// 0 = chill, 1 = intense, nil = "all types".
     public var intensity: Double?
     public var distanceMatters: Bool
@@ -204,6 +241,11 @@ public struct SearchRequest: Sendable {
         self.slot = slot
         self.intensity = intensity
         self.distanceMatters = distanceMatters
+    }
+
+    /// Hours searched: the slot's, or the custom ones.
+    public var hours: ClosedRange<Int> {
+        slot == .custom ? (customHours ?? slot.hours) : slot.hours
     }
 }
 
@@ -219,6 +261,19 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     /// Sea level incl. tide (m, relative to mean sea level). Only fetched for spots with a
     /// tide rule.
     public var seaLevelM: Double?
+    /// WMO weather code (95, 96, 99 = thunderstorm). nil in old caches.
+    public var weatherCode: Int?
+    /// Convective available potential energy, J/kg: high values mean storm risk.
+    public var capeJkg: Double?
+    public var precipitationMm: Double?
+    /// The middle of the hour is between sunrise and sunset. nil = unknown (treated as light).
+    public var isDaylight: Bool?
+
+    /// Thunderstorm forecast, or air unstable enough for one: never a kite hour.
+    public var stormRisk: Bool {
+        if let c = weatherCode, [95, 96, 99].contains(c) { return true }
+        return (capeJkg ?? 0) >= 1500
+    }
 
     public var hour: Int { Int(localTime.dropFirst(11).prefix(2)) ?? 0 }
 

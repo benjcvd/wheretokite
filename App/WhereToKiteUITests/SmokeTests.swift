@@ -13,6 +13,7 @@ final class SmokeTests: XCTestCase {
         let start = app.buttons["Start"]
         XCTAssertTrue(start.waitForExistence(timeout: 5), "onboarding not shown on first launch")
         snapshot(app, "1-onboarding")
+        acceptTerms(app)
         start.tap()
 
         // The Kite tab searches straight away; no extra tap needed.
@@ -120,6 +121,7 @@ final class SmokeTests: XCTestCase {
         app.launchArguments = ["-resetProfile", "-unlockPro", "-searchDay", "2026-10-03",   // a windy day near Barcelona
                                 "-searchOrigin", "41.3874,2.1686"]
         app.launch()
+        acceptTerms(app)
         app.buttons["Start"].tap()
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         let allow = springboard.buttons["Allow While Using App"]
@@ -157,6 +159,7 @@ final class SmokeTests: XCTestCase {
         let start = app.buttons["Start"]
         XCTAssertTrue(start.waitForExistence(timeout: 5))
         snapshot(app, "xl-onboarding")
+        acceptTerms(app)
         start.tap()
         let summary = app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'Afternoon 13:00'")).firstMatch
         XCTAssertTrue(summary.waitForExistence(timeout: 60))
@@ -173,39 +176,46 @@ final class SmokeTests: XCTestCase {
         }
     }
 
-    /// Free plan: drives capped at 3 h, two forecast days, weights locked.
+    /// v1 free plan (no visible Pro): terms must be accepted, two days, drives up to 3 h,
+    /// no weights and no Pro anywhere, About reachable.
     @MainActor
     func testFreePlanLimits() throws {
         let app = XCUIApplication()
         app.launchArguments = ["-resetProfile", "-searchOrigin", "41.3874,2.1686"]   // no -unlockPro
         app.launch()
-        app.buttons["Start"].tap()
+        let start = app.buttons["Start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 5))
+        XCTAssertFalse(start.isEnabled, "Start must wait for the terms")
+        acceptTerms(app)
+        XCTAssertTrue(start.isEnabled)
+        start.tap()
 
-        // Day 3 is locked and opens the Pro sheet instead of searching.
-        let locked = app.buttons["day2"]
-        XCTAssertTrue(locked.waitForExistence(timeout: 5))
-        XCTAssertTrue(locked.label.hasSuffix("Pro"), locked.label)
-        locked.tap()
-        XCTAssertTrue(app.staticTexts["WhereToKite Pro"].waitForExistence(timeout: 3))
-        snapshot(app, "free-pro-sheet")
-        app.buttons["Close"].tap()
+        // Today and tomorrow only, no locked days.
+        XCTAssertTrue(app.buttons["day1"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["day2"].exists)
+        // Five sessions, incl. evening and the rider's own hours.
+        XCTAssertTrue(app.buttons["slot-evening"].exists)
+        XCTAssertTrue(app.buttons["slot-custom"].exists)
 
-        // The drive slider stops at 3 h.
+        // The drive slider stops at 3 h, without a Pro hint.
         app.buttons["optionsChip"].tap()
         let slider = app.sliders["driveSlider"]
         XCTAssertTrue(slider.waitForExistence(timeout: 3))
         slider.adjust(toNormalizedSliderPosition: 1)
         XCTAssertEqual(slider.value as? String, "3 h")
+        XCTAssertFalse(app.staticTexts["Drives up to 10 h"].exists)
         snapshot(app, "free-options")
         app.buttons["Done"].tap()
 
-        // Weights are a Pro feature.
+        // No weights, no Pro; About is there.
         app.tabBars.buttons["Me"].tap()
         app.swipeUp()
-        XCTAssertTrue(app.buttons.containing(NSPredicate(format: "label CONTAINS 'Weigh wind'")).firstMatch
-            .waitForExistence(timeout: 3))
-        XCTAssertFalse(app.sliders["Wind strength"].exists)
+        XCTAssertFalse(app.staticTexts["What matters to you"].exists)
+        XCTAssertFalse(app.descendants(matching: .any)["Pro feature"].exists)
         snapshot(app, "free-me")
+        app.buttons["about"].tap()
+        XCTAssertTrue(app.navigationBars["About"].waitForExistence(timeout: 3))
+        snapshot(app, "about")
     }
 
     @MainActor
@@ -214,5 +224,15 @@ final class SmokeTests: XCTestCase {
         a.name = name
         a.lifetime = .keepAlways
         add(a)
+    }
+
+    /// Ticks the onboarding terms checkbox (a toggle: not a plain button; may need scrolling).
+    @MainActor
+    func acceptTerms(_ app: XCUIApplication) {
+        let box = app.descendants(matching: .any)["acceptTerms"].firstMatch
+        XCTAssertTrue(box.waitForExistence(timeout: 5), "terms checkbox missing")
+        var tries = 0
+        while !box.isHittable && tries < 4 { app.swipeUp(); tries += 1 }
+        box.tap()
     }
 }

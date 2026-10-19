@@ -79,8 +79,10 @@ let origin: Coordinate = {
 let slot: SessionSlot = switch args["slot"] ?? "full" {
 case "morning": .morning
 case "afternoon": .afternoon
+case "evening": .evening
 case "full", "fullday": .fullDay
-default: fail("slot: morning|afternoon|full")
+case "custom": .custom
+default: fail("slot: morning|afternoon|evening|full|custom (with --hours 17-20)")
 }
 
 let intensity: Double? = switch args["style"] ?? "all" {
@@ -90,7 +92,7 @@ case "intense": 1
 case let s: Double(s).map { min(1, max(0, $0)) } ?? fail("style: chill|intense|all|0…1")
 }
 
-let request = SearchRequest(
+var request = SearchRequest(
     origin: origin,
     maxDriveMinutes: Double(args["drive"] ?? "60").flatMap { (1...600).contains($0) ? $0 : nil }
         ?? fail("--drive: 1…600 minutes"),
@@ -98,6 +100,11 @@ let request = SearchRequest(
     slot: slot,
     intensity: intensity,
     distanceMatters: flags.contains("distance-matters"))
+if let h = args["hours"] {
+    let p = h.split(separator: "-").compactMap { Int($0) }
+    guard p.count == 2, (0...23).contains(p[0]), p[0] < p[1], p[1] <= 24 else { fail("--hours: e.g. 17-20") }
+    request.customHours = p[0]...(p[1] - 1)
+}
 
 let spotsURL = URL(fileURLWithPath: args["spots"] ?? "Data/spots.json")
 let catalog: SpotCatalog

@@ -55,6 +55,9 @@ public struct SearchStats: Sendable {
     public var etaRequested = 0
     /// Real ETAs received.
     public var etaReceived = 0
+    /// Spots whose forecast couldn't be fetched (service busy / over quota): they are missing
+    /// from the ranking, which the app says.
+    public var forecastMissing = 0
 }
 
 public struct SearchResult: Sendable {
@@ -180,7 +183,7 @@ public struct Recommender: Sendable {
         excluded += capped.map { ($0.spot, "beyond the \(maxForecastSpots) nearest spots") }
 
         async let conf: ForecastConfidence? = try? confidence?.estimate(
-            at: request.origin, day: request.day, slot: request.slot, today: today)
+            at: request.origin, day: request.day, hours: request.hours, today: today)
 
         var estimates = Dictionary(reach.map { ($0.spot.id, $0.estimate) }, uniquingKeysWith: { a, _ in a })
         if estimatesOnly, !(driveTime is StraightLineDriveTime) {
@@ -193,10 +196,15 @@ public struct Recommender: Sendable {
         // Step 3: score everything with provisional drive times.
         var cands: [String: Candidate] = [:]
         for var c in reach {
-            guard let day = forecasts[c.spot.id] else { excluded.append((c.spot, "no forecast")); continue }
+            guard let day = forecasts[c.spot.id] else {
+                excluded.append((c.spot, "no forecast"))
+                stats.forecastMissing += 1
+                continue
+            }
             c.hours = day.hours
-                .filter { request.slot.hours.contains($0.hour) }
+                .filter { request.hours.contains($0.hour) }
                 .map { scorer.score($0, sides: c.spot.allSides) }
+            c.hours = Self.applySafety(c.spot, to: c.hours, day: request.day)
             c.hours = Self.applyTide(c.spot.tide, to: c.hours, day: day.hours, rules: rules)
             c.estimate = estimates[c.spot.id] ?? c.estimate
             c.rec = recommend(c.spot, hours: c.hours, drive: c.estimate, request: request, driveIsEstimate: true,
@@ -252,6 +260,34 @@ public struct Recommender: Sendable {
 
         return SearchResult(request: request, confidence: await conf, recommendations: recs,
                             excluded: excluded, stats: stats)
+    }
+
+    /// When nothing works on the searched day: the first of `days` with a spot scoring at least
+    /// `minimum` within the same drive and hours, from straight-line drive estimates. Uses the
+    /// forecasts the search already cached for the coming week, so it costs no extra calls.
+    public func nextGoodWindow(for request: SearchRequest, days: [String], profile: RiderProfile,
+                               minimum: Int) async -> (day: String, recommendation: SpotRecommendation)? {
+        let (reach, _) = reachable(from: request.origin, maxDriveMinutes: request.maxDriveMinutes,
+                                   estimator: estimator, slack: 1)
+        guard !reach.isEmpty, !days.isEmpty,
+              let forecasts = try? await forecast.forecasts(for: reach.map(\.spot), days: days) else { return nil }
+        let scorer = Scorer(profile: profile, intensity: request.intensity, rules: rules)
+        for day in days.sorted() {
+            var r = request
+            r.day = day
+            var best: SpotRecommendation?
+            for c in reach {
+                guard let f = forecasts[day]?[c.spot.id] else { continue }
+                var hours = f.hours.filter { r.hours.contains($0.hour) }.map { scorer.score($0, sides: c.spot.allSides) }
+                hours = Self.applySafety(c.spot, to: hours, day: day)
+                hours = Self.applyTide(c.spot.tide, to: hours, day: f.hours, rules: rules)
+                let rec = recommend(c.spot, hours: hours, drive: c.estimate, request: r, driveIsEstimate: true,
+                                    weights: profile.scoreWeights)
+                if best.map({ Self.ranks(rec, before: $0) }) ?? true { best = rec }
+            }
+            if let best, best.finalScore >= minimum { return (day, best) }
+        }
+        return nil
     }
 
     func recommend(_ spot: Spot, hours: [HourScore], drive: Double, request: SearchRequest,
@@ -317,8 +353,11 @@ public struct Recommender: Sendable {
         guard let window else {
             // Explain why it's not a go.
             let flags = Set(hours.flatMap(\.flags))
-            // Safety first: offshore beats "too light" when both apply.
-            let why = flags.contains("offshore component") ? "offshore"
+            // Safety first: storms, bans and offshore beat "too light" when both apply.
+            let why = flags.contains("thunderstorm risk") ? "thunderstorm risk"
+                : flags.contains("kiting banned") ? "kiting banned"
+                : flags.contains("offshore component") ? "offshore"
+                : flags.contains("dark") && !flags.contains("too light") ? "dark"
                 : flags.contains("too light") ? "too light"
                 : flags.contains("tide too low") ? "tide too low"
                 : flags.contains("tide too high") ? "tide too high"
@@ -332,6 +371,25 @@ public struct Recommender: Sendable {
         let sideName = Self.mainSide(slice).map { " · \($0)" } ?? ""
         let extra = Set(slice.flatMap(\.flags)).sorted().map { " · ⚠︎ \($0)" }.joined()
         return String(format: "%02d:00–%02d:00 · ", window.0, window.1) + wind + " \(dir)\(side)\(sideName)\(kite) · \(driveText)\(extra)"
+    }
+
+    /// Hard limits beyond the wind itself: thunderstorm risk, darkness and seasonal bans score
+    /// 0 whatever the wind; rain only gets a flag.
+    static func applySafety(_ spot: Spot, to hours: [HourScore], day: String) -> [HourScore] {
+        hours.map { h in
+            var h = h
+            let reason: String? = h.wind.stormRisk ? "thunderstorm risk"
+                : spot.isBanned(day: day, hour: h.wind.hour) ? "kiting banned"
+                : h.wind.isDaylight == false ? "dark"
+                : nil
+            if let reason {
+                h.score = 0
+                h.flags.insert(reason, at: 0)
+            } else if (h.wind.precipitationMm ?? 0) >= 1 {
+                h.flags.append("rain")
+            }
+            return h
+        }
     }
 
     /// Tide state per hour from the day's sea levels: 0 = low water, 1 = high water. nil when
