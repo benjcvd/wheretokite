@@ -26,9 +26,6 @@ permissions:
   issues: write
   pull-requests: write
 
-concurrency:
-  group: triage-${{ github.event.issue.number || inputs.issue }}
-
 jobs:
   triage:
     if: >-
@@ -36,6 +33,10 @@ jobs:
       (github.event.sender.login == github.repository_owner &&
        ((github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'report')) ||
         (github.event.action == 'labeled' && github.event.label.name == 'triage')))
+    # At job level, so the label events that come with a new issue (skipped by the `if`)
+    # can't cancel the real run waiting in the same group.
+    concurrency:
+      group: triage-${{ github.event.issue.number || inputs.issue }}
     runs-on: macos-latest   # the build's Apple Maps direction check needs macOS
     timeout-minutes: 60
     env:
