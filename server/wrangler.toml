@@ -1,0 +1,23 @@
+name = "wheretokite-api"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+# Workers Logs: console.log lines (feedback, reports, diagnostics, errors) are kept and
+# searchable in the dashboard (Workers & Pages > wheretokite-api > Logs).
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[vars]
+CATALOG_URL = "https://raw.githubusercontent.com/benjcvd/wheretokite/main/Data/spots.json"
+# OPEN_METEO_API_KEY is a secret: npx wrangler secret put OPEN_METEO_API_KEY
+
+# Per-IP limit on POST /v1/diagnostics, /v1/feedback, /v1/report: 20 per minute.
+# namespace_id is any integer you pick, unique within your Cloudflare account.
+[[ratelimits]]
+name = "INGEST_LIMITER"
+namespace_id = "1001"
+simple = { limit = 20, period = 60 }
+
+# Uncomment once the domain is on Cloudflare (needed for the shared Cache API, see README).
+# routes = [{ pattern = "api.example.com", custom_domain = true }]
