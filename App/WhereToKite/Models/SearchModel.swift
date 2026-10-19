@@ -180,6 +180,7 @@ final class SearchModel {
     /// When nothing is good on the searched day: the next day (within `lookaheadDays`) that is.
     private(set) var nextWindow: (day: String, recommendation: SpotRecommendation)?
 
+    /// `lookaheadDays` 0 = no next-window search (a Pro feature).
     func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot], proSpots: Bool = true,
              lookaheadDays: Int = 7) async {
         // Free plan: the famous spots only (Pro adds the secondary ones).
@@ -210,7 +211,7 @@ final class SearchModel {
             }
             // Nothing worth the drive: look ahead (forecasts for the week are already cached).
             var next: (day: String, recommendation: SpotRecommendation)?
-            if (result.recommendations.first?.finalScore ?? 0) < ResultsSection.verdictMinimum {
+            if lookaheadDays > 0, (result.recommendations.first?.finalScore ?? 0) < ResultsSection.verdictMinimum {
                 let later = DayOption.next(lookaheadDays).map(\.id).filter { $0 > req.day }
                 next = await recommender.nextGoodWindow(for: req, days: later, profile: profile,
                                                         minimum: ResultsSection.verdictMinimum)

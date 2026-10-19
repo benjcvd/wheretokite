@@ -28,11 +28,13 @@ struct Entitlements: Equatable {
     var advancedSpotSettings: Bool
     /// Catalogue spots with tier "pro" (secondary beaches, launches near a famous spot).
     var proSpots: Bool = false
+    /// "Next good window": when the searched day is poor, the next day in the week that works.
+    var nextWindow: Bool = false
 
     static let free = Entitlements(maxDriveMinutes: 180, forecastDays: 2, maxUserSpots: 1, maxResults: 5,
                                    scoreWeights: false, advancedSpotSettings: true)
     static let pro = Entitlements(maxDriveMinutes: nil, forecastDays: 7, maxUserSpots: nil, maxResults: nil,
-                                  scoreWeights: true, advancedSpotSettings: true, proSpots: true)
+                                  scoreWeights: true, advancedSpotSettings: true, proSpots: true, nextWindow: true)
 }
 
 @MainActor @Observable
@@ -114,6 +116,7 @@ struct ProSheet: View {
     private let features: [(String, String, String)] = [
         ("bell.badge.fill", "It's on alerts", "A notification when your spots light up for your kites (coming with Pro)."),
         ("calendar", "7-day planning", "The whole week, not just today and tomorrow."),
+        ("calendar.badge.clock", "Next good window", "When today is flat, the next day this week that works, and where."),
         ("car.fill", "Drives up to 10 h", "Weekend trips, not just the local spots (3\u{00A0}h free)."),
         ("list.number", "Every spot", "The full ranking and map (top 5 free), plus about 300 more local spots."),
         ("mappin.and.ellipse", "Unlimited own spots", "Add all your secret spots (1 free)."),

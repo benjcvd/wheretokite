@@ -92,7 +92,8 @@ struct SearchView: View {
         let allowed = plan.clamp(options)
         if allowed != options { options = allowed }
         await model.run(allowed, profile: plan.scoringProfile(profile), userSpots: userSpots.spots,
-                        proSpots: plan.entitlements.proSpots, lookaheadDays: plan.entitlements.forecastDays)
+                        proSpots: plan.entitlements.proSpots,
+                        lookaheadDays: plan.entitlements.nextWindow ? plan.entitlements.forecastDays : 0)
     }
 
     // MARK: Controls

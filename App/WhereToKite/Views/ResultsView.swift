@@ -102,8 +102,13 @@ struct ResultsSection: View {
                            message: "Not enough good wind. Try another day or session, or allow a longer drive.")
             }
 
-            if !hasVerdict, let next = model.nextWindow {
-                NextWindowCard(day: DayOption.with(id: next.day), rec: next.recommendation) { goToDay(next.day) }
+            if !hasVerdict {
+                if let next = model.nextWindow {
+                    NextWindowCard(day: DayOption.with(id: next.day), rec: next.recommendation) { goToDay(next.day) }
+                } else if !plan.entitlements.nextWindow {
+                    // Hidden while Pro isn't offered (PlanStore.mode .freeOnly).
+                    ProLockRow(title: "Next good window", detail: "The next day this week that works, and where.")
+                }
             }
 
             if let confidence = result.confidence {
