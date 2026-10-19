@@ -9,7 +9,7 @@ spots in the app.
 
 ## Columns
 
-`country,region,name,water,locate,hint,notes,sector,tide,tier`
+`country,region,name,water,locate,hint,notes,sector,tide,tier,banned`
 
 - `country`: ISO code (also restricts the Nominatim search).
 - `region`: human-readable area shown in the app ("Côte d'Opale").
@@ -35,6 +35,11 @@ spots in the app.
   > 180 = point or headland (the shore curves, so more wind directions work);
   360 = small lake or spot kitable from any side.
 - `tier` (optional): `basic` (default), `pro` or `archived`; see "Famous spots only" below.
+- `banned` (optional): when kiting is NOT allowed (official bans, summer bathing zones), as
+  `MM-DD..MM-DD [HH:MM-HH:MM]` rules separated by `;` — e.g. `06-15..09-15 11:00-19:00` (15 June
+  to 15 September, 11 to 19 h) or `07-01..08-31` (all day in July–August). Ranges may wrap over
+  the new year (`11-01..02-28`). Those hours score 0 in the app. Keep the human explanation in
+  `notes`. Only encode bans you are confident about.
 - `tide` (optional): when the spot works, for spots that genuinely depend on the tide
   (tidal flats, bays that dry out, shallow lagoons, sandbars that cover): `high` (around
   high water), `low` (around low water), `mid`, `not-low` (anything but low water),

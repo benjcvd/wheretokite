@@ -1,15 +1,15 @@
-country,region,name,water,locate,hint,notes,sector,tide,tier
+country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Norway — format: tools/spots/README.md
 # Not web-verified: well-known spots from general knowledge, pinned with OSM kite / beach features.
 # Jæren (Rogaland)
-NO,Rogaland,Sola – Solastranden,sea,osm:r16642501,W,"Long sand beach by Stavanger airport; waves in westerlies, flatter in southerlies. Popular with local schools. Also: Hellestø just south (beach break, rocks at the ends).",,
-NO,Rogaland,Borestranda,sea,osm:n6779119177,W,"Long open Jæren beach, waves; one of the most used kite beaches in Rogaland. Also: Orrestranda just south (nature reserve rules on the dunes).",,
-NO,Rogaland,Brusand,sea,osm:r16560547,SW,"Long sandy beach in south Jæren; waves, best in W–S winds.",,
+NO,Rogaland,Sola – Solastranden,sea,osm:r16642501,W,"Long sand beach by Stavanger airport; waves in westerlies, flatter in southerlies. Popular with local schools. Also: Hellestø just south (beach break, rocks at the ends).",,,,
+NO,Rogaland,Borestranda,sea,osm:n6779119177,W,"Long open Jæren beach, waves; one of the most used kite beaches in Rogaland. Also: Orrestranda just south (nature reserve rules on the dunes).",,,,
+NO,Rogaland,Brusand,sea,osm:r16560547,SW,"Long sandy beach in south Jæren; waves, best in W–S winds.",,,,
 # Agder
-NO,Agder,Lista,sea,osm:n6779118042,SW,"Windy Lista peninsula near Vanse: shallow bays and beaches for many wind directions, waves on the exposed side. Bird reserves nearby.",,
+NO,Agder,Lista,sea,osm:n6779118042,SW,"Windy Lista peninsula near Vanse: shallow bays and beaches for many wind directions, waves on the exposed side. Bird reserves nearby.",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: near a kept spot — next to Sola (kept), mentioned in its notes
-NO,Rogaland,Hellestø,sea,osm:r16642494,W,"Jæren beach break, waves and chop; intermediate riders. Rocks at the ends of the beach.",,,pro
+NO,Rogaland,Hellestø,sea,osm:r16642494,W,"Jæren beach break, waves and chop; intermediate riders. Rocks at the ends of the beach.",,,pro,
 # pro: near a kept spot — next to Borestranda (kept), mentioned in its notes
-NO,Rogaland,Orrestranda,sea,osm:n6779119175,W,"Long Jæren beach between the sea and Orrevatnet; waves, intermediate riders. Nature reserve rules apply on the dunes.",,,pro
+NO,Rogaland,Orrestranda,sea,osm:n6779119175,W,"Long Jæren beach between the sea and Orrevatnet; waves, intermediate riders. Nature reserve rules apply on the dunes.",,,pro,

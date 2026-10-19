@@ -1,127 +1,127 @@
-country,region,name,water,locate,hint,notes,sector,tide,tier
+country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Netherlands — format: tools/spots/README.md
 # Sources: NKV kitespot map (kitesurfvereniging.nl, official zones + seasons), kitegids.nl,
 # kitesurftheworld.com, 35knots.com. Spots marked "verboden" by the NKV are left out.
 # Zeeland
-NL,Zeeland,Brouwersdam,sea,osm:w61728057,NW:North Sea side|SE:Grevelingen side:lake,"Shallow, flat inshore water at low tide on the sea side; the Grevelingen side is a tideless saltwater lake. Separate foil-only zone. Also: Ouddorp beach (accesses 7–9, waves and strong ebb current) 3 km south.",,
-NL,Zeeland,Neeltje Jans,sea,osm:r6971055,NW,"North Sea side, park at the Roompotsluis. Flat at low tide, chop at high tide; advanced riders.",,
-NL,Zeeland,Vrouwenpolder,sea,osm:n8941093562,NW,"Veerse Gatdam lagoon, best around high tide. From May a buoyed kite zone applies.",,high
-NL,Zeeland,Kamperland – Roompot,lagoon,osm:w822498441,N,Oosterschelde: long shallow flat water for N–E winds. Stay out of the channel; oyster shells.,,
-NL,Zeeland,Domburg,sea,osm:w80401276,NW,"Wave spot by the Westkapelse Zeedijk, experts only; pole rows submerged at high tide. Keep clear of bathing beaches in summer.",,
-NL,Zeeland,Cadzand-Bad – Zwin,sea,osm:w548694875,NW,"West of Cadzand-Bad, park at the Zwin visitor centre. Deep water. Also: Vlamingpolder (advanced) just east.",,
+NL,Zeeland,Brouwersdam,sea,osm:w61728057,NW:North Sea side|SE:Grevelingen side:lake,"Shallow, flat inshore water at low tide on the sea side; the Grevelingen side is a tideless saltwater lake. Separate foil-only zone. Also: Ouddorp beach (accesses 7–9, waves and strong ebb current) 3 km south.",,,,
+NL,Zeeland,Neeltje Jans,sea,osm:r6971055,NW,"North Sea side, park at the Roompotsluis. Flat at low tide, chop at high tide; advanced riders.",,,,
+NL,Zeeland,Vrouwenpolder,sea,osm:n8941093562,NW,"Veerse Gatdam lagoon, best around high tide. From May a buoyed kite zone applies.",,high,,
+NL,Zeeland,Kamperland – Roompot,lagoon,osm:w822498441,N,Oosterschelde: long shallow flat water for N–E winds. Stay out of the channel; oyster shells.,,,,
+NL,Zeeland,Domburg,sea,osm:w80401276,NW,"Wave spot by the Westkapelse Zeedijk, experts only; pole rows submerged at high tide. Keep clear of bathing beaches in summer.",,,,
+NL,Zeeland,Cadzand-Bad – Zwin,sea,osm:w548694875,NW,"West of Cadzand-Bad, park at the Zwin visitor centre. Deep water. Also: Vlamingpolder (advanced) just east.",,,,
 # Zuid-Holland
-NL,Zuid-Holland,Oostvoorne,sea,osm:w92724759,W,"Shallow, beginner-friendly beach. The Oostvoornse Meer (flat-water lake, launch on its north shore) is 1.5 km away. Also: Rockanje Sportstrand (2nd slag) 3 km south; Maasvlakte – Slufter 6 km north (advanced, partly October–April).",,
-NL,Zuid-Holland,Hoek van Holland,sea,osm:w28289510,NW,"North of the pier, by the Hoekse Watersport Vereniging. Strong currents, not for beginners.",,
-NL,Zuid-Holland,Zandmotor,sea,osm:w152867296,NW,"Sand engine with a shallow lagoon, good for learning. Extra restrictions 15 May–15 Sep. Also: Kijkduin just north (surf, currents, submerged groynes).",,
-NL,Zuid-Holland,Scheveningen,sea,osm:n1687084831,NW,"Noorderstrand zone north of groyne 42 (lighthouse); waves, currents, busy. Quieter Zwarte Pad (KZVS club) 2 km north.",,
-NL,Zuid-Holland,Noordwijk,sea,osm:n11536401225,NW,"Kite zone north of the boulevard; advanced riders. Also: Katwijk 4 km south (deep water, advanced).",,
+NL,Zuid-Holland,Oostvoorne,sea,osm:w92724759,W,"Shallow, beginner-friendly beach. The Oostvoornse Meer (flat-water lake, launch on its north shore) is 1.5 km away. Also: Rockanje Sportstrand (2nd slag) 3 km south; Maasvlakte – Slufter 6 km north (advanced, partly October–April).",,,,
+NL,Zuid-Holland,Hoek van Holland,sea,osm:w28289510,NW,"North of the pier, by the Hoekse Watersport Vereniging. Strong currents, not for beginners.",,,,
+NL,Zuid-Holland,Zandmotor,sea,osm:w152867296,NW,"Sand engine with a shallow lagoon, good for learning. Extra restrictions 15 May–15 Sep. Also: Kijkduin just north (surf, currents, submerged groynes).",,,,
+NL,Zuid-Holland,Scheveningen,sea,osm:n1687084831,NW,"Noorderstrand zone north of groyne 42 (lighthouse); waves, currents, busy. Quieter Zwarte Pad (KZVS club) 2 km north.",,,,
+NL,Zuid-Holland,Noordwijk,sea,osm:n11536401225,NW,"Kite zone north of the boulevard; advanced riders. Also: Katwijk 4 km south (deep water, advanced).",,,,
 # Noord-Holland
-NL,Noord-Holland,Zandvoort,sea,osm:n5140074530,W,"15 Apr–1 Oct launch only in the six watersport zones (e.g. The Spot); no restrictions the rest of the year. Also: Bloemendaal aan Zee 3 km north (advanced, currents).",,
-NL,Noord-Holland,IJmuiden,sea,osm:n4508458788,W,Kennemerstrand south of the pier: flat water in the bay. Zone 2 only October–March.,,
-NL,Noord-Holland,Wijk aan Zee,sea,osm:w685480572,W,Zones by the Bunker/HangOut and the north pier.,,
-NL,Noord-Holland,Camperduin,sea,osm:n12769432787,W,"Small lagoon at low tide, waves outside. Also: Petten 3 km north (Hondsbossche dunes, currents).",,
-NL,Wadden Islands,Texel – Paal 17,sea,osm:n3140654634,W,"Kite zones between poles 17.6 and 19 (De Koog). Waves and currents. Also: Paal 28–32 by De Cocksdorp; Wadden side at Dijkmanshuizen (April–September, high tide).",,
-NL,Noord-Holland,Muiderberg,lake,osm:w74727107,N,"IJmeer, shallow fresh water; beginner-friendly. Also: Almere – Muiderzand across the IJmeer (deep water, advanced).",,
-NL,Noord-Holland,Schellinkhout,lake,osm:n4508462925,S,"Markermeer, shallow and flat; beginner-friendly.",,
+NL,Noord-Holland,Zandvoort,sea,osm:n5140074530,W,"15 Apr–1 Oct launch only in the six watersport zones (e.g. The Spot); no restrictions the rest of the year. Also: Bloemendaal aan Zee 3 km north (advanced, currents).",,,,
+NL,Noord-Holland,IJmuiden,sea,osm:n4508458788,W,Kennemerstrand south of the pier: flat water in the bay. Zone 2 only October–March.,,,,
+NL,Noord-Holland,Wijk aan Zee,sea,osm:w685480572,W,Zones by the Bunker/HangOut and the north pier.,,,,
+NL,Noord-Holland,Camperduin,sea,osm:n12769432787,W,"Small lagoon at low tide, waves outside. Also: Petten 3 km north (Hondsbossche dunes, currents).",,,,
+NL,Wadden Islands,Texel – Paal 17,sea,osm:n3140654634,W,"Kite zones between poles 17.6 and 19 (De Koog). Waves and currents. Also: Paal 28–32 by De Cocksdorp; Wadden side at Dijkmanshuizen (April–September, high tide).",,,,
+NL,Noord-Holland,Muiderberg,lake,osm:w74727107,N,"IJmeer, shallow fresh water; beginner-friendly. Also: Almere – Muiderzand across the IJmeer (deep water, advanced).",,,,
+NL,Noord-Holland,Schellinkhout,lake,osm:n4508462925,S,"Markermeer, shallow and flat; beginner-friendly.",,,,
 # Flevoland, Gelderland
-NL,Gelderland,Strand Horst,lake,osm:w139584425,NW,"Wolderwijd, shallow flat water; beginner-friendly. Also: Elburg on the Veluwemeer (April–September).",,
+NL,Gelderland,Strand Horst,lake,osm:w139584425,NW,"Wolderwijd, shallow flat water; beginner-friendly. Also: Elburg on the Veluwemeer (April–September).",,,,
 # Friesland (IJsselmeer)
-NL,Friesland,Workum (IJsselmeer),lake,osm:w83859868,W,"Shallow fresh water, beginner-friendly. Also: Hindeloopen 5 km north (deep water close in).",,
-NL,Friesland,Makkum (IJsselmeer),lake,osm:w1062703366,W,Shallow. Kiting allowed October–April only.,,
-NL,Friesland,Stavoren,lake,osm:w855779507,SW,"It Suderstrand, deep water; advanced riders.",,
+NL,Friesland,Workum (IJsselmeer),lake,osm:w83859868,W,"Shallow fresh water, beginner-friendly. Also: Hindeloopen 5 km north (deep water close in).",,,,
+NL,Friesland,Makkum (IJsselmeer),lake,osm:w1062703366,W,Shallow. Kiting allowed October–April only.,,,,05-01..09-30
+NL,Friesland,Stavoren,lake,osm:w855779507,SW,"It Suderstrand, deep water; advanced riders.",,,,
 # Wadden Sea coast and islands
-NL,Groningen,Lauwersoog,sea,osm:w48517917,N:Wadden Sea side|SE:Lauwersmeer side:lake,"Wadden side: shallow, around high tide, all year. Lauwersmeer side June–September only.",,
-NL,Wadden Islands,Terschelling – Noordzee,sea,osm:n48471300,N,"North Sea beach (Midsland aan Zee). Also: Groene Strand near West-Terschelling (shallow flat water, beginner-friendly).",,
-NL,Wadden Islands,Ameland – Noordzee,sea,osm:n7793664554,N,"1 Mar–1 Nov only between poles 8.2–11.3 (Nes/Ballum), 17.4–19 (Buren) and 3–4 (Hollum). Also: Wadden side by the Nes ferry pier (3 h either side of high tide).",,
+NL,Groningen,Lauwersoog,sea,osm:w48517917,N:Wadden Sea side|SE:Lauwersmeer side:lake,"Wadden side: shallow, around high tide, all year. Lauwersmeer side June–September only.",,,,
+NL,Wadden Islands,Terschelling – Noordzee,sea,osm:n48471300,N,"North Sea beach (Midsland aan Zee). Also: Groene Strand near West-Terschelling (shallow flat water, beginner-friendly).",,,,
+NL,Wadden Islands,Ameland – Noordzee,sea,osm:n7793664554,N,"1 Mar–1 Nov only between poles 8.2–11.3 (Nes/Ballum), 17.4–19 (Buren) and 3–4 (Hollum). Also: Wadden side by the Nes ferry pier (3 h either side of high tide).",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — 3 km from Brouwersdam
-NL,Zuid-Holland,Ouddorp,sea,osm:n7707273517,NW,"Between beach accesses 7 and 9. Waves and strong ebb current, experienced riders; the sandbank is off-limits (seals).",,,pro
+NL,Zuid-Holland,Ouddorp,sea,osm:n7707273517,NW,"Between beach accesses 7 and 9. Waves and strong ebb current, experienced riders; the sandbank is off-limits (seals).",,,pro,
 # pro: cluster duplicate — 2 km from Cadzand-Bad – Zwin
-NL,Zeeland,Cadzand-Bad – Vlamingpolder,sea,osm:w491657992,NW,Park at the Vlamingpolderweg. Advanced riders.,,,pro
+NL,Zeeland,Cadzand-Bad – Vlamingpolder,sea,osm:w491657992,NW,Park at the Vlamingpolderweg. Advanced riders.,,,pro,
 # pro: local spot — Westerschelde beach, local
-NL,Zeeland,Breskens – Oost,sea,osm:w491657990,N,"Westerschelde, shallow. Stay well clear of the shipping channel.",,,pro
+NL,Zeeland,Breskens – Oost,sea,osm:w491657990,N,"Westerschelde, shallow. Stay well clear of the shipping channel.",,,pro,
 # pro: local spot — Westerschelde beach, local
-NL,Zeeland,Borssele – De Kaloot,sea,osm:w702126930,SW,"Westerschelde beach, shallow; never cross the shipping channel.",,,pro
+NL,Zeeland,Borssele – De Kaloot,sea,osm:w702126930,SW,"Westerschelde beach, shallow; never cross the shipping channel.",,,pro,
 # pro: local spot — Westerschelde beach, local
-NL,Zeeland,Baarland,sea,osm:w491657989,S,"Westerschelde: strong currents, advanced riders.",,,pro
+NL,Zeeland,Baarland,sea,osm:w491657989,S,"Westerschelde: strong currents, advanced riders.",,,pro,
 # pro: local spot — Westerschelde, high tide only, local
-NL,Zeeland,Paulinapolder,sea,osm:w491657962,N,Westerschelde: only around high tide. Kiting in the channel is forbidden.,,high,pro
+NL,Zeeland,Paulinapolder,sea,osm:w491657962,N,Westerschelde: only around high tide. Kiting in the channel is forbidden.,,high,pro,
 # pro: local spot — Westerschelde beach, local
-NL,Zeeland,Terneuzen – Put van Terneuzen,sea,osm:w702126929,N,"Westerschelde, shallow; stay out of the shipping channel.",,,pro
+NL,Zeeland,Terneuzen – Put van Terneuzen,sea,osm:w702126929,N,"Westerschelde, shallow; stay out of the shipping channel.",,,pro,
 # pro: local spot — Oosterschelde, Kamperland kept
-NL,Zeeland,Oesterdam (Tholen),lagoon,osm:w822498440,NW,"Oosterschelde side of the dam, shallow water.",,,pro
+NL,Zeeland,Oesterdam (Tholen),lagoon,osm:w822498440,NW,"Oosterschelde side of the dam, shallow water.",,,pro,
 # pro: seasonal/minor — Oosterschelde, winter-only, Kamperland kept
-NL,Zeeland,Ouwerkerk,lagoon,osm:w621302487,S,"Oosterschelde, shallow. Kiting allowed October–April only.",,,pro
+NL,Zeeland,Ouwerkerk,lagoon,osm:w621302487,S,"Oosterschelde, shallow. Kiting allowed October–April only.",,,pro,05-01..09-30
 # pro: local spot — Haringvliet, local
-NL,Zuid-Holland,Hellevoetsluis – Haringvliet,lake,osm:w140697685,S,"Haringvliet (no tide), deep water close in.",,,pro
+NL,Zuid-Holland,Hellevoetsluis – Haringvliet,lake,osm:w140697685,S,"Haringvliet (no tide), deep water close in.",,,pro,
 # pro: cluster duplicate — 3 km from Oostvoorne
-NL,Zuid-Holland,Rockanje,sea,osm:n11535255124,W,"Sportstrand (2nd slag): shallow, all year. The bathing beach next to it only October–April.",,,pro
+NL,Zuid-Holland,Rockanje,sea,osm:n11535255124,W,"Sportstrand (2nd slag): shallow, all year. The bathing beach next to it only October–April.",,,pro,
 # pro: cluster duplicate — 6 km from Oostvoorne, partly seasonal
-NL,Zuid-Holland,Maasvlakte – Slufter,sea,osm:w609718673,W,"Shallow, advanced riders. The Maasvlakte 2 P1–P3 section only October–April; P5/P6 is closed.",,,pro
+NL,Zuid-Holland,Maasvlakte – Slufter,sea,osm:w609718673,W,"Shallow, advanced riders. The Maasvlakte 2 P1–P3 section only October–April; P5/P6 is closed.",,,pro,
 # pro: local spot — secondary beach between Hoek van Holland and Zandmotor
-NL,Zuid-Holland,'s-Gravenzande – Slag Beukel,sea,osm:w44386191,NW,Deep water close in; advanced riders.,,,pro
+NL,Zuid-Holland,'s-Gravenzande – Slag Beukel,sea,osm:w44386191,NW,Deep water close in; advanced riders.,,,pro,
 # pro: cluster duplicate — next to the Zandmotor
-NL,Zuid-Holland,Kijkduin,sea,osm:w96302900,NW,Surf and currents; submerged groynes. Best wind N.,,,pro
+NL,Zuid-Holland,Kijkduin,sea,osm:w96302900,NW,Surf and currents; submerged groynes. Best wind N.,,,pro,
 # pro: local spot — secondary beach between Scheveningen and Noordwijk
-NL,Zuid-Holland,Wassenaarse Slag,sea,osm:n278826705,NW,Deep water close in; advanced riders.,,,pro
+NL,Zuid-Holland,Wassenaarse Slag,sea,osm:n278826705,NW,Deep water close in; advanced riders.,,,pro,
 # pro: cluster duplicate — 4 km from Noordwijk
-NL,Zuid-Holland,Katwijk,sea,osm:w285679616,NW,Deep water close in; advanced riders.,,,pro
+NL,Zuid-Holland,Katwijk,sea,osm:w285679616,NW,Deep water close in; advanced riders.,,,pro,
 # pro: cluster duplicate — 3 km from Zandvoort
-NL,Noord-Holland,Bloemendaal aan Zee,sea,osm:r21115187,W,Advanced riders; currents.,,,pro
+NL,Noord-Holland,Bloemendaal aan Zee,sea,osm:r21115187,W,Advanced riders; currents.,,,pro,
 # pro: local spot — secondary North Holland beach
-NL,Noord-Holland,Castricum aan Zee,sea,osm:n5426388332,W,Shipwreck remains off the beach.,,,pro
+NL,Noord-Holland,Castricum aan Zee,sea,osm:n5426388332,W,Shipwreck remains off the beach.,,,pro,
 # pro: local spot — secondary North Holland beach
-NL,Noord-Holland,Egmond aan Zee,sea,osm:n11535101927,W,Advanced riders.,,,pro
+NL,Noord-Holland,Egmond aan Zee,sea,osm:n11535101927,W,Advanced riders.,,,pro,
 # pro: local spot — secondary North Holland beach
-NL,Noord-Holland,Bergen aan Zee,sea,osm:n12114182501,W,Orange activity zones either side of the main beach access (Hang Loose).,,,pro
+NL,Noord-Holland,Bergen aan Zee,sea,osm:n12114182501,W,Orange activity zones either side of the main beach access (Hang Loose).,,,pro,
 # pro: cluster duplicate — 3 km from Camperduin
-NL,Noord-Holland,Petten,sea,osm:n11534979208,W,"In front of the Hondsbossche dunes; currents, advanced riders.",,,pro
+NL,Noord-Holland,Petten,sea,osm:n11534979208,W,"In front of the Hondsbossche dunes; currents, advanced riders.",,,pro,
 # pro: local spot — secondary North Holland beach
-NL,Noord-Holland,Callantsoog,sea,osm:n2687464033,W,Advanced riders.,,,pro
+NL,Noord-Holland,Callantsoog,sea,osm:n2687464033,W,Advanced riders.,,,pro,
 # pro: local spot — secondary North Holland beach
-NL,Noord-Holland,Julianadorp,sea,osm:n4356511096,W,Wide beach; advanced riders.,,,pro
+NL,Noord-Holland,Julianadorp,sea,osm:n4356511096,W,Wide beach; advanced riders.,,,pro,
 # pro: local spot — secondary beach, Marsdiep currents
-NL,Noord-Holland,Den Helder – Huisduinen,sea,osm:n8303186060,W,"Marsdiep currents, advanced riders.",,,pro
+NL,Noord-Holland,Den Helder – Huisduinen,sea,osm:n8303186060,W,"Marsdiep currents, advanced riders.",,,pro,
 # pro: cluster duplicate — second Texel North Sea zone, Paal 17 kept
-NL,Wadden Islands,Texel – Paal 28,sea,osm:n3140565781,NW,Kite zone between poles 28.2 and 32 (De Cocksdorp).,,,pro
+NL,Wadden Islands,Texel – Paal 28,sea,osm:n3140565781,NW,Kite zone between poles 28.2 and 32 (De Cocksdorp).,,,pro,
 # pro: seasonal/minor — Wadden side, April–September, high tide only
-NL,Wadden Islands,Texel – Dijkmanshuizen,sea,osm:w109266468,E,"Wadden Sea side, shallow. April–September only; around high tide.",,high,pro
+NL,Wadden Islands,Texel – Dijkmanshuizen,sea,osm:w109266468,E,"Wadden Sea side, shallow. April–September only; around high tide.",,high,pro,10-01..03-31
 # pro: cluster duplicate — IJmeer, Muiderberg kept
-NL,Flevoland,Almere – Muiderzand,lake,osm:w391436028,NW,"IJmeer, deep water; advanced riders.",,,pro
+NL,Flevoland,Almere – Muiderzand,lake,osm:w391436028,NW,"IJmeer, deep water; advanced riders.",,,pro,
 # pro: local spot — Markermeer, experts only, local
-NL,Noord-Holland,Edam – Galgenveld,lake,osm:w1387153948,E,"Markermeer, shallow; experts only (stones, dike).",,,pro
+NL,Noord-Holland,Edam – Galgenveld,lake,osm:w1387153948,E,"Markermeer, shallow; experts only (stones, dike).",,,pro,
 # pro: seasonal/minor — IJsselmeer, summer only, local
-NL,Noord-Holland,Medemblik,lake,osm:w692431086,NE,"IJsselmeer, shallow. April–September only.",,,pro
+NL,Noord-Holland,Medemblik,lake,osm:w692431086,NE,"IJsselmeer, shallow. April–September only.",,,pro,10-01..03-31
 # pro: minor lake — small lake, max 6 riders
-NL,Noord-Holland,Amstelmeer,lake,osm:w1128409330,W,"Lutjestrand south kite beach (max. 6 riders inside the dam); stones and jetties, advanced riders.",,,pro
+NL,Noord-Holland,Amstelmeer,lake,osm:w1128409330,W,"Lutjestrand south kite beach (max. 6 riders inside the dam); stones and jetties, advanced riders.",,,pro,
 # pro: local spot — Markermeer, local
-NL,Flevoland,Lelystad – Bataviastrand,lake,osm:w555548028,,"Markermeer, deep water; advanced riders.",,,pro
+NL,Flevoland,Lelystad – Bataviastrand,lake,osm:w555548028,,"Markermeer, deep water; advanced riders.",,,pro,
 # pro: seasonal/minor — Houtribdijk, April–July only
-NL,Flevoland,Lelystad – Trintelhaven,lake,osm:w822636975,NE,"Houtribdijk, IJsselmeer side. April–July only.",,,pro
+NL,Flevoland,Lelystad – Trintelhaven,lake,osm:w822636975,NE,"Houtribdijk, IJsselmeer side. April–July only.",,,pro,08-01..03-31
 # pro: cluster duplicate — Veluwemeer, Strand Horst kept
-NL,Gelderland,Elburg,lake,osm:w494868652,W,"Veluwemeer, shallow. April–September only.",,,pro
+NL,Gelderland,Elburg,lake,osm:w494868652,W,"Veluwemeer, shallow. April–September only.",,,pro,10-01..03-31
 # pro: cluster duplicate — 5 km from Workum
-NL,Friesland,Hindeloopen,lake,osm:n4299090272,W,Deep water close in.,,,pro
+NL,Friesland,Hindeloopen,lake,osm:n4299090272,W,Deep water close in.,,,pro,
 # pro: seasonal/minor — Afsluitdijk, summer only
-NL,Friesland,Kornwerderzand,lake,osm:w740491009,S,"Afsluitdijk, IJsselmeer side. May–September only; advanced riders.",,,pro
+NL,Friesland,Kornwerderzand,lake,osm:w740491009,S,"Afsluitdijk, IJsselmeer side. May–September only; advanced riders.",,,pro,10-01..04-30
 # pro: local spot — IJsselmeer, local
-NL,Friesland,Mirns,lake,osm:n4299090273,S,"Below the Mirnser Klif; shallow, beginner-friendly.",,,pro
+NL,Friesland,Mirns,lake,osm:n4299090273,S,"Below the Mirnser Klif; shallow, beginner-friendly.",,,pro,
 # pro: seasonal/minor — IJsselmeer, winter-only, local
-NL,Friesland,Lemmer,lake,osm:w84485291,SW,Shallow. Kiting allowed October–April only.,,,pro
+NL,Friesland,Lemmer,lake,osm:w84485291,SW,Shallow. Kiting allowed October–April only.,,,pro,05-01..09-30
 # pro: local spot — Wadden Sea, high tide only, local
-NL,Friesland,Harlingen,sea,osm:w522018972,W,"Wadden Sea, shallow; around high tide.",,high,pro
+NL,Friesland,Harlingen,sea,osm:w522018972,W,"Wadden Sea, shallow; around high tide.",,high,pro,
 # pro: local spot — island beach, Terschelling/Ameland kept
-NL,Wadden Islands,Vlieland,sea,osm:n4586179268,NW,North Sea beach; the Wadden side is closed.,,,pro
+NL,Wadden Islands,Vlieland,sea,osm:n4586179268,NW,North Sea beach; the Wadden side is closed.,,,pro,
 # pro: cluster duplicate — second Terschelling spot
-NL,Wadden Islands,Terschelling – Groene Strand,sea,osm:r16919978,S,"Shallow, flat water near West-Terschelling; beginner-friendly.",,,pro
+NL,Wadden Islands,Terschelling – Groene Strand,sea,osm:r16919978,S,"Shallow, flat water near West-Terschelling; beginner-friendly.",,,pro,
 # pro: cluster duplicate — second Ameland spot, high tide only
-NL,Wadden Islands,Ameland – Waddenzee,sea,osm:w655410097,S,"By the Nes ferry pier: shallow, 3 h either side of high tide.",,high,pro
+NL,Wadden Islands,Ameland – Waddenzee,sea,osm:w655410097,S,"By the Nes ferry pier: shallow, 3 h either side of high tide.",,high,pro,
 # pro: local spot — island beach, Lauwersoog/Ameland kept
-NL,Wadden Islands,Schiermonnikoog,sea,osm:n503478243,N,North Sea beach between poles 3 and 5; the Wadden side is closed.,,,pro
+NL,Wadden Islands,Schiermonnikoog,sea,osm:n503478243,N,North Sea beach between poles 3 and 5; the Wadden side is closed.,,,pro,
 # pro: local spot — Eems-Dollard, high tide only, local
-NL,Groningen,Delfzijl,sea,osm:w878065974,NE,"Eems-Dollard beach, shallow; around high tide.",,high,pro
+NL,Groningen,Delfzijl,sea,osm:w878065974,NE,"Eems-Dollard beach, shallow; around high tide.",,high,pro,
 # pro: minor lake — winter-only lake
-NL,Groningen,Oldambtmeer,lake,osm:w114468010,SE,Midwolda. Kiting allowed October–April only.,,,pro
+NL,Groningen,Oldambtmeer,lake,osm:w114468010,SE,Midwolda. Kiting allowed October–April only.,,,pro,05-01..09-30
 # pro: minor lake — local lake
-NL,Groningen,Zuidlaardermeer,lake,osm:w99150401,S,Strand Meerwijck; advanced riders.,,,pro
+NL,Groningen,Zuidlaardermeer,lake,osm:w99150401,S,Strand Meerwijck; advanced riders.,,,pro,

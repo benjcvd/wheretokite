@@ -1,8 +1,8 @@
-country,region,name,water,locate,hint,notes,sector,tide,tier
+country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Estonia — format: tools/spots/README.md
-EE,Pärnumaa,Pärnu,sea,osm:w645688276,SW,"Long shallow sandy beach on Pärnu Bay: flat to choppy, beginner-friendly in onshore SW winds.",,
-EE,Harjumaa,Tallinn – Pirita,sea,q:Pirita rand,W,"City beach on Tallinn Bay: choppy, best in W–NW winds. Keep clear of swimmers in summer. Also: Kakumäe bay west of Tallinn (shallow, flat to choppy).",,
+EE,Pärnumaa,Pärnu,sea,osm:w645688276,SW,"Long shallow sandy beach on Pärnu Bay: flat to choppy, beginner-friendly in onshore SW winds.",,,,
+EE,Harjumaa,Tallinn – Pirita,sea,q:Pirita rand,W,"City beach on Tallinn Bay: choppy, best in W–NW winds. Keep clear of swimmers in summer. Also: Kakumäe bay west of Tallinn (shallow, flat to choppy).",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: near a kept spot — same Tallinn area as Pirita (kept), mentioned in its notes
-EE,Harjumaa,Tallinn – Kakumäe,sea,q:Kakumäe rand,W,"Shallow bay west of Tallinn, popular with local kiters; flat to choppy.",,,pro
+EE,Harjumaa,Tallinn – Kakumäe,sea,q:Kakumäe rand,W,"Shallow bay west of Tallinn, popular with local kiters; flat to choppy.",,,pro,

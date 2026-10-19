@@ -1,7 +1,7 @@
-country,region,name,water,locate,hint,notes,sector,tide,tier
+country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Montenegro — format: tools/spots/README.md
-ME,Ulcinj,Ada Bojana,sea,q:Ada Bojana,SW,"River-mouth island at the Albanian border; afternoon thermal, flat water near the Bojana mouth. Kite centres on site. Also: Velika Plaža, the 13 km beach running from Ulcinj to Ada Bojana, with several kite schools.",,
+ME,Ulcinj,Ada Bojana,sea,q:Ada Bojana,SW,"River-mouth island at the Albanian border; afternoon thermal, flat water near the Bojana mouth. Kite centres on site. Also: Velika Plaža, the 13 km beach running from Ulcinj to Ada Bojana, with several kite schools.",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: near a kept spot — same beach as Ada Bojana (kept), merged into its notes
-ME,Ulcinj,Velika Plaža (Ulcinj),sea,q:Velika plaža Ulcinj,SW,"13 km sandy beach; reliable afternoon thermal (SW–W) in summer, small waves. Several kite schools.",,,pro
+ME,Ulcinj,Velika Plaža (Ulcinj),sea,q:Velika plaža Ulcinj,SW,"13 km sandy beach; reliable afternoon thermal (SW–W) in summer, small waves. Several kite schools.",,,pro,

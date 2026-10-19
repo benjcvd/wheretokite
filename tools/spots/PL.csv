@@ -1,16 +1,16 @@
-country,region,name,water,locate,hint,notes,sector,tide,tier
+country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Poland — format: tools/spots/README.md
 # Puck Bay (Zatoka Pucka): shallow flat water inside the Hel peninsula, Poland's kite centre with many schools.
-PL,Pomorskie,Rewa,sea,osm:n4403306847,E,"Puck Bay at the Rewa spit: shallow flat water, schools on site. Also: Puck town beach (Puck Bay flat water, schools).",,
-PL,Pomorskie,Chałupy (Hel Peninsula),sea,"q:Chałupy, Władysławowo",SW,"Puck Bay side: shallow flat water, the main kite area of the peninsula with many schools and campsites. Busy in summer. Also: Kuźnica, between Chałupy and Jastarnia (same flat water, schools).",,
-PL,Pomorskie,Jastarnia (Hel Peninsula),sea,osm:w353879346,SW,"Puck Bay side: shallow flat water, kite schools.",,
-PL,Pomorskie,Dębki,sea,q:Plaża Dębki,N,"Open Baltic beach: waves in N–NW winds, for confident riders.",,
-PL,Pomorskie,Łeba,sea,q:Plaża Łeba,N,"Open Baltic beach: waves in onshore winds, for confident riders.",,
+PL,Pomorskie,Rewa,sea,osm:n4403306847,E,"Puck Bay at the Rewa spit: shallow flat water, schools on site. Also: Puck town beach (Puck Bay flat water, schools).",,,,
+PL,Pomorskie,Chałupy (Hel Peninsula),sea,"q:Chałupy, Władysławowo",SW,"Puck Bay side: shallow flat water, the main kite area of the peninsula with many schools and campsites. Busy in summer. Also: Kuźnica, between Chałupy and Jastarnia (same flat water, schools).",,,,
+PL,Pomorskie,Jastarnia (Hel Peninsula),sea,osm:w353879346,SW,"Puck Bay side: shallow flat water, kite schools.",,,,
+PL,Pomorskie,Dębki,sea,q:Plaża Dębki,N,"Open Baltic beach: waves in N–NW winds, for confident riders.",,,,
+PL,Pomorskie,Łeba,sea,q:Plaża Łeba,N,"Open Baltic beach: waves in onshore winds, for confident riders.",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: near a kept spot — ~10 km from Rewa (kept), mentioned in its notes
-PL,Pomorskie,Puck,sea,q:Plaża Puck,NE,"Puck Bay, shallow flat water; kite schools by the town beach.",,,pro
+PL,Pomorskie,Puck,sea,q:Plaża Puck,NE,"Puck Bay, shallow flat water; kite schools by the town beach.",,,pro,
 # pro: near a kept spot — between Chałupy and Jastarnia (kept), mentioned in Chałupy notes
-PL,Pomorskie,Kuźnica (Hel Peninsula),sea,q:Kuźnica Jastarnia,SW,"Puck Bay side: shallow flat water, kite schools.",,,pro
+PL,Pomorskie,Kuźnica (Hel Peninsula),sea,q:Kuźnica Jastarnia,SW,"Puck Bay side: shallow flat water, kite schools.",,,pro,
 # archived: uncertain reputation — minor lagoon spot, reputation uncertain
-PL,Zachodniopomorskie,Czarnocin (Szczecin Lagoon),lagoon,osm:w26809438,W,"Szczecin Lagoon: shallow flat water, beginner-friendly.",,,archived
+PL,Zachodniopomorskie,Czarnocin (Szczecin Lagoon),lagoon,osm:w26809438,W,"Szczecin Lagoon: shallow flat water, beginner-friendly.",,,archived,

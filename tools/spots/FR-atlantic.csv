@@ -1,157 +1,157 @@
-country,region,name,water,locate,hint,notes,sector,tide,tier
+country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # France: North Sea, Channel, Atlantic coasts and northern / western inland lakes — format: tools/spots/README.md
-FR,Côte d'Opale,Malo-les-Bains (Dunkerque),sea,osm:w520745148,N,Dunkerque Flysurfing Club beach; very wide at low tide. Also: Bray-Dunes 12 km east (huge flat beach by the Belgian border).,,
-FR,Côte d'Opale,Les Hemmes de Marck,sea,osm:n7141980706,N,"Very wide gently sloping beach, flattish water behind sandbanks; best in NW to NE winds. Also: Calais – Blériot-Plage 8 km west; Gravelines – Petit-Fort-Philippe 12 km east (flat petite mer at high tide).",,
-FR,Côte d'Opale,Wissant,sea,osm:w106357501,NW,"Between the two capes (venturi): powerful wind and waves, experienced riders. Also: Sangatte 10 km north-east (windiest of the Côte d'Opale), Wimereux – Pointe aux Oies 12 km south (waves).",,
-FR,Côte d'Opale,Le Touquet,sea,q:Le Touquet-Paris-Plage,W,"Launch north of Aqualud; the Canche bay works in E winds around high tide (strong currents). Also: Hardelot 14 km north (low-tide pools), Berck-sur-Mer 14 km south (huge beach, flat pools at low tide).",,
-FR,Baie de Somme,Le Crotoy,sea,q:Le Crotoy plage,SW,Tidal bay: rideable around high tide only. Do not cross the yellow buoys of the nature reserve. Also: Cayeux-sur-Mer – La Mollière on the sea side of the bay (all tides).,,high
-FR,Normandie,Quiberville,sea,osm:n8446819588,N,"Marked kite zone (mandatory); works WSW to NW. Pebble beach, sand at low tide.",,
-FR,Normandie,Merville-Franceville,sea,osm:w809904096,N,"Dedicated kite zone at the west end of Boulevard Wattier, open all year (the only kite beach in July–August). Keep out of the bird reserve at the Orne estuary to the west. Also: Ouistreham – Riva-Bella 5 km west (low tide only).",,
-FR,Normandie,Utah Beach,sea,q:Utah Beach,E,Huge beach; best at low to mid tide.,,
-FR,Normandie,Agon-Coutainville,sea,osm:w195421511,W,Also: Gouville-sur-Mer 10 km north.,,
-FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,Bay of Mont-Saint-Michel: huge tidal range; ride around high tide.,,high
-FR,Bretagne,Lancieux,sea,osm:w385324966,N,"Flat, shallow bay; best at low tide. July–August: Saint-Sieu beach is closed, launch at Tête de Chien (low tide) or Roche Morin (high tide). Also: Saint-Malo – Le Sillon 12 km east (urban, summer launch zone).",,
-FR,Bretagne,Hillion – Bon Abri,sea,osm:w425935259,N,"Bay of Saint-Brieuc: huge tidal range, ride mid to high tide. Nature reserve nearby. Also: Plérin – Les Rosaires across the bay for easterly winds.",,not-low
-FR,Bretagne,Saint-Michel-en-Grève (Lieue de Grève),sea,q:Lieue de Grève,N,,,
-FR,Bretagne,Santec – Le Dossen,sea,q:Plage du Dossen,W,,,
-FR,Bretagne,Keremma,sea,osm:n1723311861,N,5 km of beach between the Kernic and Goulven bays; flat water at low tide. Also: Guissény – Le Vougot 10 km west.,,
-FR,Bretagne,Pentrez,sea,osm:w373179545,W,,,
-FR,Bretagne,La Torche,sea,q:Plage de la Torche,W,"Kiters launch north of the point (Tronoën), away from the surfers; waves.",,
-FR,Bretagne,Mousterlin,sea,q:Plage de Mousterlin,SW,Also: Bénodet – Lagune du Letty 2 km west (flat-water lagoon behind the dune spit).,,
-FR,Bretagne,Gâvres,sea,"q:Grande Plage, Gâvres",SW:ocean side|NE:Petite Mer:lagoon,"Ocean beach (waves) or the flat Petite Mer de Gâvres from mid tide. Also: Fort-Bloqué 15 km west (waves, mid to low tide).",,
-FR,Bretagne,Penthièvre,sea,osm:w1546689396,E:bay side|W:ocean side,"Bay side of the Penthièvre isthmus (flat water, oyster shells) and ocean side. Only 3 h either side of low tide. Late May–mid September: bay side banned, ocean-side kite zones at accesses 1 and 10–11. Also: Erdeven – Kerhillio 8 km north (ocean); Plouharnel – Les Sables Blancs on the bay side for NE to SE winds.",,not-high
-FR,Pays de la Loire,Assérac – Pont-Mahé,sea,osm:w467953849,W,"Shallow bay, you can stand almost everywhere; kite schools. Also: La Turballe – Pen Bron 8 km south (waves, shore break).",,
-FR,Pays de la Loire,La Baule,sea,q:Plage de La Baule,S,"Plage Benoît: flat water behind the sandbank at low tide, kite schools. 15 June–15 September: banned from the beach, experienced riders only via the K13 channel at the La Baule / Pornichet border.",,
-FR,Pays de la Loire,Notre-Dame-de-Monts,sea,q:Plage de Notre-Dame-de-Monts,W,"Wide beach at low tide. Also: Fromentine 7 km north (flat channel facing Noirmoutier, 2 h either side of low tide).",,
-FR,Pays de la Loire,La Tranche-sur-Mer,sea,osm:w107576526,SW,"Plage du Phare, facing Île de Ré: waves and current, good level needed. May–September: the only beach where kiting is allowed.",,
-FR,Charente-Maritime,Île de Ré – Rivedoux,sea,osm:w1497408059,N,"North beach, marked kite zone; flat, works NW to NE. Oyster beds reduce space at low tide. Also: Les Portes (Trousse-Chemise) at the north tip for N to E winds.",,not-low
-FR,Charente-Maritime,Châtelaillon-Plage,sea,osm:w131602195,W,"Kite area south of the main beach; all tides. Also: La Rochelle – Aytré 6 km north (muddy bay, around high tide).",,
-FR,Charente-Maritime,Oléron – Plage des Huttes,sea,osm:w1494402921,W,"Flat basin behind the reef around low tide, shore break at high tide. Avoid the bathing zones in summer. Also: Plaisance (N to E winds), Gatseau (south-facing bay, flat at high tide).",,
-FR,Charente-Maritime,La Palmyre – Bonne Anse,sea,osm:r2953870,S,"Sheltered shallow bay, best on the rising tide (strong ebb currents).",,not-low
-FR,Gironde,Lac d'Hourtin-Carcans,lake,q:Hourtin Port,W,Lake: flat water; stay south of the yellow buoy line.,,
-FR,Gironde,Lac de Lacanau,lake,osm:w340755108,,Lake: flat water; use the marked channel in summer. Also: Lacanau-Océan 7 km west for waves (experienced riders).,,
-FR,Gironde,Bassin d'Arcachon – Claouey,sea,osm:w570377210,SE,"Tidal basin, 2–3 h either side of high tide; muddy bottom, oyster shells. Closed July–August. Also: Andernos (Le Bétey), La Hume and Les Arbousiers elsewhere on the basin.",,high
-FR,Landes,Lac de Cazaux – Navarrosse,lake,osm:n8680293181,N,"Flat, shallow lake (Cazaux-Sanguinet), south shore. Navarrosse launch September–May; June–August use the kite zone at Mayotte (just east). Also: Port de l'Estey (Sanguinet) on the same lake.",,
-FR,Landes,Mimizan,sea,osm:w222354554,W,Plage Sud kite zone; keep away from the river mouth currents.,,
-FR,Pays basque,Anglet – La Madrague,sea,osm:w157127409,W,"Waves, experienced riders. Allowed November–May; in season only early morning and after 19:00 via the marked channel. Also: Hendaye (only Basque beach without cliffs, banned in July–August).",,
-FR,Grand Est,Lac du Der – Giffaumont,lake,q:Plage de Giffaumont-Champaubert,,Kite zone regulated by the local club (KDA); red zone closed 15 June–15 September.,,
+FR,Côte d'Opale,Malo-les-Bains (Dunkerque),sea,osm:w520745148,N,Dunkerque Flysurfing Club beach; very wide at low tide. Also: Bray-Dunes 12 km east (huge flat beach by the Belgian border).,,,,
+FR,Côte d'Opale,Les Hemmes de Marck,sea,osm:n7141980706,N,"Very wide gently sloping beach, flattish water behind sandbanks; best in NW to NE winds. Also: Calais – Blériot-Plage 8 km west; Gravelines – Petit-Fort-Philippe 12 km east (flat petite mer at high tide).",,,,
+FR,Côte d'Opale,Wissant,sea,osm:w106357501,NW,"Between the two capes (venturi): powerful wind and waves, experienced riders. Also: Sangatte 10 km north-east (windiest of the Côte d'Opale), Wimereux – Pointe aux Oies 12 km south (waves).",,,,
+FR,Côte d'Opale,Le Touquet,sea,q:Le Touquet-Paris-Plage,W,"Launch north of Aqualud; the Canche bay works in E winds around high tide (strong currents). Also: Hardelot 14 km north (low-tide pools), Berck-sur-Mer 14 km south (huge beach, flat pools at low tide).",,,,
+FR,Baie de Somme,Le Crotoy,sea,q:Le Crotoy plage,SW,Tidal bay: rideable around high tide only. Do not cross the yellow buoys of the nature reserve. Also: Cayeux-sur-Mer – La Mollière on the sea side of the bay (all tides).,,high,,
+FR,Normandie,Quiberville,sea,osm:n8446819588,N,"Marked kite zone (mandatory); works WSW to NW. Pebble beach, sand at low tide.",,,,
+FR,Normandie,Merville-Franceville,sea,osm:w809904096,N,"Dedicated kite zone at the west end of Boulevard Wattier, open all year (the only kite beach in July–August). Keep out of the bird reserve at the Orne estuary to the west. Also: Ouistreham – Riva-Bella 5 km west (low tide only).",,,,
+FR,Normandie,Utah Beach,sea,q:Utah Beach,E,Huge beach; best at low to mid tide.,,,,
+FR,Normandie,Agon-Coutainville,sea,osm:w195421511,W,Also: Gouville-sur-Mer 10 km north.,,,,
+FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,Bay of Mont-Saint-Michel: huge tidal range; ride around high tide.,,high,,
+FR,Bretagne,Lancieux,sea,osm:w385324966,N,"Flat, shallow bay; best at low tide. July–August: Saint-Sieu beach is closed, launch at Tête de Chien (low tide) or Roche Morin (high tide). Also: Saint-Malo – Le Sillon 12 km east (urban, summer launch zone).",,,,
+FR,Bretagne,Hillion – Bon Abri,sea,osm:w425935259,N,"Bay of Saint-Brieuc: huge tidal range, ride mid to high tide. Nature reserve nearby. Also: Plérin – Les Rosaires across the bay for easterly winds.",,not-low,,
+FR,Bretagne,Saint-Michel-en-Grève (Lieue de Grève),sea,q:Lieue de Grève,N,,,,,
+FR,Bretagne,Santec – Le Dossen,sea,q:Plage du Dossen,W,,,,,
+FR,Bretagne,Keremma,sea,osm:n1723311861,N,5 km of beach between the Kernic and Goulven bays; flat water at low tide. Also: Guissény – Le Vougot 10 km west.,,,,
+FR,Bretagne,Pentrez,sea,osm:w373179545,W,,,,,
+FR,Bretagne,La Torche,sea,q:Plage de la Torche,W,"Kiters launch north of the point (Tronoën), away from the surfers; waves.",,,,
+FR,Bretagne,Mousterlin,sea,q:Plage de Mousterlin,SW,Also: Bénodet – Lagune du Letty 2 km west (flat-water lagoon behind the dune spit).,,,,
+FR,Bretagne,Gâvres,sea,"q:Grande Plage, Gâvres",SW:ocean side|NE:Petite Mer:lagoon,"Ocean beach (waves) or the flat Petite Mer de Gâvres from mid tide. Also: Fort-Bloqué 15 km west (waves, mid to low tide).",,,,
+FR,Bretagne,Penthièvre,sea,osm:w1546689396,E:bay side|W:ocean side,"Bay side of the Penthièvre isthmus (flat water, oyster shells) and ocean side. Only 3 h either side of low tide. Late May–mid September: bay side banned, ocean-side kite zones at accesses 1 and 10–11. Also: Erdeven – Kerhillio 8 km north (ocean); Plouharnel – Les Sables Blancs on the bay side for NE to SE winds.",,not-high,,
+FR,Pays de la Loire,Assérac – Pont-Mahé,sea,osm:w467953849,W,"Shallow bay, you can stand almost everywhere; kite schools. Also: La Turballe – Pen Bron 8 km south (waves, shore break).",,,,
+FR,Pays de la Loire,La Baule,sea,q:Plage de La Baule,S,"Plage Benoît: flat water behind the sandbank at low tide, kite schools. 15 June–15 September: banned from the beach, experienced riders only via the K13 channel at the La Baule / Pornichet border.",,,,06-15..09-15
+FR,Pays de la Loire,Notre-Dame-de-Monts,sea,q:Plage de Notre-Dame-de-Monts,W,"Wide beach at low tide. Also: Fromentine 7 km north (flat channel facing Noirmoutier, 2 h either side of low tide).",,,,
+FR,Pays de la Loire,La Tranche-sur-Mer,sea,osm:w107576526,SW,"Plage du Phare, facing Île de Ré: waves and current, good level needed. May–September: the only beach where kiting is allowed.",,,,
+FR,Charente-Maritime,Île de Ré – Rivedoux,sea,osm:w1497408059,N,"North beach, marked kite zone; flat, works NW to NE. Oyster beds reduce space at low tide. Also: Les Portes (Trousse-Chemise) at the north tip for N to E winds.",,not-low,,
+FR,Charente-Maritime,Châtelaillon-Plage,sea,osm:w131602195,W,"Kite area south of the main beach; all tides. Also: La Rochelle – Aytré 6 km north (muddy bay, around high tide).",,,,
+FR,Charente-Maritime,Oléron – Plage des Huttes,sea,osm:w1494402921,W,"Flat basin behind the reef around low tide, shore break at high tide. Avoid the bathing zones in summer. Also: Plaisance (N to E winds), Gatseau (south-facing bay, flat at high tide).",,,,
+FR,Charente-Maritime,La Palmyre – Bonne Anse,sea,osm:r2953870,S,"Sheltered shallow bay, best on the rising tide (strong ebb currents).",,not-low,,
+FR,Gironde,Lac d'Hourtin-Carcans,lake,q:Hourtin Port,W,Lake: flat water; stay south of the yellow buoy line.,,,,
+FR,Gironde,Lac de Lacanau,lake,osm:w340755108,,Lake: flat water; use the marked channel in summer. Also: Lacanau-Océan 7 km west for waves (experienced riders).,,,,
+FR,Gironde,Bassin d'Arcachon – Claouey,sea,osm:w570377210,SE,"Tidal basin, 2–3 h either side of high tide; muddy bottom, oyster shells. Closed July–August. Also: Andernos (Le Bétey), La Hume and Les Arbousiers elsewhere on the basin.",,high,,07-01..08-31
+FR,Landes,Lac de Cazaux – Navarrosse,lake,osm:n8680293181,N,"Flat, shallow lake (Cazaux-Sanguinet), south shore. Navarrosse launch September–May; June–August use the kite zone at Mayotte (just east). Also: Port de l'Estey (Sanguinet) on the same lake.",,,,
+FR,Landes,Mimizan,sea,osm:w222354554,W,Plage Sud kite zone; keep away from the river mouth currents.,,,,
+FR,Pays basque,Anglet – La Madrague,sea,osm:w157127409,W,"Waves, experienced riders. Allowed November–May; in season only early morning and after 19:00 via the marked channel. Also: Hendaye (only Basque beach without cliffs, banned in July–August).",,,,
+FR,Grand Est,Lac du Der – Giffaumont,lake,q:Plage de Giffaumont-Champaubert,,Kite zone regulated by the local club (KDA); red zone closed 15 June–15 September.,,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — 12 km from Malo-les-Bains
-FR,Côte d'Opale,Bray-Dunes,sea,osm:r10626833,N,"Huge flat beach next to the Belgian border; shallow at low tide, more chop at high tide.",,,pro
+FR,Côte d'Opale,Bray-Dunes,sea,osm:r10626833,N,"Huge flat beach next to the Belgian border; shallow at low tide, more chop at high tide.",,,pro,
 # pro: cluster duplicate — Dunkerque/Calais cluster, Les Hemmes de Marck kept
-FR,Côte d'Opale,Gravelines – Petit-Fort-Philippe,sea,osm:w610168882,N,"'Petite mer' behind the sandbank: flat water around high tide with big coefficients, open sea outside. Buoyed kite zone.",,,pro
+FR,Côte d'Opale,Gravelines – Petit-Fort-Philippe,sea,osm:w610168882,N,"'Petite mer' behind the sandbank: flat water around high tide with big coefficients, open sea outside. Buoyed kite zone.",,,pro,
 # pro: cluster duplicate — 8 km from Les Hemmes de Marck
-FR,Côte d'Opale,Calais – Blériot-Plage,sea,osm:w35894485,NNW,Watch the wooden groynes at high tide.,,,pro
+FR,Côte d'Opale,Calais – Blériot-Plage,sea,osm:w35894485,NNW,Watch the wooden groynes at high tide.,,,pro,
 # pro: cluster duplicate — 10 km from Wissant, same coast
-FR,Côte d'Opale,Sangatte,sea,osm:r12146698,NW,"Windiest spot of the Côte d'Opale, long waves; groynes on the beach. Kite school on site.",,,pro
+FR,Côte d'Opale,Sangatte,sea,osm:r12146698,NW,"Windiest spot of the Côte d'Opale, long waves; groynes on the beach. Kite school on site.",,,pro,
 # pro: cluster duplicate — 12 km from Wissant
-FR,Côte d'Opale,Wimereux – Pointe aux Oies,sea,q:Pointe aux Oies,W,"Waves; Wimereux town beach only works at low tide, the Pointe aux Oies is the main launch.",,,pro
+FR,Côte d'Opale,Wimereux – Pointe aux Oies,sea,q:Pointe aux Oies,W,"Waves; Wimereux town beach only works at low tide, the Pointe aux Oies is the main launch.",,,pro,
 # pro: local / secondary beach — school beach near Boulogne
-FR,Côte d'Opale,Le Portel,sea,osm:w1039834126,W,Kite school on the beach; waves in westerlies.,,,pro
+FR,Côte d'Opale,Le Portel,sea,osm:w1039834126,W,Kite school on the beach; waves in westerlies.,,,pro,
 # pro: cluster duplicate — 14 km from Le Touquet
-FR,Côte d'Opale,Hardelot,sea,osm:n1723311510,W,Flat water in the low-tide pools (baïnes) and waves outside.,,,pro
+FR,Côte d'Opale,Hardelot,sea,osm:n1723311510,W,Flat water in the low-tide pools (baïnes) and waves outside.,,,pro,
 # pro: cluster duplicate — 14 km from Le Touquet, same conditions
-FR,Côte d'Opale,Berck-sur-Mer,sea,osm:w132196447,W,Huge beach; flat pools at low tide.,,,pro
+FR,Côte d'Opale,Berck-sur-Mer,sea,osm:w132196447,W,Huge beach; flat pools at low tide.,,,pro,
 # pro: local / secondary beach — school zone between Berck and the Somme bay
-FR,Baie de Somme,Fort-Mahon-Plage,sea,osm:w1237746823,W,Kite school zone north of the nautical base.,,,pro
+FR,Baie de Somme,Fort-Mahon-Plage,sea,osm:w1237746823,W,Kite school zone north of the nautical base.,,,pro,
 # pro: cluster duplicate — Somme bay cluster, Le Crotoy kept
-FR,Baie de Somme,Cayeux-sur-Mer – La Mollière,sea,osm:n9450121482,WNW,Between Cayeux and Le Hourdel; kite schools and club in Cayeux.,,,pro
+FR,Baie de Somme,Cayeux-sur-Mer – La Mollière,sea,osm:n9450121482,WNW,Between Cayeux and Le Hourdel; kite schools and club in Cayeux.,,,pro,
 # pro: local / secondary beach — urban pebble beach
-FR,Normandie,Le Havre,sea,osm:w804964900,W,"Urban pebble beach, kite schools; works in SW to NW winds.",,,pro
+FR,Normandie,Le Havre,sea,osm:w804964900,W,"Urban pebble beach, kite schools; works in SW to NW winds.",,,pro,
 # pro: cluster duplicate — 5 km from Merville-Franceville, low tide only
-FR,Normandie,Ouistreham – Riva-Bella,sea,q:Plage de Riva-Bella,N,Low tide only: at high tide the water reaches the sea wall.,,not-high,pro
+FR,Normandie,Ouistreham – Riva-Bella,sea,q:Plage de Riva-Bella,N,Low tide only: at high tide the water reaches the sea wall.,,not-high,pro,
 # pro: local / secondary beach — secondary Calvados beach
-FR,Normandie,Houlgate,sea,osm:w108806424,N,,,,pro
+FR,Normandie,Houlgate,sea,osm:w108806424,N,,,,pro,
 # pro: local / secondary beach — secondary Calvados beach
-FR,Normandie,Asnelles,sea,q:Asnelles,N,Mulberry harbour remains offshore; summer: kiting usually only outside bathing hours.,,,pro
+FR,Normandie,Asnelles,sea,q:Asnelles,N,Mulberry harbour remains offshore; summer: kiting usually only outside bathing hours.,,,pro,
 # pro: local / secondary beach — local harbour spot
-FR,Normandie,Cherbourg – Collignon,sea,osm:n13289366918,N,"Flat water inside the Cherbourg breakwater, around high tide; works W to NE.",,high,pro
+FR,Normandie,Cherbourg – Collignon,sea,osm:n13289366918,N,"Flat water inside the Cherbourg breakwater, around high tide; works W to NE.",,high,pro,
 # pro: local / secondary beach — local Cotentin beach
-FR,Normandie,Urville-Nacqueville,sea,osm:w219863717,N,,,,pro
+FR,Normandie,Urville-Nacqueville,sea,osm:w219863717,N,,,,pro,
 # pro: local / secondary beach — local Cotentin wave spot
-FR,Normandie,Siouville-Hague,sea,osm:w210570710,W,"Wave spot, all tides.",,,pro
+FR,Normandie,Siouville-Hague,sea,osm:w210570710,W,"Wave spot, all tides.",,,pro,
 # pro: cluster duplicate — 10 km from Agon-Coutainville
-FR,Normandie,Gouville-sur-Mer,sea,q:Plage de Gouville-sur-Mer,W,,,,pro
+FR,Normandie,Gouville-sur-Mer,sea,q:Plage de Gouville-sur-Mer,W,,,,pro,
 # pro: local / secondary beach — local Granville beach
-FR,Normandie,Jullouville,sea,osm:n14064270382,W,Best from mid to low tide.,,not-high,pro
+FR,Normandie,Jullouville,sea,osm:n14064270382,W,Best from mid to low tide.,,not-high,pro,
 # pro: cluster duplicate — 12 km from Lancieux; urban, summer zone restrictions
-FR,Bretagne,Saint-Malo – Le Sillon,sea,osm:w485330850,NW,1 Jul–1 Sep: mandatory launch zone between the Kyriad hotel and Avenue Fuentès. Beach disappears at high spring tides.,,not-high,pro
+FR,Bretagne,Saint-Malo – Le Sillon,sea,osm:w485330850,NW,1 Jul–1 Sep: mandatory launch zone between the Kyriad hotel and Avenue Fuentès. Beach disappears at high spring tides.,,not-high,pro,
 # pro: restricted (club / permit / summer ban) — banned daytime in summer; Lancieux kept
-FR,Bretagne,Saint-Lunaire – Longchamp,sea,osm:w290703254,N,Banned 10:00–20:00 from 15 June to 15 September.,,,pro
+FR,Bretagne,Saint-Lunaire – Longchamp,sea,osm:w290703254,N,Banned 10:00–20:00 from 15 June to 15 September.,,,pro,06-15..09-15 10:00-20:00
 # pro: local / secondary beach — local Côtes-d'Armor beach
-FR,Bretagne,Sables-d'Or-les-Pins,sea,osm:w46505869,NW,"Wide shallow beach, mixed sand / shallow water.",,,pro
+FR,Bretagne,Sables-d'Or-les-Pins,sea,osm:w46505869,NW,"Wide shallow beach, mixed sand / shallow water.",,,pro,
 # pro: local / secondary beach — local Côtes-d'Armor beach
-FR,Bretagne,Erquy – Caroual,sea,osm:w28750087,W,Kite zone away from the bathing area; best in SW to NW winds.,,,pro
+FR,Bretagne,Erquy – Caroual,sea,osm:w28750087,W,Kite zone away from the bathing area; best in SW to NW winds.,,,pro,
 # pro: cluster duplicate — Saint-Brieuc bay, Hillion kept
-FR,Bretagne,Plérin – Les Rosaires,sea,osm:w233870060,NE,"Easterly-wind spot; busy with families in summer, ride off-season.",,,pro
+FR,Bretagne,Plérin – Les Rosaires,sea,osm:w233870060,NE,"Easterly-wind spot; busy with families in summer, ride off-season.",,,pro,
 # pro: cluster duplicate — 10 km from Keremma
-FR,Bretagne,Guissény – Le Vougot,sea,osm:w224287590,NW,,,,pro
+FR,Bretagne,Guissény – Le Vougot,sea,osm:w224287590,NW,,,,pro,
 # pro: local / secondary beach — local Abers beach
-FR,Bretagne,Landéda – Sainte-Marguerite,sea,osm:n1284316076,W,Sheltered; flat water at low tide. Summer kite zone.,,,pro
+FR,Bretagne,Landéda – Sainte-Marguerite,sea,osm:n1284316076,W,Sheltered; flat water at low tide. Summer kite zone.,,,pro,
 # pro: local / secondary beach — local Abers beach
-FR,Bretagne,Lampaul-Ploudalmézeau – Trois Moutons,sea,osm:w220203518,N,"Tréompan dunes; calm water, beach narrows at high tide. Summer kite zone.",,,pro
+FR,Bretagne,Lampaul-Ploudalmézeau – Trois Moutons,sea,osm:w220203518,N,"Tréompan dunes; calm water, beach narrows at high tide. Summer kite zone.",,,pro,
 # pro: local / secondary beach — local Iroise beach
-FR,Bretagne,Le Conquet – Blancs Sablons,sea,q:Plage des Blancs Sablons Le Conquet,NW,,,,pro
+FR,Bretagne,Le Conquet – Blancs Sablons,sea,q:Plage des Blancs Sablons Le Conquet,NW,,,,pro,
 # pro: restricted (club / permit / summer ban) — gusty, closed in daytime July–August
-FR,Bretagne,Brest – Moulin Blanc,sea,osm:w23432320,S,"Flat water in the Rade de Brest, gusty wind. Closed 1 July–31 August 09:00–19:00.",,,pro
+FR,Bretagne,Brest – Moulin Blanc,sea,osm:w23432320,S,"Flat water in the Rade de Brest, gusty wind. Closed 1 July–31 August 09:00–19:00.",,,pro,07-01..08-31 09:00-19:00
 # pro: local / secondary beach — local Crozon beach; Pentrez kept
-FR,Bretagne,Crozon – Goulien,sea,osm:w783301189,W,Waves; main kite beach of the Crozon peninsula.,,,pro
+FR,Bretagne,Crozon – Goulien,sea,osm:w783301189,W,Waves; main kite beach of the Crozon peninsula.,,,pro,
 # pro: restricted (club / permit / summer ban) — banned midday in summer; Mousterlin kept
-FR,Bretagne,Île-Tudy,sea,osm:r12863674,SE,"Flat shallow water at low tide and early flood; works E to SW. Summer: banned 12:00–19:00, keep out of the bathing zones.",,,pro
+FR,Bretagne,Île-Tudy,sea,osm:r12863674,SE,"Flat shallow water at low tide and early flood; works E to SW. Summer: banned 12:00–19:00, keep out of the bathing zones.",,,pro,
 # pro: cluster duplicate — 2 km from Mousterlin
-FR,Bretagne,Bénodet – Lagune du Letty,lagoon,osm:r4027008,N,"Flat-water lagoon (Mer Blanche) behind the dune spit, launch at the slipway below the UCPA. Around high tide, preferably on the flood (strong ebb currents); best in S to E winds.",,high,pro
+FR,Bretagne,Bénodet – Lagune du Letty,lagoon,osm:r4027008,N,"Flat-water lagoon (Mer Blanche) behind the dune spit, launch at the slipway below the UCPA. Around high tide, preferably on the flood (strong ebb currents); best in S to E winds.",,high,pro,
 # pro: cluster duplicate — Lorient cluster, Gâvres kept
-FR,Bretagne,Fort-Bloqué,sea,osm:w23860688,SW,"Waves; rocks mid-spot, best mid to low tide.",,,pro
+FR,Bretagne,Fort-Bloqué,sea,osm:w23860688,SW,"Waves; rocks mid-spot, best mid to low tide.",,,pro,
 # pro: cluster duplicate — 8 km from Penthièvre
-FR,Bretagne,Erdeven – Kerhillio,sea,q:Plage de Kerhillio,SW,Ride from 3 h before to 3 h after low tide. 15 June–15 September: kite zone in the east sector (beach accesses 27–28); banned around high tide at big coefficients (> 85).,,not-high,pro
+FR,Bretagne,Erdeven – Kerhillio,sea,q:Plage de Kerhillio,SW,Ride from 3 h before to 3 h after low tide. 15 June–15 September: kite zone in the east sector (beach accesses 27–28); banned around high tide at big coefficients (> 85).,,not-high,pro,
 # pro: cluster duplicate — bay side of the Quiberon isthmus, Penthièvre kept
-FR,Bretagne,Plouharnel – Les Sables Blancs,sea,q:Sables Blancs Plouharnel,E,"Bay side of the Quiberon isthmus for NE to SE winds; best at low to mid tide, choppy higher up. Avoid the oyster parks (poles, yellow buoys ~500 m out); wear booties.",,not-high,pro
+FR,Bretagne,Plouharnel – Les Sables Blancs,sea,q:Sables Blancs Plouharnel,E,"Bay side of the Quiberon isthmus for NE to SE winds; best at low to mid tide, choppy higher up. Avoid the oyster parks (poles, yellow buoys ~500 m out); wear booties.",,not-high,pro,
 # pro: local / secondary beach — local Rhuys beach
-FR,Bretagne,Sarzeau – Penvins,sea,osm:w23049270,S,"Shallow basin, flat around high tide; beginner-friendly.",,not-low,pro
+FR,Bretagne,Sarzeau – Penvins,sea,osm:w23049270,S,"Shallow basin, flat around high tide; beginner-friendly.",,not-low,pro,
 # pro: cluster duplicate — 8 km from Pont-Mahé / La Baule
-FR,Pays de la Loire,La Turballe – Pen Bron,sea,osm:w440206827,W,"Wave spot, shore break; little beach at high tide (sea wall).",,,pro
+FR,Pays de la Loire,La Turballe – Pen Bron,sea,osm:w440206827,W,"Wave spot, shore break; little beach at high tide (sea wall).",,,pro,
 # pro: local / secondary beach — local beach, school zone
-FR,Pays de la Loire,Saint-Brevin-les-Pins,sea,osm:w301713272,W,"15 June–15 September (and weekends from May): kiting only in the signposted zone, schools at the Plage du Billard.",,,pro
+FR,Pays de la Loire,Saint-Brevin-les-Pins,sea,osm:w301713272,W,"15 June–15 September (and weekends from May): kiting only in the signposted zone, schools at the Plage du Billard.",,,pro,
 # pro: cluster duplicate — 7 km from Notre-Dame-de-Monts
-FR,Pays de la Loire,Fromentine,sea,osm:r2982134,W,"Flat water in the channel facing Noirmoutier, best 2 h either side of low tide. Summer: kite zone right of the bathing area; keep out of the ferry channel.",,not-high,pro
+FR,Pays de la Loire,Fromentine,sea,osm:r2982134,W,"Flat water in the channel facing Noirmoutier, best 2 h either side of low tide. Summer: kite zone right of the bathing area; keep out of the ferry channel.",,not-high,pro,
 # pro: local / secondary beach — local Vendée beach
-FR,Pays de la Loire,Bretignolles-sur-Mer,sea,osm:n13123697769,W,"Kite zone on the Plage des Dunes, buoyed in July–August.",,,pro
+FR,Pays de la Loire,Bretignolles-sur-Mer,sea,osm:n13123697769,W,"Kite zone on the Plage des Dunes, buoyed in July–August.",,,pro,
 # pro: cluster duplicate — second Île de Ré spot, Rivedoux kept
-FR,Charente-Maritime,Île de Ré – Les Portes (Trousse-Chemise),sea,osm:w260764654,NE,Flat shallow bay with a sandbank at low tide; works N to E. Strong currents near the Fier d'Ars.,,,pro
+FR,Charente-Maritime,Île de Ré – Les Portes (Trousse-Chemise),sea,osm:w260764654,NE,Flat shallow bay with a sandbank at low tide; works N to E. Strong currents near the Fier d'Ars.,,,pro,
 # pro: cluster duplicate — muddy, 6 km from Châtelaillon
-FR,Charente-Maritime,La Rochelle – Aytré,sea,osm:n6801705155,W,"Muddy shallow bay, ride 2 h either side of high tide; works SW to NW.",,high,pro
+FR,Charente-Maritime,La Rochelle – Aytré,sea,osm:n6801705155,W,"Muddy shallow bay, ride 2 h either side of high tide; works SW to NW.",,high,pro,
 # pro: cluster duplicate — Oléron cluster, Plage des Huttes kept
-FR,Charente-Maritime,Oléron – Plaisance,sea,osm:w1238604909,NE,"Works N to E, all tides; marked kite zone in summer.",,,pro
+FR,Charente-Maritime,Oléron – Plaisance,sea,osm:w1238604909,NE,"Works N to E, all tides; marked kite zone in summer.",,,pro,
 # pro: restricted (club / permit / summer ban) — banned in summer; Oléron cluster
-FR,Charente-Maritime,Oléron – La Perroche,sea,osm:w176499349,SW,"Rocks, intermediate riders; banned in summer.",,,pro
+FR,Charente-Maritime,Oléron – La Perroche,sea,osm:w176499349,SW,"Rocks, intermediate riders; banned in summer.",,,pro,
 # pro: cluster duplicate — Oléron cluster, La Palmyre opposite
-FR,Charente-Maritime,Oléron – Gatseau,sea,q:Plage de Gatseau,S,Shallow south-facing bay; flat around high tide.,,not-low,pro
+FR,Charente-Maritime,Oléron – Gatseau,sea,q:Plage de Gatseau,S,Shallow south-facing bay; flat around high tide.,,not-low,pro,
 # pro: local / secondary beach — local estuary beach
-FR,Gironde,Le Verdon – La Chambrette,sea,osm:w577835350,NE,"Estuary beach for E to NE winds, 2 h either side of high tide.",,high,pro
+FR,Gironde,Le Verdon – La Chambrette,sea,osm:w577835350,NE,"Estuary beach for E to NE winds, 2 h either side of high tide.",,high,pro,
 # pro: cluster duplicate — Lac de Lacanau kept; summer restrictions
-FR,Gironde,Lacanau-Océan,sea,osm:w697650794,W,"Waves, experienced riders. Summer: kiting before 19:00 only in the Super-Sud zone.",,,pro
+FR,Gironde,Lacanau-Océan,sea,osm:w697650794,W,"Waves, experienced riders. Summer: kiting before 19:00 only in the Super-Sud zone.",,,pro,
 # pro: cluster duplicate — Arcachon basin cluster, Claouey kept
-FR,Gironde,Bassin d'Arcachon – Andernos (Le Bétey),sea,osm:w540519748,SW,"Tidal basin, around high tide only. Closed July–August.",,high,pro
+FR,Gironde,Bassin d'Arcachon – Andernos (Le Bétey),sea,osm:w540519748,SW,"Tidal basin, around high tide only. Closed July–August.",,high,pro,07-01..08-31
 # pro: cluster duplicate — Arcachon basin cluster, banned in summer
-FR,Gironde,Bassin d'Arcachon – Les Arbousiers,sea,q:Plage des Arbousiers Arcachon,W,"Sandbank at low tide, strong current at high tide. Banned in summer.",,,pro
+FR,Gironde,Bassin d'Arcachon – Les Arbousiers,sea,q:Plage des Arbousiers Arcachon,W,"Sandbank at low tide, strong current at high tide. Banned in summer.",,,pro,07-01..08-31
 # pro: cluster duplicate — Arcachon basin cluster, Claouey kept
-FR,Gironde,Bassin d'Arcachon – La Hume,sea,q:Plage de la Hume Gujan-Mestras,N,Tidal basin: ride around high tide. Closed in the hunting season (October–November).,,high,pro
+FR,Gironde,Bassin d'Arcachon – La Hume,sea,q:Plage de la Hume Gujan-Mestras,N,Tidal basin: ride around high tide. Closed in the hunting season (October–November).,,high,pro,10-01..11-30
 # pro: local / secondary beach — local ocean beach
-FR,Gironde,La Teste – La Salie,sea,osm:n13034064294,W,Ocean beach at the south end of the basin entrance; supervised zone late June–early September.,,,pro
+FR,Gironde,La Teste – La Salie,sea,osm:n13034064294,W,Ocean beach at the south end of the basin entrance; supervised zone late June–early September.,,,pro,
 # pro: cluster duplicate — same lake as Navarrosse
-FR,Landes,Lac de Sanguinet – Port de l'Estey,lake,osm:n1771842358,NW,"Water launch, intermediate riders; avoid the buoyed zone to the north.",,,pro
+FR,Landes,Lac de Sanguinet – Port de l'Estey,lake,osm:n1771842358,NW,"Water launch, intermediate riders; avoid the buoyed zone to the north.",,,pro,
 # pro: local / secondary beach — local Landes ocean beach
-FR,Landes,Biscarrosse-Plage,sea,osm:n8339012619,W,Waves; summer kite zone south of the bathing area.,,,pro
+FR,Landes,Biscarrosse-Plage,sea,osm:n8339012619,W,Waves; summer kite zone south of the bathing area.,,,pro,
 # pro: local / secondary beach — local Landes ocean beach
-FR,Landes,Contis,sea,osm:w329676289,W,Watch the jetties near the river mouth.,,,pro
+FR,Landes,Contis,sea,osm:w329676289,W,Watch the jetties near the river mouth.,,,pro,
 # pro: local / secondary beach — local Landes ocean beach
-FR,Landes,Moliets,sea,osm:w234222592,W,"Waves; large area near the Huchet river mouth, best at high tide.",,,pro
+FR,Landes,Moliets,sea,osm:w234222592,W,"Waves; large area near the Huchet river mouth, best at high tide.",,,pro,
 # pro: local / secondary beach — local wave spot, summer restrictions
-FR,Landes,Seignosse – Les Estagnots,sea,osm:n3053079146,W,"Waves and current, experienced riders. Only Seignosse beach where kiting is allowed; June–September: signposted zone south of the car park during bathing hours.",,,pro
+FR,Landes,Seignosse – Les Estagnots,sea,osm:n3053079146,W,"Waves and current, experienced riders. Only Seignosse beach where kiting is allowed; June–September: signposted zone south of the car park during bathing hours.",,,pro,
 # pro: restricted (club / permit / summer ban) — banned in July–August; Anglet kept
-FR,Pays basque,Hendaye,sea,osm:n5228438622,N,Only Basque beach without cliffs. Banned 1 July–31 August.,,,pro
+FR,Pays basque,Hendaye,sea,osm:n5228438622,N,Only Basque beach without cliffs. Banned 1 July–31 August.,,,pro,07-01..08-31
 # archived: restricted (club / permit / summer ban) — club-only lake
-FR,Grand Est,Lac d'Orient – Mesnil-Saint-Père,lake,osm:w117776916,NW,"Experienced riders, March to October, through the local clubs (AWA, Flysurf10); beaches closed 15 June–15 September.",,,archived
+FR,Grand Est,Lac d'Orient – Mesnil-Saint-Père,lake,osm:w117776916,NW,"Experienced riders, March to October, through the local clubs (AWA, Flysurf10); beaches closed 15 June–15 September.",,,archived,
 # archived: restricted (club / permit / summer ban) — club-only lake
-FR,Grand Est,Lac de Madine,lake,osm:n6760961924,SW,"Club-only (AKL membership and FFVL licence required); main beach for SW–W winds, gusty.",,,archived
+FR,Grand Est,Lac de Madine,lake,osm:n6760961924,SW,"Club-only (AKL membership and FFVL licence required); main beach for SW–W winds, gusty.",,,archived,

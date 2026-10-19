@@ -656,6 +656,31 @@ def slugify(s):
 
 
 TIDE_RULES = ("", "high", "low", "mid", "not-low", "not-high")
+_BAN = re.compile(r"^(\d\d)-(\d\d)\.\.(\d\d)-(\d\d)(?:\s+(\d\d):(\d\d)-(\d\d):(\d\d))?$")
+
+
+def parse_bans(text):
+    """'06-15..09-15 11:00-19:00; 07-01..08-31' -> [{"from": "06-15", "to": "09-15",
+    "startHour": 11, "endHour": 19}, {"from": "07-01", "to": "08-31"}]. None if malformed.
+    Dates are inclusive month-day (a range may wrap over the new year); hours are the
+    local hours covered, end exclusive (minutes round outwards)."""
+    out = []
+    for part in [p.strip() for p in text.split(";") if p.strip()]:
+        m = _BAN.match(part)
+        if not m:
+            return None
+        mo1, d1, mo2, d2 = (int(x) for x in m.group(1, 2, 3, 4))
+        if not (1 <= mo1 <= 12 and 1 <= mo2 <= 12 and 1 <= d1 <= 31 and 1 <= d2 <= 31):
+            return None
+        ban = {"from": "%02d-%02d" % (mo1, d1), "to": "%02d-%02d" % (mo2, d2)}
+        if m.group(5):
+            h1, mi1, h2, mi2 = (int(x) for x in m.group(5, 6, 7, 8))
+            end = h2 + (1 if mi2 else 0)
+            if not (0 <= h1 < end <= 24):
+                return None
+            ban["startHour"], ban["endHour"] = h1, end
+        out.append(ban)
+    return out
 
 
 def read_curated(paths):
@@ -692,6 +717,10 @@ def _read_csv(path):
             raise SystemExit("%s: tier must be basic / pro / archived in row %r" % (path, r))
         if r["tier"] == "archived":
             continue   # kept in the CSV for reference, never built
+        r["bans"] = parse_bans(r.get("banned") or "")
+        if r["bans"] is None:
+            raise SystemExit("%s: bad banned value %r (format: MM-DD..MM-DD [HH:MM-HH:MM]; ...)"
+                             % (path, r.get("banned")))
         r["tide"] = r.get("tide") or ""
         if r["tide"] not in TIDE_RULES:
             raise SystemExit("%s: tide must be one of %s in row %r" % (path, "/".join(TIDE_RULES[1:]), r))
@@ -1057,6 +1086,8 @@ def main():
             spot["tide"] = r["tide"]
         if r["tier"] == "pro":
             spot["tier"] = "pro"
+        if r["bans"]:
+            spot["bans"] = r["bans"]
         spot["_how"] = how
         spot["_hint"] = r["hint"]
         spot["_snapped"] = o["snapped"]
