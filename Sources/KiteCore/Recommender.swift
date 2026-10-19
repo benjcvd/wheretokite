@@ -386,7 +386,15 @@ public struct Recommender: Sendable {
                 h.score = 0
                 h.flags.insert(reason, at: 0)
             } else {
-                if (h.wind.precipitationMm ?? 0) >= 1 { h.flags.append("rain") }
+                // Rain: visibility and comfort. -15 % from 2 mm/h, -40 % from 5 mm/h.
+                let rain = h.wind.precipitationMm ?? 0
+                if rain >= 5 {
+                    h.score *= 0.6
+                    h.flags.append("heavy rain")
+                } else if rain >= 1 {
+                    if rain >= 2 { h.score *= 0.85 }
+                    h.flags.append("rain")
+                }
                 if h.wind.unstableAir { h.flags.append("unstable air") }
             }
             return h

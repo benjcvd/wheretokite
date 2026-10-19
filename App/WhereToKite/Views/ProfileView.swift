@@ -83,6 +83,7 @@ struct OnboardingView: View {
 struct MeView: View {
     @Environment(ProfileStore.self) private var profiles
     @Environment(PlanStore.self) private var plan
+    @State private var showReport = false
 
     var body: some View {
         NavigationStack {
@@ -119,6 +120,14 @@ struct MeView: View {
                     }
                     .buttonStyle(.plain)
                     .accessibilityIdentifier("about")
+                    Button { showReport = true } label: {
+                        Label("Report an issue or a missing spot", systemImage: "flag")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(14)
+                            .card()
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityIdentifier("meReportIssue")
                     Text("Changes are saved automatically and used for your next search.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -128,6 +137,7 @@ struct MeView: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("Me")
+            .sheet(isPresented: $showReport) { ReportIssueSheet() }
         }
     }
 }

@@ -3,6 +3,7 @@
 import { handleCatalog } from "./catalog";
 import { type Endpoint, handleForecast } from "./forecast";
 import { handleIngest, type IngestKind } from "./ingest";
+import { buildIssue, fileIssue } from "./github";
 import { ApiError, apiError, type Cache, json, TieredCache } from "./util";
 
 export interface Env {
@@ -12,6 +13,10 @@ export interface Env {
   CATALOG_URL?: string;
   /** Optional Rate Limiting binding for the POST intake endpoints. */
   INGEST_LIMITER?: { limit(options: { key: string }): Promise<{ success: boolean }> };
+  /** Fine-grained GitHub token (Issues: read & write) to file reports as issues (secret). */
+  GITHUB_TOKEN?: string;
+  /** "owner/repo" for report issues (default benjcvd/wheretokite). */
+  GITHUB_REPO?: string;
 }
 
 export interface Deps {
@@ -56,7 +61,13 @@ export async function handle(request: Request, env: Env, deps: Deps): Promise<Re
         const { success } = await env.INGEST_LIMITER.limit({ key: `${kind}:${ip}` });
         if (!success) return apiError(429, "Too many requests");
       }
-      return await handleIngest(request, kind);
+      const after = kind === "report"
+        ? async (payload: Record<string, unknown>, country?: string) => {
+            const url = await fileIssue(buildIssue(payload, country), env, deps.fetch);
+            if (url) console.log(JSON.stringify({ kind: "github_issue", url }));
+          }
+        : undefined;
+      return await handleIngest(request, kind, console.log, after);
     }
     if (path === "/v1/catalog") {
       if (request.method !== "GET" && request.method !== "HEAD") return methodNotAllowed("GET, HEAD");

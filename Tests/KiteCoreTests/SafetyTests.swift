@@ -31,7 +31,7 @@ final class SafetyTests: XCTestCase {
         let hours = [hour(10, code: 95), hour(11, code: 80, cape: 2000), hour(12), hour(16, light: false), hour(17, rain: 2),
                      hour(18, code: 1, cape: 3000)]
         let out = Recommender.applySafety(s, to: hours, day: "2026-07-14")
-        XCTAssertEqual(out.map(\.score), [0, 0, 0, 0, 0.9, 0.9])
+        XCTAssertEqual(out.map(\.score), [0, 0, 0, 0, 0.9 * 0.85, 0.9])
         // High CAPE on a dry, clear afternoon (Barcelona in July): a warning, not a ban.
         XCTAssertEqual(out[5].flags, ["unstable air"])
         XCTAssertEqual(out[0].flags.first, "thunderstorm risk")
@@ -41,6 +41,15 @@ final class SafetyTests: XCTestCase {
         XCTAssertEqual(out[4].flags, ["rain"])
         // Outside the ban season the same hour is fine.
         XCTAssertEqual(Recommender.applySafety(s, to: [hour(12)], day: "2026-10-01")[0].score, 0.9)
+    }
+
+    func testRainPenalty() throws {
+        let s = try spot()
+        let out = Recommender.applySafety(s, to: [hour(13, rain: 1), hour(14, rain: 3), hour(15, rain: 6)], day: "2026-10-01")
+        XCTAssertEqual(out[0].score, 0.9, accuracy: 1e-9)          // light rain: flag only
+        XCTAssertEqual(out[1].score, 0.9 * 0.85, accuracy: 1e-9)
+        XCTAssertEqual(out[2].score, 0.9 * 0.6, accuracy: 1e-9)
+        XCTAssertEqual(out.map { $0.flags.first }, ["rain", "rain", "heavy rain"])
     }
 
     func testCustomHours() {

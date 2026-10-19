@@ -34,7 +34,7 @@ struct SpotDetailView: View {
                     Text(notes).font(.footnote).foregroundStyle(.secondary)
                 }
                 if rec.spot.source != UserSpotStore.source {
-                    Button("Report a problem with this spot", systemImage: "flag") { showReport = true }
+                    Button("Report an issue with this spot", systemImage: "flag") { showReport = true }
                         .font(.footnote)
                         .accessibilityIdentifier("reportSpot")
                 }
@@ -53,7 +53,7 @@ struct SpotDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom) { directionsButton }
         .sheet(isPresented: $showScoreInfo) { ScoreInfoSheet(rec: rec) }
-        .sheet(isPresented: $showReport) { ReportSpotSheet(spot: rec.spot) }
+        .sheet(isPresented: $showReport) { ReportIssueSheet(spot: rec.spot) }
         .onAppear { feedback.viewed(rec, day: day.id) }
         .toolbar(.hidden, for: .tabBar)
     }

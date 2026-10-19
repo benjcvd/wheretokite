@@ -145,3 +145,15 @@ Checks:
   `catalog_error`, `internal_error`).
 - For a live stream, run `npx wrangler tail` (or `npm run logs`). Add `--format json` for
   output a script can read.
+
+
+## App reports as GitHub issues
+
+"Report an issue" in the app posts to `/v1/report`. With a `GITHUB_TOKEN` secret the Worker
+files each report as an issue on `GITHUB_REPO` (default `benjcvd/wheretokite`), labelled
+`report` + `spot` / `missing spot` / `app`, with the spot id and which `tools/spots/` file to
+edit. Mentions and links in the text are neutralised. Without the token, reports are only logged.
+
+1. GitHub → Settings → Developer settings → Fine-grained tokens → Generate: repository access
+   "Only select repositories" → `wheretokite`; permissions → Repository → Issues: Read and write.
+2. `npx wrangler secret put GITHUB_TOKEN` and paste it.

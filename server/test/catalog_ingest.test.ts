@@ -118,3 +118,40 @@ describe("intake endpoints", () => {
     expect(res.status).toBe(429);
   });
 });
+
+describe("reports as GitHub issues", () => {
+  it("builds a safe issue from a spot report", async () => {
+    const { buildIssue, catalogFileHint, sanitize } = await import("../src/github");
+    const d = buildIssue({ kind: "Wrong ban or dates", spotId: "fr-wissant", spotName: "Wissant",
+                           message: "Allowed all year @someone http://spam.example", appVersion: "1.0 (3)" }, "FR");
+    expect(d.title).toBe("Wrong ban or dates: Wissant");
+    expect(d.body).toContain("`fr-wissant`");
+    expect(d.body).toContain("tools/spots/FR*.csv");
+    expect(d.body).not.toContain("@someone");
+    expect(d.body).not.toContain("http://spam");
+    expect(d.labels).toEqual(["report", "spot"]);
+    expect(catalogFileHint("bad")).toBeUndefined();
+    expect(sanitize("a@b")).toBe("a@​b");
+    const m = buildIssue({ kind: "A spot is missing", missingSpot: "Sant Martí, Barcelona" });
+    expect(m.title).toBe("A spot is missing: Sant Martí, Barcelona");
+    expect(m.labels).toEqual(["report", "missing spot"]);
+  });
+
+  it("files the issue when a token is set, and still answers 204 without one", async () => {
+    const gh = vi.fn(async (_url: RequestInfo | URL, _init?: RequestInit) =>
+      new Response(JSON.stringify({ html_url: "https://github.com/x/y/issues/1" }), { status: 201 }));
+    const deps = makeDeps(gh as unknown as typeof fetch);
+    const log = vi.spyOn(console, "log").mockImplementation(() => {});
+    const body = JSON.stringify({ kind: "Wrong position", spotId: "es-castelldefels", spotName: "Castelldefels" });
+    const req = () => new Request(`${ORIGIN}/v1/report`, { method: "POST", body, headers: { "Content-Type": "application/json" } });
+    expect((await handle(req(), {}, deps)).status).toBe(204);
+    expect(gh).not.toHaveBeenCalled();                        // no token: log only
+    expect((await handle(req(), { GITHUB_TOKEN: "t" }, deps)).status).toBe(204);
+    expect(gh).toHaveBeenCalledTimes(1);
+    const [url, init] = gh.mock.calls[0];
+    expect(String(url)).toBe("https://api.github.com/repos/benjcvd/wheretokite/issues");
+    expect((init?.headers as Record<string, string>).Authorization).toBe("Bearer t");
+    expect(JSON.parse(init?.body as string).title).toBe("Wrong position: Castelldefels");
+    log.mockRestore();
+  });
+});

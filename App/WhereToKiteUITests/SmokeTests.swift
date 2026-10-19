@@ -216,6 +216,12 @@ final class SmokeTests: XCTestCase {
         app.buttons["about"].tap()
         XCTAssertTrue(app.navigationBars["About"].waitForExistence(timeout: 3))
         snapshot(app, "about")
+        app.navigationBars.buttons.firstMatch.tap()
+        app.buttons["meReportIssue"].tap()
+        XCTAssertTrue(app.navigationBars["Report an issue"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.descendants(matching: .any)["missingSpotName"].exists)   // default: a missing spot
+        snapshot(app, "report-issue")
+        app.buttons["Cancel"].tap()
     }
 
     @MainActor

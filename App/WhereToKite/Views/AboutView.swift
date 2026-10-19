@@ -47,6 +47,7 @@ struct DisclaimerSheet: View {
 /// Me tab → About: safety terms, data sources and licences, privacy, contact, version.
 struct AboutView: View {
     @State private var catalog: (count: Int, date: String)?
+    @State private var showReport = false
 
     var body: some View {
         List {
@@ -76,11 +77,15 @@ struct AboutView: View {
             }
 
             Section {
-                link("Report a problem or suggest a spot", AppConfig.issuesURL.absoluteString)
+                Button { showReport = true } label: {
+                    Label("Report an issue or a missing spot", systemImage: "flag")
+                }
+                .accessibilityIdentifier("reportIssue")
                 LabeledContent("Version", value: AppConfig.appVersion)
             }
         }
         .navigationTitle("About")
+        .sheet(isPresented: $showReport) { ReportIssueSheet() }
         .task {
             if catalog == nil, let c = CatalogStore.current() {
                 catalog = (c.spots.count, String((c.generatedAt ?? "").prefix(10)))
@@ -99,18 +104,42 @@ struct AboutView: View {
     }
 }
 
-/// Spot detail → "Report a problem with this spot": to the server, or a prefilled GitHub issue.
-struct ReportSpotSheet: View {
-    let spot: Spot
+/// "Report an issue": from a spot (prefilled) or from Me / About. Sent to the server, which
+/// files it as a GitHub issue; without a server, opens a prefilled GitHub issue.
+struct ReportIssueSheet: View {
+    /// The spot the report is about, when opened from a spot.
+    var spot: Spot? = nil
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
+    @State private var kind: Kind
     @State private var message = ""
+    @State private var missingName = ""
     @State private var sent = false
     @State private var sending = false
 
-    private let problems = ["Wrong position", "Wrong beach direction", "Kiting banned / restricted here",
-                            "Wrong ban or dates", "Not a known kite spot", "Other"]
-    @State private var problem = "Wrong position"
+    enum Kind: String, CaseIterable, Identifiable {
+        case missingSpot = "A spot is missing"
+        case wrongPosition = "Wrong position"
+        case wrongDirection = "Wrong beach direction"
+        case wrongBan = "Wrong ban or dates"
+        case banned = "Kiting is banned here"
+        case notKnown = "Not a known kite spot"
+        case appProblem = "App problem"
+        case other = "Something else"
+        var id: String { rawValue }
+        var isAboutASpot: Bool { ![.missingSpot, .appProblem, .other].contains(self) }
+    }
+
+    init(spot: Spot? = nil) {
+        self.spot = spot
+        _kind = State(initialValue: spot == nil ? .missingSpot : .wrongPosition)
+    }
+
+    private var kinds: [Kind] { spot == nil ? Kind.allCases.filter { !$0.isAboutASpot } : Kind.allCases }
+
+    private var canSend: Bool {
+        !sending && (kind != .missingSpot || !missingName.trimmingCharacters(in: .whitespaces).isEmpty)
+    }
 
     var body: some View {
         NavigationStack {
@@ -120,46 +149,66 @@ struct ReportSpotSheet: View {
                         .foregroundStyle(.green)
                 } else {
                     Section {
-                        Picker("Problem", selection: $problem) {
-                            ForEach(problems, id: \.self) { Text($0) }
+                        Picker("Issue", selection: $kind) {
+                            ForEach(kinds) { Text($0.rawValue).tag($0) }
                         }
-                        TextField("Details (optional): where kiters really launch, the rules…",
-                                  text: $message, axis: .vertical)
+                        .accessibilityIdentifier("reportKind")
+                        if kind == .missingSpot {
+                            TextField("Spot name and where (town, beach)", text: $missingName)
+                                .accessibilityIdentifier("missingSpotName")
+                        }
+                        TextField(placeholder, text: $message, axis: .vertical)
                             .lineLimit(3...8)
+                            .accessibilityIdentifier("reportMessage")
                     } header: {
-                        Text(spot.name)
+                        Text(spot.map { $0.name } ?? "What's wrong?")
                     } footer: {
                         Text("Sent without your name or position.")
                     }
                 }
             }
-            .navigationTitle("Report a problem")
+            .navigationTitle("Report an issue")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(sent ? "Done" : "Cancel") { dismiss() } }
                 if !sent {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("Send") { Task { await send() } }.disabled(sending)
+                        Button("Send") { Task { await send() } }.disabled(!canSend)
                     }
                 }
             }
         }
     }
 
+    private var placeholder: String {
+        switch kind {
+        case .missingSpot: "Details (optional): launch, wind directions, rules…"
+        case .wrongBan, .banned: "Details (optional): the real dates and hours, the rule or sign…"
+        case .appProblem: "What happened? What did you expect?"
+        default: "Details (optional): where kiters really launch, the rules…"
+        }
+    }
+
     private func send() async {
         sending = true
         defer { sending = false }
-        let body: [String: Any] = ["spotId": spot.id, "spotName": spot.name, "problem": problem,
-                                   "message": String(message.prefix(2000)), "appVersion": AppConfig.appVersion]
+        var body: [String: Any] = ["kind": kind.rawValue, "message": String(message.prefix(2000)),
+                                   "appVersion": AppConfig.appVersion]
+        if let spot, kind.isAboutASpot || kind == .other {
+            body["spotId"] = spot.id
+            body["spotName"] = spot.name
+        }
+        if kind == .missingSpot { body["missingSpot"] = String(missingName.prefix(200)) }
         if await ServerClient.post("v1/report", body) {
             withAnimation { sent = true }
             return
         }
         // No server: a prefilled GitHub issue (the catalogue is open data on GitHub).
+        let subject = (body["spotName"] as? String) ?? (body["missingSpot"] as? String) ?? "App"
         var c = URLComponents(url: AppConfig.issuesURL, resolvingAgainstBaseURL: false)!
         c.queryItems = [
-            .init(name: "title", value: "Spot \(spot.id): \(problem)"),
-            .init(name: "body", value: "Spot: \(spot.name) (\(spot.id))\nProblem: \(problem)\n\n\(message)\n\nApp \(AppConfig.appVersion)"),
+            .init(name: "title", value: "\(kind.rawValue): \(subject)"),
+            .init(name: "body", value: body.map { "\($0.key): \($0.value)" }.sorted().joined(separator: "\n")),
         ]
         if let url = c.url { openURL(url) }
         dismiss()

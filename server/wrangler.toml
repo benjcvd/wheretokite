@@ -10,7 +10,9 @@ head_sampling_rate = 1
 
 [vars]
 CATALOG_URL = "https://raw.githubusercontent.com/benjcvd/wheretokite/main/Data/spots.json"
+GITHUB_REPO = "benjcvd/wheretokite"
 # OPEN_METEO_API_KEY is a secret: npx wrangler secret put OPEN_METEO_API_KEY
+# GITHUB_TOKEN (files app reports as issues) is a secret: npx wrangler secret put GITHUB_TOKEN
 
 # Per-IP limit on POST /v1/diagnostics, /v1/feedback, /v1/report: 20 per minute.
 # namespace_id is any integer you pick, unique within your Cloudflare account.
