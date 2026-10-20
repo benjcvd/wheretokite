@@ -70,12 +70,31 @@ export interface Cache {
  */
 export class TieredCache implements Cache {
   private memory = new Map<string, CachedEntry & { expiresAt: number }>();
+  /** Edge (Cache API) operations left for the current request; Infinity = no limit. */
+  private edgeBudget = Infinity;
 
   constructor(
     private edge: globalThis.Cache | undefined,
     private maxEntries = 4000,
     private now: () => number = Date.now,
   ) {}
+
+  /**
+   * A view for one request that shares the memory tier but makes at most `edgeOps` Cache API
+   * calls: each one counts as a subrequest, and Workers allow 50 per request on the free plan
+   * (1000 paid). Past the budget, lookups are misses and stores stay in memory.
+   */
+  forRequest(edgeOps: number): TieredCache {
+    const view = Object.create(this) as TieredCache;
+    view.edgeBudget = edgeOps;
+    return view;
+  }
+
+  private takeEdge(): globalThis.Cache | undefined {
+    if (!this.edge || this.edgeBudget <= 0) return undefined;
+    this.edgeBudget -= 1;
+    return this.edge;
+  }
 
   async get(key: string): Promise<CachedEntry | undefined> {
     const m = this.memory.get(key);
@@ -86,8 +105,9 @@ export class TieredCache implements Cache {
         return m;
       }
     }
-    if (!this.edge) return undefined;
-    const res = await this.edge.match(new Request(key));
+    const edge = this.takeEdge();
+    if (!edge) return undefined;
+    const res = await edge.match(new Request(key));
     if (!res) return undefined;
     const fetchedAt = Number(res.headers.get("x-fetched-at"));
     const ttl = Number(res.headers.get("x-ttl"));
@@ -102,7 +122,8 @@ export class TieredCache implements Cache {
 
   async put(key: string, entry: CachedEntry, ttlSeconds: number): Promise<void> {
     this.remember(key, entry, ttlSeconds);
-    if (!this.edge) return;
+    const edge = this.takeEdge();
+    if (!edge) return;
     const headers: Record<string, string> = {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": `public, max-age=${ttlSeconds}`,
@@ -110,7 +131,7 @@ export class TieredCache implements Cache {
       "X-Ttl": String(ttlSeconds),
     };
     if (entry.etag) headers.ETag = entry.etag;
-    await this.edge.put(new Request(key), new Response(entry.body, { headers }));
+    await edge.put(new Request(key), new Response(entry.body, { headers }));
   }
 
   private remember(key: string, entry: CachedEntry, ttlSeconds: number) {

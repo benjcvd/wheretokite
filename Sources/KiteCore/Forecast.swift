@@ -18,7 +18,7 @@ extension ForecastProvider {
     }
 }
 
-public enum ForecastError: Error, CustomStringConvertible {
+public enum ForecastError: LocalizedError, CustomStringConvertible {
     case badResponse(String)
     /// The day is not "yyyy-MM-dd".
     case invalidDay(String)
@@ -27,6 +27,14 @@ public enum ForecastError: Error, CustomStringConvertible {
         switch self {
         case .badResponse(let msg): "Forecast error: \(msg)"
         case .invalidDay(let day): "Forecast error: invalid day \(day.debugDescription)"
+        }
+    }
+
+    /// What the app shows (the raw server reply stays in `description`, for logs).
+    public var errorDescription: String? {
+        switch self {
+        case .badResponse: "The forecast service didn't answer properly. Try again in a minute."
+        case .invalidDay: "That day can't be forecast."
         }
     }
 }

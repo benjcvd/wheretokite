@@ -226,6 +226,7 @@ final class SearchModel {
             // Superseded by a newer search, or the view went away.
         } catch {
             if Task.isCancelled { return }   // e.g. URLError.cancelled from a superseded search
+            appLog.error("search failed: \(String(describing: error), privacy: .public)")
             self.error = error.localizedDescription
             progress = nil
         }

@@ -269,3 +269,22 @@ describe("handleForecast", () => {
     expect(await res.json()).toEqual({ ok: true });
   });
 });
+
+describe("edge cache budget", () => {
+  it("stops calling the Cache API past the per-request budget, memory still shared", async () => {
+    const { TieredCache } = await import("../src/util");
+    let calls = 0;
+    const edge = {
+      match: async () => { calls++; return undefined; },
+      put: async () => { calls++; },
+    } as unknown as globalThis.Cache;
+    const shared = new TieredCache(edge);
+    const view = shared.forRequest(3);
+    for (let i = 0; i < 10; i++) await view.get(`https://x/k${i}`);
+    expect(calls).toBe(3);
+    await view.put("https://x/k0", { body: "x", fetchedAt: Date.now() }, 60);
+    expect(calls).toBe(3);                                  // over budget: memory only
+    expect((await shared.forRequest(0).get("https://x/k0"))?.body).toBe("x");   // shared memory tier
+    expect(calls).toBe(3);
+  });
+});

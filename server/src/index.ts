@@ -85,14 +85,20 @@ export async function handle(request: Request, env: Env, deps: Deps): Promise<Re
   }
 }
 
+/** Cache API calls allowed per request (subrequest limit 50 on the free plan). */
+export const EDGE_OPS_PER_REQUEST = 40;
+
 // One per isolate, so the in-memory tier is shared by all requests the isolate serves.
 let cache: TieredCache | undefined;
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     cache ??= new TieredCache(caches.default);
+    // The Cache API does nothing on *.workers.dev, and each call costs one of the request's
+    // subrequests (50 on the free plan): keep room for the upstream fetches (<= 4).
+    const onWorkersDev = new URL(request.url).hostname.endsWith(".workers.dev");
     return handle(request, env, {
-      cache,
+      cache: cache.forRequest(onWorkersDev ? 0 : EDGE_OPS_PER_REQUEST),
       fetch: (input, init) => fetch(input, init),
       now: Date.now,
       waitUntil: (p) => ctx.waitUntil(p.catch((e) => console.error(JSON.stringify({ kind: "cache_put_error", error: String(e) })))),
