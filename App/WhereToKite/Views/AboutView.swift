@@ -70,7 +70,7 @@ struct AboutView: View {
             }
 
             Section {
-                Text("No account and no tracking. Your profile and your own spots stay on this phone. To get forecasts, the app sends spot positions and the rough area of your start point (about 10 km) to the forecast service, and your start point to Apple Maps for drive times. If you answer \u{201C}How was it?\u{201D}, the answer is sent without anything that identifies you. Crash reports from iOS are sent anonymously to help fix bugs.")
+                Text("No account and no tracking. Your profile and your own spots stay on this phone. To get forecasts, the app sends spot positions and the rough area of your start point (about 10 km) to the forecast service, and your start point to Apple Maps for drive times. If you answer \u{201C}How was it?\u{201D}, the answer is sent without anything that identifies you. Crash reports from iOS are sent anonymously to help fix bugs. Reports you send are published on GitHub, without your name or position.")
                     .font(.subheadline)
             } header: {
                 Text("Privacy")
@@ -163,7 +163,7 @@ struct ReportIssueSheet: View {
                     } header: {
                         Text(spot.map { $0.name } ?? "What's wrong?")
                     } footer: {
-                        Text("Sent without your name or position.")
+                        Text("Sent without your name or position, and published as a public issue on GitHub so fixes are traceable. Don't include personal details.")
                     }
                 }
             }
