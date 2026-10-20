@@ -4,24 +4,19 @@ The single list of what's pending. Spot-by-spot questions live in `tools/spots/T
 the full product review (with reasons) in `docs/BLIND_SPOTS.md`. Last updated 2026-10-20.
 
 ## Waiting on Ben
-- [ ] Say "go" to publish the OSM cache snapshot (release `osm-cache`), so GitHub builds and
-      triage stop failing on a cold cache. Then Claude re-runs the catalogue build and issue #1.
+- [ ] Name and contact email for the privacy policy (GDPR "controller"): set `OPERATOR_NAME`
+      and `CONTACT_EMAIL` in `server/wrangler.toml`, then redeploy.
 - [ ] Spot decisions: Catalan spots (Nova Mar Bella, Torredembarra, La Pineda, Empuriabrava,
       L'Estartit, Malgrat); Garda (Campione vs Malcesine); inferred ban dates (Bolonia,
       Les Arbousiers, Gwithian); the rest of `tools/spots/TO_CONFIRM.md`.
 - [ ] Buy a domain (~€10/yr) and add it to Cloudflare: the shared forecast cache needs it.
 - [ ] Apple Developer Program (€99/yr), if not done yet.
 
-## Running, to verify
-- [ ] Catalogue build on GitHub (`catalog-build.yml`) succeeds with the seeded cache, and the
-      Apple Maps direction check works on GitHub's macOS machines.
-- [ ] Report triage end to end: test issue #1 (false claim about Los Lances) → closed with
-      "no change".
-
 ## Before TestFlight
-- [ ] Version 1.0 + automatic build number; `ITSAppUsesNonExemptEncryption = NO`.
-- [ ] Privacy policy page (Cloudflare, Open-Meteo, Apple, GitHub for reports; Cloudflare logs
-      kept a few days; deleting a report on request) and App Privacy answers to match.
+- [x] Version 1.0; `ITSAppUsesNonExemptEncryption = NO`. Build number: tick "Automatically
+      manage version and build number" when uploading from Xcode.
+- [x] Privacy policy and support pages: `/privacy`, `/support` on the server (need the contact above).
+- [ ] App Privacy answers in App Store Connect, matching `/privacy`.
 - [ ] App Store text and screenshots.
 - [ ] Archive, upload, invite testers.
 
@@ -32,6 +27,8 @@ the full product review (with reasons) in `docs/BLIND_SPOTS.md`. Last updated 20
       `npx wrangler secret put OPEN_METEO_API_KEY`.
 - [ ] Web-verified pass on the wave-2 countries (needs a fresh Claude session: web search limit).
 - [ ] Refresh the `osm-cache` release after big catalogue changes.
+- [ ] Los Lances pin sits on a bar ("Waves", 202 m from the shore): point `locate` at the beach
+      (found by the first triage; direction is fine).
 
 ## Before Pro goes on sale
 - [ ] StoreKit 2 subscription, restore purchases, Family Sharing, intro offer; `PlanStore.mode`
@@ -59,7 +56,8 @@ the full product review (with reasons) in `docs/BLIND_SPOTS.md`. Last updated 20
 - Audio Graph for the wind chart (accessibility).
 
 ## Done recently
-Server live (Cloudflare Worker, forecasts + catalogue + reports), app connected; reports →
+GitHub automation verified: catalogue build (seeded OSM cache, Apple check works on GitHub)
+and report triage (test issue #1 checked and closed with sources). Server live (Cloudflare Worker, forecasts + catalogue + reports), app connected; reports →
 GitHub issues → Claude triage → PR for review → catalogue rebuilt on merge; rain penalty;
 "Report an issue" with categories (public-issue warning); next good window is Pro;
 disclaimer, About, bans, storms, evening/custom hours, "How was it?", crash reports.

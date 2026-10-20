@@ -4,9 +4,10 @@ import { handleCatalog } from "./catalog";
 import { type Endpoint, handleForecast } from "./forecast";
 import { handleIngest, type IngestKind } from "./ingest";
 import { buildIssue, fileIssue } from "./github";
+import { type PageEnv, privacyPage, supportPage } from "./pages";
 import { ApiError, apiError, type Cache, json, TieredCache } from "./util";
 
-export interface Env {
+export interface Env extends PageEnv {
   /** Paid Open-Meteo key (secret). Unset = free endpoints. */
   OPEN_METEO_API_KEY?: string;
   /** Override the spot catalogue source. */
@@ -73,6 +74,8 @@ export async function handle(request: Request, env: Env, deps: Deps): Promise<Re
       if (request.method !== "GET" && request.method !== "HEAD") return methodNotAllowed("GET, HEAD");
       return await handleCatalog(request, { ...deps, catalogUrl: env.CATALOG_URL });
     }
+    if (path === "/privacy") return privacyPage(env);
+    if (path === "/support" || path === "/") return supportPage(env);
     if (path === "/v1/health") return json({ ok: true }, 200, { "Cache-Control": "no-store" });
     return apiError(404, `Unknown endpoint ${path}`);
   } catch (e) {

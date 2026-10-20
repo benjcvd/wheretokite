@@ -11,6 +11,9 @@ head_sampling_rate = 1
 [vars]
 CATALOG_URL = "https://raw.githubusercontent.com/benjcvd/wheretokite/main/Data/spots.json"
 GITHUB_REPO = "benjcvd/wheretokite"
+# Shown on /privacy and /support (the App Store links to both).
+# OPERATOR_NAME = "Your Name"
+# CONTACT_EMAIL = "you@example.com"
 # OPEN_METEO_API_KEY is a secret: npx wrangler secret put OPEN_METEO_API_KEY
 # GITHUB_TOKEN (files app reports as issues) is a secret: npx wrangler secret put GITHUB_TOKEN
 
