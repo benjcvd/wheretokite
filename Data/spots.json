@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T09:35:53Z",
+  "generatedAt": "2026-10-20T21:29:44Z",
   "region": "europe",
   "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); spot selection curated by WhereToKite",
   "spots": [
@@ -6761,7 +6761,7 @@
       "orientationSource": "osm-water",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Shallow water by the Angelochori lagoon west of the airport; flat, good for learning. Works with S and N winds. Shoreline bends here (296° locally vs 186° over ±1.5 km).",
+      "notes": "Shallow water by the Angelochori lagoon west of the airport; flat, good for learning. Works with S and N winds. Shoreline bends here (296° locally vs 176° over ±1.5 km).",
       "country": "GR",
       "region": "Thessaloniki",
       "waterType": "lagoon",
@@ -7787,7 +7787,7 @@
       "orientationSource": "apple-maps",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Kite village on the Curonian Lagoon: shallow flat water, ideal for learning; kite schools on site. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (3° locally vs 43° over ±1.5 km).",
+      "notes": "Kite village on the Curonian Lagoon: shallow flat water, ideal for learning; kite schools on site. Irregular shoreline near the spot; orientation less certain.",
       "country": "LT",
       "region": "Klaipėda",
       "waterType": "lagoon",
