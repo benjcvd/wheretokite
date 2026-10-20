@@ -175,3 +175,8 @@ label to an issue. It stops at 20 a day. Claude only gets read access plus edits
 
 Setup: run `claude setup-token` (uses your Claude subscription), then
 `gh secret set CLAUDE_CODE_OAUTH_TOKEN` and paste the token.
+
+GitHub builds start from the `osm-cache` release (a snapshot of `tools/.osm_cache`), because
+public OSM servers refuse hundreds of queries from GitHub's machines. Refresh it after big
+catalogue changes:
+`tar -czf osm-cache.tar.gz -C tools .osm_cache && gh release upload osm-cache osm-cache.tar.gz --clobber`

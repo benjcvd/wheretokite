@@ -28,6 +28,14 @@ jobs:
           path: tools/.osm_cache
           key: osm-${{ github.run_id }}
           restore-keys: osm-
+      - name: Seed the map cache
+        run: |
+          # A cold cache means hundreds of OSM queries, which public servers refuse to GitHub
+          # runners. The osm-cache release holds a snapshot (refresh: see server/README.md).
+          if [ ! -d tools/.osm_cache ] || [ -z "$(ls -A tools/.osm_cache)" ]; then
+            curl -fsSL https://github.com/${{ github.repository }}/releases/download/osm-cache/osm-cache.tar.gz \
+              | tar -xz -C tools && echo "seeded: $(ls tools/.osm_cache | wc -l) entries" || echo "no seed available"
+          fi
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

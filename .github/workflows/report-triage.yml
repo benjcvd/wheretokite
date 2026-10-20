@@ -76,8 +76,18 @@ jobs:
           path: tools/.osm_cache
           key: osm-${{ github.run_id }}
           restore-keys: osm-
+      - name: Seed the map cache
+        if: steps.cap.outputs.skip != 'true'
+        run: |
+          # A cold cache means hundreds of OSM queries, which public servers refuse to GitHub
+          # runners. The osm-cache release holds a snapshot (refresh: see server/README.md).
+          if [ ! -d tools/.osm_cache ] || [ -z "$(ls -A tools/.osm_cache)" ]; then
+            curl -fsSL https://github.com/${{ github.repository }}/releases/download/osm-cache/osm-cache.tar.gz \
+              | tar -xz -C tools && echo "seeded: $(ls tools/.osm_cache | wc -l) entries" || echo "no seed available"
+          fi
 
       - name: Claude
+        id: claude
         if: steps.cap.outputs.skip != 'true'
         uses: anthropics/claude-code-action@v1
         with:
@@ -92,14 +102,31 @@ jobs:
             --allowedTools "Read,Glob,Grep,WebSearch,WebFetch,Edit(tools/spots/**),Write(tools/spots/**),Write(.triage/**),Bash(python3 tools/build_spots.py:*),Bash(git diff:*),Bash(git status:*)"
             --disallowedTools "Read(.git/**),Edit(tools/*.py),Edit(tools/*.swift)"
 
+      # The full transcript (tool calls, refusals), for when a triage goes wrong.
+      - name: Keep the transcript
+        if: always() && steps.claude.outputs.execution_file != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: triage-transcript-${{ env.ISSUE }}
+          path: ${{ steps.claude.outputs.execution_file }}
+          retention-days: 14
+
       - name: Open the PR or answer the issue
         if: steps.cap.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
         run: |
           result=.triage/result.md
           if [ ! -f "$result" ]; then
-            decision=needs-human; title=""; echo "Triage produced no result; please look at the run." > .triage/body.md
+            decision=needs-human; title=""
+            {
+              echo "Triage didn't write a result. Claude's last message:"
+              echo
+              jq -r '[.[] | select(.type == "result")] | last | .result // "(none)"' "$EXECUTION_FILE" 2>/dev/null | sed 's/^/> /'
+              echo
+              echo "Transcript: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            } > .triage/body.md
           else
             decision=$(sed -n 's/^DECISION: *//p' "$result" | head -1 | tr -d '[:space:]')
             title=$(sed -n 's/^TITLE: *//p' "$result" | head -1)
