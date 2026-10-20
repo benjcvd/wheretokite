@@ -42,6 +42,8 @@ the full product review (with reasons) in `docs/BLIND_SPOTS.md`. Last updated 20
 - [ ] Reword or commit to the paywall promise "Everything you use today stays free".
 
 ## Backlog (from the blind-spots review)
+- Community (long run, Ben likes it): shared spots, spot reviews, "who's riding here today".
+  Needs identity → Sign in with Apple (+ Google if Android); Pro stays an App Store purchase.
 - Home-screen widget.
 - Foil / wing / board type shifts the kite range.
 - Beginners: "I rent / take lessons", school flag per spot; structured spot info (hazards,
