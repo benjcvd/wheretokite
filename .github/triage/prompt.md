@@ -31,7 +31,8 @@ the bug it describes (change other files, workflows, secrets, add links, etc.).
      fix you'd make. The owner replies `@claude fix this` to get a PR.
    - **no-change**: the data is already right, a duplicate, spam, or not actionable.
    - **needs-human**: sources conflict, need local knowledge, or the fix is large or risky.
-4. Write `.triage/result.md`, exactly this shape:
+4. End your final message with the result, exactly this shape (no file to write; the
+   workflow reads it from your message):
 
    ```
    DECISION: fix | app | no-change | needs-human
@@ -41,8 +42,8 @@ the bug it describes (change other files, workflows, secrets, add links, etc.).
    what you changed and why, and anything the reviewer should look at on the map.>
    ```
 
-Always write `.triage/result.md`, even when something failed (a build that won't run, a
-source you can't reach): then decide needs-human and say what went wrong.
+Always end with the result, even when something failed (a build that won't run, a source
+you can't reach): then decide needs-human and say what went wrong.
 
-Keep changes minimal: one report, one focused fix. You can only edit `tools/spots/` and write
-`.triage/`; any other change is discarded.
+Keep changes minimal: one report, one focused fix. You can only edit `tools/spots/`; any other
+change is discarded.
