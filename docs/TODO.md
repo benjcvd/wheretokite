@@ -39,6 +39,14 @@ the full product review (with reasons) in `docs/BLIND_SPOTS.md`. Last updated 20
 - [ ] Reword or commit to the paywall promise "Everything you use today stays free".
 
 ## Backlog (from the blind-spots review)
+- Define what a spot is: two launches a few km apart can work in different winds. Sub-spots
+  (one parent spot, several launches with their own orientation, sector, tide and rules)
+  instead of "already covered" at < 5 km.
+- Spot screen: a live wind map zoomed on the spot (OpenWeather / Windy embed), and nearby
+  webcams (like Windy). Check licences and costs of each provider.
+- Competitor analysis: Kite Croissant (strengths and weaknesses vs WhereToKite), then
+  Windy / Windguru.
+- Benchmark the catalogue against Windy / Windguru by region (benchmark only, never copied).
 - Community (long run, Ben likes it): shared spots, spot reviews, "who's riding here today".
   Needs identity → Sign in with Apple (+ Google if Android); Pro stays an App Store purchase.
 - Home-screen widget.
