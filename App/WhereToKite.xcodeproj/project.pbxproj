@@ -541,6 +541,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = WhereToKite;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				DEVELOPMENT_TEAM = YMM4B4C582;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to find kite spots within driving distance.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -568,6 +569,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = WhereToKite;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				DEVELOPMENT_TEAM = YMM4B4C582;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to find kite spots within driving distance.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
