@@ -11,9 +11,12 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
 - Run at most ~2 subagents at a time (usage limits).
 
 ## Hard rules
-- Never commit the local signing change in `App/WhereToKite.xcodeproj/project.pbxproj`
-  (`DEVELOPMENT_TEAM = YMM4B4C582`). After `xcodegen`, re-add it locally only.
-- `.atlas/` is not ours (an untracked board file): leave it alone.
+- Signing: since 2026-10-22, Ben commits `DEVELOPMENT_TEAM = YMM4B4C582` in
+  `App/WhereToKite.xcodeproj/project.pbxproj`. It isn't in `App/project.yml`, so `xcodegen`
+  drops it: check it's still there after a regeneration.
+- `.atlas/` (board, stream notes) is Atlas working state, gitignored. Keep the board up to date
+  as described in `CLAUDE.md`.
+- Project overview, layout, commands and rules: `CLAUDE.md`.
 - Competitor data (Windy, Windguru, Kite Croissant…): look at it like a visitor, as a benchmark
   only. Never scrape, never read their internal APIs or page code, never copy positions or
   lists into the catalogue. Every spot is located from OpenStreetMap through our pipeline.
