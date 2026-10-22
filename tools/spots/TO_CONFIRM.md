@@ -81,6 +81,9 @@ second pass with web research is worth doing.
 - Exmouth: Duck Pond (estuary) side faces NW, seafront SW — correct?
 - Calshot: faces E across Southampton Water?
 - Achill – Keel Lough side; Lady's Island Lake direction (no hint).
+- Ireland coverage check (2026-10-22): Windy's map shows no kite spots in Ireland, so no
+  benchmark there. Independent sources agree with our list. To add when OSM is reachable:
+  Ballynamona (East Cork, E winds; ballycotton.ie + unplug-kitesurf), probably as pro.
 - Pins from village / bay names: Walney Island, Kinmel Bay, Fraserburgh, Machrihanish,
   Balephuil, Ballyholme, Cranfield, Mulranny, Portnoo (Narin), Culdaff.
 
