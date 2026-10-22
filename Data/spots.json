@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T21:29:44Z",
+  "generatedAt": "2026-10-22T07:40:05Z",
   "region": "europe",
   "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); spot selection curated by WhereToKite",
   "spots": [
@@ -2140,6 +2140,42 @@
       "island": "r6803636"
     },
     {
+      "id": "es-mallorca-platja-d-alcudia",
+      "name": "Mallorca – Platja d'Alcúdia",
+      "latitude": 39.83537,
+      "longitude": 3.12573,
+      "seaFacingDeg": 127.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 179.4,
+      "source": "curated",
+      "notes": "North end of the Bay of Alcúdia; easterlies and summer thermal; summer restrictions.",
+      "country": "ES",
+      "region": "Illes Balears",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6803636"
+    },
+    {
+      "id": "es-mallorca-es-barcares-alcudia",
+      "name": "Mallorca – Es Barcarès (Alcúdia)",
+      "latitude": 39.86282,
+      "longitude": 3.12075,
+      "seaFacingDeg": 2.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 7.8,
+      "source": "curated",
+      "notes": "Bay of Pollença side of Alcúdia; northerlies; summer restrictions. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (3° locally vs 333° over ±1.5 km).",
+      "country": "ES",
+      "region": "Illes Balears",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6803636"
+    },
+    {
       "id": "es-burriana-el-arenal",
       "name": "Burriana – El Arenal",
       "latitude": 39.86989,
@@ -2233,6 +2269,27 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "es-sant-carles-de-la-rapita-badia-dels-alfacs",
+      "name": "Sant Carles de la Ràpita (Badia dels Alfacs)",
+      "latitude": 40.61357,
+      "longitude": 0.59301,
+      "seaFacingDeg": 176.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 13.7,
+      "source": "curated",
+      "notes": "Flat water in the Badia dels Alfacs off the town beaches; mestral (NW) is offshore here.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
       "id": "es-platja-dels-eucaliptus-ebro-delta",
       "name": "Platja dels Eucaliptus (Ebro delta)",
       "latitude": 40.6532,
@@ -2263,6 +2320,147 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "es-punta-del-fangar-ebro-delta",
+      "name": "Punta del Fangar (Ebro delta)",
+      "latitude": 40.79289,
+      "longitude": 0.76252,
+      "seaFacingDeg": 14.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Remote sandspit at the north of the delta; access on foot; flat water in the bay.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "sides": [
+        {
+          "name": "sea side",
+          "seaFacingDeg": 14.1
+        },
+        {
+          "name": "Fangar bay",
+          "seaFacingDeg": 201.6
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-l-ampolla-platja-de-l-arenal",
+      "name": "L'Ampolla (Platja de l'Arenal)",
+      "latitude": 40.79345,
+      "longitude": 0.70454,
+      "seaFacingDeg": 63.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 71.7,
+      "source": "curated",
+      "notes": "Shallow beach facing the Badia del Fangar; good for learning.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-l-almadrava-vandellos",
+      "name": "L'Almadrava (Vandellòs)",
+      "latitude": 40.93946,
+      "longitude": 0.85825,
+      "seaFacingDeg": 102.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 12.1,
+      "source": "curated",
+      "notes": "Quiet beach south of L'Hospitalet; garbí and levante.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-l-hospitalet-de-l-infant",
+      "name": "L'Hospitalet de l'Infant",
+      "latitude": 40.98322,
+      "longitude": 0.91395,
+      "seaFacingDeg": 135.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 256.1,
+      "source": "curated",
+      "notes": "Long beach south of the village; garbí and levante.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-cambrils-platja-del-regueral",
+      "name": "Cambrils (Platja del Regueral)",
+      "latitude": 41.06567,
+      "longitude": 1.06949,
+      "seaFacingDeg": 169.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 21.6,
+      "source": "curated",
+      "notes": "Shallow sandy bay west of the port; garbí and levante; mestral offshore.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-salou-platja-de-llevant",
+      "name": "Salou (Platja de Llevant)",
+      "latitude": 41.07246,
+      "longitude": 1.13871,
+      "seaFacingDeg": 191.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 61.6,
+      "source": "curated",
+      "notes": "Town beach; levante and garbí.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
       "id": "es-la-pineda",
       "name": "La Pineda",
       "latitude": 41.08905,
@@ -2272,6 +2470,28 @@
       "distanceToShoreM": 21.7,
       "source": "curated",
       "notes": "Kiting banned 1 Jun–30 Sep (Catalan coast rule). Shoreline bends here (136° locally vs 183° over ±1.5 km).",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-altafulla",
+      "name": "Altafulla",
+      "latitude": 41.13301,
+      "longitude": 1.37674,
+      "seaFacingDeg": 164.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 51.2,
+      "source": "curated",
+      "notes": "Beach east of Tarragona; garbí and levante.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2307,6 +2527,93 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "es-creixell",
+      "name": "Creixell",
+      "latitude": 41.16064,
+      "longitude": 1.45317,
+      "seaFacingDeg": 150.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 72.9,
+      "source": "curated",
+      "notes": "Beach west of Torredembarra; garbí and levante.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-calafell",
+      "name": "Calafell",
+      "latitude": 41.18688,
+      "longitude": 1.57405,
+      "seaFacingDeg": 171.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 8.8,
+      "source": "curated",
+      "notes": "Town beach next to Segur de Calafell; garbí and levante.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-segur-de-calafell",
+      "name": "Segur de Calafell",
+      "latitude": 41.18968,
+      "longitude": 1.61244,
+      "seaFacingDeg": 159.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 23.7,
+      "source": "curated",
+      "notes": "Wide sandy beach; garbí (SW) summer thermal and levante.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-vilanova-i-la-geltru-la-farola",
+      "name": "Vilanova i la Geltrú (La Farola)",
+      "latitude": 41.21629,
+      "longitude": 1.73998,
+      "seaFacingDeg": 135.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 8.5,
+      "source": "curated",
+      "notes": "Town beach by the lighthouse; garbí and levante.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
       "id": "es-castelldefels",
       "name": "Castelldefels",
       "latitude": 41.26421,
@@ -2322,6 +2629,28 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "es-barcelona-barceloneta",
+      "name": "Barcelona – Barceloneta",
+      "latitude": 41.37938,
+      "longitude": 2.1934,
+      "seaFacingDeg": 133.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 12.6,
+      "source": "curated",
+      "notes": "City beach; off-season levante / gregal days only.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
       "id": "es-barcelona-nova-mar-bella",
       "name": "Barcelona – Nova Mar Bella",
       "latitude": 41.40174,
@@ -2331,6 +2660,72 @@
       "distanceToShoreM": 27.6,
       "source": "curated",
       "notes": "No official kite zone: kiting banned 1 Jun–30 Sep; off-season levante / gregal days only.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-badalona",
+      "name": "Badalona",
+      "latitude": 41.44184,
+      "longitude": 2.2467,
+      "seaFacingDeg": 118.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 45.2,
+      "source": "curated",
+      "notes": "City beach north of Barcelona; levante and gregal days.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-montgat",
+      "name": "Montgat",
+      "latitude": 41.46631,
+      "longitude": 2.28239,
+      "seaFacingDeg": 146.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 2.6,
+      "source": "curated",
+      "notes": "Small beach north of Badalona; levante.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-vilassar-de-mar",
+      "name": "Vilassar de Mar",
+      "latitude": 41.49633,
+      "longitude": 2.38153,
+      "seaFacingDeg": 147.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 33.4,
+      "source": "curated",
+      "notes": "Maresme beach; levante and summer garbí.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2360,6 +2755,28 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "es-platja-d-aro",
+      "name": "Platja d'Aro",
+      "latitude": 41.81678,
+      "longitude": 3.07034,
+      "seaFacingDeg": 116.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 28.4,
+      "source": "curated",
+      "notes": "Town beach; easterlies and summer thermal.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
       "id": "es-embalse-de-la-loteta",
       "name": "Embalse de La Loteta",
       "latitude": 41.82567,
@@ -2373,6 +2790,107 @@
       "region": "Aragón",
       "waterType": "lake",
       "waterSectorDeg": 360.0,
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-palamos-la-fosca",
+      "name": "Palamós (La Fosca)",
+      "latitude": 41.85691,
+      "longitude": 3.14326,
+      "seaFacingDeg": 118.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 24.8,
+      "source": "curated",
+      "notes": "Sheltered bay north of Palamós; easterlies and summer thermal. Irregular shoreline near the spot; orientation less certain.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-pals",
+      "name": "Pals",
+      "latitude": 41.99257,
+      "longitude": 3.20175,
+      "seaFacingDeg": 73.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 14.1,
+      "source": "curated",
+      "notes": "Long open beach south of the Ter mouth; easterlies and summer thermal; tramuntana side-off.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-l-estartit-gola-del-ter",
+      "name": "L'Estartit – Gola del Ter",
+      "latitude": 42.04077,
+      "longitude": 3.19326,
+      "seaFacingDeg": 97.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 262.4,
+      "source": "curated",
+      "notes": "Summer kite zone (1 Jun–30 Sep) run by the local school; kite pass / registration required.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-l-escala-platja-dels-riells",
+      "name": "L'Escala (Platja dels Riells)",
+      "latitude": 42.11566,
+      "longitude": 3.13984,
+      "seaFacingDeg": 46.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 42.4,
+      "source": "curated",
+      "notes": "Town beach at the south end of the Gulf of Roses; tramuntana and easterlies.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "es-sant-marti-d-empuries",
+      "name": "Sant Martí d'Empúries",
+      "latitude": 42.1343,
+      "longitude": 3.12247,
+      "seaFacingDeg": 69.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 58.5,
+      "source": "curated",
+      "notes": "Beach in the Gulf of Roses south of Sant Pere Pescador; easterlies; tramuntana side-off.",
+      "country": "ES",
+      "region": "Catalunya",
+      "waterType": "sea",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -6761,7 +7279,7 @@
       "orientationSource": "osm-water",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Shallow water by the Angelochori lagoon west of the airport; flat, good for learning. Works with S and N winds. Shoreline bends here (296° locally vs 176° over ±1.5 km).",
+      "notes": "Shallow water by the Angelochori lagoon west of the airport; flat, good for learning. Works with S and N winds. Shoreline bends here (296° locally vs 186° over ±1.5 km).",
       "country": "GR",
       "region": "Thessaloniki",
       "waterType": "lagoon",
@@ -7787,7 +8305,7 @@
       "orientationSource": "apple-maps",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Kite village on the Curonian Lagoon: shallow flat water, ideal for learning; kite schools on site. Irregular shoreline near the spot; orientation less certain.",
+      "notes": "Kite village on the Curonian Lagoon: shallow flat water, ideal for learning; kite schools on site. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (3° locally vs 43° over ±1.5 km).",
       "country": "LT",
       "region": "Klaipėda",
       "waterType": "lagoon",

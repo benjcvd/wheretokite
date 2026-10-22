@@ -38,6 +38,17 @@ second pass with web research is worth doing.
 - Porto Santo: main launch area; Huelva summer zones.
 - Left out: Ibiza, Basque Country, Embalse del Ebro, Lo Pagán, El Saler, Patacona, Cullera,
   Fornells, El Cotillo, Martinhal, Tróia, Azores.
+- Barcelona-area additions (2026-10-22): every new Catalan spot gets the Catalan summer ban
+  (1 Jun–30 Sep). Which have an authorised summer kite zone, so the ban should go? Likely:
+  Sant Carles de la Ràpita, Segur de Calafell, Cambrils, Palamós, Pals, Roses.
+- El Prat: the kite zone there is Can Camins (OSM `sport=kitesurfing`), which was ruled out
+  earlier. Still no?
+- Leucate, not added (no reliable OSM position, possibly duplicates): La Mine (likely = Le Goulet),
+  Les Pilotis (Port Leucate?), the west shore of the Étang de Leucate near Salses.
+- Not added as duplicates (< 2 km, same beach and direction): Blanes – S'Abanell (= Malgrat –
+  La Pomareda, Tordera mouth), Argelès-Plage (= Le Racou), Roses town beach (2 km from Empuriabrava – La Rubina).
+- New positions to check on the map: Punta del Fangar (pinned on the locality; launch on the bay
+  side?), Badalona (info board by the Pont del Petroli).
 
 ## UK / Ireland (GB.csv, IE.csv)
 - Weymouth – Portland Harbour: pinned at Hamm Beach facing N into the harbour; right launch?

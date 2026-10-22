@@ -50,7 +50,7 @@ ES,Canarias,Tenerife – El Médano,sea,osm:w28492650,SE,Trade wind May–Oct; s
 # pro: cluster duplicate — 5 km from Sant Pere Pescador
 ES,Catalunya,Empuriabrava – La Rubina,sea,osm:r2318195,SE,Authorised summer kite zone at the Santa Margarida end (natural park beach); best in easterlies.,,,pro,
 # archived: restricted (club / permit / summer ban) — school-run summer zone, kite pass required
-ES,Catalunya,L'Estartit – Gola del Ter,sea,osm:n4409310492,E,Summer kite zone (1 Jun–30 Sep) run by the local school; kite pass / registration required.,,,archived,
+ES,Catalunya,L'Estartit – Gola del Ter,sea,osm:n4409310492,E,Summer kite zone (1 Jun–30 Sep) run by the local school; kite pass / registration required.,,,,
 # pro: local / secondary beach — local club zone
 ES,Catalunya,Malgrat de Mar – La Pomareda,sea,osm:w702224528,SE,Municipal kite zone looked after by Club Kite Malgrat; SW thermal Mar–Sep.,,,pro,
 # pro: local / secondary beach — no kite zone, off-season only
@@ -129,3 +129,29 @@ ES,Canarias,Lanzarote – Playa Honda,sea,osm:r18367853,S,"Best Lanzarote option
 ES,Canarias,Gran Canaria – Vargas,sea,osm:w473890331,E,Strong trade wind Apr–Sep; waves.,,,pro,
 # pro: school-only — school beach near Pozo Izquierdo
 ES,Canarias,Gran Canaria – Bahía Feliz,sea,osm:w133266290,SE,Smaller waves than Pozo / Vargas; school (Club Mistral).,,,pro,
+
+# Added 2026-10-22 (Barcelona-area benchmark). Positions from OSM; summer ban = Catalan coast
+# rule until an authorised summer kite zone is confirmed (tools/spots/TO_CONFIRM.md).
+ES,Catalunya,Sant Carles de la Ràpita (Badia dels Alfacs),sea,osm:r14512303,SE,Flat water in the Badia dels Alfacs off the town beaches; mestral (NW) is offshore here.,,,,06-01..09-30
+ES,Catalunya,Pals,sea,osm:r8266439,E,Long open beach south of the Ter mouth; easterlies and summer thermal; tramuntana side-off.,,,,06-01..09-30
+ES,Catalunya,Segur de Calafell,sea,osm:r10255772,SSE,Wide sandy beach; garbí (SW) summer thermal and levante.,,,,06-01..09-30
+ES,Catalunya,Cambrils (Platja del Regueral),sea,osm:r1747893,SE,Shallow sandy bay west of the port; garbí and levante; mestral offshore.,,,,06-01..09-30
+ES,Catalunya,Palamós (La Fosca),sea,osm:r8268914,SE,Sheltered bay north of Palamós; easterlies and summer thermal.,,,,06-01..09-30
+ES,Catalunya,Calafell,sea,osm:r12075608,SSE,Town beach next to Segur de Calafell; garbí and levante.,,,pro,06-01..09-30
+ES,Catalunya,Salou (Platja de Llevant),sea,osm:r5208459,S,Town beach; levante and garbí.,,,pro,06-01..09-30
+ES,Catalunya,L'Hospitalet de l'Infant,sea,osm:r2173868,SE,Long beach south of the village; garbí and levante.,,,pro,06-01..09-30
+ES,Catalunya,L'Almadrava (Vandellòs),sea,osm:r2862387,SE,Quiet beach south of L'Hospitalet; garbí and levante.,,,pro,06-01..09-30
+ES,Catalunya,L'Ampolla (Platja de l'Arenal),sea,osm:r14507565,E,Shallow beach facing the Badia del Fangar; good for learning.,,,pro,06-01..09-30
+ES,Catalunya,Punta del Fangar (Ebro delta),sea,osm:n1241794242,NE:sea side|SW:Fangar bay,Remote sandspit at the north of the delta; access on foot; flat water in the bay.,,,pro,06-01..09-30
+ES,Catalunya,Badalona,sea,q:Platja del Pont del Petroli,SE,City beach north of Barcelona; levante and gregal days.,,,pro,06-01..09-30
+ES,Catalunya,Montgat,sea,osm:w1101490505,SE,Small beach north of Badalona; levante.,,,pro,06-01..09-30
+ES,Catalunya,Vilassar de Mar,sea,osm:r2154205,SE,Maresme beach; levante and summer garbí.,,,pro,06-01..09-30
+ES,Catalunya,Vilanova i la Geltrú (La Farola),sea,osm:r10224714,S,Town beach by the lighthouse; garbí and levante.,,,pro,06-01..09-30
+ES,Catalunya,Creixell,sea,osm:r12040635,SSE,Beach west of Torredembarra; garbí and levante.,,,pro,06-01..09-30
+ES,Catalunya,Altafulla,sea,osm:r2172793,SSE,Beach east of Tarragona; garbí and levante.,,,pro,06-01..09-30
+ES,Catalunya,Barcelona – Barceloneta,sea,osm:r7333373,SE,City beach; off-season levante / gregal days only.,,,pro,06-01..09-30
+ES,Catalunya,Sant Martí d'Empúries,sea,osm:r4018289,E,Beach in the Gulf of Roses south of Sant Pere Pescador; easterlies; tramuntana side-off.,,,pro,06-01..09-30
+ES,Catalunya,L'Escala (Platja dels Riells),sea,osm:r1669340,NE,Town beach at the south end of the Gulf of Roses; tramuntana and easterlies.,,,pro,06-01..09-30
+ES,Catalunya,Platja d'Aro,sea,osm:r8280402,SE,Town beach; easterlies and summer thermal.,,,pro,06-01..09-30
+ES,Illes Balears,Mallorca – Es Barcarès (Alcúdia),sea,osm:w214618872,N,Bay of Pollença side of Alcúdia; northerlies; summer restrictions.,,,pro,
+ES,Illes Balears,Mallorca – Platja d'Alcúdia,sea,osm:r2175690,E,North end of the Bay of Alcúdia; easterlies and summer thermal; summer restrictions.,,,pro,
