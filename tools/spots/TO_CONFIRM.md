@@ -35,9 +35,31 @@ second pass with web research is worth doing.
 - Mar Menor: rules after the lagoon's environmental crisis.
 - Mallorca – Pollença: zone at Can Cullerassa?
 - Embalse de La Loteta: launch (pinned at the marina, not the club's south spot).
-- Porto Santo: main launch area; Huelva summer zones.
+- Huelva summer zones.
 - Left out: Ibiza, Basque Country, Embalse del Ebro, Lo Pagán, El Saler, Patacona, Cullera,
-  Fornells, El Cotillo, Martinhal, Tróia, Azores.
+  Fornells, El Cotillo.
+- Portugal pass (2026-10-22), still open:
+  - Porto Santo: really famous for kiting? Pinned on Praia da Fontinha (middle of the 9 km
+    beach); no source says where people launch.
+  - Alvor: launch on the inner east shore facing W (pinned, 1 km W of the village) or on the
+    sandspit across the mouth?
+  - Ria Formosa (Faro, Fuseta, Cabanas): is the old navy kite ban (press, ~2008) still in force,
+    and is there an official kite zone today? Nothing official found, so no `banned`.
+  - Lagoa de Óbidos: pinned on the sailing club, not the summer kite zone. Fine?
+  - Martinhal (flat but offshore in the usual N wind) and Tróia / Comporta (one weak source):
+    worth a row? Left out. Azores, Madeira main island, Foz do Arelho (= Óbidos), Figueira da
+    Foz, São Martinho: left out, no kite reputation found.
+
+## Morocco (MA.csv)
+- Lassarga: our row is the lagoon shore, but guides describe "La Sarga" as an Atlantic wave
+  spot. Which one do kiters mean?
+- Moulay Bousselham and Oualidia (added as pro, sources are blogs and rentals): basic? Neither
+  coast has a basic spot. Oualidia: tide window? One source says SE wind is best.
+- Point de l'Or (Dakhla): worth a row? Only OSM match is a peak at El Argoub: launch unknown.
+- Tahaddart (Tangier), Agadir beach: one weak source each, left out. Tarfaya, Imsouane, Lalla
+  Takerkoust: no kite source found.
+- Speed Spot proper (low tide only, ~5–10 km from the PK25 camps): its own row with
+  `tide=low`, or keep it in the PK25 notes?
 - Barcelona-area additions (2026-10-22): every new Catalan spot gets the Catalan summer ban
   (1 Jun–30 Sep). Which have an authorised summer kite zone, so the ban should go? Likely:
   Sant Carles de la Ràpita, Segur de Calafell, Cambrils, Palamós, Pals, Roses.
