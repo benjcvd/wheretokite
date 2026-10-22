@@ -1,11 +1,16 @@
 country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Morocco — format: tools/spots/README.md
-MA,Dakhla,Dakhla – Speed Spot (PK25 camps),lagoon,q:Dakhla Attitude,W,"Flat shallow lagoon in front of the PK25 camps (Dakhla Attitude, Dakhla Club); best at low tide. Also: Lassarga lagoon shore near the peninsula tip.",,,,
-MA,Dakhla,Dakhla – Dune Blanche,lagoon,q:La dune blanche,W,Flat water behind the white dune; best at high tide.,,,,
-MA,Dakhla,Dakhla – Oum Labouir (Westpoint),sea,q:Oum Labouir,W,"Atlantic side: waves; wind lighter and gustier in the bay.",,,,
-MA,Essaouira,Essaouira,sea,osm:w243397848,W,,,,,
-MA,Essaouira,Moulay Bouzerktoun,sea,q:Moulay Bouzerktoun,W,,,,,
+MA,Dakhla,Dakhla – Speed Spot (PK25 camps),lagoon,osm:n5249527142,W,"Flat shallow lagoon in front of the PK25 camps (Dakhla Attitude), NNE wind side-off; rideable at all tides, standing depth at low tide. The Speed Spot proper (round the corner, behind a sandbar) works only at low tide in offshore wind: advanced riders, no rescue boat.",,,,
+MA,Dakhla,Dakhla – Dune Blanche,lagoon,osm:n5303302622,W,"Flat water behind the white dune, reached by car from the N1 or by downwinder; the dune is only surrounded by water around high tide. Offshore wind, advanced riders.",,high,,
+MA,Dakhla,Dakhla – Oum Labouir (Westpoint),sea,osm:w1500200126,W,"Atlantic-side wave spot west of town, also called Foum El Bouir: point break, best waves November to February. Wind lighter and gustier than on the lagoon, rocky bottom in places at low tide.",,,,
+MA,Essaouira,Essaouira,sea,osm:w243397848,W,"Long bay south of the town, small waves sheltered by Mogador island; strong N-NE trade wind cross-onshore, all levels. Avoid the town end (gusty, rocks).",,,,
+MA,Essaouira,Moulay Bouzerktoun,sea,osm:w654823110,W,"Wave spot north of Essaouira, big waves on a good swell; strong wind and current, experienced riders.",,,,
+MA,Essaouira,Sidi Kaouki,sea,osm:w197452236,W,"Long beach south of Essaouira with strong wind and waves; wave riding, mostly for experienced riders.",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: local / secondary beach — secondary Dakhla lagoon launch, mentioned in Speed Spot notes
-MA,Dakhla,Dakhla – Lassarga,lagoon,q:Lassarga,SE,Lagoon shore by the fishing village near the peninsula tip.,,,pro,
+MA,Dakhla,Dakhla – Lassarga,lagoon,osm:w1338100127,SE,Lagoon shore by the fishing village near the peninsula tip.,,,pro,
+# pro: secondary — lagoon spot of the north-west coast, known mainly from spot guides, no kite school found on site
+MA,Gharb,Moulay Bousselham,lagoon,osm:w141084128,S,"Large shallow lagoon (Merja Zerga) by the village, flat water at low tide in strong N wind. Strong current towards the mouth on the falling tide; no rescue or school on site.",,,pro,
+# pro: secondary — lagoon spot between El Jadida and Safi, known mainly from spot guides, rentals only
+MA,Doukkala,Oualidia,lagoon,osm:w323598009,NW,"Shallow lagoon sheltered from the swell by sandbanks, flat water in strong N wind. Rocks and strong current near the lagoon mouths.",,,pro,

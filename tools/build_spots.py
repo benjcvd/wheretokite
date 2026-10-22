@@ -910,12 +910,19 @@ ANCHORS = [(48.857, 2.352), (40.417, -3.704), (38.722, -9.139), (37.389, -5.984)
            (44.787, 20.457), (42.698, 23.322), (44.427, 26.103), (40.640, 22.944), (37.984, 23.728),
            (52.370, 4.895), (50.850, 4.352), (51.507, -0.128), (55.953, -3.188), (53.408, -2.991),
            (36.013, -5.606)]
+# Africa is a mainland of its own: Moroccan spots route from Moroccan cities (Casablanca,
+# Agadir, Laâyoune), otherwise the Strait of Gibraltar marks every one as a ferry spot.
+ANCHORS_BY_COUNTRY = {"MA": [(33.573, -7.589), (30.428, -9.598), (27.154, -13.199)]}
 
 
-def ferry_needed(lat, lon, start=None):
+def anchors_for(country):
+    return ANCHORS_BY_COUNTRY.get(country, ANCHORS)
+
+
+def ferry_needed(lat, lon, start=None, country=None):
     """True / False, or None when no route could be computed. From `start` (lat, lon), by
-    default the nearest mainland anchor. Cached."""
-    a = start or min(ANCHORS, key=lambda c: haversine(c[0], c[1], lat, lon))
+    default the nearest mainland anchor of `country`'s mainland. Cached."""
+    a = start or min(anchors_for(country), key=lambda c: haversine(c[0], c[1], lat, lon))
     q = {"locations": [{"lat": a[0], "lon": a[1]}, {"lat": round(lat, 5), "lon": round(lon, 5)}],
          "costing": "auto", "costing_options": {"auto": {"use_ferry": 0.0}}, "directions_type": "none"}
     body = json.dumps(q, sort_keys=True)
@@ -1170,12 +1177,12 @@ def main():
     # access: ferry needed from the mainland?
     islands = {}
     for s_ in spots:
-        ferry = ferry_needed(s_["latitude"], s_["longitude"])
+        ferry = ferry_needed(s_["latitude"], s_["longitude"], country=s_["country"])
         if ferry is None:
             # Routing hiccup (point snapped onto a dyke, server error…): retry from the second
             # nearest city. Still nothing: only far from every mainland city (Dakhla) is
             # that a sea crossing; otherwise keep the spot on the road network.
-            near2 = sorted(ANCHORS, key=lambda c: haversine(c[0], c[1], s_["latitude"], s_["longitude"]))
+            near2 = sorted(anchors_for(s_["country"]), key=lambda c: haversine(c[0], c[1], s_["latitude"], s_["longitude"]))
             ferry = ferry_needed(s_["latitude"], s_["longitude"], start=near2[1])
             if ferry is None and _real_island(island_of(s_["latitude"], s_["longitude"])):
                 ferry = True   # an island without a car route (car-free Langeoog, Porto Santo…)
