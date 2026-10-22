@@ -1,5 +1,7 @@
 # WhereToKite
 
+> New here (or a new Claude session)? Start with `docs/HANDOFF.md`, then `docs/TODO.md`.
+
 Tells a kiter where to go on a given day: give a location, max drive time, day and session slot, get a ranked list of spots.
 
 ## iPhone app (v1)
@@ -29,7 +31,7 @@ swift run kite --day 2026-08-25 --hourly 3                         # past day �
   - `Recommender.swift` — filter by drive time → fetch → score hours → best 2 h window → distance penalty → rank.
 - `Sources/kite` — v0 command-line front-end.
 - `App/` — iPhone app (`project.yml` is the XcodeGen spec; `WhereToKite/Models`, `WhereToKite/Views`).
-- `tools/build_spots.py` → `Data/spots.json` — catalogue of **well-known** kite spots across Europe (27 countries) plus Morocco. The selection lives in `tools/curated_spots.csv` (name, country, how to find it in OpenStreetMap — never raw coordinates; spots kitable from several shores list one `DIR:label` per side). Positions come from Nominatim / OSM elements (beach features preferred over streets or bus stops of the same name) and `seaFacingDeg` from the OSM coastline (lakes/lagoons: the water polygon). Automatic checks, so the catalogue can grow without checking each spot by hand:
+- `tools/build_spots.py` → `Data/spots.json` — catalogue of **well-known** kite spots across Europe (29 countries) plus Morocco. The selection lives in `tools/spots/*.csv`, one file per country (format in `tools/spots/README.md`: name, country, how to find it in OpenStreetMap — never raw coordinates; spots kitable from several shores list one `DIR:label` per side). Positions come from Nominatim / OSM elements (beach features preferred over streets or bus stops of the same name) and `seaFacingDeg` from the OSM coastline (lakes/lagoons: the water polygon). Automatic checks, so the catalogue can grow without checking each spot by hand:
   - **Direction vs Apple Maps** (`tools/check_directions.swift`, macOS): Apple's map is rendered around each beach and its water must be on the side OSM says → `directionCheck`. When OSM disagrees but Apple Maps and the CSV hint agree, Apple's direction is used (`corrected`). Everything else that doesn't agree is listed in `tools/review.md` with map links.
   - **Access**: a car route from the nearest mainland city with ferries avoided (Valhalla). If it still needs a ferry the spot gets `access: "ferry"` and its island (`islands` holds simplified outlines; road-connected islands are merged). The app shows ferry spots only to someone on the same island, and mainland spots only on the mainland; the Channel Tunnel counts as road.
   - Reference orientations (Castelldefels, Leucate, Wissant, Tarifa…) must be within 30°.

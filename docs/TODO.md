@@ -1,14 +1,16 @@
 # TODO
 
 The single list of what's pending. Spot-by-spot questions live in `tools/spots/TO_CONFIRM.md`;
-the full product review (with reasons) in `docs/BLIND_SPOTS.md`. Last updated 2026-10-20.
+the full product review (with reasons) in `docs/BLIND_SPOTS.md`; context for a new session in
+`docs/HANDOFF.md`. Last updated 2026-10-22.
 
 ## Waiting on Ben
 - [ ] Name and contact email for the privacy policy (GDPR "controller"): set `OPERATOR_NAME`
       and `CONTACT_EMAIL` in `server/wrangler.toml`, then redeploy.
-- [ ] Spot decisions: Catalan spots (Nova Mar Bella, Torredembarra, La Pineda, Empuriabrava,
-      L'Estartit, Malgrat); Garda (Campione vs Malcesine); inferred ban dates (Bolonia,
-      Les Arbousiers, Gwithian); the rest of `tools/spots/TO_CONFIRM.md`.
+- [ ] Spot questions, no rush (Ben has no answers yet; keep flagged as is): summer kite zones
+      for the new Catalan spots, El Prat = Can Camins, Leucate points, Garda (Campione vs
+      Malcesine), inferred ban dates (Bolonia, Les Arbousiers, Gwithian), the rest of
+      `tools/spots/TO_CONFIRM.md`.
 - [ ] Buy a domain (~€10/yr) and add it to Cloudflare: the shared forecast cache needs it.
 - [ ] Apple Developer Program (€99/yr), if not done yet.
 
@@ -49,7 +51,8 @@ the full product review (with reasons) in `docs/BLIND_SPOTS.md`. Last updated 20
   webcams (like Windy). Check licences and costs of each provider.
 - Competitor analysis: Kite Croissant (strengths and weaknesses vs WhereToKite), then
   Windy / Windguru.
-- Benchmark the catalogue against Windy / Windguru by region (benchmark only, never copied).
+- Benchmark the catalogue against Windy / Windguru by region (benchmark only, never copied;
+  browse as a visitor, hover each kite icon). Barcelona 200 km done 2026-10-22 (+24 spots).
 - Community (long run, Ben likes it): shared spots, spot reviews, "who's riding here today".
   Needs identity → Sign in with Apple (+ Google if Android); Pro stays an App Store purchase.
 - Home-screen widget.
@@ -67,6 +70,8 @@ the full product review (with reasons) in `docs/BLIND_SPOTS.md`. Last updated 20
 - Audio Graph for the wind chart (accessibility).
 
 ## Done recently
+2026-10-22: Barcelona-area benchmark vs Windy, 24 spots added (618 total); fixed searches
+failing through the server (subrequest limit); privacy and support pages.
 GitHub automation verified: catalogue build (seeded OSM cache, Apple check works on GitHub)
 and report triage (test issue #1 checked and closed with sources). Server live (Cloudflare Worker, forecasts + catalogue + reports), app connected; reports →
 GitHub issues → Claude triage → PR for review → catalogue rebuilt on merge; rain penalty;
