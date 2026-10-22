@@ -73,3 +73,17 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
 - Next on Ben's side: name + contact email for the privacy policy, Apple Developer account,
   domain.
 - Web-verified pass on the wave-2 countries still to do (fresh session = fresh web budget).
+- Team: agents `backend-engineer`, `spot-researcher`, `spot-improvement` and skills `preflight`,
+  `spot-check` in `.claude/` (not committed yet). Workstream **Spot improvement** runs in small
+  batches on Sonnet (one region per card, no subagents, commit then stop); notes in
+  `.atlas/streams/spot-improvement.md`. Full role in `.atlas/team/agents/spot-improvement.md`.
+
+## Where we stopped (2026-10-23)
+- Spot improvement merged into main (c261e03): Portugal and Morocco web-verified, 4 PT spots
+  added, Moroccan spots routed from Moroccan cities (they were all `access: ferry`, so hidden).
+- App fix (6994a96): searches keep spots on the origin's continent (`Continent` in
+  `DriveTime.swift`), otherwise Tarifa would get Tangier as a 40 min drive.
+- **Not pushed**: Ben says "push", then CI rebuilds `Data/spots.json`.
+- v1 / App Store: the list of what's missing is on the board (`v1-*`, `tf-*` cards): privacy
+  contact, App Store Connect app, EU trader status, App Privacy answers, store text and
+  screenshots (Claude), archive and upload.
