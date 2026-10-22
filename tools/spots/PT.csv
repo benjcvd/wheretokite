@@ -6,10 +6,12 @@ PT,Centro,Murtosa – Ria de Aveiro,lagoon,osm:w1107052996,W,"Flat shallow lagoo
 PT,Centro,Lagoa de Óbidos,lagoon,osm:n1828415085,N,"Flat, waist-deep lagoon; lighter wind (big kites). Guides report kiting closed in summer (about 15 Jun–15 Sep) near the mouth and in the north of the lagoon: then ride by the sailing school or at Bom Sucesso. Also: Peniche – Baleal (ocean).",,not-low,,
 PT,Lisboa,Guincho,sea,osm:w147727446,W,"Very strong nortada, waves, rocks in the middle of the bay: advanced riders.",,,,
 PT,Lisboa,Fonte da Telha,sea,osm:w222678478,W,"Closest spot to Lisbon; all levels, lighter wind; very busy in summer. Also: São João da Caparica (same coast, further north).",,,,
+PT,Lisboa,Alcochete,sea,osm:w255048764,W,"Flat, shallow water on the Tagus estuary across from Lisbon (Praia dos Moinhos); beginner friendly, school on site. Stones; mud flats at low tide; water quality varies.",,not-low,,
 PT,Lisboa,Lagoa de Albufeira,lagoon,osm:w8136034,N,"Flat-water lagoon behind the sandbar; too shallow at low tide and in dry summers, deeper on the east side.",,not-low,,
 PT,Algarve,Lagos – Meia Praia,sea,osm:w1245391449,SE,"Long sandy bay with schools on the beach; waves can build.",,,,
 PT,Algarve,Alvor,lagoon,osm:w143915392,W,"Ria de Alvor: flat, mostly waist-deep lagoon; launch on the sandspit by the dunes (dirt track from Alvor village). NW thermal, gusty near the edges; water from mid tide, some current.",,not-low,,
 PT,Algarve,Praia de Faro,sea,osm:r12567393,S:ocean side|N:Ria Formosa side:lagoon,"Ilha de Faro: waves on the ocean, flat water in the Ria Formosa (tide matters). The Faro maritime authority has restricted kiting in the Ria Formosa before: check local rules. Also: Fuseta, Cabanas de Tavira.",,,,
+PT,Algarve,Manta Rota,sea,osm:w79504187,S,"Long sandy beach in the east Algarve: SW thermal or E Levante, mostly flat to small waves; school (AlturaKites). Also: Cacela Velha.",,,,
 PT,Madeira,Porto Santo,sea,osm:w142721877,S,9 km beach; N wind is side-offshore and gusty in summer: experienced riders.,,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
@@ -23,3 +25,7 @@ PT,Centro,Peniche – Baleal,sea,osm:w138709494,NW,North side of the Baleal isth
 PT,Algarve,Fuseta (Ria Formosa),lagoon,osm:w78427662,S,"Lagoon: flat water, works around high tide; flat ocean side across the sandbar.",,not-low,pro,
 # pro: secondary Ria Formosa spot (13 km east of Fuseta) — school with a marked 300 m kite area on Ilha de Cabanas
 PT,Algarve,Cabanas de Tavira,sea,osm:w79509901,S,"Ilha de Cabanas (short boat ride from the village): school with a marked kite area. The lagoon side works only around high tide.",,,pro,
+# pro: Porto's city beach — 2 sources (wannakitesurf, kite-and-windsurfing-guide); summer ban reported by guides, no official source found
+PT,Norte,Matosinhos,sea,osm:w338635402,W,"Porto's city beach, south of the harbour wall: chop and small waves, best in S winds; water quality can be poor. Guides report kiting banned in the summer bathing season.",,,pro,
+# pro: wave spot between Peniche and Ericeira — 2 sources (unplug-kitesurf, kiteforum); intermediate to expert
+PT,Lisboa,Santa Cruz,sea,osm:w25695668,W,"Long beach with waves in the N nortada (May–Sep); rocks in the water, especially to the south: intermediate to expert riders.",,,pro,

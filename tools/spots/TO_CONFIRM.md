@@ -49,6 +49,10 @@ second pass with web research is worth doing.
   - Martinhal (flat but offshore in the usual N wind) and Tróia / Comporta (one weak source):
     worth a row? Left out. Azores, Madeira main island, Foz do Arelho (= Óbidos), Figueira da
     Foz, São Martinho: left out, no kite reputation found.
+  - Windy cross-check (2026-10-22) added Alcochete and Manta Rota (basic), Matosinhos and Santa
+    Cruz (pro). Alcochete: is `not-low` right on the Tagus flats? Matosinhos: official summer
+    ban dates? Santa Cruz: launch pinned at Praia do Mirante, right? Windy also lists Figueira
+    da Foz, Carcavelos, Sesimbra, Tróia, Vila Nova de Milfontes (mostly surf; left out).
 
 ## Morocco (MA.csv)
 - Lassarga: our row is the lagoon shore, but guides describe "La Sarga" as an Atlantic wave
