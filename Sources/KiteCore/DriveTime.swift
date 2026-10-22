@@ -110,6 +110,24 @@ public struct SeaCrossing: Sendable {
     }
 }
 
+/// Europe and Africa are two mainlands with no road between them: the Strait of Gibraltar
+/// needs a boat. Without this, a rider in Tarifa would get Tangier as a 40 min drive.
+public enum Continent: Sendable {
+    case europe, africa
+
+    /// North-west Africa (Morocco to Tunisia), drawn through the Strait between Tarifa and
+    /// Punta Cires, so Ceuta and Melilla count as Africa and Gibraltar as Europe.
+    static let africaOutline: [(Double, Double)] = [
+        (35.90, -6.50), (35.95, -5.60), (35.92, -5.25), (35.40, -3.00), (36.00, -1.00),
+        (37.60, 9.50), (37.20, 11.20), (20.00, 12.00), (20.00, -18.00), (27.00, -18.50),
+        (32.50, -10.50),
+    ]
+
+    public static func of(_ p: Coordinate) -> Continent {
+        Geo.polygonContains(africaOutline, p) ? .africa : .europe
+    }
+}
+
 #if canImport(MapKit)
 /// Real road ETAs from Apple Maps.
 ///

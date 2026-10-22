@@ -133,7 +133,9 @@ public struct Recommender: Sendable {
                    slack: Double) -> (kept: [Candidate], capped: [Candidate]) {
         var inReach: [Candidate] = []
         let originIsland = islands.first { $0.contains(origin) }?.id
-        for spot in spots where Self.sameSideOfTheWater(spot, originIsland: originIsland, islands: islands) {
+        let continent = Continent.of(origin)
+        for spot in spots where Continent.of(spot.coordinate) == continent
+            && Self.sameSideOfTheWater(spot, originIsland: originIsland, islands: islands) {
             let km = Geo.distanceKm(origin, spot.coordinate)
             let est = estimator.minutes(from: origin, to: spot)
             if est <= maxDriveMinutes * slack { inReach.append(Candidate(spot: spot, km: km, estimate: est)) }

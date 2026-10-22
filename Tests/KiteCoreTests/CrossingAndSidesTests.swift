@@ -26,6 +26,24 @@ final class SeaCrossingTests: XCTestCase {
                        est.minutes(straightLineKm: Geo.distanceKm(paris, wissant)))
     }
 
+    func testStraitOfGibraltarSplitsEuropeAndAfrica() {
+        func c(_ lat: Double, _ lon: Double) -> Continent { Continent.of(Coordinate(latitude: lat, longitude: lon)) }
+        XCTAssertEqual(c(36.013, -5.606), .europe)   // Tarifa
+        XCTAssertEqual(c(36.140, -5.353), .europe)   // Gibraltar
+        XCTAssertEqual(c(36.530, -6.290), .europe)   // Cádiz
+        XCTAssertEqual(c(36.720, -4.420), .europe)   // Málaga
+        XCTAssertEqual(c(39.570, 2.650), .europe)    // Palma
+        XCTAssertEqual(c(38.900, 8.900), .europe)    // southern Sardinia
+        XCTAssertEqual(c(36.600, 14.800), .europe)   // southern Sicily
+        XCTAssertEqual(c(35.770, -5.800), .africa)   // Tangier
+        XCTAssertEqual(c(35.890, -5.310), .africa)   // Ceuta
+        XCTAssertEqual(c(35.290, -2.940), .africa)   // Melilla
+        XCTAssertEqual(c(35.460, -6.030), .africa)   // Asilah
+        XCTAssertEqual(c(31.510, -9.770), .africa)   // Essaouira
+        XCTAssertEqual(c(30.420, -9.600), .africa)   // Agadir
+        XCTAssertEqual(c(23.700, -15.950), .africa)  // Dakhla
+    }
+
     func testFromAnIslandBackToTheMainland() {
         let london = Coordinate(latitude: 51.507, longitude: -0.128)
         let wissant = Coordinate(latitude: 50.885, longitude: 1.66)
@@ -61,6 +79,19 @@ final class IslandTests: XCTestCase {
         XCTAssertFalse(ok(userIslandSpot, from: mainland))
         XCTAssertFalse(ok(farAway, from: mainland))
         XCTAssertFalse(ok(farAway, from: onIsland))
+    }
+
+    func testNoMoroccanSpotsFromTarifaAndBack() throws {
+        let tarifa = Coordinate(latitude: 36.013, longitude: -5.606)
+        let tangier = Coordinate(latitude: 35.770, longitude: -5.800)
+        let spots = [try spot("es", Coordinate(latitude: 36.08, longitude: -5.70)), try spot("ma", tangier)]
+        let r = Recommender(spots: spots, forecast: FakeForecast { _ in 16 }, driveTime: StraightLineDriveTime(),
+                            confidence: nil)
+        func ids(from o: Coordinate) -> [String] {
+            r.reachable(from: o, maxDriveMinutes: 180, estimator: r.estimator, slack: 1).kept.map(\.spot.id)
+        }
+        XCTAssertEqual(ids(from: tarifa), ["es"])
+        XCTAssertEqual(ids(from: tangier), ["ma"])
     }
 
     func testOutlineTolerance() {
