@@ -22,6 +22,14 @@ Declaring yourself a non-trader is allowed if the app isn't a commercial activit
 true for a free v1 without purchases or ads. You'll have to switch to trader when Pro goes on
 sale. Your call.
 
+- Non-trader now: Business → Agreements → Compliance → Digital Services Act → Complete
+  Compliance Requirements → "This is not a trader account" → Done. No contact details asked.
+- Trader later (before v2 with Pro is submitted): the app → App Information → App Store
+  Regulations and Permits → Digital Services Act → Edit. The first time, you enter and verify
+  the contact details shown on the store page.
+- Apple's own page: [Manage EU DSA trader requirements](https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/).
+  Apple says it can't decide for you and that it isn't legal advice.
+
 ## 1. Create the app (Apps → +)
 
 | Field | Value |
