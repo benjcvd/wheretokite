@@ -99,6 +99,11 @@ second pass with web research is worth doing.
 - Pins from town / area names: Viganj, Pakoštane, Gizzeria, Torre Canne, Margherita di
   Savoia, Talamone, Rosolina Mare, Premantura.
 - Porto Pollo: pinned on the Porto Liscia kite zone (west), not the windsurf bay.
+- Sardinia Windy cross-check (2026-10-24): added Punta Trettu (basic) and Rena Majore (pro).
+  Is Punta Trettu well enough known to stay basic next to Porto Botte (about 10 km apart, both
+  flat)? Trettu pin is the cape, hint NNE (sheltered shore). Left out: Porto Ferro (Alghero;
+  wave-surf school, conflicting kite sources), Capo Mannu (in the Putzu Idu notes), Isola Rossa,
+  San Pietro, Vecchie Saline, Pula (no kite source checked), Punta Tretu summer fee: ok to mention?
 - Left out: Slovenia, Albania, Campania, Lazio, Liguria, Friuli, Chia, Trasimeno, Follonica,
   Bol (Brač: windsurf spot, kiting unclear).
 

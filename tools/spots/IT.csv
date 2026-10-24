@@ -2,10 +2,11 @@ country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Italy — format: tools/spots/README.md
 # Sardegna
 IT,Sardegna,Porto Pollo,sea,osm:n454209465,W,"Kite zone on the Porto Liscia (west) side of the Isola dei Gabbiani isthmus; the Porto Pollo bay itself is windsurf only. Mistral (W–NW) and libeccio; schools on site.",,,,
+IT,Sardegna,Punta Trettu,lagoon,osm:n4248171715,NNE,"Flat lagoon-like water inside a metre deep for hundreds of metres, beside Sant'Antioco: the beginner spot of Sardinia. Mistral (NW) and scirocco (SE), thermal in summer. Launch only from the kite beach (small entry fee in season); algae on the bottom. Also: Porto Botte (flat bay).",,,,
 IT,Sardegna,Porto Botte,sea,q:Porto Botte,SW,"Very shallow bay with standing depth far out: flat water, good for learning. Mistral (NW) works best.",,,,
 IT,Sardegna,Cagliari – Poetto,sea,osm:r14404160,SE,"Long city beach; works with scirocco / SE and the summer sea breeze. Summer: kite only in the designated corridors.",,,,
 IT,Sardegna,San Teodoro – La Cinta,sea,q:Spiaggia La Cinta,E,"Long sandbar beach; works with levante / scirocco (onshore). Summer: kite corridor only.",,,,
-IT,Sardegna,Putzu Idu,sea,q:Putzu Idu,SW,"Sinis peninsula; mistral (NW) side-shore, chop to small waves. Schools on site.",,,,
+IT,Sardegna,Putzu Idu,sea,q:Putzu Idu,SW,"Sinis peninsula; mistral (NW) side-shore, chop to small waves. Schools on site. Also: Capo Mannu next door (rocky, big waves, experts only).",,,,
 # Sicilia
 IT,Sicilia,Lo Stagnone (Marsala),lagoon,osm:n12407041259,W,"Shallow flat-water lagoon, standing almost everywhere; many schools. Thermal / scirocco / mistral all work. Keep clear of swimming areas.",,,,
 IT,Sicilia,Mazara del Vallo – Capo Feto,sea,osm:w154960274,SW,"Wild beach next to the Capo Feto nature reserve; flat water inside the reef with W–NW, chop further out. Schools in season.",,,,
@@ -32,3 +33,5 @@ IT,Sardegna,Platamona,sea,q:Platamona,N,"Long north-coast beach near Sassari; mi
 IT,Puglia,Manfredonia – Siponto,sea,osm:n493697888,SE,"Shallow beach on the Gulf of Manfredonia; summer thermal and maestrale. Flat water close in, good for learning.",,,pro,
 # pro: near a kept spot — across the lake from Campione (kept), the reference Garda kite spot
 IT,Veneto,Lago di Garda – Malcesine,lake,osm:n458123631,W,"East shore; Pelèr (N) in the morning, Ora (S) in the afternoon. Kiting on Garda is regulated (zones / times, often only via a kite centre with boat): check locally.",,,pro,
+# pro: north-coast wave spot near Santa Teresa — 4 spot directories (unplug, kiteforum, spots4kite, surftribe); intermediate to expert
+IT,Sardegna,Rena Majore,sea,osm:w119020437,NW,"Large sandy beach on the north coast: NW wind strongest, choppy to small waves; rocks on both sides and a tricky entry. Crowded with swimmers in summer.",,,pro,
