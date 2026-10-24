@@ -104,6 +104,10 @@ second pass with web research is worth doing.
   flat)? Trettu pin is the cape, hint NNE (sheltered shore). Left out: Porto Ferro (Alghero;
   wave-surf school, conflicting kite sources), Capo Mannu (in the Putzu Idu notes), Isola Rossa,
   San Pietro, Vecchie Saline, Pula (no kite source checked), Punta Tretu summer fee: ok to mention?
+- Sicily (2026-10-24): Windy shows no kite spots in Sicily (not even the Stagnone), so
+  no benchmark. Added Santa Maria del Focallo (basic; 5 guides + 2 schools). Not added: Agnone
+  Bagni (flat east coast, Etna Kite School; no OSM beach found), Puzziteddu / Granitola and
+  Manfria (Gela): one guide each. Add any of them?
 - Left out: Slovenia, Albania, Campania, Lazio, Liguria, Friuli, Chia, Trasimeno, Follonica,
   Bol (Brač: windsurf spot, kiting unclear).
 
