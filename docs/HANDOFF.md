@@ -73,17 +73,44 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
 - Next on Ben's side: name + contact email for the privacy policy, Apple Developer account,
   domain.
 - Web-verified pass on the wave-2 countries still to do (fresh session = fresh web budget).
-- Team: agents `backend-engineer`, `spot-researcher`, `spot-improvement` and skills `preflight`,
-  `spot-check` in `.claude/` (not committed yet). Workstream **Spot improvement** runs in small
-  batches on Sonnet (one region per card, no subagents, commit then stop); notes in
-  `.atlas/streams/spot-improvement.md`. Full role in `.atlas/team/agents/spot-improvement.md`.
+- Team (2026-10-24): a Lead (Ben's main session: board, merges, anything public) and three
+  workstreams so topics run in parallel without touching the same files: **Spot improvement**
+  (catalogue only, Sonnet, one region per card, commit then stop, because long runs hit usage
+  limits and lost work twice), **Release** (store page, privacy answers, TestFlight; no
+  features) and **App** (app, engine, server; `backend-engineer` as its server helper). Roles
+  in `.claude/agents/`, skills in `.claude/skills/` (`merge-workstream`, `deploy-worker`,
+  `store-screenshots` added); not committed yet. Release and App still have to be created in Atlas.
 
 ## Where we stopped (2026-10-23)
 - Spot improvement merged into main (c261e03): Portugal and Morocco web-verified, 4 PT spots
   added, Moroccan spots routed from Moroccan cities (they were all `access: ferry`, so hidden).
 - App fix (6994a96): searches keep spots on the origin's continent (`Continent` in
   `DriveTime.swift`), otherwise Tarifa would get Tangier as a 40 min drive.
-- **Not pushed**: Ben says "push", then CI rebuilds `Data/spots.json`.
+- Pushed on 2026-10-25; CI rebuilt the catalogue (cadff53, 626 spots, 9 in Morocco) and the server serves it.
 - v1 / App Store: the list of what's missing is on the board (`v1-*`, `tf-*` cards): privacy
   contact, App Store Connect app, EU trader status, App Privacy answers, store text and
   screenshots (Claude), archive and upload.
+- 2026-10-25: v1 ships in English, Spanish and French (Ben's call), with a Language row in
+  the Me tab that opens iOS's per-app language setting (chosen over a flag: flags are
+  countries, and iOS's picker also switches dates and the store page). The contact email is
+  necessary (GDPR, App Review) but the repo is public, so it's a Wrangler secret and the
+  pages write it as HTML character references; the deploy itself is blocked for Claude, so
+  Ben runs it.
+- 2026-10-25 16:30: from Ben's connection, the Worker's two IPs (188.114.96.5 / .97.5) timed
+  out while other Cloudflare sites answered: probably a Spanish ISP block during football
+  matches (unconfirmed). The app has no fallback yet, so Spanish riders could lose search on
+  weekend afternoons; Product has a card to fall back to Open-Meteo directly.
+
+## Where the Lead stopped (2026-10-25 evening)
+- Waiting to merge (say "merge"): Product's branch (Spanish + French + Language row in Me;
+  kite terms stay in English, the language applies when the app is reopened) and the App
+  Store Connect helper's guide fix (395f93f). Use the `merge-workstream` skill.
+- Local, not pushed: f324fd3 and 24f65c3 (privacy page name and hidden email; already live
+  on Cloudflare because Ben deployed from this Mac). CONTACT_EMAIL is a Wrangler secret, never
+  in git (public repo). Deploys are blocked for Claude by auto mode: Ben runs them.
+- WHE-35 in review: Ben checks /privacy on mobile data (from his home network the Worker's
+  IPs timed out, see above).
+- `.claude/` (roles, skills) still not committed (WHE-42): workstream worktrees don't see the
+  skills until it is. Leftover role files app.md and release.md can go when committing.
+- Next for v1: merge, server fallback (Product), screenshots in 3 languages, TestFlight build
+  (Ben, Xcode), test, submit.

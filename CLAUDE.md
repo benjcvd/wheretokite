@@ -8,19 +8,25 @@ This project is run from Atlas, Ben's cockpit, but these rules apply to every Cl
 | File | What it is | Who updates it |
 |---|---|---|
 | `CLAUDE.md` | Project context: goal, stack, commands, conventions | Ben, or you when something durable changes |
-| `docs/HANDOFF.md` | Resume point: where things stand, open topics, next steps | You, at the end of every working session |
-| `.atlas/board.json` | The task board | You, as you work |
+| `docs/HANDOFF.md` | Resume point, as a short narrative: where things stand, decisions and why, what's tricky. No task lists | You, at the end of every working session |
+| `.atlas/board.json` | The task board: **the only task list** | You, as you work |
 | `.atlas/streams/<id>.md` | Each workstream's notes: done / in progress / blocked / ready to merge | That workstream |
 | `.claude/agents/<id>.md` | Role of each agent (Lead and workstreams) | Ben or the Lead |
 | `.claude/skills/<name>/SKILL.md` | Reusable know-how (release checklist, data refresh…) | Anyone, when a procedure repeats |
 
-**Board** (`.atlas/board.json`): `{"cards":[{"id","title","status","assignee","priority","blocks","note","updated"}]}`
-- status: `todo` backlog · `ready` Atlas auto-starts it with its assignee · `doing` · `review` done, Ben should check (say what in note) · `waiting` needs an action from Ben · `done`.
+**Board** (`.atlas/board.json`): `{"cards":[{"id","code","title","status","assignee","priority","blocks","note","updated"}]}`. `code` (e.g. WHE-12) is set by Atlas: never change it; leave it out on new cards. Use it when you mention a card to Ben.
+- status: `todo` backlog · `ready` Atlas auto-starts it with its assignee · `doing` · `review` finished, Ben should check (say what in note) · `waiting` blocked: you can't finish without Ben (say exactly what you need in note) · `done` · `parked` not a priority now (only Ben or the Lead park or unpark cards; never work on a parked card).
 - priority: `blocker` (set `blocks`) · `high` · `normal` · `low`. Never change a priority whose `priorityBy` is `ben`.
-- Update the card you're working on as you go, before you end your turn. Notes speak to Ben in the second person.
+- Update the card you're working on as you go, before you end your turn.
+- Titles in plain words, without jargon or file names: the outcome Ben will see ("Show a clear message when tide data is missing"). Notes, in the second person: `Why:` / `Status:` and, when Ben must act, `You:` with exactly what to do or answer (options marked "(recommended)").
 - Edit only the cards you touch and keep the JSON valid.
+- Don't keep to-do lists anywhere else (`TODO.md`, `docs/HANDOFF.md`, comments): new tasks become cards. If an old to-do file still lists open items, move them to the board once and replace the list with a pointer to it.
 
-**Wrapping up**: before stopping, update `docs/HANDOFF.md` and the board so a fresh session can resume from them alone.
+**Project state**: in Atlas, each message starts with a short `[Atlas · project state …]` block (your cards, what waits on Ben, the team, recent news). Trust it; open the board only for details.
+
+**Checks**: when Atlas has a verify command for this project, it runs it before you can finish a turn that changed code. If it fails, fix it; don't hand work to review or done while it's red.
+
+**Wrapping up**: before stopping, update the board, then `docs/HANDOFF.md` in a few lines, so a fresh session can resume from them alone.
 
 **Skills**: when you notice you're repeating a procedure, propose a skill for it in `.claude/skills/`.
 <!-- ATLAS:END -->
