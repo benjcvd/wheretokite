@@ -132,10 +132,10 @@ ADAPTADO A TI Y A TUS COMETAS
 Indica una vez tu peso, tu nivel y las cometas que tienes. Cada hora se puntúa según lo que importa en el agua:
 • Fuerza del viento: ¿encaja con alguna de tus cometas, para una sesión tranquila o intensa?
 • Viento estable: las rachas comparadas con el viento medio.
-• Dirección: el viento frente a la orientación de cada playa. El cruzado de mar es lo mejor; el terral puntúa cero.
+• Dirección: el viento frente a la orientación de cada playa. El side-onshore es lo mejor; el offshore puntúa cero.
 
 LOS SPOTS
-Más de 600 spots de kitesurf famosos en Europa y Marruecos, de Tarifa a Sylt y de Leucate a Dakhla. La orientación de cada playa se mide a partir de datos de mapas y se comprueba, para distinguir el viento de mar, el cruzado y el terral. Los spots que solo funcionan con cierta marea tienen la previsión de mareas. Se tienen en cuenta las prohibiciones de temporada y las zonas de baño de verano.
+Más de 600 spots de kitesurf famosos en Europa y Marruecos, de Tarifa a Sylt y de Leucate a Dakhla. La orientación de cada playa se mide a partir de datos de mapas y se comprueba, para distinguir onshore, side-shore y offshore. Los spots que solo funcionan con cierta marea tienen la previsión de mareas. Se tienen en cuenta las prohibiciones de temporada y las zonas de baño de verano.
 
 LA SEGURIDAD PRIMERO
 Las tormentas, la noche y las horas prohibidas puntúan cero. Un indicador de fiabilidad te dice cuánto coinciden los modelos meteorológicos para tu día.

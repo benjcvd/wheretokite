@@ -23,7 +23,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**Dirección**: el cruzado de mar es lo mejor, el viento de mar puro está bien, el cruzado es más difícil y el terral es 0."
+            "value" : "**Dirección**: side-onshore es lo mejor, onshore puro está bien, cross-shore es más difícil, offshore es 0."
           }
         },
         "fr" : {
@@ -907,7 +907,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comprueba siempre las condiciones en el spot antes de navegar, nunca navegues solo con viento fuerte o terral, y no vayas más allá de tu nivel."
+            "value" : "Comprueba siempre las condiciones en el spot antes de navegar, nunca navegues solo con viento fuerte u offshore, y no vayas más allá de tu nivel."
           }
         },
         "fr" : {
@@ -1532,7 +1532,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "cruzado"
+            "value" : "cross-shore"
           }
         },
         "fr" : {
@@ -3453,7 +3453,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "terral"
+            "value" : "offshore"
           }
         },
         "fr" : {
@@ -3549,7 +3549,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solo viento cruzado de mar o de mar, hasta %lld kn."
+            "value" : "Solo viento side-onshore u onshore, hasta %lld kn."
           }
         },
         "fr" : {
@@ -3566,7 +3566,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "de mar"
+            "value" : "onshore"
           }
         },
         "fr" : {
@@ -3710,7 +3710,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apunta la flecha desde la playa hacia el agua abierta y luego indica cuánto horizonte es agua: menos de 180° para una cala, más para una punta, 360° para un lago pequeño que se navega desde cualquier lado. Así se distingue el viento de mar, el cruzado y el terral."
+            "value" : "Apunta la flecha desde la playa hacia el agua abierta y luego indica cuánto horizonte es agua: menos de 180° para una cala, más para una punta, 360° para un lago pequeño que se navega desde cualquier lado. Así se distingue el viento onshore, side-shore y offshore."
           }
         },
         "fr" : {
@@ -4239,7 +4239,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "cruzado terral"
+            "value" : "side-offshore"
           }
         },
         "fr" : {
@@ -4256,7 +4256,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "cruzado de mar"
+            "value" : "side-onshore"
           }
         },
         "fr" : {
@@ -4272,7 +4272,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cruzado de mar antes que de mar o cruzado"
+            "value" : "Side-onshore antes que onshore o cross-shore"
           }
         },
         "fr" : {
@@ -4304,7 +4304,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Algunos límites no se negocian: el viento o las rachas por encima del límite de tu nivel, y el viento terral, siempre puntúan 0."
+            "value" : "Algunos límites no se negocian: el viento o las rachas por encima del límite de tu nivel, y el viento offshore, siempre puntúan 0."
           }
         },
         "fr" : {
@@ -4720,7 +4720,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La orientación de la playa aún no está confirmada por un segundo mapa, así que el viento de mar y el terral pueden no ser exactos."
+            "value" : "La orientación de la playa aún no está confirmada por un segundo mapa, así que onshore y offshore pueden no ser exactos."
           }
         },
         "fr" : {
@@ -5171,7 +5171,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hasta %lld kn, sin viento terral."
+            "value" : "Hasta %lld kn, sin viento offshore."
           }
         },
         "fr" : {
@@ -5187,7 +5187,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hasta %lld kn, el cruzado terral es aceptable."
+            "value" : "Hasta %lld kn, side-offshore aceptable."
           }
         },
         "fr" : {
