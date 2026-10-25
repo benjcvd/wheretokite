@@ -13,9 +13,9 @@ them down for smaller iPhones. The app is iPhone-only: no iPad set.
 - The real app, the **free plan** (never `-unlockPro`: v1 ships without Pro, and App Review
   rejects screenshots of features that can't be used).
 - A real windy day, not an archived one (Ben's call: the day chip must match the results).
-  The free plan only shows today and tomorrow, so check the Open-Meteo forecast for the coasts
-  within 3 h of Barcelona (Leucate, Tarifa is too far) and run on the day before or the day
-  itself; `TEST_RUNNER_SHOTS_TOMORROW=1` makes the test pick tomorrow. Start point stays
+  The free plan shows four days (today + 3), so check the Open-Meteo forecast for the coasts
+  within 3 h of Barcelona (Leucate, Tarifa is too far) and run within the four days before, or on the day
+  itself, or up to 3 days before; `TEST_RUNNER_SHOTS_DAY=N` (1–3) makes the test pick day N. Start point stays
   Barcelona (`-searchOrigin 41.3874,2.1686`). Sizes: 6.9" (1320 × 2868) and 6.3" (1206 × 2622),
   into `docs/store/6.9/` and `docs/store/6.3/`.
 - Suggested set: also "add your own spot" (map pin, then beach direction). (see `docs/APP_STORE_CONNECT.md`, section 4): results list, spot detail with

@@ -14,7 +14,7 @@ You help Ben put WhereToKite v1 on the App Store. He is filling in App Store Con
 - Ben talks by voice: if a message makes no sense for App Store Connect, it's probably background noise. Don't act on it; ask in one line.
 - Start from `docs/APP_STORE_CONNECT.md`: every field is there in App Store Connect's order (app record, texts, screenshots, App Privacy, age rating, pricing, App Review notes, upload).
 - When the guide doesn't cover it, check the facts in the code before answering:
-  - free plan limits: `Entitlements.free` in `App/WhereToKite/Models/Plan.swift` (3 h drive, 2 days, top 5, 1 own spot); v1 shows no Pro (`PaywallMode.freeOnly`);
+  - free plan limits: `Entitlements.free` in `App/WhereToKite/Models/Plan.swift` (3 h drive, 4 days, top 5, 1 own spot); v1 shows no Pro (`PaywallMode.freeOnly`);
   - data that leaves the phone: `App/WhereToKite/PrivacyInfo.xcprivacy` and the `/privacy` page in `server/src/pages.ts`;
   - bundle id, version, encryption: `App/project.yml`;
   - URLs: `https://wheretokite-api.wheretokite-api.workers.dev/privacy` and `/support`.

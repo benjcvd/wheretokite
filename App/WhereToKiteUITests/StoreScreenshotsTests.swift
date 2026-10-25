@@ -1,7 +1,7 @@
 import XCTest
 
-/// App Store screenshots, free plan, from Barcelona on a real forecast (today, or tomorrow with
-/// TEST_RUNNER_SHOTS_TOMORROW=1), so the day shown matches the results:
+/// App Store screenshots, free plan, from Barcelona on a real forecast (today, or a later day
+/// of the free plan's four with TEST_RUNNER_SHOTS_DAY=1…3), so the day shown matches the results:
 /// results → spot detail → "How is this scored?" → search options → rider profile → own spot.
 /// Run on the 6.9" and 6.3" simulators; see .claude/skills/store-screenshots.
 final class StoreScreenshotsTests: XCTestCase {
@@ -16,9 +16,9 @@ final class StoreScreenshotsTests: XCTestCase {
         let allow = springboard.buttons["Allow While Using App"]
         if allow.waitForExistence(timeout: 4) { allow.tap() }
 
-        if ProcessInfo.processInfo.environment["SHOTS_TOMORROW"] == "1" {
-            XCTAssertTrue(app.buttons["day1"].waitForExistence(timeout: 5))
-            app.buttons["day1"].tap()
+        if let day = ProcessInfo.processInfo.environment["SHOTS_DAY"], day != "0" {
+            XCTAssertTrue(app.buttons["day\(day)"].waitForExistence(timeout: 5))
+            app.buttons["day\(day)"].tap()
         }
 
         // Windy spots are often ~2 h away: the free plan's 3 h covers them.

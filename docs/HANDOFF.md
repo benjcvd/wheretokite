@@ -27,7 +27,7 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
 
 ## What exists
 - **App** (`App/`, SwiftUI, XcodeGen): version 1.0, `PaywallMode.freeOnly` (Pro hidden).
-  Free plan: 1 own spot, 3 h drive, top 5, 2 days ahead; water sector, second side and tide
+  Free plan: 1 own spot, 3 h drive, top 5, 4 days ahead; water sector, second side and tide
   rule are free; "Next good window" and score weights are Pro.
 - **Engine** (`Sources/KiteCore`): scoring, safety (thunderstorm, dark, seasonal bans = score 0;
   rain −15% from 2 mm/h, −40% from 5 mm/h), tides, next good window. CLI in `Sources/kite`.

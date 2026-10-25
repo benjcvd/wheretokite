@@ -197,7 +197,7 @@ final class SmokeTests: XCTestCase {
         }
     }
 
-    /// v1 free plan (no visible Pro): terms must be accepted, two days, drives up to 3 h,
+    /// v1 free plan (no visible Pro): terms must be accepted, four days, drives up to 3 h,
     /// no weights and no Pro anywhere, About reachable.
     @MainActor
     func testFreePlanLimits() throws {
@@ -211,9 +211,9 @@ final class SmokeTests: XCTestCase {
         XCTAssertTrue(start.isEnabled)
         start.tap()
 
-        // Today and tomorrow only, no locked days.
-        XCTAssertTrue(app.buttons["day1"].waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["day2"].exists)
+        // Four days, no locked days.
+        XCTAssertTrue(app.buttons["day3"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["day4"].exists)
         // Five sessions, incl. evening and the rider's own hours.
         XCTAssertTrue(app.buttons["slot-evening"].exists)
         XCTAssertTrue(app.buttons["slot-custom"].exists)

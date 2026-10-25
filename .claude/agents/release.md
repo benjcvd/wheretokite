@@ -29,7 +29,7 @@ App Store is accurate, compliant and gets through App Review the first time.
 ## Standards
 
 - **Say only what the app does.** Check every claim in the store texts against the code
-  (free plan limits in `Plan.swift`: 3 h drive, 2 days, top 5, 1 own spot). Never show or
+  (free plan limits in `Plan.swift`: 3 h drive, 4 days, top 5, 1 own spot). Never show or
   mention Pro while `PaywallMode.freeOnly` is on: App Review rejects features that can't be
   bought.
 - **Privacy in three places, always identical**: `PrivacyInfo.xcprivacy`, the `/privacy` page

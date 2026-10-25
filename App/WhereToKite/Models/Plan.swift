@@ -31,7 +31,7 @@ struct Entitlements: Equatable {
     /// "Next good window": when the searched day is poor, the next day in the week that works.
     var nextWindow: Bool = false
 
-    static let free = Entitlements(maxDriveMinutes: 180, forecastDays: 2, maxUserSpots: 1, maxResults: 5,
+    static let free = Entitlements(maxDriveMinutes: 180, forecastDays: 4, maxUserSpots: 1, maxResults: 5,
                                    scoreWeights: false, advancedSpotSettings: true)
     static let pro = Entitlements(maxDriveMinutes: nil, forecastDays: 7, maxUserSpots: nil, maxResults: nil,
                                   scoreWeights: true, advancedSpotSettings: true, proSpots: true, nextWindow: true)
@@ -115,7 +115,7 @@ struct ProSheet: View {
 
     private let features: [(String, String, String)] = [
         ("bell.badge.fill", String(localized: "It's on alerts"), String(localized: "A notification when your spots light up for your kites (coming with Pro).")),
-        ("calendar", String(localized: "7-day planning"), String(localized: "The whole week, not just today and tomorrow.")),
+        ("calendar", String(localized: "7-day planning"), String(localized: "The whole week, not just the next four days.")),
         ("calendar.badge.clock", String(localized: "Next good window"), String(localized: "When today is flat, the next day this week that works, and where.")),
         ("car.fill", String(localized: "Drives up to 10 h"), String(localized: "Weekend trips, not just the local spots (3\u{00A0}h free).")),
         ("list.number", String(localized: "Every spot"), String(localized: "The full ranking and map (top 5 free), plus about 300 more local spots.")),

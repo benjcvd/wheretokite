@@ -66,7 +66,7 @@ Tell it where you start, how far you'll drive and when you ride. WhereToKite che
 ```
 Where should you kite today? WhereToKite answers in one search.
 
-Set your start point, how long you're willing to drive, the day and your session (morning, afternoon, evening or your own hours). WhereToKite checks the forecast at every well-known kite spot in reach and gives you a ranked list, with the best two-hour window at each spot. Up to three hours' drive and two days ahead.
+Set your start point, how long you're willing to drive, the day and your session (morning, afternoon, evening or your own hours). WhereToKite checks the forecast at every well-known kite spot in reach and gives you a ranked list, with the best two-hour window at each spot. Up to three hours' drive and four days ahead.
 
 MATCHED TO YOU AND YOUR KITES
 Enter your weight, your level and the kites in your quiver once. Each hour is scored on what matters on the water:
@@ -134,7 +134,7 @@ Dinos desde dónde sales, cuánto quieres conducir y cuándo navegas. WhereToKit
 ```
 ¿Dónde navego hoy? WhereToKite te lo dice en una sola búsqueda.
 
-Elige tu punto de salida, cuánto estás dispuesto a conducir, el día y tu sesión (temprano, tarde, atardecer o tus propias horas). WhereToKite consulta la previsión en cada spot de kite conocido a tu alcance y te da una lista ordenada, con la mejor ventana de dos horas en cada spot. Hasta tres horas de trayecto y dos días vista.
+Elige tu punto de salida, cuánto estás dispuesto a conducir, el día y tu sesión (temprano, tarde, atardecer o tus propias horas). WhereToKite consulta la previsión en cada spot de kite conocido a tu alcance y te da una lista ordenada, con la mejor ventana de dos horas en cada spot. Hasta tres horas de trayecto y cuatro días vista.
 
 ADAPTADO A TI Y A TUS COMETAS
 Indica una vez tu peso, tu nivel y las cometas que tienes. Cada hora se puntúa según lo que importa en el agua:
@@ -188,7 +188,7 @@ Dis d'où tu pars, jusqu'où tu roules et quand tu navigues. WhereToKite regarde
 ```
 On ride où aujourd'hui ? WhereToKite te répond en une seule recherche.
 
-Choisis ton point de départ, le temps de route que tu acceptes, le jour et ta session (matin, après-midi, soir ou tes propres heures). WhereToKite consulte la prévision sur chaque spot de kite connu à ta portée et te donne un classement, avec le meilleur créneau de deux heures sur chaque spot. Jusqu'à trois heures de route et deux jours à l'avance.
+Choisis ton point de départ, le temps de route que tu acceptes, le jour et ta session (matin, après-midi, soir ou tes propres heures). WhereToKite consulte la prévision sur chaque spot de kite connu à ta portée et te donne un classement, avec le meilleur créneau de deux heures sur chaque spot. Jusqu'à trois heures de route et quatre jours à l'avance.
 
 ADAPTÉ À TOI ET À TES AILES
 Indique une fois ton poids, ton niveau et les ailes de ton quiver. Chaque heure est notée sur ce qui compte sur l'eau :

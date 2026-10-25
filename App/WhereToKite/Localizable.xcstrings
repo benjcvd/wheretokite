@@ -4827,18 +4827,18 @@
         }
       }
     },
-    "The whole week, not just today and tomorrow." : {
+    "The whole week, not just the next four days." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toda la semana, no solo hoy y mañana."
+            "value" : "Toda la semana, no solo los próximos cuatro días."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toute la semaine, pas seulement aujourd'hui et demain."
+            "value" : "Toute la semaine, pas seulement les quatre prochains jours."
           }
         }
       }
