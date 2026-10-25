@@ -148,6 +148,27 @@ final class SmokeTests: XCTestCase {
         snapshot(app, "score-info-2")
     }
 
+    /// The WhereToKite server doesn't answer (seen in Spain on weekend afternoons): the
+    /// forecasts come straight from Open-Meteo and the search still shows spots.
+    @MainActor
+    func testSearchWithoutServer() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-unreachableServer", "YES",
+                                "-searchDay", "2026-10-03", "-searchOrigin", "41.3874,2.1686"]
+        app.launch()
+        acceptTerms(app)
+        app.buttons["Start"].tap()
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allow = springboard.buttons["Allow While Using App"]
+        if allow.waitForExistence(timeout: 4) { allow.tap() }
+
+        let topSpot = app.buttons["topSpot"], row = app.buttons["spotRow"].firstMatch
+        let deadline = Date().addingTimeInterval(40)
+        while !topSpot.exists && !row.exists && Date() < deadline { _ = row.waitForExistence(timeout: 1) }
+        if !topSpot.exists && !row.exists { app.swipeUp(); _ = row.waitForExistence(timeout: 5) }
+        XCTAssertTrue(topSpot.exists || row.exists, "no spots without the server")
+    }
+
     /// An archived day is labelled with its own date (it used to say "Today"), and the Kite
     /// screen and spot detail hold up at an accessibility text size.
     @MainActor

@@ -68,6 +68,62 @@ public struct ForecastServer: Sendable, Equatable {
     }
 }
 
+/// The WhereToKite server first, Open-Meteo straight from the phone when the server fails or
+/// is too slow (seen in Spain on weekend afternoons, when some providers block Cloudflare
+/// addresses). After a failure the server is skipped for `cooldown`, so the next searches
+/// don't wait for it again. One instance is shared by the forecasts and the confidence check.
+public actor ServerFailover {
+    public let primary: ForecastServer
+    public let fallback: ForecastServer
+    public let timeout: Duration
+    public let cooldown: TimeInterval
+    private var skipPrimaryUntil: Date?
+    /// Called when a request falls back (for logs).
+    private let onFallback: @Sendable (Error) -> Void
+
+    public init(primary: ForecastServer, fallback: ForecastServer = .openMeteo,
+                timeout: Duration = .seconds(8), cooldown: TimeInterval = 10 * 60,
+                onFallback: @escaping @Sendable (Error) -> Void = { _ in }) {
+        self.primary = primary
+        self.fallback = fallback
+        self.timeout = timeout
+        self.cooldown = cooldown
+        self.onFallback = onFallback
+    }
+
+    struct TimedOut: Error {}
+
+    /// True while the server is being skipped.
+    public var usingFallback: Bool { skipPrimaryUntil.map { Date() < $0 } ?? false }
+
+    public func run<T: Sendable>(_ request: @escaping @Sendable (ForecastServer) async throws -> T) async throws -> T {
+        if !usingFallback {
+            do {
+                return try await Self.withTimeout(timeout) { try await request(self.primary) }
+            } catch is CancellationError {
+                throw CancellationError()
+            } catch {
+                skipPrimaryUntil = Date().addingTimeInterval(cooldown)
+                onFallback(error)
+            }
+        }
+        return try await request(fallback)
+    }
+
+    static func withTimeout<T: Sendable>(_ limit: Duration,
+                                         _ op: @escaping @Sendable () async throws -> T) async throws -> T {
+        try await withThrowingTaskGroup(of: T.self) { group in
+            group.addTask { try await op() }
+            group.addTask {
+                try await Task.sleep(for: limit)
+                throw TimedOut()
+            }
+            defer { group.cancelAll() }
+            return try await group.next()!
+        }
+    }
+}
+
 // MARK: - Open-Meteo
 
 /// Open-Meteo forecast client.
@@ -93,10 +149,18 @@ public struct OpenMeteoProvider: ForecastProvider {
     /// Requests in flight at once (400 spots = 4 requests = one round trip).
     public var maxConcurrent = 4
     public var session: URLSession = .shared
+    /// When set, `server` is ignored: the failover picks the server for each request.
+    public var failover: ServerFailover?
 
     public init(model: String = "best_match", server: ForecastServer = .openMeteo) {
         self.model = model
         self.server = server
+    }
+
+    public init(model: String = "best_match", failover: ServerFailover) {
+        self.model = model
+        self.server = failover.primary
+        self.failover = failover
     }
 
     static let hourlyVariables = "wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,cape,precipitation"
@@ -129,6 +193,14 @@ public struct OpenMeteoProvider: ForecastProvider {
     /// missing from the result — as long as one batch succeeds; if all fail, the first error
     /// is thrown. `days` must be consecutive (one date range per request).
     public func forecasts(for spots: [Spot], days: [String]) async throws -> [String: [String: DayForecast]] {
+        if let failover {
+            return try await failover.run { server in
+                var p = self
+                p.failover = nil
+                p.server = server
+                return try await p.forecasts(for: spots, days: days)
+            }
+        }
         let days = days.sorted()
         guard let first = days.first, let last = days.last else { return [:] }
         for day in days { guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) } }
