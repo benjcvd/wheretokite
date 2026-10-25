@@ -7,7 +7,9 @@ describe("pages", () => {
     expect(res.headers.get("Content-Type")).toContain("text/html");
     const html = await res.text();
     expect(html).toContain("A &lt;b&gt;");
-    expect(html).toContain("mailto:a@example.com");
+    expect(html).not.toContain("a@example.com");   // not in clear in the source
+    const decoded = html.replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)));
+    expect(decoded).toContain('href="mailto:a@example.com"');
     expect(html).toContain("public");
   });
   it("falls back to GitHub issues without a contact", async () => {

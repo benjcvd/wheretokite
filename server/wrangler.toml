@@ -13,7 +13,7 @@ CATALOG_URL = "https://raw.githubusercontent.com/benjcvd/wheretokite/main/Data/s
 GITHUB_REPO = "benjcvd/wheretokite"
 # Shown on /privacy and /support (the App Store links to both).
 OPERATOR_NAME = "Benjamin Chevignard"
-# CONTACT_EMAIL = "you@example.com"
+# CONTACT_EMAIL is a secret (the repo is public): npx wrangler secret put CONTACT_EMAIL
 # OPEN_METEO_API_KEY is a secret: npx wrangler secret put OPEN_METEO_API_KEY
 # GITHUB_TOKEN (files app reports as issues) is a secret: npx wrangler secret put GITHUB_TOKEN
 
