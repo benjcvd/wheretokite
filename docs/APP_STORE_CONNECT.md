@@ -122,45 +122,45 @@ the same Privacy Policy URL on App Privacy, or Add for Review fails with "This f
 
 | Field | Value |
 |---|---|
-| Subtitle (30 max) | `El mejor spot de kite del día` |
+| Subtitle (30 max) | `Spots de kite según el viento` |
 
 **Promotional text**:
 
 ```
-Dinos desde dónde sales, cuánto quieres conducir y cuándo navegas. WhereToKite mira el viento en cada spot de kite conocido a tu alcance y te dice adónde ir.
+Clasificación de los spots de kitesurf a tu alcance según la previsión de viento, para el día y la franja horaria que elijas. Europa y Marruecos.
 ```
 
 **Description**:
 
 ```
-¿Dónde navego hoy? WhereToKite te lo dice en una sola búsqueda.
+WhereToKite indica en qué spots de kitesurf habrá mejores condiciones para un día y una franja horaria concretos.
 
-Elige tu punto de salida, cuánto estás dispuesto a conducir, el día y tu sesión (temprano, tarde, atardecer o tus propias horas). WhereToKite consulta la previsión en cada spot de kite conocido a tu alcance y te da una lista ordenada, con la mejor ventana de dos horas en cada spot. Hasta tres horas de trayecto y cuatro días vista.
+Indicas tu punto de salida, el tiempo máximo de trayecto, el día y la franja (temprano, tarde, atardecer u horario personalizado). La app consulta la previsión de cada spot al que puedes llegar en ese tiempo y los ordena, con la mejor ventana de dos horas de cada uno. Trayectos de hasta tres horas y previsión de hasta cuatro días.
 
-ADAPTADO A TI Y A TUS COMETAS
-Indica una vez tu peso, tu nivel y las cometas que tienes. Cada hora se puntúa según lo que importa en el agua:
-• Fuerza del viento: ¿encaja con alguna de tus cometas, para una sesión tranquila o intensa?
-• Viento estable: las rachas comparadas con el viento medio.
-• Dirección: el viento frente a la orientación de cada playa. El side-onshore es lo mejor; el offshore puntúa cero.
+CÓMO SE PUNTÚA
+Indicas una vez tu peso, tu nivel y tus cometas. Cada hora se puntúa según:
+• la fuerza del viento, comparada con el rango de uso de tus cometas;
+• la regularidad del viento (rachas frente al viento medio);
+• la dirección del viento respecto a la orientación de la playa. El viento offshore puntúa cero.
 
-LOS SPOTS
-Más de 600 spots de kitesurf famosos en Europa y Marruecos, de Tarifa a Sylt y de Leucate a Dakhla. La orientación de cada playa se mide a partir de datos de mapas y se comprueba, para distinguir onshore, side-shore y offshore. Los spots que solo funcionan con cierta marea tienen la previsión de mareas. Se tienen en cuenta las prohibiciones de temporada y las zonas de baño de verano.
+SPOTS
+Más de 600 spots de kitesurf conocidos en Europa y Marruecos. La orientación de cada playa se calcula a partir de los datos cartográficos de OpenStreetMap y se comprueba. En los spots que dependen de la marea se tiene en cuenta la previsión de mareas, así como las prohibiciones de temporada y las zonas de baño de verano.
 
-LA SEGURIDAD PRIMERO
-Las tormentas, la noche y las horas prohibidas puntúan cero. Un indicador de fiabilidad te dice cuánto coinciden los modelos meteorológicos para tu día.
+SEGURIDAD
+Las horas con riesgo de tormenta, las horas nocturnas y los periodos de prohibición puntúan cero. Un índice de fiabilidad indica en qué medida coinciden los modelos meteorológicos para el día elegido.
 
-ADEMÁS
-• Tiempos de trayecto reales de Apple Maps.
-• Un gráfico de viento y rachas hora a hora para cada spot, y cómo llegar en un toque.
-• Añade tu spot secreto: se clasifica igual que los demás.
-• ¿Algo mal en un spot? Avísalo desde la app; las correcciones llegan a todos sin actualizar.
+OTRAS FUNCIONES
+• Tiempos de trayecto calculados con Mapas de Apple.
+• Gráfico horario de viento y rachas para cada spot, e indicaciones para llegar.
+• Añadir tus propios spots, que se ordenan igual que los demás.
+• Avisar de un error en un spot desde la app; las correcciones se aplican sin actualizar la app.
 
-SIN CUENTA, SIN RASTREO
-Tu perfil y tus spots se quedan en tu teléfono. Sin anuncios.
+DATOS PERSONALES
+No hace falta cuenta. Tu perfil y tus spots se quedan en tu teléfono. Sin publicidad ni rastreo.
 
-Las puntuaciones son estimaciones a partir de previsiones meteorológicas, no consejos de seguridad. Comprueba siempre las condiciones y las normas locales en el spot, y navega bajo tu propia responsabilidad.
+Las puntuaciones son estimaciones basadas en previsiones meteorológicas y no son un consejo de seguridad. Comprueba siempre las condiciones y la normativa local en el spot.
 
-Datos meteorológicos de Open-Meteo.com. Spots © colaboradores de OpenStreetMap.
+Datos meteorológicos: Open-Meteo.com. Spots: © colaboradores de OpenStreetMap.
 ```
 
 **Keywords**:
@@ -176,45 +176,45 @@ language. It also covers Belgium, Switzerland and Morocco, so no French (Canada)
 
 | Field | Value |
 |---|---|
-| Subtitle (30 max) | `Le bon spot de kite du jour` |
+| Subtitle (30 max) | `Spots de kite selon le vent` |
 
 **Promotional text**:
 
 ```
-Dis d'où tu pars, jusqu'où tu roules et quand tu navigues. WhereToKite regarde le vent sur chaque spot de kite connu à ta portée et te dit où aller.
+Classement des spots de kitesurf à portée de route selon la prévision de vent, pour le jour et le créneau de votre choix. Europe et Maroc.
 ```
 
 **Description**:
 
 ```
-On ride où aujourd'hui ? WhereToKite te répond en une seule recherche.
+WhereToKite indique les spots de kitesurf où les conditions seront les meilleures pour un jour et un créneau donnés.
 
-Choisis ton point de départ, le temps de route que tu acceptes, le jour et ta session (matin, après-midi, soir ou tes propres heures). WhereToKite consulte la prévision sur chaque spot de kite connu à ta portée et te donne un classement, avec le meilleur créneau de deux heures sur chaque spot. Jusqu'à trois heures de route et quatre jours à l'avance.
+Vous indiquez votre point de départ, le temps de route maximum, le jour et le créneau (matin, après-midi, soir ou horaires personnalisés). L'application récupère la prévision de chaque spot accessible dans ce temps de route et les classe, avec pour chacun le meilleur créneau de deux heures. Temps de route jusqu'à trois heures, prévisions jusqu'à quatre jours.
 
-ADAPTÉ À TOI ET À TES AILES
-Indique une fois ton poids, ton niveau et les ailes de ton quiver. Chaque heure est notée sur ce qui compte sur l'eau :
-• Force du vent : convient-elle à une de tes ailes, pour une session tranquille ou engagée ?
-• Vent régulier : les rafales comparées au vent moyen.
-• Direction : le vent face à l'orientation de chaque plage. Le side-on est idéal, l'offshore vaut zéro.
+CALCUL DE LA NOTE
+Vous renseignez une fois votre poids, votre niveau et vos ailes. Chaque heure est notée selon :
+• la force du vent, comparée à la plage d'utilisation de vos ailes ;
+• la régularité du vent (rafales par rapport au vent moyen) ;
+• la direction du vent par rapport à l'orientation de la plage. Un vent offshore donne une note nulle.
 
-LES SPOTS
-Plus de 600 spots de kitesurf réputés en Europe et au Maroc, de Tarifa à Sylt et de Leucate à Dakhla. L'orientation de chaque plage est mesurée à partir de données cartographiques et vérifiée, pour distinguer onshore, side-shore et offshore. Les spots qui ne marchent qu'à une certaine marée ont la prévision des marées. Les interdictions saisonnières et les zones de baignade d'été sont prises en compte.
+SPOTS
+Plus de 600 spots de kitesurf connus en Europe et au Maroc. L'orientation de chaque plage est calculée à partir des données cartographiques d'OpenStreetMap, puis vérifiée. Pour les spots qui dépendent de la marée, la prévision de marée est prise en compte, ainsi que les interdictions saisonnières et les zones de baignade estivales.
 
-LA SÉCURITÉ D'ABORD
-Les orages, la nuit et les heures interdites valent zéro. Un indice de confiance te dit à quel point les modèles météo s'accordent pour ton jour.
+SÉCURITÉ
+Les heures avec risque d'orage, les heures de nuit et les périodes d'interdiction reçoivent une note nulle. Un indice de confiance indique dans quelle mesure les modèles météo concordent pour le jour choisi.
 
-AUSSI
-• De vrais temps de trajet avec Apple Plans.
-• Un graphique du vent et des rafales heure par heure pour chaque spot, et l'itinéraire en un geste.
-• Ajoute ton spot secret : il est classé comme les autres.
-• Une erreur sur un spot ? Signale-la depuis l'app ; les corrections arrivent chez tout le monde sans mise à jour.
+AUTRES FONCTIONS
+• Temps de trajet calculés avec Apple Plans.
+• Graphique horaire du vent et des rafales pour chaque spot, et itinéraire.
+• Ajout de vos propres spots, classés comme les autres.
+• Signalement d'une erreur sur un spot depuis l'application ; les corrections sont appliquées sans mise à jour.
 
-PAS DE COMPTE, PAS DE PISTAGE
-Ton profil et tes spots restent sur ton téléphone. Pas de pub.
+DONNÉES PERSONNELLES
+Aucun compte n'est nécessaire. Votre profil et vos spots restent sur votre téléphone. Pas de publicité, pas de pistage.
 
-Les notes sont des estimations à partir de prévisions météo, pas des conseils de sécurité. Vérifie toujours les conditions et les règles locales sur place, et navigue à tes risques.
+Les notes sont des estimations calculées à partir de prévisions météo et ne constituent pas un avis de sécurité. Vérifiez toujours les conditions et la réglementation locale sur place.
 
-Données météo Open-Meteo.com. Spots © contributeurs OpenStreetMap.
+Données météo : Open-Meteo.com. Spots : © contributeurs OpenStreetMap.
 ```
 
 **Keywords**:
