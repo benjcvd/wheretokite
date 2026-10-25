@@ -50,7 +50,7 @@ sale. Your call.
 | Privacy policy URL | `https://wheretokite-api.wheretokite-api.workers.dev/privacy`: entered on the **App Privacy** page (Edit next to Privacy Policy), once per language |
 | Support URL | `https://wheretokite-api.wheretokite-api.workers.dev/support`: entered on the **version 1.0** page, once per language (English, Spanish, French) |
 | Marketing URL | leave empty |
-| Copyright | `2026 Benjamin Chevignard` (or your company name) |
+| Copyright | `2026 Benjamin Chevignard` (or your company name): on the **version 1.0** page, General App Information block, below the build |
 | Content rights | "Yes, it contains third-party content, and I have the rights": weather from Open-Meteo (CC BY 4.0) and spots from OpenStreetMap (ODbL), both credited in the app |
 
 ## 3. Store listing (version 1.0)
