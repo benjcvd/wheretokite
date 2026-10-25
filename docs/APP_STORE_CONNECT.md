@@ -47,8 +47,8 @@ sale. Your call.
 |---|---|
 | Subtitle (30 max) | `Best kite spot for your day` |
 | Category | Primary: **Sports**. Secondary: **Weather** |
-| Privacy policy URL | `https://wheretokite-api.wheretokite-api.workers.dev/privacy` |
-| Support URL | `https://wheretokite-api.wheretokite-api.workers.dev/support` |
+| Privacy policy URL | `https://wheretokite-api.wheretokite-api.workers.dev/privacy`: entered on the **App Privacy** page (Edit next to Privacy Policy), once per language |
+| Support URL | `https://wheretokite-api.wheretokite-api.workers.dev/support`: entered on the **version 1.0** page, once per language (English, Spanish, French) |
 | Marketing URL | leave empty |
 | Copyright | `2026 Benjamin Chevignard` (or your company name) |
 | Content rights | "Yes, it contains third-party content, and I have the rights": weather from Open-Meteo (CC BY 4.0) and spots from OpenStreetMap (ODbL), both credited in the app |
@@ -117,7 +117,8 @@ The app is in English and Spanish, so the store page can be too. Add the languag
 4. Screenshots: if you leave them empty, the English ones show. Spanish ones come from the
    `store-screenshots` skill with the simulator in Spanish.
 
-Same URLs (privacy, support) as in English: they're shared by every language.
+The URLs are **not** shared: in each language, enter the same Support URL on the version page and
+the same Privacy Policy URL on App Privacy, or Add for Review fails with "This field is required".
 
 | Field | Value |
 |---|---|
