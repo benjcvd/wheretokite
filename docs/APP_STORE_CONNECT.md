@@ -96,6 +96,70 @@ Don't name competitors (Windy, Windguru…) in keywords or text: App Review reje
 
 **What's new**: not shown for a first version.
 
+## 3b. Store listing in Spanish
+
+The app is in English and Spanish, so the store page can be too. Add the language once:
+
+1. **App Information** (left column) → language menu at the top right (it shows
+   "English (U.S.)") → **Add language** → **Spanish (Spain)**. Coverage is Europe and
+   Morocco, so Spain is enough: no need for Spanish (Mexico).
+2. Still in Spanish (Spain), fill in **Name** `WhereToKite` and **Subtitle** below, then **Save**.
+3. **iOS App → 1.0 Prepare for Submission** → the same language menu → **Spanish (Spain)** →
+   paste the promotional text, description and keywords below, then **Save**.
+4. Screenshots: if you leave them empty, the English ones show. Spanish ones come from the
+   `store-screenshots` skill with the simulator in Spanish.
+
+Same URLs (privacy, support) as in English: they're shared by every language.
+
+| Field | Value |
+|---|---|
+| Subtitle (30 max) | `El mejor spot de kite del día` |
+
+**Promotional text**:
+
+```
+Dinos desde dónde sales, cuánto quieres conducir y cuándo navegas. WhereToKite mira el viento en cada spot de kite conocido a tu alcance y te dice adónde ir.
+```
+
+**Description**:
+
+```
+¿Dónde navego hoy? WhereToKite te lo dice en una sola búsqueda.
+
+Elige tu punto de salida, cuánto estás dispuesto a conducir, el día y tu sesión (temprano, tarde, atardecer o tus propias horas). WhereToKite consulta la previsión en cada spot de kite conocido a tu alcance y te da una lista ordenada, con la mejor ventana de dos horas en cada spot. Hasta tres horas de trayecto y dos días vista.
+
+ADAPTADO A TI Y A TUS COMETAS
+Indica una vez tu peso, tu nivel y las cometas que tienes. Cada hora se puntúa según lo que importa en el agua:
+• Fuerza del viento: ¿encaja con alguna de tus cometas, para una sesión tranquila o intensa?
+• Viento estable: las rachas comparadas con el viento medio.
+• Dirección: el viento frente a la orientación de cada playa. El cruzado de mar es lo mejor; el terral puntúa cero.
+
+LOS SPOTS
+Más de 600 spots de kitesurf famosos en Europa y Marruecos, de Tarifa a Sylt y de Leucate a Dakhla. La orientación de cada playa se mide a partir de datos de mapas y se comprueba, para distinguir el viento de mar, el cruzado y el terral. Los spots que solo funcionan con cierta marea tienen la previsión de mareas. Se tienen en cuenta las prohibiciones de temporada y las zonas de baño de verano.
+
+LA SEGURIDAD PRIMERO
+Las tormentas, la noche y las horas prohibidas puntúan cero. Un indicador de fiabilidad te dice cuánto coinciden los modelos meteorológicos para tu día.
+
+ADEMÁS
+• Tiempos de trayecto reales de Apple Maps.
+• Un gráfico de viento y rachas hora a hora para cada spot, y cómo llegar en un toque.
+• Añade tu spot secreto: se clasifica igual que los demás.
+• ¿Algo mal en un spot? Avísalo desde la app; las correcciones llegan a todos sin actualizar.
+
+SIN CUENTA, SIN RASTREO
+Tu perfil y tus spots se quedan en tu teléfono. Sin anuncios.
+
+Las puntuaciones son estimaciones a partir de previsiones meteorológicas, no consejos de seguridad. Comprueba siempre las condiciones y las normas locales en el spot, y navega bajo tu propia responsabilidad.
+
+Datos meteorológicos de Open-Meteo.com. Spots © colaboradores de OpenStreetMap.
+```
+
+**Keywords**:
+
+```
+kitesurf,kite,viento,previsión,playa,marea,rachas,nudos,tiempo,agua plana,cometa,terral,levante
+```
+
 ## 4. Screenshots
 
 - iPhone only (the app is iPhone-only): **6.9" display, 1320 × 2868 px** (iPhone 16 Pro Max /

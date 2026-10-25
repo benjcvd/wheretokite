@@ -40,7 +40,6 @@ final class LocalizationTests: XCTestCase {
             for (key, entry) in try catalog(file) {
                 for language in Self.languages {
                     let translated = try XCTUnwrap(values(entry, language), "\(file): no \(language) for \"\(key)\"")
-                    if key == "Tomorrow" { continue }   // may be empty on purpose (weekday instead)
                     for v in translated {
                         XCTAssertFalse(v.isEmpty, "\(file): empty \(language) for \"\(key)\"")
                         XCTAssertEqual(placeholders(v), placeholders(key),

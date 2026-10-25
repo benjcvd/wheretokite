@@ -12,6 +12,76 @@
         }
       }
     },
+    "**Direction**: side-onshore is best, straight onshore is fine, cross-shore is harder, offshore is 0." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Dirección**: el cruzado de mar es lo mejor, el viento de mar puro está bien, el cruzado es más difícil y el terral es 0."
+          }
+        }
+      }
+    },
+    "**Steady wind**: gusts compared with the mean wind." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Viento estable**: las rachas comparadas con el viento medio."
+          }
+        }
+      }
+    },
+    "**Wind strength**: how well the wind fits the best kite in your quiver, and your style (chill or intense)." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Fuerza del viento**: cuánto encaja el viento con la mejor cometa de tu equipo y con tu estilo (tranquilo o intenso)."
+          }
+        }
+      }
+    },
+    "%@ · distance matters is on" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · «Más cerca, mejor» activado"
+          }
+        }
+      }
+    },
+    "%@ · gusts %lld · %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · rachas %2$lld · %3$@"
+          }
+        }
+      }
+    },
+    "%@ · within %@ of %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · a menos de %2$@ de %3$@"
+          }
+        }
+      }
+    },
+    "%@ · within %@ of you" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · a menos de %2$@ de ti"
+          }
+        }
+      }
+    },
     "%@ kn (gusts %lld) %@" : {
       "localizations" : {
         "es" : {
@@ -79,46 +149,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cometa de %@ metros cuadrados"
-          }
-        }
-      }
-    },
-    "%@ · distance matters is on" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ · «Más cerca, mejor» activado"
-          }
-        }
-      }
-    },
-    "%@ · gusts %lld · %@" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ · rachas %2$lld · %3$@"
-          }
-        }
-      }
-    },
-    "%@ · within %@ of %@" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ · a menos de %2$@ de %3$@"
-          }
-        }
-      }
-    },
-    "%@ · within %@ of you" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ · a menos de %2$@ de ti"
           }
         }
       }
@@ -264,6 +294,17 @@
         }
       }
     },
+    "%lld–%lldh local" : {
+      "comment" : "Hours in the spot's time zone",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld–%2$lldh hora local"
+          }
+        }
+      }
+    },
     "%lld° · %@" : {
       "localizations" : {
         "es" : {
@@ -290,47 +331,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld° · estimado a partir de la costa, arrastra para ajustar"
-          }
-        }
-      }
-    },
-    "%lld–%lldh local" : {
-      "comment" : "Hours in the spot's time zone",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld–%2$lldh hora local"
-          }
-        }
-      }
-    },
-    "**Direction**: side-onshore is best, straight onshore is fine, cross-shore is harder, offshore is 0." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**Dirección**: side-onshore es lo mejor, onshore puro está bien, cross-shore es más difícil, offshore es 0."
-          }
-        }
-      }
-    },
-    "**Steady wind**: gusts compared with the mean wind." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**Viento estable**: las rachas comparadas con el viento medio."
-          }
-        }
-      }
-    },
-    "**Wind strength**: how well the wind fits the best kite in your quiver, and your style (chill or intense)." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**Fuerza del viento**: cuánto encaja el viento con la mejor cometa de tu equipo y con tu estilo (tranquilo o intenso)."
           }
         }
       }
@@ -375,6 +375,16 @@
         }
       }
     },
+    "7-day planning" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planificación a 7 días"
+          }
+        }
+      }
+    },
     "15 min" : {
       "localizations" : {
         "es" : {
@@ -401,16 +411,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "360°"
-          }
-        }
-      }
-    },
-    "7-day planning" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Planificación a 7 días"
           }
         }
       }
@@ -547,6 +547,27 @@
         }
       }
     },
+    "all around" : {
+      "comment" : "A spot open to water on every side",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "todo alrededor"
+          }
+        }
+      }
+    },
+    "all around, e.g. a small lake" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "todo alrededor, p. ej. un lago pequeño"
+          }
+        }
+      }
+    },
     "Also good" : {
       "localizations" : {
         "es" : {
@@ -562,7 +583,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comprueba siempre las condiciones en el spot antes de navegar, nunca navegues solo con viento fuerte u offshore, y no vayas más allá de tu nivel."
+            "value" : "Comprueba siempre las condiciones en el spot antes de navegar, nunca navegues solo con viento fuerte o terral, y no vayas más allá de tu nivel."
           }
         }
       }
@@ -597,12 +618,32 @@
         }
       }
     },
+    "around high tide" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "alrededor de la pleamar"
+          }
+        }
+      }
+    },
     "Around high tide" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alrededor de la pleamar"
+          }
+        }
+      }
+    },
+    "around low tide" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "alrededor de la bajamar"
           }
         }
       }
@@ -617,12 +658,32 @@
         }
       }
     },
+    "at any tide" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "con cualquier marea"
+          }
+        }
+      }
+    },
     "At any tide" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Con cualquier marea"
+          }
+        }
+      }
+    },
+    "at mid tide" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a media marea"
           }
         }
       }
@@ -673,6 +734,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Orientación de la playa"
+          }
+        }
+      }
+    },
+    "beach direction unknown" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "orientación de la playa desconocida"
           }
         }
       }
@@ -747,22 +818,22 @@
         }
       }
     },
-    "Best window %@" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mejor ventana %@"
-          }
-        }
-      }
-    },
     "Best window · spot time" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mejor ventana · hora del spot"
+          }
+        }
+      }
+    },
+    "Best window %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mejor ventana %@"
           }
         }
       }
@@ -877,6 +948,16 @@
         }
       }
     },
+    "cove or narrow bay" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cala o bahía estrecha"
+          }
+        }
+      }
+    },
     "Coves, points, lakes, sandbars and tide windows with Pro" : {
       "localizations" : {
         "es" : {
@@ -887,12 +968,34 @@
         }
       }
     },
+    "cross-shore" : {
+      "comment" : "Wind angle to the beach",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cruzado"
+          }
+        }
+      }
+    },
     "Current location" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ubicación actual"
+          }
+        }
+      }
+    },
+    "dark" : {
+      "comment" : "Before sunrise or after sunset",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de noche"
           }
         }
       }
@@ -1037,6 +1140,36 @@
         }
       }
     },
+    "east" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "este"
+          }
+        }
+      }
+    },
+    "east-northeast" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "estenordeste"
+          }
+        }
+      }
+    },
+    "east-southeast" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "estesudeste"
+          }
+        }
+      }
+    },
     "Edit" : {
       "localizations" : {
         "es" : {
@@ -1088,12 +1221,32 @@
         }
       }
     },
+    "except at high tide" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "salvo en pleamar"
+          }
+        }
+      }
+    },
     "Except at high tide" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Salvo en pleamar"
+          }
+        }
+      }
+    },
+    "except at low tide" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "salvo en bajamar"
           }
         }
       }
@@ -1251,6 +1404,26 @@
         }
       }
     },
+    "gusty" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "racheado"
+          }
+        }
+      }
+    },
+    "heavy rain" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lluvia fuerte"
+          }
+        }
+      }
+    },
     "High %@" : {
       "comment" : "High tide times",
       "localizations" : {
@@ -1403,6 +1576,16 @@
         }
       }
     },
+    "kg" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kg"
+          }
+        }
+      }
+    },
     "Kitable from another side too" : {
       "localizations" : {
         "es" : {
@@ -1433,6 +1616,16 @@
         }
       }
     },
+    "kiting banned" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kite prohibido"
+          }
+        }
+      }
+    },
     "Kiting banned %@" : {
       "localizations" : {
         "es" : {
@@ -1449,6 +1642,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El kite está prohibido aquí"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma"
           }
         }
       }
@@ -1616,6 +1819,16 @@
         }
       }
     },
+    "models agree within ±%lld kn" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "los modelos coinciden en ±%lld kn"
+          }
+        }
+      }
+    },
     "More" : {
       "comment" : "Score weight",
       "localizations" : {
@@ -1628,12 +1841,12 @@
       }
     },
     "Morning" : {
-      "comment" : "Session slot",
+      "comment" : "Session slot, 9–13 h. Must differ from Tomorrow (Spanish: Temprano, not Mañana)",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mañana"
+            "value" : "Temprano"
           }
         }
       }
@@ -1760,6 +1973,16 @@
         }
       }
     },
+    "no forecast" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sin previsión"
+          }
+        }
+      }
+    },
     "No go" : {
       "comment" : "Score rating",
       "localizations" : {
@@ -1818,6 +2041,56 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Normal"
+          }
+        }
+      }
+    },
+    "north" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "norte"
+          }
+        }
+      }
+    },
+    "north-northeast" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nornordeste"
+          }
+        }
+      }
+    },
+    "north-northwest" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nornoroeste"
+          }
+        }
+      }
+    },
+    "northeast" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nordeste"
+          }
+        }
+      }
+    },
+    "northwest" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "noroeste"
           }
         }
       }
@@ -1902,6 +2175,17 @@
         }
       }
     },
+    "offshore" : {
+      "comment" : "Wind angle to the beach",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "terral"
+          }
+        }
+      }
+    },
     "OK" : {
       "localizations" : {
         "es" : {
@@ -1957,7 +2241,18 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solo viento side-onshore u onshore, hasta %lld kn."
+            "value" : "Solo viento cruzado de mar o de mar, hasta %lld kn."
+          }
+        }
+      }
+    },
+    "onshore" : {
+      "comment" : "Wind angle to the beach",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de mar"
           }
         }
       }
@@ -2002,6 +2297,16 @@
         }
       }
     },
+    "overpowered in gusts" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sobrado en las rachas"
+          }
+        }
+      }
+    },
     "Place" : {
       "localizations" : {
         "es" : {
@@ -2022,12 +2327,32 @@
         }
       }
     },
+    "point or headland" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "punta o cabo"
+          }
+        }
+      }
+    },
     "Point the arrow from the beach toward the open water, then set how much of the horizon is water: less than 180° for a cove, more for a point, 360° for a small lake you can ride from any side. It tells onshore, side-shore and offshore wind apart." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apunta la flecha desde la playa hacia el agua abierta y luego indica cuánto horizonte es agua: menos de 180° para una cala, más para una punta, 360° para un lago pequeño que se navega desde cualquier lado. Así se distingue el viento onshore, side-shore y offshore."
+            "value" : "Apunta la flecha desde la playa hacia el agua abierta y luego indica cuánto horizonte es agua: menos de 180° para una cala, más para una punta, 360° para un lago pequeño que se navega desde cualquier lado. Así se distingue el viento de mar, el cruzado y el terral."
+          }
+        }
+      }
+    },
+    "poor conditions" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "malas condiciones"
           }
         }
       }
@@ -2072,12 +2397,32 @@
         }
       }
     },
+    "rain" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lluvia"
+          }
+        }
+      }
+    },
     "Reading the coastline…" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Leyendo la costa…"
+          }
+        }
+      }
+    },
+    "Reopen WhereToKite" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuelve a abrir WhereToKite"
           }
         }
       }
@@ -2168,6 +2513,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seguridad"
+          }
+        }
+      }
+    },
+    "Same as iPhone" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como el iPhone"
           }
         }
       }
@@ -2312,12 +2667,34 @@
         }
       }
     },
+    "side-offshore" : {
+      "comment" : "Wind angle to the beach",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cruzado terral"
+          }
+        }
+      }
+    },
+    "side-onshore" : {
+      "comment" : "Wind angle to the beach",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cruzado de mar"
+          }
+        }
+      }
+    },
     "Side-onshore over onshore or cross-shore" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Side-onshore antes que onshore o cross-shore"
+            "value" : "Cruzado de mar antes que de mar o cruzado"
           }
         }
       }
@@ -2337,7 +2714,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Algunos límites no se negocian: el viento o las rachas por encima del límite de tu nivel, y el viento offshore, siempre puntúan 0."
+            "value" : "Algunos límites no se negocian: el viento o las rachas por encima del límite de tu nivel, y el viento terral, siempre puntúan 0."
           }
         }
       }
@@ -2348,6 +2725,56 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otra cosa"
+          }
+        }
+      }
+    },
+    "south" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sur"
+          }
+        }
+      }
+    },
+    "south-southeast" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sursudeste"
+          }
+        }
+      }
+    },
+    "south-southwest" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sursudoeste"
+          }
+        }
+      }
+    },
+    "southeast" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sudeste"
+          }
+        }
+      }
+    },
+    "southwest" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sudoeste"
           }
         }
       }
@@ -2452,6 +2879,16 @@
         }
       }
     },
+    "straight beach" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "playa recta"
+          }
+        }
+      }
+    },
     "Style" : {
       "localizations" : {
         "es" : {
@@ -2537,7 +2974,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La orientación de la playa aún no está confirmada por un segundo mapa, así que onshore y offshore pueden no ser exactos."
+            "value" : "La orientación de la playa aún no está confirmada por un segundo mapa, así que el viento de mar y el terral pueden no ser exactos."
           }
         }
       }
@@ -2568,6 +3005,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La clasificación y el mapa completos con Pro"
+          }
+        }
+      }
+    },
+    "The new language shows the next time you open the app: swipe it away from the app switcher, then open it again." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El nuevo idioma aparece la próxima vez que abras la app: ciérrala desde el selector de apps y vuelve a abrirla."
           }
         }
       }
@@ -2642,6 +3089,16 @@
         }
       }
     },
+    "thunderstorm risk" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "riesgo de tormenta"
+          }
+        }
+      }
+    },
     "Tide" : {
       "localizations" : {
         "es" : {
@@ -2662,6 +3119,26 @@
         }
       }
     },
+    "tide too high" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marea demasiado alta"
+          }
+        }
+      }
+    },
+    "tide too low" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marea demasiado baja"
+          }
+        }
+      }
+    },
     "Today" : {
       "localizations" : {
         "es" : {
@@ -2673,15 +3150,46 @@
       }
     },
     "Tomorrow" : {
+      "comment" : "Day strip",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Mañana"
           }
         }
-      },
-      "comment" : "Day strip. Leave empty if it reads like the Morning session, the weekday shows instead"
+      }
+    },
+    "too light" : {
+      "comment" : "Not enough wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "poco viento"
+          }
+        }
+      }
+    },
+    "too strong for your kites" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "demasiado fuerte para tus cometas"
+          }
+        }
+      }
+    },
+    "too strong for your level" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "demasiado fuerte para tu nivel"
+          }
+        }
+      }
     },
     "Town, address…" : {
       "localizations" : {
@@ -2723,6 +3231,17 @@
         }
       }
     },
+    "unstable air" : {
+      "comment" : "Risk of squalls",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "aire inestable"
+          }
+        }
+      }
+    },
     "Until %lld:00" : {
       "localizations" : {
         "es" : {
@@ -2738,7 +3257,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hasta %lld kn, sin viento offshore."
+            "value" : "Hasta %lld kn, sin viento terral."
           }
         }
       }
@@ -2748,7 +3267,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hasta %lld kn, side-offshore aceptable."
+            "value" : "Hasta %lld kn, el cruzado terral es aceptable."
           }
         }
       }
@@ -2883,6 +3402,36 @@
         }
       }
     },
+    "west" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "oeste"
+          }
+        }
+      }
+    },
+    "west-northwest" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "oesnoroeste"
+          }
+        }
+      }
+    },
+    "west-southwest" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "oessudoeste"
+          }
+        }
+      }
+    },
     "What happened? What did you expect?" : {
       "localizations" : {
         "es" : {
@@ -2943,22 +3492,22 @@
         }
       }
     },
-    "WhereToKite Pro" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "WhereToKite Pro"
-          }
-        }
-      }
-    },
     "WhereToKite gives estimates from weather forecasts, not safety advice. Conditions on the water can differ: check the wind, the weather and the local rules on site. You decide whether to ride, at your own risk." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "WhereToKite da estimaciones a partir de previsiones meteorológicas, no consejos de seguridad. Las condiciones en el agua pueden ser distintas: comprueba el viento, el tiempo y las normas locales en el spot. Tú decides si navegas, bajo tu propia responsabilidad."
+          }
+        }
+      }
+    },
+    "WhereToKite Pro" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WhereToKite Pro"
           }
         }
       }
@@ -3169,515 +3718,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acerca el mapa a la playa para colocar el pin."
-          }
-        }
-      }
-    },
-    "all around" : {
-      "comment" : "A spot open to water on every side",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "todo alrededor"
-          }
-        }
-      }
-    },
-    "all around, e.g. a small lake" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "todo alrededor, p. ej. un lago pequeño"
-          }
-        }
-      }
-    },
-    "around high tide" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "alrededor de la pleamar"
-          }
-        }
-      }
-    },
-    "around low tide" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "alrededor de la bajamar"
-          }
-        }
-      }
-    },
-    "at any tide" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "con cualquier marea"
-          }
-        }
-      }
-    },
-    "at mid tide" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "a media marea"
-          }
-        }
-      }
-    },
-    "beach direction unknown" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "orientación de la playa desconocida"
-          }
-        }
-      }
-    },
-    "cove or narrow bay" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cala o bahía estrecha"
-          }
-        }
-      }
-    },
-    "cross-shore" : {
-      "comment" : "Wind angle to the beach",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cross-shore"
-          }
-        }
-      }
-    },
-    "dark" : {
-      "comment" : "Before sunrise or after sunset",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "de noche"
-          }
-        }
-      }
-    },
-    "east" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "este"
-          }
-        }
-      }
-    },
-    "east-northeast" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "estenordeste"
-          }
-        }
-      }
-    },
-    "east-southeast" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "estesudeste"
-          }
-        }
-      }
-    },
-    "except at high tide" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "salvo en pleamar"
-          }
-        }
-      }
-    },
-    "except at low tide" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "salvo en bajamar"
-          }
-        }
-      }
-    },
-    "gusty" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "racheado"
-          }
-        }
-      }
-    },
-    "heavy rain" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "lluvia fuerte"
-          }
-        }
-      }
-    },
-    "kg" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "kg"
-          }
-        }
-      }
-    },
-    "kiting banned" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "kite prohibido"
-          }
-        }
-      }
-    },
-    "models agree within ±%lld kn" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "los modelos coinciden en ±%lld kn"
-          }
-        }
-      }
-    },
-    "no forecast" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sin previsión"
-          }
-        }
-      }
-    },
-    "north" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "norte"
-          }
-        }
-      }
-    },
-    "north-northeast" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "nornordeste"
-          }
-        }
-      }
-    },
-    "north-northwest" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "nornoroeste"
-          }
-        }
-      }
-    },
-    "northeast" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "nordeste"
-          }
-        }
-      }
-    },
-    "northwest" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "noroeste"
-          }
-        }
-      }
-    },
-    "offshore" : {
-      "comment" : "Wind angle to the beach",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "offshore"
-          }
-        }
-      }
-    },
-    "onshore" : {
-      "comment" : "Wind angle to the beach",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "onshore"
-          }
-        }
-      }
-    },
-    "overpowered in gusts" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sobrado en las rachas"
-          }
-        }
-      }
-    },
-    "point or headland" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "punta o cabo"
-          }
-        }
-      }
-    },
-    "poor conditions" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "malas condiciones"
-          }
-        }
-      }
-    },
-    "rain" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "lluvia"
-          }
-        }
-      }
-    },
-    "side-offshore" : {
-      "comment" : "Wind angle to the beach",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "side-offshore"
-          }
-        }
-      }
-    },
-    "side-onshore" : {
-      "comment" : "Wind angle to the beach",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "side-onshore"
-          }
-        }
-      }
-    },
-    "south" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sur"
-          }
-        }
-      }
-    },
-    "south-southeast" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sursudeste"
-          }
-        }
-      }
-    },
-    "south-southwest" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sursudoeste"
-          }
-        }
-      }
-    },
-    "southeast" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sudeste"
-          }
-        }
-      }
-    },
-    "southwest" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sudoeste"
-          }
-        }
-      }
-    },
-    "straight beach" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "playa recta"
-          }
-        }
-      }
-    },
-    "thunderstorm risk" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "riesgo de tormenta"
-          }
-        }
-      }
-    },
-    "tide too high" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "marea demasiado alta"
-          }
-        }
-      }
-    },
-    "tide too low" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "marea demasiado baja"
-          }
-        }
-      }
-    },
-    "too light" : {
-      "comment" : "Not enough wind",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "poco viento"
-          }
-        }
-      }
-    },
-    "too strong for your kites" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "demasiado fuerte para tus cometas"
-          }
-        }
-      }
-    },
-    "too strong for your level" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "demasiado fuerte para tu nivel"
-          }
-        }
-      }
-    },
-    "unstable air" : {
-      "comment" : "Risk of squalls",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "aire inestable"
-          }
-        }
-      }
-    },
-    "west" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "oeste"
-          }
-        }
-      }
-    },
-    "west-northwest" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "oesnoroeste"
-          }
-        }
-      }
-    },
-    "west-southwest" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "oessudoeste"
           }
         }
       }

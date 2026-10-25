@@ -110,6 +110,7 @@ struct MeView: View {
                         .font(.footnote)
                         .accessibilityIdentifier("debugUnlockPro")
                     #endif
+                    LanguageRow()
                     NavigationLink {
                         AboutView()
                     } label: {
@@ -139,6 +140,84 @@ struct MeView: View {
             .navigationTitle("Me")
             .sheet(isPresented: $showReport) { ReportIssueSheet() }
         }
+    }
+}
+
+// MARK: - Language
+
+/// The app's language, apart from the phone's. iOS reads it at launch (the same per-app
+/// setting as Settings > WhereToKite > Language), so a change applies on the next launch.
+enum AppLanguage {
+    private static let key = "AppleLanguages"
+
+    /// The languages the app ships, e.g. ["en", "es"].
+    static var available: [String] { Bundle.main.localizations.filter { $0 != "Base" }.sorted() }
+
+    /// The language the screens are in now.
+    static var current: String { Bundle.main.preferredLocalizations.first ?? "en" }
+
+    /// nil = follow the phone. Read from the app's own defaults, where Settings writes it too.
+    static var chosen: String? {
+        get {
+            let domain = Bundle.main.bundleIdentifier.flatMap { UserDefaults.standard.persistentDomain(forName: $0) }
+            guard let first = (domain?[key] as? [String])?.first else { return nil }
+            let code = Locale(identifier: first).language.languageCode?.identifier ?? first
+            return available.contains(code) ? code : nil
+        }
+        set {
+            if let newValue {
+                UserDefaults.standard.set([newValue], forKey: key)
+            } else {
+                UserDefaults.standard.removeObject(forKey: key)
+            }
+        }
+    }
+
+    /// What the screens will be in after a relaunch.
+    static var next: String {
+        if let chosen { return chosen }
+        let phone = Locale.preferredLanguages.compactMap { Locale(identifier: $0).language.languageCode?.identifier }
+        return phone.first(where: available.contains) ?? "en"
+    }
+
+    /// "Español", "English": each language in its own words.
+    static func name(_ code: String) -> String {
+        let locale = Locale(identifier: code)
+        return locale.localizedString(forLanguageCode: code)?.capitalized(with: locale) ?? code
+    }
+}
+
+private struct LanguageRow: View {
+    @State private var chosen = AppLanguage.chosen
+    @State private var showReopen = false
+
+    var body: some View {
+        HStack {
+            Label("Language", systemImage: "globe")
+            Spacer(minLength: 8)
+            Picker("Language", selection: Binding(get: { chosen ?? "" }, set: { pick($0.isEmpty ? nil : $0) })) {
+                Text("Same as iPhone").tag("")
+                ForEach(AppLanguage.available, id: \.self) { code in
+                    Text(verbatim: AppLanguage.name(code)).tag(code)
+                }
+            }
+            .pickerStyle(.menu)
+            .accessibilityIdentifier("languagePicker")
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 6)
+        .card()
+        .alert("Reopen WhereToKite", isPresented: $showReopen) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("The new language shows the next time you open the app: swipe it away from the app switcher, then open it again.")
+        }
+    }
+
+    private func pick(_ code: String?) {
+        chosen = code
+        AppLanguage.chosen = code
+        if AppLanguage.next != AppLanguage.current { showReopen = true }
     }
 }
 

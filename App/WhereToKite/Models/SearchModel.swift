@@ -66,9 +66,7 @@ struct DayOption: Identifiable, Hashable {
 
     var shortLabel: String {
         if Calendar.current.isDateInToday(date) { return String(localized: "Today") }
-        // Empty in languages where "tomorrow" is also the morning slot (Spanish "mañana"): weekday.
-        let tomorrow = String(localized: "Tomorrow", comment: "Day strip. Leave empty if it reads like the Morning session, the weekday shows instead")
-        if Calendar.current.isDateInTomorrow(date), !tomorrow.isEmpty { return tomorrow }
+        if Calendar.current.isDateInTomorrow(date) { return String(localized: "Tomorrow", comment: "Day strip") }
         return date.formatted(.dateTime.weekday(.abbreviated))
     }
 
@@ -80,7 +78,7 @@ struct DayOption: Identifiable, Hashable {
 extension SessionSlot {
     var label: String {
         switch self {
-        case .morning: String(localized: "Morning", comment: "Session slot")
+        case .morning: String(localized: "Morning", comment: "Session slot, 9–13 h. Must differ from Tomorrow (Spanish: Temprano, not Mañana)")
         case .afternoon: String(localized: "Afternoon", comment: "Session slot")
         case .evening: String(localized: "Evening", comment: "Session slot")
         case .fullDay: String(localized: "Full day", comment: "Session slot")
