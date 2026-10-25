@@ -12,10 +12,12 @@ them down for smaller iPhones. The app is iPhone-only: no iPad set.
 
 - The real app, the **free plan** (never `-unlockPro`: v1 ships without Pro, and App Review
   rejects screenshots of features that can't be used).
-- Reproducible data: a fixed start point and a past windy day, through the app's launch
-  arguments `-resetProfile`, `-searchOrigin <lat,lon>`, `-searchDay <YYYY-MM-DD>` (see
-  `App/WhereToKiteUITests/SmokeTests.swift`). 2026-10-03 near Barcelona is windy. If the free
-  plan refuses a past day, use tomorrow with a windy forecast and say so.
+- A real windy day, not an archived one (Ben's call: the day chip must match the results).
+  The free plan only shows today and tomorrow, so check the Open-Meteo forecast for the coasts
+  within 3 h of Barcelona (Leucate, Tarifa is too far) and run on the day before or the day
+  itself; `TEST_RUNNER_SHOTS_TOMORROW=1` makes the test pick tomorrow. Start point stays
+  Barcelona (`-searchOrigin 41.3874,2.1686`). Sizes: 6.9" (1320 × 2868) and 6.3" (1206 × 2622),
+  into `docs/store/6.9/` and `docs/store/6.3/`.
 - Suggested set (see `docs/APP_STORE_CONNECT.md`, section 4): results list, spot detail with
   the wind chart, "How is this scored?", search, rider profile.
 

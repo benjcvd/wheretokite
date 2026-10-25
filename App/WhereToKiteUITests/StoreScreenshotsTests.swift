@@ -1,13 +1,14 @@
 import XCTest
 
-/// App Store screenshots, free plan, from a fixed windy day near Barcelona (2026-10-03):
+/// App Store screenshots, free plan, from Barcelona on a real forecast (today, or tomorrow with
+/// TEST_RUNNER_SHOTS_TOMORROW=1), so the day shown matches the results:
 /// results → spot detail → "How is this scored?" → search options → rider profile.
 /// Run on the 6.9" and 6.3" simulators; see .claude/skills/store-screenshots.
 final class StoreScreenshotsTests: XCTestCase {
     @MainActor
     func testStoreScreenshots() throws {
         let app = XCUIApplication()
-        app.launchArguments = ["-resetProfile", "-searchDay", "2026-10-03", "-searchOrigin", "41.3874,2.1686"]   // no -unlockPro
+        app.launchArguments = ["-resetProfile", "-searchOrigin", "41.3874,2.1686"]   // no -unlockPro
         app.launch()
         SmokeTests().acceptTerms(app)
         app.buttons["Start"].tap()
@@ -15,7 +16,12 @@ final class StoreScreenshotsTests: XCTestCase {
         let allow = springboard.buttons["Allow While Using App"]
         if allow.waitForExistence(timeout: 4) { allow.tap() }
 
-        // The windy spots that day are ~2 h away: the free plan's 3 h covers them.
+        if ProcessInfo.processInfo.environment["SHOTS_TOMORROW"] == "1" {
+            XCTAssertTrue(app.buttons["day1"].waitForExistence(timeout: 5))
+            app.buttons["day1"].tap()
+        }
+
+        // Windy spots are often ~2 h away: the free plan's 3 h covers them.
         app.buttons["optionsChip"].tap()
         let slider = app.sliders["driveSlider"]
         XCTAssertTrue(slider.waitForExistence(timeout: 3))
