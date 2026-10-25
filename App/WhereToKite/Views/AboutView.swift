@@ -3,14 +3,14 @@ import SwiftUI
 
 /// The safety terms shown at onboarding, once to existing riders, and in About.
 enum Disclaimer {
-    static let short = "WhereToKite gives estimates from weather forecasts, not safety advice. Conditions on the water can differ: check the wind, the weather and the local rules on site. You decide whether to ride, at your own risk."
+    static var short: String { String(localized: "WhereToKite gives estimates from weather forecasts, not safety advice. Conditions on the water can differ: check the wind, the weather and the local rules on site. You decide whether to ride, at your own risk.") }
 
-    static let full: [String] = [
-        "Scores are computed from weather forecasts, which can be wrong, especially for gusts, local effects, storms and squalls.",
-        "Beach directions, spot positions and rules come from map data and research that can be incomplete or out of date. Kite zones, bans and access rules change: follow the signs and the local authorities.",
-        "Always check conditions on site before riding, never ride alone in strong or offshore wind, and stay within your level.",
-        "You decide whether to ride and you do so at your own risk. WhereToKite and its authors accept no liability for accidents, injuries, damage or fines.",
-    ]
+    static var full: [String] { [
+        String(localized: "Scores are computed from weather forecasts, which can be wrong, especially for gusts, local effects, storms and squalls."),
+        String(localized: "Beach directions, spot positions and rules come from map data and research that can be incomplete or out of date. Kite zones, bans and access rules change: follow the signs and the local authorities."),
+        String(localized: "Always check conditions on site before riding, never ride alone in strong or offshore wind, and stay within your level."),
+        String(localized: "You decide whether to ride and you do so at your own risk. WhereToKite and its authors accept no liability for accidents, injuries, damage or fines."),
+    ] }
 }
 
 /// Shown once to riders who set up the app before the terms existed.
@@ -56,9 +56,9 @@ struct AboutView: View {
             }
 
             Section {
-                link("Weather forecasts: Open-Meteo.com (CC BY 4.0)", "https://open-meteo.com/")
-                link("Spots and shorelines: © OpenStreetMap contributors (ODbL)", "https://www.openstreetmap.org/copyright")
-                link("The spot catalogue (open data, ODbL)", "https://github.com/benjcvd/wheretokite/blob/main/Data/spots.json")
+                link(String(localized: "Weather forecasts: Open-Meteo.com (CC BY 4.0)"), "https://open-meteo.com/")
+                link(String(localized: "Spots and shorelines: © OpenStreetMap contributors (ODbL)"), "https://www.openstreetmap.org/copyright")
+                link(String(localized: "The spot catalogue (open data, ODbL)"), "https://github.com/benjcvd/wheretokite/blob/main/Data/spots.json")
                 Text("Maps and drive times: Apple Maps").font(.subheadline)
                 if let catalog {
                     Text("Catalogue: \(catalog.count) spots, updated \(catalog.date)")
@@ -117,6 +117,7 @@ struct ReportIssueSheet: View {
     @State private var sent = false
     @State private var sending = false
 
+    /// The raw value goes to the server and GitHub: keep it English; `title` is what the rider reads.
     enum Kind: String, CaseIterable, Identifiable {
         case missingSpot = "A spot is missing"
         case wrongPosition = "Wrong position"
@@ -128,6 +129,19 @@ struct ReportIssueSheet: View {
         case other = "Something else"
         var id: String { rawValue }
         var isAboutASpot: Bool { ![.missingSpot, .appProblem, .other].contains(self) }
+
+        var title: String {
+            switch self {
+            case .missingSpot: String(localized: "A spot is missing")
+            case .wrongPosition: String(localized: "Wrong position")
+            case .wrongDirection: String(localized: "Wrong beach direction")
+            case .wrongBan: String(localized: "Wrong ban or dates")
+            case .banned: String(localized: "Kiting is banned here")
+            case .notKnown: String(localized: "Not a known kite spot")
+            case .appProblem: String(localized: "App problem")
+            case .other: String(localized: "Something else")
+            }
+        }
     }
 
     init(spot: Spot? = nil) {
@@ -150,7 +164,7 @@ struct ReportIssueSheet: View {
                 } else {
                     Section {
                         Picker("Issue", selection: $kind) {
-                            ForEach(kinds) { Text($0.rawValue).tag($0) }
+                            ForEach(kinds) { Text($0.title).tag($0) }
                         }
                         .accessibilityIdentifier("reportKind")
                         if kind == .missingSpot {
@@ -161,7 +175,7 @@ struct ReportIssueSheet: View {
                             .lineLimit(3...8)
                             .accessibilityIdentifier("reportMessage")
                     } header: {
-                        Text(spot.map { $0.name } ?? "What's wrong?")
+                        Text(spot.map { $0.name } ?? String(localized: "What's wrong?"))
                     } footer: {
                         Text("Sent without your name or position, and published as a public issue on GitHub so fixes are traceable. Don't include personal details.")
                     }
@@ -182,10 +196,10 @@ struct ReportIssueSheet: View {
 
     private var placeholder: String {
         switch kind {
-        case .missingSpot: "Details (optional): launch, wind directions, rules…"
-        case .wrongBan, .banned: "Details (optional): the real dates and hours, the rule or sign…"
-        case .appProblem: "What happened? What did you expect?"
-        default: "Details (optional): where kiters really launch, the rules…"
+        case .missingSpot: String(localized: "Details (optional): launch, wind directions, rules…")
+        case .wrongBan, .banned: String(localized: "Details (optional): the real dates and hours, the rule or sign…")
+        case .appProblem: String(localized: "What happened? What did you expect?")
+        default: String(localized: "Details (optional): where kiters really launch, the rules…")
         }
     }
 

@@ -80,7 +80,7 @@ struct MySpotsView: View {
         List {
             if !canAdd && plan.showsPro {
                 Section {
-                    ProLockRow(title: "Add more spots", detail: "One spot free, unlimited with Pro")
+                    ProLockRow(title: String(localized: "Add more spots"), detail: String(localized: "One spot free, unlimited with Pro"))
                 }
             }
             Section {
@@ -132,7 +132,7 @@ private struct UserSpotRow: View {
     }
 
     private var subtitle: String {
-        let facing = spot.facingSummary.map { "Faces \($0)" } ?? "Direction unknown"
+        let facing = Vocab.facing(spot).map { String(localized: "Faces \($0)") } ?? String(localized: "Direction unknown")
         if let notes = spot.notes, !notes.isEmpty { return "\(facing) · \(notes)" }
         return facing
     }
@@ -157,6 +157,6 @@ struct FacingBadge: View {
             }
         }
         .frame(width: size, height: size)
-        .accessibilityLabel(bearing.map { "Beach faces \(Geo.compassName($0))" } ?? "Direction unknown")
+        .accessibilityLabel(bearing.map { String(localized: "Beach faces \(Vocab.compass($0))") } ?? String(localized: "Direction unknown"))
     }
 }

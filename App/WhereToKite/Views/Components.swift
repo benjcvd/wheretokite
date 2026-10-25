@@ -26,10 +26,10 @@ enum ScoreStyle {
 
     static func label(_ score: Int) -> String {
         switch score {
-        case 75...: "Great"
-        case 50..<75: "Good"
-        case 1..<50: "Marginal"
-        default: "No go"
+        case 75...: String(localized: "Great", comment: "Score rating")
+        case 50..<75: String(localized: "Good", comment: "Score rating")
+        case 1..<50: String(localized: "Marginal", comment: "Score rating")
+        default: String(localized: "No go", comment: "Score rating")
         }
     }
 }
@@ -94,7 +94,7 @@ struct WindArrow: View {
     var body: some View {
         Image(systemName: "location.north.fill")
             .rotationEffect(.degrees(directionDeg + 180))
-            .accessibilityLabel("Wind from \(Geo.compassName(directionDeg))")
+            .accessibilityLabel("Wind from \(Vocab.compass(directionDeg))")
     }
 }
 
@@ -129,9 +129,9 @@ struct ConfidenceBanner: View {
     private var detail: String {
         var parts = [String]()
         if confidence.leadDays > 0 {
-            parts.append("\(confidence.leadDays) day\(confidence.leadDays > 1 ? "s" : "") ahead")
+            parts.append(String(localized: "\(confidence.leadDays) days ahead"))
         }
-        parts.append(String(format: "models agree within ±%.0f kn", confidence.speedSpreadKn))
+        parts.append(String(localized: "models agree within ±\(Int(confidence.speedSpreadKn.rounded())) kn"))
         if let d = confidence.directionSpreadDeg { parts.append(String(format: "±%.0f°", d)) }
         return parts.joined(separator: " · ")
     }
@@ -142,7 +142,7 @@ struct ConfidenceBanner: View {
                 .font(.title3)
                 .foregroundStyle(color)
             VStack(alignment: .leading, spacing: 1) {
-                Text("\(confidence.rating.rawValue) forecast confidence")
+                Text(Vocab.confidence(confidence.rating))
                     .font(.subheadline.weight(.semibold))
                 Text(detail)
                     .font(.caption)
@@ -197,7 +197,9 @@ extension View {
 
 extension SpotRecommendation {
     var windowLabel: String? {
-        window.map { "\($0.start)–\($0.end)h" + (timeZoneShiftHours == nil ? "" : " local") }
+        window.map { w in
+            timeZoneShiftHours == nil ? "\(w.start)–\(w.end)h" : String(localized: "\(w.start)–\(w.end)h local", comment: "Hours in the spot's time zone")
+        }
     }
 
     /// Spot local time minus the phone's time, in hours; nil when they're the same (or unknown).
@@ -219,7 +221,13 @@ extension SpotRecommendation {
 }
 
 extension Level {
-    var label: String { rawValue.capitalized }
+    var label: String {
+        switch self {
+        case .beginner: String(localized: "Beginner")
+        case .intermediate: String(localized: "Intermediate")
+        case .advanced: String(localized: "Advanced")
+        }
+    }
 
     var symbol: String {
         switch self {

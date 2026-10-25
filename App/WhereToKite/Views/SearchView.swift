@@ -107,9 +107,11 @@ struct SearchView: View {
                             .accessibilityLabel("Rider profile: \(p.shortSummary). Edit")
                             .accessibilityIdentifier("riderChip")
                     }
-                    chip(options.start.isCurrentLocation ? "Near me" : options.start.name,
+                    chip(options.start.isCurrentLocation ? String(localized: "Near me") : options.start.name,
                          systemImage: options.start.isCurrentLocation ? "location.fill" : "mappin", sheet: .start)
-                        .accessibilityLabel("Start from \(options.start.name)")
+                        .accessibilityLabel(options.start.isCurrentLocation
+                                            ? String(localized: "Start from your current location")
+                                            : String(localized: "Start from \(options.start.name)"))
                     chip("≤ \(DriveSteps.label(options.maxDriveMinutes))", systemImage: "car.fill", sheet: .options)
                         .accessibilityLabel("Max drive \(DriveSteps.label(options.maxDriveMinutes))")
                     chip(styleLabel, systemImage: "slider.horizontal.3", sheet: .options)
@@ -133,8 +135,8 @@ struct SearchView: View {
     }
 
     private var styleLabel: String {
-        guard let i = options.intensity else { return "Any style" }
-        return i < 0.35 ? "Chill" : i > 0.65 ? "Intense" : "Balanced"
+        guard let i = options.intensity else { return String(localized: "Any style") }
+        return i < 0.35 ? String(localized: "Chill") : i > 0.65 ? String(localized: "Intense") : String(localized: "Balanced")
     }
 }
 
@@ -177,7 +179,7 @@ private struct DayStrip: View {
                         }
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel(day.longLabel + (locked ? ", Pro" : ""))
+                    .accessibilityLabel(locked ? String(localized: "\(day.longLabel), Pro") : day.longLabel)
                     .accessibilityIdentifier("day\(days.firstIndex(of: day) ?? 0)")
                     .accessibilityAddTraits(on ? .isSelected : [])
                 }
@@ -224,7 +226,7 @@ private struct SlotPicker: View {
                             .font(.subheadline.weight(.semibold))
                             .lineLimit(1)
                             .minimumScaleFactor(typeSize.isAccessibilitySize ? 0.55 : 0.7)
-                        Text("\(hours.lowerBound)–\(hours.upperBound + 1)h")
+                        Text(verbatim: "\(hours.lowerBound)–\(hours.upperBound + 1)h")
                             .font(.caption2)
                             .foregroundStyle(on ? Color.white.opacity(0.85) : Color.secondary)
                     }
@@ -241,7 +243,7 @@ private struct SlotPicker: View {
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("\(slot.label), \(SessionSlot.label(slot == .custom ? customHours : slot.hours))")
+                .accessibilityLabel(Text(verbatim: "\(slot.label), \(SessionSlot.label(slot == .custom ? customHours : slot.hours))"))
                 .accessibilityIdentifier("slot-\(slot.rawValue)")
                 .accessibilityAddTraits(on ? .isSelected : [])
             }
@@ -289,7 +291,7 @@ struct SearchOptionsSheet: View {
                         .accessibilityIdentifier("driveSlider")
                     }
                     if plan.entitlements.maxDriveMinutes != nil {
-                        ProLockRow(title: "Drives up to 10 h", detail: "Weekend trips with Pro")
+                        ProLockRow(title: String(localized: "Drives up to 10 h"), detail: String(localized: "Weekend trips with Pro"))
                     }
                     Toggle("Closer is better", isOn: $options.distanceMatters)
                 } header: {
@@ -369,10 +371,10 @@ struct SearchOptionsSheet: View {
     }
 
     private var styleFooter: String {
-        guard let i = options.intensity else { return "Any wind that's comfortable for your kites." }
-        return i < 0.35 ? "Steady wind in the middle of your kite's range."
-            : i > 0.65 ? "Powered up, near the top of your kite's range. Gusts are OK."
-            : "A bit of everything."
+        guard let i = options.intensity else { return String(localized: "Any wind that's comfortable for your kites.") }
+        return i < 0.35 ? String(localized: "Steady wind in the middle of your kite's range.")
+            : i > 0.65 ? String(localized: "Powered up, near the top of your kite's range. Gusts are OK.")
+            : String(localized: "A bit of everything.")
     }
 }
 

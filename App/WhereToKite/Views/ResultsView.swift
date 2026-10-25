@@ -18,7 +18,10 @@ struct ResultsSection: View {
     @State private var mode = Mode.list
     @State private var showNoGo = false
 
-    enum Mode: String, CaseIterable { case list = "List", map = "Map" }
+    enum Mode: CaseIterable {
+        case list, map
+        var title: String { self == .list ? String(localized: "List") : String(localized: "Map") }
+    }
 
     var body: some View {
         Group {
@@ -29,7 +32,7 @@ struct ResultsSection: View {
             } else if let error = model.error {
                 errorCard(error)
             } else {
-                LoadingCard(message: model.progress ?? "Checking the wind…")
+                LoadingCard(message: model.progress ?? String(localized: "Checking the wind…"))
             }
         }
         .sensoryFeedback(trigger: model.generation) { _, _ in
@@ -68,7 +71,7 @@ struct ResultsSection: View {
             }
 
             if let error = model.error {
-                Label(error, systemImage: Self.errorSymbol(error))
+                Label(error, systemImage: Self.errorSymbol(model.errorIsLocation))
                     .font(.footnote)
                     .foregroundStyle(.orange)
             }
@@ -78,7 +81,7 @@ struct ResultsSection: View {
             }
 
             if result.stats.forecastMissing > 0 {
-                Label("\(result.stats.forecastMissing) spot\(result.stats.forecastMissing > 1 ? "s" : "") couldn't be checked right now (forecast service busy). Pull to refresh in a minute.",
+                Label("\(result.stats.forecastMissing) spots couldn't be checked right now (forecast service busy). Pull to refresh in a minute.",
                       systemImage: "exclamationmark.icloud")
                     .font(.footnote)
                     .foregroundStyle(.orange)
@@ -92,14 +95,16 @@ struct ResultsSection: View {
                     .accessibilityIdentifier("topSpot")
                     .accessibilityHint("Shows the hourly forecast and directions")
             } else if result.recommendations.isEmpty {
-                NoSpotCard(title: "No spot in reach",
-                           message: "No known spot within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(options.start.isCurrentLocation ? "you" : options.start.name). Allow a longer drive or pick another start point.")
+                NoSpotCard(title: String(localized: "No spot in reach"),
+                           message: options.start.isCurrentLocation
+                               ? String(localized: "No known spot within \(DriveSteps.label(result.request.maxDriveMinutes)) of you. Allow a longer drive or pick another start point.")
+                               : String(localized: "No known spot within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(options.start.name). Allow a longer drive or pick another start point."))
             } else if !good.isEmpty {
-                NoSpotCard(title: "Nothing great",
-                           message: "Only marginal conditions, listed below. Try another day or session, or allow a longer drive.")
+                NoSpotCard(title: String(localized: "Nothing great"),
+                           message: String(localized: "Only marginal conditions, listed below. Try another day or session, or allow a longer drive."))
             } else {
-                NoSpotCard(title: "No kiteable spot",
-                           message: "Not enough good wind. Try another day or session, or allow a longer drive.")
+                NoSpotCard(title: String(localized: "No kiteable spot"),
+                           message: String(localized: "Not enough good wind. Try another day or session, or allow a longer drive."))
             }
 
             if !hasVerdict {
@@ -107,7 +112,7 @@ struct ResultsSection: View {
                     NextWindowCard(day: DayOption.with(id: next.day), rec: next.recommendation) { goToDay(next.day) }
                 } else if !plan.entitlements.nextWindow {
                     // Hidden while Pro isn't offered (PlanStore.mode .freeOnly).
-                    ProLockRow(title: "Next good window", detail: "The next day this week that works, and where.")
+                    ProLockRow(title: String(localized: "Next good window"), detail: String(localized: "The next day this week that works, and where."))
                 }
             }
 
@@ -124,7 +129,7 @@ struct ResultsSection: View {
                     // above): show the map only.
                     if !listed.isEmpty {
                         Picker("View", selection: $mode.animation(.snappy)) {
-                            ForEach(Mode.allCases, id: \.self) { Text($0.rawValue) }
+                            ForEach(Mode.allCases, id: \.self) { Text($0.title) }
                         }
                         .pickerStyle(.segmented)
                         .fixedSize()
@@ -149,8 +154,8 @@ struct ResultsSection: View {
                         .transition(.opacity)
                 }
                 if hiddenCount > 0 && plan.showsPro {
-                    ProLockRow(title: "+\(hiddenCount) more kiteable spot\(hiddenCount > 1 ? "s" : "")",
-                               detail: "The full ranking and map with Pro")
+                    ProLockRow(title: String(localized: "+\(hiddenCount) more kiteable spots"),
+                               detail: String(localized: "The full ranking and map with Pro"))
                         .padding(14)
                         .card()
                 }
@@ -196,18 +201,21 @@ struct ResultsSection: View {
 
     private func summary(_ result: SearchResult) -> String {
         let day = DayOption.with(id: result.request.day)
-        let from = options.start.isCurrentLocation ? "you" : options.start.name
-        return "\(day.longLabel) · \(result.request.slot.label) \(SessionSlot.label(result.request.hours)) · within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(from)"
+        let session = "\(day.longLabel) · \(result.request.slot.label) \(SessionSlot.label(result.request.hours))"
+        let drive = DriveSteps.label(result.request.maxDriveMinutes)
+        return options.start.isCurrentLocation
+            ? String(localized: "\(session) · within \(drive) of you")
+            : String(localized: "\(session) · within \(drive) of \(options.start.name)")
     }
 
     /// Location problems get a location icon, everything else (network, forecast) wifi.
-    static func errorSymbol(_ message: String) -> String {
-        message.localizedCaseInsensitiveContains("location") ? "location.slash" : "wifi.exclamationmark"
+    static func errorSymbol(_ isLocation: Bool) -> String {
+        isLocation ? "location.slash" : "wifi.exclamationmark"
     }
 
     private func errorCard(_ message: String) -> some View {
         VStack(spacing: 12) {
-            Image(systemName: Self.errorSymbol(message)).font(.largeTitle).foregroundStyle(.orange)
+            Image(systemName: Self.errorSymbol(model.errorIsLocation)).font(.largeTitle).foregroundStyle(.orange)
             Text("Search failed").font(.headline)
             Text(message).font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center)
             Button("Try again", action: retry).prominentButton()
@@ -225,9 +233,9 @@ struct VerdictCard: View {
 
     private var eyebrow: String {
         switch rec.finalScore {
-        case 75...: "Go kite"
-        case 50..<75: "Worth the trip"
-        default: "Kiteable, just"
+        case 75...: String(localized: "Go kite")
+        case 50..<75: String(localized: "Worth the trip")
+        default: String(localized: "Kiteable, just")
         }
     }
 
@@ -235,7 +243,7 @@ struct VerdictCard: View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(eyebrow.uppercased())
+                    Text(eyebrow.localizedUppercase)
                         .font(.caption.weight(.bold))
                         .tracking(1.2)
                         .opacity(0.85)
@@ -265,7 +273,7 @@ struct VerdictCard: View {
             FlowLayout(spacing: 8) { facts }
 
             if !rec.warnings.isEmpty {
-                Label(rec.warnings.joined(separator: ", "), systemImage: "exclamationmark.triangle.fill")
+                Label(rec.warnings.map(Vocab.term).joined(separator: ", "), systemImage: "exclamationmark.triangle.fill")
                     .font(.footnote.weight(.semibold))
             }
 
@@ -294,7 +302,7 @@ struct VerdictCard: View {
 
     @ViewBuilder private var facts: some View {
         if let dir = rec.windDirectionLabel { glassFact(dir, "location.north.line.fill") }
-        if let k = rec.suggestedKite { glassFact("\(k.size.formatted()) m kite", "wind") }
+        if let k = rec.suggestedKite { glassFact(String(localized: "\(k.size.formatted()) m kite"), "wind") }
         glassFact(rec.driveLabel, "car.fill")
     }
 
@@ -382,7 +390,7 @@ struct SpotCard: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 if !rec.warnings.isEmpty {
-                    Label(rec.warnings.joined(separator: ", "), systemImage: "exclamationmark.triangle")
+                    Label(rec.warnings.map(Vocab.term).joined(separator: ", "), systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.orange)
                 }
@@ -506,9 +514,9 @@ extension SpotRecommendation {
     var windDirectionLabel: String? {
         let hs = windowHours
         guard !hs.isEmpty else { return nil }
-        let dir = Geo.compassName(Geo.circularStats(hs.map(\.wind.directionDeg)).mean)
+        let dir = Vocab.compass(Geo.circularStats(hs.map(\.wind.directionDeg)).mean)
         let angles = hs.compactMap(\.relativeAngle)
-        let side = angles.isEmpty ? "" : " " + Recommender.angleName(angles.reduce(0, +) / Double(angles.count))
+        let side = angles.isEmpty ? "" : " " + Vocab.angle(angles.reduce(0, +) / Double(angles.count))
         return dir + side
     }
 
@@ -516,12 +524,20 @@ extension SpotRecommendation {
     var windSummary: String? {
         guard let speed = windRange, let gust = windowHours.map(\.wind.gustKn).max(),
               let dir = windDirectionLabel else { return nil }
-        return "\(speed) · gusts \(Int(gust.rounded())) · \(dir)"
+        return String(localized: "\(speed) · gusts \(Int(gust.rounded())) · \(dir)")
     }
 
-    /// Why a spot isn't recommended, without the drive time (shown separately).
+    /// Why a spot isn't recommended, without the drive time (shown separately):
+    /// "too light · 8–11 kn (gusts 14) NNE".
     var verdict: String {
-        reason.components(separatedBy: " · ").dropLast().joined(separator: " · ")
+        let slice = scoredHours.map { s in hours.filter { $0.wind.hour >= s.0 && $0.wind.hour < s.1 } } ?? []
+        guard let lo = slice.map(\.wind.speedKn).min(), let hi = slice.map(\.wind.speedKn).max(),
+              let gust = slice.map(\.wind.gustKn).max() else { return Vocab.term("no forecast") }
+        let l = Int(lo.rounded()), h = Int(hi.rounded())
+        let speed = l == h ? "\(h)" : "\(l)–\(h)"
+        let dir = Vocab.compass(Geo.circularStats(slice.map(\.wind.directionDeg)).mean)
+        let problem = window == nil ? Vocab.term(Recommender.mainProblem(hours)) + " · " : ""
+        return problem + String(localized: "\(speed) kn (gusts \(Int(gust.rounded()))) \(dir)")
     }
 
     var warnings: [String] {
@@ -541,8 +557,8 @@ private struct NextWindowCard: View {
                 ScoreBadge(score: rec.finalScore, size: 44)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Next good window").font(.caption.weight(.semibold)).foregroundStyle(.secondary)
-                    Text("\(day.longLabel)\(rec.windowLabel.map { " · \($0)" } ?? "")").font(.headline)
-                    Text("\(rec.spot.name) · \(rec.driveLabel)").font(.subheadline).foregroundStyle(.secondary)
+                    Text(verbatim: "\(day.longLabel)\(rec.windowLabel.map { " · \($0)" } ?? "")").font(.headline)
+                    Text(verbatim: "\(rec.spot.name) · \(rec.driveLabel)").font(.subheadline).foregroundStyle(.secondary)
                 }
                 Spacer(minLength: 0)
                 Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
@@ -570,9 +586,9 @@ private struct FeedbackCard: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
             HStack(spacing: 8) {
-                choice("Good", "hand.thumbsup.fill", "good")
-                choice("Not great", "hand.thumbsdown.fill", "bad")
-                choice("Didn't go", "xmark", "skipped")
+                choice(String(localized: "Good", comment: "How was the session"), "hand.thumbsup.fill", "good")
+                choice(String(localized: "Not great"), "hand.thumbsdown.fill", "bad")
+                choice(String(localized: "Didn't go"), "xmark", "skipped")
             }
         }
         .padding(14)

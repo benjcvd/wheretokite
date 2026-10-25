@@ -1,3 +1,4 @@
+import CoreLocation
 import Foundation
 import KiteCore
 
@@ -64,8 +65,10 @@ struct DayOption: Identifiable, Hashable {
     static func isPast(_ id: String) -> Bool { id < today.id }
 
     var shortLabel: String {
-        if Calendar.current.isDateInToday(date) { return "Today" }
-        if Calendar.current.isDateInTomorrow(date) { return "Tomorrow" }
+        if Calendar.current.isDateInToday(date) { return String(localized: "Today") }
+        // Empty in languages where "tomorrow" is also the morning slot (Spanish "mañana"): weekday.
+        let tomorrow = String(localized: "Tomorrow", comment: "Day strip. Leave empty if it reads like the Morning session, the weekday shows instead")
+        if Calendar.current.isDateInTomorrow(date), !tomorrow.isEmpty { return tomorrow }
         return date.formatted(.dateTime.weekday(.abbreviated))
     }
 
@@ -77,11 +80,11 @@ struct DayOption: Identifiable, Hashable {
 extension SessionSlot {
     var label: String {
         switch self {
-        case .morning: "Morning"
-        case .afternoon: "Afternoon"
-        case .evening: "Evening"
-        case .fullDay: "Full day"
-        case .custom: "My hours"
+        case .morning: String(localized: "Morning", comment: "Session slot")
+        case .afternoon: String(localized: "Afternoon", comment: "Session slot")
+        case .evening: String(localized: "Evening", comment: "Session slot")
+        case .fullDay: String(localized: "Full day", comment: "Session slot")
+        case .custom: String(localized: "My hours", comment: "Session slot")
         }
     }
 
@@ -130,6 +133,8 @@ final class SearchModel {
     /// Non-nil while a search is running.
     private(set) var progress: String?
     private(set) var error: String?
+    /// The error is about the location (shown with a location icon).
+    private(set) var errorIsLocation = false
     /// Bumped on every finished search (drives haptics).
     private(set) var generation = 0
     /// When `result` arrived.
@@ -187,6 +192,7 @@ final class SearchModel {
         let available = proSpots ? catalog : catalog.filter { $0.tier != "pro" }
         recommender.spots = UserSpotStore.merged(catalog: available, user: userSpots)
         error = nil
+        errorIsLocation = false
         do {
             let origin: Coordinate
             if let c = options.start.coordinate {
@@ -194,10 +200,10 @@ final class SearchModel {
             } else if let pinned = Self.testOrigin {
                 origin = pinned
             } else {
-                progress = "Finding your location…"
+                progress = String(localized: "Finding your location…")
                 origin = try await location.currentCoordinate()
             }
-            progress = "Checking the wind at nearby spots…"
+            progress = String(localized: "Checking the wind at nearby spots…")
             let request = SearchRequest(
                 origin: origin, maxDriveMinutes: options.maxDriveMinutes,
                 day: Self.testDay ?? options.day,
@@ -227,7 +233,8 @@ final class SearchModel {
         } catch {
             if Task.isCancelled { return }   // e.g. URLError.cancelled from a superseded search
             appLog.error("search failed: \(String(describing: error), privacy: .public)")
-            self.error = error.localizedDescription
+            self.error = Vocab.error(error)
+            errorIsLocation = error is LocationError || error is CLError
             progress = nil
         }
     }

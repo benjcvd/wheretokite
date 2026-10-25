@@ -23,7 +23,7 @@ struct AddSpotView: View {
         NavigationStack(path: $path) {
             Group {
                 if original == nil {
-                    LocationPicker(coordinate: draft.coordinate, confirmTitle: "Next") { c in
+                    LocationPicker(coordinate: draft.coordinate, confirmTitle: String(localized: "Next")) { c in
                         draft.coordinate = c
                         path.append(.details)
                     }
@@ -41,7 +41,7 @@ struct AddSpotView: View {
                 case .details:
                     details
                 case .moveLocation:
-                    LocationPicker(coordinate: draft.coordinate, confirmTitle: "Done") { c in
+                    LocationPicker(coordinate: draft.coordinate, confirmTitle: String(localized: "Done")) { c in
                         draft.coordinate = c
                         path.removeLast()
                     }
@@ -131,7 +131,7 @@ private struct LocationPicker: View {
                     jump(to: item)
                 } label: {
                     VStack(alignment: .leading, spacing: 2) {
-                        Text(item.name ?? "Place").foregroundStyle(.primary)
+                        Text(item.name ?? String(localized: "Place")).foregroundStyle(.primary)
                         if let subtitle = Self.subtitle(item) {
                             Text(subtitle).font(.caption).foregroundStyle(.secondary)
                         }
@@ -311,8 +311,8 @@ private struct SpotDetailsForm: View {
 
             if !plan.entitlements.advancedSpotSettings {
                 Section {
-                    ProLockRow(title: "Open water, second side, tide",
-                               detail: "Coves, points, lakes, sandbars and tide windows with Pro")
+                    ProLockRow(title: String(localized: "Open water, second side, tide"),
+                               detail: String(localized: "Coves, points, lakes, sandbars and tide windows with Pro"))
                 }
             }
 
@@ -329,7 +329,7 @@ private struct SpotDetailsForm: View {
                 if let deg = draft.otherSideDeg, let coordinate = draft.coordinate {
                     orientationMap(coordinate, bearing: Binding(get: { draft.otherSideDeg },
                                                                 set: { draft.otherSideDeg = $0 }),
-                                   sector: draft.waterSectorDeg, label: "Other side direction")
+                                   sector: draft.waterSectorDeg, label: String(localized: "Other side direction"))
                         .listRowInsets(EdgeInsets())
                     HStack(spacing: 12) {
                         FacingBadge(bearing: deg, size: 36)
@@ -426,15 +426,15 @@ private struct SpotDetailsForm: View {
 
     static func sectorName(_ deg: Double) -> String {
         switch deg {
-        case ..<150: "cove or narrow bay"
-        case ..<220: "straight beach"
-        case ..<350: "point or headland"
-        default: "all around, e.g. a small lake"
+        case ..<150: String(localized: "cove or narrow bay")
+        case ..<220: String(localized: "straight beach")
+        case ..<350: String(localized: "point or headland")
+        default: String(localized: "all around, e.g. a small lake")
         }
     }
 
     private func orientationMap(_ c: Coordinate, bearing: Binding<Double?>, sector: Double = 180,
-                                label: String = "Beach direction") -> some View {
+                                label: String = String(localized: "Beach direction")) -> some View {
         let center = CLLocationCoordinate2D(latitude: c.latitude, longitude: c.longitude)
         return Map(initialPosition: .region(MKCoordinateRegion(center: center, latitudinalMeters: 900,
                                                                 longitudinalMeters: 900)),
@@ -495,9 +495,12 @@ private struct SpotDetailsForm: View {
     }
 
     static func longName(_ deg: Double) -> String {
-        let names = ["north", "north-northeast", "northeast", "east-northeast", "east", "east-southeast",
-                     "southeast", "south-southeast", "south", "south-southwest", "southwest",
-                     "west-southwest", "west", "west-northwest", "northwest", "north-northwest"]
+        let names = [String(localized: "north"), String(localized: "north-northeast"), String(localized: "northeast"),
+                     String(localized: "east-northeast"), String(localized: "east"), String(localized: "east-southeast"),
+                     String(localized: "southeast"), String(localized: "south-southeast"), String(localized: "south"),
+                     String(localized: "south-southwest"), String(localized: "southwest"), String(localized: "west-southwest"),
+                     String(localized: "west"), String(localized: "west-northwest"), String(localized: "northwest"),
+                     String(localized: "north-northwest")]
         let i = Int((deg.truncatingRemainder(dividingBy: 360) + 360 + 11.25) / 22.5) % 16
         return names[i]
     }
@@ -512,7 +515,7 @@ struct OrientationDial: View {
     /// Width of the tinted water area, degrees.
     var sector: Double = 180
     /// VoiceOver name: two dials (main and other side) must not both read "Beach direction".
-    var label = "Beach direction"
+    var label = String(localized: "Beach direction")
 
     var body: some View {
         GeometryReader { geo in
@@ -544,9 +547,9 @@ struct OrientationDial: View {
                         .position(center)
                 }
 
-                ForEach(Array(["N", "E", "S", "W"].enumerated()), id: \.offset) { i, letter in
+                ForEach(Array([0.0, 90, 180, 270].map(Vocab.compass).enumerated()), id: \.offset) { i, letter in
                     let deg = Double(i) * 90
-                    Text(letter)
+                    Text(verbatim: letter)
                         .font(.caption.weight(.heavy))
                         .foregroundStyle(.white)
                         .position(point(center, deg, radius + 16))
@@ -587,7 +590,7 @@ struct OrientationDial: View {
         }
         .accessibilityElement()
         .accessibilityLabel(label)
-        .accessibilityValue(bearing.map { "\(Geo.compassName($0)), \(Int($0)) degrees" } ?? "Not set")
+        .accessibilityValue(bearing.map { String(localized: "\(Vocab.compass($0)), \(Int($0)) degrees") } ?? String(localized: "Not set"))
         .accessibilityAdjustableAction { direction in
             let current = bearing ?? 0
             switch direction {

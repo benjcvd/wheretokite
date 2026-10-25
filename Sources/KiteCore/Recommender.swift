@@ -353,18 +353,7 @@ public struct Recommender: Sendable {
         let dir = Geo.compassName(Geo.circularStats(slice.map(\.wind.directionDeg)).mean)
 
         guard let window else {
-            // Explain why it's not a go.
-            let flags = Set(hours.flatMap(\.flags))
-            // Safety first: storms, bans and offshore beat "too light" when both apply.
-            let why = flags.contains("thunderstorm risk") ? "thunderstorm risk"
-                : flags.contains("kiting banned") ? "kiting banned"
-                : flags.contains("offshore component") ? "offshore"
-                : flags.contains("dark") && !flags.contains("too light") ? "dark"
-                : flags.contains("too light") ? "too light"
-                : flags.contains("tide too low") ? "tide too low"
-                : flags.contains("tide too high") ? "tide too high"
-                : flags.first ?? "poor conditions"
-            return "\(why) · \(wind) \(dir) · \(driveText)"
+            return "\(Self.mainProblem(hours)) · \(wind) \(dir) · \(driveText)"
         }
 
         let angles = slice.compactMap(\.relativeAngle)
@@ -373,6 +362,20 @@ public struct Recommender: Sendable {
         let sideName = Self.mainSide(slice).map { " · \($0)" } ?? ""
         let extra = Set(slice.flatMap(\.flags)).sorted().map { " · ⚠︎ \($0)" }.joined()
         return String(format: "%02d:00–%02d:00 · ", window.0, window.1) + wind + " \(dir)\(side)\(sideName)\(kite) · \(driveText)\(extra)"
+    }
+
+    /// Why a spot with no good window isn't a go: "thunderstorm risk", "offshore", "too light"…
+    /// Safety first: storms, bans and offshore beat "too light" when both apply.
+    public static func mainProblem(_ hours: [HourScore]) -> String {
+        let flags = Set(hours.flatMap(\.flags))
+        return flags.contains("thunderstorm risk") ? "thunderstorm risk"
+            : flags.contains("kiting banned") ? "kiting banned"
+            : flags.contains("offshore component") ? "offshore"
+            : flags.contains("dark") && !flags.contains("too light") ? "dark"
+            : flags.contains("too light") ? "too light"
+            : flags.contains("tide too low") ? "tide too low"
+            : flags.contains("tide too high") ? "tide too high"
+            : flags.first ?? "poor conditions"
     }
 
     /// Hard limits beyond the wind itself: thunderstorm risk, darkness and seasonal bans score
