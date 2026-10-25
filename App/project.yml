@@ -71,6 +71,9 @@ schemes:
       targets:
         WhereToKite: all
     test:
+      # Tests read English labels, whatever the simulator's language.
+      language: en
+      region: US
       targets:
         - WhereToKiteTests
         - WhereToKiteUITests
