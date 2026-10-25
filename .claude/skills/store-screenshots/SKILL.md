@@ -18,7 +18,7 @@ them down for smaller iPhones. The app is iPhone-only: no iPad set.
   itself; `TEST_RUNNER_SHOTS_TOMORROW=1` makes the test pick tomorrow. Start point stays
   Barcelona (`-searchOrigin 41.3874,2.1686`). Sizes: 6.9" (1320 × 2868) and 6.3" (1206 × 2622),
   into `docs/store/6.9/` and `docs/store/6.3/`.
-- Suggested set (see `docs/APP_STORE_CONNECT.md`, section 4): results list, spot detail with
+- Suggested set: also "add your own spot" (map pin, then beach direction). (see `docs/APP_STORE_CONNECT.md`, section 4): results list, spot detail with
   the wind chart, "How is this scored?", search, rider profile.
 
 ## Steps

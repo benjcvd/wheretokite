@@ -2,7 +2,7 @@ import XCTest
 
 /// App Store screenshots, free plan, from Barcelona on a real forecast (today, or tomorrow with
 /// TEST_RUNNER_SHOTS_TOMORROW=1), so the day shown matches the results:
-/// results → spot detail → "How is this scored?" → search options → rider profile.
+/// results → spot detail → "How is this scored?" → search options → rider profile → own spot.
 /// Run on the 6.9" and 6.3" simulators; see .claude/skills/store-screenshots.
 final class StoreScreenshotsTests: XCTestCase {
     @MainActor
@@ -61,6 +61,28 @@ final class StoreScreenshotsTests: XCTestCase {
         sleep(1)
         snapshot(app.screenshot(), "06-profile")
         app.buttons["Done"].tap()
+
+        // Your own spot: the free plan allows one. Same flow as MySpotsTests.
+        app.tabBars.buttons["My spots"].tap()
+        let accept = app.buttons["acceptDisclaimer"]
+        if accept.waitForExistence(timeout: 2) { accept.tap() }
+        let add = app.buttons["Add a spot"]
+        XCTAssertTrue(add.waitForExistence(timeout: 5))
+        add.tap()
+        let search = app.searchFields.firstMatch
+        XCTAssertTrue(search.waitForExistence(timeout: 5))
+        search.tap()
+        search.typeText("Platja de Castelldefels")
+        let result = app.buttons.containing(NSPredicate(format: "label CONTAINS[c] 'Castelldefels'")).firstMatch
+        if result.waitForExistence(timeout: 5) { result.tap() } else { search.typeText("\n") }
+        sleep(4)  // let the map tiles load
+        snapshot(app.screenshot(), "07-add-spot-map")
+        app.buttons["Next"].tap()
+        XCTAssertTrue(app.textFields["spotName"].waitForExistence(timeout: 5))
+        app.textFields["spotName"].tap()
+        app.textFields["spotName"].typeText("Castelldefels beach\n")
+        sleep(4)
+        snapshot(app.screenshot(), "08-add-spot-details")
     }
 
     @MainActor
