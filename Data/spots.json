@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T22:53:12Z",
+  "generatedAt": "2026-10-25T21:49:22Z",
   "region": "europe",
   "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); spot selection curated by WhereToKite",
   "spots": [
@@ -7973,6 +7973,23 @@
       "island": "r7681896"
     },
     {
+      "id": "it-santa-maria-del-focallo",
+      "name": "Santa Maria del Focallo",
+      "latitude": 36.71686,
+      "longitude": 14.91841,
+      "seaFacingDeg": 216.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 271.0,
+      "source": "curated",
+      "notes": "Long sandy beach on the south-east coast (Ispica): open sea without heavy waves, a beginner-friendly spot that stays quiet in summer. Schools nearby (Trickite, Sicily Kite School). Also: Pozzallo and Marina di Ragusa along the same coast.",
+      "country": "IT",
+      "region": "Sicilia",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6197225"
+    },
+    {
       "id": "it-mazara-del-vallo-capo-feto",
       "name": "Mazara del Vallo – Capo Feto",
       "latitude": 37.65951,
@@ -8039,6 +8056,23 @@
       "island": "r6847723"
     },
     {
+      "id": "it-punta-trettu",
+      "name": "Punta Trettu",
+      "latitude": 39.10329,
+      "longitude": 8.42753,
+      "seaFacingDeg": 22.2,
+      "orientationSource": "apple-maps",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "notes": "Flat lagoon-like water inside a metre deep for hundreds of metres, beside Sant'Antioco: the beginner spot of Sardinia. Mistral (NW) and scirocco (SE), thermal in summer. Launch only from the kite beach (small entry fee in season); algae on the bottom. Also: Porto Botte (flat bay). Irregular shoreline near the spot; orientation less certain.",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "lagoon",
+      "directionCheck": "corrected",
+      "access": "ferry",
+      "island": "r6847723"
+    },
+    {
       "id": "it-cagliari-poetto",
       "name": "Cagliari – Poetto",
       "latitude": 39.21141,
@@ -8082,7 +8116,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 9.9,
       "source": "curated",
-      "notes": "Sinis peninsula; mistral (NW) side-shore, chop to small waves. Schools on site. Shoreline bends here (243° locally vs 216° over ±1.5 km).",
+      "notes": "Sinis peninsula; mistral (NW) side-shore, chop to small waves. Schools on site. Also: Capo Mannu next door (rocky, big waves, experts only). Shoreline bends here (243° locally vs 216° over ±1.5 km).",
       "country": "IT",
       "region": "Sardegna",
       "waterType": "sea",
@@ -8154,6 +8188,24 @@
       "region": "Puglia",
       "waterType": "sea",
       "directionCheck": "agrees"
+    },
+    {
+      "id": "it-rena-majore",
+      "name": "Rena Majore",
+      "latitude": 41.16891,
+      "longitude": 9.16839,
+      "seaFacingDeg": 303.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 14.3,
+      "source": "curated",
+      "notes": "Large sandy beach on the north coast: NW wind strongest, choppy to small waves; rocks on both sides and a tricky entry. Crowded with swimmers in summer.",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
     },
     {
       "id": "it-porto-pollo",
@@ -23479,6 +23531,100 @@
         [
           40.7328,
           8.1308
+        ]
+      ]
+    },
+    {
+      "id": "r6847723",
+      "name": "Santu Antiogu/Sant'Antióccu/Sant'Antioco",
+      "outline": [
+        [
+          39.0792,
+          8.3492
+        ],
+        [
+          39.0376,
+          8.3605
+        ],
+        [
+          39.0115,
+          8.3757
+        ],
+        [
+          39.0084,
+          8.3856
+        ],
+        [
+          38.961,
+          8.4041
+        ],
+        [
+          38.9553,
+          8.4149
+        ],
+        [
+          38.9688,
+          8.4448
+        ],
+        [
+          38.9781,
+          8.4405
+        ],
+        [
+          38.9897,
+          8.4515
+        ],
+        [
+          39.0247,
+          8.4528
+        ],
+        [
+          39.0509,
+          8.4747
+        ],
+        [
+          39.0517,
+          8.4661
+        ],
+        [
+          39.0837,
+          8.4565
+        ],
+        [
+          39.0958,
+          8.4316
+        ],
+        [
+          39.1089,
+          8.4258
+        ],
+        [
+          39.0984,
+          8.3871
+        ],
+        [
+          39.1154,
+          8.3708
+        ],
+        [
+          39.1099,
+          8.3604
+        ],
+        [
+          39.0985,
+          8.3614
+        ],
+        [
+          39.0974,
+          8.3508
+        ],
+        [
+          39.0861,
+          8.3585
+        ],
+        [
+          39.0792,
+          8.3492
         ]
       ]
     },
