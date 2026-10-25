@@ -1,7 +1,7 @@
 # Session handoff
 
 Read this first in a new session, then `docs/TODO.md` (what's pending) and
-`tools/spots/TO_CONFIRM.md` (spot questions). Last updated 2026-10-22.
+`tools/spots/TO_CONFIRM.md` (spot questions). Last updated 2026-10-25.
 
 ## Working with Ben
 - Ben is the kite domain expert (rides around Barcelona). Claude builds the code and explains
@@ -101,16 +101,22 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
   matches (unconfirmed). The app has no fallback yet, so Spanish riders could lose search on
   weekend afternoons; Product has a card to fall back to Open-Meteo directly.
 
-## Where the Lead stopped (2026-10-25 evening)
-- Waiting to merge (say "merge"): Product's branch (Spanish + French + Language row in Me;
-  kite terms stay in English, the language applies when the app is reopened) and the App
-  Store Connect helper's guide fix (395f93f). Use the `merge-workstream` skill.
-- Local, not pushed: f324fd3 and 24f65c3 (privacy page name and hidden email; already live
-  on Cloudflare because Ben deployed from this Mac). CONTACT_EMAIL is a Wrangler secret, never
-  in git (public repo). Deploys are blocked for Claude by auto mode: Ben runs them.
-- WHE-35 in review: Ben checks /privacy on mobile data (from his home network the Worker's
-  IPs timed out, see above).
-- `.claude/` (roles, skills) still not committed (WHE-42): workstream worktrees don't see the
-  skills until it is. Leftover role files app.md and release.md can go when committing.
-- Next for v1: merge, server fallback (Product), screenshots in 3 languages, TestFlight build
-  (Ben, Xcode), test, submit.
+## Where the Lead stopped (2026-10-25, 23:45)
+- Everything is merged and pushed (main d9fd046) and the Worker is deployed with the privacy
+  text about the direct Open-Meteo fallback. Team setup (`.claude/`) is committed. Deploys and
+  pushes worked for Claude tonight after Ben's OK.
+- Server fallback (WHE-50, Product): after 3 s without an answer the phone also asks
+  Open-Meteo directly and keeps the first answer, then skips the server for 10 min. Cause:
+  Spanish ISPs block shared Cloudflare IPs during LaLiga matches (parked card on a real fix).
+  To check the live Worker during a block: `curl --resolve <host>:443:104.21.48.1 …`.
+- Free plan is now 4 forecast days (Ben: "2 days is shit"); Pro keeps 7. Store texts in
+  EN/ES/FR say "four days ahead".
+- Screenshots (WHE-9, review): Ben wants real forecast days, not archived ones. The test
+  `StoreScreenshotsTests` uses the live forecast from Barcelona; `TEST_RUNNER_SHOTS_DAY=N`
+  picks day N (0–3). Dedicated simulators "Shots 6.9" / "Shots 6.3" (don't share the booted
+  ones with workstreams). Current set: Wed 28 Oct, Leucate top, 8 per size in `docs/store/`.
+  Ben is uploading them; `07-add-spot-map.png` was rejected as "invalid dimensions" though it
+  is 1320×2868 (probably dragged from the 6.3 folder): a JPEG copy sits next to it.
+- `xcodegen` drops `DEVELOPMENT_TEAM` (happened again tonight): re-add it after every regen.
+- Next for v1: Ben finishes the screenshots, Spanish/French store pages (WHE-49), Windguru
+  check (WHE-51), then the first TestFlight build (WHE-10).
