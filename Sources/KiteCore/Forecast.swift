@@ -68,6 +68,97 @@ public struct ForecastServer: Sendable, Equatable {
     }
 }
 
+/// The WhereToKite server first, Open-Meteo straight from the phone when it fails or is slow
+/// (seen in Spain on weekend afternoons, when some providers block Cloudflare addresses).
+/// After `hedgeAfter` without an answer, Open-Meteo is asked too and the first answer wins,
+/// so a dead server costs a few seconds and a slow one still counts. When Open-Meteo had to
+/// answer, the server is skipped for `cooldown`. One instance is shared by the forecasts and
+/// the confidence check.
+public actor ServerFailover {
+    public let primary: ForecastServer
+    public let fallback: ForecastServer
+    public let hedgeAfter: Duration
+    public let cooldown: TimeInterval
+    private var skipPrimaryUntil: Date?
+    /// Called when a request falls back (for logs).
+    private let onFallback: @Sendable (Error) -> Void
+
+    public init(primary: ForecastServer, fallback: ForecastServer = .openMeteo,
+                hedgeAfter: Duration = .seconds(3), cooldown: TimeInterval = 10 * 60,
+                onFallback: @escaping @Sendable (Error) -> Void = { _ in }) {
+        self.primary = primary
+        self.fallback = fallback
+        self.hedgeAfter = hedgeAfter
+        self.cooldown = cooldown
+        self.onFallback = onFallback
+    }
+
+    struct TooSlow: Error, LocalizedError {
+        var errorDescription: String? { "no answer in time" }
+    }
+
+    /// True while the server is being skipped.
+    public var usingFallback: Bool { skipPrimaryUntil.map { Date() < $0 } ?? false }
+
+    private enum Outcome<T: Sendable>: Sendable {
+        case primary(T), fallback(T), primaryFailed(Error), fallbackFailed(Error)
+    }
+
+    private enum Race<T: Sendable>: Sendable {
+        case won(T, viaFallback: Bool)
+        /// The server failed before Open-Meteo was asked.
+        case serverFailed(Error)
+        case bothFailed(Error)
+    }
+
+    public func run<T: Sendable>(_ request: @escaping @Sendable (ForecastServer) async throws -> T) async throws -> T {
+        if usingFallback { return try await request(fallback) }
+        let primary = primary, fallback = fallback, hedgeAfter = hedgeAfter
+        let race: Race<T> = await withTaskGroup(of: Outcome<T>.self) { group in
+            defer { group.cancelAll() }
+            group.addTask {
+                do { return .primary(try await request(primary)) } catch { return .primaryFailed(error) }
+            }
+            group.addTask {
+                do {
+                    try await Task.sleep(for: hedgeAfter)
+                    return .fallback(try await request(fallback))
+                } catch { return .fallbackFailed(error) }
+            }
+            var fallbackError: Error?
+            while let outcome = await group.next() {
+                switch outcome {
+                case .primary(let v): return .won(v, viaFallback: false)
+                case .fallback(let v): return .won(v, viaFallback: true)
+                case .fallbackFailed(let e): fallbackError = e   // keep waiting for the server
+                case .primaryFailed(let e):
+                    // Both failed: Open-Meteo's error is the one to show. Server failed
+                    // first: ask Open-Meteo now rather than after the hedge delay.
+                    return fallbackError.map { .bothFailed($0) } ?? .serverFailed(e)
+                }
+            }
+            return .bothFailed(CancellationError())
+        }
+        if Task.isCancelled { throw CancellationError() }
+        switch race {
+        case .won(let value, let viaFallback):
+            if viaFallback { fellBack(TooSlow()) }
+            return value
+        case .bothFailed(let error):
+            fellBack(error)
+            throw error
+        case .serverFailed(let error):
+            fellBack(error)
+            return try await request(fallback)
+        }
+    }
+
+    private func fellBack(_ error: Error) {
+        skipPrimaryUntil = Date().addingTimeInterval(cooldown)
+        onFallback(error)
+    }
+}
+
 // MARK: - Open-Meteo
 
 /// Open-Meteo forecast client.
@@ -93,10 +184,18 @@ public struct OpenMeteoProvider: ForecastProvider {
     /// Requests in flight at once (400 spots = 4 requests = one round trip).
     public var maxConcurrent = 4
     public var session: URLSession = .shared
+    /// When set, `server` is ignored: the failover picks the server for each request.
+    public var failover: ServerFailover?
 
     public init(model: String = "best_match", server: ForecastServer = .openMeteo) {
         self.model = model
         self.server = server
+    }
+
+    public init(model: String = "best_match", failover: ServerFailover) {
+        self.model = model
+        self.server = failover.primary
+        self.failover = failover
     }
 
     static let hourlyVariables = "wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,cape,precipitation"
@@ -129,6 +228,14 @@ public struct OpenMeteoProvider: ForecastProvider {
     /// missing from the result — as long as one batch succeeds; if all fail, the first error
     /// is thrown. `days` must be consecutive (one date range per request).
     public func forecasts(for spots: [Spot], days: [String]) async throws -> [String: [String: DayForecast]] {
+        if let failover {
+            return try await failover.run { server in
+                var p = self
+                p.failover = nil
+                p.server = server
+                return try await p.forecasts(for: spots, days: days)
+            }
+        }
         let days = days.sorted()
         guard let first = days.first, let last = days.last else { return [:] }
         for day in days { guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) } }

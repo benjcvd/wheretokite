@@ -150,12 +150,20 @@ final class SearchModel {
         catalogDate = loaded?.generatedAt
         // MapKitDriveTime caches ETAs in memory, so changing day, session or style
         // doesn't ask Apple Maps for every route again.
+        let failover = AppConfig.forecastFailover
         recommender = Recommender(
             spots: catalog,
-            forecast: CachedForecastProvider(upstream: OpenMeteoProvider(server: AppConfig.forecastServer)),
+            forecast: CachedForecastProvider(upstream: OpenMeteoProvider(failover: failover),
+                                             directory: Self.forecastCacheDirectory),
             driveTime: MapKitDriveTime(),
-            confidence: ConfidenceEstimator(server: AppConfig.forecastServer))
+            confidence: ConfidenceEstimator(failover: failover))
         recommender.islands = loaded?.islands ?? []
+    }
+
+    /// A fresh cache when testing the fallback, so cached forecasts can't hide it.
+    private static var forecastCacheDirectory: URL {
+        AppConfig.unreachableServerForTests == nil ? CachedForecastProvider.defaultDirectory
+            : FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
     }
 
     /// UI tests: -searchOrigin "lat,lon" replaces the device location. Debug builds only:

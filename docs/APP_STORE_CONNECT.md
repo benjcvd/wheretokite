@@ -243,7 +243,7 @@ to the user's identity**, **not used for tracking**.
 
 | Data type (Apple's name) | Purpose | What it is in the app |
 |---|---|---|
-| Location → **Coarse Location** | App Functionality | Rough area of the start point (about 10 km) and spot positions, sent to the server for forecasts |
+| Location → **Coarse Location** | App Functionality | Rough area of the start point (about 10 km) and spot positions, sent to the server for forecasts (or to Open-Meteo directly when the server can't be reached) |
 | Usage Data → **Product Interaction** | Analytics | "How was it?" answers (spot, day, score, rating) |
 | Diagnostics → **Crash Data** | App Functionality | iOS MetricKit crash reports |
 | Diagnostics → **Performance Data** | App Functionality | MetricKit hang and resource reports |
@@ -296,7 +296,7 @@ To test:
 
 Location is used only as the start point and is optional: any town can be typed instead. The catalogue covers Europe and Morocco only, so a start point in the United States returns no spots.
 
-"Report an issue" sends a short anonymous report that is published as an issue on our public GitHub repository; the app says so before sending. Weather data comes from Open-Meteo through our server.
+"Report an issue" sends a short anonymous report that is published as an issue on our public GitHub repository; the app says so before sending. Weather data comes from Open-Meteo through our server (directly from Open-Meteo if our server can't be reached).
 ```
 
 ## 9. Build and submission, in order

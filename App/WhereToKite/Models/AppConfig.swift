@@ -12,6 +12,24 @@ enum AppConfig {
 
     static var forecastServer: ForecastServer { serverURL.map(ForecastServer.wheretokite) ?? .openMeteo }
 
+    /// Forecasts through the server, straight from Open-Meteo when it can't be reached.
+    static var forecastFailover: ServerFailover {
+        ServerFailover(primary: unreachableServerForTests ?? forecastServer, fallback: .openMeteo) { error in
+            appLog.error("server unreachable, forecasts from Open-Meteo: \(error.localizedDescription, privacy: .public)")
+        }
+    }
+
+    /// UI tests: -unreachableServer points forecasts at an address that never answers, to check
+    /// the Open-Meteo fallback. Debug builds only.
+    static var unreachableServerForTests: ForecastServer? {
+        #if DEBUG
+        guard UserDefaults.standard.bool(forKey: "unreachableServer") else { return nil }
+        return .wheretokite(URL(string: "https://10.255.255.1")!)   // non-routable: requests hang
+        #else
+        return nil
+        #endif
+    }
+
     /// Where spot problems are reported when there is no server.
     static let issuesURL = URL(string: "https://github.com/benjcvd/wheretokite/issues/new")!
 

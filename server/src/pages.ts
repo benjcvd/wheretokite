@@ -70,7 +70,7 @@ your own spots and your location stay on your phone.</p>
 <table>
 <tr><th>Data</th><th>Sent to</th><th>Why</th></tr>
 <tr><td>Positions of kite spots, and the rough area of your start point (about 10 km)</td>
-<td>The WhereToKite server, which asks Open-Meteo</td><td>Wind and tide forecasts</td></tr>
+<td>The WhereToKite server, which asks Open-Meteo (or Open-Meteo directly from your phone when the server can't be reached)</td><td>Wind and tide forecasts</td></tr>
 <tr><td>Your start point</td><td>Apple Maps, directly from your phone</td><td>Drive times</td></tr>
 <tr><td>“How was it?” answers (spot, day, score, rating)</td><td>The WhereToKite server</td><td>Checking and improving the scores</td></tr>
 <tr><td>Crash and performance reports from iOS (MetricKit)</td><td>The WhereToKite server</td><td>Fixing bugs</td></tr>
@@ -96,7 +96,8 @@ advertising or profiling.</p>
 <li><strong>Cloudflare</strong> (hosting of the server; EU and US, under Cloudflare's data
 processing terms and the EU–US Data Privacy Framework).</li>
 <li><strong>Open-Meteo</strong> (weather forecasts, Switzerland). It receives spot positions
-from the server, never anything about you.</li>
+and the rough search area, usually from the server. When the server can't be reached, your
+phone asks Open-Meteo directly, which then also sees your IP address.</li>
 <li><strong>Apple</strong> (Maps, crash reports, and App Store purchases, under Apple's privacy policy).</li>
 <li><strong>GitHub</strong> (public reports; US, Data Privacy Framework).</li>
 </ul>

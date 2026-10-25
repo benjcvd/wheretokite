@@ -21,7 +21,8 @@
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>
 		<dict>
-			<!-- The search area (rounded to 0.1°) and spot coordinates go to Open-Meteo to fetch
+			<!-- The search area (rounded to 0.1°) and spot coordinates go to Open-Meteo (through the
+			     WhereToKite server, or directly when it can't be reached) to fetch
 			     forecasts. Not linked to an identity, not used for tracking. -->
 			<key>NSPrivacyCollectedDataType</key>
 			<string>NSPrivacyCollectedDataTypeCoarseLocation</string>

@@ -28,9 +28,16 @@ public struct ConfidenceEstimator: Sendable {
     public var models = ["ecmwf_ifs025", "gfs_seamless", "icon_seamless", "meteofrance_seamless"]
     public var session: URLSession = .shared
     public var server: ForecastServer
+    /// When set, `server` is ignored: the failover picks the server for each request.
+    public var failover: ServerFailover?
 
     public init(server: ForecastServer = .openMeteo) {
         self.server = server
+    }
+
+    public init(failover: ServerFailover) {
+        self.server = failover.primary
+        self.failover = failover
     }
 
     private struct Response: Decodable {
@@ -55,6 +62,14 @@ public struct ConfidenceEstimator: Sendable {
 
     public func estimate(at origin: Coordinate, day: String, hours: ClosedRange<Int>,
                          today: String) async throws -> ForecastConfidence {
+        if let failover {
+            return try await failover.run { server in
+                var e = self
+                e.failover = nil
+                e.server = server
+                return try await e.estimate(at: origin, day: day, hours: hours, today: today)
+            }
+        }
         guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) }
         var c = URLComponents(url: server.endpoint(for: day), resolvingAgainstBaseURL: false)!
         c.queryItems = [
