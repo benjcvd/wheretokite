@@ -16,8 +16,8 @@ enum LocationError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .denied: "Location access is off. Allow it in Settings, or pick a starting point."
-        case .unavailable: "Couldn't get your location. Pick a starting point instead."
+        case .denied: String(localized: "Location access is off. Allow it in Settings, or pick a starting point.")
+        case .unavailable: String(localized: "Couldn't get your location. Pick a starting point instead.")
         }
     }
 }

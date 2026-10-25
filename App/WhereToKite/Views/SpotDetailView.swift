@@ -24,7 +24,7 @@ struct SpotDetailView: View {
                 hourly
 
                 if let bans = rec.spot.bans, !bans.isEmpty {
-                    Label("Kiting banned " + bans.map(Self.banLabel).joined(separator: "; "),
+                    Label(String(localized: "Kiting banned \(bans.map(Self.banLabel).joined(separator: "; "))"),
                           systemImage: "nosign")
                         .font(.footnote.weight(.semibold))
                         .foregroundStyle(.orange)
@@ -75,7 +75,7 @@ struct SpotDetailView: View {
                     ScoreRing(score: rec.finalScore, lineWidth: 6)
                         .frame(width: 58, height: 58)
                     VStack(alignment: .leading, spacing: 3) {
-                        Text("\(ScoreStyle.label(rec.finalScore)) · \(day.longLabel)")
+                        Text(verbatim: "\(ScoreStyle.label(rec.finalScore)) · \(day.longLabel)")
                             .font(.title3.bold())
                         Text(rec.windSummary ?? rec.verdict)
                             .font(.subheadline)
@@ -103,25 +103,25 @@ struct SpotDetailView: View {
     private var facts: some View {
         Grid(horizontalSpacing: 10, verticalSpacing: 10) {
             GridRow {
-                Fact(title: rec.windowInMyTime == nil ? "Best window" : "Best window · spot time",
+                Fact(title: rec.windowInMyTime == nil ? String(localized: "Best window") : String(localized: "Best window · spot time"),
                      value: rec.window.map { w in
-                         "\(w.start)–\(w.end)h" + (rec.windowInMyTime.map { " · \($0) yours" } ?? "")
+                         "\(w.start)–\(w.end)h" + (rec.windowInMyTime.map { String(localized: " · \($0) yours", comment: "The window in the phone's time zone") } ?? "")
                      } ?? "–",
                      icon: "clock.fill", tint: .blue)
-                Fact(title: "Kite", value: rec.suggestedKite.map { "\($0.size.formatted()) m" } ?? "–",
+                Fact(title: String(localized: "Kite"), value: rec.suggestedKite.map { "\($0.size.formatted()) m" } ?? "–",
                      icon: "wind", tint: .teal)
             }
             if let tide = rec.tideSummary {
                 GridRow {
-                    Fact(title: "Tide · rides " + Self.tideRuleLabel(rec.spot.tide), value: tide,
+                    Fact(title: String(localized: "Tide · rides \(Self.tideRuleLabel(rec.spot.tide))"), value: Vocab.tide(tide),
                          icon: "water.waves.and.arrow.up", tint: .blue)
                         .gridCellColumns(2)
                 }
             }
             GridRow {
-                Fact(title: "Drive", value: rec.driveLabel, icon: "car.fill", tint: .indigo)
-                Fact(title: rec.spot.allSides.count > 1 ? "Sides face" : "Beach faces",
-                     value: (rec.spot.facingSummary ?? "Unknown")
+                Fact(title: String(localized: "Drive"), value: rec.driveLabel, icon: "car.fill", tint: .indigo)
+                Fact(title: rec.spot.allSides.count > 1 ? String(localized: "Sides face") : String(localized: "Beach faces"),
+                     value: (Vocab.facing(rec.spot) ?? String(localized: "Unknown"))
                         + (rec.spot.waterSectorDeg.map { $0 < 360 ? " · \(Int($0))°" : "" } ?? ""),
                      icon: "water.waves", tint: .cyan)
             }
@@ -143,12 +143,12 @@ struct SpotDetailView: View {
 
     static func tideRuleLabel(_ rule: String?) -> String {
         switch rule {
-        case "high": "around high tide"
-        case "low": "around low tide"
-        case "mid": "at mid tide"
-        case "not-low": "except at low tide"
-        case "not-high": "except at high tide"
-        default: "at any tide"
+        case "high": String(localized: "around high tide")
+        case "low": String(localized: "around low tide")
+        case "mid": String(localized: "at mid tide")
+        case "not-low": String(localized: "except at low tide")
+        case "not-high": String(localized: "except at high tide")
+        default: String(localized: "at any tide")
         }
     }
 
@@ -180,7 +180,7 @@ struct SpotDetailView: View {
             .chartYScale(domain: 0...yMax)
             .chartXAxis {
                 AxisMarks(values: rec.hours.map(\.wind.hour)) { value in
-                    AxisValueLabel { if let h = value.as(Int.self) { Text("\(h)h") } }
+                    AxisValueLabel { if let h = value.as(Int.self) { Text(verbatim: "\(h)h") } }
                 }
             }
             .frame(height: 190)
@@ -213,7 +213,7 @@ struct SpotDetailView: View {
                             .foregroundStyle(WindStyle.color(h.wind.speedKn))
                             .frame(width: 20)
                         VStack(alignment: .leading, spacing: 1) {
-                            Text("\(Int(h.wind.speedKn.rounded())) kn · gusts \(Int(h.wind.gustKn.rounded()))")
+                            Text("\(Int(h.wind.speedKn.rounded())) kn · gusts \(Int(h.wind.gustKn.rounded()))", comment: "Hourly wind")
                                 .font(.subheadline)
                                 .monospacedDigit()
                             Text(hourDetail(h))
@@ -234,11 +234,11 @@ struct SpotDetailView: View {
     }
 
     private func hourDetail(_ h: HourScore) -> String {
-        var parts = [Geo.compassName(h.wind.directionDeg)]
-        if let a = h.relativeAngle { parts[0] += " " + Recommender.angleName(a) }
+        var parts = [Vocab.compass(h.wind.directionDeg)]
+        if let a = h.relativeAngle { parts[0] += " " + Vocab.angle(a) }
         if let side = h.side, h.score > 0 { parts.append(side) }
         if let k = h.kite { parts.append("\(k.size.formatted()) m") }
-        parts += h.flags
+        parts += h.flags.map(Vocab.term)
         return parts.joined(separator: " · ")
     }
 
@@ -331,9 +331,9 @@ struct ScoreInfoSheet: View {
                     HStack(spacing: 14) {
                         ScoreBadge(score: rec.finalScore, size: 48)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("\(rec.finalScore) / 100 · \(ScoreStyle.label(rec.finalScore))")
+                            Text(verbatim: "\(rec.finalScore) / 100 · \(ScoreStyle.label(rec.finalScore))")
                                 .font(.title3.bold())
-                            Text(rec.windowLabel.map { "Best window \($0)" } ?? rec.reason)
+                            Text(rec.windowLabel.map { String(localized: "Best window \($0)") } ?? rec.verdict)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }
@@ -343,23 +343,23 @@ struct ScoreInfoSheet: View {
 
                 if !windowHours.isEmpty {
                     Section {
-                        FactorRow(title: "Wind strength", value: mean(\.strengthFactor), weight: weights.strength,
-                                  detail: rec.suggestedKite.map { "Fit for your \($0.size.formatted()) m" })
-                        FactorRow(title: "Steady wind", value: mean(\.steadinessFactor), weight: weights.steadiness,
+                        FactorRow(title: String(localized: "Wind strength"), value: mean(\.strengthFactor), weight: weights.strength,
+                                  detail: rec.suggestedKite.map { String(localized: "Fit for your \($0.size.formatted()) m") })
+                        FactorRow(title: String(localized: "Steady wind"), value: mean(\.steadinessFactor), weight: weights.steadiness,
                                   detail: gustDetail)
-                        FactorRow(title: "Direction", value: mean(\.directionFactor), weight: weights.direction,
+                        FactorRow(title: String(localized: "Direction"), value: mean(\.directionFactor), weight: weights.direction,
                                   detail: directionDetail)
                         if let tide = mean(\.tideFactor) {
-                            FactorRow(title: "Tide", value: tide, weight: nil,
-                                      detail: "Rides " + SpotDetailView.tideRuleLabel(rec.spot.tide))
+                            FactorRow(title: String(localized: "Tide"), value: tide, weight: nil,
+                                      detail: String(localized: "Rides \(SpotDetailView.tideRuleLabel(rec.spot.tide))"))
                         }
                         if rec.distanceFactor < 1 {
-                            FactorRow(title: "Drive", value: rec.distanceFactor, weight: weights.distance,
-                                      detail: "\(rec.driveLabel) · distance matters is on")
+                            FactorRow(title: String(localized: "Drive"), value: rec.distanceFactor, weight: weights.distance,
+                                      detail: String(localized: "\(rec.driveLabel) · distance matters is on"))
                         }
                     } header: {
-                        Text(rec.window != nil ? "This spot, best window"
-                             : explained.map { "This spot, \($0.start)–\($0.end)h" } ?? "This spot")
+                        Text(rec.window != nil ? String(localized: "This spot, best window")
+                             : explained.map { String(localized: "This spot, \($0.start)–\($0.end)h") } ?? String(localized: "This spot"))
                     } footer: {
                         Text("Averages over the window's hours. The score multiplies them, raised to your weights.")
                     }
@@ -382,7 +382,7 @@ struct ScoreInfoSheet: View {
                 if plan.entitlements.scoreWeights || plan.showsPro {
                 Section {
                     if !plan.entitlements.scoreWeights {
-                        ProLockRow(title: "What matters to you", detail: "Your own weights with Pro")
+                        ProLockRow(title: String(localized: "What matters to you"), detail: String(localized: "Your own weights with Pro"))
                     } else {
                     NavigationLink {
                         ScrollView {
@@ -412,14 +412,14 @@ struct ScoreInfoSheet: View {
         let speeds = windowHours.map(\.wind.speedKn)
         guard let maxGust = windowHours.map(\.wind.gustKn).max(), let lo = speeds.min(), let hi = speeds.max() else { return nil }
         let wind = Int(lo.rounded()) == Int(hi.rounded()) ? "\(Int(hi.rounded()))" : "\(Int(lo.rounded()))–\(Int(hi.rounded()))"
-        return "Wind \(wind) kn, gusts up to \(Int(maxGust.rounded())) kn"
+        return String(localized: "Wind \(wind) kn, gusts up to \(Int(maxGust.rounded())) kn")
     }
 
     private var directionDetail: String? {
         let a = windowHours.compactMap(\.relativeAngle)
-        guard !a.isEmpty else { return "Beach direction unknown" }
-        let name = Recommender.angleName(a.reduce(0, +) / Double(a.count))
-        return name.prefix(1).uppercased() + name.dropFirst() + (Recommender.mainSide(windowHours).map { ", \($0)" } ?? "")
+        guard !a.isEmpty else { return String(localized: "Beach direction unknown") }
+        let name = Vocab.angle(a.reduce(0, +) / Double(a.count))
+        return name.prefix(1).localizedUppercase + name.dropFirst() + (Recommender.mainSide(windowHours).map { ", \($0)" } ?? "")
     }
 }
 
@@ -442,7 +442,7 @@ private struct FactorRow: View {
                         .background(.tint.opacity(0.15), in: Capsule())
                 }
                 Spacer()
-                Text(value.map { "\(Int(($0 * 100).rounded())) %" } ?? "–")
+                Text(verbatim: value.map { "\(Int(($0 * 100).rounded())) %" } ?? "–")
                     .font(.subheadline.monospacedDigit())
             }
             ProgressView(value: value ?? 0)

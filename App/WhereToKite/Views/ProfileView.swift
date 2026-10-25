@@ -97,8 +97,8 @@ struct MeView: View {
                         if plan.entitlements.scoreWeights {
                             WeightsEditor(weights: profiles.weightsBinding)
                         } else {
-                            ProLockRow(title: "Weigh wind, gusts, direction and drive your way",
-                                       detail: "Scores use the standard weights on the free plan")
+                            ProLockRow(title: String(localized: "Weigh wind, gusts, direction and drive your way"),
+                                       detail: String(localized: "Scores use the standard weights on the free plan"))
                                 .padding(16)
                                 .card()
                         }
@@ -110,6 +110,7 @@ struct MeView: View {
                         .font(.footnote)
                         .accessibilityIdentifier("debugUnlockPro")
                     #endif
+                    LanguageRow()
                     NavigationLink {
                         AboutView()
                     } label: {
@@ -139,6 +140,84 @@ struct MeView: View {
             .navigationTitle("Me")
             .sheet(isPresented: $showReport) { ReportIssueSheet() }
         }
+    }
+}
+
+// MARK: - Language
+
+/// The app's language, apart from the phone's. iOS reads it at launch (the same per-app
+/// setting as Settings > WhereToKite > Language), so a change applies on the next launch.
+enum AppLanguage {
+    private static let key = "AppleLanguages"
+
+    /// The languages the app ships, e.g. ["en", "es"].
+    static var available: [String] { Bundle.main.localizations.filter { $0 != "Base" }.sorted() }
+
+    /// The language the screens are in now.
+    static var current: String { Bundle.main.preferredLocalizations.first ?? "en" }
+
+    /// nil = follow the phone. Read from the app's own defaults, where Settings writes it too.
+    static var chosen: String? {
+        get {
+            let domain = Bundle.main.bundleIdentifier.flatMap { UserDefaults.standard.persistentDomain(forName: $0) }
+            guard let first = (domain?[key] as? [String])?.first else { return nil }
+            let code = Locale(identifier: first).language.languageCode?.identifier ?? first
+            return available.contains(code) ? code : nil
+        }
+        set {
+            if let newValue {
+                UserDefaults.standard.set([newValue], forKey: key)
+            } else {
+                UserDefaults.standard.removeObject(forKey: key)
+            }
+        }
+    }
+
+    /// What the screens will be in after a relaunch.
+    static var next: String {
+        if let chosen { return chosen }
+        let phone = Locale.preferredLanguages.compactMap { Locale(identifier: $0).language.languageCode?.identifier }
+        return phone.first(where: available.contains) ?? "en"
+    }
+
+    /// "Español", "English": each language in its own words.
+    static func name(_ code: String) -> String {
+        let locale = Locale(identifier: code)
+        return locale.localizedString(forLanguageCode: code)?.capitalized(with: locale) ?? code
+    }
+}
+
+private struct LanguageRow: View {
+    @State private var chosen = AppLanguage.chosen
+    @State private var showReopen = false
+
+    var body: some View {
+        HStack {
+            Label("Language", systemImage: "globe")
+            Spacer(minLength: 8)
+            Picker("Language", selection: Binding(get: { chosen ?? "" }, set: { pick($0.isEmpty ? nil : $0) })) {
+                Text("Same as iPhone").tag("")
+                ForEach(AppLanguage.available, id: \.self) { code in
+                    Text(verbatim: AppLanguage.name(code)).tag(code)
+                }
+            }
+            .pickerStyle(.menu)
+            .accessibilityIdentifier("languagePicker")
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 6)
+        .card()
+        .alert("Reopen WhereToKite", isPresented: $showReopen) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("The new language shows the next time you open the app: swipe it away from the app switcher, then open it again.")
+        }
+    }
+
+    private func pick(_ code: String?) {
+        chosen = code
+        AppLanguage.chosen = code
+        if AppLanguage.next != AppLanguage.current { showReopen = true }
     }
 }
 
@@ -175,7 +254,7 @@ private struct RiderHero: View {
                 .background(.white.opacity(0.2), in: Circle())
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 4) {
-                Text("\(profile.level.label) rider")
+                Text("\(profile.level.label) rider", comment: "Rider level, e.g. Intermediate rider")
                     .font(.title3.bold())
                 Text(profile.shortSummary)
                     .font(.subheadline)
@@ -201,7 +280,7 @@ struct ProfileFields: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            section("Weight") {
+            section(String(localized: "Weight")) {
                 HStack {
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Text("\(Int(profile.weightKg))")
@@ -220,9 +299,9 @@ struct ProfileFields: View {
                 .card()
             }
 
-            section("Your kites", footer: keepOneKite
-                    ? "Keep at least one kite: add another size before removing this one."
-                    : "Tap every size you own.") {
+            section(String(localized: "Your kites"), footer: keepOneKite
+                    ? String(localized: "Keep at least one kite: add another size before removing this one.")
+                    : String(localized: "Tap every size you own.")) {
                 VStack(alignment: .leading, spacing: 14) {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 58), spacing: 8)], spacing: 8) {
                         ForEach(Self.sizes, id: \.self) { size in
@@ -235,7 +314,7 @@ struct ProfileFields: View {
                 .card()
             }
 
-            section("Level", footer: levelFooter) {
+            section(String(localized: "Level"), footer: levelFooter) {
                 HStack(spacing: 8) {
                     ForEach(Level.allCases, id: \.self) { level in
                         let on = profile.level == level
@@ -279,7 +358,7 @@ struct ProfileFields: View {
                 }
             }
         } label: {
-            Text("\(size.formatted()) m")
+            Text(verbatim: "\(size.formatted()) m")
                 .font(.subheadline.weight(.semibold))
                 .frame(maxWidth: .infinity, minHeight: 40)
                 .foregroundStyle(on ? Color.white : Color.primary)
@@ -308,9 +387,9 @@ struct ProfileFields: View {
     private var levelFooter: String {
         let limits = ScoringRules().limits(profile.level)
         return switch profile.level {
-        case .beginner: "Only side-on or onshore wind, up to \(Int(limits.wind)) kn."
-        case .intermediate: "Up to \(Int(limits.wind)) kn, no offshore wind."
-        case .advanced: "Up to \(Int(limits.wind)) kn, side-offshore is acceptable."
+        case .beginner: String(localized: "Only side-on or onshore wind, up to \(Int(limits.wind)) kn.")
+        case .intermediate: String(localized: "Up to \(Int(limits.wind)) kn, no offshore wind.")
+        case .advanced: String(localized: "Up to \(Int(limits.wind)) kn, side-offshore is acceptable.")
         }
     }
 }
@@ -331,7 +410,7 @@ private struct KiteRangesChart: View {
                 .foregroundStyle(.secondary)
             ForEach(ranges, id: \.size) { r in
                 HStack(spacing: 8) {
-                    Text("\(r.size.formatted()) m")
+                    Text(verbatim: "\(r.size.formatted()) m")
                         .font(.caption.weight(.semibold))
                         .monospacedDigit()
                         .frame(width: 40, alignment: .leading)
@@ -348,7 +427,7 @@ private struct KiteRangesChart: View {
                         }
                     }
                     .frame(height: 10)
-                    Text("\(Int(r.minKn.rounded()))–\(Int(r.maxKn.rounded())) kn")
+                    Text(verbatim: "\(Int(r.minKn.rounded()))–\(Int(r.maxKn.rounded())) kn")
                         .font(.caption)
                         .monospacedDigit()
                         .foregroundStyle(.secondary)
@@ -369,10 +448,10 @@ struct WeightsEditor: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            row("Wind strength", "Wind that fits your kites and style", \.strength, "wind")
-            row("Steady wind", "Few gusts", \.steadiness, "waveform.path")
-            row("Wind direction", "Side-onshore over onshore or cross-shore", \.direction, "location.north.line")
-            row("Short drive", "How much far spots lose when distance matters", \.distance, "car")
+            row(String(localized: "Wind strength"), String(localized: "Wind that fits your kites and style"), \.strength, "wind")
+            row(String(localized: "Steady wind"), String(localized: "Few gusts"), \.steadiness, "waveform.path")
+            row(String(localized: "Wind direction"), String(localized: "Side-onshore over onshore or cross-shore"), \.direction, "location.north.line")
+            row(String(localized: "Short drive"), String(localized: "How much far spots lose when distance matters"), \.distance, "car")
             if !weights.isDefault {
                 Button("Reset to default") {
                     withAnimation(.snappy) { weights = ScoreWeights() }
@@ -405,11 +484,11 @@ struct WeightsEditor: View {
 
     static func label(_ w: Double) -> String {
         switch w {
-        case ..<0.125: "Ignore"
-        case ..<0.75: "Less"
-        case ..<1.25: "Normal"
-        case ..<1.75: "More"
-        default: "A lot"
+        case ..<0.125: String(localized: "Ignore", comment: "Score weight")
+        case ..<0.75: String(localized: "Less", comment: "Score weight")
+        case ..<1.25: String(localized: "Normal", comment: "Score weight")
+        case ..<1.75: String(localized: "More", comment: "Score weight")
+        default: String(localized: "A lot", comment: "Score weight")
         }
     }
 }

@@ -114,13 +114,13 @@ struct ProSheet: View {
     @Environment(\.dismiss) private var dismiss
 
     private let features: [(String, String, String)] = [
-        ("bell.badge.fill", "It's on alerts", "A notification when your spots light up for your kites (coming with Pro)."),
-        ("calendar", "7-day planning", "The whole week, not just today and tomorrow."),
-        ("calendar.badge.clock", "Next good window", "When today is flat, the next day this week that works, and where."),
-        ("car.fill", "Drives up to 10 h", "Weekend trips, not just the local spots (3\u{00A0}h free)."),
-        ("list.number", "Every spot", "The full ranking and map (top 5 free), plus about 300 more local spots."),
-        ("mappin.and.ellipse", "Unlimited own spots", "Add all your secret spots (1 free)."),
-        ("slider.horizontal.3", "What matters to you", "Weigh wind strength, steadiness, direction and drive your way."),
+        ("bell.badge.fill", String(localized: "It's on alerts"), String(localized: "A notification when your spots light up for your kites (coming with Pro).")),
+        ("calendar", String(localized: "7-day planning"), String(localized: "The whole week, not just today and tomorrow.")),
+        ("calendar.badge.clock", String(localized: "Next good window"), String(localized: "When today is flat, the next day this week that works, and where.")),
+        ("car.fill", String(localized: "Drives up to 10 h"), String(localized: "Weekend trips, not just the local spots (3\u{00A0}h free).")),
+        ("list.number", String(localized: "Every spot"), String(localized: "The full ranking and map (top 5 free), plus about 300 more local spots.")),
+        ("mappin.and.ellipse", String(localized: "Unlimited own spots"), String(localized: "Add all your secret spots (1 free).")),
+        ("slider.horizontal.3", String(localized: "What matters to you"), String(localized: "Weigh wind strength, steadiness, direction and drive your way.")),
     ]
 
     var body: some View {
