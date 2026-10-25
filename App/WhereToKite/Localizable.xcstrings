@@ -9,6 +9,12 @@
             "state" : "translated",
             "value" : " · %@ tu hora"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " · %@ chez toi"
+          }
         }
       }
     },
@@ -18,6 +24,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "**Dirección**: el cruzado de mar es lo mejor, el viento de mar puro está bien, el cruzado es más difícil y el terral es 0."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Direction** : le side-on est idéal, l'onshore pur passe, le side-shore est plus exigeant, l'offshore vaut 0."
           }
         }
       }
@@ -29,6 +41,12 @@
             "state" : "translated",
             "value" : "**Viento estable**: las rachas comparadas con el viento medio."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Vent régulier** : les rafales comparées au vent moyen."
+          }
         }
       }
     },
@@ -38,6 +56,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "**Fuerza del viento**: cuánto encaja el viento con la mejor cometa de tu equipo y con tu estilo (tranquilo o intenso)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Force du vent** : à quel point le vent convient à la meilleure aile de ton quiver, et à ton style (tranquille ou engagé)."
           }
         }
       }
@@ -49,6 +73,12 @@
             "state" : "translated",
             "value" : "%@ · «Más cerca, mejor» activado"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · « Au plus près » activé"
+          }
         }
       }
     },
@@ -58,6 +88,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · rachas %2$lld · %3$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · rafales %2$lld · %3$@"
           }
         }
       }
@@ -69,6 +105,12 @@
             "state" : "translated",
             "value" : "%1$@ · a menos de %2$@ de %3$@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · à moins de %2$@ de %3$@"
+          }
         }
       }
     },
@@ -78,6 +120,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ · a menos de %2$@ de ti"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · à moins de %2$@ de toi"
           }
         }
       }
@@ -89,12 +137,24 @@
             "state" : "translated",
             "value" : "%1$@ kn (rachas %2$lld) %3$@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ kn (rafales %2$lld) %3$@"
+          }
         }
       }
     },
     "%@ m" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ m"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ m"
@@ -109,6 +169,12 @@
             "state" : "translated",
             "value" : "Cometa de %@ m"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aile de %@ m"
+          }
         }
       }
     },
@@ -119,6 +185,12 @@
             "state" : "translated",
             "value" : "Rango de la %@ m"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plage de la %@ m"
+          }
         }
       }
     },
@@ -128,6 +200,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cometa de %1$@ metros: de %2$lld a %3$lld nudos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aile de %1$@ mètres : de %2$lld à %3$lld nœuds"
           }
         }
       }
@@ -140,6 +218,12 @@
             "state" : "translated",
             "value" : "Nivel %@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niveau %@"
+          }
         }
       }
     },
@@ -149,6 +233,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cometa de %@ metros cuadrados"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aile de %@ mètres carrés"
           }
         }
       }
@@ -160,6 +250,12 @@
             "state" : "translated",
             "value" : "%1$@, %2$lld grados"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$lld degrés"
+          }
         }
       }
     },
@@ -170,12 +266,24 @@
             "state" : "translated",
             "value" : "%@, Pro"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, Pro"
+          }
         }
       }
     },
     "%lld" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
@@ -220,6 +328,24 @@
               }
             }
           }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "dans %lld jour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "dans %lld jours"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -230,12 +356,24 @@
             "state" : "translated",
             "value" : "%1$lld grados, %2$@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld degrés, %2$@"
+          }
         }
       }
     },
     "%lld kilograms" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kilos"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld kilos"
@@ -250,6 +388,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$lld kn · rachas %2$lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld kn · rafales %2$lld"
           }
         }
       }
@@ -291,6 +435,24 @@
               }
             }
           }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld spot n'a pas pu être vérifié (service de prévisions saturé). Tire vers le bas pour actualiser dans une minute."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld spots n'ont pas pu être vérifiés (service de prévisions saturé). Tire vers le bas pour actualiser dans une minute."
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -302,12 +464,24 @@
             "state" : "translated",
             "value" : "%1$lld–%2$lldh hora local"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld–%2$lldh heure locale"
+          }
         }
       }
     },
     "%lld° · %@" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld° · %2$@"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$lld° · %2$@"
@@ -322,6 +496,12 @@
             "state" : "translated",
             "value" : "%lld° · arrastra la flecha para ajustar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld° · fais glisser la flèche pour ajuster"
+          }
         }
       }
     },
@@ -331,6 +511,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld° · estimado a partir de la costa, arrastra para ajustar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld° · déduit du trait de côte, fais glisser pour ajuster"
           }
         }
       }
@@ -372,6 +558,24 @@
               }
             }
           }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+%lld autre spot navigable"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+%lld autres spots navigables"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -382,12 +586,24 @@
             "state" : "translated",
             "value" : "Planificación a 7 días"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévisions sur 7 jours"
+          }
         }
       }
     },
     "15 min" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 min"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "15 min"
@@ -402,12 +618,24 @@
             "state" : "translated",
             "value" : "30°"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30°"
+          }
         }
       }
     },
     "360°" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360°"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "360°"
@@ -422,6 +650,12 @@
             "state" : "translated",
             "value" : "Un poco de todo."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un peu de tout."
+          }
         }
       }
     },
@@ -433,6 +667,12 @@
             "state" : "translated",
             "value" : "Mucho"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beaucoup"
+          }
         }
       }
     },
@@ -442,6 +682,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Un aviso cuando tus spots se ponen buenos para tus cometas (llega con Pro)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une notification quand tes spots s'allument pour tes ailes (avec Pro)."
           }
         }
       }
@@ -453,6 +699,12 @@
             "state" : "translated",
             "value" : "Falta un spot"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il manque un spot"
+          }
         }
       }
     },
@@ -462,6 +714,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acerca de"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos"
           }
         }
       }
@@ -473,6 +731,12 @@
             "state" : "translated",
             "value" : "Acerca de, seguridad y privacidad"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos, sécurité et confidentialité"
+          }
         }
       }
     },
@@ -482,6 +746,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acceso, aparcamiento, peligros, mejor viento…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accès, parking, dangers, meilleur vent…"
           }
         }
       }
@@ -493,6 +763,12 @@
             "state" : "translated",
             "value" : "Añadir un spot"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un spot"
+          }
         }
       }
     },
@@ -502,6 +778,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añade todos tus spots secretos (1 gratis)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoute tous tes spots secrets (1 gratuit)."
           }
         }
       }
@@ -513,6 +795,12 @@
             "state" : "translated",
             "value" : "Añadir más spots"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter d'autres spots"
+          }
         }
       }
     },
@@ -523,6 +811,12 @@
             "state" : "translated",
             "value" : "Añadir spot"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un spot"
+          }
         }
       }
     },
@@ -532,6 +826,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avanzado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmé"
           }
         }
       }
@@ -544,6 +844,12 @@
             "state" : "translated",
             "value" : "Tarde"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Après-midi"
+          }
         }
       }
     },
@@ -555,6 +861,12 @@
             "state" : "translated",
             "value" : "todo alrededor"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tout autour"
+          }
         }
       }
     },
@@ -564,6 +876,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "todo alrededor, p. ej. un lago pequeño"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tout autour, par ex. un petit lac"
           }
         }
       }
@@ -575,6 +893,12 @@
             "state" : "translated",
             "value" : "También buenos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bien aussi"
+          }
         }
       }
     },
@@ -584,6 +908,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comprueba siempre las condiciones en el spot antes de navegar, nunca navegues solo con viento fuerte o terral, y no vayas más allá de tu nivel."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vérifie toujours les conditions sur place avant de naviguer, ne navigue jamais seul par vent fort ou offshore, et reste dans ton niveau."
           }
         }
       }
@@ -595,6 +925,12 @@
             "state" : "translated",
             "value" : "Cualquier estilo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous styles"
+          }
         }
       }
     },
@@ -604,6 +940,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cualquier viento cómodo para tus cometas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout vent confortable pour tes ailes."
           }
         }
       }
@@ -615,6 +957,12 @@
             "state" : "translated",
             "value" : "Problema con la app"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problème dans l'app"
+          }
         }
       }
     },
@@ -624,6 +972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "alrededor de la pleamar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "autour de la marée haute"
           }
         }
       }
@@ -635,6 +989,12 @@
             "state" : "translated",
             "value" : "Alrededor de la pleamar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autour de la marée haute"
+          }
         }
       }
     },
@@ -644,6 +1004,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "alrededor de la bajamar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "autour de la marée basse"
           }
         }
       }
@@ -655,6 +1021,12 @@
             "state" : "translated",
             "value" : "Alrededor de la bajamar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autour de la marée basse"
+          }
         }
       }
     },
@@ -664,6 +1036,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "con cualquier marea"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "à toute marée"
           }
         }
       }
@@ -675,6 +1053,12 @@
             "state" : "translated",
             "value" : "Con cualquier marea"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À toute marée"
+          }
         }
       }
     },
@@ -684,6 +1068,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "a media marea"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "à mi-marée"
           }
         }
       }
@@ -695,6 +1085,12 @@
             "state" : "translated",
             "value" : "A media marea"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À mi-marée"
+          }
         }
       }
     },
@@ -704,6 +1100,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Medias sobre las horas de la ventana. La puntuación las multiplica, elevadas a tus pesos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moyennes sur les heures du créneau. La note les multiplie, élevées à tes poids."
           }
         }
       }
@@ -715,6 +1117,12 @@
             "state" : "translated",
             "value" : "Equilibrado"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Équilibré"
+          }
         }
       }
     },
@@ -724,6 +1132,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Barras: viento medio (kn), con el color de la puntuación · Puntos: rachas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barres : vent moyen (kn), colorées selon la note · Points : rafales"
           }
         }
       }
@@ -735,6 +1149,12 @@
             "state" : "translated",
             "value" : "Orientación de la playa"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orientation de la plage"
+          }
         }
       }
     },
@@ -744,6 +1164,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "orientación de la playa desconocida"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "orientation de la plage inconnue"
           }
         }
       }
@@ -755,6 +1181,12 @@
             "state" : "translated",
             "value" : "Orientación de la playa desconocida"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orientation de la plage inconnue"
+          }
         }
       }
     },
@@ -764,6 +1196,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Las orientaciones de las playas, la posición de los spots y las normas vienen de datos de mapas y de búsquedas que pueden estar incompletos o desactualizados. Las zonas de kite, las prohibiciones y las normas de acceso cambian: sigue la señalización y a las autoridades locales."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'orientation des plages, la position des spots et les règles viennent de données cartographiques et de recherches qui peuvent être incomplètes ou dépassées. Les zones de kite, les interdictions et les règles d'accès changent : suis la signalisation et les autorités locales."
           }
         }
       }
@@ -775,6 +1213,12 @@
             "state" : "translated",
             "value" : "La playa mira al"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La plage regarde"
+          }
         }
       }
     },
@@ -784,6 +1228,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La playa mira al %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La plage regarde au %@"
           }
         }
       }
@@ -795,6 +1245,12 @@
             "state" : "translated",
             "value" : "Antes de ir"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avant d'y aller"
+          }
         }
       }
     },
@@ -804,6 +1260,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Principiante"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Débutant"
           }
         }
       }
@@ -815,6 +1277,12 @@
             "state" : "translated",
             "value" : "Mejor ventana"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meilleur créneau"
+          }
         }
       }
     },
@@ -824,6 +1292,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mejor ventana · hora del spot"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meilleur créneau · heure du spot"
           }
         }
       }
@@ -835,6 +1309,12 @@
             "state" : "translated",
             "value" : "Mejor ventana %@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meilleur créneau %@"
+          }
         }
       }
     },
@@ -844,6 +1324,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
           }
         }
       }
@@ -855,6 +1341,12 @@
             "state" : "translated",
             "value" : "Catálogo: %1$lld spots, actualizado el %2$@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catalogue : %1$lld spots, mis à jour le %2$@"
+          }
         }
       }
     },
@@ -864,6 +1356,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Los cambios se guardan solos y se usan en tu próxima búsqueda."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les changements sont enregistrés tout seuls et servent à ta prochaine recherche."
           }
         }
       }
@@ -875,6 +1373,12 @@
             "state" : "translated",
             "value" : "Al cambiar tus pesos, todas las puntuaciones se actualizan en tu próxima búsqueda."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changer tes poids met à jour toutes les notes à ta prochaine recherche."
+          }
         }
       }
     },
@@ -884,6 +1388,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mirando el viento en los spots cercanos…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On regarde le vent sur les spots proches…"
           }
         }
       }
@@ -895,6 +1405,12 @@
             "state" : "translated",
             "value" : "Mirando el viento…"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On regarde le vent…"
+          }
         }
       }
     },
@@ -904,6 +1420,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tranquilo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tranquille"
           }
         }
       }
@@ -915,6 +1437,12 @@
             "state" : "translated",
             "value" : "Cerrar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
         }
       }
     },
@@ -924,6 +1452,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Más cerca, mejor"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Au plus près"
           }
         }
       }
@@ -935,6 +1469,12 @@
             "state" : "translated",
             "value" : "Muy pronto. Todo lo que usas hoy sigue siendo gratis."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bientôt. Tout ce que tu utilises aujourd'hui reste gratuit."
+          }
         }
       }
     },
@@ -944,6 +1484,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se ha podido obtener tu ubicación. Elige un punto de salida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d'obtenir ta position. Choisis plutôt un point de départ."
           }
         }
       }
@@ -955,6 +1501,12 @@
             "state" : "translated",
             "value" : "cala o bahía estrecha"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "crique ou baie étroite"
+          }
         }
       }
     },
@@ -964,6 +1516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Calas, puntas, lagos, bancos de arena y ventanas de marea con Pro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criques, pointes, lacs, bancs de sable et créneaux de marée avec Pro"
           }
         }
       }
@@ -976,6 +1534,12 @@
             "state" : "translated",
             "value" : "cruzado"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "side-shore"
+          }
         }
       }
     },
@@ -985,6 +1549,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ubicación actual"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position actuelle"
           }
         }
       }
@@ -997,6 +1567,12 @@
             "state" : "translated",
             "value" : "de noche"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nuit"
+          }
         }
       }
     },
@@ -1006,6 +1582,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Datos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données"
           }
         }
       }
@@ -1017,6 +1599,12 @@
             "state" : "translated",
             "value" : "Eliminar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer"
+          }
         }
       }
     },
@@ -1026,6 +1614,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Eliminar %@?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer %@ ?"
           }
         }
       }
@@ -1037,6 +1631,12 @@
             "state" : "translated",
             "value" : "Eliminar spot"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le spot"
+          }
         }
       }
     },
@@ -1046,6 +1646,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalles (opcional): zona de despegue, direcciones de viento, normas…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails (facultatif) : zone de décollage, orientations de vent, règles…"
           }
         }
       }
@@ -1057,6 +1663,12 @@
             "state" : "translated",
             "value" : "Detalles (opcional): las fechas y horas reales, la norma o el cartel…"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails (facultatif) : les vraies dates et heures, la règle ou le panneau…"
+          }
         }
       }
     },
@@ -1066,6 +1678,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalles (opcional): dónde despegan de verdad los kiters, las normas…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails (facultatif) : où les kiteurs décollent vraiment, les règles…"
           }
         }
       }
@@ -1077,6 +1695,12 @@
             "state" : "translated",
             "value" : "No fui"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas allé"
+          }
         }
       }
     },
@@ -1086,6 +1710,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dirección"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction"
           }
         }
       }
@@ -1097,6 +1727,12 @@
             "state" : "translated",
             "value" : "Orientación desconocida"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orientation inconnue"
+          }
         }
       }
     },
@@ -1107,12 +1743,24 @@
             "state" : "translated",
             "value" : "Cómo llegar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Itinéraire"
+          }
         }
       }
     },
     "Done" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -1127,6 +1775,12 @@
             "state" : "translated",
             "value" : "Trayecto"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trajet"
+          }
         }
       }
     },
@@ -1136,6 +1790,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trayectos de hasta 10 h"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trajets jusqu'à 10 h"
           }
         }
       }
@@ -1147,6 +1807,12 @@
             "state" : "translated",
             "value" : "este"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "est"
+          }
         }
       }
     },
@@ -1156,6 +1822,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "estenordeste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "est-nord-est"
           }
         }
       }
@@ -1167,6 +1839,12 @@
             "state" : "translated",
             "value" : "estesudeste"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "est-sud-est"
+          }
         }
       }
     },
@@ -1177,6 +1855,12 @@
             "state" : "translated",
             "value" : "Editar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier"
+          }
         }
       }
     },
@@ -1186,6 +1870,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Editar spot"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier le spot"
           }
         }
       }
@@ -1198,6 +1888,12 @@
             "state" : "translated",
             "value" : "Atardecer"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soir"
+          }
         }
       }
     },
@@ -1207,6 +1903,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cada hora de tu sesión recibe tres notas de 0 a 100 %:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque heure de ta session reçoit trois notes de 0 à 100 % :"
           }
         }
       }
@@ -1218,6 +1920,12 @@
             "state" : "translated",
             "value" : "Todos los spots"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous les spots"
+          }
         }
       }
     },
@@ -1227,6 +1935,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "salvo en pleamar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sauf à marée haute"
           }
         }
       }
@@ -1238,6 +1952,12 @@
             "state" : "translated",
             "value" : "Salvo en pleamar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sauf à marée haute"
+          }
         }
       }
     },
@@ -1247,6 +1967,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "salvo en bajamar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sauf à marée basse"
           }
         }
       }
@@ -1258,6 +1984,12 @@
             "state" : "translated",
             "value" : "Salvo en bajamar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sauf à marée basse"
+          }
         }
       }
     },
@@ -1267,6 +1999,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mira al %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regarde au %@"
           }
         }
       }
@@ -1278,6 +2016,12 @@
             "state" : "translated",
             "value" : "Pocas rachas"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peu de rafales"
+          }
         }
       }
     },
@@ -1287,6 +2031,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscando tu ubicación…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recherche de ta position…"
           }
         }
       }
@@ -1298,6 +2048,12 @@
             "state" : "translated",
             "value" : "Encaje con tu %@ m"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adéquation avec ta %@ m"
+          }
         }
       }
     },
@@ -1307,6 +2063,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Para un banco de arena, un istmo o una playa con una laguna detrás. Cada hora se puntúa en el lado donde mejor funciona el viento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour un banc de sable, un isthme ou une plage avec une lagune derrière. Chaque heure est notée du côté où le vent marche le mieux."
           }
         }
       }
@@ -1318,6 +2080,12 @@
             "state" : "translated",
             "value" : "Para llanuras de marea, bahías que se secan o bancos de arena. Las horas fuera de la ventana puntúan 0."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour les estrans, les baies qui se vident ou les bancs de sable. Les heures hors créneau valent 0."
+          }
         }
       }
     },
@@ -1328,6 +2096,12 @@
             "state" : "translated",
             "value" : "Estimación basada en la previsión. Comprueba las condiciones en el spot; navegas bajo tu propia responsabilidad."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimation fondée sur les prévisions. Vérifie les conditions sur place ; tu navigues à tes risques."
+          }
         }
       }
     },
@@ -1337,6 +2111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desde las %lld:00"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De %lld:00"
           }
         }
       }
@@ -1349,6 +2129,12 @@
             "state" : "translated",
             "value" : "Día entero"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Journée"
+          }
         }
       }
     },
@@ -1358,6 +2144,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡A navegar!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fonce"
           }
         }
       }
@@ -1370,6 +2162,12 @@
             "state" : "translated",
             "value" : "Bueno"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bien"
+          }
         }
       }
     },
@@ -1379,6 +2177,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entendido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compris"
           }
         }
       }
@@ -1391,6 +2195,12 @@
             "state" : "translated",
             "value" : "Genial"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top"
+          }
         }
       }
     },
@@ -1400,6 +2210,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Racha"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rafale"
           }
         }
       }
@@ -1411,6 +2227,12 @@
             "state" : "translated",
             "value" : "racheado"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rafaleux"
+          }
         }
       }
     },
@@ -1420,6 +2242,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "lluvia fuerte"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "forte pluie"
           }
         }
       }
@@ -1432,6 +2260,12 @@
             "state" : "translated",
             "value" : "Pleamar %@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pleine mer %@"
+          }
         }
       }
     },
@@ -1441,6 +2275,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Previsión fiable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévision fiable"
           }
         }
       }
@@ -1452,6 +2292,12 @@
             "state" : "translated",
             "value" : "Hora"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure"
+          }
         }
       }
     },
@@ -1461,6 +2307,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hora a hora"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure par heure"
           }
         }
       }
@@ -1472,6 +2324,12 @@
             "state" : "translated",
             "value" : "¿Cómo se puntúa?"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment c'est noté ?"
+          }
         }
       }
     },
@@ -1481,6 +2339,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuánto pierden los spots lejanos con «Más cerca, mejor»"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combien perdent les spots lointains avec « Au plus près »"
           }
         }
       }
@@ -1492,6 +2356,12 @@
             "state" : "translated",
             "value" : "Cómo funciona la puntuación"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment marche la note"
+          }
         }
       }
     },
@@ -1502,6 +2372,12 @@
             "state" : "translated",
             "value" : "¿Qué tal %1$@ el %2$@?"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C'était comment, %1$@ %2$@ ?"
+          }
         }
       }
     },
@@ -1511,6 +2387,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entendido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "J'ai compris"
           }
         }
       }
@@ -1523,6 +2405,12 @@
             "state" : "translated",
             "value" : "Ignorar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorer"
+          }
         }
       }
     },
@@ -1532,6 +2420,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Intenso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engagé"
           }
         }
       }
@@ -1543,6 +2437,12 @@
             "state" : "translated",
             "value" : "Intermedio"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intermédiaire"
+          }
         }
       }
     },
@@ -1552,6 +2452,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Problema"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problème"
           }
         }
       }
@@ -1563,6 +2469,12 @@
             "state" : "translated",
             "value" : "Avisos «It's on»"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alertes « It's on »"
+          }
         }
       }
     },
@@ -1573,12 +2485,24 @@
             "state" : "translated",
             "value" : "Deja al menos una cometa: añade otra talla antes de quitar esta."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garde au moins une aile : ajoute une autre taille avant de retirer celle-ci."
+          }
         }
       }
     },
     "kg" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kg"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "kg"
@@ -1593,12 +2517,24 @@
             "state" : "translated",
             "value" : "También se navega por otro lado"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigable aussi d'un autre côté"
+          }
         }
       }
     },
     "Kite" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kite"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kite"
@@ -1613,6 +2549,12 @@
             "state" : "translated",
             "value" : "Navegable, por poco"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigable, de justesse"
+          }
         }
       }
     },
@@ -1622,6 +2564,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "kite prohibido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kite interdit"
           }
         }
       }
@@ -1633,6 +2581,12 @@
             "state" : "translated",
             "value" : "Kite prohibido %@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kite interdit %@"
+          }
         }
       }
     },
@@ -1643,6 +2597,12 @@
             "state" : "translated",
             "value" : "El kite está prohibido aquí"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le kite est interdit ici"
+          }
         }
       }
     },
@@ -1652,6 +2612,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Idioma"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue"
           }
         }
       }
@@ -1664,6 +2630,12 @@
             "state" : "translated",
             "value" : "Menos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moins"
+          }
         }
       }
     },
@@ -1673,6 +2645,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nivel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niveau"
           }
         }
       }
@@ -1684,6 +2662,12 @@
             "state" : "translated",
             "value" : "Lista"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste"
+          }
         }
       }
     },
@@ -1694,6 +2678,12 @@
             "state" : "translated",
             "value" : "El acceso a la ubicación está desactivado. Actívalo en Ajustes o elige un punto de salida."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'accès à la position est désactivé. Autorise-le dans Réglages, ou choisis un point de départ."
+          }
         }
       }
     },
@@ -1703,6 +2693,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ubicación no disponible"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Position indisponible"
           }
         }
       }
@@ -1715,6 +2711,12 @@
             "state" : "translated",
             "value" : "Bajamar %@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basse mer %@"
+          }
         }
       }
     },
@@ -1724,6 +2726,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Previsión poco fiable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévision peu fiable"
           }
         }
       }
@@ -1735,6 +2743,12 @@
             "state" : "translated",
             "value" : "Mapa"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carte"
+          }
         }
       }
     },
@@ -1744,6 +2758,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mapas y tiempos de trayecto: Apple Maps"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cartes et temps de trajet : Apple Plans"
           }
         }
       }
@@ -1756,6 +2776,12 @@
             "state" : "translated",
             "value" : "Justo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite"
+          }
         }
       }
     },
@@ -1765,6 +2791,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Máx."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max"
           }
         }
       }
@@ -1776,6 +2808,12 @@
             "state" : "translated",
             "value" : "Trayecto máximo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trajet max"
+          }
         }
       }
     },
@@ -1785,6 +2823,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trayecto máximo %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trajet max %@"
           }
         }
       }
@@ -1796,6 +2840,12 @@
             "state" : "translated",
             "value" : "Yo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moi"
+          }
         }
       }
     },
@@ -1805,6 +2855,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Previsión bastante fiable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévision assez fiable"
           }
         }
       }
@@ -1816,6 +2872,12 @@
             "state" : "translated",
             "value" : "Mín."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Min"
+          }
         }
       }
     },
@@ -1825,6 +2887,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "los modelos coinciden en ±%lld kn"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "les modèles s'accordent à ±%lld kn"
           }
         }
       }
@@ -1837,6 +2905,12 @@
             "state" : "translated",
             "value" : "Más"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
         }
       }
     },
@@ -1848,6 +2922,12 @@
             "state" : "translated",
             "value" : "Temprano"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matin"
+          }
         }
       }
     },
@@ -1858,6 +2938,12 @@
             "state" : "translated",
             "value" : "Mueve el mapa para poner el pin donde despegas."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déplace la carte pour mettre l'épingle là où tu décolles."
+          }
         }
       }
     },
@@ -1867,6 +2953,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mover el pin"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déplacer l'épingle"
           }
         }
       }
@@ -1879,6 +2971,12 @@
             "state" : "translated",
             "value" : "Mis horas"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes heures"
+          }
         }
       }
     },
@@ -1889,6 +2987,12 @@
             "state" : "translated",
             "value" : "Mis spots"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes spots"
+          }
         }
       }
     },
@@ -1896,6 +3000,12 @@
       "comment" : "The 16 compass points from north clockwise, separated by single spaces",
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N NNE NE ENE E ESE SE SSE S SSO SO OSO O ONO NO NNO"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "N NNE NE ENE E ESE SE SSE S SSO SO OSO O ONO NO NNO"
@@ -1910,6 +3020,12 @@
             "state" : "translated",
             "value" : "Nombre"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom"
+          }
         }
       }
     },
@@ -1919,6 +3035,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cerca de mí"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Près de moi"
           }
         }
       }
@@ -1930,6 +3052,12 @@
             "state" : "translated",
             "value" : "Con un viento parecido, los spots más cercanos salen primero."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À vent égal, les spots les plus proches passent devant."
+          }
         }
       }
     },
@@ -1939,6 +3067,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuevo spot"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau spot"
           }
         }
       }
@@ -1950,6 +3084,12 @@
             "state" : "translated",
             "value" : "Siguiente"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+          }
         }
       }
     },
@@ -1959,6 +3099,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Próxima buena ventana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prochain bon créneau"
           }
         }
       }
@@ -1970,6 +3116,12 @@
             "state" : "translated",
             "value" : "Sin cuenta y sin rastreo. Tu perfil y tus propios spots se quedan en este teléfono. Para obtener las previsiones, la app envía la posición de los spots y la zona aproximada de tu punto de salida (unos 10 km) al servicio de previsión, y tu punto de salida a Apple Maps para los tiempos de trayecto. Si respondes a «¿Qué tal?», la respuesta se envía sin nada que te identifique. Los informes de fallos de iOS se envían de forma anónima para ayudar a corregir errores. Los avisos que envías se publican en GitHub, sin tu nombre ni tu posición."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de compte, pas de pistage. Ton profil et tes spots restent sur ce téléphone. Pour obtenir les prévisions, l'app envoie la position des spots et la zone approximative de ton point de départ (environ 10 km) au service de prévisions, et ton point de départ à Apple Plans pour les temps de trajet. Si tu réponds à « C'était comment ? », la réponse part sans rien qui t'identifie. Les rapports de plantage d'iOS sont envoyés anonymement pour aider à corriger les bugs. Les signalements que tu envoies sont publiés sur GitHub, sans ton nom ni ta position."
+          }
         }
       }
     },
@@ -1979,6 +3131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sin previsión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pas de prévision"
           }
         }
       }
@@ -1991,6 +3149,12 @@
             "state" : "translated",
             "value" : "No apto"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas navigable"
+          }
         }
       }
     },
@@ -2000,6 +3164,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ningún spot navegable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun spot navigable"
           }
         }
       }
@@ -2011,6 +3181,12 @@
             "state" : "translated",
             "value" : "Ningún spot conocido a menos de %1$@ de %2$@. Permite un trayecto más largo o elige otro punto de salida."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun spot connu à moins de %1$@ de %2$@. Accepte un trajet plus long ou choisis un autre point de départ."
+          }
         }
       }
     },
@@ -2020,6 +3196,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ningún spot conocido a menos de %@ de ti. Permite un trayecto más largo o elige otro punto de salida."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun spot connu à moins de %@ de toi. Accepte un trajet plus long ou choisis un autre point de départ."
           }
         }
       }
@@ -2031,6 +3213,12 @@
             "state" : "translated",
             "value" : "Ningún spot a tu alcance"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun spot à portée"
+          }
         }
       }
     },
@@ -2038,6 +3226,12 @@
       "comment" : "Score weight",
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normal"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Normal"
@@ -2052,6 +3246,12 @@
             "state" : "translated",
             "value" : "norte"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nord"
+          }
         }
       }
     },
@@ -2061,6 +3261,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "nornordeste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nord-nord-est"
           }
         }
       }
@@ -2072,6 +3278,12 @@
             "state" : "translated",
             "value" : "nornoroeste"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nord-nord-ouest"
+          }
         }
       }
     },
@@ -2081,6 +3293,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "nordeste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nord-est"
           }
         }
       }
@@ -2092,6 +3310,12 @@
             "state" : "translated",
             "value" : "noroeste"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nord-ouest"
+          }
         }
       }
     },
@@ -2101,6 +3325,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No es un spot de kite conocido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas un spot de kite connu"
           }
         }
       }
@@ -2112,6 +3342,12 @@
             "state" : "translated",
             "value" : "No hay suficiente viento bueno. Prueba otro día u otra sesión, o permite un trayecto más largo."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas assez de bon vent. Essaie un autre jour ou une autre session, ou accepte un trajet plus long."
+          }
         }
       }
     },
@@ -2121,6 +3357,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No muy bien"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bof"
           }
         }
       }
@@ -2132,6 +3374,12 @@
             "state" : "translated",
             "value" : "No navegables (%lld)"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas navigables (%lld)"
+          }
         }
       }
     },
@@ -2141,6 +3389,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sin definir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non défini"
           }
         }
       }
@@ -2152,6 +3406,12 @@
             "state" : "translated",
             "value" : "Aún sin definir"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas encore défini"
+          }
         }
       }
     },
@@ -2162,6 +3422,12 @@
             "state" : "translated",
             "value" : "Notas"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
+          }
         }
       }
     },
@@ -2171,6 +3437,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nada genial"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien de top"
           }
         }
       }
@@ -2183,12 +3455,24 @@
             "state" : "translated",
             "value" : "terral"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "offshore"
+          }
         }
       }
     },
     "OK" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -2203,6 +3487,12 @@
             "state" : "translated",
             "value" : "En el mapa"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sur la carte"
+          }
         }
       }
     },
@@ -2212,6 +3502,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Un spot por ahora"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un spot pour l'instant"
           }
         }
       }
@@ -2223,6 +3519,12 @@
             "state" : "translated",
             "value" : "Un spot gratis, ilimitados con Pro"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un spot gratuit, illimité avec Pro"
+          }
         }
       }
     },
@@ -2233,6 +3535,12 @@
             "state" : "translated",
             "value" : "Solo condiciones justas, abajo. Prueba otro día u otra sesión, o permite un trayecto más largo."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seulement des conditions limites, listées plus bas. Essaie un autre jour ou une autre session, ou accepte un trajet plus long."
+          }
         }
       }
     },
@@ -2242,6 +3550,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Solo viento cruzado de mar o de mar, hasta %lld kn."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seulement du vent side-on ou onshore, jusqu'à %lld kn."
           }
         }
       }
@@ -2254,6 +3568,12 @@
             "state" : "translated",
             "value" : "de mar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "onshore"
+          }
         }
       }
     },
@@ -2263,6 +3583,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Agua abierta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan d'eau ouvert"
           }
         }
       }
@@ -2274,6 +3600,12 @@
             "state" : "translated",
             "value" : "Agua abierta, segundo lado, marea"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan d'eau, second côté, marée"
+          }
         }
       }
     },
@@ -2283,6 +3615,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Orientación del otro lado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orientation de l'autre côté"
           }
         }
       }
@@ -2294,6 +3632,12 @@
             "state" : "translated",
             "value" : "El otro lado mira al %@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'autre côté regarde au %@"
+          }
         }
       }
     },
@@ -2303,6 +3647,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sobrado en las rachas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "surtoilé dans les rafales"
           }
         }
       }
@@ -2314,6 +3664,12 @@
             "state" : "translated",
             "value" : "Lugar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lieu"
+          }
         }
       }
     },
@@ -2323,6 +3679,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Planifica más lejos, navega más."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévois plus loin, navigue plus."
           }
         }
       }
@@ -2334,6 +3696,12 @@
             "state" : "translated",
             "value" : "punta o cabo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pointe ou cap"
+          }
         }
       }
     },
@@ -2343,6 +3711,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apunta la flecha desde la playa hacia el agua abierta y luego indica cuánto horizonte es agua: menos de 180° para una cala, más para una punta, 360° para un lago pequeño que se navega desde cualquier lado. Así se distingue el viento de mar, el cruzado y el terral."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pointe la flèche de la plage vers le large, puis indique quelle part de l'horizon est de l'eau : moins de 180° pour une crique, plus pour une pointe, 360° pour un petit lac navigable de partout. C'est ce qui distingue le vent onshore, side-shore et offshore."
           }
         }
       }
@@ -2354,6 +3728,12 @@
             "state" : "translated",
             "value" : "malas condiciones"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mauvaises conditions"
+          }
         }
       }
     },
@@ -2363,6 +3743,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Con potencia, cerca del máximo de tu cometa. Las rachas no molestan."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toilé, vers le haut de la plage de ton aile. Les rafales ne gênent pas."
           }
         }
       }
@@ -2374,12 +3760,24 @@
             "state" : "translated",
             "value" : "Privacidad"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confidentialité"
+          }
         }
       }
     },
     "Pro" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pro"
@@ -2394,6 +3792,12 @@
             "state" : "translated",
             "value" : "Función Pro"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fonction Pro"
+          }
         }
       }
     },
@@ -2403,6 +3807,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "lluvia"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pluie"
           }
         }
       }
@@ -2414,6 +3824,12 @@
             "state" : "translated",
             "value" : "Leyendo la costa…"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lecture du trait de côte…"
+          }
         }
       }
     },
@@ -2423,6 +3839,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vuelve a abrir WhereToKite"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rouvre WhereToKite"
           }
         }
       }
@@ -2434,6 +3856,12 @@
             "state" : "translated",
             "value" : "Avisar de un problema"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler un problème"
+          }
         }
       }
     },
@@ -2443,6 +3871,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avisar de un problema o de un spot que falta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler un problème ou un spot manquant"
           }
         }
       }
@@ -2454,6 +3888,12 @@
             "state" : "translated",
             "value" : "Avisar de un problema con este spot"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler un problème sur ce spot"
+          }
         }
       }
     },
@@ -2463,6 +3903,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restablecer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser"
           }
         }
       }
@@ -2474,6 +3920,12 @@
             "state" : "translated",
             "value" : "Navegable"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigable"
+          }
         }
       }
     },
@@ -2483,6 +3935,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfil de rider"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil de rider"
           }
         }
       }
@@ -2494,6 +3952,12 @@
             "state" : "translated",
             "value" : "Perfil de rider: %@. Editar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil de rider : %@. Modifier"
+          }
         }
       }
     },
@@ -2503,6 +3967,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se navega %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se navigue %@"
           }
         }
       }
@@ -2514,6 +3984,12 @@
             "state" : "translated",
             "value" : "Seguridad"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sécurité"
+          }
         }
       }
     },
@@ -2523,6 +3999,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Como el iPhone"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comme l'iPhone"
           }
         }
       }
@@ -2534,6 +4016,12 @@
             "state" : "translated",
             "value" : "Guardar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
+          }
         }
       }
     },
@@ -2543,6 +4031,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Puntuación %1$lld sobre 100, %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note %1$lld sur 100, %2$@"
           }
         }
       }
@@ -2554,6 +4048,12 @@
             "state" : "translated",
             "value" : "Las puntuaciones se calculan a partir de previsiones meteorológicas, que pueden fallar, sobre todo en rachas, efectos locales, tormentas y turbonadas."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les notes sont calculées à partir de prévisions météo, qui peuvent se tromper, surtout pour les rafales, les effets locaux, les orages et les grains."
+          }
         }
       }
     },
@@ -2563,6 +4063,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En el plan gratuito, las puntuaciones usan los pesos estándar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avec l'offre gratuite, les notes utilisent les poids standard"
           }
         }
       }
@@ -2574,6 +4080,12 @@
             "state" : "translated",
             "value" : "Busca una playa o un pueblo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cherche une plage ou une ville"
+          }
         }
       }
     },
@@ -2583,6 +4095,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La búsqueda ha fallado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La recherche a échoué"
           }
         }
       }
@@ -2594,6 +4112,12 @@
             "state" : "translated",
             "value" : "Opciones de búsqueda"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options de recherche"
+          }
         }
       }
     },
@@ -2603,6 +4127,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enviar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer"
           }
         }
       }
@@ -2614,6 +4144,12 @@
             "state" : "translated",
             "value" : "Se envía sin tu nombre ni tu posición, y se publica como incidencia pública en GitHub para que las correcciones se puedan seguir. No incluyas datos personales."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyé sans ton nom ni ta position, et publié comme ticket public sur GitHub pour que les corrections soient traçables. N'y mets pas d'informations personnelles."
+          }
         }
       }
     },
@@ -2623,6 +4159,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Estilo de sesión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Style de session"
           }
         }
       }
@@ -2634,6 +4176,12 @@
             "state" : "translated",
             "value" : "Trayecto corto"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trajet court"
+          }
         }
       }
     },
@@ -2643,6 +4191,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Muestra ese día"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affiche ce jour"
           }
         }
       }
@@ -2654,6 +4208,12 @@
             "state" : "translated",
             "value" : "Muestra la previsión hora a hora y cómo llegar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affiche la prévision heure par heure et l'itinéraire"
+          }
         }
       }
     },
@@ -2663,6 +4223,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Muestra lo que incluye Pro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affiche ce que contient Pro"
           }
         }
       }
@@ -2675,6 +4241,12 @@
             "state" : "translated",
             "value" : "cruzado terral"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "side-off"
+          }
         }
       }
     },
@@ -2686,6 +4258,12 @@
             "state" : "translated",
             "value" : "cruzado de mar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "side-on"
+          }
         }
       }
     },
@@ -2695,6 +4273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cruzado de mar antes que de mar o cruzado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side-on plutôt qu'onshore ou side-shore"
           }
         }
       }
@@ -2706,6 +4290,12 @@
             "state" : "translated",
             "value" : "Los lados miran al"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les côtés regardent"
+          }
         }
       }
     },
@@ -2715,6 +4305,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Algunos límites no se negocian: el viento o las rachas por encima del límite de tu nivel, y el viento terral, siempre puntúan 0."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certaines limites ne bougent jamais : le vent ou les rafales au-dessus de la limite de ton niveau, et le vent offshore, valent toujours 0."
           }
         }
       }
@@ -2726,6 +4322,12 @@
             "state" : "translated",
             "value" : "Otra cosa"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autre chose"
+          }
         }
       }
     },
@@ -2735,6 +4337,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sur"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sud"
           }
         }
       }
@@ -2746,6 +4354,12 @@
             "state" : "translated",
             "value" : "sursudeste"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sud-sud-est"
+          }
         }
       }
     },
@@ -2755,6 +4369,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sursudoeste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sud-sud-ouest"
           }
         }
       }
@@ -2766,6 +4386,12 @@
             "state" : "translated",
             "value" : "sudeste"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sud-est"
+          }
         }
       }
     },
@@ -2775,6 +4401,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sudoeste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sud-ouest"
           }
         }
       }
@@ -2786,6 +4418,12 @@
             "state" : "translated",
             "value" : "Nombre del spot"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du spot"
+          }
         }
       }
     },
@@ -2795,6 +4433,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre del spot y dónde (pueblo, playa)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du spot et où (ville, plage)"
           }
         }
       }
@@ -2806,6 +4450,12 @@
             "state" : "translated",
             "value" : "Spots y costas: © colaboradores de OpenStreetMap (ODbL)"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spots et traits de côte : © contributeurs OpenStreetMap (ODbL)"
+          }
         }
       }
     },
@@ -2815,6 +4465,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Los spots se ordenan solo por el viento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les spots sont classés sur le vent seulement."
           }
         }
       }
@@ -2826,6 +4482,12 @@
             "state" : "translated",
             "value" : "Empezar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C'est parti"
+          }
         }
       }
     },
@@ -2835,6 +4497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Salir desde"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partir de"
           }
         }
       }
@@ -2846,6 +4514,12 @@
             "state" : "translated",
             "value" : "Salir desde %@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partir de %@"
+          }
         }
       }
     },
@@ -2855,6 +4529,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Salir desde tu ubicación actual"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partir de ta position actuelle"
           }
         }
       }
@@ -2866,6 +4546,12 @@
             "state" : "translated",
             "value" : "Viento estable"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent régulier"
+          }
         }
       }
     },
@@ -2875,6 +4561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Viento estable en el centro del rango de tu cometa."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent régulier au milieu de la plage de ton aile."
           }
         }
       }
@@ -2886,6 +4578,12 @@
             "state" : "translated",
             "value" : "playa recta"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "plage droite"
+          }
         }
       }
     },
@@ -2895,6 +4593,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Estilo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Style"
           }
         }
       }
@@ -2906,6 +4610,12 @@
             "state" : "translated",
             "value" : "Estilo %@. Más opciones"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Style %@. Plus d'options"
+          }
         }
       }
     },
@@ -2915,6 +4625,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suscribirse"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S'abonner"
           }
         }
       }
@@ -2926,6 +4642,12 @@
             "state" : "translated",
             "value" : "Toca cada talla que tengas."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touche chaque taille que tu as."
+          }
         }
       }
     },
@@ -2935,6 +4657,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toca el mapa del lado del agua"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touche la carte côté eau"
           }
         }
       }
@@ -2946,6 +4674,12 @@
             "state" : "translated",
             "value" : "Cuéntanos una vez cómo eres y qué cometas tienes. Comparamos el viento de cada spot con tu equipo y te damos una respuesta clara."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parle-nous une fois de toi et de tes ailes. On compare le vent de chaque spot à ton matériel et on te donne une réponse claire."
+          }
         }
       }
     },
@@ -2955,6 +4689,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Gracias! Lo revisaremos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merci ! On regarde ça."
           }
         }
       }
@@ -2966,6 +4706,12 @@
             "state" : "translated",
             "value" : "No hay previsión para ese día."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de prévision pour ce jour."
+          }
         }
       }
     },
@@ -2975,6 +4721,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La orientación de la playa aún no está confirmada por un segundo mapa, así que el viento de mar y el terral pueden no ser exactos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'orientation de la plage n'est pas encore confirmée par une seconde carte : onshore et offshore peuvent être faussés."
           }
         }
       }
@@ -2986,6 +4738,12 @@
             "state" : "translated",
             "value" : "El servicio de previsión no ha respondido bien. Vuelve a intentarlo en un minuto."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le service de prévisions n'a pas répondu correctement. Réessaie dans une minute."
+          }
         }
       }
     },
@@ -2995,6 +4753,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La clasificación y el mapa completos (top 5 gratis), y unos 300 spots locales más."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le classement et la carte complets (top 5 gratuit), et environ 300 spots locaux de plus."
           }
         }
       }
@@ -3006,6 +4770,12 @@
             "state" : "translated",
             "value" : "La clasificación y el mapa completos con Pro"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le classement et la carte complets avec Pro"
+          }
         }
       }
     },
@@ -3015,6 +4785,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El nuevo idioma aparece la próxima vez que abras la app: ciérrala desde el selector de apps y vuelve a abrirla."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La nouvelle langue s'affiche à la prochaine ouverture : ferme l'app depuis le sélecteur d'apps, puis rouvre-la."
           }
         }
       }
@@ -3026,6 +4802,12 @@
             "state" : "translated",
             "value" : "El próximo día de esta semana que funciona, y dónde."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le prochain jour de la semaine qui marche, et où."
+          }
         }
       }
     },
@@ -3035,6 +4817,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El catálogo de spots (datos abiertos, ODbL)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le catalogue des spots (données ouvertes, ODbL)"
           }
         }
       }
@@ -3046,6 +4834,12 @@
             "state" : "translated",
             "value" : "Toda la semana, no solo hoy y mañana."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toute la semaine, pas seulement aujourd'hui et demain."
+          }
         }
       }
     },
@@ -3055,6 +4849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se multiplican según tus pesos. La puntuación de un spot es la de sus dos mejores horas seguidas. Los spots que necesitan cierta marea pierden las horas fuera de ella y, con **Más cerca, mejor**, los spots lejanos pierden hasta un %lld %%."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elles sont multipliées selon tes poids. La note d'un spot est celle de ses deux meilleures heures d'affilée. Les spots qui demandent une certaine marée perdent les heures en dehors et, avec **Au plus près**, les spots lointains perdent jusqu'à %lld %%."
           }
         }
       }
@@ -3066,6 +4866,12 @@
             "state" : "translated",
             "value" : "Este spot"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce spot"
+          }
         }
       }
     },
@@ -3075,6 +4881,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Este spot, %1$lld–%2$lldh"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce spot, %1$lld–%2$lldh"
           }
         }
       }
@@ -3086,6 +4898,12 @@
             "state" : "translated",
             "value" : "Este spot, mejor ventana"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce spot, meilleur créneau"
+          }
         }
       }
     },
@@ -3095,6 +4913,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "riesgo de tormenta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "risque d'orage"
           }
         }
       }
@@ -3106,6 +4930,12 @@
             "state" : "translated",
             "value" : "Marea"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marée"
+          }
         }
       }
     },
@@ -3115,6 +4945,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marea · se navega %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marée · se navigue %@"
           }
         }
       }
@@ -3126,6 +4962,12 @@
             "state" : "translated",
             "value" : "marea demasiado alta"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marée trop haute"
+          }
         }
       }
     },
@@ -3136,6 +4978,12 @@
             "state" : "translated",
             "value" : "marea demasiado baja"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marée trop basse"
+          }
         }
       }
     },
@@ -3145,6 +4993,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoy"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aujourd'hui"
           }
         }
       }
@@ -3157,6 +5011,12 @@
             "state" : "translated",
             "value" : "Mañana"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demain"
+          }
         }
       }
     },
@@ -3168,6 +5028,12 @@
             "state" : "translated",
             "value" : "poco viento"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "trop léger"
+          }
         }
       }
     },
@@ -3177,6 +5043,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "demasiado fuerte para tus cometas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "trop fort pour tes ailes"
           }
         }
       }
@@ -3188,6 +5060,12 @@
             "state" : "translated",
             "value" : "demasiado fuerte para tu nivel"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "trop fort pour ton niveau"
+          }
         }
       }
     },
@@ -3197,6 +5075,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pueblo, dirección…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ville, adresse…"
           }
         }
       }
@@ -3208,6 +5092,12 @@
             "state" : "translated",
             "value" : "Reintentar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réessayer"
+          }
         }
       }
     },
@@ -3218,6 +5108,12 @@
             "state" : "translated",
             "value" : "Desconocida"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inconnue"
+          }
         }
       }
     },
@@ -3227,6 +5123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Spots propios ilimitados"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spots perso illimités"
           }
         }
       }
@@ -3239,6 +5141,12 @@
             "state" : "translated",
             "value" : "aire inestable"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "air instable"
+          }
         }
       }
     },
@@ -3248,6 +5156,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hasta las %lld:00"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jusqu'à %lld:00"
           }
         }
       }
@@ -3259,6 +5173,12 @@
             "state" : "translated",
             "value" : "Hasta %lld kn, sin viento terral."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jusqu'à %lld kn, pas de vent offshore."
+          }
         }
       }
     },
@@ -3268,6 +5188,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hasta %lld kn, el cruzado terral es aceptable."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jusqu'à %lld kn, le side-off est acceptable."
           }
         }
       }
@@ -3279,6 +5205,12 @@
             "state" : "translated",
             "value" : "Actualizando"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à jour"
+          }
         }
       }
     },
@@ -3288,6 +5220,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usar mi ubicación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser ma position"
           }
         }
       }
@@ -3299,6 +5237,12 @@
             "state" : "translated",
             "value" : "Para la sesión «Mis horas». Las horas después de la puesta de sol nunca cuentan."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour la session « Mes heures ». Les heures après le coucher du soleil ne comptent jamais."
+          }
         }
       }
     },
@@ -3308,6 +5252,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
           }
         }
       }
@@ -3319,6 +5269,12 @@
             "state" : "translated",
             "value" : "Vista"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affichage"
+          }
         }
       }
     },
@@ -3328,6 +5284,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nosotros listamos los spots conocidos. ¿Conoces uno más tranquilo? Añádelo y saldrá en cada búsqueda, igual que los demás."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On liste les spots connus. Tu en connais un plus tranquille ? Ajoute-le : il sera classé à chaque recherche, comme les autres."
           }
         }
       }
@@ -3339,6 +5301,12 @@
             "state" : "translated",
             "value" : "Datos meteorológicos de Open-Meteo.com · Spots © colaboradores de OpenStreetMap"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données météo Open-Meteo.com · Spots © contributeurs OpenStreetMap"
+          }
         }
       }
     },
@@ -3348,6 +5316,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Previsiones meteorológicas: Open-Meteo.com (CC BY 4.0)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévisions météo : Open-Meteo.com (CC BY 4.0)"
           }
         }
       }
@@ -3359,6 +5333,12 @@
             "state" : "translated",
             "value" : "Escapadas de fin de semana con Pro"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les week-ends lointains avec Pro"
+          }
         }
       }
     },
@@ -3368,6 +5348,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Escapadas de fin de semana, no solo los spots locales (3 h gratis)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les week-ends lointains, pas seulement les spots du coin (3 h en gratuit)."
           }
         }
       }
@@ -3379,6 +5365,12 @@
             "state" : "translated",
             "value" : "Pondera a tu manera la fuerza, la estabilidad y la dirección del viento, y el trayecto."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pondère à ta façon la force, la régularité et la direction du vent, et le trajet."
+          }
         }
       }
     },
@@ -3388,6 +5380,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pondera a tu manera viento, rachas, dirección y trayecto"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pondère à ta façon vent, rafales, direction et trajet"
           }
         }
       }
@@ -3399,6 +5397,12 @@
             "state" : "translated",
             "value" : "Peso"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poids"
+          }
         }
       }
     },
@@ -3408,6 +5412,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "oeste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ouest"
           }
         }
       }
@@ -3419,6 +5429,12 @@
             "state" : "translated",
             "value" : "oesnoroeste"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ouest-nord-ouest"
+          }
         }
       }
     },
@@ -3428,6 +5444,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "oessudoeste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ouest-sud-ouest"
           }
         }
       }
@@ -3439,6 +5461,12 @@
             "state" : "translated",
             "value" : "¿Qué ha pasado? ¿Qué esperabas?"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Que s'est-il passé ? Qu'attendais-tu ?"
+          }
         }
       }
     },
@@ -3448,6 +5476,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lo que te importa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce qui compte pour toi"
           }
         }
       }
@@ -3459,6 +5493,12 @@
             "state" : "translated",
             "value" : "¿Qué falla?"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qu'est-ce qui ne va pas ?"
+          }
         }
       }
     },
@@ -3468,6 +5508,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuando hoy no hay viento, el próximo día de esta semana que funciona, y dónde."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quand c'est pétole aujourd'hui, le prochain jour de la semaine qui marche, et où."
           }
         }
       }
@@ -3479,6 +5525,12 @@
             "state" : "translated",
             "value" : "¿Dónde está?"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C'est où ?"
+          }
         }
       }
     },
@@ -3488,6 +5540,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Dónde navego?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On ride où ?"
           }
         }
       }
@@ -3499,12 +5557,24 @@
             "state" : "translated",
             "value" : "WhereToKite da estimaciones a partir de previsiones meteorológicas, no consejos de seguridad. Las condiciones en el agua pueden ser distintas: comprueba el viento, el tiempo y las normas locales en el spot. Tú decides si navegas, bajo tu propia responsabilidad."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WhereToKite donne des estimations à partir de prévisions météo, pas des conseils de sécurité. Les conditions sur l'eau peuvent être différentes : vérifie le vent, la météo et les règles locales sur place. C'est toi qui décides de naviguer, à tes risques."
+          }
         }
       }
     },
     "WhereToKite Pro" : {
       "localizations" : {
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WhereToKite Pro"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "WhereToKite Pro"
@@ -3519,6 +5589,12 @@
             "state" : "translated",
             "value" : "¿Hacia dónde mira la playa?"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Où regarde la plage ?"
+          }
         }
       }
     },
@@ -3528,6 +5604,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Viento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent"
           }
         }
       }
@@ -3539,6 +5621,12 @@
             "state" : "translated",
             "value" : "Viento %1$@ kn, rachas de hasta %2$lld kn"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent %1$@ kn, rafales jusqu'à %2$lld kn"
+          }
         }
       }
     },
@@ -3548,6 +5636,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dirección del viento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction du vent"
           }
         }
       }
@@ -3559,6 +5653,12 @@
             "state" : "translated",
             "value" : "Viento del %@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent de %@"
+          }
         }
       }
     },
@@ -3568,6 +5668,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rango de viento por cometa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plage de vent par aile"
           }
         }
       }
@@ -3579,6 +5685,12 @@
             "state" : "translated",
             "value" : "Fuerza del viento"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force du vent"
+          }
         }
       }
     },
@@ -3588,6 +5700,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Viento que encaja con tus cometas y tu estilo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un vent adapté à tes ailes et à ton style"
           }
         }
       }
@@ -3599,6 +5717,12 @@
             "state" : "translated",
             "value" : "Viento frente a tu cometa"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vent face à ton aile"
+          }
         }
       }
     },
@@ -3608,6 +5732,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Merece el viaje"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ça vaut le trajet"
           }
         }
       }
@@ -3619,6 +5749,12 @@
             "state" : "translated",
             "value" : "Prohibición o fechas incorrectas"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interdiction ou dates erronées"
+          }
         }
       }
     },
@@ -3628,6 +5764,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Orientación de la playa incorrecta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mauvaise orientation de la plage"
           }
         }
       }
@@ -3639,6 +5781,12 @@
             "state" : "translated",
             "value" : "Posición incorrecta"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mauvaise position"
+          }
         }
       }
     },
@@ -3648,6 +5796,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Puedes tener un spot propio. Edítalo, o elimínalo para añadir otro."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu peux garder un spot perso. Modifie-le, ou supprime-le pour en ajouter un autre."
           }
         }
       }
@@ -3659,6 +5813,12 @@
             "state" : "translated",
             "value" : "Tú decides si navegas y lo haces bajo tu propia responsabilidad. WhereToKite y sus autores no se hacen responsables de accidentes, lesiones, daños ni multas."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C'est toi qui décides de naviguer, et tu le fais à tes risques. WhereToKite et ses auteurs déclinent toute responsabilité en cas d'accident, de blessure, de dommage ou d'amende."
+          }
         }
       }
     },
@@ -3668,6 +5828,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tu respuesta ayuda a afinar las puntuaciones."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta réponse aide à affiner les notes."
           }
         }
       }
@@ -3679,6 +5845,12 @@
             "state" : "translated",
             "value" : "Tus cometas"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tes ailes"
+          }
         }
       }
     },
@@ -3688,6 +5860,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tus propios pesos con Pro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tes propres poids avec Pro"
           }
         }
       }
@@ -3699,6 +5877,12 @@
             "state" : "translated",
             "value" : "Tus spots secretos"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tes spots secrets"
+          }
         }
       }
     },
@@ -3709,6 +5893,12 @@
             "state" : "translated",
             "value" : "Tus spots salen en cada búsqueda. Desliza un spot hacia la izquierda para eliminarlo."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tes spots sont inclus dans chaque recherche. Balaie un spot vers la gauche pour le supprimer."
+          }
         }
       }
     },
@@ -3718,6 +5908,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acerca el mapa a la playa para colocar el pin."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoome sur la plage pour placer l'épingle."
           }
         }
       }

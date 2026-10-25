@@ -16,6 +16,12 @@
             "state" : "needs_review",
             "value" : "WhereToKite"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WhereToKite"
+          }
         }
       }
     },
@@ -32,6 +38,12 @@
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "WhereToKite"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "WhereToKite"
           }
         }
@@ -51,6 +63,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Tu ubicación se usa para encontrar spots de kite a los que puedas llegar en coche."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta position sert à trouver les spots de kite accessibles en voiture."
           }
         }
       }

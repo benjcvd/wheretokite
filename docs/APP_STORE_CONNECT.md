@@ -160,6 +160,60 @@ Datos meteorológicos de Open-Meteo.com. Spots © colaboradores de OpenStreetMap
 kitesurf,kite,viento,previsión,playa,marea,rachas,nudos,tiempo,agua plana,cometa,terral,levante
 ```
 
+## 3c. Store listing in French
+
+Same steps as [Spanish](#3b-store-listing-in-spanish), with **French (France)** as the
+language. It also covers Belgium, Switzerland and Morocco, so no French (Canada) needed.
+
+| Field | Value |
+|---|---|
+| Subtitle (30 max) | `Le bon spot de kite du jour` |
+
+**Promotional text**:
+
+```
+Dis d'où tu pars, jusqu'où tu roules et quand tu navigues. WhereToKite regarde le vent sur chaque spot de kite connu à ta portée et te dit où aller.
+```
+
+**Description**:
+
+```
+On ride où aujourd'hui ? WhereToKite te répond en une seule recherche.
+
+Choisis ton point de départ, le temps de route que tu acceptes, le jour et ta session (matin, après-midi, soir ou tes propres heures). WhereToKite consulte la prévision sur chaque spot de kite connu à ta portée et te donne un classement, avec le meilleur créneau de deux heures sur chaque spot. Jusqu'à trois heures de route et deux jours à l'avance.
+
+ADAPTÉ À TOI ET À TES AILES
+Indique une fois ton poids, ton niveau et les ailes de ton quiver. Chaque heure est notée sur ce qui compte sur l'eau :
+• Force du vent : convient-elle à une de tes ailes, pour une session tranquille ou engagée ?
+• Vent régulier : les rafales comparées au vent moyen.
+• Direction : le vent face à l'orientation de chaque plage. Le side-on est idéal, l'offshore vaut zéro.
+
+LES SPOTS
+Plus de 600 spots de kitesurf réputés en Europe et au Maroc, de Tarifa à Sylt et de Leucate à Dakhla. L'orientation de chaque plage est mesurée à partir de données cartographiques et vérifiée, pour distinguer onshore, side-shore et offshore. Les spots qui ne marchent qu'à une certaine marée ont la prévision des marées. Les interdictions saisonnières et les zones de baignade d'été sont prises en compte.
+
+LA SÉCURITÉ D'ABORD
+Les orages, la nuit et les heures interdites valent zéro. Un indice de confiance te dit à quel point les modèles météo s'accordent pour ton jour.
+
+AUSSI
+• De vrais temps de trajet avec Apple Plans.
+• Un graphique du vent et des rafales heure par heure pour chaque spot, et l'itinéraire en un geste.
+• Ajoute ton spot secret : il est classé comme les autres.
+• Une erreur sur un spot ? Signale-la depuis l'app ; les corrections arrivent chez tout le monde sans mise à jour.
+
+PAS DE COMPTE, PAS DE PISTAGE
+Ton profil et tes spots restent sur ton téléphone. Pas de pub.
+
+Les notes sont des estimations à partir de prévisions météo, pas des conseils de sécurité. Vérifie toujours les conditions et les règles locales sur place, et navigue à tes risques.
+
+Données météo Open-Meteo.com. Spots © contributeurs OpenStreetMap.
+```
+
+**Keywords**:
+
+```
+kitesurf,kite,vent,prévision,météo,plage,marée,rafales,nœuds,aile,eau plate,glisse,kiteboard
+```
+
 ## 4. Screenshots
 
 - iPhone only (the app is iPhone-only): **6.9" display, 1320 × 2868 px** (iPhone 16 Pro Max /

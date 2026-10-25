@@ -4,7 +4,7 @@ import XCTest
 /// The string catalogs: every phrase translated, with the same placeholders as the English.
 final class LocalizationTests: XCTestCase {
     /// Languages the app ships besides English.
-    static let languages = ["es"]
+    static let languages = ["es", "fr"]
 
     private static let appFolder = URL(fileURLWithPath: #filePath)
         .deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("WhereToKite")
