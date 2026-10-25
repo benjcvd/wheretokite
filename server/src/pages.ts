@@ -37,9 +37,15 @@ ${body}
   });
 }
 
+// The address is public: written as HTML character references, so simple scrapers looking
+// for "name@host" in the page source don't find it. Browsers show and link it as usual.
+const entities = (s: string) => [...s].map((c) => `&#${c.codePointAt(0)};`).join("");
+function mailLink(address: string): string {
+  return `<a href="${entities("mailto:" + address)}">${entities(address)}</a>`;
+}
 function contact(env: PageEnv): string {
   const repo = env.GITHUB_REPO || "benjcvd/wheretokite";
-  const mail = env.CONTACT_EMAIL ? `<a href="mailto:${esc(env.CONTACT_EMAIL)}">${esc(env.CONTACT_EMAIL)}</a>` : "";
+  const mail = env.CONTACT_EMAIL ? mailLink(env.CONTACT_EMAIL) : "";
   const issues = `<a href="https://github.com/${esc(repo)}/issues">GitHub issues</a>`;
   return mail ? `${mail} (or ${issues})` : issues;
 }
@@ -126,7 +132,7 @@ app without an update.</p>
 
 <h2>Something doesn't work</h2>
 <p>Report it from the app (category “App problem”), open a
-<a href="https://github.com/${esc(repo)}/issues/new">GitHub issue</a>${env.CONTACT_EMAIL ? `, or email <a href="mailto:${esc(env.CONTACT_EMAIL)}">${esc(env.CONTACT_EMAIL)}</a>` : ""}.</p>
+<a href="https://github.com/${esc(repo)}/issues/new">GitHub issue</a>${env.CONTACT_EMAIL ? `, or email ${mailLink(env.CONTACT_EMAIL)}` : ""}.</p>
 
 <h2>Safety</h2>
 <p>Scores are estimates from weather forecasts, not safety advice. Check the conditions and the
