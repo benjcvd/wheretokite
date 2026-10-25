@@ -6,8 +6,8 @@ import XCTest
 final class FailoverTests: XCTestCase {
     private let server = ForecastServer.wheretokite(URL(string: "https://server.test")!)
 
-    private func failover(timeout: Duration = .seconds(5), cooldown: TimeInterval = 600) -> ServerFailover {
-        ServerFailover(primary: server, fallback: .openMeteo, timeout: timeout, cooldown: cooldown)
+    private func failover(hedgeAfter: Duration = .seconds(5), cooldown: TimeInterval = 600) -> ServerFailover {
+        ServerFailover(primary: server, fallback: .openMeteo, hedgeAfter: hedgeAfter, cooldown: cooldown)
     }
 
     func testServerAnswersFirst() async throws {
@@ -35,10 +35,34 @@ final class FailoverTests: XCTestCase {
     }
 
     func testHangingServerTimesOut() async throws {
-        let f = failover(timeout: .milliseconds(200))
+        let f = failover(hedgeAfter: .milliseconds(200))
         let start = Date()
         let used = try await f.run { s in
             if s == self.server { try await Task.sleep(for: .seconds(30)) }
+            return s
+        }
+        XCTAssertEqual(used, .openMeteo)
+        XCTAssertLessThan(Date().timeIntervalSince(start), 5)
+    }
+
+    /// A slow server that still answers before Open-Meteo wins the race and isn't skipped.
+    func testSlowServerStillWins() async throws {
+        let f = failover(hedgeAfter: .milliseconds(100))
+        let used = try await f.run { s in
+            try await Task.sleep(for: s == self.server ? .milliseconds(300) : .seconds(5))
+            return s
+        }
+        XCTAssertEqual(used, server)
+        let skipping = await f.usingFallback
+        XCTAssertFalse(skipping)
+    }
+
+    /// A server that fails at once doesn't make the rider wait for the hedge delay.
+    func testFailingServerDoesntWaitForHedge() async throws {
+        let f = failover(hedgeAfter: .seconds(30))
+        let start = Date()
+        let used = try await f.run { s in
+            if s == self.server { throw URLError(.cannotConnectToHost) }
             return s
         }
         XCTAssertEqual(used, .openMeteo)
