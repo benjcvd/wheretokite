@@ -4859,6 +4859,22 @@
         }
       }
     },
+    "They disagree here: ±%lld kn" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aquí no coinciden: ±%lld kn"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ils divergent ici : ±%lld kn"
+          }
+        }
+      }
+    },
     "This spot" : {
       "localizations" : {
         "es" : {
@@ -5290,6 +5306,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "On liste les spots connus. Tu en connais un plus tranquille ? Ajoute-le : il sera classé à chaque recherche, comme les autres."
+          }
+        }
+      }
+    },
+    "Weather models" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modelos meteorológicos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modèles météo"
           }
         }
       }

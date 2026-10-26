@@ -394,6 +394,12 @@ struct SpotCard: View {
                         .font(.caption)
                         .foregroundStyle(.orange)
                 }
+                // Only when it's worth a doubt: "High" on every card would be noise.
+                if let c = rec.confidence, c.rating != .high {
+                    Label(Vocab.confidence(c.rating), systemImage: "questionmark.circle")
+                        .font(.caption)
+                        .foregroundStyle(c.rating == .low ? .orange : .secondary)
+                }
             }
             Spacer(minLength: 0)
             Image(systemName: "chevron.right")
