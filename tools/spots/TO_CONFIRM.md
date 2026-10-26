@@ -112,7 +112,11 @@ second pass with web research is worth doing.
   Bol (Brač: windsurf spot, kiting unclear).
 
 ## Greece / Black Sea / Cyprus (GR.csv, BG.csv, RO.csv, CY.csv)
-- Pounta (Paros): pinned on the village, not the beach.
+- Pounta (Paros): pinned on the village, not the beach. No OSM beach element at the kite
+  spot (checked 2026-10-26: nearest ones are Psaraliki, 1.5 km west): is there a better pin?
+- Cyclades pass (2026-10-26): Mikri Vigla (now on its beach element), Pounta and Korfos
+  re-checked against 3 to 9 independent guides and schools each; notes rewritten from them.
+  Kite judgement for you: Mikri Vigla "some experience needed" (narrow beach, rocky cape) ok?
 - Mamaia Nord: pinned on a beach venue (Plaja Curacao).
 - Left out: Lesvos, Naxos Laguna, Drepano, other Crete spots.
 
