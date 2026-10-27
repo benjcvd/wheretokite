@@ -1,5 +1,6 @@
 [
   {"spot": "es-sant-pere-pescador", "source": "xema", "station": "U2", "name": "Meteocat Sant Pere Pescador"},
+  {"spot": "es-pals", "source": "xema", "station": "YP", "name": "Meteocat Palafrugell (10 km, inland, 35 m up)"},
   {"spot": "es-torredembarra", "source": "xema", "station": "DK", "name": "Meteocat Torredembarra"},
   {"spot": "es-castelldefels", "source": "xema", "station": "YY", "name": "Meteocat Viladecans"},
   {"spot": "es-malgrat-de-mar-la-pomareda", "source": "xema", "station": "WT", "name": "Meteocat Malgrat de Mar"},

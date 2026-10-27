@@ -3,7 +3,98 @@
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
 
-## Recommendation
+## Second look (WHE-61, 27 Oct): the new setup reads too low
+
+Forecast accuracy re-ran the comparison the way riders use the app: the level as shown (no
+offset removed), windy hours and "go days" instead of average error only, forecasts made 1 and
+2 days ahead, and 95 % intervals over days. Script: `tools/backtest/review.py`.
+
+### In plain words
+
+- **The beach cell is a real gain for AROME and ICON.** Their beach cell is 0.2–1.4 km from
+  the spot. Measured: lower error at every lead time, both seasons, beyond the noise.
+- **For ECMWF the "beach" cell is not the beach.** Its 25 km grid puts it 16.7 km inland at
+  Pals and 11 km inland at Sant Pere (measured from Open-Meteo's answer). Inland air is
+  calmer, and in a 3-model mean that cell is a third of the wind, half from day 2 on (AROME
+  1.3 km stops after about 2 days, so the mix becomes ICON + ECMWF).
+- **The new setup mostly wins by reading lower, and the stations read low.** All the stations
+  are on land, 1–10 km from the water. The setup closest to them in level wins on error; ECMWF's
+  inland cell alone does nearly as well, which is the trap: it shares the stations' shelter.
+- **It misses windy days.** Forecast a day ahead, the new setup caught 70 % of the days with
+  12 kn+ for 2 h (old: 85 %) in Jan–Jun, and 22 % vs 40 % in Jul–Oct. It does cry wolf less
+  (39 % false alarms vs 52 %).
+- **At Pals it reads below an inland station.** On good summer days the Palafrugell station,
+  10 km inland and 35 m up, measured 14–19 kn; the new setup forecast 11–15 kn. Wind on the
+  water at Pals is very likely stronger than at Palafrugell (I think, not measured).
+- **Much of the gain comes from two stations.** Leaving out Sant Pere and Riumar (stations that
+  read far below every model in tramontane), the error gain halves in summer and the go-day gain
+  in winter becomes a tie.
+
+### Results, forecast 1 day ahead (what riders plan on)
+
+Best 2 h window of each day (07–17 UTC), at all spots. Bias and error in knots against the
+stations, measured wind brought to 10 m. "Caught" = days with 12 kn+ for 2 h that were forecast;
+"false" = forecast go days that didn't come.
+
+| Setup | Jan–Jun bias | error | caught | false | Jul–Oct bias | error | caught | false |
+|---|---|---|---|---|---|---|---|---|
+| Old: best match, offshore cell | +2.3 | 3.7 | 85 % | 52 % | +2.0 | 3.0 | 40 % | 90 % |
+| New: mean AROME 1.3 + ICON + ECMWF, beach cell | +0.2 | 2.7 | 70 % | 39 % | +0.6 | 2.0 | 22 % | 86 % |
+| **Mean AROME 1.3 + ICON on the beach cell, ECMWF on its sea cell** | +2.0 | 3.3 | 81 % | 52 % | +1.5 | 2.4 | 49 % | 83 % |
+| Best match, beach cell | +0.7 | 2.9 | 72 % | 45 % | +1.2 | 2.5 | 27 % | 90 % |
+| ECMWF alone, beach cell (inland) | 0.0 | 2.7 | 69 % | 38 % | -0.1 | 2.1 | 13 % | 86 % |
+
+Change against the old setup, 95 % interval over days (a day 1 ahead):
+
+| Setup | Best 2 h error, Jan–Jun | Jul–Oct | Jul–Oct without Sant Pere and Riumar | Go-day score, Jan–Jun | without the two |
+|---|---|---|---|---|---|
+| New (3-model mean, beach) | −1.2 … −0.8 kn | −1.2 … −0.9 kn | −0.55 … −0.28 kn | +0.01 … +0.08 | −0.03 … +0.06 (tie) |
+| AROME + ICON beach, ECMWF sea | −0.5 … −0.3 kn | −0.8 … −0.6 kn | −0.31 … −0.09 kn | −0.04 … +0.02 (tie) | −0.06 … +0.02 (tie) |
+
+Same picture on the day itself and 2 days ahead (full tables: run the script). In Jul–Oct the
+stations measured only 161 kiteable hours: summer hit rates rest on few days.
+
+### Real days (forecast a day ahead, best 2 h, kn)
+
+| Day | Measured | Old | New | AROME + ICON beach, ECMWF sea |
+|---|---|---|---|---|
+| Pals, 8 Sep (sea breeze), Palafrugell station | 19 | 21 | 15 | 17 |
+| Pals, 27 Aug (sea breeze) | 16 | 19 | 14 | 16 |
+| Pals, 31 Mar (strong east/north wind) | 24 | 32 | 25 | 30 |
+| Sant Pere, 29 Mar (tramontane), station 1.2 km inland | 18 | 32 | 30 | 36 |
+
+Sant Pere's station reads far below every model in tramontane: it says more about the
+station's shelter than about the models.
+
+### What could make this wrong
+
+- **No measurement on the water.** Every truth here is a land station. If the sea really
+  reads as low as the stations, the new setup is right and the old one over-reads. Only a buoy
+  or a beach mast can settle the level (card: test against wind measured on the water).
+- **Height correction** uses one roughness for all stations (open land, 3 cm). Sheltered
+  stations need more; that would raise the measured wind and make the new setup look worse.
+- **Lead time from Jan to Jun is partial:** Open-Meteo's archive has no AROME 1.3 km forecasts
+  made a day or more ahead before the summer, so "day 1, Jan–Jun" is really ICON + ECMWF.
+- **Pals has no close station.** Torroella de Montgrí (UE), planned for Pals and L'Estartit,
+  measures no wind at all; Palafrugell is 10 km inland. Leucate (Météo-France) has data to
+  23 June only.
+- **Gusts and direction "usable" rules are simplified** (gusts not scored; "usable" = not
+  offshore, as the app flags it). Averaging gusts with an inland cell also lowers the gusts
+  shown, which matters for the "too strong for your level" limit (not measured yet).
+
+### Options
+
+1. **Keep the beach cell for AROME and ICON, but read ECMWF on its sea cell** (recommended).
+   Keeps a real error gain over today at every lead time, catches windy days about as well as
+   today, and removes the inland cell. The level stays close to today's until water
+   measurements tell us more. Costs one extra request per batch.
+2. Keep the new setup as built. Lowest error against land stations, but it reads 1.5–2 kn
+   lower than today on average, much more at Pals, and catches 15–18 points fewer go days.
+3. Best match on the beach cell only (one model, cheapest). Smaller gain, level in between.
+4. Go back to today's setup until buoys are in. Safest for "don't miss a day", over-reads at
+   sheltered spots.
+
+## First recommendation (WHE-58, 27 Oct: under review, see above)
 
 1. **Use the nearest grid cell (the beach), not the offshore one** (recommended). Every model
    does better on it, in both seasons. It also explains the gap you saw next to Windguru, which
@@ -92,6 +183,9 @@ would read like Windguru's main row, not that either is right.
 ```sh
 python3 tools/backtest/model_backtest.py --start 2026-01-01 --end 2026-06-23
 python3 tools/backtest/model_backtest.py --start 2026-07-01 --end 2026-10-25
+python3 tools/backtest/review.py --start 2026-01-01 --end 2026-06-23     # rider scores, day 0–2
+python3 tools/backtest/review.py --start 2026-07-01 --end 2026-10-25 --drop es-sant-pere-pescador
+python3 tools/backtest/check_day.py tools/backtest/snapshot_2026-10-28.json   # one saved day
 ```
 
 Station pairs are in `tools/backtest/pairs.json`. `tools/backtest/match_stations.py` finds the
