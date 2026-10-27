@@ -162,3 +162,6 @@ second pass with web research is worth doing.
 - Le Barcarès Les 3 Colonnes: pin on the beach element, 680 m from an old community GPS (7 years). Same beach, left as is.
 - Not checked yet: Sant Martí d'Empúries, L'Escala, Pals, Ebro delta (Riumar, Eucaliptus, Trabucador), Leucate Le Goulet,
   Parc des Dosses.
+- Windy check (browser, as a visitor, 2026-10-27): kite markers sit on the same beach as our Sant Pere pin and in a
+  second cluster about 1.5 km south (Can Martinet side). It shows no zone boundaries, so the official zone is still
+  unconfirmed; pin left as is.
