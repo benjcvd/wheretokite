@@ -152,3 +152,13 @@ second pass with web research is worth doing.
 - Liepāja: pin is the town centre, moved to the beach by the build.
 - Neusiedl am See: zone rules. Siófok: only Hungarian spot (Velence, other Balaton launches?).
 - Left out: Walchensee, Kochelsee, Ammersee, Lipno (kite rules unclear), Slovakia, Slovenia.
+
+## Pin vs riding zone (WHE-59), Catalonia + Leucate first pass (2026-10-27)
+- Overpass was down for most of the session, so only part of the list could be measured. No locator changed.
+- Sant Pere Pescador: pin (42.1887, 3.1080) is on the long beach. Guide coordinates disagree: Buscokite 42.182/3.110
+  (about 700 m south), Yumping school 42.184/3.109 (about 500 m), Kiteloopers "Cortal de la Vila" 42.171/3.114 (about 2 km
+  south). Schools sit at Can Martinet / Camping La Gaviota. One guide says the paid zone no longer exists. Where does the
+  authorised zone sit today? Pin is within the same beach, wind is the same at this scale: I would leave it.
+- Le Barcarès Les 3 Colonnes: pin on the beach element, 680 m from an old community GPS (7 years). Same beach, left as is.
+- Not checked yet: Sant Martí d'Empúries, L'Escala, Pals, Ebro delta (Riumar, Eucaliptus, Trabucador), Leucate Le Goulet,
+  Parc des Dosses.
