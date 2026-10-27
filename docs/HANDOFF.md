@@ -128,3 +128,7 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
   where the models disagree lose up to 15 % (`ScoringRules.agreementFactor`), which Ben must OK
   since it touches ranking. Tricky: the start area no longer leaves the phone for this check,
   so the privacy texts over-declare (safe, left as is).
+- Model backtest (WHE-58, in review), 27 Oct: [docs/MODEL_BACKTEST.md](MODEL_BACKTEST.md). Against
+  official stations, the beach grid cell beats the offshore one for every model, and a mean of
+  AROME, ICON and ECMWF beats "best match". Ben decides whether the app switches. Tricky: the
+  stations are on land, so the absolute bias is not the water's.
