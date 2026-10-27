@@ -108,7 +108,7 @@ public struct ConfidenceEstimator: ConfidenceProvider {
             .init(name: "start_date", value: day),
             .init(name: "end_date", value: day),
             .init(name: "models", value: models.joined(separator: ",")),
-            .init(name: "cell_selection", value: "sea"),
+            .init(name: "cell_selection", value: "land"),   // as the forecasts
         ]
         let (data, _) = try await session.data(from: c.url!)
         let hourly = try JSONDecoder().decode(Response.self, from: data).hourly
@@ -137,7 +137,7 @@ public struct ConfidenceEstimator: ConfidenceProvider {
             .init(name: "start_date", value: day),
             .init(name: "end_date", value: day),
             .init(name: "models", value: models.joined(separator: ",")),
-            .init(name: "cell_selection", value: "sea"),
+            .init(name: "cell_selection", value: "land"),   // as the forecasts
         ]
         var req = URLRequest(url: server.endpoint(for: day))
         req.httpMethod = "POST"
