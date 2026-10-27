@@ -1,0 +1,9 @@
+[
+  {"spot": "es-sant-pere-pescador", "source": "xema", "station": "U2", "name": "Meteocat Sant Pere Pescador"},
+  {"spot": "es-torredembarra", "source": "xema", "station": "DK", "name": "Meteocat Torredembarra"},
+  {"spot": "es-castelldefels", "source": "xema", "station": "YY", "name": "Meteocat Viladecans"},
+  {"spot": "es-malgrat-de-mar-la-pomareda", "source": "xema", "station": "WT", "name": "Meteocat Malgrat de Mar"},
+  {"spot": "es-riumar-ebro-delta", "source": "xema", "station": "DL", "name": "Meteocat Illa de Buda"},
+  {"spot": "es-el-trabucador-ebro-delta", "source": "xema", "station": "UW", "name": "Meteocat els Alfacs"},
+  {"spot": "fr-leucate-le-goulet", "source": "meteofrance", "dept": "11", "station": "11202001", "name": "Météo-France Leucate"}
+]
