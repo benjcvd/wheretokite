@@ -112,7 +112,7 @@ second pass with web research is worth doing.
   restricted near Zlatni Rat in peak season; pin is the Zlatni Rat beach, riders launch 1–2 km away): ok as pro, or
   basic? Pakoštane stays archived (no source found). Malta: Golden Bay is called the top spot by some guides and
   Mellieħa by others; summer swimming-zone closure of all beaches is only in guides, no Transport Malta page found,
-  so no ban encoded. Add Golden Bay (pro)?
+  so no ban encoded. Golden Bay added as pro (you said yes; Bol stays pro).
 - Left out: Slovenia, Albania, Campania, Lazio, Liguria, Friuli, Chia, Trasimeno, Follonica,
   Bol (now added as pro, see below).
 
