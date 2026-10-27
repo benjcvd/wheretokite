@@ -64,6 +64,13 @@ Per spot, the best single model on the offshore cell is usually AROME 2.5 km (Sa
 Torredembarra, Riumar). At Leucate and El Trabucador, "best match" and ICON win. No single
 model wins everywhere, which is the usual argument for a mix.
 
+## Next to Windguru (visitor check, 27 Oct)
+
+For Sant Pere on 27 and 28 Oct, Windguru's headline row (their own blend of models) was within
+about 1 kn of the 3-model mean on the beach cell. Today's app setup (best match, offshore cell)
+read 3–5 kn more. That's a benchmark, not a measurement: it shows the recommended setup
+would read like Windguru's main row, not that either is right.
+
 ## Limits (read before deciding)
 
 - **Stations are on land, riders are on the water.** Wind over the water is usually
