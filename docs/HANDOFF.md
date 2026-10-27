@@ -132,3 +132,10 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
   official stations, the beach grid cell beats the offshore one for every model, and a mean of
   AROME, ICON and ECMWF beats "best match". Ben decides whether the app switches. Tricky: the
   stations are on land, so the absolute bias is not the water's.
+
+**Forecast accuracy, 27 Oct.** The second look at the 3-model blend (WHE-61) found it reads too
+low for riders: ECMWF's "beach" cell sits 11–17 km inland, and the blend's win on error comes
+mostly from matching land stations that read low. Recommended to Ben: AROME and ICON on the beach
+cell, ECMWF on its sea cell. Waiting for his pick before any app change; WHE-58 stays unmerged.
+Torroella de Montgrí has no wind sensor, so Pals has no close station. Wind measured on the water
+(buoys) is the missing piece.
