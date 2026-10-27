@@ -394,11 +394,12 @@ struct SpotCard: View {
                         .font(.caption)
                         .foregroundStyle(.orange)
                 }
-                // Only when it's worth a doubt: "High" on every card would be noise.
-                if let c = rec.confidence, c.rating != .high {
-                    Label(Vocab.confidence(c.rating), systemImage: "questionmark.circle")
+                // The models are compared at this spot (top spots only).
+                if let c = rec.confidence {
+                    Label(Vocab.confidence(c.rating) + " · ±\(Int(c.speedSpreadKn.rounded())) kn",
+                          systemImage: c.rating == .high ? "checkmark.seal" : "questionmark.circle")
                         .font(.caption)
-                        .foregroundStyle(c.rating == .low ? .orange : .secondary)
+                        .foregroundStyle(c.rating == .high ? .green : c.rating == .low ? .orange : .secondary)
                 }
             }
             Spacer(minLength: 0)
