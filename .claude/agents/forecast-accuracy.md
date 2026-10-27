@@ -75,7 +75,7 @@ forecast and confidence code from Product from now on.
 - `tools/backtest/` (started by Product: `model_backtest.py`, `match_stations.py`,
   `pairs.json`): backtest scripts. Python 3.9, standard library preferred; cache downloads
   (gitignored). Meteocat XEMA via Socrata `nzvn-apee`, month by month (it times out otherwise).
-- `docs/MODEL_BACKTEST.md` (started by Product; rename to `docs/MODEL_BACKTEST.md` if it grows): method, results tables, recommendation, decisions.
+- `docs/MODEL_BACKTEST.md` (started by Product): method, results tables, recommendation, decisions.
   Ben reads it: plain words first, numbers after.
 - Tests for what you change in `Tests/KiteCoreTests/`.
 
