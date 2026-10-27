@@ -118,6 +118,16 @@ second pass with web research is worth doing.
   re-checked against 3 to 9 independent guides and schools each; notes rewritten from them.
   Kite judgement for you: Mikri Vigla "some experience needed" (narrow beach, rocky cape) ok?
 - Mamaia Nord: pinned on a beach venue (Plaja Curacao).
+- Dodecanese pass (2026-10-27): Prasonisi, Marmari, Afiartis checked against 5 to 10 guides and
+  schools each; notes rewritten. Open for you:
+  - Karpathos: one tour operator says kiting is not allowed in the three bays while the
+    windsurf centres are open (9:00–19:00), and that the real kite beach is Agrilaopotamos (a few
+    km away). Not official, so not encoded as a ban. Is that right? Should Agrilaopotamos be
+    the pin (one source only so far)?
+  - Prasonisi: one local site says kiting is banned on the flat (lagoon) side, but the schools
+    teach there. Which side is it allowed on today?
+  - Marmari: the permitted kite zone moved downwind to a narrow beach with trees; our pin is on
+    the long beach. OK?
 - Left out: Lesvos, Naxos Laguna, Drepano, other Crete spots.
 
 ## Nordics (DK.csv, NO.csv, SE.csv, FI.csv)
