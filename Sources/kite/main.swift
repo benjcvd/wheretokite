@@ -131,7 +131,7 @@ WhereToKite · \(request.day) \(slot.rawValue) · ≤\(Int(request.maxDriveMinut
 Rider: \(Int(profile.weightKg)) kg · kites \(kitesText) m · \(profile.level.rawValue) · \(styleText)
 Kite ranges: \(Scorer(profile: profile, intensity: intensity).kiteRanges.map { String(format: "%g m %.0f–%.0f kn", $0.size, $0.minKn, $0.maxKn) }.joined(separator: " · "))
 """)
-if let c = result.confidence { print("Forecast: \(c.summary)") }
+if let c = result.confidence { print("Forecast at \(result.recommendations[0].spot.name): \(c.summary)") }
 let s = result.stats
 print(String(format: "(%d spots ranked in %.1fs · %d in reach · %d forecast · %d/%d real ETAs)\n",
              result.recommendations.count, elapsed, s.inReach, s.forecastSpots, s.etaReceived, s.etaRequested))
@@ -140,8 +140,13 @@ let shown = result.recommendations.filter { flags.contains("all") || $0.finalSco
 if shown.isEmpty { print("No kiteable spot found. Use --all to see why each spot fails.") }
 for (i, r) in shown.enumerated() {
     let name = r.spot.name.count > 32 ? String(r.spot.name.prefix(31)) + "…" : r.spot.name
+    let models = r.confidence.map { c in
+        " · models: \(c.rating.rawValue.lowercased()) ±\(Int(c.speedSpreadKn.rounded())) kn"
+            + (c.directionSpreadDeg.map { " ±\(Int($0.rounded()))°" } ?? "")
+            + (r.agreementFactor < 1 ? " (−\(Int(((1 - r.agreementFactor) * 100).rounded())) %)" : "")
+    } ?? ""
     print(String(format: "%2d. %3d  %@  %@", i + 1, r.finalScore,
-                 name.padding(toLength: 32, withPad: " ", startingAt: 0), r.reason))
+                 name.padding(toLength: 32, withPad: " ", startingAt: 0), r.reason + models))
 }
 
 let hourlyCount = Int(args["hourly"] ?? "0") ?? 0

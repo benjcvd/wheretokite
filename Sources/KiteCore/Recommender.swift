@@ -25,6 +25,11 @@ public struct SpotRecommendation: Sendable, Identifiable {
     /// [start, end). Set even when there is no `window` (marginal spots), so the explanation
     /// can show what the score is made of.
     public var scoredHours: (start: Int, end: Int)? = nil
+    /// How much the weather models agree here, for the top-ranked spots (nil for the others,
+    /// or when the check failed).
+    public var confidence: ForecastConfidence? = nil
+    /// Share of the score kept after the models-disagree penalty (1 = none).
+    public var agreementFactor: Double = 1
 
     public init(spot: Spot, driveMinutes: Double, driveIsEstimate: Bool, windScore: Int, finalScore: Int,
                 window: (start: Int, end: Int)?, hours: [HourScore], reason: String) {
@@ -62,7 +67,8 @@ public struct SearchStats: Sendable {
 
 public struct SearchResult: Sendable {
     public var request: SearchRequest
-    public var confidence: ForecastConfidence?
+    /// The top spot's forecast confidence.
+    public var confidence: ForecastConfidence? { recommendations.first?.confidence }
     public var recommendations: [SpotRecommendation]
     /// Spots within straight-line reach that were dropped, with why.
     public var excluded: [(Spot, String)]
@@ -81,11 +87,13 @@ public struct SearchResult: Sendable {
 ///    top `verifyTop`, within `maxETARequests` per search (MapKit throttles ~50/min).
 /// 5. Spots never verified keep the estimate (`driveIsEstimate`) and are dropped if it
 ///    exceeds the max drive.
+/// 6. Confidence: the weather models are compared at the top `confidenceTop` spots (one
+///    request); where they disagree a spot loses a little score, and the list is re-ranked.
 public struct Recommender: Sendable {
     public var spots: [Spot]
     public var forecast: ForecastProvider
     public var driveTime: DriveTimeProvider
-    public var confidence: ConfidenceEstimator?
+    public var confidence: ConfidenceProvider?
     public var rules = ScoringRules()
     /// Islands only reachable by boat (`SpotCatalog.islands`). Their spots are searched only
     /// from the same island, and mainland spots only from the mainland.
@@ -108,9 +116,12 @@ public struct Recommender: Sendable {
     public var verifyMargin = 10
     /// Hard cap on real ETA requests per search (MapKit throttles at ~50/min per app).
     public var maxETARequests = 45
+    /// Spots whose models are compared (step 6), best first. One request whatever the number,
+    /// but each location counts against the Open-Meteo quota (with 4 models, more than once).
+    public var confidenceTop = 10
 
     public init(spots: [Spot], forecast: ForecastProvider, driveTime: DriveTimeProvider,
-                confidence: ConfidenceEstimator? = ConfidenceEstimator()) {
+                confidence: ConfidenceProvider? = ConfidenceEstimator()) {
         self.spots = spots
         self.forecast = forecast
         self.driveTime = driveTime
@@ -184,9 +195,6 @@ public struct Recommender: Sendable {
         stats.forecastSpots = reach.count
         excluded += capped.map { ($0.spot, "beyond the \(maxForecastSpots) nearest spots") }
 
-        async let conf: ForecastConfidence? = try? confidence?.estimate(
-            at: request.origin, day: request.day, hours: request.hours, today: today)
-
         var estimates = Dictionary(reach.map { ($0.spot.id, $0.estimate) }, uniquingKeysWith: { a, _ in a })
         if estimatesOnly, !(driveTime is StraightLineDriveTime) {
             estimates.merge(await driveTime.driveMinutes(from: request.origin, to: reach.map(\.spot))) { _, b in b }
@@ -259,9 +267,34 @@ public struct Recommender: Sendable {
             }
         }
         recs.sort(by: Self.ranks)
+        if let confidence { recs = await checkAgreement(recs, confidence: confidence, request: request, today: today) }
 
-        return SearchResult(request: request, confidence: await conf, recommendations: recs,
-                            excluded: excluded, stats: stats)
+        return SearchResult(request: request, recommendations: recs, excluded: excluded, stats: stats)
+    }
+
+    /// Step 6: compare the models at the top spots that score; where they disagree, lower the
+    /// score by `agreementFactor` and re-rank. A failed check changes nothing.
+    func checkAgreement(_ ranked: [SpotRecommendation], confidence: ConfidenceProvider,
+                        request: SearchRequest, today: String) async -> [SpotRecommendation] {
+        let top = ranked.prefix(max(0, confidenceTop)).enumerated().filter { $0.element.finalScore > 0 }
+        guard !top.isEmpty else { return ranked }
+        // The rider's session: the best window, else the hours the score comes from.
+        let queries = top.map { _, rec in
+            let h = rec.window ?? rec.scoredHours
+            return ConfidenceQuery(coordinate: rec.spot.coordinate,
+                                   hours: h.map { $0.start...max($0.start, $0.end - 1) } ?? request.hours)
+        }
+        guard let confs = try? await confidence.estimates(for: queries, day: request.day, today: today),
+              confs.count == queries.count else { return ranked }
+        var out = ranked
+        for ((i, _), c) in zip(top, confs) {
+            out[i].confidence = c
+            guard c.modelsCompared.count >= 2 else { continue }
+            let f = rules.agreementFactor(speedSpreadKn: c.speedSpreadKn, directionSpreadDeg: c.directionSpreadDeg)
+            out[i].agreementFactor = f
+            out[i].finalScore = Int((Double(out[i].finalScore) * f).rounded())
+        }
+        return out.sorted(by: Self.ranks)
     }
 
     /// When nothing works on the searched day: the first of `days` with a spot scoring at least

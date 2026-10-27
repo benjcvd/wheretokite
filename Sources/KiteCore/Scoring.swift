@@ -11,8 +11,18 @@ public struct ScoringRules: Sendable {
     public var sessionHours = 2
     /// When distance matters, a spot at the max drive time loses this fraction of its score.
     public var maxDistancePenalty = 0.3
+    /// When the weather models disagree at a spot, it loses up to this fraction of its score:
+    /// nothing while they agree within ±2 kn and 30°, all of it from ±6 kn or 60°.
+    public var maxDisagreementPenalty = 0.15
 
     public init() {}
+
+    /// Share of the score a spot keeps given how much the models disagree there (1 = all).
+    public func agreementFactor(speedSpreadKn: Double, directionSpreadDeg: Double?) -> Double {
+        let speed = (speedSpreadKn - 2) / 4
+        let direction = ((directionSpreadDeg ?? 0) - 30) / 30
+        return 1 - maxDisagreementPenalty * min(1, max(0, speed, direction))
+    }
 
     /// Tides smaller than this (m, low to high water over the day) are ignored.
     public var minTidalRange = 0.5

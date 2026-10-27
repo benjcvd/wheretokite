@@ -120,3 +120,15 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
 - `xcodegen` drops `DEVELOPMENT_TEAM` (happened again tonight): re-add it after every regen.
 - Next for v1: Ben finishes the screenshots, Spanish/French store pages (WHE-49), Windguru
   check (WHE-51), then the first TestFlight build (WHE-10).
+
+## Product stopped (2026-10-26, 20:10)
+- Forecast confidence is now per spot (WHE-54, in review): the models are compared at the top
+  10 spots in one request, after ranking, instead of at the start point. Why: on 27 Oct the
+  check said "High" from a calm Barcelona while the question was Sant Pere, 2 h away. Spots
+  where the models disagree lose up to 15 % (`ScoringRules.agreementFactor`), which Ben must OK
+  since it touches ranking. Tricky: the start area no longer leaves the phone for this check,
+  so the privacy texts over-declare (safe, left as is).
+- Model backtest (WHE-58, in review), 27 Oct: [docs/MODEL_BACKTEST.md](MODEL_BACKTEST.md). Against
+  official stations, the beach grid cell beats the offshore one for every model, and a mean of
+  AROME, ICON and ECMWF beats "best match". Ben decides whether the app switches. Tricky: the
+  stations are on land, so the absolute bias is not the water's.

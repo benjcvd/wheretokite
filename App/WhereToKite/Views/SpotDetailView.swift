@@ -20,6 +20,9 @@ struct SpotDetailView: View {
             VStack(alignment: .leading, spacing: 20) {
                 hero
                 facts
+                if let confidence = rec.confidence {
+                    ConfidenceBanner(confidence: confidence)
+                }
                 chart
                 hourly
 
@@ -352,6 +355,10 @@ struct ScoreInfoSheet: View {
                         if let tide = mean(\.tideFactor) {
                             FactorRow(title: String(localized: "Tide"), value: tide, weight: nil,
                                       detail: String(localized: "Rides \(SpotDetailView.tideRuleLabel(rec.spot.tide))"))
+                        }
+                        if rec.agreementFactor < 1, let c = rec.confidence {
+                            FactorRow(title: String(localized: "Weather models"), value: rec.agreementFactor, weight: nil,
+                                      detail: String(localized: "They disagree here: ±\(Int(c.speedSpreadKn.rounded())) kn"))
                         }
                         if rec.distanceFactor < 1 {
                             FactorRow(title: String(localized: "Drive"), value: rec.distanceFactor, weight: weights.distance,

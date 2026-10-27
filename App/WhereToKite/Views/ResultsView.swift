@@ -394,6 +394,13 @@ struct SpotCard: View {
                         .font(.caption)
                         .foregroundStyle(.orange)
                 }
+                // The models are compared at this spot (top spots only).
+                if let c = rec.confidence {
+                    Label(Vocab.confidence(c.rating) + " · ±\(Int(c.speedSpreadKn.rounded())) kn",
+                          systemImage: c.rating == .high ? "checkmark.seal" : "questionmark.circle")
+                        .font(.caption)
+                        .foregroundStyle(c.rating == .high ? .green : c.rating == .low ? .orange : .secondary)
+                }
             }
             Spacer(minLength: 0)
             Image(systemName: "chevron.right")
