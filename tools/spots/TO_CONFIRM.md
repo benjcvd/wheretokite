@@ -108,8 +108,13 @@ second pass with web research is worth doing.
   no benchmark. Added Santa Maria del Focallo (basic; 5 guides + 2 schools). Not added: Agnone
   Bagni (flat east coast, Etna Kite School; no OSM beach found), Puzziteddu / Granitola and
   Manfria (Gela): one guide each. Add any of them?
+- Croatia / Malta pass (2026-10-27): added Bol (Brač) as pro (4 guides + 2 schools; strong gusty maestral, launch
+  restricted near Zlatni Rat in peak season; pin is the Zlatni Rat beach, riders launch 1–2 km away): ok as pro, or
+  basic? Pakoštane stays archived (no source found). Malta: Golden Bay is called the top spot by some guides and
+  Mellieħa by others; summer swimming-zone closure of all beaches is only in guides, no Transport Malta page found,
+  so no ban encoded. Add Golden Bay (pro)?
 - Left out: Slovenia, Albania, Campania, Lazio, Liguria, Friuli, Chia, Trasimeno, Follonica,
-  Bol (Brač: windsurf spot, kiting unclear).
+  Bol (now added as pro, see below).
 
 ## Greece / Black Sea / Cyprus (GR.csv, BG.csv, RO.csv, CY.csv)
 - Pounta (Paros): pinned on the village, not the beach. No OSM beach element at the kite
