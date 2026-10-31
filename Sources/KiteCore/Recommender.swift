@@ -30,6 +30,9 @@ public struct SpotRecommendation: Sendable, Identifiable {
     public var confidence: ForecastConfidence? = nil
     /// Share of the score kept after the models-disagree penalty (1 = none).
     public var agreementFactor: Double = 1
+    /// Local hour (spot time) a thunderstorm is forecast to start, when it comes during the
+    /// session or soon after it (`ScoringRules.stormAlertHoursAfter`): "Storm from 4 pm".
+    public var stormFrom: Int? = nil
 
     public init(spot: Spot, driveMinutes: Double, driveIsEstimate: Bool, windScore: Int, finalScore: Int,
                 window: (start: Int, end: Int)?, hours: [HourScore], reason: String) {
@@ -215,6 +218,7 @@ public struct Recommender: Sendable {
                 .filter { request.hours.contains($0.hour) }
                 .map { scorer.score($0, sides: c.spot.allSides) }
             c.hours = Self.applySafety(c.spot, to: c.hours, day: request.day)
+            c.hours = Self.applyStormBuffer(c.hours, day: day.hours, rules: rules)
             c.hours = Self.applyTide(c.spot.tide, to: c.hours, day: day.hours, rules: rules)
             c.estimate = estimates[c.spot.id] ?? c.estimate
             c.rec = recommend(c.spot, hours: c.hours, drive: c.estimate, request: request, driveIsEstimate: true,
@@ -223,6 +227,7 @@ public struct Recommender: Sendable {
             c.tideSummary = c.rec?.tideSummary
             c.utcOffset = day.utcOffsetSeconds
             c.rec?.utcOffsetSeconds = c.utcOffset
+            if let rec = c.rec { c.rec?.stormFrom = Self.stormStart(rec, day: day.hours, searched: request.hours, rules: rules) }
             cands[c.spot.id] = c
         }
 
@@ -251,6 +256,7 @@ public struct Recommender: Sendable {
                                                    driveIsEstimate: false, weights: profile.scoreWeights)
                         cands[id]?.rec?.tideSummary = c.tideSummary
                         cands[id]?.rec?.utcOffsetSeconds = c.utcOffset
+                        cands[id]?.rec?.stormFrom = c.rec?.stormFrom
                     }
                 }
             }
@@ -315,9 +321,11 @@ public struct Recommender: Sendable {
                 guard let f = forecasts[day]?[c.spot.id] else { continue }
                 var hours = f.hours.filter { r.hours.contains($0.hour) }.map { scorer.score($0, sides: c.spot.allSides) }
                 hours = Self.applySafety(c.spot, to: hours, day: day)
+                hours = Self.applyStormBuffer(hours, day: f.hours, rules: rules)
                 hours = Self.applyTide(c.spot.tide, to: hours, day: f.hours, rules: rules)
-                let rec = recommend(c.spot, hours: hours, drive: c.estimate, request: r, driveIsEstimate: true,
+                var rec = recommend(c.spot, hours: hours, drive: c.estimate, request: r, driveIsEstimate: true,
                                     weights: profile.scoreWeights)
+                rec.stormFrom = Self.stormStart(rec, day: f.hours, searched: r.hours, rules: rules)
                 if best.map({ Self.ranks(rec, before: $0) }) ?? true { best = rec }
             }
             if let best, best.finalScore >= minimum { return (day, best) }
@@ -437,6 +445,37 @@ public struct Recommender: Sendable {
             }
             return h
         }
+    }
+
+    /// The hour just before a storm hour (from the whole day's forecast, so a storm right after
+    /// the searched hours counts too) keeps `preStormFactor` of its score, flagged
+    /// "storm nearby". Storm hours themselves are already 0 (`applySafety`).
+    static func applyStormBuffer(_ hours: [HourScore], day: [HourlyWind], rules: ScoringRules) -> [HourScore] {
+        let stormHours = Set(day.filter(\.stormRisk).map(\.localTime))
+        guard !stormHours.isEmpty else { return hours }
+        return hours.map { h in
+            guard !h.wind.stormRisk, let next = Self.nextHour(h.wind.localTime), stormHours.contains(next) else { return h }
+            var h = h
+            h.score *= rules.preStormFactor
+            h.flags.append("storm nearby")
+            return h
+        }
+    }
+
+    /// "2026-08-24T15:00" → "2026-08-24T16:00"; nil at the end of the day.
+    static func nextHour(_ localTime: String) -> String? {
+        let h = Int(localTime.dropFirst(11).prefix(2)) ?? 0
+        guard h < 23 else { return nil }
+        return String(localTime.prefix(11)) + String(format: "%02d", h + 1) + String(localTime.dropFirst(13))
+    }
+
+    /// First storm hour from the start of the rider's session (best window, else the scored
+    /// hours) to the later of the searched hours' end and `stormAlertHoursAfter` past the session.
+    static func stormStart(_ rec: SpotRecommendation, day: [HourlyWind], searched: ClosedRange<Int>,
+                           rules: ScoringRules) -> Int? {
+        guard let session = rec.window ?? rec.scoredHours else { return nil }
+        let last = max(searched.upperBound, session.end - 1 + rules.stormAlertHoursAfter)
+        return day.first { $0.stormRisk && $0.hour >= session.start && $0.hour <= last }?.hour
     }
 
     /// Tide state per hour from the day's sea levels: 0 = low water, 1 = high water. nil when
