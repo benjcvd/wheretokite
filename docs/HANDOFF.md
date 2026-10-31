@@ -132,3 +132,7 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
   official stations, the beach grid cell beats the offshore one for every model, and a mean of
   AROME, ICON and ECMWF beats "best match". Ben decides whether the app switches. Tricky: the
   stations are on land, so the absolute bias is not the water's.
+
+## Product: Barcelona scoring check (2026-10-31)
+
+WHE-64 is in review with [the report](docs/SCORING_CHECK_BCN.md#findings-worst-first). No rule changed. The ranking is sensible on Llevant, Mestral and the Empordà thermal, but four things would embarrass us with Barcelona testers: a top pick ending an hour before a thunderstorm, a "gusty" flag that fires on almost every hour (the forecast's gusts average 1.77× the mean, the rule expects 1.4×) and halves every score, side-offshore spots still listed, and marginal spots showing the wrong reason. Each fix waits on Ben's pick and becomes its own card with a before/after.
