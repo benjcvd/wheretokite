@@ -120,3 +120,23 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
 - `xcodegen` drops `DEVELOPMENT_TEAM` (happened again tonight): re-add it after every regen.
 - Next for v1: Ben finishes the screenshots, Spanish/French store pages (WHE-49), Windguru
   check (WHE-51), then the first TestFlight build (WHE-10).
+
+## Lead, 31 Oct: Spain/France reliability task force
+Ben's top priority: forecasts and spots in Spain and France must be reliable before he shares
+the app with riders in Barcelona (testers' build = card WHE-70). Ben asked to **finish the work
+in progress before starting anything new**; WHE-75 (side-offshore) and the session-length card
+wait in the backlog on purpose.
+- **Forecast setup.** Lead recommended WHE-61 option 1 (AROME + ICON on the beach cell, ECMWF on
+  its sea cell): land stations read ~15 % below open water, so setups that "win" by matching them
+  under-read; ECMWF's nearest cell is 11–17 km inland; averaging smooths strong-wind peaks.
+  Forecast accuracy built it (unmerged). Ben wants proof first: WHE-72 tests 5 setups on the main
+  ES/FR spots against masts at the water's edge (buoys = level check only) and where to read the
+  forecast (pin / 500 m / 1 km / sea cell). Its result settles WHE-61. Don't merge before.
+- **Scoring (WHE-64, Ben's calls):** gusts soften by rider level *and* session intensity
+  (WHE-73); storms: hours with a storm stay 0, add a "Storm from 4 pm" alert instead of a heavy
+  penalty (WHE-74); side-offshore for advanced riders only, profile setting, pure offshore always 0
+  except lagoon-type spots (WHE-75, backlog); ask the session length instead of a fixed 2 h
+  (backlog). Sant Pere Tramontana question (finding 6) still open for Ben.
+- Spain 96 spots, France 141. Verified-pass cards per region: WHE-65/66 running, Languedoc,
+  south-east Spain, French Atlantic in backlog.
+- Gotcha: Meteocat's open feed has a hole 26 Oct 18 UTC → 30 Oct (no 28 Oct check possible).
