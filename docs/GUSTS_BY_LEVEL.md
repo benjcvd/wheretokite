@@ -23,7 +23,7 @@ The forecast blend gives gusts at **1.75× the mean wind on a typical hour** (ha
 
 ## Before / after on the WHE-64 days
 
-Afternoon, 3 h drive from Barcelona, 75 kg, 9 and 12 m kites, straight-line drive times. Top three spots and their scores.
+Afternoon, 3 h drive from Barcelona, 75 kg, 9 and 12 m kites, straight-line drive times. Top three spots and their scores. Old and new run back to back on each day (archived forecasts vary a little run to run).
 
 ### Beginner, chill
 
@@ -73,5 +73,5 @@ Afternoon, 3 h drive from Barcelona, 75 kg, 9 and 12 m kites, straight-line driv
 ## What to watch
 
 - **Scores bunch near 100 on good days** for intermediates (four spots at 100 on 23 Apr). Gusts were the only thing holding scores down; now ties are broken by drive time and confidence. Fine for picking a spot, but the number says less.
-- **24 Aug stays unsafe**: Saint-Cyprien is now 92 for a window that ends an hour before a thunderstorm. That's WHE-74 (storm warning), next on my list.
+- **24 Aug stays unsafe**: Saint-Cyprien is now 92 for a window that ends an hour before a thunderstorm. WHE-74 (storm warning, on its own branch) handles it; this change does not.
 - The gust ratio is the forecast's, not the station's: if Forecast accuracy changes the blend or calibrates gusts, these tolerances need a second look.
