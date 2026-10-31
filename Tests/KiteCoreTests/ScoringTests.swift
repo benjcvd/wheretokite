@@ -50,11 +50,61 @@ final class ScoringTests: XCTestCase {
     }
 
     func testGustinessPenalisedMoreForChill() {
-        let gusty = hour(16, gust: 26, from: 210)
+        let gusty = hour(16, gust: 31, from: 210)   // gusts 1.94× the mean
         let chill = Scorer(profile: rider, intensity: 0).score(gusty, seaFacingDeg: facing)
         let intense = Scorer(profile: rider, intensity: 1).score(gusty, seaFacingDeg: facing)
         XCTAssertTrue(chill.flags.contains("gusty"))
         XCTAssertLessThan(chill.score, intense.score)
+    }
+
+    // WHE-73: forecast gusts are normally ~1.75× the mean; that alone isn't "gusty".
+    func testTypicalForecastGustsAreNotGustyForIntermediates() {
+        let garbi = hour(13, gust: 23, from: 210)   // 28 Jul Castelldefels, 1.77×
+        let h = Scorer(profile: rider, intensity: nil).score(garbi, seaFacingDeg: facing)
+        XCTAssertFalse(h.flags.contains("gusty"))
+        XCTAssertEqual(h.steadinessFactor, 1)
+        XCTAssertGreaterThan(h.score, 0.8)
+    }
+
+    func testGustsWeighLessForAdvancedAndIntense() {
+        let gusty = hour(15, gust: 29, from: 210)   // 1.93×
+        func steady(_ level: Level, _ i: Double?) -> Double {
+            var p = rider; p.level = level
+            return Scorer(profile: p, intensity: i).score(gusty, seaFacingDeg: facing).steadinessFactor ?? 0
+        }
+        XCTAssertLessThan(steady(.beginner, 0), steady(.intermediate, 0))
+        XCTAssertLessThan(steady(.intermediate, 0), steady(.intermediate, 1))
+        XCTAssertLessThan(steady(.intermediate, nil), steady(.advanced, nil))
+        XCTAssertLessThanOrEqual(steady(.advanced, 0), steady(.advanced, 1))
+        XCTAssertEqual(steady(.advanced, 1), 1)
+    }
+
+    func testBeginnersStayStrictOnGusts() {
+        var b = rider; b.level = .beginner
+        let s = Scorer(profile: b, intensity: 1)
+        // Gust limit doesn't move with intensity for beginners.
+        XCTAssertEqual(ScoringRules().limits(.beginner, intensity: 0).gust, ScoringRules().limits(.beginner, intensity: 1).gust)
+        XCTAssertTrue(s.score(hour(15, gust: 26, from: 210), seaFacingDeg: facing).flags.contains("too strong for level"))
+        // Typical 1.75× gusts still cost a chill beginner something.
+        let typical = Scorer(profile: b, intensity: 0).score(hour(12, gust: 21, from: 210), seaFacingDeg: facing)
+        XCTAssertTrue(typical.flags.contains("gusty"))
+        XCTAssertLessThan(typical.steadinessFactor ?? 1, 0.7)
+    }
+
+    func testGustLimitSoftensWithIntensityButMeanLimitDoesNot() {
+        let r = ScoringRules()
+        XCTAssertEqual(r.limits(.intermediate, intensity: 0).gust, 34)
+        XCTAssertGreaterThan(r.limits(.intermediate, intensity: 1).gust, r.limits(.intermediate, intensity: 0).gust)
+        XCTAssertGreaterThan(r.limits(.advanced, intensity: 1).gust, r.limits(.advanced, intensity: 0).gust)
+        for level in [Level.beginner, .intermediate, .advanced] {
+            XCTAssertEqual(r.limits(level, intensity: 0).wind, r.limits(level, intensity: 1).wind)
+        }
+        // 8 Oct Ebro delta: 21 kn Mestral gusting 36 rides for an intense intermediate, not a chill one.
+        let mestral = hour(21, gust: 36, from: 210)
+        XCTAssertTrue(Scorer(profile: rider, intensity: 0).score(mestral, seaFacingDeg: facing).flags.contains("too strong for level"))
+        XCTAssertGreaterThan(Scorer(profile: rider, intensity: 1).score(mestral, seaFacingDeg: facing).score, 0)
+        // Mean wind above the level's limit stays 0 whatever the intensity.
+        XCTAssertEqual(Scorer(profile: rider, intensity: 1).score(hour(29, gust: 32, from: 210), seaFacingDeg: facing).score, 0)
     }
 
     func testAngleDiffWrapsAround() {
