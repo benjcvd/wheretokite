@@ -3,6 +3,28 @@
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
 
+## Built: option 1 (WHE-61, 31 Oct, waiting for Ben's yes)
+
+The Lead picked option 1 below; it's now what the app reads on branch `atlas/forecast-accuracy`
+(commit 6e9894c), not on `main` yet.
+
+- **What riders see**: AROME 1.3 and ICON read on the beach cell, ECMWF on its nearest sea
+  cell, then averaged. On light or onshore days the level is close to today's; where ECMWF's
+  beach cell sat inland, the new setup no longer drags the wind down.
+- **Live check, Salou, 1 Nov 14:00** (forecast, not yet measured): AROME 12.4, ICON 10.2,
+  ECMWF sea cell 15.0 → app shows **12.5 kn** (matches the hand-computed mean). ECMWF's beach
+  cell is ~19 km inland and reads 3.2 kn: the WHE-58 build would have shown 8.6 kn, "too light".
+- **Cost**: two Open-Meteo requests per batch instead of one (one per cell), so about twice
+  the calls per uncached spot. The Worker keys its cache on the full query: no server change,
+  but its old cache entries won't be reused.
+- **Still open**: the confidence badge compares its 4 models on the beach cell, ECMWF
+  included, so an inland ECMWF can make it look less sure than it is (new card). Revisit the
+  whole choice once wind on the water (WHE-62) and the Barcelona replay (WHE-63) are in.
+- **Against it**: on 30 Oct (one light day) option 1 read 3–5 kn high (see
+  [Recent days on the Costa Brava](docs/MODEL_BACKTEST.md#recent-days-on-the-costa-brava-whe-60-31-oct-two-light-days)).
+  One day proves nothing either way, but if the replay shows false go days on light
+  afternoons, that's the weak spot to look at.
+
 ## Second look (WHE-61, 27 Oct): the new setup reads too low
 
 Forecast accuracy re-ran the comparison the way riders use the app: the level as shown (no

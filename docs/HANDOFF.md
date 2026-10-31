@@ -145,3 +145,10 @@ feed has a network-wide hole from 26 Oct evening to 30 Oct. Checked 26 and 30 Oc
 the day-ahead forecast archive: two light days, a tie between setups; the old offshore cell
 called a false go at Sant Pere on 30 Oct, and the WHE-61 pick read a few knots high that day.
 Windy-day evidence still has to come from the buoys card (WHE-62).
+
+**Forecast accuracy, 31 Oct (later).** Option 1 is built (WHE-61, commit 6e9894c on the
+forecast branch): AROME and ICON on the beach cell, ECMWF on its sea cell, two Open-Meteo
+requests per batch merged before the blend, forecast cache key v4. Verified live at Salou
+(app value = hand mean). Not on main until Ben says yes. Tricky: the confidence badge still
+reads ECMWF on the beach cell; and a failed request for either cell fails the whole batch on
+purpose, so the app never shows a blend missing a member.
