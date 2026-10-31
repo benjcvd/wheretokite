@@ -160,8 +160,18 @@ second pass with web research is worth doing.
   south). Schools sit at Can Martinet / Camping La Gaviota. One guide says the paid zone no longer exists. Where does the
   authorised zone sit today? Pin is within the same beach, wind is the same at this scale: I would leave it.
 - Le Barcarès Les 3 Colonnes: pin on the beach element, 680 m from an old community GPS (7 years). Same beach, left as is.
-- Not checked yet: Sant Martí d'Empúries, L'Escala, Pals, Ebro delta (Riumar, Eucaliptus, Trabucador), Leucate Le Goulet,
-  Parc des Dosses.
+- Second pass (2026-10-31, OSM reverse lookups + OSM API; Overpass still down): Sant Martí d'Empúries, L'Escala, Pals,
+  Riumar, L'Ampolla, Punta del Fangar and Parc des Dosses all sit on the beach or promenade, 14-80 m from the water,
+  directions match. Left as is.
+- Platja dels Eucaliptus: was a mapper's point 270 m inland (campsite); now on the beach sand area `osm:r14500385`,
+  90 m from the water, same direction (151°).
+- Leucate Le Goulet: pin is the spot's camper-van car park, about 200 m from the lagoon. No beach or kite feature is
+  mapped on that shore, so nothing better to point at; the forecast grid is kilometres wide, so it reads the same wind.
+- **El Trabucador, question for you**: our pin is mid-bar (la Ràpita side), about 4 km south of where the schools say
+  they teach ("start of the beach, next to Eucaliptus":
+  https://www.kitesurfdeltakitesup.es/playa-del-trabucador/, https://terresdelebre.travel/es/actividades-que-hacer/turismo-activo/kitesurf/kitesurf-trabucador).
+  No official zone map found. Do riders actually use the whole bar? Options: (a) leave it, Trabucador = mid-bar for
+  experienced riders, Eucaliptus = the root and schools (recommended); (b) merge the two into one spot at the root.
 - Windy check (browser, as a visitor, 2026-10-27): kite markers sit on the same beach as our Sant Pere pin and in a
   second cluster about 1.5 km south (Can Martinet side). It shows no zone boundaries, so the official zone is still
   unconfirmed; pin left as is.

@@ -4,7 +4,7 @@ country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 ES,Catalunya,Sant Pere Pescador,sea,osm:w110579310,E,"Authorised summer kite zone (beginner and advanced sectors); tramuntana and summer thermal. Also: Empuriabrava – La Rubina (5 km north, easterlies).",,,,
 ES,Catalunya,Castelldefels,sea,osm:w1084529243,S,Authorised summer kite zone (online registration required).,,,,
 ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,NE,"Authorised summer kite zone; best in mestral (NW, cross-shore), summer southerlies are offshore.",,,,
-ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,q:Platja dels Eucaliptus,SE,Shallow water at the root of the Trabucador; beginner-friendly.,,,,
+ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,osm:r14500385,SE,Shallow water at the root of the Trabucador; beginner-friendly.,,,,
 ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W:bay side|E:sea side,Authorised summer kite zone; flat water on the Badia dels Alfacs (west) side.,,,,
 # Comunitat Valenciana: summer kiting only in the few buoyed channels / zones.
 ES,Comunitat Valenciana,Valencia – El Perellonet,sea,osm:w168406914,E,"Municipal buoyed kite zone south of the Perellonet river mouth, open year-round; Kitezone club. Also: Sueca – Mareny de Barraquetes (summer channel for club members, free off-season).",,,,
