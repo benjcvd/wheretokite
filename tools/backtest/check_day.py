@@ -37,6 +37,9 @@ def main():
             cache[st] = xema(st, day, day)
         obs, height = cache[st]
         o = [to_10m(obs[f"{day}T{h:02d}"][0], height) if f"{day}T{h:02d}" in obs else None for h in HOURS]
+        if all(v is None for v in o):
+            print(f"\n### {s['name']}: no station data at {st} for {day} (check_recent.py rebuilds other days)")
+            continue
         print(f"\n### {s['name']} (station {st}, {height} m → 10 m)\n")
         print("| Setup | " + " | ".join(f"{h} UTC" for h in HOURS) + " | Best 2 h | Mean error |")
         print("|---" * (len(HOURS) + 3) + "|")

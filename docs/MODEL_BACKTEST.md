@@ -94,6 +94,45 @@ station's shelter than about the models.
 4. Go back to today's setup until buoys are in. Safest for "don't miss a day", over-reads at
    sheltered spots.
 
+## Recent days on the Costa Brava (WHE-60, 31 Oct): two light days
+
+The plan was to check 28 Oct (the day Pals dropped from 14 to 7–8 kn) against the stations.
+**That day can't be checked yet:** Meteocat's open feed has no data at any station from
+26 Oct 18 UTC to 30 Oct (hourly and daily datasets both). The saved forecast
+(`tools/backtest/snapshot_2026-10-28.json`) is kept in case Meteocat fills the gap.
+
+Instead: the two days after the backtest window that do have data, 26 and 30 Oct, rebuilt from
+Open-Meteo's archive of forecasts made the day before. Afternoon 11–17 UTC, best 2 h, kn,
+measured wind at 10 m masts.
+
+| Day, spot (station) | Wind measured | Gusts, max | Old | New (3 models, beach) | **Option 1** (ECMWF sea) | AROME + ICON beach |
+|---|---|---|---|---|---|---|
+| 26 Oct, Sant Pere (U2, 1.3 km) | 5, east, onshore | 8 | 7 | 4 | 5 | 5 |
+| 26 Oct, Palamós (Palafrugell, 6 km inland) | 11, south-southwest | 16 | 8 | 8 | 10 | 9 |
+| 26 Oct, Pals (Palafrugell, 10 km) | 11 | 16 | 8 | 6 | 7 | 7 |
+| 30 Oct, Sant Pere (U2) | 5, east-southeast, onshore | 9 | **13** | 8 | 10 | 9 |
+| 30 Oct, Palamós (Palafrugell) | 5, northeast | 10 | 11 | 7 | 9 | 8 |
+| 30 Oct, Pals (Palafrugell) | 5 | 10 | 11 | 8 | 9 | 9 |
+
+In plain words:
+
+- **30 Oct was a dead day, and the old setup called it a go at Sant Pere** (13 kn a day ahead,
+  13 kn two days ahead; measured 5 kn, gusts never above 9 kn). The wind was onshore, so the
+  land mast is a fair witness here. No new setup crossed 12 kn. One false alarm avoided.
+- **On 30 Oct the new setup was closest, and Option 1 (my pick on WHE-61) read 3–5 kn high.**
+  That's a point against my own pick. One day, though: the backtest above says the opposite
+  on go days, and this was not a go day.
+- **26 Oct: everyone under-read the south-southwest wind at Palafrugell** (11 kn, gusts 16).
+  Option 1 was closest at Palamós (10). The new setup read 6 at Pals, against 11 at a station
+  10 km inland: the same "too low at Pals" pattern as the backtest.
+- **Verdict: a tie.** Four independent station-days (two stations × two days), both light. This
+  neither confirms nor overturns the backtest, and it says nothing about windy days.
+
+What could make this wrong: Palafrugell is inland and 35 m up, so it judges Pals and Palamós
+loosely; the archive's "day before" forecast is the run from about 24 h earlier, close to but
+not exactly what the app showed. Full hour-by-hour tables, also 2 days ahead:
+`python3 tools/backtest/check_recent.py 2026-10-26 2026-10-30`.
+
 ## First recommendation (WHE-58, 27 Oct: under review, see above)
 
 1. **Use the nearest grid cell (the beach), not the offshore one** (recommended). Every model
