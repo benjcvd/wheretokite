@@ -46,7 +46,9 @@ work, or one where kiting is illegal: accuracy beats volume.
   describe the ban in `notes`.
 - Windy, Windguru, Windfinder, Kite Croissant: only through a real browser (Claude in Chrome),
   like a visitor, to learn that a spot exists. Never WebFetch their pages, never call their
-  APIs, never copy their positions or lists.
+  APIs, never copy their positions or lists. Don't use their maps to confirm a pin
+  either: positions are checked against OSM, official kite-zone maps (town hall, port
+  authority, beach plans) and school pages only.
 - Archive (`tier` archived + a `# archived:` reason), never delete. Don't rename without a
   reason: the id changes.
 - Kite judgement calls (is it famous, level, which directions work, hazards) belong to Ben:
