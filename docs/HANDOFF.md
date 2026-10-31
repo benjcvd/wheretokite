@@ -136,3 +136,7 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
 ## Product: Barcelona scoring check (2026-10-31)
 
 WHE-64 is in review with [the report](docs/SCORING_CHECK_BCN.md#findings-worst-first). No rule changed. The ranking is sensible on Llevant, Mestral and the Empordà thermal, but four things would embarrass us with Barcelona testers: a top pick ending an hour before a thunderstorm, a "gusty" flag that fires on almost every hour (the forecast's gusts average 1.77× the mean, the rule expects 1.4×) and halves every score, side-offshore spots still listed, and marginal spots showing the wrong reason. Each fix waits on Ben's pick and becomes its own card with a before/after.
+
+## Product: storm alert (2026-10-31, WHE-74)
+
+Ben chose not to penalise storms ahead much: the spot now says "Storm from 4:00 PM" (card, top card, spot page) when a storm starts during the session, the rest of the slot or within 2 h after the window, and only the hour just before a storm is docked (×0.8). Storm hours still score 0. Rules in `ScoringRules.stormAlertHoursAfter` / `preStormFactor`. In review: Ben to OK the 80 % and the wording. Not handled: a storm just *before* the window.
