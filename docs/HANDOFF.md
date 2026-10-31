@@ -139,3 +139,9 @@ mostly from matching land stations that read low. Recommended to Ben: AROME and 
 cell, ECMWF on its sea cell. Waiting for his pick before any app change; WHE-58 stays unmerged.
 Torroella de Montgrí has no wind sensor, so Pals has no close station. Wind measured on the water
 (buoys) is the missing piece.
+
+**Forecast accuracy, 31 Oct.** The 28 Oct station check (WHE-60) couldn't run: Meteocat's open
+feed has a network-wide hole from 26 Oct evening to 30 Oct. Checked 26 and 30 Oct instead from
+the day-ahead forecast archive: two light days, a tie between setups; the old offshore cell
+called a false go at Sant Pere on 30 Oct, and the WHE-61 pick read a few knots high that day.
+Windy-day evidence still has to come from the buoys card (WHE-62).
