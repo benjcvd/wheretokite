@@ -14,6 +14,12 @@ public struct ScoringRules: Sendable {
     /// When the weather models disagree at a spot, it loses up to this fraction of its score:
     /// nothing while they agree within ±2 kn and 30°, all of it from ±6 kn or 60°.
     public var maxDisagreementPenalty = 0.15
+    /// A storm starting up to this many hours after the best window ends (or later in the
+    /// searched hours) is announced on the spot: "Storm from 4 pm".
+    public var stormAlertHoursAfter = 2
+    /// The hour just before a storm hour keeps this share of its score: outflow gusts and
+    /// cells arriving early. Light on purpose (Ben, 31 Oct): the alert does the warning.
+    public var preStormFactor = 0.8
 
     public init() {}
 

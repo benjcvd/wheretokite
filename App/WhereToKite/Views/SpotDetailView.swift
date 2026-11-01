@@ -19,6 +19,23 @@ struct SpotDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 hero
+                if let storm = rec.stormLabel {
+                    Label {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(storm).font(.subheadline.weight(.bold))
+                            Text("Plan to be off the water before it. Storm cells can arrive early, with strong gusts ahead of them.")
+                                .font(.footnote)
+                        }
+                    } icon: {
+                        Image(systemName: "cloud.bolt.fill").font(.title3)
+                    }
+                    .foregroundStyle(.red)
+                    .padding(14)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color.red.opacity(0.1), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .accessibilityElement(children: .combine)
+                    .accessibilityIdentifier("stormAlertDetail")
+                }
                 facts
                 if let confidence = rec.confidence {
                     ConfidenceBanner(confidence: confidence)

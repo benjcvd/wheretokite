@@ -5949,6 +5949,56 @@
           }
         }
       }
+    },
+    "Storm from %@" : {
+      "comment" : "A thunderstorm is forecast from that hour",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tormenta desde las %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orage à partir de %@"
+          }
+        }
+      }
+    },
+    "storm next hour" : {
+      "comment" : "A thunderstorm is forecast the following hour",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tormenta la hora siguiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "orage l'heure suivante"
+          }
+        }
+      }
+    },
+    "Plan to be off the water before it. Storm cells can arrive early, with strong gusts ahead of them." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sal del agua antes. Las tormentas pueden llegar antes de lo previsto, con rachas fuertes por delante."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévois d'être sorti de l'eau avant. Les orages peuvent arriver plus tôt, avec de fortes rafales devant eux."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

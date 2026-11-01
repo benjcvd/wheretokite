@@ -146,7 +146,8 @@ for (i, r) in shown.enumerated() {
             + (r.agreementFactor < 1 ? " (−\(Int(((1 - r.agreementFactor) * 100).rounded())) %)" : "")
     } ?? ""
     print(String(format: "%2d. %3d  %@  %@", i + 1, r.finalScore,
-                 name.padding(toLength: 32, withPad: " ", startingAt: 0), r.reason + models))
+                 name.padding(toLength: 32, withPad: " ", startingAt: 0),
+                 r.reason + (r.stormFrom.map { String(format: " · ⚡ storm from %02d:00", $0) } ?? "") + models))
 }
 
 let hourlyCount = Int(args["hourly"] ?? "0") ?? 0

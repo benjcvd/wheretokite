@@ -272,6 +272,15 @@ struct VerdictCard: View {
 
             FlowLayout(spacing: 8) { facts }
 
+            if let storm = rec.stormLabel {
+                Label(storm, systemImage: "cloud.bolt.fill")
+                    .font(.subheadline.weight(.bold))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(.black.opacity(0.25), in: Capsule())
+                    .accessibilityIdentifier("stormAlert")
+            }
+
             if !rec.warnings.isEmpty {
                 Label(rec.warnings.map(Vocab.term).joined(separator: ", "), systemImage: "exclamationmark.triangle.fill")
                     .font(.footnote.weight(.semibold))
@@ -389,6 +398,12 @@ struct SpotCard: View {
                 }
                 .font(.caption)
                 .foregroundStyle(.secondary)
+                if let storm = rec.stormLabel {
+                    Label(storm, systemImage: "cloud.bolt.fill")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.red)
+                        .accessibilityIdentifier("stormAlert")
+                }
                 if !rec.warnings.isEmpty {
                     Label(rec.warnings.map(Vocab.term).joined(separator: ", "), systemImage: "exclamationmark.triangle")
                         .font(.caption)
@@ -547,8 +562,21 @@ extension SpotRecommendation {
         return problem + String(localized: "\(speed) kn (gusts \(Int(gust.rounded()))) \(dir)")
     }
 
+    /// The storm alert has its own line ("Storm from 4 pm"), so its flag isn't repeated.
     var warnings: [String] {
-        Array(Set(windowHours.flatMap(\.flags))).sorted()
+        Array(Set(windowHours.flatMap(\.flags))).filter { stormFrom == nil || $0 != "storm nearby" }.sorted()
+    }
+
+    /// "Storm from 4 pm" (spot time, the phone's hour format) when a thunderstorm is forecast
+    /// during the session or soon after it.
+    var stormLabel: String? {
+        guard let h = stormFrom else { return nil }
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = .gmt
+        guard let date = cal.date(from: DateComponents(year: 2001, month: 1, day: 1, hour: h)) else { return nil }
+        var style = Date.FormatStyle.dateTime.hour().minute()
+        style.timeZone = .gmt
+        return String(localized: "Storm from \(date.formatted(style))", comment: "A thunderstorm is forecast from that hour")
     }
 }
 

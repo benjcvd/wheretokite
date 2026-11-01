@@ -41,6 +41,7 @@ enum Vocab {
         case "heavy rain": String(localized: "heavy rain")
         case "rain": String(localized: "rain")
         case "unstable air": String(localized: "unstable air", comment: "Risk of squalls")
+        case "storm nearby": String(localized: "storm next hour", comment: "A thunderstorm is forecast the following hour")
         case "tide too low": String(localized: "tide too low")
         case "tide too high": String(localized: "tide too high")
         case "no forecast": String(localized: "no forecast")
