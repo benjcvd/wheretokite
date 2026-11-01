@@ -186,3 +186,13 @@ spots, Hyères and Brittany, so WHE-62's near-shore buoy win was today's setup a
 other 24 spots it reads 2–3 kn high on masts and ~1 kn high at open-sea buoys: more go days caught,
 half of them false, worst in Catalonia. The open choice is still today's setup vs option 1.
 Tricky: the previous month's Copernicus buoy file appears late; `buoys.py` falls back to daily files.
+
+**Forecast accuracy, 1 Nov (WHE-81).** "Chance you'll kite" checked against Ben's pass bar (labels
+Go / Probably / Long shot / No, held-out weeks, tomorrow vs 3 days out, per country). The agreement
+rule (4 models' margin above 12 kn and their spread) passes in France at both lead times (Go came true
+86 %, wrong gos 14 % vs 38 % today). Spain fails with every method because the Catalan masts measured
+a go on only 3 % of days (sheltered?); the south looks right but has too few Go days. The ECMWF
+ensemble is never clearly better and costs 7–8x the quota. Tricky: past ensembles come only from
+ECMWF's AWS archive (`tools/backtest/ens_fetch.py --lead 1|3`, about 1–2 h each, S3 throttles,
+resumable; `pip3 install --user eccodes`). Catalonia needs water or rider truth before its labels
+can be trusted.
