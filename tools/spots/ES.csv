@@ -49,7 +49,7 @@ ES,Canarias,Tenerife – El Médano,sea,osm:w28492650,SE,Trade wind May–Oct; s
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — 5 km from Sant Pere Pescador
 ES,Catalunya,Empuriabrava – La Rubina,sea,osm:r2318195,SE,Authorised summer kite zone at the Santa Margarida end (natural park beach); best in easterlies.,,,pro,
-# archived: restricted (club / permit / summer ban) — school-run summer zone, kite pass required
+# basic again since 1aed7f2 (Barcelona-area benchmark): school-run summer zone, kite pass required
 ES,Catalunya,L'Estartit – Gola del Ter,sea,osm:n4409310492,E,Summer kite zone (1 Jun–30 Sep) run by the local school; kite pass / registration required.,,,,
 # pro: local / secondary beach — local club zone
 ES,Catalunya,Malgrat de Mar – La Pomareda,sea,osm:w702224528,SE,Municipal kite zone looked after by Club Kite Malgrat; SW thermal Mar–Sep.,,,pro,
