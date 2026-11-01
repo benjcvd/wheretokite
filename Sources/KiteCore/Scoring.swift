@@ -48,12 +48,54 @@ public struct ScoringRules: Sendable {
         }
     }
 
-    /// Hard safety limits per level: (max mean wind, max gust) in knots.
-    public func limits(_ level: Level) -> (wind: Double, gust: Double) {
-        switch level {
+    /// Hard safety limits: (max mean wind, max gust) in knots. The mean-wind limit is fixed
+    /// per level. The gust limit is fixed for beginners and rises with session intensity for
+    /// intermediate and advanced riders (Ben, 31 Oct 2026): forecast gusts run at 1.6–1.9×
+    /// the mean, so a fixed 34 kn shut intermediates out from about 19 kn of mean wind.
+    /// `intensity`: 0 chill … 1 intense, nil = all types (counts as 0.5).
+    public func limits(_ level: Level, intensity: Double? = nil) -> (wind: Double, gust: Double) {
+        let i = min(1, max(0, intensity ?? 0.5))
+        return switch level {
         case .beginner: (20, 25)
-        case .intermediate: (28, 34)
-        case .advanced: (40, 48)
+        case .intermediate: (28, 34 + 6 * i)
+        case .advanced: (40, 48 + 6 * i)
+        }
+    }
+
+    /// Gust excess ((gust − mean) / mean) tolerated before the steady-wind factor drops.
+    /// Calibrated on the forecast, not on station gusts: across the WHE-64 Barcelona days the
+    /// blend gives gusts at 1.75× the mean on a typical hour (1.5–2.1×), so "gusty" means
+    /// gustier than that. Beginners are strictest, advanced riders and intense sessions most
+    /// lenient. Excess 0.8 = gusts at 1.8× the mean.
+    public func gustTolerance(_ level: Level, intensity: Double?) -> Double {
+        let i = min(1, max(0, intensity ?? 0.5))
+        return switch level {
+        case .beginner: 0.55 + 0.15 * i
+        case .intermediate: 0.7 + 0.2 * i
+        case .advanced: 0.8 + 0.3 * i
+        }
+    }
+
+    /// Steady-wind factor lost per unit of gust excess beyond the tolerance (floor 0.3).
+    public func gustPenaltySlope(_ level: Level) -> Double {
+        switch level {
+        case .beginner: 2
+        case .intermediate: 1.5
+        case .advanced: 1
+        }
+    }
+
+    /// The "gusty" label shows when the steady-wind factor falls below this.
+    public var gustyFlagBelow = 0.9
+
+    /// How far (kn) gusts may exceed the kite's top wind before the hour is "overpowered in
+    /// gusts". Fixed for beginners, wider for advanced riders and intense sessions.
+    public func gustOverpowerMarginKn(_ level: Level, intensity: Double?) -> Double {
+        let i = min(1, max(0, intensity ?? 0.5))
+        return switch level {
+        case .beginner: 5
+        case .intermediate: 5 + 4 * i
+        case .advanced: 8 + 4 * i
         }
     }
 
@@ -162,7 +204,7 @@ public struct Scorer: Sendable {
     /// `angle`: 0 onshore … 180 offshore; nil = beach orientation unknown.
     public func score(_ w: HourlyWind, relativeAngle angle: Double?) -> HourScore {
         var flags: [String] = []
-        let limits = rules.limits(profile.level)
+        let limits = rules.limits(profile.level, intensity: intensity)
         if w.speedKn > limits.wind || w.gustKn > limits.gust {
             return HourScore(wind: w, score: 0, kite: nil, relativeAngle: angle, flags: ["too strong for level"])
         }
@@ -179,14 +221,15 @@ public struct Scorer: Sendable {
                              flags: [tooLight ? "too light" : "too strong for quiver"])
         }
 
-        // 2. Gustiness: chill sessions want steady wind, intense ones tolerate more.
+        // 2. Gustiness: beginners and chill sessions want steady wind; advanced riders and
+        // intense sessions tolerate more (tolerances in ScoringRules).
         let gustFactor = (w.gustKn - w.speedKn) / max(w.speedKn, 1)
-        var tolerance = 0.3 + 0.2 * (intensity ?? 0.5)
-        if profile.level == .beginner { tolerance -= 0.05 }
-        if profile.level == .advanced { tolerance += 0.1 }
-        var gust = gustFactor <= tolerance ? 1 : max(0.3, 1 - (gustFactor - tolerance) * 1.5)
-        if gustFactor > tolerance { flags.append("gusty") }
-        if w.gustKn > kite.maxKn + 5 {
+        let tolerance = rules.gustTolerance(profile.level, intensity: intensity)
+        var gust = gustFactor <= tolerance ? 1
+            : max(0.3, 1 - (gustFactor - tolerance) * rules.gustPenaltySlope(profile.level))
+        // Flag only when it costs something visible, so "gusty" tells a gusty day from a normal one.
+        if gust < rules.gustyFlagBelow { flags.append("gusty") }
+        if w.gustKn > kite.maxKn + rules.gustOverpowerMarginKn(profile.level, intensity: intensity) {
             gust *= profile.level == .beginner ? 0.4 : 0.75
             flags.append("overpowered in gusts")
         }

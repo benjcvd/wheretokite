@@ -140,3 +140,7 @@ WHE-64 is in review with [the report](docs/SCORING_CHECK_BCN.md#findings-worst-f
 ## Product: storm alert (2026-10-31, WHE-74)
 
 Ben chose not to penalise storms ahead much: the spot now says "Storm from 4:00 PM" (card, top card, spot page) when a storm starts during the session, the rest of the slot or within 2 h after the window, and only the hour just before a storm is docked (×0.8). Storm hours still score 0. Rules in `ScoringRules.stormAlertHoursAfter` / `preStormFactor`. In review: Ben to OK the 80 % and the wording. Not handled: a storm just *before* the window.
+
+## Product: gusts by level and intensity (2026-10-31)
+
+WHE-73 is in review with [the before/after](docs/GUSTS_BY_LEVEL.md#before--after-on-the-whe-64-days). Gust tolerance is now judged against the forecast's normal gust ratio (~1.75× the mean) and graded by level and intensity; the gust limit and the "overpowered" margin rise with intensity for intermediate and advanced riders, never for beginners; mean-wind limits are untouched. "Gusty" shows only when it costs ≥10 %. Side effect to keep in mind: good days now bunch near 100 for intermediates, so the score separates spots less. If Forecast accuracy changes the blend or calibrates gusts, revisit the tolerances in `ScoringRules`.
