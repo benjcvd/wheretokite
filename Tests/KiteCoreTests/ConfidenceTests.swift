@@ -4,6 +4,8 @@ import XCTest
 /// Confidence fake: the models' speed spread per spot from a closure; records each call.
 final class FakeConfidence: ConfidenceProvider, @unchecked Sendable {
     let spread: @Sendable (Coordinate) -> Double
+    /// Each model's wind (kn) all day at a spot, from the south (onshore for the test spots).
+    var modelSpeeds: @Sendable (Coordinate) -> [Double] = { _ in [16, 16, 16, 16] }
     var fails = false
     private let lock = NSLock()
     private var _calls: [[ConfidenceQuery]] = []
@@ -14,9 +16,13 @@ final class FakeConfidence: ConfidenceProvider, @unchecked Sendable {
     func estimates(for queries: [ConfidenceQuery], day: String, today: String) async throws -> [ForecastConfidence] {
         lock.withLock { _calls.append(queries) }
         if fails { throw ForecastError.badResponse("down") }
-        return queries.map {
-            ForecastConfidence(score: 0, rating: .medium, leadDays: 1, speedSpreadKn: spread($0.coordinate),
-                               directionSpreadDeg: nil, modelsCompared: ["a", "b"])
+        return queries.map { q in
+            let speeds = modelSpeeds(q.coordinate)
+            let hours = Dictionary(uniqueKeysWithValues: speeds.enumerated().map { i, kn in
+                ("m\(i)", (0..<24).map { ModelWind(hour: $0, speedKn: kn, directionDeg: 170) })
+            })
+            return ForecastConfidence(score: 0, rating: .medium, leadDays: 1, speedSpreadKn: spread(q.coordinate),
+                                      directionSpreadDeg: nil, modelsCompared: ["a", "b"], modelHours: hours)
         }
     }
 }
@@ -73,12 +79,13 @@ final class ConfidenceTests: XCTestCase {
         XCTAssertTrue(c.modelsCompared.isEmpty)
     }
 
-    func testAgreementFactor() {
-        let r = ScoringRules()
-        XCTAssertEqual(r.agreementFactor(speedSpreadKn: 1.5, directionSpreadDeg: 20), 1)
-        XCTAssertEqual(r.agreementFactor(speedSpreadKn: 4, directionSpreadDeg: nil), 0.925, accuracy: 1e-9)
-        XCTAssertEqual(r.agreementFactor(speedSpreadKn: 9, directionSpreadDeg: nil), 0.85, accuracy: 1e-9)
-        XCTAssertEqual(r.agreementFactor(speedSpreadKn: 1, directionSpreadDeg: 90), 0.85, accuracy: 1e-9)
+    func testModelHoursKeepEachModelsDay() {
+        var h = hourly(15, 16)
+        h["wind_speed_10m_m2"]![3] = nil
+        let c = ConfidenceEstimator.confidence(hourly: h, models: models, hours: 14...17, leadDays: 1)
+        XCTAssertEqual(c.modelHours["m1"]?.count, 24)
+        XCTAssertEqual(c.modelHours["m2"]?.count, 23)
+        XCTAssertEqual(c.modelHours["m1"]?[10], ModelWind(hour: 10, speedKn: 15, directionDeg: 200))
     }
 
     /// Several spots in one POST; Open-Meteo answers an array, one entry per spot in order.
@@ -127,20 +134,66 @@ final class ConfidenceTests: XCTestCase {
                        Set(result.recommendations.prefix(r.confidenceTop).map(\.spot.longitude)))
         XCTAssertNotNil(result.confidence)
         XCTAssertNil(result.recommendations[r.confidenceTop].confidence)
-        XCTAssertEqual(result.recommendations[0].agreementFactor, 1)
+        XCTAssertEqual(result.recommendations[0].verdict, .go)
     }
 
-    func testSpotWhereModelsDisagreeDropsBelowAnEqualOne() async throws {
+    func testNoSpotIsCappedBelowAGoAndRanksUnder() async throws {
         let all = spots(2)
-        let shaky = all[0].longitude
-        let conf = FakeConfidence { $0.longitude == shaky ? 6 : 1 }
+        let calm = all[0].longitude
+        let conf = FakeConfidence { _ in 1 }
+        // The scoring blend says 16 kn at both; at s0000 the four models say 6–9 kn.
+        conf.modelSpeeds = { $0.longitude == calm ? [6, 7, 8, 9] : [16, 17, 15, 16] }
         let r = Recommender(spots: all, forecast: FakeForecast { _ in 16 }, driveTime: StraightLineDriveTime(),
                             confidence: conf)
         let result = try await r.search(request, profile: rider, today: "2026-10-01")
         XCTAssertEqual(result.recommendations.map(\.spot.id), ["s0001", "s0000"])
-        let last = result.recommendations[1]
-        XCTAssertEqual(last.agreementFactor, 0.85, accuracy: 1e-9)
-        XCTAssertEqual(last.finalScore, Int((Double(result.recommendations[0].finalScore) * 0.85).rounded()))
+        let go = result.recommendations[0], no = result.recommendations[1]
+        XCTAssertEqual(go.verdict, .go)
+        XCTAssertNil(go.scoreBeforeChance)
+        XCTAssertEqual(no.verdict, .no)
+        XCTAssertEqual(no.finalScore, r.rules.noMaxScore)
+        XCTAssertEqual(no.scoreBeforeChance, go.finalScore)
+    }
+
+    /// A spot pushed up into the top by the caps gets its own check in the next round.
+    func testPromotedSpotsAreCheckedToo() async throws {
+        let conf = FakeConfidence { _ in 1 }
+        conf.modelSpeeds = { _ in [5, 5, 6, 6] }   // every spot: No
+        let r = Recommender(spots: spots(40), forecast: FakeForecast { _ in 16 }, driveTime: StraightLineDriveTime(),
+                            confidence: conf)
+        let result = try await r.search(request, profile: rider, today: "2026-10-01")
+        XCTAssertEqual(conf.calls.count, r.chanceRounds)
+        XCTAssertEqual(result.recommendations.filter { $0.chance != nil }.count, r.confidenceTop * r.chanceRounds)
+        // Unchecked spots keep their grade and sit on top: 3 rounds of 10 can't cover 40 spots.
+        XCTAssertNil(result.recommendations[0].chance)
+    }
+
+    func testChanceFollowsTheMarginAboveMinWind() {
+        let scorer = Scorer(profile: rider, intensity: nil)
+        let side = [SpotSide(name: nil, seaFacingDeg: 165, waterSectorDeg: nil)]
+        func chance(_ speeds: [Double], dir: Double = 170, lead: Int = 1) -> KiteChance? {
+            let m = Dictionary(uniqueKeysWithValues: speeds.enumerated().map { i, kn in
+                ("m\(i)", (10..<18).map { ModelWind(hour: $0, speedKn: kn, directionDeg: dir) })
+            })
+            return scorer.kiteChance(models: m, sides: side, hours: Set(10..<18), leadDays: lead)
+        }
+        let minWind = scorer.kiteRanges.map(\.minKn).min()!    // 11 kn for 75 kg on a 12
+        XCTAssertEqual(chance([18, 18, 18, 18])?.verdict, .go)
+        XCTAssertEqual(chance([minWind, minWind, minWind, minWind])?.verdict, .notSure)   // just under 50 %
+        XCTAssertEqual(chance([8, 8, 8, 8])?.verdict, .no)
+        // Same mean, models far apart: less sure.
+        XCTAssertLessThan(chance([8, 22, 10, 20])!.chance, chance([15, 15, 15, 15])!.chance)
+        // Offshore wind is no wind for the rider.
+        XCTAssertEqual(chance([20, 20, 20, 20], dir: 345)?.verdict, .no)
+        // One model only: nothing to go on.
+        XCTAssertNil(chance([18]))
+        // Further out, the same forecast is less sure.
+        XCTAssertGreaterThan(chance([14, 14, 14, 14], lead: 0)!.chance, chance([14, 14, 14, 14], lead: 4)!.chance)
+    }
+
+    func testPhi() {
+        XCTAssertEqual(Scorer.phi(0), 0.5, accuracy: 1e-9)
+        XCTAssertEqual(Scorer.phi(1.96), 0.975, accuracy: 1e-3)
     }
 
     func testFailedCheckChangesNothing() async throws {

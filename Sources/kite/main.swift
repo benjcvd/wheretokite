@@ -140,12 +140,11 @@ let shown = result.recommendations.filter { flags.contains("all") || $0.finalSco
 if shown.isEmpty { print("No kiteable spot found. Use --all to see why each spot fails.") }
 for (i, r) in shown.enumerated() {
     let name = r.spot.name.count > 32 ? String(r.spot.name.prefix(31)) + "…" : r.spot.name
-    let models = r.confidence.map { c in
-        " · models: \(c.rating.rawValue.lowercased()) ±\(Int(c.speedSpreadKn.rounded())) kn"
-            + (c.directionSpreadDeg.map { " ±\(Int($0.rounded()))°" } ?? "")
-            + (r.agreementFactor < 1 ? " (−\(Int(((1 - r.agreementFactor) * 100).rounded())) %)" : "")
+    let models = r.chance.map { c in
+        " · \(c.summary)" + (r.scoreBeforeChance.map { " (grade \($0) → \(r.finalScore))" } ?? "")
     } ?? ""
-    print(String(format: "%2d. %3d  %@  %@", i + 1, r.finalScore,
+    print(String(format: "%2d. %3d %@ %@  %@", i + 1, r.finalScore,
+                 (r.verdict?.rawValue ?? "").padding(toLength: 8, withPad: " ", startingAt: 0),
                  name.padding(toLength: 32, withPad: " ", startingAt: 0),
                  r.reason + (r.stormFrom.map { String(format: " · ⚡ storm from %02d:00", $0) } ?? "") + models))
 }

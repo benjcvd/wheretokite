@@ -28,8 +28,14 @@ public struct SpotRecommendation: Sendable, Identifiable {
     /// How much the weather models agree here, for the top-ranked spots (nil for the others,
     /// or when the check failed).
     public var confidence: ForecastConfidence? = nil
-    /// Share of the score kept after the models-disagree penalty (1 = none).
-    public var agreementFactor: Double = 1
+    /// How likely the spot is kiteable for this rider, with its Go / Not sure / No verdict
+    /// (top-ranked spots only, nil when the models couldn't be compared).
+    public var chance: KiteChance? = nil
+    /// The ranking score before a "Not sure" / "No" verdict capped it (nil = not capped).
+    public var scoreBeforeChance: Int? = nil
+    /// The verdict to show: the models' verdict, or "No" when the spot scores 0 (no usable
+    /// wind, safety). nil when there is nothing to go on.
+    public var verdict: KiteVerdict? { finalScore == 0 ? .no : chance?.verdict }
     /// Local hour (spot time) a thunderstorm is forecast to start, when it comes during the
     /// session or soon after it (`ScoringRules.stormAlertHoursAfter`): "Storm from 4 pm".
     public var stormFrom: Int? = nil
@@ -90,8 +96,10 @@ public struct SearchResult: Sendable {
 ///    top `verifyTop`, within `maxETARequests` per search (MapKit throttles ~50/min).
 /// 5. Spots never verified keep the estimate (`driveIsEstimate`) and are dropped if it
 ///    exceeds the max drive.
-/// 6. Confidence: the weather models are compared at the top `confidenceTop` spots (one
-///    request); where they disagree a spot loses a little score, and the list is re-ranked.
+/// 6. Chance to kite: the weather models are compared at the top `confidenceTop` spots (one
+///    request): each gets Go / Not sure / No, a "Not sure" or "No" caps its grade, and the list
+///    is re-ranked. Spots that move up into the top are checked in a further round
+///    (`chanceRounds` at most).
 public struct Recommender: Sendable {
     public var spots: [Spot]
     public var forecast: ForecastProvider
@@ -122,6 +130,8 @@ public struct Recommender: Sendable {
     /// Spots whose models are compared (step 6), best first. One request whatever the number,
     /// but each location counts against the Open-Meteo quota (with 4 models, more than once).
     public var confidenceTop = 10
+    /// Requests at most for step 6 (spots promoted by a cap get checked in the next round).
+    public var chanceRounds = 3
 
     public init(spots: [Spot], forecast: ForecastProvider, driveTime: DriveTimeProvider,
                 confidence: ConfidenceProvider? = ConfidenceEstimator()) {
@@ -273,34 +283,51 @@ public struct Recommender: Sendable {
             }
         }
         recs.sort(by: Self.ranks)
-        if let confidence { recs = await checkAgreement(recs, confidence: confidence, request: request, today: today) }
+        if let confidence {
+            recs = await checkChance(recs, confidence: confidence, scorer: scorer, request: request, today: today)
+        }
 
         return SearchResult(request: request, recommendations: recs, excluded: excluded, stats: stats)
     }
 
-    /// Step 6: compare the models at the top spots that score; where they disagree, lower the
-    /// score by `agreementFactor` and re-rank. A failed check changes nothing.
-    func checkAgreement(_ ranked: [SpotRecommendation], confidence: ConfidenceProvider,
-                        request: SearchRequest, today: String) async -> [SpotRecommendation] {
-        let top = ranked.prefix(max(0, confidenceTop)).enumerated().filter { $0.element.finalScore > 0 }
-        guard !top.isEmpty else { return ranked }
-        // The rider's session: the best window, else the hours the score comes from.
-        let queries = top.map { _, rec in
-            let h = rec.window ?? rec.scoredHours
-            return ConfidenceQuery(coordinate: rec.spot.coordinate,
-                                   hours: h.map { $0.start...max($0.start, $0.end - 1) } ?? request.hours)
-        }
-        guard let confs = try? await confidence.estimates(for: queries, day: request.day, today: today),
-              confs.count == queries.count else { return ranked }
+    /// Step 6: compare the models at the top spots that score, turn their agreement into a
+    /// chance to kite, cap the grade of "Not sure" / "No" spots and re-rank. Repeats for spots
+    /// that move up into the top. A failed check changes nothing.
+    func checkChance(_ ranked: [SpotRecommendation], confidence: ConfidenceProvider, scorer: Scorer,
+                     request: SearchRequest, today: String) async -> [SpotRecommendation] {
         var out = ranked
-        for ((i, _), c) in zip(top, confs) {
-            out[i].confidence = c
-            guard c.modelsCompared.count >= 2 else { continue }
-            let f = rules.agreementFactor(speedSpreadKn: c.speedSpreadKn, directionSpreadDeg: c.directionSpreadDeg)
-            out[i].agreementFactor = f
-            out[i].finalScore = Int((Double(out[i].finalScore) * f).rounded())
+        var checked = Set<String>()
+        for _ in 0..<max(0, chanceRounds) {
+            let todo = out.prefix(max(0, confidenceTop)).filter { $0.finalScore > 0 && !checked.contains($0.id) }
+            guard !todo.isEmpty else { break }
+            checked.formUnion(todo.map(\.id))
+            // Each model's best 2 h is looked for over the searched hours, as in the tuning.
+            let queries = todo.map { ConfidenceQuery(coordinate: $0.spot.coordinate, hours: request.hours) }
+            guard let confs = try? await confidence.estimates(for: queries, day: request.day, today: today),
+                  confs.count == queries.count else { break }
+            for (rec, c) in zip(todo, confs) {
+                guard let i = out.firstIndex(where: { $0.id == rec.id }) else { continue }
+                out[i].confidence = c
+                // Hours safety closed (storm, ban, dark) can't make the chance.
+                let open = Set(rec.hours.filter { h in
+                    !["thunderstorm risk", "kiting banned", "dark"].contains(h.flags.first ?? "")
+                }.map(\.wind.hour))
+                guard let chance = scorer.kiteChance(models: c.modelHours, sides: rec.spot.allSides,
+                                                     hours: open, leadDays: c.leadDays) else { continue }
+                out[i].chance = chance
+                let cap = switch chance.verdict {
+                case .go: Int.max
+                case .notSure: rules.notSureMaxScore
+                case .no: rules.noMaxScore
+                }
+                if out[i].finalScore > cap {
+                    out[i].scoreBeforeChance = out[i].finalScore
+                    out[i].finalScore = cap
+                }
+            }
+            out.sort(by: Self.ranks)
         }
-        return out.sorted(by: Self.ranks)
+        return out
     }
 
     /// When nothing works on the searched day: the first of `days` with a spot scoring at least
