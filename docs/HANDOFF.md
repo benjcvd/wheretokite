@@ -178,3 +178,11 @@ requests per batch merged before the blend, forecast cache key v4. Verified live
 (app value = hand mean). Not on main until Ben says yes. Tricky: the confidence badge still
 reads ECMWF on the beach cell; and a failed request for either cell fails the whole batch on
 purpose, so the app never shows a blend missing a member.
+
+**Forecast accuracy, 1 Nov (later).** WHE-78 tested "AROME 1.3 on the sea point for 2 days, then
+best match" (in review, recommend not shipping). AROME stops at 2 days, so days 2+ are today's
+setup; and on the day-before forecast, best match already *is* AROME 1.3 at Sant Pere, the POEM
+spots, Hyères and Brittany, so WHE-62's near-shore buoy win was today's setup all along. At the
+other 24 spots it reads 2–3 kn high on masts and ~1 kn high at open-sea buoys: more go days caught,
+half of them false, worst in Catalonia. The open choice is still today's setup vs option 1.
+Tricky: the previous month's Copernicus buoy file appears late; `buoys.py` falls back to daily files.

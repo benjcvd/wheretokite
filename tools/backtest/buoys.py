@@ -88,7 +88,19 @@ def read_buoy(prefix, start, end):
     import netCDF4
     samples = {}
     pos = None
+    paths = []
     for path in buoy_files(prefix, start, end):
+        if path.startswith("monthly/") and not download(path):
+            # Last month's monthly file is published late: fall back to its daily files.
+            m0 = dt.date(int(path[11:15]), int(path[15:17]), 1)
+            m1 = (m0 + dt.timedelta(days=32)).replace(day=1) - dt.timedelta(days=1)
+            d, last = max(m0, dt.date.fromisoformat(start)), min(m1, dt.date.fromisoformat(end))
+            while d <= last:
+                paths.append(f"latest/{d:%Y%m%d}/{prefix}_{d:%Y%m%d}.nc")
+                d += dt.timedelta(days=1)
+        else:
+            paths.append(path)
+    for path in paths:
         local = download(path)
         if not local:
             continue
