@@ -175,3 +175,13 @@ second pass with web research is worth doing.
 - Windy check (browser, as a visitor, 2026-10-27): kite markers sit on the same beach as our Sant Pere pin and in a
   second cluster about 1.5 km south (Can Martinet side). It shows no zone boundaries, so the official zone is still
   unconfirmed; pin left as is.
+
+## Costa Brava / Empordà verified pass (WHE-65, 2026-11-01)
+- **Palamós (La Fosca), question for you**: no kite school, kite zone or real kite guide found there (paddle and kayak
+  only; one surf portal lists N/NW winds, which blow offshore at this SE-facing cove). Options: (a) archive it, the
+  Empordà already has Pals and Platja d'Aro nearby (recommended); (b) move it to pro; (c) keep it free.
+- Summer ban 1 Jun–30 Sep: now backed by an official page for Pals (visitpals.com: "kitesurf is restricted… between
+  1 June and 30 September"). For L'Escala, Sant Martí d'Empúries, Palamós and Platja d'Aro it is still the Catalan
+  default (kites stay out of buoyed bathing zones); no town page found. Kept as is.
+- L'Estartit pin moved from the kite school's shop (a street 270 m inland) to the beach `osm:r1692854`, centre at
+  La Pletera, where the kite concession is.
