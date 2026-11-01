@@ -53,6 +53,10 @@ def fetch(url, data=None):
     path = os.path.join(CACHE, key)
     if os.path.exists(path):
         return open(path, "rb").read()
+    if os.environ.get("BACKTEST_OFFLINE"):
+        # cache only (quota spent): the caller sees a 400, as for a model outside its domain
+        print(f"offline miss: {url[:60]}", file=sys.stderr)
+        raise urllib.error.HTTPError(url, 400, "offline", {}, io.BytesIO(b'{"error": "offline"}'))
     req = urllib.request.Request(url, data=data.encode() if data else None,
                                  headers={"User-Agent": "WhereToKite backtest (research)"})
     for attempt in range(6):

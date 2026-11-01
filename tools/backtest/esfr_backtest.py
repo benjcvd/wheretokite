@@ -83,7 +83,12 @@ def om(url, body):
             time.sleep(5)
         except urllib.error.HTTPError as e:
             if e.code == 400:
-                return {"error": e.read()[:200].decode(errors="replace")}   # e.g. point outside a model's domain
+                # e.g. point outside a model's domain: cache the refusal too, or every run asks again
+                err = {"error": e.read()[:200].decode(errors="replace")}
+                if not os.environ.get("BACKTEST_OFFLINE"):
+                    with open(os.path.join(CACHE, hashlib.sha1((url + (body or "")).encode()).hexdigest()), "w") as fh:
+                        json.dump(err, fh)
+                return err
             if e.code >= 500:
                 print(f"Open-Meteo {e.code}, waiting 30 s", file=sys.stderr)
                 time.sleep(30)
