@@ -116,10 +116,6 @@ struct ResultsSection: View {
                 }
             }
 
-            if let confidence = result.confidence {
-                ConfidenceBanner(confidence: confidence)
-            }
-
             if !good.isEmpty {
                 HStack {
                     Text(!hasVerdict ? "Marginal" : good.count > 1 ? "Also good" : "On the map")
@@ -253,8 +249,11 @@ struct VerdictCard: View {
                         .multilineTextAlignment(.leading)
                 }
                 Spacer(minLength: 8)
-                ScoreRing(score: rec.finalScore)
-                    .frame(width: 60, height: 60)
+                VStack(spacing: 6) {
+                    ScoreRing(score: rec.finalScore)
+                        .frame(width: 60, height: 60)
+                    if let v = rec.kiteVerdict { VerdictPill(verdict: v, onColor: true) }
+                }
             }
 
             if let w = rec.windowLabel {
@@ -382,7 +381,10 @@ struct SpotCard: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            ScoreBadge(score: rec.finalScore)
+            VStack(spacing: 6) {
+                ScoreBadge(score: rec.finalScore)
+                if let v = rec.kiteVerdict { VerdictPill(verdict: v) }
+            }
             VStack(alignment: .leading, spacing: 4) {
                 Text(rec.spot.name)
                     .font(.headline)
@@ -408,13 +410,6 @@ struct SpotCard: View {
                     Label(rec.warnings.map(Vocab.term).joined(separator: ", "), systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.orange)
-                }
-                // The models are compared at this spot (top spots only).
-                if let c = rec.confidence {
-                    Label(Vocab.confidence(c.rating) + " · ±\(Int(c.speedSpreadKn.rounded())) kn",
-                          systemImage: c.rating == .high ? "checkmark.seal" : "questionmark.circle")
-                        .font(.caption)
-                        .foregroundStyle(c.rating == .high ? .green : c.rating == .low ? .orange : .secondary)
                 }
             }
             Spacer(minLength: 0)

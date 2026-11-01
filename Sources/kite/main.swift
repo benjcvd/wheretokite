@@ -110,11 +110,14 @@ let spotsURL = URL(fileURLWithPath: args["spots"] ?? "Data/spots.json")
 let catalog: SpotCatalog
 do { catalog = try SpotCatalog.load(from: spotsURL) } catch { fail("can't load spots from \(spotsURL.path): \(error)") }
 
+// --server https://…workers.dev: through the WhereToKite server (shared cache), as the app does.
+let server = args["server"].flatMap(URL.init(string:)).map(ForecastServer.wheretokite) ?? .openMeteo
 let driveTime: DriveTimeProvider = flags.contains("straight-line") ? StraightLineDriveTime() : MapKitDriveTime()
 var recommender = Recommender(
     spots: catalog.spots,
-    forecast: CachedForecastProvider(upstream: OpenMeteoProvider()),
-    driveTime: driveTime)
+    forecast: CachedForecastProvider(upstream: OpenMeteoProvider(server: server)),
+    driveTime: driveTime,
+    confidence: ConfidenceEstimator(server: server))
 recommender.islands = catalog.islands ?? []
 
 // MARK: Run
@@ -144,7 +147,7 @@ for (i, r) in shown.enumerated() {
         " · \(c.summary)" + (r.scoreBeforeChance.map { " (grade \($0) → \(r.finalScore))" } ?? "")
     } ?? ""
     print(String(format: "%2d. %3d %@ %@  %@", i + 1, r.finalScore,
-                 (r.verdict?.rawValue ?? "").padding(toLength: 8, withPad: " ", startingAt: 0),
+                 (r.kiteVerdict?.rawValue ?? "").padding(toLength: 8, withPad: " ", startingAt: 0),
                  name.padding(toLength: 32, withPad: " ", startingAt: 0),
                  r.reason + (r.stormFrom.map { String(format: " · ⚡ storm from %02d:00", $0) } ?? "") + models))
 }

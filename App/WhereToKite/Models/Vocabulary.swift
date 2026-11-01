@@ -68,11 +68,21 @@ enum Vocab {
         }.joined(separator: " · ")
     }
 
-    static func confidence(_ rating: ForecastConfidence.Rating) -> String {
-        switch rating {
-        case .high: String(localized: "High forecast confidence")
-        case .medium: String(localized: "Medium forecast confidence")
-        case .low: String(localized: "Low forecast confidence")
+    /// The plain verdict next to a grade: "Go", "Not sure", "No".
+    static func verdict(_ v: KiteVerdict) -> String {
+        switch v {
+        case .go: String(localized: "Go", comment: "Verdict: you will most likely have enough wind")
+        case .notSure: String(localized: "Not sure", comment: "Verdict: the weather models don't agree on enough wind")
+        case .no: String(localized: "No", comment: "Verdict: not enough wind expected")
+        }
+    }
+
+    /// One line under the verdict, on the spot's page.
+    static func verdictDetail(_ v: KiteVerdict) -> String {
+        switch v {
+        case .go: String(localized: "The weather models agree there will be enough wind for you.")
+        case .notSure: String(localized: "The weather models don't agree there will be enough wind for you.")
+        case .no: String(localized: "The weather models don't see enough usable wind for you.")
         }
     }
 

@@ -115,44 +115,98 @@ struct Pill: View {
     }
 }
 
-struct ConfidenceBanner: View {
-    let confidence: ForecastConfidence
-
-    private var color: Color {
-        switch confidence.rating {
-        case .high: ScoreStyle.color(80)
-        case .medium: ScoreStyle.color(60)
-        case .low: ScoreStyle.color(30)
+extension KiteVerdict {
+    var color: Color {
+        switch self {
+        case .go: ScoreStyle.color(85)
+        case .notSure: .orange
+        case .no: .secondary
         }
     }
 
-    private var detail: String {
-        var parts = [String]()
-        if confidence.leadDays > 0 {
-            parts.append(String(localized: "\(confidence.leadDays) days ahead"))
+    var systemImage: String {
+        switch self {
+        case .go: "checkmark.circle.fill"
+        case .notSure: "questionmark.circle.fill"
+        case .no: "xmark.circle.fill"
         }
-        parts.append(String(localized: "models agree within ±\(Int(confidence.speedSpreadKn.rounded())) kn"))
-        if let d = confidence.directionSpreadDeg { parts.append(String(format: "±%.0f°", d)) }
-        return parts.joined(separator: " · ")
     }
+}
+
+/// "Go" / "Not sure" / "No" next to a grade. `onColor`: white text for the coloured hero card.
+struct VerdictPill: View {
+    let verdict: KiteVerdict
+    var onColor = false
+
+    var body: some View {
+        Label(Vocab.verdict(verdict), systemImage: verdict.systemImage)
+            .font(.caption.weight(.bold))
+            .lineLimit(1)
+            .fixedSize()
+            .padding(.horizontal, 8)
+            .padding(.vertical, 3)
+            .foregroundStyle(onColor ? Color.white : verdict.color)
+            .background(onColor ? Color.black.opacity(0.22) : verdict.color.opacity(0.14), in: Capsule())
+            .accessibilityIdentifier("verdict")
+    }
+}
+
+/// Why a forecast verdict is only an estimate (the "i" button next to it).
+struct ChanceInfoButton: View {
+    @State private var shown = false
+
+    var body: some View {
+        Button { shown = true } label: {
+            Image(systemName: "info.circle")
+        }
+        .accessibilityLabel(Text("About Go, Not sure and No"))
+        .accessibilityIdentifier("verdictInfo")
+        .popover(isPresented: $shown) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Go, Not sure, No").font(.headline)
+                Text("Forecasts are never perfect. We compare four weather models and give you our best estimate of whether you'll have enough wind.")
+                Text("In our tests on past days, a Go came true about 85 % of the time.")
+                Text("Not sure means the models don't agree: check again closer to the day. The further ahead the day, the less sure any forecast is.")
+            }
+            .font(.subheadline)
+            .padding()
+            .frame(idealWidth: 320)
+            .fixedSize(horizontal: false, vertical: true)
+            .presentationCompactAdaptation(.popover)
+        }
+    }
+}
+
+/// The verdict on a spot's page: "Go" + what it means + the info button.
+struct VerdictBanner: View {
+    let verdict: KiteVerdict
+    let leadDays: Int?
 
     var body: some View {
         HStack(spacing: 10) {
-            Image(systemName: confidence.rating == .high ? "checkmark.seal.fill" : "exclamationmark.triangle.fill")
+            Image(systemName: verdict.systemImage)
                 .font(.title3)
-                .foregroundStyle(color)
+                .foregroundStyle(verdict.color)
             VStack(alignment: .leading, spacing: 1) {
-                Text(Vocab.confidence(confidence.rating))
+                Text(Vocab.verdict(verdict))
                     .font(.subheadline.weight(.semibold))
                 Text(detail)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
             Spacer(minLength: 0)
+            ChanceInfoButton()
         }
         .padding(12)
-        .background(color.opacity(0.12), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .accessibilityElement(children: .combine)
+        .background(verdict.color.opacity(0.12), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("verdictBanner")
+    }
+
+    private var detail: String {
+        let base = Vocab.verdictDetail(verdict)
+        guard let leadDays, leadDays >= 3 else { return base }
+        return base + " " + String(localized: "\(leadDays) days ahead: it can still change.")
     }
 }
 

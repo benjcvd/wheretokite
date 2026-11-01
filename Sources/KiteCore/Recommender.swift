@@ -35,7 +35,7 @@ public struct SpotRecommendation: Sendable, Identifiable {
     public var scoreBeforeChance: Int? = nil
     /// The verdict to show: the models' verdict, or "No" when the spot scores 0 (no usable
     /// wind, safety). nil when there is nothing to go on.
-    public var verdict: KiteVerdict? { finalScore == 0 ? .no : chance?.verdict }
+    public var kiteVerdict: KiteVerdict? { finalScore == 0 ? .no : chance?.verdict }
     /// Local hour (spot time) a thunderstorm is forecast to start, when it comes during the
     /// session or soon after it (`ScoringRules.stormAlertHoursAfter`): "Storm from 4 pm".
     public var stormFrom: Int? = nil

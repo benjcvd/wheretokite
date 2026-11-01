@@ -275,6 +275,28 @@
         }
       }
     },
+    "%@: the grade is held at %lld (was %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: the grade is held at %2$lld (was %3$lld)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: la nota se queda en %2$lld (era %3$lld)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ : la note est plafonnée à %2$lld (au lieu de %3$lld)"
+          }
+        }
+      }
+    },
     "%lld" : {
       "localizations" : {
         "es" : {
@@ -291,60 +313,18 @@
         }
       }
     },
-    "%lld days ahead" : {
+    "%lld days ahead: it can still change." : {
       "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld day ahead"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld days ahead"
-                }
-              }
-            }
-          }
-        },
         "es" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "a %lld día vista"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "a %lld días vista"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faltan %lld días: aún puede cambiar."
           }
         },
         "fr" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "dans %lld jour"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "dans %lld jours"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans %lld jours : ça peut encore changer."
           }
         }
       }
@@ -720,6 +700,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "À propos"
+          }
+        }
+      }
+    },
+    "About Go, Not sure and No" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre Sí, Dudoso y No"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de Go, Pas sûr et Non"
           }
         }
       }
@@ -2105,6 +2101,22 @@
         }
       }
     },
+    "Forecasts are never perfect. We compare four weather models and give you our best estimate of whether you'll have enough wind." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las previsiones nunca son perfectas. Comparamos cuatro modelos meteorológicos y te damos nuestra mejor estimación de si tendrás viento suficiente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les prévisions ne sont jamais parfaites. On compare quatre modèles météo et on te donne notre meilleure estimation : auras-tu assez de vent ?"
+          }
+        }
+      }
+    },
     "From %lld:00" : {
       "localizations" : {
         "es" : {
@@ -2138,6 +2150,23 @@
         }
       }
     },
+    "Go" : {
+      "comment" : "Verdict: you will most likely have enough wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sí"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go"
+          }
+        }
+      }
+    },
     "Go kite" : {
       "localizations" : {
         "es" : {
@@ -2150,6 +2179,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fonce"
+          }
+        }
+      }
+    },
+    "Go, Not sure, No" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sí, Dudoso, No"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go, Pas sûr, Non"
           }
         }
       }
@@ -2265,22 +2310,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pleine mer %@"
-          }
-        }
-      }
-    },
-    "High forecast confidence" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Previsión fiable"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prévision fiable"
           }
         }
       }
@@ -2410,6 +2439,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ignorer"
+          }
+        }
+      }
+    },
+    "In our tests on past days, a Go came true about 85 % of the time." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En nuestras pruebas con días pasados, un Sí se cumplió alrededor del 85 % de las veces."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans nos tests sur des jours passés, un Go s'est confirmé environ 85 % du temps."
           }
         }
       }
@@ -2720,22 +2765,6 @@
         }
       }
     },
-    "Low forecast confidence" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Previsión poco fiable"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prévision peu fiable"
-          }
-        }
-      }
-    },
     "Map" : {
       "localizations" : {
         "es" : {
@@ -2849,22 +2878,6 @@
         }
       }
     },
-    "Medium forecast confidence" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Previsión bastante fiable"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prévision assez fiable"
-          }
-        }
-      }
-    },
     "Min" : {
       "localizations" : {
         "es" : {
@@ -2877,22 +2890,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Min"
-          }
-        }
-      }
-    },
-    "models agree within ±%lld kn" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "los modelos coinciden en ±%lld kn"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "les modèles s'accordent à ±%lld kn"
           }
         }
       }
@@ -3105,6 +3102,45 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prochain bon créneau"
+          }
+        }
+      }
+    },
+    "Next to the grade, **Go**, **Not sure** or **No** says how likely you are to get enough wind, from four weather models. Not sure holds the grade at %lld at most, No at %lld." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next to the grade, **Go**, **Not sure** or **No** says how likely you are to get enough wind, from four weather models. Not sure holds the grade at %1$lld at most, No at %2$lld."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Junto a la nota, **Sí**, **Dudoso** o **No** indica la probabilidad de que tengas viento suficiente, según cuatro modelos meteorológicos. Dudoso deja la nota en %1$lld como máximo, No en %2$lld."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À côté de la note, **Go**, **Pas sûr** ou **Non** dit à quel point tu as des chances d'avoir assez de vent, d'après quatre modèles météo. Pas sûr plafonne la note à %1$lld, Non à %2$lld."
+          }
+        }
+      }
+    },
+    "No" : {
+      "comment" : "Verdict: not enough wind expected",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non"
           }
         }
       }
@@ -3415,6 +3451,39 @@
         }
       }
     },
+    "Not sure" : {
+      "comment" : "Verdict: the weather models don't agree on enough wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dudoso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas sûr"
+          }
+        }
+      }
+    },
+    "Not sure means the models don't agree: check again closer to the day. The further ahead the day, the less sure any forecast is." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dudoso significa que los modelos no coinciden: vuelve a mirarlo más cerca del día. Cuanto más lejos está el día, menos segura es cualquier previsión."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas sûr veut dire que les modèles ne sont pas d'accord : regarde à nouveau plus près du jour. Plus le jour est loin, moins une prévision est sûre."
+          }
+        }
+      }
+    },
     "Notes" : {
       "localizations" : {
         "es" : {
@@ -3685,6 +3754,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prévois plus loin, navigue plus."
+          }
+        }
+      }
+    },
+    "Plan to be off the water before it. Storm cells can arrive early, with strong gusts ahead of them." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sal del agua antes. Las tormentas pueden llegar antes de lo previsto, con rachas fuertes por delante."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévois d'être sorti de l'eau avant. Les orages peuvent arriver plus tôt, avec de fortes rafales devant eux."
           }
         }
       }
@@ -4571,6 +4656,40 @@
         }
       }
     },
+    "Storm from %@" : {
+      "comment" : "A thunderstorm is forecast from that hour",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tormenta desde las %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orage à partir de %@"
+          }
+        }
+      }
+    },
+    "storm next hour" : {
+      "comment" : "A thunderstorm is forecast the following hour",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tormenta la hora siguiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "orage l'heure suivante"
+          }
+        }
+      }
+    },
     "straight beach" : {
       "localizations" : {
         "es" : {
@@ -4827,6 +4946,54 @@
         }
       }
     },
+    "The weather models agree there will be enough wind for you." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos meteorológicos coinciden: tendrás viento suficiente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles météo sont d'accord : tu auras assez de vent."
+          }
+        }
+      }
+    },
+    "The weather models don't agree there will be enough wind for you." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos meteorológicos no coinciden en que tengas viento suficiente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles météo ne sont pas d'accord sur le fait que tu auras assez de vent."
+          }
+        }
+      }
+    },
+    "The weather models don't see enough usable wind for you." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos meteorológicos no ven viento útil suficiente para ti."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles météo ne voient pas assez de vent utilisable pour toi."
+          }
+        }
+      }
+    },
     "The whole week, not just the next four days." : {
       "localizations" : {
         "es" : {
@@ -4855,22 +5022,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elles sont multipliées selon tes poids. La note d'un spot est celle de ses deux meilleures heures d'affilée. Les spots qui demandent une certaine marée perdent les heures en dehors et, avec **Au plus près**, les spots lointains perdent jusqu'à %lld %%."
-          }
-        }
-      }
-    },
-    "They disagree here: ±%lld kn" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aquí no coinciden: ±%lld kn"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ils divergent ici : ±%lld kn"
           }
         }
       }
@@ -5310,22 +5461,6 @@
         }
       }
     },
-    "Weather models" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modelos meteorológicos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modèles météo"
-          }
-        }
-      }
-    },
     "Weather data by Open-Meteo.com · Spots © OpenStreetMap contributors" : {
       "localizations" : {
         "es" : {
@@ -5354,6 +5489,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prévisions météo : Open-Meteo.com (CC BY 4.0)"
+          }
+        }
+      }
+    },
+    "Weather models" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modelos meteorológicos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modèles météo"
           }
         }
       }
@@ -5946,56 +6097,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zoome sur la plage pour placer l'épingle."
-          }
-        }
-      }
-    },
-    "Storm from %@" : {
-      "comment" : "A thunderstorm is forecast from that hour",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tormenta desde las %@"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Orage à partir de %@"
-          }
-        }
-      }
-    },
-    "storm next hour" : {
-      "comment" : "A thunderstorm is forecast the following hour",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tormenta la hora siguiente"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "orage l'heure suivante"
-          }
-        }
-      }
-    },
-    "Plan to be off the water before it. Storm cells can arrive early, with strong gusts ahead of them." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sal del agua antes. Las tormentas pueden llegar antes de lo previsto, con rachas fuertes por delante."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prévois d'être sorti de l'eau avant. Les orages peuvent arriver plus tôt, avec de fortes rafales devant eux."
           }
         }
       }
