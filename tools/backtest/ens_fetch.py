@@ -28,7 +28,8 @@ from stations import load_spots  # noqa: E402
 BASE = "https://ecmwf-forecasts.s3.eu-central-1.amazonaws.com"
 OUT = os.path.join(os.path.dirname(__file__), ".cache", "ens")
 STEPS = [18, 21, 24, 27, 30]          # from 12 UTC of D-1: 06, 09, 12, 15, 18 UTC on D
-LEAD = 1                              # --lead 3: 12 UTC run of D-3, steps 66-78, output .cache/ens_d3
+LEAD = 1                              # --lead N: 12 UTC run of D-N, output .cache/ens_dN
+RUN_HOUR = 12                         # lead 0 (today): the 00 UTC run of D, published ~08 UTC
 HALF = 3                              # window = (2 * HALF + 1)^2 cells around the spot
 PAIRS = ["pairs_esfr.json"]
 EXTRA = [(42.1, 3.65), (40.7, 1.47), (42.7, 3.07)]   # Begur, Tarragona, POEM buoys
@@ -66,9 +67,10 @@ def cells():
 
 
 def fetch_step(run, step, keep):
+    hh = f"{RUN_HOUR:02d}"
     """{member: (u values, v values)} at the kept cells for one step."""
     import eccodes
-    stem = f"{run:%Y%m%d}/12z/ifs/0p25/enfo/{run:%Y%m%d}120000-{step}h-enfo-ef"
+    stem = f"{run:%Y%m%d}/{hh}z/ifs/0p25/enfo/{run:%Y%m%d}{hh}0000-{step}h-enfo-ef"
     index = [json.loads(line) for line in get(f"{BASE}/{stem}.index").decode().splitlines() if line.strip()]
     out = {}
     for e in index:
@@ -103,14 +105,14 @@ def assemble(day, keep):
         part = os.path.join(OUT, "parts", f"{day:%Y%m%d}_{step}.json")
         if not os.path.exists(part):
             return
-        hour = (12 + step) % 24
+        hour = (RUN_HOUR + step) % 24
         for member, uv in json.load(open(part)).items():
             if "10u" not in uv or "10v" not in uv:
                 continue
             for k, u, v in zip(keys, uv["10u"], uv["10v"]):
                 points[k].setdefault(str(member), {})[str(hour)] = [u, v]
     run = day - dt.timedelta(days=LEAD)
-    json.dump({"run": f"{run:%Y-%m-%d}T12", "points": points}, open(path + ".tmp", "w"), separators=(",", ":"))
+    json.dump({"run": f"{run:%Y-%m-%d}T{RUN_HOUR:02d}", "points": points}, open(path + ".tmp", "w"), separators=(",", ":"))
     os.replace(path + ".tmp", path)
 
 
@@ -121,11 +123,13 @@ def main():
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--lead", type=int, default=1, help="days ahead: 1 (evening before) or 3")
     a = ap.parse_args()
-    global OUT, STEPS, LEAD
+    global OUT, STEPS, LEAD, RUN_HOUR
     LEAD = a.lead
     if LEAD != 1:
         OUT = OUT + f"_d{LEAD}"
         STEPS = [st + 24 * (LEAD - 1) for st in STEPS]
+    if LEAD == 0:
+        RUN_HOUR, STEPS = 0, [6, 9, 12, 15, 18]
     os.makedirs(OUT, exist_ok=True)
     keep = cells()
     print(f"{len(keep)} cells kept per field", file=sys.stderr)
