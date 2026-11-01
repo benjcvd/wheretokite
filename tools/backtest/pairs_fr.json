@@ -1,0 +1,1170 @@
+[
+ {
+  "spot": "fr-bonifacio-piantarella",
+  "station": {
+   "source": "meteofrance",
+   "id": "20041001",
+   "dept": "20",
+   "name": "Météo-France Cap Pertusato",
+   "lat": 41.374833,
+   "lon": 9.178333,
+   "alt": 107.0,
+   "kind": "semaphore"
+  },
+  "km": 3.31,
+  "shore_km": 0.56,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-bonifacio-tonnara",
+  "station": {
+   "source": "metar",
+   "id": "LFKF",
+   "name": "Airport Figari",
+   "lat": 41.5006,
+   "lon": 9.0978,
+   "alt": 23.0,
+   "kind": "airport"
+  },
+  "km": 8.28,
+  "shore_km": 0.19,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-bonifacio-balistra",
+  "station": {
+   "source": "meteofrance",
+   "id": "20041001",
+   "dept": "20",
+   "name": "Météo-France Cap Pertusato",
+   "lat": 41.374833,
+   "lon": 9.178333,
+   "alt": 107.0,
+   "kind": "semaphore"
+  },
+  "km": 8.03,
+  "shore_km": 0.56,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-figari-baie-de-figari",
+  "station": {
+   "source": "metar",
+   "id": "LFKF",
+   "name": "Airport Figari",
+   "lat": 41.5006,
+   "lon": 9.0978,
+   "alt": 23.0,
+   "kind": "airport"
+  },
+  "km": 4.99,
+  "shore_km": 0.19,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-calvi-la-pinede",
+  "station": {
+   "source": "meteofrance",
+   "id": "20050001",
+   "dept": "20",
+   "name": "Météo-France Calvi",
+   "lat": 42.5295,
+   "lon": 8.7915,
+   "alt": 57.0,
+   "kind": "mast"
+  },
+  "km": 3.26,
+  "shore_km": 0.13,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-torreilles-le-blockhaus",
+  "station": {
+   "source": "meteofrance",
+   "id": "66212001",
+   "dept": "66",
+   "name": "Météo-France Torreilles",
+   "lat": 42.755,
+   "lon": 2.978333,
+   "alt": 7.0,
+   "kind": "mast"
+  },
+  "km": 5.01,
+  "shore_km": 0.57,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-le-barcares-les-3-colonnes",
+  "station": {
+   "source": "meteofrance",
+   "id": "66212001",
+   "dept": "66",
+   "name": "Météo-France Torreilles",
+   "lat": 42.755,
+   "lon": 2.978333,
+   "alt": 7.0,
+   "kind": "mast"
+  },
+  "km": 8.8,
+  "shore_km": 0.57,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-le-barcares-parc-des-dosses-etang-de-leucate",
+  "station": {
+   "source": "meteofrance",
+   "id": "11202001",
+   "dept": "11",
+   "name": "Météo-France Leucate",
+   "lat": 42.917333,
+   "lon": 3.059667,
+   "alt": 42.0,
+   "kind": "mast"
+  },
+  "km": 8.75,
+  "shore_km": 0.3,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-leucate-le-goulet",
+  "station": {
+   "source": "meteofrance",
+   "id": "11202001",
+   "dept": "11",
+   "name": "Météo-France Leucate",
+   "lat": 42.917333,
+   "lon": 3.059667,
+   "alt": 42.0,
+   "kind": "mast"
+  },
+  "km": 3.32,
+  "shore_km": 0.3,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-leucate-les-coussoules-la-franqui",
+  "station": {
+   "source": "meteofrance",
+   "id": "11202001",
+   "dept": "11",
+   "name": "Météo-France Leucate",
+   "lat": 42.917333,
+   "lon": 3.059667,
+   "alt": 42.0,
+   "kind": "mast"
+  },
+  "km": 3.79,
+  "shore_km": 0.3,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-etang-de-la-palme",
+  "station": {
+   "source": "meteofrance",
+   "id": "11202001",
+   "dept": "11",
+   "name": "Météo-France Leucate",
+   "lat": 42.917333,
+   "lon": 3.059667,
+   "alt": 42.0,
+   "kind": "mast"
+  },
+  "km": 6.85,
+  "shore_km": 0.3,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-hyeres-l-almanarre",
+  "station": {
+   "source": "metar",
+   "id": "LFTH",
+   "name": "Airport Hyeres",
+   "lat": 43.0944,
+   "lon": 6.1464,
+   "alt": 4.0,
+   "kind": "airport"
+  },
+  "km": 3.84,
+  "shore_km": 0.57,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-six-fours-le-brusc",
+  "station": {
+   "source": "meteofrance",
+   "id": "83137001",
+   "dept": "83",
+   "name": "Météo-France Toulon",
+   "lat": 43.114,
+   "lon": 5.9005,
+   "alt": 3.0,
+   "kind": "mast"
+  },
+  "km": 8.74,
+  "shore_km": 0.45,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-hyeres-le-merou",
+  "station": {
+   "source": "meteofrance",
+   "id": "83069001",
+   "dept": "83",
+   "name": "Météo-France Hyeres",
+   "lat": 43.1005,
+   "lon": 6.147,
+   "alt": 2.0,
+   "kind": "mast"
+  },
+  "km": 2.88,
+  "shore_km": 0.25,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-narbonne-la-nautique",
+  "station": {
+   "source": "meteofrance",
+   "id": "11262005",
+   "dept": "11",
+   "name": "Météo-France Narbonne",
+   "lat": 43.150333,
+   "lon": 2.955833,
+   "alt": 110.0,
+   "kind": "mast"
+  },
+  "km": 4.17,
+  "shore_km": 0.34,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-serignan-la-grande-maire",
+  "station": {
+   "source": "meteofrance",
+   "id": "34209002",
+   "dept": "34",
+   "name": "Météo-France Beziers-Vias",
+   "lat": 43.322,
+   "lon": 3.352667,
+   "alt": 15.0,
+   "kind": "mast"
+  },
+  "km": 6.07,
+  "shore_km": 0.31,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-agde-la-tamarissiere",
+  "station": {
+   "source": "metar",
+   "id": "LFMU",
+   "name": "Airport Beziers",
+   "lat": 43.3235,
+   "lon": 3.3539,
+   "alt": 17.0,
+   "kind": "airport"
+  },
+  "km": 7.81,
+  "shore_km": 0.5,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-carro",
+  "station": {
+   "source": "meteofrance",
+   "id": "13056002",
+   "dept": "13",
+   "name": "Météo-France Cap Couronne",
+   "lat": 43.331667,
+   "lon": 5.053333,
+   "alt": 27.0,
+   "kind": "semaphore"
+  },
+  "km": 1.9,
+  "shore_km": 0.33,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-sete-les-3-digues",
+  "station": {
+   "source": "meteofrance",
+   "id": "34301002",
+   "dept": "34",
+   "name": "Météo-France Sete",
+   "lat": 43.397333,
+   "lon": 3.692167,
+   "alt": 75.0,
+   "kind": "mast"
+  },
+  "km": 7.08,
+  "shore_km": 1.03,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-hendaye",
+  "station": {
+   "source": "metar",
+   "id": "LESO",
+   "name": "Airport San Sebastian",
+   "lat": 43.3606,
+   "lon": -1.7872,
+   "alt": 8.0,
+   "kind": "airport"
+  },
+  "km": 1.67,
+  "shore_km": 0.59,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-frejus-saint-aygulf",
+  "station": {
+   "source": "meteofrance",
+   "id": "83061001",
+   "dept": "83",
+   "name": "Météo-France Frejus",
+   "lat": 43.4235,
+   "lon": 6.738,
+   "alt": 7.0,
+   "kind": "mast"
+  },
+  "km": 2.75,
+  "shore_km": 1.79,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-sete-pont-levis",
+  "station": {
+   "source": "meteofrance",
+   "id": "34301002",
+   "dept": "34",
+   "name": "Météo-France Sete",
+   "lat": 43.397333,
+   "lon": 3.692167,
+   "alt": 75.0,
+   "kind": "mast"
+  },
+  "km": 2.85,
+  "shore_km": 1.03,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-marignane-le-jai",
+  "station": {
+   "source": "meteofrance",
+   "id": "13054001",
+   "dept": "13",
+   "name": "Météo-France Marignane",
+   "lat": 43.437,
+   "lon": 5.2115,
+   "alt": 6.0,
+   "kind": "mast"
+  },
+  "km": 4.16,
+  "shore_km": 0.35,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-meze-la-pinede",
+  "station": {
+   "source": "meteofrance",
+   "id": "34301002",
+   "dept": "34",
+   "name": "Météo-France Sete",
+   "lat": 43.397333,
+   "lon": 3.692167,
+   "alt": 75.0,
+   "kind": "mast"
+  },
+  "km": 7.74,
+  "shore_km": 1.03,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-le-grau-du-roi-l-espiguette",
+  "station": {
+   "source": "meteofrance",
+   "id": "30133005",
+   "dept": "30",
+   "name": "Météo-France L'Espiguette",
+   "lat": 43.487833,
+   "lon": 4.1405,
+   "alt": 1.0,
+   "kind": "mast"
+  },
+  "km": 0.83,
+  "shore_km": 0.87,
+  "cls": "a"
+ },
+ {
+  "spot": "fr-anglet-la-madrague",
+  "station": {
+   "source": "metar",
+   "id": "LFBZ",
+   "name": "Airport Biarritz-bayonne",
+   "lat": 43.4694,
+   "lon": -1.5344,
+   "alt": 71.0,
+   "kind": "airport"
+  },
+  "km": 4.58,
+  "shore_km": 0.36,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-port-camargue-plage-sud",
+  "station": {
+   "source": "meteofrance",
+   "id": "30133005",
+   "dept": "30",
+   "name": "Météo-France L'Espiguette",
+   "lat": 43.487833,
+   "lon": 4.1405,
+   "alt": 1.0,
+   "kind": "mast"
+  },
+  "km": 3.4,
+  "shore_km": 0.87,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-cannes-palm-beach",
+  "station": {
+   "source": "metar",
+   "id": "LFMD",
+   "name": "Airport Cannes",
+   "lat": 43.5458,
+   "lon": 6.9539,
+   "alt": 9.0,
+   "kind": "airport"
+  },
+  "km": 6.9,
+  "shore_km": 0.56,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-le-grau-du-roi-le-boucanet",
+  "station": {
+   "source": "meteofrance",
+   "id": "30133005",
+   "dept": "30",
+   "name": "Météo-France L'Espiguette",
+   "lat": 43.487833,
+   "lon": 4.1405,
+   "alt": 1.0,
+   "kind": "mast"
+  },
+  "km": 6.69,
+  "shore_km": 0.87,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-carnon-petit-travers",
+  "station": {
+   "source": "meteofrance",
+   "id": "34154001",
+   "dept": "34",
+   "name": "Météo-France Montpellier-Aeroport",
+   "lat": 43.576167,
+   "lon": 3.964667,
+   "alt": 1.0,
+   "kind": "mast"
+  },
+  "km": 4.33,
+  "shore_km": 0.57,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-la-grande-motte",
+  "station": {
+   "source": "meteofrance",
+   "id": "34154001",
+   "dept": "34",
+   "name": "Météo-France Montpellier-Aeroport",
+   "lat": 43.576167,
+   "lon": 3.964667,
+   "alt": 1.0,
+   "kind": "mast"
+  },
+  "km": 8.55,
+  "shore_km": 0.57,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-seignosse-les-estagnots",
+  "station": {
+   "source": "meteofrance",
+   "id": "40065002",
+   "dept": "40",
+   "name": "Météo-France Capbreton",
+   "lat": 43.627333,
+   "lon": -1.453333,
+   "alt": 11.0,
+   "kind": "mast"
+  },
+  "km": 6.75,
+  "shore_km": 0.61,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-biscarrosse-plage",
+  "station": {
+   "source": "meteofrance",
+   "id": "40046001",
+   "dept": "40",
+   "name": "Météo-France Biscarrosse",
+   "lat": 44.431667,
+   "lon": -1.2475,
+   "alt": 35.0,
+   "kind": "mast"
+  },
+  "km": 1.39,
+  "shore_km": 1.36,
+  "cls": "a"
+ },
+ {
+  "spot": "fr-la-teste-la-salie",
+  "station": {
+   "source": "meteofrance",
+   "id": "33529001",
+   "dept": "33",
+   "name": "Météo-France Cazaux",
+   "lat": 44.534667,
+   "lon": -1.132,
+   "alt": 23.0,
+   "kind": "mast"
+  },
+  "km": 9.88,
+  "shore_km": 0.54,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-bassin-d-arcachon-les-arbousiers",
+  "station": {
+   "source": "meteofrance",
+   "id": "33236002",
+   "dept": "33",
+   "name": "Météo-France Cap-Ferret",
+   "lat": 44.6305,
+   "lon": -1.251667,
+   "alt": 8.0,
+   "kind": "mast"
+  },
+  "km": 4.43,
+  "shore_km": 0.92,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-oleron-plaisance",
+  "station": {
+   "source": "meteofrance",
+   "id": "17323001",
+   "dept": "17",
+   "name": "Météo-France Chassiron",
+   "lat": 46.046833,
+   "lon": -1.411667,
+   "alt": 11.0,
+   "kind": "mast"
+  },
+  "km": 9.08,
+  "shore_km": 0.73,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-oleron-plage-des-huttes",
+  "station": {
+   "source": "meteofrance",
+   "id": "17323001",
+   "dept": "17",
+   "name": "Météo-France Chassiron",
+   "lat": 46.046833,
+   "lon": -1.411667,
+   "alt": 11.0,
+   "kind": "mast"
+  },
+  "km": 4.68,
+  "shore_km": 0.73,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-la-rochelle-aytre",
+  "station": {
+   "source": "meteofrance",
+   "id": "17300009",
+   "dept": "17",
+   "name": "Météo-France La Rochelle-Ile De Re",
+   "lat": 46.178,
+   "lon": -1.193167,
+   "alt": 20.0,
+   "kind": "mast"
+  },
+  "km": 8.82,
+  "shore_km": 0.33,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-ile-de-re-rivedoux",
+  "station": {
+   "source": "meteofrance",
+   "id": "17300009",
+   "dept": "17",
+   "name": "Météo-France La Rochelle-Ile De Re",
+   "lat": 46.178,
+   "lon": -1.193167,
+   "alt": 20.0,
+   "kind": "mast"
+  },
+  "km": 5.73,
+  "shore_km": 0.33,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-ile-de-re-les-portes-trousse-chemise",
+  "station": {
+   "source": "meteofrance",
+   "id": "17318001",
+   "dept": "17",
+   "name": "Météo-France Saint-Clement Des Baleines",
+   "lat": 46.243,
+   "lon": -1.561667,
+   "alt": 10.0,
+   "kind": "mast"
+  },
+  "km": 6.67,
+  "shore_km": 1.58,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-la-tranche-sur-mer",
+  "station": {
+   "source": "meteofrance",
+   "id": "85104001",
+   "dept": "85",
+   "name": "Météo-France Grues",
+   "lat": 46.350167,
+   "lon": -1.334833,
+   "alt": 2.0,
+   "kind": "mast"
+  },
+  "km": 9.71,
+  "shore_km": 1.2,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-saint-brevin-les-pins",
+  "station": {
+   "source": "meteofrance",
+   "id": "44184001",
+   "dept": "44",
+   "name": "Météo-France Pte De Chemoulin",
+   "lat": 47.233667,
+   "lon": -2.2985,
+   "alt": 14.0,
+   "kind": "semaphore"
+  },
+  "km": 9.88,
+  "shore_km": 0.42,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-penthievre",
+  "station": {
+   "source": "meteofrance",
+   "id": "56186003",
+   "dept": "56",
+   "name": "Météo-France Quiberon-Aerodrome",
+   "lat": 47.479833,
+   "lon": -3.099,
+   "alt": 9.0,
+   "kind": "mast"
+  },
+  "km": 7.42,
+  "shore_km": 0.68,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-fort-bloque",
+  "station": {
+   "source": "meteofrance",
+   "id": "56185001",
+   "dept": "56",
+   "name": "Météo-France Lorient-Lann Bihoue",
+   "lat": 47.762833,
+   "lon": -3.435667,
+   "alt": 45.0,
+   "kind": "mast"
+  },
+  "km": 5.96,
+  "shore_km": 0.45,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-la-torche",
+  "station": {
+   "source": "meteofrance",
+   "id": "29158001",
+   "dept": "29",
+   "name": "Météo-France Pte De Penmarch",
+   "lat": 47.7975,
+   "lon": -4.374833,
+   "alt": 3.0,
+   "kind": "semaphore"
+  },
+  "km": 5.45,
+  "shore_km": 0.91,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-mousterlin",
+  "station": {
+   "source": "meteofrance",
+   "id": "29058003",
+   "dept": "29",
+   "name": "Météo-France Beg_Meil",
+   "lat": 47.8545,
+   "lon": -3.976167,
+   "alt": 8.0,
+   "kind": "mast"
+  },
+  "km": 5.05,
+  "shore_km": 0.68,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-benodet-lagune-du-letty",
+  "station": {
+   "source": "meteofrance",
+   "id": "29058003",
+   "dept": "29",
+   "name": "Météo-France Beg_Meil",
+   "lat": 47.8545,
+   "lon": -3.976167,
+   "alt": 8.0,
+   "kind": "mast"
+  },
+  "km": 7.48,
+  "shore_km": 0.68,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-crozon-goulien",
+  "station": {
+   "source": "metar",
+   "id": "LFRL",
+   "name": "Airport Lanvedoc",
+   "lat": 48.2817,
+   "lon": -4.445,
+   "alt": 82.0,
+   "kind": "airport"
+  },
+  "km": 8.49,
+  "shore_km": 0.42,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-le-conquet-blancs-sablons",
+  "station": {
+   "source": "meteofrance",
+   "id": "29190001",
+   "dept": "29",
+   "name": "Météo-France Plougonvelin",
+   "lat": 48.33,
+   "lon": -4.771667,
+   "alt": 22.0,
+   "kind": "mast"
+  },
+  "km": 4.56,
+  "shore_km": 0.12,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-brest-moulin-blanc",
+  "station": {
+   "source": "metar",
+   "id": "LFRB",
+   "name": "Airport Brest",
+   "lat": 48.4442,
+   "lon": -4.4119,
+   "alt": 103.0,
+   "kind": "airport"
+  },
+  "km": 5.43,
+  "shore_km": 0.49,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-plerin-les-rosaires",
+  "station": {
+   "source": "metar",
+   "id": "LFRT",
+   "name": "Airport St.-brieuc Armor",
+   "lat": 48.5364,
+   "lon": -2.8531,
+   "alt": 136.0,
+   "kind": "airport"
+  },
+  "km": 8.06,
+  "shore_km": 0.46,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-lampaul-ploudalmezeau-trois-moutons",
+  "station": {
+   "source": "meteofrance",
+   "id": "29178001",
+   "dept": "29",
+   "name": "Météo-France Ploudalmezeau",
+   "lat": 48.548,
+   "lon": -4.664167,
+   "alt": 40.0,
+   "kind": "mast"
+  },
+  "km": 2.71,
+  "shore_km": 0.38,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-landeda-sainte-marguerite",
+  "station": {
+   "source": "meteofrance",
+   "id": "29178001",
+   "dept": "29",
+   "name": "Météo-France Ploudalmezeau",
+   "lat": 48.548,
+   "lon": -4.664167,
+   "alt": 40.0,
+   "kind": "mast"
+  },
+  "km": 6.94,
+  "shore_km": 0.38,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-lancieux",
+  "station": {
+   "source": "metar",
+   "id": "LFRD",
+   "name": "Airport Dinard",
+   "lat": 48.5889,
+   "lon": -2.0748,
+   "alt": 59.0,
+   "kind": "airport"
+  },
+  "km": 6.4,
+  "shore_km": 0.37,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-saint-lunaire-longchamp",
+  "station": {
+   "source": "metar",
+   "id": "LFRD",
+   "name": "Airport Dinard",
+   "lat": 48.5889,
+   "lon": -2.0748,
+   "alt": 59.0,
+   "kind": "airport"
+  },
+  "km": 6.37,
+  "shore_km": 0.37,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-keremma",
+  "station": {
+   "source": "meteofrance",
+   "id": "29021001",
+   "dept": "29",
+   "name": "Météo-France Brignogan",
+   "lat": 48.6765,
+   "lon": -4.331,
+   "alt": 9.0,
+   "kind": "mast"
+  },
+  "km": 7.18,
+  "shore_km": 0.4,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-saint-malo-le-sillon",
+  "station": {
+   "source": "metar",
+   "id": "LFRD",
+   "name": "Airport Dinard",
+   "lat": 48.5889,
+   "lon": -2.0748,
+   "alt": 59.0,
+   "kind": "airport"
+  },
+  "km": 8.78,
+  "shore_km": 0.37,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-santec-le-dossen",
+  "station": {
+   "source": "meteofrance",
+   "id": "29276001",
+   "dept": "29",
+   "name": "Météo-France Sibiril S A",
+   "lat": 48.660833,
+   "lon": -4.079167,
+   "alt": 52.0,
+   "kind": "mast"
+  },
+  "km": 4.03,
+  "shore_km": 0.11,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-jullouville",
+  "station": {
+   "source": "meteofrance",
+   "id": "50218001",
+   "dept": "50",
+   "name": "Météo-France Granville",
+   "lat": 48.8345,
+   "lon": -1.613667,
+   "alt": 37.0,
+   "kind": "mast"
+  },
+  "km": 8.79,
+  "shore_km": 0.57,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-agon-coutainville",
+  "station": {
+   "source": "meteofrance",
+   "id": "50215002",
+   "dept": "50",
+   "name": "Météo-France Gouville",
+   "lat": 49.1075,
+   "lon": -1.606833,
+   "alt": 7.0,
+   "kind": "mast"
+  },
+  "km": 7.93,
+  "shore_km": 0.36,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-gouville-sur-mer",
+  "station": {
+   "source": "meteofrance",
+   "id": "50215002",
+   "dept": "50",
+   "name": "Météo-France Gouville",
+   "lat": 49.1075,
+   "lon": -1.606833,
+   "alt": 7.0,
+   "kind": "mast"
+  },
+  "km": 1.48,
+  "shore_km": 0.36,
+  "cls": "a"
+ },
+ {
+  "spot": "fr-utah-beach",
+  "station": {
+   "source": "meteofrance",
+   "id": "50509002",
+   "dept": "50",
+   "name": "Météo-France Ste Marie Du Mo",
+   "lat": 49.4045,
+   "lon": -1.168333,
+   "alt": 5.0,
+   "kind": "mast"
+  },
+  "km": 1.32,
+  "shore_km": 0.86,
+  "cls": "a"
+ },
+ {
+  "spot": "fr-le-havre",
+  "station": {
+   "source": "metar",
+   "id": "LFOH",
+   "name": "Airport Le Havre",
+   "lat": 49.5089,
+   "lon": 0.0711,
+   "alt": 103.0,
+   "kind": "airport"
+  },
+  "km": 1.99,
+  "shore_km": 0.99,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-cherbourg-collignon",
+  "station": {
+   "source": "meteofrance",
+   "id": "50129001",
+   "dept": "50",
+   "name": "Météo-France Cherbourg-Homet",
+   "lat": 49.66,
+   "lon": -1.633333,
+   "alt": 19.0,
+   "kind": "mast"
+  },
+  "km": 5.07,
+  "shore_km": 1.14,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-urville-nacqueville",
+  "station": {
+   "source": "meteofrance",
+   "id": "50129001",
+   "dept": "50",
+   "name": "Météo-France Cherbourg-Homet",
+   "lat": 49.66,
+   "lon": -1.633333,
+   "alt": 19.0,
+   "kind": "mast"
+  },
+  "km": 5.17,
+  "shore_km": 1.14,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-cayeux-sur-mer-la-molliere",
+  "station": {
+   "source": "meteofrance",
+   "id": "80182003",
+   "dept": "80",
+   "name": "Météo-France Cayeux-Sur-Mer",
+   "lat": 50.187167,
+   "lon": 1.521167,
+   "alt": 4.0,
+   "kind": "mast"
+  },
+  "km": 2.33,
+  "shore_km": 0.33,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-le-crotoy",
+  "station": {
+   "source": "meteofrance",
+   "id": "80182003",
+   "dept": "80",
+   "name": "Météo-France Cayeux-Sur-Mer",
+   "lat": 50.187167,
+   "lon": 1.521167,
+   "alt": 4.0,
+   "kind": "mast"
+  },
+  "km": 7.89,
+  "shore_km": 0.33,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-le-touquet",
+  "station": {
+   "source": "meteofrance",
+   "id": "62826001",
+   "dept": "62",
+   "name": "Météo-France Le-Touquet",
+   "lat": 50.5145,
+   "lon": 1.622833,
+   "alt": 5.0,
+   "kind": "mast"
+  },
+  "km": 3.21,
+  "shore_km": 0.54,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-le-portel",
+  "station": {
+   "source": "meteofrance",
+   "id": "62160001",
+   "dept": "62",
+   "name": "Météo-France Boulogne-Sem",
+   "lat": 50.7325,
+   "lon": 1.599667,
+   "alt": 73.0,
+   "kind": "mast"
+  },
+  "km": 3.05,
+  "shore_km": 1.08,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-wimereux-pointe-aux-oies",
+  "station": {
+   "source": "meteofrance",
+   "id": "62160001",
+   "dept": "62",
+   "name": "Météo-France Boulogne-Sem",
+   "lat": 50.7325,
+   "lon": 1.599667,
+   "alt": 73.0,
+   "kind": "mast"
+  },
+  "km": 6.27,
+  "shore_km": 1.08,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-wissant",
+  "station": {
+   "source": "meteofrance",
+   "id": "62054001",
+   "dept": "62",
+   "name": "Météo-France Cap-Gris-Nez",
+   "lat": 50.869667,
+   "lon": 1.582833,
+   "alt": 48.0,
+   "kind": "mast"
+  },
+  "km": 5.95,
+  "shore_km": 0.2,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-calais-bleriot-plage",
+  "station": {
+   "source": "metar",
+   "id": "LFAC",
+   "name": "Airport Calais-Dunkerque",
+   "lat": 50.9621,
+   "lon": 1.9548,
+   "alt": 1.0,
+   "kind": "airport"
+  },
+  "km": 8.33,
+  "shore_km": 0.41,
+  "cls": "c"
+ },
+ {
+  "spot": "fr-les-hemmes-de-marck",
+  "station": {
+   "source": "metar",
+   "id": "LFAC",
+   "name": "Airport Calais-Dunkerque",
+   "lat": 50.9621,
+   "lon": 1.9548,
+   "alt": 1.0,
+   "kind": "airport"
+  },
+  "km": 2.78,
+  "shore_km": 0.41,
+  "cls": "a2"
+ },
+ {
+  "spot": "fr-malo-les-bains-dunkerque",
+  "station": {
+   "source": "meteofrance",
+   "id": "59183001",
+   "dept": "59",
+   "name": "Météo-France Dunkerque",
+   "lat": 51.055833,
+   "lon": 2.3395,
+   "alt": 11.0,
+   "kind": "mast"
+  },
+  "km": 4.19,
+  "shore_km": 1.58,
+  "cls": "c"
+ }
+]
