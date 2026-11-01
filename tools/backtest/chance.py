@@ -276,12 +276,14 @@ def report(rows, title, thr, ref="A1 votes", diffs=True):
     print(f"{len(sub)} spot-days ({days} dates, {len({r['pair'] for r in sub})} spot/station pairs), "
           f"measured go on {pc(statistics.mean(r['obs' if thr == LO else 'obs15'] for r in sub) if sub else None)} of them. "
           "Only spot-days where every method has a forecast.\n")
-    print("| Method | Skill vs climate (Brier) | Says go (chance ≥ 50 %) | wrong gos | go days caught | Clear calls (≤ 30 % or ≥ 70 %) |")
-    print("|---|---|---|---|---|---|")
+    print("| Method | Skill vs climate (Brier) | Says go (≥ 50 %) | wrong gos | go days caught | Says go (≥ 70 %) | wrong gos | caught | Clear calls (≤ 30 % or ≥ 70 %) |")
+    print("|---|---|---|---|---|---|---|---|---|")
     for m in METHODS:
-        s = score(sub, m, thr)
+        s, s7 = score(sub, m, thr), score(sub, m, thr, 0.7)
         if s:
-            print(f"| {m} | {s['bss']:+.2f} | {s['go']} | {pc(s['wrong'])} | {pc(s['caught'])} | {pc(s['sharp'])} |")
+            bss = "–" if s["bss"] is None else f"{s['bss']:+.2f}"
+            print(f"| {m} | {bss} | {s['go']} | {pc(s['wrong'])} | {pc(s['caught'])} | "
+                  f"{s7['go']} | {pc(s7['wrong'])} | {pc(s7['caught'])} | {pc(s['sharp'])} |")
     print()
     if diffs and len({r['day'] for r in sub}) >= 20:
         print(f"Difference in skill with **{ref}**, 95 % interval over dates: ", end="")
@@ -326,7 +328,7 @@ def main():
         for reg in sorted({r["region"] for r in masts}):
             sub = [r for r in masts if r["region"] != reg and r["ens"]]
             ss = {m: score(sub, m, thr) for m in METHODS}
-            if all(ss.values()):
+            if all(ss.values()) and all(v["bss"] is not None for v in ss.values()):
                 print(f"- without {reg}: " + " / ".join(f"{ss[m]['bss']:+.2f}" for m in METHODS[1:]) +
                       f"; wrong gos {pc(ss['Today']['wrong'])} → {pc(ss['B2 ENS x c']['wrong'])}")
         print()

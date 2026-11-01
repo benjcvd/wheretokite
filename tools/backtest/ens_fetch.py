@@ -82,24 +82,35 @@ def fetch_step(run, step, keep):
     return out
 
 
-def fetch_day(day, keep):
+def fetch_part(day, step, keep):
+    """One (day, step) unit, saved on its own so an interrupted run resumes where it stopped."""
+    path = os.path.join(OUT, "parts", f"{day:%Y%m%d}_{step}.json")
+    if not os.path.exists(path):
+        data = fetch_step(day - dt.timedelta(days=1), step, keep)
+        json.dump(data, open(path + ".tmp", "w"), separators=(",", ":"))
+        os.replace(path + ".tmp", path)
+    return path
+
+
+def assemble(day, keep):
     path = os.path.join(OUT, f"{day:%Y%m%d}.json")
     if os.path.exists(path):
-        return path
-    run = day - dt.timedelta(days=1)
+        return
     points = {f"{90 - j * 0.25:.2f},{i * 0.25 - 180:.2f}": {} for j, i in keep}
     keys = list(points)
     for step in STEPS:
+        part = os.path.join(OUT, "parts", f"{day:%Y%m%d}_{step}.json")
+        if not os.path.exists(part):
+            return
         hour = (12 + step) % 24
-        for member, uv in fetch_step(run, step, keep).items():
+        for member, uv in json.load(open(part)).items():
             if "10u" not in uv or "10v" not in uv:
                 continue
             for k, u, v in zip(keys, uv["10u"], uv["10v"]):
                 points[k].setdefault(str(member), {})[str(hour)] = [u, v]
-    tmp = path + ".tmp"
-    json.dump({"run": f"{run:%Y-%m-%d}T12", "points": points}, open(tmp, "w"), separators=(",", ":"))
-    os.replace(tmp, path)
-    return path
+    run = day - dt.timedelta(days=1)
+    json.dump({"run": f"{run:%Y-%m-%d}T12", "points": points}, open(path + ".tmp", "w"), separators=(",", ":"))
+    os.replace(path + ".tmp", path)
 
 
 def main():
@@ -113,11 +124,14 @@ def main():
     print(f"{len(keep)} cells kept per field", file=sys.stderr)
     d0, d1 = dt.date.fromisoformat(a.start), dt.date.fromisoformat(a.end)
     days = [d0 + dt.timedelta(days=k) for k in range((d1 - d0).days + 1)]
+    os.makedirs(os.path.join(OUT, "parts"), exist_ok=True)
+    todo = [(d, st) for d in days if not os.path.exists(os.path.join(OUT, f"{d:%Y%m%d}.json")) for st in STEPS]
     t = time.time()
     with ThreadPoolExecutor(a.workers) as ex:
-        for i, p in enumerate(ex.map(lambda d: fetch_day(d, keep), days)):
-            print(f"{i + 1}/{len(days)} {os.path.basename(p)} {time.time() - t:.0f} s", file=sys.stderr)
-
+        for i, _ in enumerate(ex.map(lambda u: fetch_part(u[0], u[1], keep), todo)):
+            print(f"{i + 1}/{len(todo)} parts {time.time() - t:.0f} s", file=sys.stderr)
+    for d in days:
+        assemble(d, keep)
 
 if __name__ == "__main__":
     main()

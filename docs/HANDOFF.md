@@ -179,3 +179,13 @@ of a few missed days. Tricky: the absolute hit rates swing with the land-vs-wate
 buoys (WHE-62) can settle, and half the top picks (Roussillon, L'Estartit, Pals, Fangar) have no
 station at all. Open question to Ben on Riumar in mestral; easterlies at Torredembarra are under-read
 by AROME and ICON (new card).
+
+**Forecast accuracy, 1 Nov (WHE-81).** "Chance you'll kite" tested on 84 days, 36 shore masts + the
+POEM buoy, day-ahead. A chance built from the 4 models' margin above 12 kn and their spread (two
+tuned numbers) is well calibrated on masts (40 % → 40 %, 80 % → 76 %) and cuts wrong gos from 38 %
+to 28 % at the cost of some missed days. ECMWF's 51-member ensemble is badly over-sure near the
+coast (80 % → 39 %) and would cost ~7–8x the quota: don't. Tricky: Open-Meteo keeps no past
+ensembles, so `tools/backtest/ens_fetch.py` pulls them from ECMWF's AWS archive (~1 h, S3 throttles,
+resumable; needs `pip3 install --user eccodes`). On the water the chance reads too low: it needs
+the land-vs-water level fix (WHE-80) before it can ship.
+

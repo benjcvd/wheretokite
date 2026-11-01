@@ -1,7 +1,93 @@
-# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
+
+## "Chance you'll kite": models agreeing or a 51-member ensemble? (WHE-81, 1 Nov)
+
+**In plain words.** We want the score to be a chance: "70 %" should mean it works about 7 days
+in 10. I tested two ways on 84 days (8 Aug – 30 Oct), 36 shore masts in Spain and France plus
+the POEM buoy on the water, forecast made the day before. A go day = two hours in a row between
+12 and 28 kn, direction not offshore.
+
+- **The simple way wins.** (A2) Take the 4 models we already read, ask how far their best 2 h
+  sits above 12 kn and how much they disagree, turn that into a chance. When it says 40 %, it
+  happened 40 % of the time; 60 % → 60 %; 80 % → 76 %. Only the top band is a bit too sure
+  (97 % → 83 %). Measured.
+- **The ensemble (B) is worse and costs more.** ECMWF's 51-member ensemble is far too sure of
+  itself near the coast: when 80 % of members say go, it happened 39 % of the time; "98 %"
+  happened 69 %. Its 25 km cells can't see sea breezes or shelter. Scaling or re-centring it on
+  AROME didn't fix it. Measured, clear (95 % interval well outside zero).
+- **Wrong gos.** Today's forecast is wrong on 38 % of its gos at these masts (WHE-72 said 25–35 %
+  with a slightly different go rule). A2 at "≥ 50 %": 28 % wrong, but it catches 59 % of real go
+  days instead of 66 %. At "≥ 70 %": 20 % wrong, 41 % caught. So fewer dead beaches, a few more
+  missed days: that's the trade, not a free win.
+- **On the water it's too cautious.** At the POEM buoy, days given 10–30 % were windy 56 % of the
+  time. The chance was tuned on land masts, which read low (WHE-62). Before shipping, the level
+  needs the sea-vs-land correction (WHE-80), otherwise Catalan beaches will look too light.
+- **Cost.** A2 reuses the 4-model request the app already makes for the confidence badge: no new
+  requests. B at 100 spots: about 7–8x today's Open-Meteo quota per refresh (51 members × 3
+  variables; Open-Meteo counts each member's variable), plus ~15 MB of answer per refresh.
+  Estimated from Open-Meteo's published weighting, not measured.
+
+**Recommendation.**
+1. Build the chance from model agreement (A2): 2 numbers to tune, same everywhere, no new data
+   cost. Ship it only together with the land-vs-water level fix (WHE-80) and cap the display at
+   about 90 %, since the top band is over-sure. (recommended)
+2. A1, the share of 4 models saying go (0, 25, 50, 75, 100 %): almost as good on masts, nothing
+   to tune, but only 5 steps and "75 %" happened 53 % of the time.
+3. Ensemble members (B): don't. Worse calibrated, 7–8x the quota. Revisit only if a high-res
+   ensemble (AROME-EPS, ICON-D2-EPS) becomes available with an archive to test it.
+
+### Numbers (day before, go = 2 h at 12–28 kn, usable direction)
+
+36 shore masts, 2,959 spot-days, 84 dates, go on 21 % of them. Skill = Brier skill vs always
+saying the average (0 = no better, 1 = perfect). Fitted parts (A2, B2) scored on weeks they
+weren't fitted on. Full tables per region and at 15 kn: `tools/backtest/results/whe81.md`.
+
+| Method | Skill | Go at ≥ 50 %: wrong / caught | Go at ≥ 70 %: wrong / caught |
+|---|---|---|---|
+| Today (best match, sea cell, yes/no) | +0.05 | 38 % / 66 % | same |
+| A1 share of 4 models saying go | +0.35 | 39 % / 69 % | 28 % / 53 % |
+| **A2 margin and disagreement of 4 models** | **+0.41** | **28 % / 59 %** | **20 % / 41 %** |
+| B1 ECMWF ensemble, 50 members | +0.20 | 40 % / 68 % | 37 % / 62 % |
+| B2 ensemble × fitted factor | +0.20 | 40 % / 62 % | 35 % / 57 % |
+| B3 ensemble spread around AROME | +0.10 | 46 % / 78 % | 42 % / 74 % |
+
+A2 minus A1: +0.04 … +0.08 (95 % over dates); B1 minus A1: −0.21 … −0.08. At 15 kn the order is
+the same (A2 +0.36, A1 +0.28, B1 +0.12, today −0.05).
+
+Does "x %" happen x % of the time? (spot-days in band: chance given → share that were go)
+
+| Method | 10–30 % | 30–50 % | 50–70 % | 70–90 % | 90–100 % |
+|---|---|---|---|---|---|
+| A2 | 558: 19 → 17 % | 280: 40 → 40 % | 193: 59 → 60 % | 145: 81 → 76 % | 169: 97 → 83 % |
+| B1 | 201: 18 → 25 % | 143: 39 → 31 % | 99: 59 → 39 % | 121: 79 → 39 % | 485: 98 → 69 % |
+
+A2 as tuned: chance = Φ((mean best 2 h − 12 kn − 1 kn) / √(models' spread² + 2.5–3 kn²)). Both
+halves of the data gave the same numbers (−1 kn, 2.5 and 3 kn): stable.
+
+**Where it holds and where it doesn't.** A2 is the best or tied in every French region and in
+Andalusia. Valencia (one station only) is the exception: the ensemble did better there. Catalonia: every method is poor because these masts measured go on only 3 % of days
+(sheltered, WHE-62); without Catalonia A2 still wins (+0.46 vs ensemble +0.34). Canaries: today's
+best match beats every chance method (no AROME there; ICON and ECMWF too coarse, as in WHE-72).
+At the POEM buoy (146 spot-days, water truth): A2 +0.18, B3 +0.16, A1 +0.11, ensemble −0.07, but
+every method under-calls the water.
+
+**Concrete days.** Sant Pere Pescador, 15 Aug: today said go, A2 21 %, ensemble 0 %; measured
+dead. Cayeux-sur-Mer, 9 Oct: today said no, A2 and ensemble 100 %; measured go. Segur de Calafell,
+28 Aug: ensemble 90 %, A2 21 %; measured dead (the ensemble's offshore cell).
+
+**What could make this wrong.**
+- Truth is land masts: they read low and sheltered (WHE-62), and the fitted −1 kn partly learns
+  that shelter. That's why the buoy shows A2 too cautious. The *ranking* of methods held on the
+  buoy and with any region dropped; the *exact percentages* shouldn't be trusted on the water yet.
+- Summer and early autumn only (84 days). Winter storms and long synoptic events are thin here.
+- Rider fixed (75 kg, 9 + 12 m, intermediate: 12–28 kn). No gusts in the station data, so the
+  "too gusty" part of the score isn't tested. No tides, darkness or bans (they're 0 anyway).
+- The ensemble is the 12 UTC run read every 3 h and interpolated; finer timing could help B a
+  little, but not close a 40-point gap at "80 %".
+- Spot-days are not independent (one weather system hits many spots): intervals are over dates.
 
 ## AROME 1.3 first, then best match, on the sea point (WHE-78, 1 Nov): don't ship it
 
