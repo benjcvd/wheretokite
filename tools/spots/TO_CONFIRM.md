@@ -29,9 +29,15 @@ second pass with web research is worth doing.
 - Bonifacio – Balistra: still kited since the school closed in 2023?
 - Weak pins (bus stop / place node): Carnon – Petit Travers, Narbonne – La Nautique,
   Ganguise, Ingril; L'Espiguette is on a restaurant at the main car park.
+- Leucate, not added (no reliable OSM position, possibly duplicates): La Mine (likely = Le Goulet),
+  Les Pilotis (Port Leucate?), the west shore of the Étang de Leucate near Salses.
+- Not added as duplicate: Argelès-Plage (= Le Racou).
+- Pin check (WHE-59): Parc des Dosses on the beach, direction matches.
+- Le Barcarès Les 3 Colonnes: pin on the beach element, 680 m from an old community GPS (7 years). Same beach, left as is.
+- Leucate Le Goulet: pin is the spot's camper-van car park, about 200 m from the lagoon. No beach or kite feature is
+  mapped on that shore, so nothing better to point at; the forecast grid is kilometres wide, so it reads the same wind.
 
-## Spain / Portugal (ES.csv, PT.csv)
-- Torredembarra: where do kiters actually launch (Platja de Baix a Mar pinned)?
+## Spain outside Catalonia / Portugal (ES.csv, PT.csv)
 - Mar Menor: rules after the lagoon's environmental crisis.
 - Mallorca – Pollença: zone at Can Cullerassa?
 - Embalse de La Loteta: launch (pinned at the marina, not the club's south spot).
@@ -54,6 +60,39 @@ second pass with web research is worth doing.
     ban dates? Santa Cruz: launch pinned at Praia do Mirante, right? Windy also lists Figueira
     da Foz, Carcavelos, Sesimbra, Tróia, Vila Nova de Milfontes (mostly surf; left out).
 
+## Catalunya (Catalan rows of ES.csv)
+
+### Questions for you
+- **El Trabucador, question for you**: our pin is mid-bar (la Ràpita side), about 4 km south of where the schools say
+  they teach ("start of the beach, next to Eucaliptus":
+  https://www.kitesurfdeltakitesup.es/playa-del-trabucador/, https://terresdelebre.travel/es/actividades-que-hacer/turismo-activo/kitesurf/kitesurf-trabucador).
+  No official zone map found. Do riders actually use the whole bar? Options: (a) leave it, Trabucador = mid-bar for
+  experienced riders, Eucaliptus = the root and schools (recommended); (b) merge the two into one spot at the root.
+- **Palamós (La Fosca), question for you**: no kite school, kite zone or real kite guide found there (paddle and kayak
+  only; one surf portal lists N/NW winds, which blow offshore at this SE-facing cove). Options: (a) archive it, the
+  Empordà already has Pals and Platja d'Aro nearby (recommended); (b) move it to pro; (c) keep it free.
+- Sant Pere Pescador zone: the town lists two kite areas (Cortal de la Vila, Cortal de la Devesa), now in the notes.
+  Guide coordinates disagree on where they sit (Buscokite 42.182/3.110, Yumping 42.184/3.109, Kiteloopers 42.171/3.114);
+  schools sit at Can Martinet / Camping La Gaviota. Our pin (42.1887, 3.1080) is a school shop on the same beach: leave it?
+  Windy (visitor look, 2026-10-27): markers on the same beach and a second cluster 1.5 km south (Can Martinet side).
+- Summer bans (1 Jun–30 Sep on every new Catalan spot): which have an authorised summer kite zone, so the ban should go?
+  Likely Sant Carles de la Ràpita, Segur de Calafell, Cambrils, Roses. Pals is settled: the town page confirms the
+  restriction. L'Escala, Sant Martí d'Empúries, Palamós, Platja d'Aro: no town page found, Catalan default kept.
+- Torredembarra: where do kiters actually launch (Platja de Baix a Mar pinned)?
+- El Prat: the kite zone there is Can Camins (OSM `sport=kitesurfing`), which was ruled out earlier. Still no?
+- Positions to check on the map: Punta del Fangar (pinned on the locality; launch on the bay side?), Badalona (info
+  board by the Pont del Petroli).
+
+### Checked, for the record
+- Not added as duplicates (< 2 km, same beach and direction): Blanes – S'Abanell (= Malgrat – La Pomareda, Tordera
+  mouth), Roses town beach (2 km from Empuriabrava – La Rubina).
+- Pin check (WHE-59, 2026-10-27 and 31, OSM reverse lookups; Overpass down): Sant Martí d'Empúries, L'Escala, Pals,
+  Riumar, L'Ampolla, Punta del Fangar all on the beach or promenade, 14-80 m from the water, directions match.
+- Platja dels Eucaliptus: was a mapper's point 270 m inland (campsite); now on the beach sand area `osm:r14500385`,
+  90 m from the water, same direction (151°).
+- L'Estartit pin moved from the kite school's shop (a street 270 m inland) to the beach `osm:r1692854`, centre at
+  La Pletera, where the kite concession is.
+
 ## Morocco (MA.csv)
 - Lassarga: our row is the lagoon shore, but guides describe "La Sarga" as an Atlantic wave
   spot. Which one do kiters mean?
@@ -64,17 +103,6 @@ second pass with web research is worth doing.
   Takerkoust: no kite source found.
 - Speed Spot proper (low tide only, ~5–10 km from the PK25 camps): its own row with
   `tide=low`, or keep it in the PK25 notes?
-- Barcelona-area additions (2026-10-22): every new Catalan spot gets the Catalan summer ban
-  (1 Jun–30 Sep). Which have an authorised summer kite zone, so the ban should go? Likely:
-  Sant Carles de la Ràpita, Segur de Calafell, Cambrils, Palamós, Pals, Roses.
-- El Prat: the kite zone there is Can Camins (OSM `sport=kitesurfing`), which was ruled out
-  earlier. Still no?
-- Leucate, not added (no reliable OSM position, possibly duplicates): La Mine (likely = Le Goulet),
-  Les Pilotis (Port Leucate?), the west shore of the Étang de Leucate near Salses.
-- Not added as duplicates (< 2 km, same beach and direction): Blanes – S'Abanell (= Malgrat –
-  La Pomareda, Tordera mouth), Argelès-Plage (= Le Racou), Roses town beach (2 km from Empuriabrava – La Rubina).
-- New positions to check on the map: Punta del Fangar (pinned on the locality; launch on the bay
-  side?), Badalona (info board by the Pont del Petroli).
 
 ## UK / Ireland (GB.csv, IE.csv)
 - Weymouth – Portland Harbour: pinned at Hamm Beach facing N into the harbour; right launch?
@@ -152,36 +180,3 @@ second pass with web research is worth doing.
 - Liepāja: pin is the town centre, moved to the beach by the build.
 - Neusiedl am See: zone rules. Siófok: only Hungarian spot (Velence, other Balaton launches?).
 - Left out: Walchensee, Kochelsee, Ammersee, Lipno (kite rules unclear), Slovakia, Slovenia.
-
-## Pin vs riding zone (WHE-59), Catalonia + Leucate first pass (2026-10-27)
-- Overpass was down for most of the session, so only part of the list could be measured. No locator changed.
-- Sant Pere Pescador: pin (42.1887, 3.1080) is on the long beach. Guide coordinates disagree: Buscokite 42.182/3.110
-  (about 700 m south), Yumping school 42.184/3.109 (about 500 m), Kiteloopers "Cortal de la Vila" 42.171/3.114 (about 2 km
-  south). Schools sit at Can Martinet / Camping La Gaviota. One guide says the paid zone no longer exists. Where does the
-  authorised zone sit today? Pin is within the same beach, wind is the same at this scale: I would leave it.
-- Le Barcarès Les 3 Colonnes: pin on the beach element, 680 m from an old community GPS (7 years). Same beach, left as is.
-- Second pass (2026-10-31, OSM reverse lookups + OSM API; Overpass still down): Sant Martí d'Empúries, L'Escala, Pals,
-  Riumar, L'Ampolla, Punta del Fangar and Parc des Dosses all sit on the beach or promenade, 14-80 m from the water,
-  directions match. Left as is.
-- Platja dels Eucaliptus: was a mapper's point 270 m inland (campsite); now on the beach sand area `osm:r14500385`,
-  90 m from the water, same direction (151°).
-- Leucate Le Goulet: pin is the spot's camper-van car park, about 200 m from the lagoon. No beach or kite feature is
-  mapped on that shore, so nothing better to point at; the forecast grid is kilometres wide, so it reads the same wind.
-- **El Trabucador, question for you**: our pin is mid-bar (la Ràpita side), about 4 km south of where the schools say
-  they teach ("start of the beach, next to Eucaliptus":
-  https://www.kitesurfdeltakitesup.es/playa-del-trabucador/, https://terresdelebre.travel/es/actividades-que-hacer/turismo-activo/kitesurf/kitesurf-trabucador).
-  No official zone map found. Do riders actually use the whole bar? Options: (a) leave it, Trabucador = mid-bar for
-  experienced riders, Eucaliptus = the root and schools (recommended); (b) merge the two into one spot at the root.
-- Windy check (browser, as a visitor, 2026-10-27): kite markers sit on the same beach as our Sant Pere pin and in a
-  second cluster about 1.5 km south (Can Martinet side). It shows no zone boundaries, so the official zone is still
-  unconfirmed; pin left as is.
-
-## Costa Brava / Empordà verified pass (WHE-65, 2026-11-01)
-- **Palamós (La Fosca), question for you**: no kite school, kite zone or real kite guide found there (paddle and kayak
-  only; one surf portal lists N/NW winds, which blow offshore at this SE-facing cove). Options: (a) archive it, the
-  Empordà already has Pals and Platja d'Aro nearby (recommended); (b) move it to pro; (c) keep it free.
-- Summer ban 1 Jun–30 Sep: now backed by an official page for Pals (visitpals.com: "kitesurf is restricted… between
-  1 June and 30 September"). For L'Escala, Sant Martí d'Empúries, Palamós and Platja d'Aro it is still the Catalan
-  default (kites stay out of buoyed bathing zones); no town page found. Kept as is.
-- L'Estartit pin moved from the kite school's shop (a street 270 m inland) to the beach `osm:r1692854`, centre at
-  La Pletera, where the kite concession is.
