@@ -73,10 +73,17 @@ REGIONS = {
 # MARK: Open-Meteo, cached, paced for the free quota
 
 def om(url, body):
+    import hashlib
+    from model_backtest import CACHE
     for attempt in range(30):
         try:
             return json.loads(fetch(url, body))
+        except json.JSONDecodeError:   # truncated or empty answer was cached: drop it, retry
+            os.remove(os.path.join(CACHE, hashlib.sha1((url + (body or "")).encode()).hexdigest()))
+            time.sleep(5)
         except urllib.error.HTTPError as e:
+            if e.code == 400:
+                return {"error": e.read()[:200].decode(errors="replace")}   # e.g. point outside a model's domain
             if e.code != 429:
                 raise
             print("Open-Meteo rate limit, waiting 70 s", file=sys.stderr)
@@ -102,21 +109,30 @@ def forecasts(spot, start, end):
         for m in models:
             fc[(m, key)] = {l: {} for l in LEADS}
         for lo, hi in months(start, end):
-            j = om("https://previous-runs-api.open-meteo.com/v1/forecast", urllib.parse.urlencode({
-                "latitude": f"{lat:.5f}", "longitude": f"{lon:.5f}", "hourly": ",".join(vars_),
-                "wind_speed_unit": "kn", "timezone": "GMT", "start_date": lo, "end_date": hi,
-                "models": ",".join(models), "cell_selection": sel}))
-            if "hourly" not in j:
-                sys.exit(f"Open-Meteo: {j}")
-            h = j["hourly"]
-            hrs = [t[:13] for t in h["time"]]
-            for m in models:
-                for lead, suf in LEADS.items():
-                    s = h.get(f"wind_speed_10m{suf}_{m}") or []
-                    d = h.get(f"wind_direction_10m{suf}_{m}") or []
-                    for i, t in enumerate(hrs):
-                        if i < len(s) and s[i] is not None and d[i] is not None and int(t[11:13]) in DAY_UTC:
-                            fc[(m, key)][lead][t] = (s[i], d[i])
+            groups = [models]
+            while groups:
+                ms = groups.pop()
+                j = om("https://previous-runs-api.open-meteo.com/v1/forecast", urllib.parse.urlencode({
+                    "latitude": f"{lat:.5f}", "longitude": f"{lon:.5f}", "hourly": ",".join(vars_),
+                    "wind_speed_unit": "kn", "timezone": "GMT", "start_date": lo, "end_date": hi,
+                    "models": ",".join(ms), "cell_selection": sel}))
+                if "hourly" not in j:
+                    if len(ms) > 1:      # one model outside its domain fails the whole request: split
+                        groups += [[m] for m in ms]
+                    continue
+                h = j["hourly"]
+                if len(ms) > 1 and not all(f"wind_speed_10m_{m}" in h for m in ms):
+                    groups += [[m] for m in ms]   # models out of range were dropped, labels too
+                    continue
+                hrs = [t[:13] for t in h["time"]]
+                for m in ms:
+                    tag = f"_{m}" if len(ms) > 1 else ""
+                    for lead, suf in LEADS.items():
+                        sp = h.get(f"wind_speed_10m{suf}{tag}") or []
+                        d = h.get(f"wind_direction_10m{suf}{tag}") or []
+                        for i, t in enumerate(hrs):
+                            if i < len(sp) and sp[i] is not None and d[i] is not None and int(t[11:13]) in DAY_UTC:
+                                fc[(m, key)][lead][t] = (sp[i], d[i])
         # Where each model's cell actually is: one tiny request per model (one call each).
         for m in models:
             if m == BM:
@@ -124,7 +140,8 @@ def forecasts(spot, start, end):
             j = om("https://api.open-meteo.com/v1/forecast", urllib.parse.urlencode({
                 "latitude": f"{lat:.5f}", "longitude": f"{lon:.5f}", "hourly": "wind_speed_10m", "forecast_days": 1,
                 "models": m, "cell_selection": sel}))
-            where[(m, key)] = (j.get("latitude"), j.get("longitude"))
+            if "error" not in j:
+                where[(m, key)] = (j.get("latitude"), j.get("longitude"))
     return fc, where
 
 
@@ -241,27 +258,36 @@ def kite(kn, d, spot):
 
 
 def day_table(rows, key):
-    """(pair, day) -> (forecast best 2 h, measured best 2 h), kiteable direction only, ≥ 8 measured hours."""
+    """(pair, day) -> (forecast best 2 h, measured best 2 h, forecast go, measured go). Best 2 h on the raw
+    speed; "go" = best 2 h ≥ GO_KN counting only hours whose direction is not offshore. ≥ 8 measured hours."""
     by = {}
     for r in rows:
         by.setdefault((r["pair"], r["day"]), {})[int(r["hour"][11:13])] = r
     out = {}
     for k, hrs in by.items():
-        f, o = [], []
+        f, o, fk, ok = [], [], [], []
         for h in DAY_UTC:
             r = hrs.get(h)
             if r and key in r["f"]:
-                fk = r["f"][key]
-                f.append(kite(fk[0], fk[1], r["spot"]))
-                o.append(kite(r["obs"], r["dir"], r["spot"]))
+                v = r["f"][key]
+                f.append(v[0])
+                o.append(r["obs"])
+                fk.append(kite(v[0], v[1], r["spot"]))
+                ok.append(kite(r["obs"], r["dir"], r["spot"]))
             else:
-                f.append(None)
-                o.append(None)
+                f.append(None), o.append(None), fk.append(None), ok.append(None)
         if sum(v is not None for v in o) >= 8:
             fb, ob = best2h(f), best2h(o)
             if fb is not None and ob is not None:
-                out[k] = (fb, ob)
+                out[k] = (fb, ob, best2h(fk) >= GO_KN, best2h(ok) >= GO_KN)
     return out
+
+
+def go_counts(vals):
+    hit = sum(1 for v in vals if v[2] and v[3])
+    miss = sum(1 for v in vals if v[3] and not v[2])
+    false = sum(1 for v in vals if v[2] and not v[3])
+    return hit, miss, false
 
 
 def scores(rows, key):
@@ -271,12 +297,10 @@ def scores(rows, key):
     err = [f[0] - r["obs"] for f, r in pts]
     dirs = [angle(f[1], r["dir"]) for f, r in pts if r["obs"] >= 8 and r["dir"] is not None]
     d = day_table(rows, key)
-    hit = sum(1 for f, o in d.values() if f >= GO_KN and o >= GO_KN)
-    miss = sum(1 for f, o in d.values() if f < GO_KN <= o)
-    false = sum(1 for f, o in d.values() if f >= GO_KN > o)
+    hit, miss, false = go_counts(d.values())
     return {"hours": len(pts), "bias": statistics.mean(err), "mae": statistics.mean(abs(e) for e in err),
-            "days": len(d), "d_bias": statistics.mean(f - o for f, o in d.values()) if d else None,
-            "d_mae": statistics.mean(abs(f - o) for f, o in d.values()) if d else None,
+            "days": len(d), "d_bias": statistics.mean(v[0] - v[1] for v in d.values()) if d else None,
+            "d_mae": statistics.mean(abs(v[0] - v[1]) for v in d.values()) if d else None,
             "go": hit + miss, "hit": hit, "miss": miss, "false": false,
             "pod": hit / (hit + miss) if hit + miss else None,
             "far": false / (hit + false) if hit + false else None,
@@ -299,10 +323,8 @@ def boot(rows, key, ref=None, reps=400, seed=7):
 
     def m(tab, sample):
         v = [tab[k] for k in sample]
-        hit = sum(1 for f, o in v if f >= GO_KN and o >= GO_KN)
-        miss = sum(1 for f, o in v if f < GO_KN <= o)
-        false = sum(1 for f, o in v if f >= GO_KN > o)
-        return (statistics.mean(f - o for f, o in v), statistics.mean(abs(f - o) for f, o in v),
+        hit, miss, false = go_counts(v)
+        return (statistics.mean(x[0] - x[1] for x in v), statistics.mean(abs(x[0] - x[1]) for x in v),
                 hit / (hit + miss) if hit + miss else float("nan"), false / (hit + false) if hit + false else float("nan"))
 
     out = []
@@ -330,6 +352,8 @@ def pc(x):
 def ci(iv, pct=False, sign=True):
     if not iv:
         return ""
+    if not pct and not sign:
+        return f" ({iv[0]:.1f}–{iv[1]:.1f})"
     if pct:
         return f" ({iv[0] * 100:+.0f} … {iv[1] * 100:+.0f})" if sign else f" ({iv[0] * 100:.0f}–{iv[1] * 100:.0f})"
     return f" ({iv[0]:+.1f} … {iv[1]:+.1f})"
@@ -343,7 +367,7 @@ def table(rows, names, lead, with_ci=True, ref=None):
         if not s:
             continue
         b = boot(rows, (name, lead)) if with_ci else None
-        print(f"| {name} | {s['days']} | {f1(s['d_bias'], True)}{ci(b and b['bias'])} | {f1(s['d_mae'])}{ci(b and b['mae'])} | "
+        print(f"| {name} | {s['days']} | {f1(s['d_bias'], True)}{ci(b and b['bias'])} | {f1(s['d_mae'])}{ci(b and b['mae'], sign=False)} | "
               f"{s['go']} | {pc(s['pod'])}{ci(b and b['pod'], True, False)} | {pc(s['far'])}{ci(b and b['far'], True, False)} | "
               f"{f1(s['bias'], True)} | {f1(s['mae'])} | {f1(s['dir'])}° |")
     if ref:
@@ -362,10 +386,17 @@ def main():
     ap.add_argument("--pairs", required=True)
     ap.add_argument("--start", default="2026-08-08")
     ap.add_argument("--end", default="2026-10-30")
+    ap.add_argument("--prefetch", type=int, default=0, help="download forecasts with N parallel workers first")
     ap.add_argument("--dump", help="write per-pair cell distances and per-region scores (JSON)")
     a = ap.parse_args()
     spots = {s["id"]: s for s in load_spots()}
     pairs = json.load(open(a.pairs))
+    if a.prefetch:
+        from concurrent.futures import ThreadPoolExecutor
+        ids = sorted({p["spot"] for p in pairs})
+        with ThreadPoolExecutor(a.prefetch) as ex:
+            for i, _ in enumerate(ex.map(lambda sid: forecasts(spots[sid], a.start, a.end), ids)):
+                print(f"prefetched {i + 1}/{len(ids)}", file=sys.stderr)
     rows, cells = collect(pairs, spots, a.start, a.end)
 
     weights_by = {}
