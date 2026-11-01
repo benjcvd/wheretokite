@@ -146,3 +146,22 @@ Ben: no new ticket is started until the five in progress are finished: WHE-72 �
 (Forecast accuracy) and WHE-65 → WHE-66 (Spot improvement). Nothing else goes to `ready`. The
 Lead hands over the next card in each chain when the one before it ends. WHE-74: Ben keeps 80 %
 on the hour before a storm.
+
+## Lead, 1 Nov evening: forecast accuracy, where it stands
+- Five setups tested on 36 ES/FR shore masts (WHE-72): Option 1 (AROME+ICON beach cell, ECMWF sea
+  cell) best, 2.6 kn error vs 3.0 today, false "go" 25 % vs 35 %; better at 26 of 36 spots; much
+  worse in the Canaries and at Tarifa. Buoys (WHE-62) say the water is windier than land masts, so
+  every beach setup may read low. The three-model beach mix (WHE-58, b5aa464 on atlas/product, on
+  Ben's phone) reads too low: drop it; strip it before merging WHE-54.
+- Ben: **no per-spot or per-region methods**, one method everywhere. He finds the numbers bad.
+  Lead's literature check: our error matches published day-ahead station scores (~2 m/s RMSE);
+  the next lever is one statistical correction learned from all masts + buoys (MOS, ~10–20 %),
+  card WHE-79 (todo, waits for WHE-78 and Ben's go). Ben put WHE-78 (AROME-first, sea point) in
+  progress himself; its result + WHE-79 decide the setup. Nothing ships before Ben picks.
+- Freeze still on: start nothing else without Ben. 14 cards in review; Lead's grouping for him:
+  forecast (58/60/61/62/63/72), scoring OKs (73 numbers, 74 wording; 80 % pre-storm hour decided),
+  Catalan spots in one map session (59/65/66 + WHE-2; Riumar in 63 and 66; Castelldefels in 66
+  and WHE-77), then WHE-54, Greece last. Branches with reports to merge (docs/tools only):
+  atlas/t/whe-62, whe-63, whe-72, atlas/forecast-accuracy.
+- Gotcha: Atlas reverted the Lead's `ready` edits on `doing` cards; the per-spot numbers came
+  from `/tmp/whe72spot/perspot.py` run on the whe-72 worktree's `.cache` (temporary).
