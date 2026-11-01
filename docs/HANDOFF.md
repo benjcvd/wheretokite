@@ -162,3 +162,11 @@ the recommendation is Option 1 with the Canaries kept on best match; Ben's answe
 WHE-61. Tricky: the Météo-France mirror on data.gouv froze in June (use the OVH bucket);
 Open-Meteo silently drops out-of-range models from multi-model requests; ECMWF's sea cell is
 ~13 km out, so any "cap the sea cell" rule sends it back inland. Still no water truth (WHE-62).
+
+**Forecast accuracy, 1 Nov (later).** WHE-78 tested "AROME 1.3 on the sea point for 2 days, then
+best match" (in review, recommend not shipping). AROME stops at 2 days, so days 2+ are today's
+setup; and on the day-before forecast, best match already *is* AROME 1.3 at Sant Pere, the POEM
+spots, Hyères and Brittany, so WHE-62's near-shore buoy win was today's setup all along. At the
+other 24 spots it reads 2–3 kn high on masts and ~1 kn high at open-sea buoys: more go days caught,
+half of them false, worst in Catalonia. The open choice is still today's setup vs option 1.
+Tricky: the previous month's Copernicus buoy file appears late; `buoys.py` falls back to daily files.
