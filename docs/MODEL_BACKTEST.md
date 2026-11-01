@@ -3,6 +3,106 @@
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
 
+## Replay of 20 Sep – 31 Oct from Barcelona: did the top picks have wind? (WHE-63, 1 Nov)
+
+For each of the 42 days: the afternoon slot, 150 min from Barcelona (37 spots in reach), rider
+75 kg with 9 and 12 m kites. The app's own ranking code was fed the forecast as it stood **the
+day before** (Open-Meteo Previous Runs), then fed what the nearest official station measured.
+A "go" is what the rider sees: the app shows a riding window. Script: `tools/backtest/replay.py`
+(it drives `kite --replay`).
+
+### In plain words
+
+- **Today's app (best match, offshore cell) says "go" far too often.** It showed a riding window
+  on 37 of 42 afternoons; the stations measured a rideable afternoon somewhere in reach on 10
+  to 24 of them (depending on how much stronger the wind is on the water than at the mast).
+  Of its checked "go" picks, 9 % had wind at the stations' level, 32 % even with a generous
+  +30 % allowance for the water. Its top pick was wrong on 12–15 of 16 checkable days.
+- **Both beach-cell setups cut the false "go" a lot, at the cost of missing some real days.**
+  WHE-58's mix said "go" on 20 days, the WHE-61 pick on 26. Share of good "go" picks:
+  19–69 % (WHE-58) and 14–51 % (WHE-61 pick), against 9–32 % today. The gain over today is
+  beyond the noise for WHE-58 at every level; for the WHE-61 pick it is small and, without the
+  Bay of Roses stations, a tie at the middle level. Missed go days: today 0–1, WHE-61 pick 2–7,
+  WHE-58 3–8.
+- **I can't give you one honest hit rate.** The answer swings from "1 in 10" to "2 in 3"
+  with the land-vs-water gap, which no land station measures. Torredembarra (beach mast) says
+  the gap is small; the inland masts say it is large; the one buoy so far (WHE-62, Canet) says
+  the models read *low* on the water. Until WHE-62 settles the level, trust the ranking of the
+  setups, not the percentages.
+- **Half the "go" picks can't be checked at all**: the Roussillon lagoons and beaches
+  (Le Barcarès, Saint-Cyprien, Argelès), L'Estartit, Pals and the Ebro delta's Fangar have no
+  official mast within 6 km. These are exactly the spots the app likes most on windy days.
+
+### Results (top 5 picks, forecast 1 day ahead, 42 days)
+
+Station level: "as measured" (brought to 10 m), then ×1.15 and ×1.3 as a guess at the water
+(log-profile physics says a land mast reads about 10–30 % under open water; a guess, not a
+measurement).
+
+| Setup | Station level | "Go" picks checked | had wind | false "go" | share good | Top pick good / bad | Go days (app) | Go days (measured) | Missed go days |
+|---|---|---|---|---|---|---|---|---|---|
+| Today: best match, offshore cell | as measured | 66 | 6 | 60 | 9 % | 1 / 15 | 37 | 10 | 0 |
+| | ×1.15 | 66 | 13 | 53 | 20 % | 4 / 12 | 37 | 17 | 1 |
+| | ×1.3 | 66 | 21 | 45 | 32 % | 4 / 12 | 37 | 24 | 1 |
+| WHE-58: AROME+ICON+ECMWF, beach cell | as measured | 26 | 5 | 21 | 19 % | 1 / 5 | 20 | 10 | 3 |
+| | ×1.15 | 26 | 12 | 14 | 46 % | 5 / 1 | 20 | 17 | 5 |
+| | ×1.3 | 26 | 18 | 8 | 69 % | 5 / 1 | 20 | 24 | 8 |
+| WHE-61 pick: AROME+ICON beach, ECMWF offshore | as measured | 35 | 5 | 30 | 14 % | 0 / 9 | 26 | 10 | 2 |
+| | ×1.15 | 35 | 12 | 23 | 34 % | 2 / 7 | 26 | 17 | 4 |
+| | ×1.3 | 35 | 18 | 17 | 51 % | 4 / 5 | 26 | 24 | 7 |
+
+Is the difference real? Share of good "go" picks minus today, 95 % interval over days
+resampled: WHE-58 +3…+22 / +12…+46 / +24…+54 points (×1 / ×1.15 / ×1.3); WHE-61 pick
++0…+13 / +4…+27 / +7…+33. Without Sant Pere and Empuriabrava (the two spots where today's
+setup is worst): WHE-58 still clearly ahead (+3…+27 / +9…+42 / +17…+47), WHE-61 pick
++0…+12 / −3…+21 / +1…+28 (a tie in the middle). Small samples: 20–66 checked picks.
+
+Stations (≤ 6.2 km, ≤ 40 m up; hilltop and rooftop masts left out): 20 of the 37 spots, all
+Meteocat except Météo-France Torreilles. Full output, per spot and day by day:
+[replay output](tools/backtest/replay_2026-09-20_2026-10-31.md).
+
+### Spots that are systematically wrong
+
+| Spot | What happens | Whose job |
+|---|---|---|
+| Sant Pere Pescador, Empuriabrava (Bay of Roses) | Today's setup: "go" on 19 and 14 days, station measured go on 0–4 and 1. Best 2 h reads +4–5 kn over the mast. The beach cell fixes most of it (+1–2 kn). | Forecast (cell choice), already covered by WHE-61. Station 1.6 km inland: your experience on SE days there would help. |
+| Riumar, El Trabucador (Ebro delta) | Every setup +2.5–3 kn and 5–9 false "go", mostly in mestral (NW): models 15–21 kn, Illa de Buda measured 6–10 kn (21–23 Oct). NW is cross-offshore at Riumar (beach faces NNE); the app counts it as usable. | **Ben**: is Riumar rideable in mestral, and does it blow that hard there? If not, it's a direction rule (Spot improvement: side/sector). |
+| Torredembarra, Altafulla, Creixell | Real go days missed by every setup on easterlies (4 and 31 Oct: beach mast 13–14 kn, AROME and ICON beach cells 6–9 kn, only ECMWF offshore got it). | Forecast: new card, check easterly days on the Tarragona coast. |
+| Torreilles | Today's setup "go" on 10 days, 6 false; beach-cell setups 1–3 false. | Covered by WHE-61. |
+
+No spot position problems found (no pin on land or wrong beach) in this sample.
+
+### Real days (sanity check)
+
+- **28 Sep, Sant Pere, SE wind**: station 9–10 kn; today's app 21 kn ("go"), AROME beach
+  16–19, ICON 11–13, ECMWF 13–14. False "go" at the mast's level, a hit with +30 %.
+- **21 Oct, Riumar, mestral**: station 7–10 kn; every model 15–21 kn. False "go" for every
+  setup, even at +30 %.
+- **31 Oct, Torredembarra, easterly**: beach mast 12–14 kn from 13:00 to 15:00; all setups said
+  no go (best match 10, AROME 6–9, ICON 7). Missed day.
+
+### What could make this wrong
+
+- **The land-vs-water gap**, as above: it decides the percentages. A factor that suits an inland
+  mast over-corrects a beach mast like Torredembarra.
+- **Not replayed**: the models-disagree penalty (it needs live runs; it would trim a few "go"
+  scores on the mixed setups), real drive times (straight-line reach), tides, ECMWF gusts
+  (missing from the archive, so the mixes read slightly calmer gusts than live).
+- **Gusts left out of the measured side** (the measured wind uses gust = mean), so the station
+  side can't be "too gusty": it only judges strength and direction.
+- **6 weeks of autumn**, 42 days, one rider profile; Meteocat has no data 27–29 Oct.
+- **Half the top picks unchecked** (no station), and those are the windiest spots.
+
+### Recommendation
+
+1. Don't keep today's setup for testers: whatever the water level, it sends people out on
+   too many dead afternoons.
+2. Between the two beach-cell setups, this replay leans to WHE-58 on false "go", the WHE-61
+   pick on missed days; the difference between them sits inside the noise. Keep the WHE-61
+   pick as the candidate and let WHE-62 (buoy level) and WHE-72 (wider test) settle it, rather
+   than re-opening the choice on 6 weeks of land masts. (recommended)
+3. Ben: answer the Riumar mestral question; a new card checks easterlies at Torredembarra.
+
 ## Second look (WHE-61, 27 Oct): the new setup reads too low
 
 Forecast accuracy re-ran the comparison the way riders use the app: the level as shown (no
