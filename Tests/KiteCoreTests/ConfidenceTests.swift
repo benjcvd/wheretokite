@@ -134,7 +134,7 @@ final class ConfidenceTests: XCTestCase {
                        Set(result.recommendations.prefix(r.confidenceTop).map(\.spot.longitude)))
         XCTAssertNotNil(result.confidence)
         XCTAssertNil(result.recommendations[r.confidenceTop].confidence)
-        XCTAssertEqual(result.recommendations[0].verdict, .go)
+        XCTAssertEqual(result.recommendations[0].kiteVerdict, .go)
     }
 
     func testNoSpotIsCappedBelowAGoAndRanksUnder() async throws {
@@ -148,9 +148,9 @@ final class ConfidenceTests: XCTestCase {
         let result = try await r.search(request, profile: rider, today: "2026-10-01")
         XCTAssertEqual(result.recommendations.map(\.spot.id), ["s0001", "s0000"])
         let go = result.recommendations[0], no = result.recommendations[1]
-        XCTAssertEqual(go.verdict, .go)
+        XCTAssertEqual(go.kiteVerdict, .go)
         XCTAssertNil(go.scoreBeforeChance)
-        XCTAssertEqual(no.verdict, .no)
+        XCTAssertEqual(no.kiteVerdict, .no)
         XCTAssertEqual(no.finalScore, r.rules.noMaxScore)
         XCTAssertEqual(no.scoreBeforeChance, go.finalScore)
     }
