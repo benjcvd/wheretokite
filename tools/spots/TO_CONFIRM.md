@@ -54,6 +54,59 @@ second pass with web research is worth doing.
     ban dates? Santa Cruz: launch pinned at Praia do Mirante, right? Windy also lists Figueira
     da Foz, Carcavelos, Sesimbra, Tróia, Vila Nova de Milfontes (mostly surf; left out).
 
+## Catalonia vs Windy (WHE-83, 2026-11-01)
+Windy kite layer read as a visitor (names and stars only, no pins copied): 33 Catalan markers. We have 32 rows.
+Every Windy name maps to one of our spots except Blanes, Premià and Sant Antoni, which failed the two-source bar.
+**Nothing added.** Stars are Windy's "popularity", not a kite source.
+
+| Windy name (stars) | Our spot (tier) | Verdict |
+|---|---|---|
+| Roses (5) | Empuriabrava – La Rubina (pro) | Same place: the official zone near Roses is La Rubina (kite-and-windsurfing-guide "Rubina"; Yumping school listings). Not added. |
+| St. Pere Pescador (5) | Sant Pere Pescador (basic) | Match |
+| Sant Martí d'Empúries (5) | Sant Martí d'Empúries (pro) | Match |
+| Playa de Riells (5) | L'Escala (Platja dels Riells) (pro) | Match |
+| L'Estartit (5) | L'Estartit – Gola del Ter (basic) | Match |
+| Pals (5) | Pals (basic) | Match |
+| Sant Antoni (5) | Palamós (La Fosca) (basic), ~4 km | Same bay. One kite source only (kite-and-windsurfing-guide: Sant Antoni beach, best in light garbí). Not added; question below. |
+| Platja d'Aro (5) | Platja d'Aro (pro) | Match |
+| Blanes (5) | Malgrat de Mar – La Pomareda (pro) | Re-checked: no school, club or zone in Blanes itself; the school and municipal zone are in Malgrat, across the Tordera mouth. Still a duplicate. |
+| Malgrat (5) | Malgrat de Mar – La Pomareda (pro) | Match |
+| Vilassar de Mar (5) | Vilassar de Mar (pro) | Match |
+| Premia (5) | Vilassar de Mar (pro), ~2 km | Next-door beach, no kite school or zone found. Not added. |
+| Montgat (4) | Montgat (pro) | Match |
+| Badalona (5) | Badalona (pro) | Match |
+| Mar Bella (5) | Barcelona – Nova Mar Bella (pro) | Match |
+| Barceloneta (5) | Barcelona – Barceloneta (pro) | Match |
+| Castelldefels (5) | Castelldefels (basic) | Match |
+| Vilanova (4) | Vilanova i la Geltrú (La Farola) (pro) | Match |
+| Segur de Calafell (5) | Segur de Calafell (basic) | Match |
+| Calafell (4) | Calafell (pro) | Match |
+| Creixell (3) | Creixell (pro) | Match |
+| Altafulla (4) | Altafulla (pro) | Match |
+| La Pineda (4) | La Pineda (pro) | Match |
+| Salou (5) | Salou (Platja de Llevant) (pro) | Match |
+| Cambrils (5) | Cambrils (Platja del Regueral) (basic) | Match |
+| L'Hospitalet de l'Infant (5) | L'Hospitalet de l'Infant (pro) | Match |
+| L'Almadrava (3) | L'Almadrava (Vandellòs) (pro) | Match |
+| L'Ampolla (3) | L'Ampolla (Platja de l'Arenal) (pro) | Match |
+| Punta del Fangar (1) | Punta del Fangar (pro) | Match |
+| Riumar (5) | Riumar (basic) | Match |
+| Playa del Trabucador (5), root of the bar | Platja dels Eucaliptus (basic) | Match (schools teach at the root) |
+| Trabucador (4), mid-bar | El Trabucador (basic) | Match |
+| St. Carles de la Ràpita (5) | Sant Carles de la Ràpita (basic) | Match |
+| (none) | Torredembarra (pro) | Ours only. Kept: off-season local spot between Creixell and Altafulla, already pro. |
+
+Questions:
+- **Palamós bay**: our pin is the small La Fosca cove (300 m beach, only forecast pages mention kiting). The one kite
+  guide points to Sant Antoni beach (garbí) and Palamós Platja Gran by the harbour (easterlies). Options: (a) keep
+  La Fosca; (b) archive La Fosca and add "Sant Antoni de Calonge" on its beach (recommended, if you know riders go there).
+- **La Rubina**: it's the official summer zone kiters call "Roses", and it works in easterlies when Sant Pere is
+  side-off. Promote it from pro to free? (recommended: yes)
+- Sources: https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/rubina-costa-brava-barcelona-spain.html,
+  https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/sant-antoni-costa-brava-barcelona-spain.html,
+  https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/palamos-costa-brava-barcelona-spain.html,
+  https://en.yumping.com/water-sports/kite-paddelsurf-center-catalunya--e19679852
+
 ## Morocco (MA.csv)
 - Lassarga: our row is the lagoon shore, but guides describe "La Sarga" as an Atlantic wave
   spot. Which one do kiters mean?
