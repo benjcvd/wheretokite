@@ -175,3 +175,11 @@ on the hour before a storm.
   Ben picked: Go only at the 85 % cut-off per day ahead, one method everywhere, those masts out of
   the truth. "Most likely" (70 %) didn't hold, so the labels are Go / Not sure / No.
 - Open: no trustworthy beach-level measurement in Catalonia yet (harbour sensors card queued).
+- Where the Lead stopped (1 Nov, 23:58): WHE-82 (label in the app, Product) and WHE-86 (Catalan
+  harbour sensors, Forecast accuracy) queued as ready. Then WHE-70 TestFlight. Still to merge to
+  main: study branches atlas/t/whe-62/63/72/78/81/84 (tools + reports only), atlas/product (drop
+  b5aa464 first), spot branches atlas/t/whe-65/66 + atlas/spot-improvement (ES.csv notes conflict
+  on the 5 Catalan zone rows: take whe-66's text, keep whe-65's Sant Pere note).
+- Ben on Windy: looking at their site to stay close is fine; we still never copy their pins.
+  WHE-83 found Windy's 33 Catalan markers all covered or unconfirmed; 2 questions for Ben.
+- docs/catalan_spots_map.html (uncommitted) is a one-off map Ben used to review Catalan pins.
