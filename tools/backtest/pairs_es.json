@@ -1,0 +1,752 @@
+[
+ {
+  "spot": "es-gran-canaria-vargas",
+  "station": {
+   "source": "metar",
+   "id": "GCLP",
+   "name": "Airport Gran Canaria",
+   "lat": 27.9225,
+   "lon": -15.3894,
+   "alt": 25.0,
+   "kind": "airport"
+  },
+  "km": 3.62,
+  "shore_km": 0.6,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-tenerife-el-medano",
+  "station": {
+   "source": "metar",
+   "id": "GCTS",
+   "name": "Airport Tenerife",
+   "lat": 28.0475,
+   "lon": -16.5608,
+   "alt": 72.0,
+   "kind": "airport"
+  },
+  "km": 2.0,
+  "shore_km": 2.0,
+  "cls": "c"
+ },
+ {
+  "spot": "es-lanzarote-playa-honda",
+  "station": {
+   "source": "metar",
+   "id": "GCRR",
+   "name": "Airport Arrecife",
+   "lat": 28.9519,
+   "lon": -13.6003,
+   "alt": 40.0,
+   "kind": "airport"
+  },
+  "km": 0.66,
+  "shore_km": 0.3,
+  "cls": "a"
+ },
+ {
+  "spot": "es-tarifa-balneario",
+  "station": {
+   "source": "synop",
+   "id": "08458",
+   "name": "AEMET Tarifa",
+   "lat": 36.0,
+   "lon": -5.6,
+   "alt": 25.0,
+   "kind": "synop"
+  },
+  "km": 1.34,
+  "shore_km": 0.3,
+  "cls": "a"
+ },
+ {
+  "spot": "es-tarifa-los-lances",
+  "station": {
+   "source": "synop",
+   "id": "08458",
+   "name": "AEMET Tarifa",
+   "lat": 36.0,
+   "lon": -5.6,
+   "alt": 25.0,
+   "kind": "synop"
+  },
+  "km": 6.32,
+  "shore_km": 0.3,
+  "cls": "c"
+ },
+ {
+  "spot": "es-algeciras-palmones",
+  "station": {
+   "source": "metar",
+   "id": "LEAG",
+   "name": "Airport Algeciras",
+   "lat": 36.129,
+   "lon": -5.441,
+   "alt": 6.0,
+   "kind": "airport"
+  },
+  "km": 5.23,
+  "shore_km": 0.1,
+  "cls": "c"
+ },
+ {
+  "spot": "es-san-fernando-camposoto",
+  "station": {
+   "source": "synop",
+   "id": "08453",
+   "name": "AEMET San Fernando",
+   "lat": 36.467,
+   "lon": -6.2,
+   "alt": 30.0,
+   "kind": "synop"
+  },
+  "km": 6.5,
+  "shore_km": 1.0,
+  "cls": "c"
+ },
+ {
+  "spot": "es-cadiz-cortadura",
+  "station": {
+   "source": "synop",
+   "id": "08452",
+   "name": "AEMET Cadiz Obs",
+   "lat": 36.5,
+   "lon": -6.25,
+   "alt": 9.0,
+   "kind": "synop"
+  },
+  "km": 2.08,
+  "shore_km": 0.2,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-el-puerto-valdelagrana",
+  "station": {
+   "source": "synop",
+   "id": "08452",
+   "name": "AEMET Cadiz Obs",
+   "lat": 36.5,
+   "lon": -6.25,
+   "alt": 9.0,
+   "kind": "synop"
+  },
+  "km": 8.45,
+  "shore_km": 0.2,
+  "cls": "c"
+ },
+ {
+  "spot": "es-rota-el-rompidillo",
+  "station": {
+   "source": "metar",
+   "id": "LERT",
+   "name": "Airport Rota",
+   "lat": 36.6452,
+   "lon": -6.3495,
+   "alt": 26.0,
+   "kind": "airport"
+  },
+  "km": 2.76,
+  "shore_km": 1.0,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-malaga-los-alamos",
+  "station": {
+   "source": "metar",
+   "id": "LEMG",
+   "name": "Airport Malaga",
+   "lat": 36.6769,
+   "lon": -4.4906,
+   "alt": 7.0,
+   "kind": "airport"
+  },
+  "km": 3.7,
+  "shore_km": 1.6,
+  "cls": "c"
+ },
+ {
+  "spot": "es-almeria-el-zapillo",
+  "station": {
+   "source": "synop",
+   "id": "08488",
+   "name": "AEMET Almeria",
+   "lat": 36.833,
+   "lon": -2.467,
+   "alt": 7.0,
+   "kind": "synop"
+  },
+  "km": 1.96,
+  "shore_km": 0.3,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-mar-menor-los-narejos",
+  "station": {
+   "source": "synop",
+   "id": "08433",
+   "name": "AEMET Murcia San Javier",
+   "lat": 37.775,
+   "lon": -0.812,
+   "alt": 3.4,
+   "kind": "synop"
+  },
+  "km": 3.58,
+  "shore_km": 0.58,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-elche-arenales-del-sol",
+  "station": {
+   "source": "synop",
+   "id": "08360",
+   "name": "AEMET Alicante",
+   "lat": 38.282,
+   "lon": -0.558,
+   "alt": 43.3,
+   "kind": "synop"
+  },
+  "km": 5.12,
+  "shore_km": 0.28,
+  "cls": "c"
+ },
+ {
+  "spot": "es-burriana-el-arenal",
+  "station": {
+   "source": "synop",
+   "id": "08286",
+   "name": "AEMET Castellon-Almazora",
+   "lat": 39.95,
+   "lon": -0.067,
+   "alt": 43.5,
+   "kind": "synop"
+  },
+  "km": 8.93,
+  "shore_km": 0.26,
+  "cls": "c"
+ },
+ {
+  "spot": "es-el-trabucador-ebro-delta",
+  "station": {
+   "source": "xema",
+   "id": "UW",
+   "name": "Meteocat els Alfacs",
+   "lat": 40.62725,
+   "lon": 0.6592,
+   "alt": 1.0,
+   "kind": "mast"
+  },
+  "km": 5.77,
+  "shore_km": 0.81,
+  "cls": "c"
+ },
+ {
+  "spot": "es-sant-carles-de-la-rapita-badia-dels-alfacs",
+  "station": {
+   "source": "xema",
+   "id": "UW",
+   "name": "Meteocat els Alfacs",
+   "lat": 40.62725,
+   "lon": 0.6592,
+   "alt": 1.0,
+   "kind": "mast"
+  },
+  "km": 5.79,
+  "shore_km": 0.81,
+  "cls": "c"
+ },
+ {
+  "spot": "es-platja-dels-eucaliptus-ebro-delta",
+  "station": {
+   "source": "xema",
+   "id": "DL",
+   "name": "Meteocat Illa de Buda",
+   "lat": 40.70717,
+   "lon": 0.83447,
+   "alt": 1.0,
+   "kind": "mast"
+  },
+  "km": 7.57,
+  "shore_km": 0.49,
+  "cls": "c"
+ },
+ {
+  "spot": "es-riumar-ebro-delta",
+  "station": {
+   "source": "xema",
+   "id": "DL",
+   "name": "Meteocat Illa de Buda",
+   "lat": 40.70717,
+   "lon": 0.83447,
+   "alt": 1.0,
+   "kind": "mast"
+  },
+  "km": 2.68,
+  "shore_km": 0.49,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-punta-del-fangar-ebro-delta",
+  "station": {
+   "source": "xema",
+   "id": "DB",
+   "name": "Meteocat el Perelló",
+   "lat": 40.87289,
+   "lon": 0.71577,
+   "alt": 180.0,
+   "kind": "mast"
+  },
+  "km": 9.73,
+  "shore_km": 0.48,
+  "cls": "c"
+ },
+ {
+  "spot": "es-l-ampolla-platja-de-l-arenal",
+  "station": {
+   "source": "xema",
+   "id": "U9",
+   "name": "Meteocat l'Aldea",
+   "lat": 40.76946,
+   "lon": 0.61635,
+   "alt": 64.0,
+   "kind": "mast"
+  },
+  "km": 7.89,
+  "shore_km": 0.31,
+  "cls": "c"
+ },
+ {
+  "spot": "es-l-almadrava-vandellos",
+  "station": {
+   "source": "xema",
+   "id": "UA",
+   "name": "Meteocat l'Ametlla de Mar",
+   "lat": 40.9091,
+   "lon": 0.76943,
+   "alt": 94.0,
+   "kind": "mast"
+  },
+  "km": 8.19,
+  "shore_km": 0.11,
+  "cls": "c"
+ },
+ {
+  "spot": "es-l-hospitalet-de-l-infant",
+  "station": {
+   "source": "xema",
+   "id": "YF",
+   "name": "Meteocat Miami Platja",
+   "lat": 41.02066,
+   "lon": 0.9345,
+   "alt": 43.0,
+   "kind": "mast"
+  },
+  "km": 4.51,
+  "shore_km": 0.38,
+  "cls": "c"
+ },
+ {
+  "spot": "es-cambrils-platja-del-regueral",
+  "station": {
+   "source": "xema",
+   "id": "U6",
+   "name": "Meteocat Vinyols i els Arcs - Cambrils",
+   "lat": 41.08015,
+   "lon": 1.06661,
+   "alt": 30.0,
+   "kind": "mast"
+  },
+  "km": 1.63,
+  "shore_km": 0.28,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-salou-platja-de-llevant",
+  "station": {
+   "source": "xema",
+   "id": "U6",
+   "name": "Meteocat Vinyols i els Arcs - Cambrils",
+   "lat": 41.08015,
+   "lon": 1.06661,
+   "alt": 30.0,
+   "kind": "mast"
+  },
+  "km": 6.1,
+  "shore_km": 0.28,
+  "cls": "c"
+ },
+ {
+  "spot": "es-la-pineda",
+  "station": {
+   "source": "xema",
+   "id": "XE",
+   "name": "Meteocat Tarragona - Complex Educatiu",
+   "lat": 41.10392,
+   "lon": 1.201,
+   "alt": 6.0,
+   "kind": "mast"
+  },
+  "km": 1.78,
+  "shore_km": 1.72,
+  "cls": "c"
+ },
+ {
+  "spot": "es-altafulla",
+  "station": {
+   "source": "xema",
+   "id": "DK",
+   "name": "Meteocat Torredembarra",
+   "lat": 41.14675,
+   "lon": 1.41843,
+   "alt": 2.0,
+   "kind": "mast"
+  },
+  "km": 3.81,
+  "shore_km": 1.23,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-torredembarra",
+  "station": {
+   "source": "xema",
+   "id": "DK",
+   "name": "Meteocat Torredembarra",
+   "lat": 41.14675,
+   "lon": 1.41843,
+   "alt": 2.0,
+   "kind": "mast"
+  },
+  "km": 0.64,
+  "shore_km": 1.23,
+  "cls": "a"
+ },
+ {
+  "spot": "es-creixell",
+  "station": {
+   "source": "xema",
+   "id": "DK",
+   "name": "Meteocat Torredembarra",
+   "lat": 41.14675,
+   "lon": 1.41843,
+   "alt": 2.0,
+   "kind": "mast"
+  },
+  "km": 3.29,
+  "shore_km": 1.23,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-calafell",
+  "station": {
+   "source": "xema",
+   "id": "WZ",
+   "name": "Meteocat Cunit",
+   "lat": 41.20187,
+   "lon": 1.63346,
+   "alt": 18.0,
+   "kind": "mast"
+  },
+  "km": 5.24,
+  "shore_km": 0.36,
+  "cls": "c"
+ },
+ {
+  "spot": "es-segur-de-calafell",
+  "station": {
+   "source": "xema",
+   "id": "WZ",
+   "name": "Meteocat Cunit",
+   "lat": 41.20187,
+   "lon": 1.63346,
+   "alt": 18.0,
+   "kind": "mast"
+  },
+  "km": 2.22,
+  "shore_km": 0.36,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-vilanova-i-la-geltru-la-farola",
+  "station": {
+   "source": "xema",
+   "id": "YR",
+   "name": "Meteocat Vilanova i la Geltrú",
+   "lat": 41.23578,
+   "lon": 1.73141,
+   "alt": 32.0,
+   "kind": "mast"
+  },
+  "km": 2.28,
+  "shore_km": 0.48,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-castelldefels",
+  "station": {
+   "source": "xema",
+   "id": "YY",
+   "name": "Meteocat Viladecans - les Filipines",
+   "lat": 41.28797,
+   "lon": 2.04487,
+   "alt": 2.0,
+   "kind": "mast"
+  },
+  "km": 6.1,
+  "shore_km": 0.47,
+  "cls": "c"
+ },
+ {
+  "spot": "es-barcelona-barceloneta",
+  "station": {
+   "source": "xema",
+   "id": "X4",
+   "name": "Meteocat Barcelona - el Raval",
+   "lat": 41.38386,
+   "lon": 2.16774,
+   "alt": 33.0,
+   "kind": "mast"
+  },
+  "km": 2.2,
+  "shore_km": 0.47,
+  "cls": "c"
+ },
+ {
+  "spot": "es-barcelona-nova-mar-bella",
+  "station": {
+   "source": "xema",
+   "id": "X4",
+   "name": "Meteocat Barcelona - el Raval",
+   "lat": 41.38386,
+   "lon": 2.16774,
+   "alt": 33.0,
+   "kind": "mast"
+  },
+  "km": 4.42,
+  "shore_km": 0.47,
+  "cls": "c"
+ },
+ {
+  "spot": "es-badalona",
+  "station": {
+   "source": "xema",
+   "id": "WU",
+   "name": "Meteocat Badalona - Museu",
+   "lat": 41.45215,
+   "lon": 2.24757,
+   "alt": 42.0,
+   "kind": "mast"
+  },
+  "km": 1.15,
+  "shore_km": 1.7,
+  "cls": "c"
+ },
+ {
+  "spot": "es-montgat",
+  "station": {
+   "source": "xema",
+   "id": "WU",
+   "name": "Meteocat Badalona - Museu",
+   "lat": 41.45215,
+   "lon": 2.24757,
+   "alt": 42.0,
+   "kind": "mast"
+  },
+  "km": 3.3,
+  "shore_km": 1.7,
+  "cls": "c"
+ },
+ {
+  "spot": "es-vilassar-de-mar",
+  "station": {
+   "source": "xema",
+   "id": "UP",
+   "name": "Meteocat Cabrils",
+   "lat": 41.51773,
+   "lon": 2.37702,
+   "alt": 81.0,
+   "kind": "mast"
+  },
+  "km": 2.41,
+  "shore_km": 0.35,
+  "cls": "c"
+ },
+ {
+  "spot": "es-malgrat-de-mar-la-pomareda",
+  "station": {
+   "source": "xema",
+   "id": "WT",
+   "name": "Meteocat Malgrat de Mar",
+   "lat": 41.64706,
+   "lon": 2.75659,
+   "alt": 3.0,
+   "kind": "mast"
+  },
+  "km": 1.31,
+  "shore_km": 0.83,
+  "cls": "a"
+ },
+ {
+  "spot": "es-platja-d-aro",
+  "station": {
+   "source": "xema",
+   "id": "DO",
+   "name": "Meteocat Castell d'Aro",
+   "lat": 41.80855,
+   "lon": 3.03241,
+   "alt": 14.0,
+   "kind": "mast"
+  },
+  "km": 3.27,
+  "shore_km": 0.26,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-palamos-la-fosca",
+  "station": {
+   "source": "xema",
+   "id": "YP",
+   "name": "Meteocat Palafrugell",
+   "lat": 41.90694,
+   "lon": 3.16073,
+   "alt": 35.0,
+   "kind": "mast"
+  },
+  "km": 5.75,
+  "shore_km": 0.35,
+  "cls": "c"
+ },
+ {
+  "spot": "es-l-escala-platja-dels-riells",
+  "station": {
+   "source": "xema",
+   "id": "U2",
+   "name": "Meteocat Sant Pere Pescador",
+   "lat": 42.17716,
+   "lon": 3.0968,
+   "alt": 3.0,
+   "kind": "mast"
+  },
+  "km": 7.7,
+  "shore_km": 0.41,
+  "cls": "c"
+ },
+ {
+  "spot": "es-sant-marti-d-empuries",
+  "station": {
+   "source": "xema",
+   "id": "U2",
+   "name": "Meteocat Sant Pere Pescador",
+   "lat": 42.17716,
+   "lon": 3.0968,
+   "alt": 3.0,
+   "kind": "mast"
+  },
+  "km": 5.21,
+  "shore_km": 0.41,
+  "cls": "c"
+ },
+ {
+  "spot": "es-sant-pere-pescador",
+  "station": {
+   "source": "xema",
+   "id": "U2",
+   "name": "Meteocat Sant Pere Pescador",
+   "lat": 42.17716,
+   "lon": 3.0968,
+   "alt": 3.0,
+   "kind": "mast"
+  },
+  "km": 1.58,
+  "shore_km": 0.41,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-empuriabrava-la-rubina",
+  "station": {
+   "source": "xema",
+   "id": "W1",
+   "name": "Meteocat Castelló d'Empúries",
+   "lat": 42.24726,
+   "lon": 3.09022,
+   "alt": 5.0,
+   "kind": "mast"
+  },
+  "km": 5.0,
+  "shore_km": 0.31,
+  "cls": "a2"
+ },
+ {
+  "spot": "es-redondela-cesantes",
+  "station": {
+   "source": "metar",
+   "id": "LEVX",
+   "name": "Airport Vigo",
+   "lat": 42.2394,
+   "lon": -8.6239,
+   "alt": 256.0,
+   "kind": "airport"
+  },
+  "km": 7.3,
+  "shore_km": 0.33,
+  "cls": "c"
+ },
+ {
+  "spot": "es-somo",
+  "station": {
+   "source": "synop",
+   "id": "08023",
+   "name": "AEMET Santander",
+   "lat": 43.483,
+   "lon": -3.8,
+   "alt": 59.0,
+   "kind": "synop"
+  },
+  "km": 6.12,
+  "shore_km": 0.33,
+  "cls": "c"
+ },
+ {
+  "spot": "es-santander-los-peligros",
+  "station": {
+   "source": "synop",
+   "id": "08023",
+   "name": "AEMET Santander",
+   "lat": 43.483,
+   "lon": -3.8,
+   "alt": 59.0,
+   "kind": "synop"
+  },
+  "km": 2.66,
+  "shore_km": 0.33,
+  "cls": "c"
+ },
+ {
+  "spot": "es-doninos-ferrol",
+  "station": {
+   "source": "synop",
+   "id": "08005",
+   "name": "AEMET El Ferrol",
+   "lat": 43.483,
+   "lon": -8.233,
+   "alt": 9.0,
+   "kind": "synop"
+  },
+  "km": 6.96,
+  "shore_km": 1.47,
+  "cls": "c"
+ },
+ {
+  "spot": "es-salinas-san-juan-de-nieva",
+  "station": {
+   "source": "synop",
+   "id": "08011",
+   "name": "AEMET Asturias",
+   "lat": 43.564,
+   "lon": -6.035,
+   "alt": 126.8,
+   "kind": "synop"
+  },
+  "km": 7.03,
+  "shore_km": 0.6,
+  "cls": "c"
+ }
+]

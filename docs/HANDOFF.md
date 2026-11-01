@@ -145,3 +145,12 @@ feed has a network-wide hole from 26 Oct evening to 30 Oct. Checked 26 and 30 Oc
 the day-ahead forecast archive: two light days, a tie between setups; the old offshore cell
 called a false go at Sant Pere on 30 Oct, and the WHE-61 pick read a few knots high that day.
 Windy-day evidence still has to come from the buoys card (WHE-62).
+
+**Forecast accuracy, 1 Nov.** The Spain/France backtest (WHE-72, in review) scored five setups
+against 36 shore masts and 86 weaker stations over 8 Aug–30 Oct (AROME's day-ahead archive
+starts 8 Aug). Option 1 (AROME + ICON beach, ECMWF sea) wins on error and false alarms in France
+and mainland Spain but reads far too low in the Canaries (no AROME; ICON and ECMWF coarse), so
+the recommendation is Option 1 with the Canaries kept on best match; Ben's answer there settles
+WHE-61. Tricky: the Météo-France mirror on data.gouv froze in June (use the OVH bucket);
+Open-Meteo silently drops out-of-range models from multi-model requests; ECMWF's sea cell is
+~13 km out, so any "cap the sea cell" rule sends it back inland. Still no water truth (WHE-62).
