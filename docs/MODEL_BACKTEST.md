@@ -1,4 +1,4 @@
-# Which forecast model predicts the real wind best? (WHE-58)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
@@ -94,6 +94,142 @@ Tarragona +0.1 to +0.8.
 2. Ship option 1 (AROME + ICON beach, ECMWF sea) anyway: lower error against land stations,
    but 1–3 kn low on the water and fewer go days caught.
 3. Ship the 3-model beach mix as built: reads lowest on the water and misses the most go days.
+
+## Spain and France, 5 setups (WHE-72, 1 Nov): Option 1 wins, except in the Canaries
+
+The question: which of five forecast setups best matches the wind measured near the water, on
+the spots testers will use, and where should the forecast be read (beach, 500 m out, 1 km out,
+the sea cell)? Forecasts made **the day before** (what riders plan on) and on the day itself,
+8 Aug – 30 Oct 2026 (84 days: AROME's day-ahead archive starts on 8 Aug). Scripts:
+`tools/backtest/stations.py`, `tools/backtest/esfr_backtest.py`; full tables in
+[the combined results](../tools/backtest/results/whe72_all.md), [Spain](../tools/backtest/results/whe72_es.md),
+[France](../tools/backtest/results/whe72_fr.md).
+
+### In plain words
+
+- **Option 1 (AROME + ICON on the beach cell, ECMWF on its sea cell) is the best everyday setup.**
+  Measured against shore masts, a day ahead: best 2 h error 2.6 kn vs 3.0 today, false "go"
+  days 25 % vs 35 %. Both gains are outside the noise and survive dropping any single station.
+- **The price: it misses a few more go days and reads a bit low.** Caught 62 % of the go days
+  vs 66 % today (95 % interval −7 … −1 points), and it reads 0.6 kn below the shore masts, which
+  themselves probably read a little below the water (measured: land masts; on the water: not
+  measured yet).
+- **In France it's a clear win** (error −0.6 kn, false alarms −7 points, caught a tie).
+  **In mainland Spain it wins too** (Catalonia, Valencia/Murcia, Andalusia: fewer false alarms
+  and more days caught). **In the Canaries it's much worse:** shore masts at Gran Canaria and
+  Lanzarote measured 30–32 kn on the windiest days; Option 1 said 13–15, today's setup 24. There
+  is no AROME there and ICON and ECMWF are coarse; whatever "best match" picks is closer.
+- **Not worth it:** AROME alone (no better than today, more false alarms); the skill-weighted
+  mix (barely better on error, reads lowest, misses more days, and its weights jump between
+  regions: it mostly learns to match land stations); all three on the sea cell (ties Option 1 in
+  France but in Spain it catches 26 % of go days: ECMWF's sea cell is 13 km out at the median,
+  so the 1.5 km cap sends it back to its nearest cell, often inland: the WHE-61 trap again).
+- **Where to read AROME: the beach cell.** Reading 500 m out, 1 km out or the sea cell raises
+  the forecast by 1.1–1.5 kn: more go days caught (+10 points) but more false alarms (+7 to +10)
+  and a higher error against the shore masts. Whether the water is really that much windier
+  can't be told without measurements on the water (WHE-62). ICON (cells 2–3 km apart) and
+  ECMWF (25 km) are too coarse to tell beach from 500 m.
+- **Storm days:** on 23 Oct at Gouville-sur-Mer (Normandy) the mast measured 47 kn for 2 h;
+  today's setup forecast 37 the day before, Option 1 46. Under-reading storms is the safety risk,
+  and Option 1 does better there.
+
+### Results, forecast made the day before, shore masts
+
+36 spots (17 Spain, 19 France) with an official mast within 1.5 km of the spot, or a shore mast
+(about 1 km from the water, ≤ 40 m up) within 5 km. 2,965 spot-days. Best 2 h window of each day
+(07–17 UTC), kn, nothing removed. Go day = 12 kn+ for 2 h, direction not offshore. 95 % interval
+over days in brackets.
+
+| Setup | Best 2 h bias | Best 2 h error | Go days caught | False alarms | Direction error |
+|---|---|---|---|---|---|
+| 1 Today: best match, sea cell | +0.1 | 3.0 (2.9–3.2) | 66 % (61–71) | 35 % (30–39) | 19° |
+| 2 AROME only, beach cell | +0.1 | 3.0 (2.9–3.1) | 65 % (61–70) | 38 % (32–42) | 19° |
+| **3 Option 1: AROME + ICON beach, ECMWF sea** | −0.6 | **2.6** (2.5–2.7) | 62 % (56–67) | **25 %** (21–29) | 17° |
+| 4 All three on the sea cell, capped at 1.5 km | −0.5 | 2.7 (2.6–2.8) | 61 % (55–66) | 26 % (22–30) | 17° |
+| 5 Skill-weighted (weights fitted on other weeks) | −0.9 | 2.6 (2.5–2.7) | 61 % (55–66) | 23 % (19–27) | 17° |
+
+707 measured go days. Change against today, Option 1: error −0.5 … −0.3 kn, caught −7 … −1 points,
+false alarms −13 … −8 points. Same order on the day itself (error 2.6 vs 2.8, caught 63 % vs 69 %,
+false 26 % vs 32 %). Weak stations (86 spots, inland or 5–10 km away) give the same ranking.
+
+### Per region (day before, shore masts: best 2 h bias / error · caught / false)
+
+| Region | Spots | Go days | Today | **Option 1** | Verdict |
+|---|---|---|---|---|---|
+| Catalonia | 10 | 26 | +1.9 / 3.0 · 19 % / 96 % | +1.7 / 2.4 · 31 % / 86 % | Option 1 better; few go days, everyone over-reads |
+| Valencia/Murcia | 1 | 29 | −2.4 / 2.5 · 17 % / 0 % | −1.7 / 1.9 · 41 % / 0 % | Option 1 better; one station only |
+| Andalusia/Tarifa | 4 | 37 | −2.6 / 3.2 · 51 % / 32 % | −2.9 / 3.3 · 57 % / 28 % | Tie; everyone reads 2–3 kn low |
+| Canaries | 2 | 90 | −4.7 / 4.8 · 71 % / 3 % | −6.5 / 6.7 · 40 % / 3 % | **Today's setup much better** |
+| Galicia/Cantabrian | 0 | – | – | – | No shore mast; weak stations: Option 1 fewer false alarms, fewer caught |
+| Balearics | 0 | – | – | – | No station within 10 km of the spots |
+| Languedoc/Roussillon | 3 | 49 | +0.4 / 2.3 · 80 % / 28 % | +0.1 / 1.8 · 73 % / 27 % | Option 1 better on error, tie on days |
+| Provence/Corsica | 5 | 180 | +0.2 / 2.9 · 75 % / 20 % | −0.7 / 2.4 · 67 % / 17 % | Option 1 better on error, misses a few days |
+| French Atlantic | 4 | 87 | −1.1 / 2.5 · 45 % / 25 % | −1.0 / 2.2 · 47 % / 21 % | Option 1 slightly better (sea-capped best here) |
+| Brittany | 2 | 62 | +1.2 / 3.6 · 76 % / 31 % | −0.9 / 3.2 · 68 % / 22 % | Option 1 better on error and false alarms |
+| Channel | 5 | 147 | +1.0 / 3.2 · 78 % / 30 % | −0.3 / 2.1 · 82 % / 16 % | Option 1 clearly better |
+
+Regions with 1–2 stations (Valencia/Murcia, Canaries, Brittany) are indications, not proof.
+
+### Where to read AROME 1.3 km (day before, 2,403 spot-days inside AROME's area)
+
+| Read point | Bias | Best 2 h error | Caught | False alarms |
+|---|---|---|---|---|
+| **Beach cell (today in Option 1)** | +1.2 | **2.7** | 75 % | **40 %** |
+| Nearest cell at the pin | +1.5 | 2.7 | 79 % | 42 % |
+| 500 m out | +2.3 | 3.2 | 85 % | 47 % |
+| 1 km out | +2.7 | 3.6 | 88 % | 50 % |
+| Sea cell | +2.7 | 3.5 | 88 % | 50 % |
+
+AROME's cells: beach cell 0.4 km from the pin (median), sea cell 0.7 km. ICON's beach cell is
+3.2 km away (median), its sea cell 1.9 km; ECMWF's nearest cell 9.9 km, its sea cell 13.4 km.
+
+### Real days (forecast the day before, best 2 h, kn)
+
+| Day, spot (station, distance) | Measured | Today | AROME only | Option 1 | Sea capped |
+|---|---|---|---|---|---|
+| 23 Oct, Gouville-sur-Mer (Météo-France Gouville, 1.5 km), storm | 47 | 37 | 47 | 46 | 41 |
+| 8 Sep, Gouville-sur-Mer | 35 | 14 | 22 | 19 | 18 |
+| 6 Sep, Gran Canaria – Vargas (airport mast, 3.6 km) | 32 | 24 | 14 | 13 | 11 |
+| 27 Aug, L'Espiguette (Météo-France, 0.8 km) | 22 | 17 | 22 | 18 | 19 |
+| 25 Aug, Torredembarra (Meteocat, 0.6 km) | 14 | 13 | 12 | 14 | 12 |
+
+8 Sep at Gouville: every setup missed a 35 kn day by 13–21 kn; a reminder that a day-ahead
+forecast can be badly wrong whatever the setup.
+
+### What could make this wrong
+
+- **Still no measurement on the water.** Shore masts are the best truth found, but they sit on
+  land; EMODnet's buoy data server was down (catalogue only) and Copernicus needs an account
+  (WHE-62). If the water reads 1–2 kn above the masts, Option 1's −0.6 kn becomes −2 kn and the
+  offshore read points start to look right.
+- **84 days, late summer to autumn.** No winter, little spring; thermal days only in August–
+  September. Catalonia had only 26 go days at shore masts.
+- **Station placement.** 9 of 36 main stations are within 1.5 km; the rest are shore masts
+  1.5–5 km away. With only the ≤ 1.5 km stations, Option 1 still wins on error (2.7 vs 3.0) and
+  false alarms (28 % vs 35 %), and catches about as many go days (51 % vs 48 %). AEMET SYNOP
+  positions are rounded to 0.01° (up to ~500 m off). The shore check uses the distance to the
+  nearest AROME sea cell (about 1 km precision) and by-hand values south of AROME's area.
+- **Spots share stations and days share weather.** Intervals resample whole days, all spots
+  together, which is conservative; hours are not counted as independent.
+- **Mast heights:** Meteocat masts are corrected to 10 m; Météo-France, AEMET and airports are
+  assumed 10 m. Semaphores and cliff stations above 40 m are kept out of the main truth.
+- **Earlier Leucate gap explained:** WHE-58's "Leucate data to 23 June only" came from a
+  Météo-France mirror on data.gouv that froze on 24 Jun 2026; the scripts now read the live copy.
+- **Calais airport** had only one hour of METARs in the period; Calais spots use the
+  Météo-France Calais-Marck mast instead.
+
+### Recommendation (settles WHE-61)
+
+1. **Ship Option 1 everywhere except the Canaries; keep today's setup (best match, sea cell)
+   for the Canaries** (recommended). Best on error and false alarms in mainland Spain and France,
+   better on storm days, and it avoids a 5–10 kn drop at Gran Canaria / Lanzarote. Needs one
+   extra rule in KiteCore (by latitude or region), a small follow-up change after your yes.
+2. Ship Option 1 everywhere as built. Same gains, but Canaries spots would read 2 kn lower than
+   today on average and catch 40 % of go days instead of 71 %.
+3. Keep today's setup. Catches 4 points more go days, but 10 points more false alarms and a
+   higher error.
+
+Keep AROME on the beach cell (no 500 m / 1 km offset) until water measurements say otherwise.
 
 ## Second look (WHE-61, 27 Oct): the new setup reads too low
 

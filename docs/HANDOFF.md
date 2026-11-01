@@ -153,3 +153,12 @@ Canet every setup reads low, and the 3-model beach mix is the lowest (about 4.5 
 reverses the WHE-61 pick: the recommendation is now to keep today's best-match sea-cell setup and
 test an AROME-first blend on the sea cell next. Weak spot: only one near-shore buoy, in France;
 there's no open wind measurement on the water near Barcelona.
+
+**Forecast accuracy, 1 Nov.** The Spain/France backtest (WHE-72, in review) scored five setups
+against 36 shore masts and 86 weaker stations over 8 Aug–30 Oct (AROME's day-ahead archive
+starts 8 Aug). Option 1 (AROME + ICON beach, ECMWF sea) wins on error and false alarms in France
+and mainland Spain but reads far too low in the Canaries (no AROME; ICON and ECMWF coarse), so
+the recommendation is Option 1 with the Canaries kept on best match; Ben's answer there settles
+WHE-61. Tricky: the Météo-France mirror on data.gouv froze in June (use the OVH bucket);
+Open-Meteo silently drops out-of-range models from multi-model requests; ECMWF's sea cell is
+~13 km out, so any "cap the sea cell" rule sends it back inland. Still no water truth (WHE-62).
