@@ -178,9 +178,14 @@ public struct OpenMeteoProvider: ForecastProvider {
     public var model: String
     public var server: ForecastServer
     /// "land" reads the grid cell the spot is in (the beach), "sea" the nearest water cell.
-    /// Measured against official stations, the beach cell was closer for every model
+    /// Measured against official stations, the beach cell was closer for AROME and ICON
     /// (docs/MODEL_BACKTEST.md), and it's the one other forecast sites show.
     public var cellSelection = "land"
+    /// Models read on another cell than `cellSelection`. ECMWF's grid is ~25 km: its beach
+    /// cell falls 11–17 km inland on the Costa Brava and dragged the blend 2–5 kn low, so it
+    /// reads its nearest sea cell (WHE-61). Each cell is its own request (Open-Meteo takes one
+    /// `cell_selection` per request), merged before blending.
+    public var cellByModel: [String: String] = ["ecmwf_ifs025": "sea"]
     /// Locations per request. Measured: 100 → ~0.4 s, 200 → ~0.5 s per request.
     public var batchSize = 100
     /// Requests in flight at once (400 spots = 4 requests = one round trip).
@@ -189,9 +194,10 @@ public struct OpenMeteoProvider: ForecastProvider {
     /// When set, `server` is ignored: the failover picks the server for each request.
     public var failover: ServerFailover?
 
-    /// The mean of these three beat Open-Meteo's "best match" and each model alone against
-    /// station readings in Catalonia and at Leucate (docs/MODEL_BACKTEST.md). Outside AROME's
-    /// area (France and around) the blend is ICON and ECMWF.
+    /// Mean of AROME 1.3 and ICON on the beach cell and ECMWF on its sea cell (`cellByModel`):
+    /// caught the most kiteable days a day ahead against stations in Catalonia and at Leucate
+    /// (docs/MODEL_BACKTEST.md, WHE-61). Outside AROME's area (France and around) the blend
+    /// is ICON and ECMWF.
     public static let defaultModel = "meteofrance_arome_france_hd,icon_seamless,ecmwf_ifs025"
 
     public init(model: String = OpenMeteoProvider.defaultModel, server: ForecastServer = .openMeteo) {
@@ -207,7 +213,7 @@ public struct OpenMeteoProvider: ForecastProvider {
 
     static let hourlyVariables = "wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,cape,precipitation"
 
-    private struct Response: Decodable {
+    struct Response: Decodable {
         /// "time", and one series per variable ("wind_speed_10m") or, with several models,
         /// per variable and model ("wind_speed_10m_icon_seamless").
         struct Hourly: Decodable {
@@ -369,7 +375,7 @@ public struct OpenMeteoProvider: ForecastProvider {
     }
 
     /// Form-encoded request body (same parameters as the GET query string).
-    func formBody(_ spots: [Spot], from: String, to: String) -> String {
+    func formBody(_ spots: [Spot], from: String, to: String, models: String, cell: String) -> String {
         var c = URLComponents()
         c.queryItems = [
             .init(name: "latitude", value: spots.map { String(format: "%.4f", $0.latitude) }.joined(separator: ",")),
@@ -380,17 +386,74 @@ public struct OpenMeteoProvider: ForecastProvider {
             .init(name: "timezone", value: "auto"),
             .init(name: "start_date", value: from),
             .init(name: "end_date", value: to),
-            .init(name: "models", value: model),
-            .init(name: "cell_selection", value: cellSelection),
+            .init(name: "models", value: models),
+            .init(name: "cell_selection", value: cell),
         ]
         return c.percentEncodedQuery ?? ""
     }
 
+    /// The models grouped by the cell they're read on, in the order of `model`: one request
+    /// per group.
+    func requestGroups() -> [(cell: String, models: [String])] {
+        var groups: [(cell: String, models: [String])] = []
+        for m in model.split(separator: ",").map(String.init) {
+            let cell = cellByModel[m] ?? cellSelection
+            if let i = groups.firstIndex(where: { $0.cell == cell }) { groups[i].models.append(m) }
+            else { groups.append((cell, [m])) }
+        }
+        return groups
+    }
+
+    /// One response per spot, the groups' series merged. Every group must answer: a blend
+    /// missing a member would silently change the level the app reads.
     private func fetch(_ spots: [Spot], from: String, to: String) async throws -> [Response] {
+        let groups = requestGroups()
+        guard groups.count > 1 else {
+            return try await fetch(spots, from: from, to: to, models: model, cell: groups.first?.cell ?? cellSelection)
+        }
+        let parts = try await withThrowingTaskGroup(of: (Int, [Response]).self) { group in
+            for (i, g) in groups.enumerated() {
+                group.addTask {
+                    (i, try await fetch(spots, from: from, to: to, models: g.models.joined(separator: ","), cell: g.cell))
+                }
+            }
+            var out = [[Response]](repeating: [], count: groups.count)
+            for try await (i, r) in group { out[i] = r }
+            return out
+        }
+        return Self.merge(parts, groups: groups.map(\.models))
+    }
+
+    /// Merges per-group responses into one per spot: series keep (or get) the model suffix,
+    /// as Open-Meteo would name them in a single multi-model request. Times, sunrise / sunset
+    /// and UTC offset come from the first group.
+    static func merge(_ parts: [[Response]], groups: [[String]]) -> [Response] {
+        guard var merged = parts.first else { return [] }
+        let total = groups.map(\.count).reduce(0, +)
+        func suffixed(_ series: [String: [Double?]], _ models: [String]) -> [String: [Double?]] {
+            guard models.count == 1, total > 1 else { return series }
+            return Dictionary(uniqueKeysWithValues: series.map { ($0.key + "_" + models[0], $0.value) })
+        }
+        for s in merged.indices {
+            var series = suffixed(merged[s].hourly.series, groups[0])
+            for (part, models) in zip(parts.dropFirst(), groups.dropFirst()) {
+                guard let r = part[safe: s] else { continue }
+                // Align on local time: both requests use the same timezone and date range.
+                let index = Dictionary(r.hourly.time.enumerated().map { ($1, $0) }, uniquingKeysWith: { a, _ in a })
+                for (key, values) in suffixed(r.hourly.series, models) {
+                    series[key] = merged[s].hourly.time.map { t in index[t].flatMap { values[safe: $0] ?? nil } }
+                }
+            }
+            merged[s].hourly.series = series
+        }
+        return merged
+    }
+
+    private func fetch(_ spots: [Spot], from: String, to: String, models: String, cell: String) async throws -> [Response] {
         var request = URLRequest(url: server.endpoint(for: from))
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = Data(formBody(spots, from: from, to: to).utf8)
+        request.httpBody = Data(formBody(spots, from: from, to: to, models: models, cell: cell).utf8)
         let (data, response) = try await session.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
             throw ForecastError.badResponse(String(data: data, encoding: .utf8) ?? "HTTP error")
@@ -488,8 +551,8 @@ public struct CachedForecastProvider: ForecastProvider {
     private func file(for spot: Spot, day: String) -> URL {
         // Tides are only fetched for spots with a tide rule: keep those entries apart, or a
         // spot that just got a rule (user spot edited) would reuse a tideless entry. "v3":
-        // three-model blend on the beach cell.
-        let key = String(format: "v3_%.4f_%.4f_%@", spot.latitude, spot.longitude, day)
+        // AROME + ICON on the beach cell, ECMWF on its sea cell (v3 had ECMWF on land).
+        let key = String(format: "v4_%.4f_%.4f_%@", spot.latitude, spot.longitude, day)
             + (spot.tide == nil ? "" : "_tide")
         return directory.appendingPathComponent(key + ".json")
     }

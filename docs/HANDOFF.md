@@ -171,3 +171,10 @@ of a few missed days. Tricky: the absolute hit rates swing with the land-vs-wate
 buoys (WHE-62) can settle, and half the top picks (Roussillon, L'Estartit, Pals, Fangar) have no
 station at all. Open question to Ben on Riumar in mestral; easterlies at Torredembarra are under-read
 by AROME and ICON (new card).
+
+**Forecast accuracy, 31 Oct (later).** Option 1 is built (WHE-61, commit 6e9894c on the
+forecast branch): AROME and ICON on the beach cell, ECMWF on its sea cell, two Open-Meteo
+requests per batch merged before the blend, forecast cache key v4. Verified live at Salou
+(app value = hand mean). Not on main until Ben says yes. Tricky: the confidence badge still
+reads ECMWF on the beach cell; and a failed request for either cell fails the whole batch on
+purpose, so the app never shows a blend missing a member.
