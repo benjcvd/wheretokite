@@ -118,7 +118,7 @@ def xema(station, start, end):
 def meteofrance(dept, station, start, end):
     """Météo-France open data, hourly climatological files per department (meteo.data.gouv.fr):
     FF = 10 m mean wind m/s, DD = direction."""
-    url = f"https://object.files.data.gouv.fr/meteofrance/data/synchro_ftp/BASE/HOR/H_{dept}_latest-2025-2026.csv.gz"
+    url = f"https://meteofrance.s3.sbg.io.cloud.ovh.net/data/synchro_ftp/BASE/HOR/H_{dept}_latest-2025-2026.csv.gz"
     text = gzip.decompress(fetch(url)).decode("latin-1")
     out = {}
     lo, hi = start.replace("-", "") + "00", end.replace("-", "") + "23"
