@@ -84,6 +84,10 @@ def om(url, body):
         except urllib.error.HTTPError as e:
             if e.code == 400:
                 return {"error": e.read()[:200].decode(errors="replace")}   # e.g. point outside a model's domain
+            if e.code >= 500:
+                print(f"Open-Meteo {e.code}, waiting 30 s", file=sys.stderr)
+                time.sleep(30)
+                continue
             if e.code != 429:
                 raise
             print("Open-Meteo rate limit, waiting 70 s", file=sys.stderr)
@@ -403,21 +407,24 @@ def main():
     for lead in LEADS:
         for region in sorted({r["region"] for r in rows}):
             for parity in (0, 1):
-                train = [r for r in rows if r["region"] == region and r["cls"] == "a" and iso_week_parity(r["day"]) != parity]
+                train = [r for r in rows if r["region"] == region and r["cls"] in ("a", "a2") and iso_week_parity(r["day"]) != parity]
                 if len({r["day"] for r in train}) < 15:   # too few: fit on all regions' training weeks
-                    train = [r for r in rows if r["cls"] == "a" and iso_week_parity(r["day"]) != parity]
+                    train = [r for r in rows if r["cls"] in ("a", "a2") and iso_week_parity(r["day"]) != parity]
                 weights_by[(region, parity, lead)] = fit_weights(train[::2], lead)
         forecast_series(rows, lead, weights_by)
 
-    main_rows = [r for r in rows if r["cls"] == "a"]
-    weak_rows = [r for r in rows if r["cls"] != "a"]
+    main_rows = [r for r in rows if r["cls"] in ("a", "a2")]
+    weak_rows = [r for r in rows if r["cls"] == "c"]
+    near_rows = [r for r in rows if r["cls"] == "a"]
     print(f"# WHE-72 backtest {a.start} … {a.end}\n")
-    print(f"{len({r['pair'] for r in main_rows})} spots with a station ≤ 1.5 km (main), "
+    print(f"{len({r['pair'] for r in main_rows})} spots with a shore station (main: ≤ 1.5 km, or a shore mast ≤ 5 km), "
           f"{len({r['pair'] for r in weak_rows})} with a station further away (weak). Daylight 07–17 UTC, "
           f"measured wind brought to 10 m, nothing removed. Go day = best 2 h ≥ {GO_KN} kn, direction not offshore.\n")
     for lead, label in ((1, "Forecast made the day before"), (0, "Forecast of the day itself")):
         print(f"## {label}, main stations\n")
         table(main_rows, SETUPS, lead, ref=SETUPS[0])
+        print(f"### {label}, only the stations ≤ 1.5 km\n")
+        table(near_rows, SETUPS, lead, with_ci=False)
         print(f"### {label}, weak stations (further away)\n")
         table(weak_rows, SETUPS, lead, with_ci=False)
 

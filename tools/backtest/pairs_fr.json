@@ -1124,31 +1124,33 @@
  {
   "spot": "fr-calais-bleriot-plage",
   "station": {
-   "source": "metar",
-   "id": "LFAC",
-   "name": "Airport Calais-Dunkerque",
-   "lat": 50.9621,
-   "lon": 1.9548,
-   "alt": 1.0,
-   "kind": "airport"
+   "source": "meteofrance",
+   "id": "62548002",
+   "dept": "62",
+   "name": "Météo-France Calais-Marck",
+   "lat": 50.959833,
+   "lon": 1.956167,
+   "alt": 2.0,
+   "kind": "mast"
   },
-  "km": 8.33,
-  "shore_km": 0.41,
+  "km": 8.43,
+  "shore_km": 0.27,
   "cls": "c"
  },
  {
   "spot": "fr-les-hemmes-de-marck",
   "station": {
-   "source": "metar",
-   "id": "LFAC",
-   "name": "Airport Calais-Dunkerque",
-   "lat": 50.9621,
-   "lon": 1.9548,
-   "alt": 1.0,
-   "kind": "airport"
+   "source": "meteofrance",
+   "id": "62548002",
+   "dept": "62",
+   "name": "Météo-France Calais-Marck",
+   "lat": 50.959833,
+   "lon": 1.956167,
+   "alt": 2.0,
+   "kind": "mast"
   },
-  "km": 2.78,
-  "shore_km": 0.41,
+  "km": 3.01,
+  "shore_km": 0.27,
   "cls": "a2"
  },
  {
