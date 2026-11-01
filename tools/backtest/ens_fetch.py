@@ -28,12 +28,13 @@ from stations import load_spots  # noqa: E402
 BASE = "https://ecmwf-forecasts.s3.eu-central-1.amazonaws.com"
 OUT = os.path.join(os.path.dirname(__file__), ".cache", "ens")
 STEPS = [18, 21, 24, 27, 30]          # from 12 UTC of D-1: 06, 09, 12, 15, 18 UTC on D
+LEAD = 1                              # --lead 3: 12 UTC run of D-3, steps 66-78, output .cache/ens_d3
 HALF = 3                              # window = (2 * HALF + 1)^2 cells around the spot
 PAIRS = ["pairs_esfr.json"]
 EXTRA = [(42.1, 3.65), (40.7, 1.47), (42.7, 3.07)]   # Begur, Tarragona, POEM buoys
 
 
-def get(url, rng=None, tries=6):
+def get(url, rng=None, tries=20):
     for i in range(tries):
         try:
             req = urllib.request.Request(url, headers={"Range": f"bytes={rng[0]}-{rng[1]}"} if rng else {})
@@ -43,7 +44,7 @@ def get(url, rng=None, tries=6):
             if i == tries - 1:
                 raise
             print(f"retry {url} {e}", file=sys.stderr)
-            time.sleep(3 * (i + 1))
+            time.sleep(min(60, 3 * (i + 1)))
 
 
 def cells():
@@ -86,7 +87,7 @@ def fetch_part(day, step, keep):
     """One (day, step) unit, saved on its own so an interrupted run resumes where it stopped."""
     path = os.path.join(OUT, "parts", f"{day:%Y%m%d}_{step}.json")
     if not os.path.exists(path):
-        data = fetch_step(day - dt.timedelta(days=1), step, keep)
+        data = fetch_step(day - dt.timedelta(days=LEAD), step, keep)
         json.dump(data, open(path + ".tmp", "w"), separators=(",", ":"))
         os.replace(path + ".tmp", path)
     return path
@@ -108,7 +109,7 @@ def assemble(day, keep):
                 continue
             for k, u, v in zip(keys, uv["10u"], uv["10v"]):
                 points[k].setdefault(str(member), {})[str(hour)] = [u, v]
-    run = day - dt.timedelta(days=1)
+    run = day - dt.timedelta(days=LEAD)
     json.dump({"run": f"{run:%Y-%m-%d}T12", "points": points}, open(path + ".tmp", "w"), separators=(",", ":"))
     os.replace(path + ".tmp", path)
 
@@ -118,7 +119,13 @@ def main():
     ap.add_argument("--start", default="2026-08-08")
     ap.add_argument("--end", default="2026-10-30")
     ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--lead", type=int, default=1, help="days ahead: 1 (evening before) or 3")
     a = ap.parse_args()
+    global OUT, STEPS, LEAD
+    LEAD = a.lead
+    if LEAD != 1:
+        OUT = OUT + f"_d{LEAD}"
+        STEPS = [st + 24 * (LEAD - 1) for st in STEPS]
     os.makedirs(OUT, exist_ok=True)
     keep = cells()
     print(f"{len(keep)} cells kept per field", file=sys.stderr)

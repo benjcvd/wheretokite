@@ -32,7 +32,9 @@ import statistics
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from esfr_backtest import forecasts, REGIONS, HD, ICON, EC, BM  # noqa: E402
+from esfr_backtest import forecasts, om, REGIONS, HD, ICON, EC, BM  # noqa: E402
+from model_backtest import months  # noqa: E402
+import urllib.parse  # noqa: E402
 from review import to_10m, usable  # noqa: E402
 from stations import observations, load_spots  # noqa: E402
 
@@ -41,8 +43,12 @@ ENS = os.path.join(HERE, ".cache", "ens")
 HOURS = list(range(7, 18))
 LO, HI = 12, 28
 KN = 1.943844
-DET = [(BM, "sea"), (HD, "land"), (ICON, "land"), (EC, "sea")]
-METHODS = ["Today", "A1 votes", "A2 margin", "B1 ENS raw", "B2 ENS x c", "B3 ENS+AROME"]
+MF = "meteofrance_seamless"
+DET = {1: [(BM, "sea"), (HD, "land"), (ICON, "land"), (EC, "sea")],
+       3: [(BM, "sea"), (MF, "land"), (ICON, "land"), (EC, "sea")]}   # AROME 1.3 stops before day 3: Météo-France seamless (ARPEGE) instead
+ANCHOR = {1: HD, 3: MF}   # high-res model B3 re-centres the ensemble on
+LABELS = [("Go", 0.7, 1.01), ("Probably", 0.4, 0.7), ("Long shot", 0.15, 0.4), ("No", 0, 0.15)]
+METHODS = ["Today", "A1 votes", "A2 margin", "A2 per country", "B1 ENS raw", "B2 ENS x c", "B3 ENS+AROME"]
 
 
 def ride(series, spot, lo=LO):
@@ -89,7 +95,27 @@ def ens_key(lat, lon):
     return f"{round(lat * 4) / 4:.2f},{round(lon * 4) / 4:.2f}"
 
 
-def collect(start, end, buoy):
+def forecasts_d3(spot, start, end):
+    """(model, cell) -> {3: hour -> (kn, dir)}: forecast made 3 days before (Previous Runs)."""
+    fc = {}
+    for cell, models in (("sea", [BM, EC]), ("land", [MF, ICON])):
+        for m in models:
+            fc[(m, cell)] = {3: {}}
+            for lo, hi in months(start, end):
+                j = om("https://previous-runs-api.open-meteo.com/v1/forecast", urllib.parse.urlencode({
+                    "latitude": f"{spot['latitude']:.5f}", "longitude": f"{spot['longitude']:.5f}",
+                    "hourly": "wind_speed_10m_previous_day3,wind_direction_10m_previous_day3",
+                    "wind_speed_unit": "kn", "timezone": "GMT", "start_date": lo, "end_date": hi,
+                    "models": m, "cell_selection": cell}))
+                h = j.get("hourly") or {}
+                for t, sp, d in zip(h.get("time", []), h.get("wind_speed_10m_previous_day3", []),
+                                    h.get("wind_direction_10m_previous_day3", [])):
+                    if sp is not None and d is not None:
+                        fc[(m, cell)][3][t[:13]] = (sp, d)
+    return fc
+
+
+def collect(start, end, buoy, lead=1):
     spots = {s["id"]: s for s in load_spots()}
     pairs = [p for p in json.load(open(os.path.join(HERE, "pairs_esfr.json"))) if p["cls"] in ("a", "a2")]
     sites = []   # (pair id, spot, obs hour->(kn,dir), fc, ens key, kind)
@@ -101,6 +127,8 @@ def collect(start, end, buoy):
         obs = {h: (to_10m(kn, height), d) for h, (kn, d) in obs.items()}
         fc, where = forecasts(spot, start, end)
         ec = where.get((EC, "sea")) or (spot["latitude"], spot["longitude"])
+        if lead == 3:
+            fc = forecasts_d3(spot, start, end)
         sites.append((f"{p['spot']}|{p['station']['id']}", spot, obs, fc, ens_key(*ec), "mast"))
     if buoy:
         from buoys import BUOYS, read_buoy, to_10m_sea
@@ -111,13 +139,15 @@ def collect(start, end, buoy):
             spot = spots[sid]
             fc, where = forecasts(spot, start, end)
             ec = where.get((EC, "sea")) or (spot["latitude"], spot["longitude"])
+            if lead == 3:
+                fc = forecasts_d3(spot, start, end)
             sites.append((f"{sid}|POEM", spot, obs, fc, ens_key(*ec), "buoy"))
 
     rows = []
     d0, d1 = dt.date.fromisoformat(start), dt.date.fromisoformat(end)
     day = d0
     while day <= d1:
-        path = os.path.join(ENS, f"{day:%Y%m%d}.json")
+        path = os.path.join(ENS + ("" if lead == 1 else f"_d{lead}"), f"{day:%Y%m%d}.json")
         ens = json.load(open(path)) if os.path.exists(path) else None
         ds = day.isoformat()
         for pid, spot, obs, fc, ekey, kind in sites:
@@ -125,15 +155,16 @@ def collect(start, end, buoy):
             if len(o) < 9:   # ≥ 9 of 11 daylight hours measured
                 continue
             det = {}
-            for m, cell in DET:
-                s = {h: fc.get((m, cell), {}).get(1, {}).get(f"{ds}T{h:02d}") for h in HOURS}
+            for m, cell in DET[lead]:
+                s = {h: fc.get((m, cell), {}).get(lead, {}).get(f"{ds}T{h:02d}") for h in HOURS}
                 s = {h: v for h, v in s.items() if v}
                 if len(s) == len(HOURS):
                     det[m] = s
             if BM not in det:
                 continue
             mem = members(ens, ekey) if ens else {}
-            rows.append({"pair": pid, "spot": spot, "kind": kind, "day": ds,
+            rows.append({"pair": pid, "spot": spot, "kind": kind, "day": ds, "lead": lead,
+                         "country": "Spain" if spot["id"].startswith("es-") else "France",
                          "region": REGIONS.get(spot["region"], spot["region"]),
                          "obs": ride(o, spot), "obs15": ride(o, spot, 15), "obs_best": best2(o, spot) if len(o) == len(HOURS) else None,
                          "det": {m: (ride(s, spot), ride(s, spot, 15), best2(s, spot)) for m, s in det.items()},
@@ -190,14 +221,21 @@ def chances(rows, thr=LO):
     """Attach r['p'][method] for event threshold thr (12 or 15). Fitted methods: two folds by week."""
     idx = "obs" if thr == LO else "obs15"
     k = 0 if thr == LO else 1
-    a2_grid = [(b, s) for b in [x * 0.5 for x in range(-8, 9)] for s in [0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6]]
+    a2_grid = [(b, s) for b in [x * 0.5 for x in range(-16, 9)] for s in [0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6]]
     c_grid = [(c,) for c in [0.8 + 0.05 * i for i in range(17)]]
     fitted = {}
     for par in (0, 1):
         train = [r for r in rows if week_parity(r["day"]) != par]
         fitted[par] = (fit(train, lambda r, b, s: a2_prob(r, b, s, thr), a2_grid, idx),
                        fit([r for r in train if r["ens"]], lambda r, c: ens_scaled(r, c, thr), c_grid, idx))
+    by_country = {}
+    for par in (0, 1):
+        for ctry in ("Spain", "France"):
+            train = [r for r in rows if week_parity(r["day"]) != par and r["country"] == ctry]
+            by_country[(par, ctry)] = fit(train, lambda r, b, s: a2_prob(r, b, s, thr), a2_grid, idx)
     for r in rows:
+        bc, sc = by_country[(week_parity(r["day"]), r["country"])]
+        r.setdefault("p", {}).setdefault(thr, {})["A2 per country"] = a2_prob(r, bc, sc, thr)
         (b, s), (c,) = fitted[week_parity(r["day"])]
         p = r.setdefault("p", {}).setdefault(thr, {})
         p["Today"] = 1.0 if r["det"][BM][k] else 0.0
@@ -206,11 +244,12 @@ def chances(rows, thr=LO):
         if r["ens"]:
             p["B1 ENS raw"] = sum(v[k] for v in r["ens"]) / len(r["ens"])
             p["B2 ENS x c"] = ens_scaled(r, c, thr)
-            arome = r["det"].get(HD, (None, None, None))[2]
+            arome = r["det"].get(ANCHOR[r["lead"]], (None, None, None))[2]
             xs = [v[2] for v in r["ens"] if v[2] is not None]
             if arome is not None and xs:
                 shift = arome - statistics.mean(xs)
                 p["B3 ENS+AROME"] = sum(1 for x in xs if x + shift >= thr) / len(xs)
+    fitted["country"] = by_country
     return fitted
 
 
@@ -300,40 +339,112 @@ def report(rows, title, thr, ref="A1 votes", diffs=True):
     print()
 
 
+def label_of(p):
+    return next(name for name, lo, hi in LABELS if lo <= p < hi)
+
+
+def label_stats(rows, m, thr, reps=400, seed=5):
+    """label -> (spot-days, dates, hit rate, 95 % interval over dates)."""
+    idx = "obs" if thr == LO else "obs15"
+    rows = [r for r in rows if r["p"][thr].get(m) is not None]
+    out = {}
+    for name, lo, hi in LABELS:
+        sub = [r for r in rows if lo <= r["p"][thr][m] < hi]
+        by = {}
+        for r in sub:
+            by.setdefault(r["day"], []).append(r[idx])
+        dates = sorted(by)
+        if not sub:
+            out[name] = (0, 0, None, None)
+            continue
+        rate = statistics.mean(r[idx] for r in sub)
+        rng = random.Random(seed)
+        bs = []
+        for _ in range(reps):
+            xs = [o for d in (rng.choice(dates) for _ in dates) for o in by[d]]
+            bs.append(statistics.mean(xs))
+        bs.sort()
+        out[name] = (len(sub), len(dates), rate, (bs[int(0.025 * reps)], bs[int(0.975 * reps) - 1]))
+    return out
+
+
+MIN_DAYS, MIN_DATES = 30, 15
+
+
+def verdict(name, n, nd, rate):
+    lo, hi = next((a, b) for nm, a, b in LABELS if nm == name)
+    if n < MIN_DAYS or nd < MIN_DATES:
+        return "too few"
+    return "pass" if lo <= rate < max(hi, 1.0001) else ("too sure" if rate < lo else "too shy")
+
+
+def label_table(groups, methods, thr):
+    """groups: [(title, rows)]. One line per method and group: each label's hit rate (spot-days, dates)."""
+    print("| Method | Group | " + " | ".join(f"{n} ({int(lo * 100)}–{min(100, int(hi * 100))} %)" for n, lo, hi in LABELS) + " | Wrong gos (Go label) | Bar |")
+    print("|---|---|" + "---|" * (len(LABELS) + 2))
+    for m in methods:
+        for title, rows in groups:
+            st = label_stats(rows, m, thr)
+            cells, fails = [], []
+            for name, _, _ in LABELS:
+                n, nd, rate, iv = st[name]
+                v = verdict(name, n, nd, rate) if n else "too few"
+                if v != "pass":
+                    fails.append(f"{name} {v}")
+                cells.append("–" if not n else f"**{pc(rate)}** ({pc(iv[0])}–{pc(iv[1])}) · {n} d / {nd} dates")
+            g = st["Go"]
+            wrong = "–" if not g[0] else pc(1 - g[2])
+            bar = "pass" if not fails else "fail: " + ", ".join(fails)
+            print(f"| {m} | {title} | " + " | ".join(cells) + f" | {wrong} | {bar} |")
+    print()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--start", default="2026-08-08")
     ap.add_argument("--end", default="2026-10-30")
     ap.add_argument("--no-buoy", action="store_true")
+    ap.add_argument("--leads", default="1,3")
     a = ap.parse_args()
-    rows = collect(a.start, a.end, not a.no_buoy)
     print(f"# WHE-81: chance you'll kite, {a.start} … {a.end}\n")
-    print(f"{len(rows)} spot-days with a measurement and today's forecast; {sum(1 for r in rows if r['ens'])} with the ensemble too. "
-          f"Go = two hours in a row between {LO} and {HI} kn, direction not offshore, 07–17 UTC. Forecast made the day before.\n")
-    for thr in (LO, 15):
-        fitted = chances(rows, thr)
-        print(f"## Go at {thr} kn+\n")
-        print("Fitted on the other weeks: " + "; ".join(
-            f"weeks {'odd' if par else 'even'}: A2 b = {f[0][0]:+.1f} kn, s = {f[0][1]:.1f} kn, B2 c = {f[1][0]:.2f}"
-            for par, f in sorted(fitted.items())) + "\n")
-        masts = [r for r in rows if r["kind"] == "mast"]
-        report(masts, "All shore masts", thr)
-        for reg in sorted({r["region"] for r in masts}):
-            sub = [r for r in masts if r["region"] == reg]
-            if len({r["day"] for r in sub if r["ens"]}) >= 20:
-                report(sub, f"{reg} only", thr, diffs=False)
-        report([r for r in rows if r["kind"] == "buoy"], "On the water: POEM buoy, Torreilles and Saint-Cyprien", thr, diffs=False)
-        # Robustness: drop one region at a time
-        print("Drop one region at a time (skill A1 / A2 / B1 / B2 / B3, wrong gos Today → B2):\n")
-        for reg in sorted({r["region"] for r in masts}):
-            sub = [r for r in masts if r["region"] != reg and r["ens"]]
-            ss = {m: score(sub, m, thr) for m in METHODS}
-            if all(ss.values()) and all(v["bss"] is not None for v in ss.values()):
-                print(f"- without {reg}: " + " / ".join(f"{ss[m]['bss']:+.2f}" for m in METHODS[1:]) +
-                      f"; wrong gos {pc(ss['Today']['wrong'])} → {pc(ss['B2 ENS x c']['wrong'])}")
-        print()
-    json.dump([{"pair": r["pair"], "day": r["day"], "obs": r["obs"], "obs15": r["obs15"], "p": r["p"]} for r in rows],
-              open(os.path.join(HERE, ".cache", "whe81_rows.json"), "w"))
+    print(f"Go = two hours in a row between {LO} and {HI} kn, direction not offshore, 07–17 UTC. "
+          "Labels: Go ≥ 70 %, Probably 40–70 %, Long shot 15–40 %, No < 15 %. A label passes when its measured "
+          f"hit rate falls in its own band, with at least {MIN_DAYS} spot-days over {MIN_DATES} dates behind it. "
+          "Fitted parts (A2 b and s, B2 c) are fitted per lead time on the other weeks (odd ISO weeks scored with "
+          "numbers fitted on even weeks and back). Intervals: 95 %, resampling whole dates.\n")
+    dump = []
+    for lead in [int(x) for x in a.leads.split(",")]:
+        rows = collect(a.start, a.end, not a.no_buoy, lead)
+        label = {1: "tomorrow (forecast made the day before)", 3: "3 days out"}[lead]
+        print(f"# Lead: {label}\n")
+        print(f"{len(rows)} spot-days with a measurement and best match; {sum(1 for r in rows if r['ens'])} with the ensemble. "
+              f"Models for A: {', '.join(m for m, _ in DET[lead])}.\n")
+        for thr in (LO, 15):
+            fitted = chances(rows, thr)
+            print(f"## Go at {thr} kn+, {label}\n")
+            print("Fitted on the other weeks: " + "; ".join(
+                f"weeks {'odd' if par else 'even'}: A2 b = {f[0][0]:+.1f} kn, s = {f[0][1]:.1f} kn, B2 c = {f[1][0]:.2f}"
+                for par, f in sorted((k, v) for k, v in fitted.items() if k != "country")) + "\n")
+            print("A2 per country: " + "; ".join(f"{c} weeks {'odd' if par else 'even'} b = {v[0]:+.1f}, s = {v[1]:.1f}"
+                                                 for (par, c), v in sorted(fitted["country"].items())) + "\n")
+            masts = [r for r in rows if r["kind"] == "mast" and r["ens"]]
+            groups = [("All masts", masts), ("Spain", [r for r in masts if r["country"] == "Spain"]),
+                      ("Spain without Canaries", [r for r in masts if r["country"] == "Spain" and r["region"] != "Canaries"]),
+                      ("France", [r for r in masts if r["country"] == "France"]),
+                      ("POEM buoy (water)", [r for r in rows if r["kind"] == "buoy" and r["ens"]])]
+            print("### Labels: how often each one came true\n")
+            label_table(groups, ["A1 votes", "A2 margin", "A2 per country", "B1 ENS raw", "B2 ENS x c", "B3 ENS+AROME"], thr)
+            report(masts, f"All shore masts, {label}", thr)
+            if thr == LO:
+                print("Skill per region (A1 / A2 / B1 / B2 / B3 / Today):\n")
+                for reg in sorted({r["region"] for r in masts}):
+                    sub = [r for r in masts if r["region"] == reg]
+                    ss = [score(sub, m, thr) for m in METHODS[1:] + METHODS[:1]]
+                    print(f"- {reg} ({len({r['day'] for r in sub})} dates, {len({r['pair'] for r in sub})} pairs): " +
+                          " / ".join("–" if not x or x["bss"] is None else f"{x['bss']:+.2f}" for x in ss))
+                print()
+        dump += [{"pair": r["pair"], "day": r["day"], "lead": lead, "obs": r["obs"], "obs15": r["obs15"], "p": r["p"]} for r in rows]
+    json.dump(dump, open(os.path.join(HERE, ".cache", "whe81_rows.json"), "w"))
 
 
 if __name__ == "__main__":
