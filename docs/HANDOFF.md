@@ -162,3 +162,12 @@ Canet every setup reads low, and the 3-model beach mix is the lowest (about 4.5 
 reverses the WHE-61 pick: the recommendation is now to keep today's best-match sea-cell setup and
 test an AROME-first blend on the sea cell next. Weak spot: only one near-shore buoy, in France;
 there's no open wind measurement on the water near Barcelona.
+
+**Forecast accuracy, 1 Nov.** WHE-63 replayed 42 afternoons (20 Sep–31 Oct, 150 min from
+Barcelona) through the app's real ranking, forecast a day ahead (`kite --replay`, fed by
+`tools/backtest/replay.py`). Today's offshore best-match setup says "go" on almost every day and
+most of its checked picks had no wind; the beach-cell setups are much better on that, at the cost
+of a few missed days. Tricky: the absolute hit rates swing with the land-vs-water gap, which only
+buoys (WHE-62) can settle, and half the top picks (Roussillon, L'Estartit, Pals, Fangar) have no
+station at all. Open question to Ben on Riumar in mestral; easterlies at Torredembarra are under-read
+by AROME and ICON (new card).
