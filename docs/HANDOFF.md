@@ -196,3 +196,12 @@ ensemble is never clearly better and costs 7–8x the quota. Tricky: past ensemb
 ECMWF's AWS archive (`tools/backtest/ens_fetch.py --lead 1|3`, about 1–2 h each, S3 throttles,
 resumable; `pip3 install --user eccodes`). Catalonia needs water or rider truth before its labels
 can be trusted.
+
+**Forecast accuracy, 1 Nov (WHE-84).** The 24 % Spain Go hit rate came from the Catalan Meteocat
+masts, which read about half the forecast in every direction while the Begur and Tarragona buoys
+agree with the models. Height, time base, averaging and the go/offshore rules were checked and
+cleared. With those masts out of the truth, a Go tuned to 85 % per day ahead (one method
+everywhere) lands at 82–97 % on unseen weeks in France, southern Spain (days 0–1) and at the buoys;
+a separate 70 % "Most likely" band doesn't hold up. Catalonia itself stays unverified (no wind
+measured on the water near its beaches). Tricky: Open-Meteo's daily quota is shared across agents.
+Run the backtests with `BACKTEST_OFFLINE=1` to use the cache only.
