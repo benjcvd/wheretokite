@@ -21,6 +21,7 @@ import os
 import statistics
 import sys
 import urllib.parse
+import time
 import urllib.request
 
 CACHE = os.path.join(os.path.dirname(__file__), ".cache")
@@ -54,14 +55,17 @@ def fetch(url, data=None):
         return open(path, "rb").read()
     req = urllib.request.Request(url, data=data.encode() if data else None,
                                  headers={"User-Agent": "WhereToKite backtest (research)"})
-    for attempt in range(3):
+    for attempt in range(6):
         try:
             body = urllib.request.urlopen(req, timeout=300).read()
             break
         except OSError as e:
-            if attempt == 2 or getattr(e, "code", 500) < 500:
+            code = getattr(e, "code", 500)
+            if attempt == 5 or (code < 500 and code != 429):
                 raise
+            # 429: Open-Meteo's per-minute limit; wait it out instead of failing the run
             print(f"retrying after {e}", file=sys.stderr)
+            time.sleep(65 if code == 429 else 5)
     open(path, "wb").write(body)
     return body
 

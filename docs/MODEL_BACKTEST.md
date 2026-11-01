@@ -3,6 +3,98 @@
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
 
+## Wind measured on the water (WHE-62, 1 Nov): the sea is windier than the land stations
+
+Until now every truth was a land station. This section uses buoys: open data from the
+Copernicus Marine In Situ service (public mirror, no account). Script:
+`tools/backtest/buoys.py`; full tables: [buoy tables](docs/MODEL_BACKTEST_BUOYS.md).
+Jan–Oct 2026, daylight hours, forecasts made the day before (day 0 and 2 in the full tables).
+
+| Buoy | Where | Anemometer | Used for |
+|---|---|---|---|
+| POEM (CNRS) | 2.3 km off Canet-en-Roussillon; Torreilles 7.2 km, Saint-Cyprien / Canet 7.8 km along the same sandy coast | 2 m, every 10 min | Level at the beach (question B) |
+| Cabo Begur (Puertos del Estado) | 25 km off Begur, 38 km from Pals | 3 m, hourly | Level over open sea (A) |
+| Tarragona (Puertos del Estado) | 40 km off Tarragona | 3 m, hourly | Level over open sea (A) |
+
+Barcelona and Tarragona's coastal buoys measure waves only, no wind. There is no open
+wind measurement on the water near Barcelona that I could find.
+
+### In plain words
+
+- **Over open sea the models are right.** At Begur and Tarragona every model reads within
+  about 1 kn of the buoy, slightly high if anything (measured, 270 days, high confidence).
+- **Near the beach, every setup reads low, the new 3-model beach mix the most.** Against the
+  Canet buoy, on days the wind isn't offshore, forecast a day ahead (Jul–Oct): the old setup
+  reads about 1–2 kn low on the best 2 h; the new 3-model beach mix about 4.5 kn low;
+  AROME + ICON beach with ECMWF sea about 4 kn low; AROME 1.3 beach alone is closest (0–2 kn low).
+- **So the land stations read low, not the forecasts high.** The 3-model mix "won" on land
+  because its inland ECMWF cell shares the stations' shelter. On the water it misses half the
+  go days the old setup catches (Canet, Jul–Oct: 33–34 % caught vs 54–64 %).
+- **This changes my WHE-61 advice.** I recommended AROME + ICON beach, ECMWF sea (option 1).
+  On the water it still reads 1–3 kn below today's setup and catches fewer go days. Today's
+  setup (best match, sea cell) is the most honest level we have: above the land stations,
+  slightly below the water.
+- **Storms are under-forecast, by every setup.** Saint-Cyprien on 24 Aug: buoy 34 kn; the day
+  before, the old setup said 29, the new mix 19–21. A blend that lowers the level makes this
+  worse (safety: storm scoring stays with Product).
+
+### Results at the beach, forecast a day ahead, wind not offshore
+
+Measured wind brought to 10 m (×1.17 from 2 m, neutral log profile over sea). In brackets: the
+bias with no height correction at all, the most favourable reading for the forecasts.
+
+| Setup | Torreilles: hourly bias | best 2 h bias | go days 12+ caught | false | Saint-Cyprien: hourly bias | best 2 h bias | caught | false |
+|---|---|---|---|---|---|---|---|---|
+| Old: best match, sea cell (live today) | −1.5 (+0.2) | −2.1 | 54 % | 14 % | −1.2 (+0.5) | −1.1 | 64 % | 20 % |
+| New: 3-model mean, beach cell (WHE-58) | −2.9 (−1.2) | −4.7 | 33 % | 0 % | −3.1 (−1.4) | −4.6 | 34 % | 12 % |
+| AROME + ICON beach, ECMWF sea (WHE-61 option 1) | −2.5 (−0.8) | −4.0 | 41 % | 10 % | −2.7 (−0.9) | −3.9 | 45 % | 5 % |
+| AROME 1.3 alone, beach cell (2 days' range) | −1.6 (+0.1) | −1.9 | 52 % | 12 % | −0.7 (+1.0) | +0.4 | 88 % | 19 % |
+
+Jul–Oct, 76 days (AROME 1.3 day-ahead runs only exist from the summer). Over all of Jan–Oct
+and all directions the ranking is the same, with bigger gaps (tramontane days). Change in best
+2 h error against the old setup, 95 % interval over days, a day ahead, all Jan–Oct: new mix
++0.4 … +1.9 kn worse at both spots (beyond the noise); option 1 −1.2 … +0.2 kn (a tie or slightly better); go-day score a tie for both (these intervals use all directions).
+
+Open sea, a day ahead, best 2 h bias: Begur −0.4 (ICON / best match) to +0.9 (AROME 1.3);
+Tarragona +0.1 to +0.8.
+
+### Real days at Saint-Cyprien / Canet (wind not offshore, best 2 h, kn, a day ahead)
+
+| Day | Buoy | Old | New 3-model beach | Option 1 | AROME 1.3 beach |
+|---|---|---|---|---|---|
+| 14 Aug | 18 | 17 | 10 | 12 | 14 |
+| 24 Aug (storm afternoon) | 34 | 29 | 19 | 22 | 25 |
+| 27 Aug | 34 | 33 | 22 | 24 | 30 |
+| 30 Aug | 20 | 23 | 16 | 17 | 21 |
+| 28 Sep | 24 | 27 | 20 | 20 | 26 |
+
+### What could make this wrong
+
+- **One buoy near a beach, on one coast.** Roussillon gets tramontane and its coast may
+  accelerate wind more than the Costa Brava or Barcelona. Begur and Tarragona agree on the
+  "models are right at sea" half, but are 25–40 km out; they say nothing about the last km
+  to a Catalan beach. Confidence: high for Canet, medium for Catalonia.
+- **The buoy is 2.3 km out; riders are within a few hundred metres.** In onshore and
+  sideshore wind the buoy is upwind of the riders, so it's a fair truth; that's why the table
+  keeps only those hours. A rider may still meet slightly less than the buoy.
+- **Height correction.** 2 m → 10 m with a neutral profile (×1.17). Air was warmer than the
+  sea in about a third to half of the hours (measured on the buoys): those stable hours need
+  a bigger correction, unstable ones a smaller one. With no correction at all (brackets),
+  the ranking doesn't change; the old setup then reads about right.
+- **Buoys tend to read low in rough seas** (waves shelter a low anemometer). That would make
+  the true wind higher, not lower.
+- **Spots 7–8 km from the buoy.** Same straight sandy coast and exposure, but not the same
+  point; the spot positions themselves are fine.
+
+### Options
+
+1. **Keep today's setup live (best match, sea cell); don't ship the 3-model beach mix nor
+   option 1 for now** (recommended). Next card: test "AROME 1.3 first 2 days, then best
+   match" on the sea cell against both buoys and land stations.
+2. Ship option 1 (AROME + ICON beach, ECMWF sea) anyway: lower error against land stations,
+   but 1–3 kn low on the water and fewer go days caught.
+3. Ship the 3-model beach mix as built: reads lowest on the water and misses the most go days.
+
 ## Second look (WHE-61, 27 Oct): the new setup reads too low
 
 Forecast accuracy re-ran the comparison the way riders use the app: the level as shown (no
