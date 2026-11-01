@@ -154,3 +154,11 @@ the recommendation is Option 1 with the Canaries kept on best match; Ben's answe
 WHE-61. Tricky: the Météo-France mirror on data.gouv froze in June (use the OVH bucket);
 Open-Meteo silently drops out-of-range models from multi-model requests; ECMWF's sea cell is
 ~13 km out, so any "cap the sea cell" rule sends it back inland. Still no water truth (WHE-62).
+
+**Forecast accuracy, 1 Nov.** Buoys settled the level question (WHE-62, in review). Open
+Copernicus buoy data, no account. Offshore (Begur, Tarragona) the models are right; 2.3 km off
+Canet every setup reads low, and the 3-model beach mix is the lowest (about 4.5 kn on the best
+2 h, half the go days missed). The land stations were reading low because of shelter. That
+reverses the WHE-61 pick: the recommendation is now to keep today's best-match sea-cell setup and
+test an AROME-first blend on the sea cell next. Weak spot: only one near-shore buoy, in France;
+there's no open wind measurement on the water near Barcelona.
