@@ -140,3 +140,9 @@ wait in the backlog on purpose.
 - Spain 96 spots, France 141. Verified-pass cards per region: WHE-65/66 running, Languedoc,
   south-east Spain, French Atlantic in backlog.
 - Gotcha: Meteocat's open feed has a hole 26 Oct 18 UTC → 30 Oct (no 28 Oct check possible).
+
+## Lead, 1 Nov: freeze on new work
+Ben: no new ticket is started until the five in progress are finished: WHE-72 → WHE-62 → WHE-63
+(Forecast accuracy) and WHE-65 → WHE-66 (Spot improvement). Nothing else goes to `ready`. The
+Lead hands over the next card in each chain when the one before it ends. WHE-74: Ben keeps 80 %
+on the hour before a storm.
