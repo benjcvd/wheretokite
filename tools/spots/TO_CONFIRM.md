@@ -175,3 +175,17 @@ second pass with web research is worth doing.
 - Windy check (browser, as a visitor, 2026-10-27): kite markers sit on the same beach as our Sant Pere pin and in a
   second cluster about 1.5 km south (Can Martinet side). It shows no zone boundaries, so the official zone is still
   unconfirmed; pin left as is.
+
+## Barcelona → Ebro delta check (WHE-66, 2026-11-01)
+- **Castelldefels**: the council's summer zone is open weekdays 15–19 h only (2026), closed weekends and holidays.
+  The app now scores 0 outside 15–19 h from 1 Jun to 30 Sep, but it can't block weekends yet (code card for the Lead).
+  Hours were 16–20 h in 2024: re-check each spring.
+- **Ebro delta (Riumar, Trabucador, Eucaliptus)**: no official summer rule found (no council, park or Capitania page),
+  only schools ("signposted zones, no restrictions") and one guide saying Riumar is closed to kites in summer.
+  No ban encoded; notes say "check the signs". Do you know if Riumar is ridable in July–August? (a) yes, leave as is
+  (recommended if you've seen kiters there in summer); (b) add the 1 Jun–30 Sep ban.
+- **L'Hospitalet de l'Infant**: the council once opened a marked kite zone on Platja de l'Arenal (undated article,
+  https://www.cambrils.com/es_ES/noticia/arte/ayuntamiento-habilita-zona-practica-kitesurf-playa-arenal-lhospitalet).
+  Summer ban kept until a current official page says it still runs.
+- Not added: Cubelles / Cunit (under 5 km from Segur de Calafell, same beach and winds), Garraf (small cove, no kite
+  reputation found), Sitges (no school or zone found). Tell me if any of them deserves its own row.
