@@ -170,3 +170,12 @@ spots, Hyères and Brittany, so WHE-62's near-shore buoy win was today's setup a
 other 24 spots it reads 2–3 kn high on masts and ~1 kn high at open-sea buoys: more go days caught,
 half of them false, worst in Catalonia. The open choice is still today's setup vs option 1.
 Tricky: the previous month's Copernicus buoy file appears late; `buoys.py` falls back to daily files.
+
+**Forecast accuracy, 1 Nov.** WHE-63 replayed 42 afternoons (20 Sep–31 Oct, 150 min from
+Barcelona) through the app's real ranking, forecast a day ahead (`kite --replay`, fed by
+`tools/backtest/replay.py`). Today's offshore best-match setup says "go" on almost every day and
+most of its checked picks had no wind; the beach-cell setups are much better on that, at the cost
+of a few missed days. Tricky: the absolute hit rates swing with the land-vs-water gap, which only
+buoys (WHE-62) can settle, and half the top picks (Roussillon, L'Estartit, Pals, Fangar) have no
+station at all. Open question to Ben on Riumar in mestral; easterlies at Torredembarra are under-read
+by AROME and ICON (new card).

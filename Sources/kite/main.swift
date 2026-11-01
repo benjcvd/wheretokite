@@ -18,6 +18,9 @@ import KiteCore
 //   --straight-line       skip Apple Maps, estimate all drive times (shown as ~)
 //   --hourly N            print the hourly breakdown for the top N spots
 //   --all                 also list spots scoring 0, and every excluded spot
+//   --replay FILE         past forecasts instead of Open-Meteo: {"yyyy-MM-dd": {spot id: DayForecast}}
+//                         (tools/backtest/replay.py writes it). Ranks every day in the file, or
+//                         --day; no model-agreement check; prints one JSON line per day.
 //
 // Without --straight-line, only the top ~35 spots get a real Apple Maps ETA; the others
 // keep a straight-line estimate, shown as "~".
@@ -111,6 +114,40 @@ let catalog: SpotCatalog
 do { catalog = try SpotCatalog.load(from: spotsURL) } catch { fail("can't load spots from \(spotsURL.path): \(error)") }
 
 let driveTime: DriveTimeProvider = flags.contains("straight-line") ? StraightLineDriveTime() : MapKitDriveTime()
+
+/// Past forecasts from a file, for replaying days (WHE-63).
+struct ReplayForecast: ForecastProvider {
+    let byDay: [String: [String: DayForecast]]
+    func forecasts(for spots: [Spot], day: String) async throws -> [String: DayForecast] {
+        let wanted = Set(spots.map(\.id))
+        return (byDay[day] ?? [:]).filter { wanted.contains($0.key) }
+    }
+}
+
+if let path = args["replay"] {
+    let byDay: [String: [String: DayForecast]]
+    do { byDay = try JSONDecoder().decode([String: [String: DayForecast]].self, from: Data(contentsOf: URL(fileURLWithPath: path))) }
+    catch { fail("can't read --replay \(path): \(error)") }
+    var replay = Recommender(spots: catalog.spots, forecast: ReplayForecast(byDay: byDay), driveTime: driveTime,
+                             confidence: nil)
+    replay.islands = catalog.islands ?? []
+    let days = args["day"].map { [resolveDay($0)] } ?? byDay.keys.sorted()
+    for day in days {
+        var r = request
+        r.day = day
+        let res = try await replay.search(r, profile: profile, today: day)
+        let ranked: [[String: Any]] = res.recommendations.map { rec in
+            var o: [String: Any] = ["id": rec.spot.id, "score": rec.finalScore, "wind": rec.windScore,
+                                    "drive": Int(rec.driveMinutes.rounded())]
+            if let w = rec.window { o["window"] = [w.start, w.end] }
+            return o
+        }
+        let line = try JSONSerialization.data(withJSONObject: ["day": day, "ranked": ranked], options: [.sortedKeys])
+        print(String(decoding: line, as: UTF8.self))
+    }
+    exit(0)
+}
+
 var recommender = Recommender(
     spots: catalog.spots,
     forecast: CachedForecastProvider(upstream: OpenMeteoProvider()),
