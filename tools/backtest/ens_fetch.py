@@ -25,7 +25,7 @@ from concurrent.futures import ThreadPoolExecutor
 sys.path.insert(0, os.path.dirname(__file__))
 from stations import load_spots  # noqa: E402
 
-BASE = "https://ecmwf-forecasts.s3.eu-central-1.amazonaws.com"
+BASE = os.environ.get("ENS_BASE", "https://storage.googleapis.com/ecmwf-open-data")   # same files as s3://ecmwf-forecasts (AWS throttled us)
 OUT = os.path.join(os.path.dirname(__file__), ".cache", "ens")
 STEPS = [18, 21, 24, 27, 30]          # from 12 UTC of D-1: 06, 09, 12, 15, 18 UTC on D
 LEAD = 1                              # --lead N: 12 UTC run of D-N, output .cache/ens_dN
@@ -121,7 +121,8 @@ def main():
     ap.add_argument("--start", default="2026-08-08")
     ap.add_argument("--end", default="2026-10-30")
     ap.add_argument("--workers", type=int, default=6)
-    ap.add_argument("--lead", type=int, default=1, help="days ahead: 1 (evening before) or 3")
+    ap.add_argument("--lead", type=int, default=1, help="days ahead: 0 (today, 00 UTC run), 1 (evening before), 2 …")
+    ap.add_argument("--every", type=int, default=1, help="keep one day in N (the archive throttles)")
     a = ap.parse_args()
     global OUT, STEPS, LEAD, RUN_HOUR
     LEAD = a.lead
@@ -134,12 +135,18 @@ def main():
     keep = cells()
     print(f"{len(keep)} cells kept per field", file=sys.stderr)
     d0, d1 = dt.date.fromisoformat(a.start), dt.date.fromisoformat(a.end)
-    days = [d0 + dt.timedelta(days=k) for k in range((d1 - d0).days + 1)]
+    days = [d0 + dt.timedelta(days=k) for k in range(0, (d1 - d0).days + 1, a.every)]
     os.makedirs(os.path.join(OUT, "parts"), exist_ok=True)
     todo = [(d, st) for d in days if not os.path.exists(os.path.join(OUT, f"{d:%Y%m%d}.json")) for st in STEPS]
     t = time.time()
     with ThreadPoolExecutor(a.workers) as ex:
-        for i, _ in enumerate(ex.map(lambda u: fetch_part(u[0], u[1], keep), todo)):
+        def safe(u):
+            try:
+                return fetch_part(u[0], u[1], keep)
+            except Exception as e:  # noqa: BLE001 (throttled past the retries: skip, a rerun picks it up)
+                print(f"gave up {u[0]} step {u[1]}: {e}", file=sys.stderr)
+
+        for i, _ in enumerate(ex.map(safe, todo)):
             print(f"{i + 1}/{len(todo)} parts {time.time() - t:.0f} s", file=sys.stderr)
     for d in days:
         assemble(d, keep)
