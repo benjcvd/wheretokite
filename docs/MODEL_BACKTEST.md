@@ -1,7 +1,95 @@
-# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
+
+## AROME 1.3 first, then best match, on the sea point (WHE-78, 1 Nov): don't ship it
+
+**In plain words.** The idea (from WHE-62): read AROME 1.3 on the sea point while it has data,
+best match after. Three things came out:
+
+- **It changes less than expected.** AROME's runs stop after 2 days, so from day 2 on it *is*
+  today's setup. And for the forecast made the day before, best match already equals AROME 1.3
+  at Sant Pere Pescador, Torreilles / Saint-Cyprien (the spots next to the POEM buoy), Hyères
+  and Brittany (measured: 100 % of hours identical). So the near-shore buoy result in WHE-62
+  ("AROME closest on the water") was today's setup all along for day 1. The change only does
+  something at the other 24 checked spots, on days 0 and 1.
+- **Where it changes something, it reads about 2–3 kn higher than today.** Against shore
+  stations: best 2 h +2.7 kn high (today +0.4), error 3.3 kn (today 2.6). It catches 89 % of
+  go days (today 65 %), but half its "go" calls are false (today a third). Against the two
+  open-sea buoys it is +0.7–1.2 kn high where today's setup is about right.
+- **Worst in Catalonia**, where testers start: light days read +4 kn high, so thermal
+  afternoons measured at 9–10 kn show as 17–18 kn (Segur de Calafell, 21 and 23 Oct; the wind direction kept those two out of the go count).
+
+The one real upside: on strong days (18 kn+ measured) it is the only setup that doesn't read
+low (+1.0 kn vs −2.3 today at shore stations; Carnon 30 Sep: 28 kn measured, 29 forecast, 16
+today). That is a safety point worth keeping in mind, but it comes from reading everything
+~2 kn higher, not from catching storms specifically.
+
+**Recommendation.**
+
+1. **Don't ship AROME-first on the sea point** (recommended). The choice stays between today's
+   setup and option 1 (WHE-62 / WHE-72).
+2. AROME first on the *beach* point, best match after. Against shore stations it's a small,
+   real gain (best 2 h error −0.1 … −0.3 kn, go days caught +7 … +16 pts, false alarms about the
+   same), but next to the POEM buoy it reads 2 kn low on day 1 and misses go days. Not enough
+   water truth to ship it.
+3. Ship AROME-first on the sea point anyway, for its strong-day level. Half the go calls false.
+
+**Numbers.** Shore stations: 37 WHE-72 main pairs inside AROME's domain, 24 where the change
+does anything; 8 Aug–30 Oct (AROME's day-ahead archive starts 8 Aug); daylight 07–17 UTC;
+station wind brought to 10 m; nothing removed; 95 % intervals from a bootstrap over days.
+Go day = best 2 h ≥ 12 kn, wind not offshore. Full tables, including days 0 and 2–3:
+`tools/backtest/results/whe78.md`; script `tools/backtest/arome_first.py`.
+
+Day 1 ahead, the 24 spots where it changes something (1,987 spot-days, 427 go days):
+
+| Setup | Best 2 h bias | Best 2 h error | Go days caught | False alarms |
+|---|---|---|---|---|
+| Today: best match, sea point | +0.4 | 2.6 | 65 % | 34 % |
+| AROME first, sea point | +2.7 | 3.3 | 89 % | 50 % |
+| AROME first, beach point | +1.1 | 2.4 | 77 % | 38 % |
+| Option 1 (reference) | +0.2 | 2.2 | 67 % | 26 % |
+
+Difference AROME-first sea − today, 95 % interval: error +0.5 … +0.8 kn, caught +20 … +30 pts,
+false alarms +12 … +20 pts. Dropping any one station moves the error by under 0.1 kn.
+
+Buoys, day 1 (best 2 h bias / error, kn):
+
+| Buoy | Today | AROME first, sea | Option 1 |
+|---|---|---|---|
+| Cabo Begur, 25 km out (84 days) | −0.2 / 2.3 | +1.1 / 2.5 | −0.1 / 1.9 |
+| Tarragona, 40 km out (83 days) | −0.7 / 2.1 | +0.7 / 2.1 | −0.6 / 1.7 |
+| POEM, 2.3 km off Canet, read at the 2 spots (146 days) | −0.4 / 3.5 | same as today | −3.8 / 4.1 |
+
+On day 0 at POEM, AROME-first sea *is* better (bias −0.7 vs −2.3, error 2.7 vs 3.1): best match
+on the same-day run is not AROME there. Day 0 matters less: riders plan 1–4 days ahead.
+
+Best 2 h bias by how windy the day was measured (day 1, the 24 spots): under 12 kn: today
++1.0, AROME first +3.1; 12–18 kn: −0.6 vs +1.8; 18 kn+: −2.3 vs +1.0. Careful: sorting days by
+the measured wind pushes every forecast low on windy days and high on calm ones (regression to
+the mean), so read only the gap between setups, not the levels.
+
+**Sanity check, three days (forecast made the day before, best 2 h, kn).**
+
+| Day, spot (station) | Measured | Today | AROME first sea |
+|---|---|---|---|
+| 30 Sep, Carnon (Météo-France 34154001) | 28 | 16 | 29 |
+| 4 Oct, Torredembarra (Meteocat DK) | 14 | 10 | 13 (go) |
+| 23 Oct, Segur de Calafell (Meteocat WZ) | 10 | 15 | 17 |
+
+**What could make this wrong.**
+
+- Shore stations read low behind dunes and buildings (WHE-62). If riders get ~2 kn more on the
+  water than the masts, part of AROME-first's "too high" is real. Against that: the open-sea
+  buoys, which have no shelter, also say it reads ~1 kn high.
+- Only one buoy near a beach (POEM), and there the change does nothing on day 1. Near-shore
+  water truth is still the gap; none is open near Barcelona.
+- Autumn only (Aug–Oct, 12 weeks): no winter tramontana season, few thermal days left after
+  mid-September.
+- Why best match equals AROME 1.3 at those 5 spots on day 1 but not on day 0 is
+  observed, not explained (I think Open-Meteo picks its best match differently for the
+  same-day run). If Open-Meteo changes that logic, today's setup changes with it.
 
 ## Wind measured on the water (WHE-62, 1 Nov): the sea is windier than the land stations
 
