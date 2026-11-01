@@ -165,3 +165,13 @@ on the hour before a storm.
   atlas/t/whe-62, whe-63, whe-72, atlas/forecast-accuracy.
 - Gotcha: Atlas reverted the Lead's `ready` edits on `doing` cards; the per-spot numbers came
   from `/tmp/whe72spot/perspot.py` run on the whe-72 worktree's `.cache` (temporary).
+
+## Lead, 1 Nov late: the likelihood label
+- Ben's goal: avoid wrong gos and missed gos; the grade stays, a plain label goes next to it.
+- WHE-81: a simple agreement rule (how far 4 models sit above the rider's minimum, and how much
+  they disagree) beat running the scoring on 50 ensemble members (the ensemble was overconfident).
+- WHE-84: Spain's terrible score came from the Catalan weather-service masts (farm, school,
+  wetland sites) reading ~half the wind; the buoys off Begur and Tarragona agree with the models.
+  Ben picked: Go only at the 85 % cut-off per day ahead, one method everywhere, those masts out of
+  the truth. "Most likely" (70 %) didn't hold, so the labels are Go / Not sure / No.
+- Open: no trustworthy beach-level measurement in Catalonia yet (harbour sensors card queued).
