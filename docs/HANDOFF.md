@@ -144,3 +144,7 @@ Ben chose not to penalise storms ahead much: the spot now says "Storm from 4:00 
 ## Product: gusts by level and intensity (2026-10-31)
 
 WHE-73 is in review with [the before/after](docs/GUSTS_BY_LEVEL.md#before--after-on-the-whe-64-days). Gust tolerance is now judged against the forecast's normal gust ratio (~1.75× the mean) and graded by level and intensity; the gust limit and the "overpowered" margin rise with intensity for intermediate and advanced riders, never for beginners; mean-wind limits are untouched. "Gusty" shows only when it costs ≥10 %. Side effect to keep in mind: good days now bunch near 100 for intermediates, so the score separates spots less. If Forecast accuracy changes the blend or calibrates gusts, revisit the tolerances in `ScoringRules`.
+
+## Product: chance to kite (2026-11-02, WHE-82)
+
+Each top spot now carries Go / Not sure / No from the four weather models (WHE-81 method, WHE-84 cut-offs tuned so a Go came true ~85 %). It replaces the models-disagree penalty and the confidence badge. Not sure caps the grade at 69 and No at 39 so a high grade never says No; this re-ranks marginal days (24 Oct: La Palme 97 → 69). In review: Ben tests on his phone and settles the wording. Unproven in Catalonia (no trustworthy ground truth there). The CLI's `--server` flag goes through the Worker when Open-Meteo's per-IP quota is spent.
