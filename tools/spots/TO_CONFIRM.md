@@ -62,14 +62,24 @@ second pass with web research is worth doing.
 
 ## Catalunya (Catalan rows of ES.csv)
 
-### Questions for you
-- Summer bans (1 Jun–30 Sep on every new Catalan spot): which have an authorised summer kite zone, so the ban should go?
-  Likely Sant Carles de la Ràpita, Segur de Calafell, Cambrils, Roses. Pals is settled: the town page confirms the
-  restriction. L'Escala, Sant Martí d'Empúries, Palamós, Platja d'Aro: no town page found, Catalan default kept.
-- Torredembarra: where do kiters actually launch (Platja de Baix a Mar pinned)?
-- El Prat: the kite zone there is Can Camins (OSM `sport=kitesurfing`), which was ruled out earlier. Still no?
-- Positions to check on the map: Punta del Fangar (pinned on the locality; launch on the bay side?), Badalona (info
-  board by the Pont del Petroli).
+### Settled without Ben (WHE-2, 2026-11-02, rule of 2 Nov: look online, else assume the worst)
+- **Summer bans**: all stay. No town page, Capitania notice or beach plan shows an authorised summer kite zone at
+  Sant Carles de la Ràpita, Segur de Calafell or Cambrils (searched in Catalan and Spanish; only school listings and
+  forecast pages). Roses: the summer zone is La Rubina (Castelló d'Empúries), already in the catalogue with no ban
+  (council allowed controlled kiting there from 2005, bibgirona.cat press archive; kite-and-windsurfing-guide "Rubina").
+- **Torredembarra**: archived. No school, club, marked zone or Windy kite marker (WHE-83); the only trace is a
+  user-made forecast point on windy.app. Creixell (3 km) and Altafulla (4 km) cover the same beach and winds.
+- **El Prat, Can Camins**: not added. Only swimming/windsurf listings (wildopenwater.com) and a sailing club forecast
+  point; no kite school, zone or rider report found.
+- **Punta del Fangar**: pin kept (sea side + bay side, directions agree). No school or zone found (schools ride at
+  Trabucador / Punta de la Banya, terresdelebre.travel); the app note now says so.
+- **Badalona**: pin verified on the beach Platja Pont del Petroli (`osm:r2154291`, 41 m from the old pin), now
+  locked to that element instead of a name search. No kite-specific source for the pier itself.
+- **Sant Pere / Empuriabrava / L'Estartit in Tramontana (WHE-64)**: sectors unchanged. Windsurf guides say
+  Tramontana is side-shore at Sant Pere and ridden by experienced riders (surf-magazin.de "Sant Pere Pescador",
+  waterwind.it "San Pere Pescador"); no kite school or kite source says NNW (side-off) is ridden. N already counts as
+  cross-shore on Sant Pere's east-facing beach; widening the sector would score side-off gusts as rideable.
+  Empuriabrava (faces SSE) and L'Estartit stay side-off in N/NNW.
 
 ### Barcelona → Ebro delta check (WHE-66, 2026-11-01)
 - **Castelldefels**: the council's summer zone is open weekdays 15–19 h only (2026), closed weekends and holidays.
@@ -137,7 +147,7 @@ Every Windy name maps to one of our spots except Blanes, Premià and Sant Antoni
 | Playa del Trabucador (5), root of the bar | Platja dels Eucaliptus (basic) | Match (schools teach at the root) |
 | Trabucador (4), mid-bar | El Trabucador (basic) | Match |
 | St. Carles de la Ràpita (5) | Sant Carles de la Ràpita (basic) | Match |
-| (none) | Torredembarra (pro) | Ours only. Kept: off-season local spot between Creixell and Altafulla, already pro. |
+| (none) | Torredembarra (archived) | Ours only. Archived in WHE-2: no kite source, 3–4 km from Creixell and Altafulla. |
 
 Questions:
 - **Palamós bay**: settled (Ben, 2026-11-02): La Fosca stays, moved to pro. Sant Antoni de Calonge not added.
