@@ -136,7 +136,8 @@ ES,Catalunya,Sant Carles de la Ràpita (Badia dels Alfacs),sea,osm:r14512303,SE,
 ES,Catalunya,Pals,sea,osm:r8266439,E,"Long open beach south of the Ter mouth; easterlies and summer thermal; tramuntana side-off. Kites restricted 1 Jun–30 Sep (Pals tourist office), no summer kite zone.",,,,06-01..09-30
 ES,Catalunya,Segur de Calafell,sea,osm:r10255772,SSE,Wide sandy beach; garbí (SW) summer thermal and levante.,,,,06-01..09-30
 ES,Catalunya,Cambrils (Platja del Regueral),sea,osm:r1747893,SE,Shallow sandy bay west of the port; garbí and levante; mestral offshore.,,,,06-01..09-30
-ES,Catalunya,Palamós (La Fosca),sea,osm:r8268914,SE,Sheltered bay north of Palamós; easterlies and summer thermal.,,,,06-01..09-30
+# pro: no kite school or zone found on site; Ben's call (2026-11-02), Pals and Platja d'Aro nearby
+ES,Catalunya,Palamós (La Fosca),sea,osm:r8268914,SE,Sheltered bay north of Palamós; easterlies and summer thermal; N/NW winds blow offshore.,,,pro,06-01..09-30
 ES,Catalunya,Calafell,sea,osm:r12075608,SSE,Town beach next to Segur de Calafell; garbí and levante.,,,pro,06-01..09-30
 ES,Catalunya,Salou (Platja de Llevant),sea,osm:r5208459,S,Town beach; levante and garbí.,,,pro,06-01..09-30
 ES,Catalunya,L'Hospitalet de l'Infant,sea,osm:r2173868,SE,Long beach south of the village; garbí and levante.,,,pro,06-01..09-30

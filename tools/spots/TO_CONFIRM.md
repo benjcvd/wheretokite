@@ -63,18 +63,6 @@ second pass with web research is worth doing.
 ## Catalunya (Catalan rows of ES.csv)
 
 ### Questions for you
-- **El Trabucador, question for you**: our pin is mid-bar (la Ràpita side), about 4 km south of where the schools say
-  they teach ("start of the beach, next to Eucaliptus":
-  https://www.kitesurfdeltakitesup.es/playa-del-trabucador/, https://terresdelebre.travel/es/actividades-que-hacer/turismo-activo/kitesurf/kitesurf-trabucador).
-  No official zone map found. Do riders actually use the whole bar? Options: (a) leave it, Trabucador = mid-bar for
-  experienced riders, Eucaliptus = the root and schools (recommended); (b) merge the two into one spot at the root.
-- **Palamós (La Fosca), question for you**: no kite school, kite zone or real kite guide found there (paddle and kayak
-  only; one surf portal lists N/NW winds, which blow offshore at this SE-facing cove). Options: (a) archive it, the
-  Empordà already has Pals and Platja d'Aro nearby (recommended); (b) move it to pro; (c) keep it free.
-- Sant Pere Pescador zone: the town lists two kite areas (Cortal de la Vila, Cortal de la Devesa), now in the notes.
-  Guide coordinates disagree on where they sit (Buscokite 42.182/3.110, Yumping 42.184/3.109, Kiteloopers 42.171/3.114);
-  schools sit at Can Martinet / Camping La Gaviota. Our pin (42.1887, 3.1080) is a school shop on the same beach: leave it?
-  Windy (visitor look, 2026-10-27): markers on the same beach and a second cluster 1.5 km south (Can Martinet side).
 - Summer bans (1 Jun–30 Sep on every new Catalan spot): which have an authorised summer kite zone, so the ban should go?
   Likely Sant Carles de la Ràpita, Segur de Calafell, Cambrils, Roses. Pals is settled: the town page confirms the
   restriction. L'Escala, Sant Martí d'Empúries, Palamós, Platja d'Aro: no town page found, Catalan default kept.
@@ -84,6 +72,8 @@ second pass with web research is worth doing.
   board by the Pont del Petroli).
 
 ### Checked, for the record
+- Settled (Ben, 2026-11-02): Palamós (La Fosca) moved to pro, not archived. El Trabucador (mid-bar pin) and the
+  Sant Pere Pescador pin both stay as they are (WHE-59).
 - Not added as duplicates (< 2 km, same beach and direction): Blanes – S'Abanell (= Malgrat – La Pomareda, Tordera
   mouth), Roses town beach (2 km from Empuriabrava – La Rubina).
 - Pin check (WHE-59, 2026-10-27 and 31, OSM reverse lookups; Overpass down): Sant Martí d'Empúries, L'Escala, Pals,
