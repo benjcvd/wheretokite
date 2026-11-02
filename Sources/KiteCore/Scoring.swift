@@ -123,13 +123,14 @@ public struct ScoringRules: Sendable {
     /// still counts as side-shore: a 10° margin for the beach orientation and forecast direction.
     public var sideShoreMaxDeg = 100.0
     /// From here on the wind is offshore and scores 0 for everyone (side-offshore = between
-    /// `sideShoreMaxDeg` and this, only for riders who accept it). About 45° past side-shore;
-    /// lagoons and points reach it later through their catalogue water sector.
-    public var offshoreFromDeg = 130.0
+    /// `sideShoreMaxDeg` and this, advanced riders only). 30° past side-shore: "slightly
+    /// offshore, limited angle" (Ben, 2 Nov; was 130°). Lagoons and points reach it later
+    /// through their catalogue water sector.
+    public var offshoreFromDeg = 120.0
 
     /// Score for the angle between wind and beach. 0° = straight onshore,
     /// 90° = cross-shore, 180° = straight offshore (dangerous: blows you out to sea).
-    /// Riders who don't accept side-offshore drop to 0 at `sideShoreMaxDeg`; the others at
+    /// Beginners and intermediates drop to 0 at `sideShoreMaxDeg`; advanced riders at
     /// `offshoreFromDeg`.
     public func directionScore(relativeAngle a: Double, level: Level,
                                offshore: OffshoreTolerance = .sideShoreOnly) -> Double {
@@ -139,7 +140,7 @@ public struct ScoringRules: Sendable {
         case .advanced: [(0, 0.6), (30, 0.9), (45, 1), (70, 1), (90, 0.9)]
         }
         let tail: [(Double, Double)] = offshore == .sideOffshore && level != .beginner
-            ? [(offshoreFromDeg - 15, 0.4), (offshoreFromDeg, 0), (180, 0)]
+            ? [(offshoreFromDeg - 10, 0.4), (offshoreFromDeg, 0), (180, 0)]
             : [(sideShoreMaxDeg, 0), (180, 0)]
         return interpolate(upToSideShore + tail, a)
     }
