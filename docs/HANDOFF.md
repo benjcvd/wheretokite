@@ -183,3 +183,21 @@ on the hour before a storm.
 - Ben on Windy: looking at their site to stay close is fine; we still never copy their pins.
   WHE-83 found Windy's 33 Catalan markers all covered or unconfirmed; 2 questions for Ben.
 - docs/catalan_spots_map.html (uncommitted) is a one-off map Ben used to review Catalan pins.
+
+## Lead, 2 Nov afternoon: decision label and forecast per day
+- Ben built an old copy (`/Users/ben/Documents/claude_projects/wheretokite`, main of 27 Oct) by mistake. Ticket
+  builds live under `atlas-dev/data/worktrees/wheretokite-849ae358c260/tickets/<ticket>/App/`; open them for him
+  with `open …/WhereToKite.xcodeproj` and check DerivedData `WorkspacePath` when "the change isn't there".
+- WHE-82, Ben's call: the label is the **overall decision read off the final grade**, not the wind chance alone.
+  Four levels: Go 70–100, Worth a try 50–69, Long shot 20–49, No go 0–19 (ES Go / Merece la pena / Poco probable /
+  No go; FR Go / Ça vaut le coup / Peu probable / No go). Chance caps stay (uncertain ≤ 69, unlikely ≤ 39); ranking on
+  the grade, so Go always comes first. The spot page shows one plain sentence per level. Product is building; Ben
+  checks on his phone.
+- Models per day ahead (Le Goulet, 2 Nov run): best match = AROME to ~+2 (Wed 10:00), ARPEGE (Météo-France
+  seamless) to ~+4 (Fri 13:00), then an unnamed global model (neither ICON nor ECMWF). ICON-EU to ~+5, ECMWF all
+  week. Ben wants the exact, best source for each day ahead: WHE-87 (Forecast accuracy) tests all candidates per
+  lead 0→+5; nothing ships before he picks.
+- WHE-80 (one MOS correction): failed, recommend shipping nothing (Ben to confirm). WHE-81/86 picks still open
+  (option 1 recommended on both). WHE-65 finished, waits on Ben's Palamós answer.
+- Freeze still on for anything else. Next for the Lead: once WHE-82 and WHE-87 are approved and the Catalan answers
+  are in, merge and prepare WHE-70.
