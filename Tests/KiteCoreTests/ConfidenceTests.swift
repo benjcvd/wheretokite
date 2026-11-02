@@ -151,15 +151,34 @@ final class ConfidenceTests: XCTestCase {
         XCTAssertEqual(go.kiteVerdict, .go)
         XCTAssertNil(go.scoreBeforeChance)
         XCTAssertEqual(no.chance?.outlook, .unlikely)
-        XCTAssertEqual(no.kiteVerdict, .longShot)   // unlikely wind: a long shot at best
+        XCTAssertEqual(no.kiteVerdict, .longShot)   // unlikely wind: a long shot at best (39)
         XCTAssertEqual(no.finalScore, r.rules.unlikelyWindMaxScore)
         XCTAssertEqual(no.scoreBeforeChance, go.finalScore)
     }
 
-    /// The label reads off the final grade (Ben, 2 Nov): five bands.
+    /// The label reads off the final grade (Ben, 2 Nov): four bands.
     func testVerdictBandsOnTheGrade() {
-        XCTAssertEqual([100, 70, 69, 55, 54, 40, 39, 20, 19, 0].map { KiteVerdict(grade: $0) },
-                       [.go, .go, .worthATry, .worthATry, .coinFlip, .coinFlip, .longShot, .longShot, .noGo, .noGo])
+        XCTAssertEqual([100, 70, 69, 50, 49, 20, 19, 0].map { KiteVerdict(grade: $0) },
+                       [.go, .go, .worthATry, .worthATry, .longShot, .longShot, .noGo, .noGo])
+    }
+
+    /// A "No go" names the safety rule behind it; a plain lack of wind doesn't.
+    func testNoGoNamesTheSafetyReason() {
+        func rec(_ flags: [String], score: Int = 0) -> SpotRecommendation {
+            let w = HourlyWind(localTime: "2026-10-02T14:00", speedKn: 16, gustKn: 18, directionDeg: 170)
+            var r = SpotRecommendation(spot: Spot(id: "x", name: "x", latitude: 45, longitude: 1, seaFacingDeg: 165),
+                                       driveMinutes: 30, driveIsEstimate: true, windScore: score, finalScore: score,
+                                       window: nil, hours: [HourScore(wind: w, score: 0, kite: nil, relativeAngle: nil, flags: flags)],
+                                       reason: "")
+            r.scoredHours = (14, 15)
+            return r
+        }
+        XCTAssertEqual(rec(["thunderstorm risk"]).safetyReason, "thunderstorm risk")
+        XCTAssertEqual(rec(["kiting banned"]).safetyReason, "kiting banned")
+        XCTAssertEqual(rec(["dark"]).safetyReason, "dark")
+        XCTAssertEqual(rec(["offshore component"]).safetyReason, "offshore")
+        XCTAssertNil(rec(["too light"]).safetyReason)
+        XCTAssertNil(rec(["thunderstorm risk"], score: 30).safetyReason)   // not a No go
     }
 
     /// Uncertain wind holds a 100 at 69 ("Worth a try") and it ranks under a 75 with likely

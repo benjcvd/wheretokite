@@ -1,23 +1,21 @@
 import Foundation
 
 /// The overall decision next to a spot's grade, read straight off the final grade (Ben, 2 Nov):
-/// 70–100 Go, 55–69 Worth a try, 40–54 Coin flip, 20–39 Long shot, 0–19 No go. The wind chance
+/// 70–100 Go, 50–69 Worth a try, 20–49 Long shot, 0–19 No go. The wind chance
 /// only caps the grade (`WindOutlook`), so a Go needs both likely wind and good conditions.
 public enum KiteVerdict: String, Sendable, CaseIterable {
-    /// Good session expected.
+    /// Everything lines up: expect a good session.
     case go = "Go"
-    /// Most likely good, can't be sure.
+    /// Looks promising, but the forecast can still shift.
     case worthATry = "Worth a try"
-    case coinFlip = "Coin flip"
-    /// Probably not; only if you don't want to miss any chance.
+    /// Probably not enough, but there's an outside chance.
     case longShot = "Long shot"
-    /// Not worth it, or unsafe.
+    /// Not worth the trip (or unsafe: `SpotRecommendation.safetyReason`).
     case noGo = "No go"
 
     public init(grade: Int, rules: ScoringRules = .init()) {
         let b = rules.verdictFromGrade
-        self = grade >= b.go ? .go : grade >= b.worthATry ? .worthATry : grade >= b.coinFlip ? .coinFlip
-            : grade >= b.longShot ? .longShot : .noGo
+        self = grade >= b.go ? .go : grade >= b.worthATry ? .worthATry : grade >= b.longShot ? .longShot : .noGo
     }
 }
 

@@ -48,7 +48,7 @@ public struct ScoringRules: Sendable {
     public var unlikelyWindMaxScore = 39
 
     /// Lowest final grade of each verdict (Ben, 2 Nov); "No go" below `longShot`.
-    public var verdictFromGrade = (go: 70, worthATry: 55, coinFlip: 40, longShot: 20)
+    public var verdictFromGrade = (go: 70, worthATry: 50, longShot: 20)
 
     /// Tides smaller than this (m, low to high water over the day) are ignored.
     public var minTidalRange = 0.5

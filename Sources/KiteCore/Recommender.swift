@@ -33,8 +33,17 @@ public struct SpotRecommendation: Sendable, Identifiable {
     public var chance: KiteChance? = nil
     /// The grade before uncertain / unlikely wind capped it (nil = not capped).
     public var scoreBeforeChance: Int? = nil
-    /// Go / Maybe / No, read off the final grade.
+    /// Go / Worth a try / Long shot / No go, read off the final grade.
     public var kiteVerdict: KiteVerdict { KiteVerdict(grade: finalScore) }
+
+    /// For a "No go": the safety rule behind it, when there is one ("thunderstorm risk",
+    /// "kiting banned", "dark", "offshore"), from the hours the score is made of.
+    public var safetyReason: String? {
+        guard kiteVerdict == .noGo else { return nil }
+        let slice = scoredHours.map { s in hours.filter { $0.wind.hour >= s.start && $0.wind.hour < s.end } } ?? hours
+        let problem = Recommender.mainProblem(slice.isEmpty ? hours : slice)
+        return ["thunderstorm risk", "kiting banned", "dark", "offshore"].contains(problem) ? problem : nil
+    }
     /// Local hour (spot time) a thunderstorm is forecast to start, when it comes during the
     /// session or soon after it (`ScoringRules.stormAlertHoursAfter`): "Storm from 4 pm".
     public var stormFrom: Int? = nil
