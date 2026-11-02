@@ -1,3 +1,7 @@
 country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Malta — format: tools/spots/README.md
 MT,Malta,Mellieħa Bay (Għadira),sea,q:Għadira Bay,NE,"Main kite spot in Malta; works with NE (gregale) and E onshore. Mostly outside the bathing season (summer swimming zones).",,,,
+
+# ---- Pro / archived spots
+# pro: guides disagree on whether Golden Bay or Mellieħa is the top spot; swimming-zone closure in summer
+MT,Malta,Golden Bay,sea,osm:w23613923,NW,"Sandy bay open to the NW, works with NW cold-front winds (onshore); for more experienced riders than Mellieħa. Swimming-zone lines close the beach to kiting in summer, check locally.",,,pro,

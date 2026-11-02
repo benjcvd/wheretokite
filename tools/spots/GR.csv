@@ -1,13 +1,13 @@
 country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Greece — format: tools/spots/README.md
 # Dodecanese
-GR,Rhodes,Prasonisi,sea,q:Prasonisi Rhodes,W:west side (waves)|SE:east side (flat),"Isthmus with two sides: waves on the west side, flatter water on the east side. Meltemi (NW) May–Sept, often strong; schools on site.",,,,
-GR,Kos,Marmari,sea,osm:n6677200338,N,"Long sandy beach on the north coast; meltemi (NW) side-onshore, chop and small waves. Several kite centres, good for learning.",,,,
-GR,Karpathos,Afiartis – Makry Gialos,sea,osm:w224546531,SE,"Bays near the airport (Chicken Bay, Devil's Bay): very strong and consistent meltemi (NW, offshore-ish over low land), flat water. Experienced riders; centres on site.",,,,
+GR,Rhodes,Prasonisi,sea,q:Prasonisi Rhodes,W:west side (waves)|SE:east side (flat),"Sandbar isthmus with two sides: waves on the west side, flatter lagoon on the east side (the wind is stronger and steadier there). Meltemi (NW) May–Sept, strongest July–Aug, a few knots above the rest of Rhodes; crowded in season. Schools teach on the lagoon, but one local site says kiting is restricted on the flat side: check the rules on the spot.",,,,
+GR,Kos,Marmari,sea,osm:n6677200338,N,"North-west coast of Kos, accelerated between the islands offshore: thermal meltemi (NW) from about noon to sunset, strong from June to September. Waist-deep sandbank about 50 m out, chop to small waves on windy days. The permitted kite zone is downwind where the beach is narrow with trees: tricky launch and landing. Several kite centres.",,,,
+GR,Karpathos,Afiartis – Makry Gialos,sea,osm:w224546531,SE,"Three bays near the airport (Chicken Bay for learning, Gun Bay, Devil's Bay): very strong and consistent meltemi from the north, over low land, flat water. A tour operator reports that kiting is not allowed in the bays while the windsurf centres are open (about 9:00–19:00): check locally. The dedicated kite beach is reported to be Agrilaopotamos, a few km away.",,,,
 # Cyclades
-GR,Naxos,Mikri Vigla,sea,q:Mikri Vigla,W,"Meltemi (N) side-shore; flat-ish water on the south side, waves on the north side. Kite centre on site.",,,,
-GR,Paros,Pounta,sea,q:Pounta Paros,W,"Channel towards Antiparos: meltemi (N) side-shore, flat to choppy water. Kite centre on site; watch the ferry route. Also: Golden Beach / New Golden Beach on the east coast (meltemi side-shore, chop; mainly windsurf).",,,,
-GR,Mykonos,Korfos,sea,osm:w730283310,SW,"Bay near Mykonos town; meltemi (N) side-offshore, flat water. Kite school in summer.",,,,
+GR,Naxos,Mikri Vigla,sea,osm:w183302898,W,"Meltemi (N), May–Sep, funnelled between Naxos and Paros: side-onshore, flat-ish water. A rocky headland splits the beach: kite on the north side, swimmers on the south. Narrow beach and rocky cape: some experience needed. Several IKO schools on site.",,,,
+GR,Paros,Pounta,sea,q:Pounta Paros,W,"Channel towards Antiparos: the meltemi (N) is accelerated through the 1 km strait; flat in the shallows, choppy when it blows hard; current in the channel. Two kite centres; watch the Paros–Antiparos ferry route. Also: Golden Beach / New Golden Beach on the east coast (meltemi side-shore, chop; mainly windsurf).",,,,
+GR,Mykonos,Korfos,sea,osm:w730283310,SW,"North-west bay: the meltemi (N) is funnelled by the hills, strong late June to early September, gusty above 30 kt. Not very wide: ride upwind for space. Kite school on the beach; crowded in season.",,,,
 # North Aegean
 GR,Lemnos,Keros,sea,osm:w263844492,E,"Wide shallow bay on the east coast; meltemi (N) side-shore, flat to choppy water. Kite and windsurf club on site.",,,,
 # Ionian
