@@ -121,6 +121,108 @@ Read this first in a new session, then `docs/TODO.md` (what's pending) and
 - Next for v1: Ben finishes the screenshots, Spanish/French store pages (WHE-49), Windguru
   check (WHE-51), then the first TestFlight build (WHE-10).
 
+## Product stopped (2026-10-26, 20:10)
+- Forecast confidence is now per spot (WHE-54, in review): the models are compared at the top
+  10 spots in one request, after ranking, instead of at the start point. Why: on 27 Oct the
+  check said "High" from a calm Barcelona while the question was Sant Pere, 2 h away. Spots
+  where the models disagree lose up to 15 % (`ScoringRules.agreementFactor`), which Ben must OK
+  since it touches ranking. Tricky: the start area no longer leaves the phone for this check,
+  so the privacy texts over-declare (safe, left as is).
+- Model backtest (WHE-58, in review), 27 Oct: [docs/MODEL_BACKTEST.md](MODEL_BACKTEST.md). Against
+  official stations, the beach grid cell beats the offshore one for every model, and a mean of
+  AROME, ICON and ECMWF beats "best match". Ben decides whether the app switches. Tricky: the
+  stations are on land, so the absolute bias is not the water's.
+
+**Forecast accuracy, 27 Oct.** The second look at the 3-model blend (WHE-61) found it reads too
+low for riders: ECMWF's "beach" cell sits 11–17 km inland, and the blend's win on error comes
+mostly from matching land stations that read low. Recommended to Ben: AROME and ICON on the beach
+cell, ECMWF on its sea cell. Waiting for his pick before any app change; WHE-58 stays unmerged.
+Torroella de Montgrí has no wind sensor, so Pals has no close station. Wind measured on the water
+(buoys) is the missing piece.
+
+**Forecast accuracy, 31 Oct.** The 28 Oct station check (WHE-60) couldn't run: Meteocat's open
+feed has a network-wide hole from 26 Oct evening to 30 Oct. Checked 26 and 30 Oct instead from
+the day-ahead forecast archive: two light days, a tie between setups; the old offshore cell
+called a false go at Sant Pere on 30 Oct, and the WHE-61 pick read a few knots high that day.
+Windy-day evidence still has to come from the buoys card (WHE-62).
+
+**Forecast accuracy, 1 Nov.** The Spain/France backtest (WHE-72, in review) scored five setups
+against 36 shore masts and 86 weaker stations over 8 Aug–30 Oct (AROME's day-ahead archive
+starts 8 Aug). Option 1 (AROME + ICON beach, ECMWF sea) wins on error and false alarms in France
+and mainland Spain but reads far too low in the Canaries (no AROME; ICON and ECMWF coarse), so
+the recommendation is Option 1 with the Canaries kept on best match; Ben's answer there settles
+WHE-61. Tricky: the Météo-France mirror on data.gouv froze in June (use the OVH bucket);
+Open-Meteo silently drops out-of-range models from multi-model requests; ECMWF's sea cell is
+~13 km out, so any "cap the sea cell" rule sends it back inland. Still no water truth (WHE-62).
+
+**Forecast accuracy, 1 Nov.** Buoys settled the level question (WHE-62, in review). Open
+Copernicus buoy data, no account. Offshore (Begur, Tarragona) the models are right; 2.3 km off
+Canet every setup reads low, and the 3-model beach mix is the lowest (about 4.5 kn on the best
+2 h, half the go days missed). The land stations were reading low because of shelter. That
+reverses the WHE-61 pick: the recommendation is now to keep today's best-match sea-cell setup and
+test an AROME-first blend on the sea cell next. Weak spot: only one near-shore buoy, in France;
+there's no open wind measurement on the water near Barcelona.
+
+**Forecast accuracy, 1 Nov.** WHE-63 replayed 42 afternoons (20 Sep–31 Oct, 150 min from
+Barcelona) through the app's real ranking, forecast a day ahead (`kite --replay`, fed by
+`tools/backtest/replay.py`). Today's offshore best-match setup says "go" on almost every day and
+most of its checked picks had no wind; the beach-cell setups are much better on that, at the cost
+of a few missed days. Tricky: the absolute hit rates swing with the land-vs-water gap, which only
+buoys (WHE-62) can settle, and half the top picks (Roussillon, L'Estartit, Pals, Fangar) have no
+station at all. Open question to Ben on Riumar in mestral; easterlies at Torredembarra are under-read
+by AROME and ICON (new card).
+
+**Forecast accuracy, 31 Oct (later).** Option 1 is built (WHE-61, commit 6e9894c on the
+forecast branch): AROME and ICON on the beach cell, ECMWF on its sea cell, two Open-Meteo
+requests per batch merged before the blend, forecast cache key v4. Verified live at Salou
+(app value = hand mean). Not on main until Ben says yes. Tricky: the confidence badge still
+reads ECMWF on the beach cell; and a failed request for either cell fails the whole batch on
+purpose, so the app never shows a blend missing a member.
+
+**Forecast accuracy, 1 Nov (later).** WHE-78 tested "AROME 1.3 on the sea point for 2 days, then
+best match" (in review, recommend not shipping). AROME stops at 2 days, so days 2+ are today's
+setup; and on the day-before forecast, best match already *is* AROME 1.3 at Sant Pere, the POEM
+spots, Hyères and Brittany, so WHE-62's near-shore buoy win was today's setup all along. At the
+other 24 spots it reads 2–3 kn high on masts and ~1 kn high at open-sea buoys: more go days caught,
+half of them false, worst in Catalonia. The open choice is still today's setup vs option 1.
+Tricky: the previous month's Copernicus buoy file appears late; `buoys.py` falls back to daily files.
+
+**Forecast accuracy, 1 Nov (WHE-84).** The 24 % Spain Go hit rate came from the Catalan Meteocat
+masts, which read about half the forecast in every direction while the Begur and Tarragona buoys
+agree with the models. Height, time base, averaging and the go/offshore rules were checked and
+cleared. With those masts out of the truth, a Go tuned to 85 % per day ahead (one method
+everywhere) lands at 82–97 % on unseen weeks in France, southern Spain (days 0–1) and at the buoys;
+a separate 70 % "Most likely" band doesn't hold up. Catalonia itself stays unverified (no wind
+measured on the water near its beaches). Tricky: Open-Meteo's daily quota is shared across agents.
+Run the backtests with `BACKTEST_OFFLINE=1` to use the cache only.
+
+**Forecast accuracy, 2 Nov (WHE-86).** The Catalan ports publish no open wind data (Puertos del
+Estado serves sea level only). But Barcelona airport and Meteocat's Port of Barcelona
+harbour-mouth mast read the same wind, and that settles WHE-84's question: the other Meteocat
+masts are sheltered, not broken. Against those two open masts the forecast is about 2.5 kn too
+light. A Go almost always comes true (98 %), but it catches only 13 % of the real go days.
+Empordà and the Ebro delta still have no open sensor. Tricky: the Open-Meteo quota resets at
+01:00 CET, and `whe86.py` buffers its output until the end.
+
+**Forecast accuracy, 2 Nov (WHE-80).** One correction learned from measurements and applied the
+same way at every spot doesn't help riders. On average the forecast is already level at the
+trusted stations. Each station is off by its own few knots, and one rule for all spots can't
+know which. The textbook version cuts the error a little only by pulling strong winds down
+(storms would look milder), so it's ruled out for safety. With a fair Go cut-off, no correction
+catches the most real go days. The only real gain is a correction per spot from its own
+station's past misses, which exists only where an open, trusted station sits next to the spot.
+Tricky: an error gain from a correction tied to the forecast speed is regression to the mean;
+always check the 25 kn+ hours.
+
+**Forecast accuracy, 2 Nov (WHE-81).** "Chance you'll kite" checked against Ben's refined bar:
+labels Go / Probably / Long shot / No, every day ahead (today to +5), grouped by place, sea and day
+type, one method everywhere. The agreement rule (4 models' margin above 12 kn and their spread, one
+fit for all) passes on all masts at every lead and fails, reported not tuned, in Catalonia (masts
+measure a go on 3 % of days), on +4/+5 in the Mediterranean (too sure), and on sea-breeze days, but
+only through Catalonia. The ECMWF ensemble fails everywhere except the Atlantic. Islands, lagoons,
+Tarifa/Calais and the buoy have too few days. Tricky: AWS's ECMWF bucket throttled to a crawl, so
+`ens_fetch.py` uses the Google Cloud mirror. This study used up Open-Meteo's free daily limit on this
+machine once: Previous Runs with 12 variables over 38 sites is heavy.
 ## Lead, 31 Oct: Spain/France reliability task force
 Ben's top priority: forecasts and spots in Spain and France must be reliable before he shares
 the app with riders in Barcelona (testers' build = card WHE-70). Ben asked to **finish the work
@@ -201,3 +303,28 @@ on the hour before a storm.
   (option 1 recommended on both). WHE-65 finished, waits on Ben's Palamós answer.
 - Freeze still on for anything else. Next for the Lead: once WHE-82 and WHE-87 are approved and the Catalan answers
   are in, merge and prepare WHE-70.
+## Product: Barcelona scoring check (2026-10-31)
+
+WHE-64 is in review with [the report](docs/SCORING_CHECK_BCN.md#findings-worst-first). No rule changed. The ranking is sensible on Llevant, Mestral and the Empordà thermal, but four things would embarrass us with Barcelona testers: a top pick ending an hour before a thunderstorm, a "gusty" flag that fires on almost every hour (the forecast's gusts average 1.77× the mean, the rule expects 1.4×) and halves every score, side-offshore spots still listed, and marginal spots showing the wrong reason. Each fix waits on Ben's pick and becomes its own card with a before/after.
+
+## Product: storm alert (2026-10-31, WHE-74)
+
+Ben chose not to penalise storms ahead much: the spot now says "Storm from 4:00 PM" (card, top card, spot page) when a storm starts during the session, the rest of the slot or within 2 h after the window, and only the hour just before a storm is docked (×0.8). Storm hours still score 0. Rules in `ScoringRules.stormAlertHoursAfter` / `preStormFactor`. In review: Ben to OK the 80 % and the wording. Not handled: a storm just *before* the window.
+
+## Product: gusts by level and intensity (2026-10-31)
+
+WHE-73 is in review with [the before/after](docs/GUSTS_BY_LEVEL.md#before--after-on-the-whe-64-days). Gust tolerance is now judged against the forecast's normal gust ratio (~1.75× the mean) and graded by level and intensity; the gust limit and the "overpowered" margin rise with intensity for intermediate and advanced riders, never for beginners; mean-wind limits are untouched. "Gusty" shows only when it costs ≥10 %. Side effect to keep in mind: good days now bunch near 100 for intermediates, so the score separates spots less. If Forecast accuracy changes the blend or calibrates gusts, revisit the tolerances in `ScoringRules`.
+
+## Product: chance to kite (2026-11-02, WHE-82)
+
+Each top spot now carries Go / Not sure / No from the four weather models (WHE-81 method, WHE-84 cut-offs tuned so a Go came true ~85 %). It replaces the models-disagree penalty and the confidence badge. Not sure caps the grade at 69 and No at 39 so a high grade never says No; this re-ranks marginal days (24 Oct: La Palme 97 → 69). In review: Ben tests on his phone and settles the wording. Unproven in Catalonia (no trustworthy ground truth there). The CLI's `--server` flag goes through the Worker when Open-Meteo's per-IP quota is spent.
+Ben's first test (2 Nov): a "Not sure" ranked above a "Go" confused him. The ranking is now verdict first (Go, Not sure, No, unchecked), then grade; the top card follows the same order.
+Then Ben's final rule (same day): the label reads off the final grade (Go 70+, Maybe 40–69, No under 40); the wind chance only caps the grade (uncertain ≤ 69, unlikely ≤ 39); ranking is on the grade again. Colours and headings use the same bands so the app never says two things.
+Final shape (Ben, 2 Nov): five levels off the grade (Go 70+, Worth a try 55, Coin flip 40, Long shot 20, No go), each with its own colour; the big card's heading is gone because it repeated the label.
+Then four levels (Ben dropped Coin flip): Go 70+, Worth a try 50–69, Long shot 20–49, No go; the spot page shows Ben's sentence per level, or the safety reason for a No go. The big card shows from 50.
+
+**Forecast accuracy, 2 Nov (WHE-88).** Built Ben's WHE-81 pick on top of Product's WHE-82 grade
+levels (this branch merges atlas/product). `GoPolicy` in `Sources/KiteCore/Chance.swift` holds a
+models-agree Go back to "Worth a try" beyond +3 days, with a reason in `KiteChance.goHeldBack` that
+the app doesn't show yet (needs a small Product card). Ben: all app logic must be global, no
+regional rules, so the Catalonia hold was removed.

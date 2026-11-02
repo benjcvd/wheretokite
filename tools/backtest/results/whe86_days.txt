@@ -1,0 +1,13 @@
+2026-09-14 LEBL 19.5 Y7 18.9 {'best_match': 12.4, 'meteofrance_': 15.3, 'icon_seamles': 9.4, 'ecmwf_ifs025': 10.8}
+2026-09-04 LEBL 18.5 Y7 16.4 {'best_match': 12.4, 'meteofrance_': 16.6, 'icon_seamles': 9.2, 'ecmwf_ifs025': 9.4}
+2026-08-25 LEBL 17.5 Y7 19.0 {'best_match': 13.9, 'meteofrance_': 15.9, 'icon_seamles': 12.2, 'ecmwf_ifs025': 12.8}
+2026-10-19 LEBL 17.5 Y7 23.2 {'best_match': 13.9, 'meteofrance_': 17.6, 'icon_seamles': 6.5, 'ecmwf_ifs025': 14.8}
+2026-08-14 LEBL 17.0 Y7 16.1 {'best_match': 9.3, 'meteofrance_': 14.6, 'icon_seamles': 7.2, 'ecmwf_ifs025': 9.0}
+2026-08-28 LEBL 17.0 Y7 16.8 {'best_match': 12.0, 'meteofrance_': 15.5, 'icon_seamles': 8.2, 'ecmwf_ifs025': 13.9}
+2026-09-24 LEBL 15.5 Y7 15.4 {'best_match': 10.5, 'meteofrance_': 12.6, 'icon_seamles': 8.9, 'ecmwf_ifs025': 9.2}
+2026-10-09 LEBL 15.5 Y7 13.2 {'best_match': 6.9, 'meteofrance_': 11.5, 'icon_seamles': 5.7, 'ecmwf_ifs025': 6.1}
+2026-08-18 LEBL 14.5 Y7 15.5 {'best_match': 11.4, 'meteofrance_': 13.6, 'icon_seamles': 9.8, 'ecmwf_ifs025': 11.0}
+2026-09-08 LEBL 14.5 Y7 15.0 {'best_match': 12.9, 'meteofrance_': 13.5, 'icon_seamles': 9.2, 'ecmwf_ifs025': 9.6}
+2026-09-15 LEBL 14.5 Y7 13.6 {'best_match': 7.8, 'meteofrance_': 8.8, 'icon_seamles': 6.3, 'ecmwf_ifs025': 8.6}
+2026-10-04 LEBL 14.5 Y7 18.6 {'best_match': 10.2, 'meteofrance_': 14.6, 'icon_seamles': 6.6, 'ecmwf_ifs025': 12.2}
+mean LEBL 11.68 mean 4-model 8.770666666666667

@@ -13,3 +13,4 @@ xcuserdata/
 
 # Atlas working state (board, notes, focus): local, not code
 .atlas/
+tools/backtest/.cache/

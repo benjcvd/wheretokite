@@ -174,11 +174,18 @@ public actor ServerFailover {
 /// `CachedForecastProvider`, and the server (server/) that shares one fetch per spot among
 /// all users.
 public struct OpenMeteoProvider: ForecastProvider {
+    /// One model, or several separated by commas: then each hour is their blend (`Blend`).
     public var model: String
     public var server: ForecastServer
-    /// "sea" picks the nearest water grid cell: that's where you ride, and coastal land cells
-    /// under-read the wind.
-    public var cellSelection = "sea"
+    /// "land" reads the grid cell the spot is in (the beach), "sea" the nearest water cell.
+    /// Measured against official stations, the beach cell was closer for AROME and ICON
+    /// (docs/MODEL_BACKTEST.md), and it's the one other forecast sites show.
+    public var cellSelection = "land"
+    /// Models read on another cell than `cellSelection`. ECMWF's grid is ~25 km: its beach
+    /// cell falls 11–17 km inland on the Costa Brava and dragged the blend 2–5 kn low, so it
+    /// reads its nearest sea cell (WHE-61). Each cell is its own request (Open-Meteo takes one
+    /// `cell_selection` per request), merged before blending.
+    public var cellByModel: [String: String] = ["ecmwf_ifs025": "sea"]
     /// Locations per request. Measured: 100 → ~0.4 s, 200 → ~0.5 s per request.
     public var batchSize = 100
     /// Requests in flight at once (400 spots = 4 requests = one round trip).
@@ -187,12 +194,18 @@ public struct OpenMeteoProvider: ForecastProvider {
     /// When set, `server` is ignored: the failover picks the server for each request.
     public var failover: ServerFailover?
 
-    public init(model: String = "best_match", server: ForecastServer = .openMeteo) {
+    /// Mean of AROME 1.3 and ICON on the beach cell and ECMWF on its sea cell (`cellByModel`):
+    /// caught the most kiteable days a day ahead against stations in Catalonia and at Leucate
+    /// (docs/MODEL_BACKTEST.md, WHE-61). Outside AROME's area (France and around) the blend
+    /// is ICON and ECMWF.
+    public static let defaultModel = "meteofrance_arome_france_hd,icon_seamless,ecmwf_ifs025"
+
+    public init(model: String = OpenMeteoProvider.defaultModel, server: ForecastServer = .openMeteo) {
         self.model = model
         self.server = server
     }
 
-    public init(model: String = "best_match", failover: ServerFailover) {
+    public init(model: String = OpenMeteoProvider.defaultModel, failover: ServerFailover) {
         self.model = model
         self.server = failover.primary
         self.failover = failover
@@ -200,15 +213,22 @@ public struct OpenMeteoProvider: ForecastProvider {
 
     static let hourlyVariables = "wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,cape,precipitation"
 
-    private struct Response: Decodable {
+    struct Response: Decodable {
+        /// "time", and one series per variable ("wind_speed_10m") or, with several models,
+        /// per variable and model ("wind_speed_10m_icon_seamless").
         struct Hourly: Decodable {
             var time: [String]
-            var wind_speed_10m: [Double?]
-            var wind_gusts_10m: [Double?]
-            var wind_direction_10m: [Double?]
-            var weather_code: [Int?]?
-            var cape: [Double?]?
-            var precipitation: [Double?]?
+            var series: [String: [Double?]]
+
+            init(from decoder: Decoder) throws {
+                let c = try decoder.container(keyedBy: BlendKey.self)
+                time = try c.decode([String].self, forKey: BlendKey("time"))
+                var out: [String: [Double?]] = [:]
+                for key in c.allKeys where key.stringValue != "time" {
+                    out[key.stringValue] = try? c.decode([Double?].self, forKey: key)
+                }
+                series = out
+            }
         }
         struct Daily: Decodable {
             var time: [String]
@@ -293,16 +313,11 @@ public struct OpenMeteoProvider: ForecastProvider {
                 }
             }
             var byDay: [String: [HourlyWind]] = [:]
+            let models = model.split(separator: ",").map(String.init)
             for i in h.time.indices {
-                guard let s = h.wind_speed_10m[safe: i] ?? nil, let g = h.wind_gusts_10m[safe: i] ?? nil,
-                      let d = h.wind_direction_10m[safe: i] ?? nil,
-                      HourlyWind.isPlausible(speedKn: s, gustKn: g, directionDeg: d) else { continue }
                 let time = h.time[i]
-                var w = HourlyWind(localTime: time, speedKn: s, gustKn: g, directionDeg: d)
+                guard var w = Blend.hour(h.series, index: i, models: models, localTime: time) else { continue }
                 w.seaLevelM = levels[time]
-                w.weatherCode = h.weather_code?[safe: i] ?? nil
-                w.capeJkg = (h.cape?[safe: i] ?? nil).flatMap { (0...10000).contains($0) ? $0 : nil }
-                w.precipitationMm = (h.precipitation?[safe: i] ?? nil).flatMap { (0...500).contains($0) ? $0 : nil }
                 let date = String(time.prefix(10))
                 if let (rise, set) = light[date] {
                     // Rideable light: the middle of the hour between sunrise and sunset.
@@ -360,7 +375,7 @@ public struct OpenMeteoProvider: ForecastProvider {
     }
 
     /// Form-encoded request body (same parameters as the GET query string).
-    func formBody(_ spots: [Spot], from: String, to: String) -> String {
+    func formBody(_ spots: [Spot], from: String, to: String, models: String, cell: String) -> String {
         var c = URLComponents()
         c.queryItems = [
             .init(name: "latitude", value: spots.map { String(format: "%.4f", $0.latitude) }.joined(separator: ",")),
@@ -371,17 +386,74 @@ public struct OpenMeteoProvider: ForecastProvider {
             .init(name: "timezone", value: "auto"),
             .init(name: "start_date", value: from),
             .init(name: "end_date", value: to),
-            .init(name: "models", value: model),
-            .init(name: "cell_selection", value: cellSelection),
+            .init(name: "models", value: models),
+            .init(name: "cell_selection", value: cell),
         ]
         return c.percentEncodedQuery ?? ""
     }
 
+    /// The models grouped by the cell they're read on, in the order of `model`: one request
+    /// per group.
+    func requestGroups() -> [(cell: String, models: [String])] {
+        var groups: [(cell: String, models: [String])] = []
+        for m in model.split(separator: ",").map(String.init) {
+            let cell = cellByModel[m] ?? cellSelection
+            if let i = groups.firstIndex(where: { $0.cell == cell }) { groups[i].models.append(m) }
+            else { groups.append((cell, [m])) }
+        }
+        return groups
+    }
+
+    /// One response per spot, the groups' series merged. Every group must answer: a blend
+    /// missing a member would silently change the level the app reads.
     private func fetch(_ spots: [Spot], from: String, to: String) async throws -> [Response] {
+        let groups = requestGroups()
+        guard groups.count > 1 else {
+            return try await fetch(spots, from: from, to: to, models: model, cell: groups.first?.cell ?? cellSelection)
+        }
+        let parts = try await withThrowingTaskGroup(of: (Int, [Response]).self) { group in
+            for (i, g) in groups.enumerated() {
+                group.addTask {
+                    (i, try await fetch(spots, from: from, to: to, models: g.models.joined(separator: ","), cell: g.cell))
+                }
+            }
+            var out = [[Response]](repeating: [], count: groups.count)
+            for try await (i, r) in group { out[i] = r }
+            return out
+        }
+        return Self.merge(parts, groups: groups.map(\.models))
+    }
+
+    /// Merges per-group responses into one per spot: series keep (or get) the model suffix,
+    /// as Open-Meteo would name them in a single multi-model request. Times, sunrise / sunset
+    /// and UTC offset come from the first group.
+    static func merge(_ parts: [[Response]], groups: [[String]]) -> [Response] {
+        guard var merged = parts.first else { return [] }
+        let total = groups.map(\.count).reduce(0, +)
+        func suffixed(_ series: [String: [Double?]], _ models: [String]) -> [String: [Double?]] {
+            guard models.count == 1, total > 1 else { return series }
+            return Dictionary(uniqueKeysWithValues: series.map { ($0.key + "_" + models[0], $0.value) })
+        }
+        for s in merged.indices {
+            var series = suffixed(merged[s].hourly.series, groups[0])
+            for (part, models) in zip(parts.dropFirst(), groups.dropFirst()) {
+                guard let r = part[safe: s] else { continue }
+                // Align on local time: both requests use the same timezone and date range.
+                let index = Dictionary(r.hourly.time.enumerated().map { ($1, $0) }, uniquingKeysWith: { a, _ in a })
+                for (key, values) in suffixed(r.hourly.series, models) {
+                    series[key] = merged[s].hourly.time.map { t in index[t].flatMap { values[safe: $0] ?? nil } }
+                }
+            }
+            merged[s].hourly.series = series
+        }
+        return merged
+    }
+
+    private func fetch(_ spots: [Spot], from: String, to: String, models: String, cell: String) async throws -> [Response] {
         var request = URLRequest(url: server.endpoint(for: from))
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = Data(formBody(spots, from: from, to: to).utf8)
+        request.httpBody = Data(formBody(spots, from: from, to: to, models: models, cell: cell).utf8)
         let (data, response) = try await session.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
             throw ForecastError.badResponse(String(data: data, encoding: .utf8) ?? "HTTP error")
@@ -396,6 +468,50 @@ public struct OpenMeteoProvider: ForecastProvider {
         }
         return decoded
     }
+}
+
+/// Several models' hours combined into one. Wind: mean speed and gusts, direction from the
+/// mean wind vector. Safety errs on the cautious side: the worst weather code and the highest
+/// CAPE of any model (a storm one model sees is a storm), mean rain.
+enum Blend {
+    static func hour(_ series: [String: [Double?]], index i: Int, models: [String], localTime: String) -> HourlyWind? {
+        // One model: Open-Meteo doesn't suffix the variables.
+        let suffixes = models.count > 1 ? models.map { "_" + $0 } : [""]
+        func values(_ variable: String) -> [Double] {
+            suffixes.compactMap { series[variable + $0]?[safe: i] ?? nil }
+        }
+        var winds: [(speed: Double, gust: Double, dir: Double)] = []
+        for suffix in suffixes {
+            guard let s = series["wind_speed_10m" + suffix]?[safe: i] ?? nil,
+                  let d = series["wind_direction_10m" + suffix]?[safe: i] ?? nil else { continue }
+            // A model without gusts (some regional runs) counts its mean wind as the gust.
+            let g = max(s, (series["wind_gusts_10m" + suffix]?[safe: i] ?? nil) ?? s)
+            guard HourlyWind.isPlausible(speedKn: s, gustKn: g, directionDeg: d) else { continue }
+            winds.append((s, g, d))
+        }
+        guard !winds.isEmpty else { return nil }
+        let n = Double(winds.count)
+        let speed = winds.map(\.speed).reduce(0, +) / n
+        let gust = winds.map(\.gust).reduce(0, +) / n
+        let u = winds.map { $0.speed * sin($0.dir * .pi / 180) }.reduce(0, +)
+        let v = winds.map { $0.speed * cos($0.dir * .pi / 180) }.reduce(0, +)
+        let dir = (u == 0 && v == 0) ? winds[0].dir
+            : (atan2(u, v) * 180 / .pi + 360).truncatingRemainder(dividingBy: 360)
+        var w = HourlyWind(localTime: localTime, speedKn: speed, gustKn: max(gust, speed), directionDeg: dir)
+        w.weatherCode = values("weather_code").filter { (0...99).contains($0) }.max().map { Int($0) }
+        w.capeJkg = values("cape").filter { (0...10000).contains($0) }.max()
+        let rain = values("precipitation").filter { (0...500).contains($0) }
+        w.precipitationMm = rain.isEmpty ? nil : rain.reduce(0, +) / Double(rain.count)
+        return w
+    }
+}
+
+private struct BlendKey: CodingKey {
+    var stringValue: String
+    var intValue: Int? { nil }
+    init(_ s: String) { stringValue = s }
+    init?(stringValue: String) { self.stringValue = stringValue }
+    init?(intValue: Int) { nil }
 }
 
 private func capture<T>(_ body: () async throws -> T) async -> Result<T, Error> {
@@ -434,9 +550,9 @@ public struct CachedForecastProvider: ForecastProvider {
 
     private func file(for spot: Spot, day: String) -> URL {
         // Tides are only fetched for spots with a tide rule: keep those entries apart, or a
-        // spot that just got a rule (user spot edited) would reuse a tideless entry. "v2":
-        // entries with weather codes and daylight.
-        let key = String(format: "v2_%.4f_%.4f_%@", spot.latitude, spot.longitude, day)
+        // spot that just got a rule (user spot edited) would reuse a tideless entry. "v3":
+        // AROME + ICON on the beach cell, ECMWF on its sea cell (v3 had ECMWF on land).
+        let key = String(format: "v4_%.4f_%.4f_%@", spot.latitude, spot.longitude, day)
             + (spot.tide == nil ? "" : "_tide")
         return directory.appendingPathComponent(key + ".json")
     }

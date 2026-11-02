@@ -85,6 +85,34 @@ final class StoreScreenshotsTests: XCTestCase {
         snapshot(app.screenshot(), "08-add-spot-details")
     }
 
+    /// WHE-74: the storm alert on a stormy past day (24 Aug 2026 from Barcelona: Saint-Cyprien
+    /// 13–15 h, storm from 16 h). Needs the network (archived forecast), so it only runs on demand:
+    /// TEST_RUNNER_STORM_SHOTS=1 xcodebuild test … -only-testing:WhereToKiteUITests/StoreScreenshotsTests/testStormAlert
+    @MainActor
+    func testStormAlert() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["STORM_SHOTS"] == "1", "on demand")
+        func plist(_ json: String) -> String { "<" + json.utf8.map { String(format: "%02x", $0) }.joined() + ">" }
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "-AppleLanguages", "(en)", "-disclaimerAccepted", "YES",
+            "-riderProfile", plist(#"{"weightKg":75,"kites":[9,12],"level":"intermediate"}"#),
+            "-searchOptions", plist(#"{"start":{"name":"Barcelona","coordinate":{"latitude":41.3874,"longitude":2.1686}},"maxDriveMinutes":180,"day":"2026-08-24","slot":"afternoon","distanceMatters":false}"#),
+            "-searchDay", "2026-08-24", "-searchOrigin", "41.3874,2.1686",
+        ]
+        app.launch()
+        let topSpot = app.buttons["topSpot"]
+        XCTAssertTrue(topSpot.waitForExistence(timeout: 60), "results never loaded")
+        XCTAssertTrue(topSpot.label.contains("Storm from"), topSpot.label)
+        sleep(1)
+        snapshot(app.screenshot(), "storm-results")
+        topSpot.tap()
+        XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH 'Storm from'")).firstMatch.exists
+                      || app.otherElements["stormAlertDetail"].exists)
+        sleep(3)  // map tiles
+        snapshot(app.screenshot(), "storm-spot")
+    }
+
     @MainActor
     private func snapshot(_ shot: XCUIScreenshot, _ name: String) {
         let a = XCTAttachment(screenshot: shot)
