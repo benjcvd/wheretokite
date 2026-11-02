@@ -151,3 +151,4 @@ Each top spot now carries Go / Not sure / No from the four weather models (WHE-8
 Ben's first test (2 Nov): a "Not sure" ranked above a "Go" confused him. The ranking is now verdict first (Go, Not sure, No, unchecked), then grade; the top card follows the same order.
 Then Ben's final rule (same day): the label reads off the final grade (Go 70+, Maybe 40–69, No under 40); the wind chance only caps the grade (uncertain ≤ 69, unlikely ≤ 39); ranking is on the grade again. Colours and headings use the same bands so the app never says two things.
 Final shape (Ben, 2 Nov): five levels off the grade (Go 70+, Worth a try 55, Coin flip 40, Long shot 20, No go), each with its own colour; the big card's heading is gone because it repeated the label.
+Then four levels (Ben dropped Coin flip): Go 70+, Worth a try 50–69, Long shot 20–49, No go; the spot page shows Ben's sentence per level, or the safety reason for a No go. The big card shows from 50.
