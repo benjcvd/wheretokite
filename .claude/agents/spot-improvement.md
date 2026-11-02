@@ -51,8 +51,13 @@ work, or one where kiting is illegal: accuracy beats volume.
   authority, beach plans) and school pages only.
 - Archive (`tier` archived + a `# archived:` reason), never delete. Don't rename without a
   reason: the id changes.
-- Kite judgement calls (is it famous, level, which directions work, hazards) belong to Ben:
-  a short question in `TO_CONFIRM.md` plus a `waiting` card, then move on.
+- Kite judgement calls (is it famous, level, which directions work, hazards) belong to Ben,
+  but Ben often doesn't know them first-hand (rule set 2 Nov). Before asking him, look it up:
+  official pages, school pages, forums and Reddit, and Windy browsed as a visitor to see which
+  beach riders use (then pin that beach from OSM, never Windy's position). If it's still
+  unclear, assume the worst: not rideable in that wind, ban stays, spot or zone not added
+  (or archived). Write the call and its sources in `TO_CONFIRM.md` as settled. Only ask Ben
+  (`waiting` card) when the worst case would remove a spot Barcelona testers rely on.
 
 ## Done
 

@@ -71,16 +71,39 @@ final class BlendTests: XCTestCase {
         XCTAssertNil(Blend.hour([:], index: 0, models: models, localTime: "2026-10-28T14:00"))
     }
 
-    func testDefaultsReadEcmwfOnItsSeaCell() {
+    func testDefaultsAreTheWhe87Mix() {
         let p = OpenMeteoProvider()
-        XCTAssertEqual(p.model, "meteofrance_arome_france_hd,icon_seamless,ecmwf_ifs025")
+        XCTAssertEqual(p.model, "meteofrance_seamless,ecmwf_ifs,gfs_seamless")
         XCTAssertEqual(p.cellSelection, "land")
         let groups = p.requestGroups()
         XCTAssertEqual(groups.map(\.cell), ["land", "sea"])
-        XCTAssertEqual(groups.map(\.models), [["meteofrance_arome_france_hd", "icon_seamless"], ["ecmwf_ifs025"]])
-        let body = p.formBody([], from: "2026-10-28", to: "2026-10-28", models: "ecmwf_ifs025", cell: "sea")
+        XCTAssertEqual(groups.map(\.models), [["meteofrance_seamless"], ["ecmwf_ifs", "gfs_seamless"]])
+        let body = p.formBody([], from: "2026-10-28", to: "2026-10-28", models: "ecmwf_ifs,gfs_seamless", cell: "sea")
         XCTAssertTrue(body.contains("cell_selection=sea"))
-        XCTAssertTrue(body.contains("models=ecmwf_ifs025"))
+        XCTAssertTrue(body.contains("models=ecmwf_ifs,gfs_seamless"))
+    }
+
+    func testSkippedModelLeavesTheBlend() throws {
+        let s = series([
+            "wind_speed_10m_a": 20, "wind_direction_10m_a": 90,
+            "wind_speed_10m_b": 10, "wind_direction_10m_b": 90,
+        ])
+        let all = try XCTUnwrap(Blend.hour(s, index: 0, models: ["a", "b"], localTime: "2026-10-28T14:00"))
+        XCTAssertEqual(all.speedKn, 15, accuracy: 0.01)
+        let noA = try XCTUnwrap(Blend.hour(s, index: 0, models: ["a", "b"], localTime: "2026-10-28T14:00", skip: ["a"]))
+        XCTAssertEqual(noA.speedKn, 10, accuracy: 0.01)
+        // Skipping every model would leave nothing: keep them all instead.
+        let none = try XCTUnwrap(Blend.hour(s, index: 0, models: ["a", "b"], localTime: "2026-10-28T14:00", skip: ["a", "b"]))
+        XCTAssertEqual(none.speedKn, 15, accuracy: 0.01)
+    }
+
+    func testDaysAhead() {
+        XCTAssertEqual(OpenMeteoProvider.daysBetween("2026-11-02", "2026-11-06"), 4)
+        XCTAssertEqual(OpenMeteoProvider.daysBetween("2026-12-30", "2027-01-02"), 3)
+        // 23:30 UTC on 2 Nov is already 3 Nov in Barcelona (UTC+1).
+        let d = Date(timeIntervalSince1970: 1_793_662_200)   // 2026-11-02T23:30:00Z
+        XCTAssertEqual(OpenMeteoProvider.localDate(d, offsetSeconds: 0), "2026-11-02")
+        XCTAssertEqual(OpenMeteoProvider.localDate(d, offsetSeconds: 3600), "2026-11-03")
     }
 
     func testOneCellIsOneRequest() {
