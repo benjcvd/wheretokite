@@ -322,3 +322,10 @@ Ben's first test (2 Nov): a "Not sure" ranked above a "Go" confused him. The ran
 Then Ben's final rule (same day): the label reads off the final grade (Go 70+, Maybe 40–69, No under 40); the wind chance only caps the grade (uncertain ≤ 69, unlikely ≤ 39); ranking is on the grade again. Colours and headings use the same bands so the app never says two things.
 Final shape (Ben, 2 Nov): five levels off the grade (Go 70+, Worth a try 55, Coin flip 40, Long shot 20, No go), each with its own colour; the big card's heading is gone because it repeated the label.
 Then four levels (Ben dropped Coin flip): Go 70+, Worth a try 50–69, Long shot 20–49, No go; the spot page shows Ben's sentence per level, or the safety reason for a No go. The big card shows from 50.
+
+**Forecast accuracy, 2 Nov (WHE-88).** Built Ben's WHE-81 pick on top of Product's WHE-82 grade
+levels (this branch merges atlas/product). `GoPolicy` in `Sources/KiteCore/Chance.swift` holds a
+models-agree Go back to "Worth a try" beyond +3 days and in region Catalunya, with a reason in
+`KiteChance.goHeldBack` that the app doesn't show yet (needs a small Product card). Tricky: from
+Barcelona no Catalan spot can be Go until the Catalonia hold is lifted (Ben's sessions or a water
+check); the hold matches the catalogue's region text, so a renamed region silently lifts it.
