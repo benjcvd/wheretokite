@@ -223,3 +223,83 @@ only through Catalonia. The ECMWF ensemble fails everywhere except the Atlantic.
 Tarifa/Calais and the buoy have too few days. Tricky: AWS's ECMWF bucket throttled to a crawl, so
 `ens_fetch.py` uses the Google Cloud mirror. This study used up Open-Meteo's free daily limit on this
 machine once: Previous Runs with 12 variables over 38 sites is heavy.
+## Lead, 31 Oct: Spain/France reliability task force
+Ben's top priority: forecasts and spots in Spain and France must be reliable before he shares
+the app with riders in Barcelona (testers' build = card WHE-70). Ben asked to **finish the work
+in progress before starting anything new**; WHE-75 (side-offshore) and the session-length card
+wait in the backlog on purpose.
+- **Forecast setup.** Lead recommended WHE-61 option 1 (AROME + ICON on the beach cell, ECMWF on
+  its sea cell): land stations read ~15 % below open water, so setups that "win" by matching them
+  under-read; ECMWF's nearest cell is 11–17 km inland; averaging smooths strong-wind peaks.
+  Forecast accuracy built it (unmerged). Ben wants proof first: WHE-72 tests 5 setups on the main
+  ES/FR spots against masts at the water's edge (buoys = level check only) and where to read the
+  forecast (pin / 500 m / 1 km / sea cell). Its result settles WHE-61. Don't merge before.
+- **Scoring (WHE-64, Ben's calls):** gusts soften by rider level *and* session intensity
+  (WHE-73); storms: hours with a storm stay 0, add a "Storm from 4 pm" alert instead of a heavy
+  penalty (WHE-74); side-offshore for advanced riders only, profile setting, pure offshore always 0
+  except lagoon-type spots (WHE-75, backlog); ask the session length instead of a fixed 2 h
+  (backlog). Sant Pere Tramontana question (finding 6) still open for Ben.
+- Spain 96 spots, France 141. Verified-pass cards per region: WHE-65/66 running, Languedoc,
+  south-east Spain, French Atlantic in backlog.
+- Gotcha: Meteocat's open feed has a hole 26 Oct 18 UTC → 30 Oct (no 28 Oct check possible).
+
+## Lead, 1 Nov: freeze on new work
+Ben: no new ticket is started until the five in progress are finished: WHE-72 → WHE-62 → WHE-63
+(Forecast accuracy) and WHE-65 → WHE-66 (Spot improvement). Nothing else goes to `ready`. The
+Lead hands over the next card in each chain when the one before it ends. WHE-74: Ben keeps 80 %
+on the hour before a storm.
+
+## Lead, 1 Nov evening: forecast accuracy, where it stands
+- Five setups tested on 36 ES/FR shore masts (WHE-72): Option 1 (AROME+ICON beach cell, ECMWF sea
+  cell) best, 2.6 kn error vs 3.0 today, false "go" 25 % vs 35 %; better at 26 of 36 spots; much
+  worse in the Canaries and at Tarifa. Buoys (WHE-62) say the water is windier than land masts, so
+  every beach setup may read low. The three-model beach mix (WHE-58, b5aa464 on atlas/product, on
+  Ben's phone) reads too low: drop it; strip it before merging WHE-54.
+- Ben: **no per-spot or per-region methods**, one method everywhere. He finds the numbers bad.
+  Lead's literature check: our error matches published day-ahead station scores (~2 m/s RMSE);
+  the next lever is one statistical correction learned from all masts + buoys (MOS, ~10–20 %),
+  card WHE-79 (todo, waits for WHE-78 and Ben's go). Ben put WHE-78 (AROME-first, sea point) in
+  progress himself; its result + WHE-79 decide the setup. Nothing ships before Ben picks.
+- Freeze still on: start nothing else without Ben. 14 cards in review; Lead's grouping for him:
+  forecast (58/60/61/62/63/72), scoring OKs (73 numbers, 74 wording; 80 % pre-storm hour decided),
+  Catalan spots in one map session (59/65/66 + WHE-2; Riumar in 63 and 66; Castelldefels in 66
+  and WHE-77), then WHE-54, Greece last. Branches with reports to merge (docs/tools only):
+  atlas/t/whe-62, whe-63, whe-72, atlas/forecast-accuracy.
+- Gotcha: Atlas reverted the Lead's `ready` edits on `doing` cards; the per-spot numbers came
+  from `/tmp/whe72spot/perspot.py` run on the whe-72 worktree's `.cache` (temporary).
+
+## Lead, 1 Nov late: the likelihood label
+- Ben's goal: avoid wrong gos and missed gos; the grade stays, a plain label goes next to it.
+- WHE-81: a simple agreement rule (how far 4 models sit above the rider's minimum, and how much
+  they disagree) beat running the scoring on 50 ensemble members (the ensemble was overconfident).
+- WHE-84: Spain's terrible score came from the Catalan weather-service masts (farm, school,
+  wetland sites) reading ~half the wind; the buoys off Begur and Tarragona agree with the models.
+  Ben picked: Go only at the 85 % cut-off per day ahead, one method everywhere, those masts out of
+  the truth. "Most likely" (70 %) didn't hold, so the labels are Go / Not sure / No.
+- Open: no trustworthy beach-level measurement in Catalonia yet (harbour sensors card queued).
+- Where the Lead stopped (1 Nov, 23:58): WHE-82 (label in the app, Product) and WHE-86 (Catalan
+  harbour sensors, Forecast accuracy) queued as ready. Then WHE-70 TestFlight. Still to merge to
+  main: study branches atlas/t/whe-62/63/72/78/81/84 (tools + reports only), atlas/product (drop
+  b5aa464 first), spot branches atlas/t/whe-65/66 + atlas/spot-improvement (ES.csv notes conflict
+  on the 5 Catalan zone rows: take whe-66's text, keep whe-65's Sant Pere note).
+- Ben on Windy: looking at their site to stay close is fine; we still never copy their pins.
+  WHE-83 found Windy's 33 Catalan markers all covered or unconfirmed; 2 questions for Ben.
+- docs/catalan_spots_map.html (uncommitted) is a one-off map Ben used to review Catalan pins.
+
+## Lead, 2 Nov afternoon: decision label and forecast per day
+- Ben built an old copy (`/Users/ben/Documents/claude_projects/wheretokite`, main of 27 Oct) by mistake. Ticket
+  builds live under `atlas-dev/data/worktrees/wheretokite-849ae358c260/tickets/<ticket>/App/`; open them for him
+  with `open …/WhereToKite.xcodeproj` and check DerivedData `WorkspacePath` when "the change isn't there".
+- WHE-82, Ben's call: the label is the **overall decision read off the final grade**, not the wind chance alone.
+  Four levels: Go 70–100, Worth a try 50–69, Long shot 20–49, No go 0–19 (ES Go / Merece la pena / Poco probable /
+  No go; FR Go / Ça vaut le coup / Peu probable / No go). Chance caps stay (uncertain ≤ 69, unlikely ≤ 39); ranking on
+  the grade, so Go always comes first. The spot page shows one plain sentence per level. Product is building; Ben
+  checks on his phone.
+- Models per day ahead (Le Goulet, 2 Nov run): best match = AROME to ~+2 (Wed 10:00), ARPEGE (Météo-France
+  seamless) to ~+4 (Fri 13:00), then an unnamed global model (neither ICON nor ECMWF). ICON-EU to ~+5, ECMWF all
+  week. Ben wants the exact, best source for each day ahead: WHE-87 (Forecast accuracy) tests all candidates per
+  lead 0→+5; nothing ships before he picks.
+- WHE-80 (one MOS correction): failed, recommend shipping nothing (Ben to confirm). WHE-81/86 picks still open
+  (option 1 recommended on both). WHE-65 finished, waits on Ben's Palamós answer.
+- Freeze still on for anything else. Next for the Lead: once WHE-82 and WHE-87 are approved and the Catalan answers
+  are in, merge and prepare WHE-70.
