@@ -37,9 +37,7 @@ struct SpotDetailView: View {
                     .accessibilityIdentifier("stormAlertDetail")
                 }
                 facts
-                if let confidence = rec.confidence {
-                    ConfidenceBanner(confidence: confidence)
-                }
+                VerdictBanner(rec: rec)
                 chart
                 hourly
 
@@ -373,9 +371,12 @@ struct ScoreInfoSheet: View {
                             FactorRow(title: String(localized: "Tide"), value: tide, weight: nil,
                                       detail: String(localized: "Rides \(SpotDetailView.tideRuleLabel(rec.spot.tide))"))
                         }
-                        if rec.agreementFactor < 1, let c = rec.confidence {
-                            FactorRow(title: String(localized: "Weather models"), value: rec.agreementFactor, weight: nil,
-                                      detail: String(localized: "They disagree here: ±\(Int(c.speedSpreadKn.rounded())) kn"))
+                        if let before = rec.scoreBeforeChance, before > 0, let outlook = rec.chance?.outlook {
+                            FactorRow(title: String(localized: "Weather models"), value: Double(rec.finalScore) / Double(before),
+                                      weight: nil,
+                                      detail: outlook == .unlikely
+                                        ? String(localized: "Too little wind likely: the grade is held at \(rec.finalScore) (was \(before))")
+                                        : String(localized: "Wind uncertain: the grade is held at \(rec.finalScore) (was \(before))"))
                         }
                         if rec.distanceFactor < 1 {
                             FactorRow(title: String(localized: "Drive"), value: rec.distanceFactor, weight: weights.distance,
@@ -396,6 +397,7 @@ struct ScoreInfoSheet: View {
                         Text("**Steady wind**: gusts compared with the mean wind.")
                         Text("**Direction**: side-onshore is best, straight onshore is fine, cross-shore is harder, offshore is 0.")
                         Text("They are multiplied, using your weights. A spot's score is its best two hours in a row. Spots that need a certain tide lose the hours outside it, and with **Distance matters** far spots lose up to \(maxDistanceLoss) %.")
+                        Text("The grade gives the label, from **Go** (\(Vocab.verdictBand(.go))) down to **No go** (\(Vocab.verdictBand(.noGo))). Four weather models check the wind: when they aren't sure, the grade stops at \(ScoringRules().uncertainWindMaxScore); when they see too little wind, at \(ScoringRules().unlikelyWindMaxScore).")
                         Text("Some limits never bend: wind or gusts over your level's limit, and offshore wind, always score 0.")
                             .foregroundStyle(.secondary)
                     }

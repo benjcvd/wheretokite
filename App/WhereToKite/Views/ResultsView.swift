@@ -41,7 +41,7 @@ struct ResultsSection: View {
     }
 
     /// Score from which the top spot gets the "go" card.
-    static let verdictMinimum = 40
+    static let verdictMinimum = ScoringRules().verdictFromGrade.worthATry   // Go or Worth a try
 
     // MARK: Result
 
@@ -100,8 +100,8 @@ struct ResultsSection: View {
                                ? String(localized: "No known spot within \(DriveSteps.label(result.request.maxDriveMinutes)) of you. Allow a longer drive or pick another start point.")
                                : String(localized: "No known spot within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(options.start.name). Allow a longer drive or pick another start point."))
             } else if !good.isEmpty {
-                NoSpotCard(title: String(localized: "Nothing great"),
-                           message: String(localized: "Only marginal conditions, listed below. Try another day or session, or allow a longer drive."))
+                NoSpotCard(title: String(localized: "No good spot"),
+                           message: String(localized: "Nothing better than a long shot, listed below. Try another day or session, or allow a longer drive."))
             } else {
                 NoSpotCard(title: String(localized: "No kiteable spot"),
                            message: String(localized: "Not enough good wind. Try another day or session, or allow a longer drive."))
@@ -116,13 +116,9 @@ struct ResultsSection: View {
                 }
             }
 
-            if let confidence = result.confidence {
-                ConfidenceBanner(confidence: confidence)
-            }
-
             if !good.isEmpty {
                 HStack {
-                    Text(!hasVerdict ? "Marginal" : good.count > 1 ? "Also good" : "On the map")
+                    Text(!hasVerdict ? "Spots in reach" : good.count > 1 ? "Other spots" : "On the map")
                         .font(.title3.bold())
                     Spacer()
                     // With a single good spot the list would be empty (the spot is the card
@@ -231,30 +227,21 @@ struct ResultsSection: View {
 struct VerdictCard: View {
     let rec: SpotRecommendation
 
-    private var eyebrow: String {
-        switch rec.finalScore {
-        case 75...: String(localized: "Go kite")
-        case 50..<75: String(localized: "Worth the trip")
-        default: String(localized: "Kiteable, just")
-        }
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(eyebrow.localizedUppercase)
-                        .font(.caption.weight(.bold))
-                        .tracking(1.2)
-                        .opacity(0.85)
                     Text(rec.spot.name)
                         .font(.title.bold())
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
                 }
                 Spacer(minLength: 8)
-                ScoreRing(score: rec.finalScore)
-                    .frame(width: 60, height: 60)
+                VStack(spacing: 6) {
+                    ScoreRing(score: rec.finalScore)
+                        .frame(width: 60, height: 60)
+                    VerdictPill(verdict: rec.kiteVerdict, onColor: true)
+                }
             }
 
             if let w = rec.windowLabel {
@@ -382,7 +369,11 @@ struct SpotCard: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            ScoreBadge(score: rec.finalScore)
+            VStack(spacing: 6) {
+                ScoreBadge(score: rec.finalScore)
+                VerdictPill(verdict: rec.kiteVerdict, maxWidth: 70)
+            }
+            .frame(width: 70)
             VStack(alignment: .leading, spacing: 4) {
                 Text(rec.spot.name)
                     .font(.headline)
@@ -408,13 +399,6 @@ struct SpotCard: View {
                     Label(rec.warnings.map(Vocab.term).joined(separator: ", "), systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.orange)
-                }
-                // The models are compared at this spot (top spots only).
-                if let c = rec.confidence {
-                    Label(Vocab.confidence(c.rating) + " · ±\(Int(c.speedSpreadKn.rounded())) kn",
-                          systemImage: c.rating == .high ? "checkmark.seal" : "questionmark.circle")
-                        .font(.caption)
-                        .foregroundStyle(c.rating == .high ? .green : c.rating == .low ? .orange : .secondary)
                 }
             }
             Spacer(minLength: 0)
