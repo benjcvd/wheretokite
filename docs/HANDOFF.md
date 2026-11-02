@@ -337,3 +337,7 @@ levels (this branch merges atlas/product). `GoPolicy` in `Sources/KiteCore/Chanc
 models-agree Go back to "Worth a try" beyond +3 days, with a reason in `KiteChance.goHeldBack` that
 the app doesn't show yet (needs a small Product card). Ben: all app logic must be global, no
 regional rules, so the Catalonia hold was removed.
+
+## Lead, 2 Nov evening: everything merged locally, TestFlight next
+
+All three workstreams are merged into local `main` (a2ba377). Ben's decisions today: WHE-80 ship nothing, WHE-86 dropped, WHE-81/88 models-agree with no Go beyond +3 days (global, no Catalonia rule), WHE-87 three-model mix, Palamós to Pro, WHE-59 approved. For spot facts Ben doesn't know: research online (Windy only as a visitor, to see which beach riders use; pins always from OSM, never copied from Windy, which Ben accepted), otherwise assume the worst. This is now in the Spot improvement role. Ben tested main on his iPhone ("looks clean"). Gotcha: Xcode kept building old copies of the project; they are renamed `*-OLD` and the only project is `atlas-dev/projects/wheretokite`. Install to the phone with `xcodebuild … -destination 'platform=iOS,name=Ben Iphone' -allowProvisioningUpdates` + `xcrun devicectl device install app`. Main has **not been pushed since 27 Oct**, so the bundled catalogue stays stale until the push and the CI rebuild. Next: WHE-75 (side-offshore, a safety rule, Product building it, Ben approves the angles), then push on Ben's word, then the TestFlight upload (WHE-70).
