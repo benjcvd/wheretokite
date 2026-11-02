@@ -205,3 +205,11 @@ everywhere) lands at 82–97 % on unseen weeks in France, southern Spain (days 0
 a separate 70 % "Most likely" band doesn't hold up. Catalonia itself stays unverified (no wind
 measured on the water near its beaches). Tricky: Open-Meteo's daily quota is shared across agents.
 Run the backtests with `BACKTEST_OFFLINE=1` to use the cache only.
+
+**Forecast accuracy, 2 Nov (WHE-86).** The Catalan ports publish no open wind data (Puertos del
+Estado serves sea level only). But Barcelona airport and Meteocat's Port of Barcelona
+harbour-mouth mast read the same wind, and that settles WHE-84's question: the other Meteocat
+masts are sheltered, not broken. Against those two open masts the forecast is about 2.5 kn too
+light. A Go almost always comes true (98 %), but it catches only 13 % of the real go days.
+Empordà and the Ebro delta still have no open sensor. Tricky: the Open-Meteo quota resets at
+01:00 CET, and `whe86.py` buffers its output until the end.
