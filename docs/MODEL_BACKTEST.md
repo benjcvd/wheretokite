@@ -1,7 +1,83 @@
-# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
+
+## Barcelona's open masts: Catalan forecasts read low, not high (WHE-86, 2 Nov)
+
+**In plain words.** Catalonia's open harbour data (Puertos del Estado) has sea level only, no wind.
+But the Llobregat delta has five official masts within 8 km, from two networks: Barcelona
+airport (AEMET) and four Meteocat masts, two of them in the Port of Barcelona. The airport and
+the Port's harbour-mouth mast (Bocana Sud) read the same wind (0.97 to 1.01). The sheltered
+Meteocat masts read 0.6 to 0.7 of it. So WHE-84 was right that most Catalan masts read low, and
+the cause is where they stand, not the sensors.
+
+Measured against these two open masts, the forecast is **too light, not too strong**: about
+**2.5 kn under on the best 2 h** (the airport afternoon averaged 11.7 kn, the 4 models 8.8).
+A Go held **98 %** of the time (91–100 %, 41 Go spot-days over 17 dates, days ahead 0–4). But Go
+fired on only **13 %** of the days that really were go days (40 of 310). At Castelldefels, read the
+way the app reads it, Go never fired, against 100 measured go spot-days at the airport. Météo-France
+(AROME) came closest, ICON and ECMWF lowest (table below).
+
+**For riders**: around Barcelona the app misses good sea-breeze afternoons. It doesn't send
+people to dead beaches. For Empordà (Sant Pere, Roses) and the Ebro delta there is still no open
+shore mast: every Meteocat mast there reads like the sheltered ones (0.5–0.6). This check can't
+settle Sant Pere's sea-breeze afternoons. The Begur buoy (WHE-62, forecast about right at sea)
+stays the only open measurement up there.
+
+**Recommendation**
+1. Add Barcelona airport and Port Bocana Sud to the trusted truth for the Go cut-offs and
+   for WHE-80's correction. Keep every other Catalan Meteocat mast out (recommended).
+2. Treat Barcelona's ~2.5 kn under-forecast as one input to WHE-80's correction, not as a
+   Barcelona-only fix. Two masts on one stretch of coast is too little to tune a region on.
+3. For Sant Pere, ask Ben how often a forecast 12–14 kn tramontana or sea-breeze afternoon is
+   actually rideable. No open sensor can answer it.
+
+### Masts against the airport, no forecast involved (8 Aug – 25 Oct, 07–17 UTC, airport ≥ 10 kn)
+
+| Mast | Height | km | Ratio to airport | Sea breeze (S–SW) |
+|---|---|---|---|---|
+| AEMET airport SYNOP (same mast, other feed) | 10 m | 0 | 1.00 | 1.00 |
+| Meteocat Port de Barcelona – Bocana Sud (harbour mouth) | 10 m | 7.6 | **0.97** | 1.01 |
+| Meteocat Port de Barcelona – ZAL Prat (behind the docks) | 10 m | 5.5 | 0.62 | 0.61 |
+| Meteocat El Prat (town edge) | 10 m | 4.8 | 0.69 | 0.78 |
+| Meteocat Viladecans – les Filipines (behind the beach) | 2 m → 10 m | 3.0 | 0.70 | 0.81 |
+
+### Forecast at each mast (any direction counts), WHE-84 85 % cut-offs, not refitted
+
+| Mast | Measured ÷ forecast | Forecast − measured, best 2 h | Go came true (all days ahead) |
+|---|---|---|---|
+| Barcelona airport | 1.06 | −2.7 kn | 5 of 5 |
+| Port Bocana Sud | 1.06 | −2.4 kn | 35 of 36 (98 %) |
+| Port ZAL Prat | 0.64 | +1.5 kn | 9 of 25 |
+| Illa de Buda (Ebro delta) | 0.51 | +3.4 kn | 4 of 80 |
+| Sant Pere Pescador | 0.62 | +4.2 kn | 9 of 68 |
+| Roses | 0.56 | +5.1 kn | 32 of 71 |
+
+Full tables, per day ahead and with intervals: `tools/backtest/results/whe86.md`.
+
+### Sanity check: the windiest airport afternoons (day-ahead forecasts, best 2 h, kn)
+
+| Day | Airport | Port Bocana Sud | Best match | Météo-France | ICON | ECMWF |
+|---|---|---|---|---|---|---|
+| 14 Sep | 19.5 | 18.9 | 12.4 | 15.3 | 9.4 | 10.8 |
+| 4 Sep | 18.5 | 16.4 | 12.4 | 16.6 | 9.2 | 9.4 |
+| 14 Aug | 17.0 | 16.1 | 9.3 | 14.6 | 7.2 | 9.0 |
+| 9 Oct | 15.5 | 13.2 | 6.9 | 11.5 | 5.7 | 6.1 |
+
+The two masts agree to about 2 kn on each day. The models sit 3 to 10 kn under them.
+
+### What could make this wrong
+- **Land vs water**: both masts are on land, on a flat delta and a breakwater. Water is usually
+  windier still, so the under-forecast is more likely an underestimate than an overstatement.
+- **Distance**: Castelldefels and Barceloneta are 7–9 km from the masts, beyond the 5 km rule.
+  The Llobregat delta may be windier than the beaches either side.
+- **Sample**: 17 Go dates. 98 % has a 91 % floor, but the "only 13 % caught" figure carries more
+  weight than the hit rate.
+- **Units**: METAR speeds are whole knots and 10-min means. Meteocat values are 30-min means. That
+  can't explain Bocana Sud matching the airport while ZAL Prat, 3 km away, reads 0.62.
+- **Not tested**: whether Illa de Buda's low reading is siting (it looks exposed on the map) or the
+  sensor. I can't check that without a site visit or Meteocat's metadata.
 
 ## Why a Go so rarely came true in Spain, and Go set at 80 % (WHE-84, 1 Nov)
 
