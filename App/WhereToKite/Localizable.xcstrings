@@ -18,6 +18,28 @@
         }
       }
     },
+    "**%@** (%@): %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**%1$@** (%2$@): %3$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**%1$@** (%2$@): %3$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**%1$@** (%2$@) : %3$@"
+          }
+        }
+      }
+    },
     "**Direction**: side-onshore is best, straight onshore is fine, cross-shore is harder, offshore is 0." : {
       "localizations" : {
         "es" : {
@@ -678,22 +700,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "À propos"
-          }
-        }
-      }
-    },
-    "About Go, Maybe and No" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sobre Sí, Quizás y No"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "À propos de Go, Peut-être et Non"
           }
         }
       }
@@ -1420,6 +1426,23 @@
         }
       }
     },
+    "Coin flip" : {
+      "comment" : "Verdict: grade 40 to 54",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cara o cruz"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pile ou face"
+          }
+        }
+      }
+    },
     "Coming soon. Everything you use today stays free." : {
       "localizations" : {
         "es" : {
@@ -1432,6 +1455,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bientôt. Tout ce que tu utilises aujourd'hui reste gratuit."
+          }
+        }
+      }
+    },
+    "Could go either way." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede salir bien o mal."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ça peut aller dans un sens comme dans l'autre."
           }
         }
       }
@@ -1758,22 +1797,6 @@
         }
       }
     },
-    "Each spot's label comes from its grade: Go from 70, Maybe from 40, No below." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La etiqueta de cada spot sale de su nota: Sí desde 70, Quizás desde 40, No por debajo."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L'étiquette de chaque spot vient de sa note : Go dès 70, Peut-être dès 40, Non en dessous."
-          }
-        }
-      }
-    },
     "east" : {
       "localizations" : {
         "es" : {
@@ -1899,22 +1922,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tous les spots"
-          }
-        }
-      }
-    },
-    "Every spot in reach is a No, listed below. Try another day or session, or allow a longer drive." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todos los spots a tu alcance son un No, abajo en la lista. Prueba otro día u otra sesión, o acepta más trayecto."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tous les spots à portée sont des Non, listés plus bas. Essaie un autre jour ou une autre session, ou accepte plus de route."
           }
         }
       }
@@ -2150,45 +2157,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sí"
+            "value" : "Go"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Go"
-          }
-        }
-      }
-    },
-    "Go kite" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡A navegar!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fonce"
-          }
-        }
-      }
-    },
-    "Go, Maybe, No" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sí, Quizás, No"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go, Peut-être, Non"
           }
         }
       }
@@ -2210,34 +2185,18 @@
         }
       }
     },
-    "Good conditions in the forecast." : {
+    "Good session expected." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buenas condiciones en la previsión."
+            "value" : "Se espera una buena sesión."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bonnes conditions dans la prévision."
-          }
-        }
-      }
-    },
-    "Good conditions, and the weather models agree on the wind." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buenas condiciones, y los modelos meteorológicos coinciden en el viento."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bonnes conditions, et les modèles météo sont d'accord sur le vent."
+            "value" : "Bonne session en vue."
           }
         }
       }
@@ -2580,22 +2539,6 @@
         }
       }
     },
-    "Kiteable, just" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Navegable, por poco"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Navigable, de justesse"
-          }
-        }
-      }
-    },
     "kiting banned" : {
       "localizations" : {
         "es" : {
@@ -2741,6 +2684,23 @@
         }
       }
     },
+    "Long shot" : {
+      "comment" : "Verdict: grade 20 to 39",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poco probable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peu probable"
+          }
+        }
+      }
+    },
     "Low %@" : {
       "comment" : "Low tide times",
       "localizations" : {
@@ -2838,39 +2798,6 @@
         }
       }
     },
-    "Maybe" : {
-      "comment" : "Verdict: grade 40 to 69",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quizás"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Peut-être"
-          }
-        }
-      }
-    },
-    "Maybe worth the trip" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quizás valga el viaje"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ça vaut peut-être le trajet"
-          }
-        }
-      }
-    },
     "Me" : {
       "localizations" : {
         "es" : {
@@ -2933,6 +2860,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Matin"
+          }
+        }
+      }
+    },
+    "Most likely good, but we can't be sure." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lo más probable es que esté bien, pero no podemos asegurarlo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sûrement bien, mais on ne peut pas en être sûrs."
           }
         }
       }
@@ -3115,23 +3058,6 @@
         }
       }
     },
-    "No" : {
-      "comment" : "Verdict: grade under 40",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Non"
-          }
-        }
-      }
-    },
     "No account and no tracking. Your profile and your own spots stay on this phone. To get forecasts, the app sends spot positions and the rough area of your start point (about 10 km) to the forecast service, and your start point to Apple Maps for drive times. If you answer “How was it?”, the answer is sent without anything that identifies you. Crash reports from iOS are sent anonymously to help fix bugs. Reports you send are published on GitHub, without your name or position." : {
       "localizations" : {
         "es" : {
@@ -3160,6 +3086,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "pas de prévision"
+          }
+        }
+      }
+    },
+    "No go" : {
+      "comment" : "Verdict: grade under 20",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No go"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No go"
           }
         }
       }
@@ -3437,6 +3380,22 @@
         }
       }
     },
+    "Not worth it, or unsafe." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No merece la pena, o no es seguro."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ça n'en vaut pas la peine, ou c'est dangereux."
+          }
+        }
+      }
+    },
     "Notes" : {
       "localizations" : {
         "es" : {
@@ -3449,6 +3408,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notes"
+          }
+        }
+      }
+    },
+    "Nothing better than a long shot, listed below. Try another day or session, or allow a longer drive." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nada mejor que poco probable, abajo en la lista. Prueba otro día u otra sesión, o acepta más trayecto."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien de mieux que peu probable, listé plus bas. Essaie un autre jour ou une autre session, ou accepte plus de route."
           }
         }
       }
@@ -3759,22 +3734,6 @@
         }
       }
     },
-    "Poor conditions for you." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Malas condiciones para ti."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mauvaises conditions pour toi."
-          }
-        }
-      }
-    },
     "Powered up, near the top of your kite's range. Gusts are OK." : {
       "localizations" : {
         "es" : {
@@ -3835,6 +3794,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fonction Pro"
+          }
+        }
+      }
+    },
+    "Probably not. Only if you don't want to miss any chance." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Probablemente no. Solo si no quieres perderte ninguna oportunidad."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Probablement pas. Seulement si tu ne veux rater aucune chance."
           }
         }
       }
@@ -3963,22 +3938,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Navigable"
-          }
-        }
-      }
-    },
-    "Rideable, but not the best conditions for you." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Navegable, pero no son las mejores condiciones para ti."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Navigable, mais pas les meilleures conditions pour toi."
           }
         }
       }
@@ -4883,40 +4842,40 @@
         }
       }
     },
-    "The grade gives the label: **Go** from %lld, **Maybe** from %lld, **No** below. Four weather models check the wind: when they aren't sure, the grade stops at %lld; when they see too little wind, at %lld." : {
+    "The grade gives the label, from **Go** (%@) down to **No go** (%@). Four weather models check the wind: when they aren't sure, the grade stops at %lld; when they see too little wind, at %lld." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The grade gives the label: **Go** from %1$lld, **Maybe** from %2$lld, **No** below. Four weather models check the wind: when they aren't sure, the grade stops at %3$lld; when they see too little wind, at %4$lld."
+            "value" : "The grade gives the label, from **Go** (%1$@) down to **No go** (%2$@). Four weather models check the wind: when they aren't sure, the grade stops at %3$lld; when they see too little wind, at %4$lld."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La nota da la etiqueta: **Sí** desde %1$lld, **Quizás** desde %2$lld, **No** por debajo. Cuatro modelos meteorológicos comprueban el viento: si no están seguros, la nota se queda en %3$lld; si ven poco viento, en %4$lld."
+            "value" : "La nota da la etiqueta, de **Go** (%1$@) a **No go** (%2$@). Cuatro modelos meteorológicos comprueban el viento: si no están seguros, la nota se queda en %3$lld; si ven poco viento, en %4$lld."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La note donne l'étiquette : **Go** dès %1$lld, **Peut-être** dès %2$lld, **Non** en dessous. Quatre modèles météo vérifient le vent : s'ils ne sont pas sûrs, la note s'arrête à %3$lld ; s'ils voient trop peu de vent, à %4$lld."
+            "value" : "La note donne l'étiquette, de **Go** (%1$@) à **No go** (%2$@). Quatre modèles météo vérifient le vent : s'ils ne sont pas sûrs, la note s'arrête à %3$lld ; s'ils voient trop peu de vent, à %4$lld."
           }
         }
       }
     },
-    "The grade weighs the wind, gusts and direction for you, and how likely the wind is. We compare four weather models: when they aren't sure, a spot is a Maybe at best; when they see too little wind, it's a No." : {
+    "The grade weighs the wind, gusts and direction for you, and how likely the wind is. We compare four weather models: when they aren't sure, a spot is Worth a try at best; when they see too little wind, a Long shot at best." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La nota tiene en cuenta el viento, las rachas y la dirección para ti, y la probabilidad de que haya viento. Comparamos cuatro modelos meteorológicos: si no están seguros, el spot es como mucho un Quizás; si ven poco viento, es un No."
+            "value" : "La nota tiene en cuenta el viento, las rachas y la dirección para ti, y la probabilidad de que haya viento. Comparamos cuatro modelos meteorológicos: si no están seguros, el spot es como mucho Merece la pena; si ven poco viento, como mucho Poco probable."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La note tient compte du vent, des rafales et de la direction pour toi, et de la probabilité d'avoir du vent. On compare quatre modèles météo : s'ils ne sont pas sûrs, le spot est au mieux un Peut-être ; s'ils voient trop peu de vent, c'est un Non."
+            "value" : "La note tient compte du vent, des rafales et de la direction pour toi, et de la probabilité d'avoir du vent. On compare quatre modèles météo : s'ils ne sont pas sûrs, le spot est au mieux Ça vaut le coup ; s'ils voient trop peu de vent, au mieux Peu probable."
           }
         }
       }
@@ -4969,6 +4928,22 @@
         }
       }
     },
+    "The weather models agree on the wind." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos meteorológicos coinciden en el viento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles météo sont d'accord sur le vent."
+          }
+        }
+      }
+    },
     "The weather models aren't sure there will be enough wind for you." : {
       "localizations" : {
         "es" : {
@@ -4985,18 +4960,18 @@
         }
       }
     },
-    "The weather models don't see enough usable wind for you." : {
+    "The weather models see too little wind for you." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los modelos meteorológicos no ven viento útil suficiente para ti."
+            "value" : "Los modelos meteorológicos ven poco viento para ti."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les modèles météo ne voient pas assez de vent utilisable pour toi."
+            "value" : "Les modèles météo voient trop peu de vent pour toi."
           }
         }
       }
@@ -5698,6 +5673,22 @@
         }
       }
     },
+    "What the labels mean" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qué significan las etiquetas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce que veulent dire les étiquettes"
+          }
+        }
+      }
+    },
     "What's wrong?" : {
       "localizations" : {
         "es" : {
@@ -5956,6 +5947,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le vent face à ton aile"
+          }
+        }
+      }
+    },
+    "Worth a try" : {
+      "comment" : "Verdict: grade 55 to 69",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merece la pena"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ça vaut le coup"
           }
         }
       }

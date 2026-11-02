@@ -4,27 +4,22 @@ import KiteCore
 // MARK: - Score colours (traffic-light, like Surfline's ratings: green = go)
 
 enum ScoreStyle {
-    static func color(_ score: Int) -> Color {
-        switch score {
-        case 70...: Color(red: 0.13, green: 0.78, blue: 0.45)
-        case 40..<70: Color(red: 0.98, green: 0.76, blue: 0.10)
-        case 1..<40: Color(red: 1.00, green: 0.55, blue: 0.20)
-        default: Color(.systemGray)
-        }
-    }
+    /// One colour per verdict band, green (Go) to grey (No go).
+    static func color(_ score: Int) -> Color { KiteVerdict(grade: score).color }
 
-    /// Rich two-stop gradient for large surfaces (hero card, badges).
+    /// Rich two-stop gradient for large surfaces (hero card, badges), per verdict band.
     static func gradient(_ score: Int) -> LinearGradient {
-        let colors: [Color] = switch score {
-        case 70...: [Color(red: 0.05, green: 0.70, blue: 0.48), Color(red: 0.00, green: 0.47, blue: 0.75)]
-        case 40..<70: [Color(red: 0.96, green: 0.62, blue: 0.05), Color(red: 0.93, green: 0.38, blue: 0.16)]
-        case 1..<40: [Color(red: 0.95, green: 0.42, blue: 0.22), Color(red: 0.82, green: 0.22, blue: 0.36)]
-        default: [Color(red: 0.42, green: 0.46, blue: 0.54), Color(red: 0.28, green: 0.31, blue: 0.40)]
+        let colors: [Color] = switch KiteVerdict(grade: score) {
+        case .go: [Color(red: 0.05, green: 0.70, blue: 0.48), Color(red: 0.00, green: 0.47, blue: 0.75)]
+        case .worthATry: [Color(red: 0.52, green: 0.76, blue: 0.16), Color(red: 0.12, green: 0.60, blue: 0.42)]
+        case .coinFlip: [Color(red: 0.96, green: 0.72, blue: 0.05), Color(red: 0.93, green: 0.52, blue: 0.10)]
+        case .longShot: [Color(red: 0.95, green: 0.48, blue: 0.20), Color(red: 0.82, green: 0.26, blue: 0.30)]
+        case .noGo: [Color(red: 0.42, green: 0.46, blue: 0.54), Color(red: 0.28, green: 0.31, blue: 0.40)]
         }
         return LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
     }
 
-    /// Go / Maybe / No: the same bands as the verdict pill (`KiteVerdict(grade:)`).
+    /// The verdict for a grade, the same bands as the pill (`KiteVerdict(grade:)`).
     static func label(_ score: Int) -> String { Vocab.verdict(KiteVerdict(grade: score)) }
 }
 
@@ -110,35 +105,34 @@ struct Pill: View {
 }
 
 extension KiteVerdict {
+    /// Green (Go) to grey (No go).
     var color: Color {
         switch self {
-        case .go: ScoreStyle.color(85)
-        case .maybe: .orange
-        case .no: .secondary
-        }
-    }
-
-    var systemImage: String {
-        switch self {
-        case .go: "checkmark.circle.fill"
-        case .maybe: "questionmark.circle.fill"
-        case .no: "xmark.circle.fill"
+        case .go: Color(red: 0.13, green: 0.72, blue: 0.42)
+        case .worthATry: Color(red: 0.45, green: 0.70, blue: 0.12)
+        case .coinFlip: Color(red: 0.90, green: 0.66, blue: 0.00)
+        case .longShot: Color(red: 0.95, green: 0.48, blue: 0.18)
+        case .noGo: Color(.systemGray)
         }
     }
 }
 
-/// "Go" / "Maybe" / "No" next to a grade. `onColor`: white text for the coloured hero card.
+/// The verdict next to a grade. `onColor`: white text for the coloured hero card. Short and
+/// shrinkable so the longest label ("Ça vaut le coup") fits under a score on a small iPhone.
 struct VerdictPill: View {
     let verdict: KiteVerdict
     var onColor = false
+    var maxWidth: CGFloat? = nil
 
     var body: some View {
-        Label(Vocab.verdict(verdict), systemImage: verdict.systemImage)
-            .font(.caption.weight(.bold))
+        Text(Vocab.verdict(verdict))
+            .font(.caption2.weight(.bold))
             .lineLimit(1)
-            .fixedSize()
-            .padding(.horizontal, 8)
+            .minimumScaleFactor(0.7)
+            .padding(.horizontal, 7)
             .padding(.vertical, 3)
+            .frame(maxWidth: maxWidth)
+            .fixedSize(horizontal: maxWidth == nil, vertical: true)
             .foregroundStyle(onColor ? Color.white : verdict.color)
             .background(onColor ? Color.black.opacity(0.22) : verdict.color.opacity(0.14), in: Capsule())
             .accessibilityIdentifier("verdict")
@@ -153,13 +147,15 @@ struct ChanceInfoButton: View {
         Button { shown = true } label: {
             Image(systemName: "info.circle")
         }
-        .accessibilityLabel(Text("About Go, Maybe and No"))
+        .accessibilityLabel(Text("What the labels mean"))
         .accessibilityIdentifier("verdictInfo")
         .popover(isPresented: $shown) {
             VStack(alignment: .leading, spacing: 10) {
-                Text("Go, Maybe, No").font(.headline)
-                Text("Each spot's label comes from its grade: Go from 70, Maybe from 40, No below.")
-                Text("The grade weighs the wind, gusts and direction for you, and how likely the wind is. We compare four weather models: when they aren't sure, a spot is a Maybe at best; when they see too little wind, it's a No.")
+                Text("What the labels mean").font(.headline)
+                ForEach(KiteVerdict.allCases, id: \.self) { v in
+                    Text("**\(Vocab.verdict(v))** (\(Vocab.verdictBand(v))): \(Vocab.verdictMeaning(v))")
+                }
+                Text("The grade weighs the wind, gusts and direction for you, and how likely the wind is. We compare four weather models: when they aren't sure, a spot is Worth a try at best; when they see too little wind, a Long shot at best.")
                 Text("Forecasts are never perfect: this is our best estimate. In our tests on past days, wind the models called likely came true about 85 % of the time. The further ahead the day, the less sure any forecast is.")
             }
             .font(.subheadline)
@@ -179,9 +175,9 @@ struct VerdictBanner: View {
 
     var body: some View {
         HStack(spacing: 10) {
-            Image(systemName: verdict.systemImage)
-                .font(.title3)
-                .foregroundStyle(verdict.color)
+            Circle()
+                .fill(verdict.color)
+                .frame(width: 14, height: 14)
             VStack(alignment: .leading, spacing: 1) {
                 Text(Vocab.verdict(verdict))
                     .font(.subheadline.weight(.semibold))
@@ -199,7 +195,8 @@ struct VerdictBanner: View {
     }
 
     private var detail: String {
-        let base = Vocab.verdictDetail(verdict, outlook: rec.chance?.outlook)
+        let base = [Vocab.verdictMeaning(verdict), Vocab.windReason(rec.chance?.outlook, capped: rec.scoreBeforeChance != nil)]
+            .compactMap { $0 }.joined(separator: " ")
         guard let lead = rec.chance?.leadDays, lead >= 3 else { return base }
         return base + " " + String(localized: "\(lead) days ahead: it can still change.")
     }

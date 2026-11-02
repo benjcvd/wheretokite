@@ -397,7 +397,7 @@ struct ScoreInfoSheet: View {
                         Text("**Steady wind**: gusts compared with the mean wind.")
                         Text("**Direction**: side-onshore is best, straight onshore is fine, cross-shore is harder, offshore is 0.")
                         Text("They are multiplied, using your weights. A spot's score is its best two hours in a row. Spots that need a certain tide lose the hours outside it, and with **Distance matters** far spots lose up to \(maxDistanceLoss) %.")
-                        Text("The grade gives the label: **Go** from \(ScoringRules().goFromGrade), **Maybe** from \(ScoringRules().maybeFromGrade), **No** below. Four weather models check the wind: when they aren't sure, the grade stops at \(ScoringRules().uncertainWindMaxScore); when they see too little wind, at \(ScoringRules().unlikelyWindMaxScore).")
+                        Text("The grade gives the label, from **Go** (\(Vocab.verdictBand(.go))) down to **No go** (\(Vocab.verdictBand(.noGo))). Four weather models check the wind: when they aren't sure, the grade stops at \(ScoringRules().uncertainWindMaxScore); when they see too little wind, at \(ScoringRules().unlikelyWindMaxScore).")
                         Text("Some limits never bend: wind or gusts over your level's limit, and offshore wind, always score 0.")
                             .foregroundStyle(.secondary)
                     }

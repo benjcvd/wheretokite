@@ -41,7 +41,7 @@ struct ResultsSection: View {
     }
 
     /// Score from which the top spot gets the "go" card.
-    static let verdictMinimum = ScoringRules().maybeFromGrade   // Go or Maybe
+    static let verdictMinimum = ScoringRules().verdictFromGrade.coinFlip   // Go, Worth a try or Coin flip
 
     // MARK: Result
 
@@ -101,7 +101,7 @@ struct ResultsSection: View {
                                : String(localized: "No known spot within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(options.start.name). Allow a longer drive or pick another start point."))
             } else if !good.isEmpty {
                 NoSpotCard(title: String(localized: "No good spot"),
-                           message: String(localized: "Every spot in reach is a No, listed below. Try another day or session, or allow a longer drive."))
+                           message: String(localized: "Nothing better than a long shot, listed below. Try another day or session, or allow a longer drive."))
             } else {
                 NoSpotCard(title: String(localized: "No kiteable spot"),
                            message: String(localized: "Not enough good wind. Try another day or session, or allow a longer drive."))
@@ -227,22 +227,10 @@ struct ResultsSection: View {
 struct VerdictCard: View {
     let rec: SpotRecommendation
 
-    private var eyebrow: String {
-        switch rec.kiteVerdict {
-        case .go: String(localized: "Go kite")
-        case .maybe: String(localized: "Maybe worth the trip")
-        case .no: String(localized: "Kiteable, just")
-        }
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(eyebrow.localizedUppercase)
-                        .font(.caption.weight(.bold))
-                        .tracking(1.2)
-                        .opacity(0.85)
                     Text(rec.spot.name)
                         .font(.title.bold())
                         .lineLimit(2)
@@ -383,8 +371,9 @@ struct SpotCard: View {
         HStack(spacing: 12) {
             VStack(spacing: 6) {
                 ScoreBadge(score: rec.finalScore)
-                VerdictPill(verdict: rec.kiteVerdict)
+                VerdictPill(verdict: rec.kiteVerdict, maxWidth: 70)
             }
+            .frame(width: 70)
             VStack(alignment: .leading, spacing: 4) {
                 Text(rec.spot.name)
                     .font(.headline)

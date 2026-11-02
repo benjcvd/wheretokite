@@ -68,25 +68,47 @@ enum Vocab {
         }.joined(separator: " · ")
     }
 
-    /// The plain verdict next to a grade: "Go", "Maybe", "No".
+    /// The overall verdict next to a grade.
     static func verdict(_ v: KiteVerdict) -> String {
         switch v {
         case .go: String(localized: "Go", comment: "Verdict: grade 70 or more")
-        case .maybe: String(localized: "Maybe", comment: "Verdict: grade 40 to 69")
-        case .no: String(localized: "No", comment: "Verdict: grade under 40")
+        case .worthATry: String(localized: "Worth a try", comment: "Verdict: grade 55 to 69")
+        case .coinFlip: String(localized: "Coin flip", comment: "Verdict: grade 40 to 54")
+        case .longShot: String(localized: "Long shot", comment: "Verdict: grade 20 to 39")
+        case .noGo: String(localized: "No go", comment: "Verdict: grade under 20")
         }
     }
 
-    /// One line under the verdict, on the spot's page: why, from the wind outlook when the
-    /// models were compared.
-    static func verdictDetail(_ v: KiteVerdict, outlook: WindOutlook?) -> String {
-        switch (v, outlook) {
-        case (.go, .some): String(localized: "Good conditions, and the weather models agree on the wind.")
-        case (.go, nil): String(localized: "Good conditions in the forecast.")
-        case (.maybe, .uncertain): String(localized: "The weather models aren't sure there will be enough wind for you.")
-        case (.maybe, _): String(localized: "Rideable, but not the best conditions for you.")
-        case (.no, .unlikely): String(localized: "The weather models don't see enough usable wind for you.")
-        case (.no, _): String(localized: "Poor conditions for you.")
+    /// "70–100": the grades of a verdict.
+    static func verdictBand(_ v: KiteVerdict) -> String {
+        let b = ScoringRules().verdictFromGrade
+        return switch v {
+        case .go: "\(b.go)–100"
+        case .worthATry: "\(b.worthATry)–\(b.go - 1)"
+        case .coinFlip: "\(b.coinFlip)–\(b.worthATry - 1)"
+        case .longShot: "\(b.longShot)–\(b.coinFlip - 1)"
+        case .noGo: "0–\(b.longShot - 1)"
+        }
+    }
+
+    /// What a verdict means, in one line.
+    static func verdictMeaning(_ v: KiteVerdict) -> String {
+        switch v {
+        case .go: String(localized: "Good session expected.")
+        case .worthATry: String(localized: "Most likely good, but we can't be sure.")
+        case .coinFlip: String(localized: "Could go either way.")
+        case .longShot: String(localized: "Probably not. Only if you don't want to miss any chance.")
+        case .noGo: String(localized: "Not worth it, or unsafe.")
+        }
+    }
+
+    /// Why the weather models held the grade down, when they did.
+    static func windReason(_ outlook: WindOutlook?, capped: Bool) -> String? {
+        switch outlook {
+        case .likely: String(localized: "The weather models agree on the wind.")
+        case .uncertain where capped: String(localized: "The weather models aren't sure there will be enough wind for you.")
+        case .unlikely where capped: String(localized: "The weather models see too little wind for you.")
+        default: nil
         }
     }
 
