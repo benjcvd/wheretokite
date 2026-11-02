@@ -178,14 +178,18 @@ public struct OpenMeteoProvider: ForecastProvider {
     public var model: String
     public var server: ForecastServer
     /// "land" reads the grid cell the spot is in (the beach), "sea" the nearest water cell.
-    /// Measured against official stations, the beach cell was closer for AROME and ICON
-    /// (docs/MODEL_BACKTEST.md), and it's the one other forecast sites show.
+    /// Météo-France reads closest on the beach cell; ECMWF and GFS read 1–3 kn low there
+    /// (their beach cell falls inland), so they read their sea cell (`cellByModel`, WHE-87).
     public var cellSelection = "land"
-    /// Models read on another cell than `cellSelection`. ECMWF's grid is ~25 km: its beach
-    /// cell falls 11–17 km inland on the Costa Brava and dragged the blend 2–5 kn low, so it
-    /// reads its nearest sea cell (WHE-61). Each cell is its own request (Open-Meteo takes one
-    /// `cell_selection` per request), merged before blending.
-    public var cellByModel: [String: String] = ["ecmwf_ifs025": "sea"]
+    /// Models read on another cell than `cellSelection`. Each cell is its own request
+    /// (Open-Meteo takes one `cell_selection` per request), merged before blending.
+    public var cellByModel: [String: String] = ["ecmwf_ifs": "sea", "ecmwf_ifs025": "sea", "gfs_seamless": "sea"]
+    /// Last day ahead (0 = today, spot's local date) a model joins the blend. Météo-France
+    /// seamless ends in ARPEGE, which the WHE-87 backtest only had to day 3: from day 4 the
+    /// blend is ECMWF + GFS, as tested.
+    public var lastDayByModel: [String: Int] = ["meteofrance_seamless": 3]
+    /// Today's date for `lastDayByModel` (tests set it).
+    public var now: @Sendable () -> Date = { Date() }
     /// Locations per request. Measured: 100 → ~0.4 s, 200 → ~0.5 s per request.
     public var batchSize = 100
     /// Requests in flight at once (400 spots = 4 requests = one round trip).
@@ -194,11 +198,11 @@ public struct OpenMeteoProvider: ForecastProvider {
     /// When set, `server` is ignored: the failover picks the server for each request.
     public var failover: ServerFailover?
 
-    /// Mean of AROME 1.3 and ICON on the beach cell and ECMWF on its sea cell (`cellByModel`):
-    /// caught the most kiteable days a day ahead against stations in Catalonia and at Leucate
-    /// (docs/MODEL_BACKTEST.md, WHE-61). Outside AROME's area (France and around) the blend
-    /// is ICON and ECMWF.
-    public static let defaultModel = "meteofrance_arome_france_hd,icon_seamless,ecmwf_ifs025"
+    /// Mean of Météo-France seamless (AROME 1.3 → AROME 2.5 → ARPEGE) on the beach cell and
+    /// ECMWF 9 km + GFS on their sea cell. Against 32 trusted masts and buoys over 84 days it
+    /// caught the most kiteable days with fewer false gos, today to +5, and read strong days
+    /// stronger than best match (docs/MODEL_BACKTEST.md, WHE-87).
+    public static let defaultModel = "meteofrance_seamless,ecmwf_ifs,gfs_seamless"
 
     public init(model: String = OpenMeteoProvider.defaultModel, server: ForecastServer = .openMeteo) {
         self.model = model
@@ -314,9 +318,12 @@ public struct OpenMeteoProvider: ForecastProvider {
             }
             var byDay: [String: [HourlyWind]] = [:]
             let models = model.split(separator: ",").map(String.init)
+            let today = Self.localDate(now(), offsetSeconds: offset ?? 0)
             for i in h.time.indices {
                 let time = h.time[i]
-                guard var w = Blend.hour(h.series, index: i, models: models, localTime: time) else { continue }
+                let ahead = Self.daysBetween(today, String(time.prefix(10))) ?? 0
+                let skip = Set(lastDayByModel.filter { models.count > 1 && ahead > $0.value }.keys)
+                guard var w = Blend.hour(h.series, index: i, models: models, localTime: time, skip: skip) else { continue }
                 w.seaLevelM = levels[time]
                 let date = String(time.prefix(10))
                 if let (rise, set) = light[date] {
@@ -328,6 +335,28 @@ public struct OpenMeteoProvider: ForecastProvider {
             }
             return (spot.id, byDay.map { DayForecast(day: $0.key, hours: $0.value, utcOffsetSeconds: offset) })
         }
+    }
+
+    /// "yyyy-MM-dd" of `date` at a UTC offset.
+    static func localDate(_ date: Date, offsetSeconds: Int) -> String {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(secondsFromGMT: offsetSeconds) ?? TimeZone(identifier: "UTC")!
+        let c = cal.dateComponents([.year, .month, .day], from: date)
+        return String(format: "%04d-%02d-%02d", c.year ?? 0, c.month ?? 0, c.day ?? 0)
+    }
+
+    /// Whole days from `a` to `b` ("yyyy-MM-dd").
+    static func daysBetween(_ a: String, _ b: String) -> Int? {
+        func day(_ s: String) -> Int? {
+            let p = s.split(separator: "-").compactMap { Int($0) }
+            guard p.count == 3 else { return nil }
+            var cal = Calendar(identifier: .gregorian)
+            cal.timeZone = TimeZone(identifier: "UTC")!
+            guard let d = cal.date(from: DateComponents(year: p[0], month: p[1], day: p[2])) else { return nil }
+            return Int(d.timeIntervalSince1970 / 86400)
+        }
+        guard let x = day(a), let y = day(b) else { return nil }
+        return y - x
     }
 
     static func minuteOfDay(_ localTime: String) -> Int? {
@@ -474,9 +503,13 @@ public struct OpenMeteoProvider: ForecastProvider {
 /// mean wind vector. Safety errs on the cautious side: the worst weather code and the highest
 /// CAPE of any model (a storm one model sees is a storm), mean rain.
 enum Blend {
-    static func hour(_ series: [String: [Double?]], index i: Int, models: [String], localTime: String) -> HourlyWind? {
+    /// `skip`: models left out of this hour (past their `lastDayByModel`), unless that would
+    /// leave none.
+    static func hour(_ series: [String: [Double?]], index i: Int, models: [String], localTime: String,
+                     skip: Set<String> = []) -> HourlyWind? {
         // One model: Open-Meteo doesn't suffix the variables.
-        let suffixes = models.count > 1 ? models.map { "_" + $0 } : [""]
+        let kept = models.filter { !skip.contains($0) }
+        let suffixes = models.count > 1 ? (kept.isEmpty ? models : kept).map { "_" + $0 } : [""]
         func values(_ variable: String) -> [Double] {
             suffixes.compactMap { series[variable + $0]?[safe: i] ?? nil }
         }
@@ -552,7 +585,7 @@ public struct CachedForecastProvider: ForecastProvider {
         // Tides are only fetched for spots with a tide rule: keep those entries apart, or a
         // spot that just got a rule (user spot edited) would reuse a tideless entry. "v3":
         // AROME + ICON on the beach cell, ECMWF on its sea cell (v3 had ECMWF on land).
-        let key = String(format: "v4_%.4f_%.4f_%@", spot.latitude, spot.longitude, day)
+        let key = String(format: "v5_%.4f_%.4f_%@", spot.latitude, spot.longitude, day)
             + (spot.tide == nil ? "" : "_tide")
         return directory.appendingPathComponent(key + ".json")
     }

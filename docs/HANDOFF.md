@@ -223,6 +223,15 @@ only through Catalonia. The ECMWF ensemble fails everywhere except the Atlantic.
 Tarifa/Calais and the buoy have too few days. Tricky: AWS's ECMWF bucket throttled to a crawl, so
 `ens_fetch.py` uses the Google Cloud mirror. This study used up Open-Meteo's free daily limit on this
 machine once: Previous Runs with 12 variables over 38 sites is heavy.
+
+**Forecast accuracy, 2 Nov (WHE-87).** Which source for each day ahead (0–5): 9 Open-Meteo sources
+× beach/sea point + mixes, 32 trusted sites, 84 days (`tools/backtest/whe87.py`, `whe87_checks.py`).
+Today's "best match" turns out to be an unnamed, place-dependent model (mostly ICON-EU in Spain in the
+archive). One rule wins at every lead: mean of `meteofrance_seamless` (beach point) + `ecmwf_ifs` +
+`gfs_seamless` (sea point); Météo-France drops out from day 4. Real gain days 0–1, tie 2–3, slight
+gain 4–5, strong days read stronger. Only dissent: the POEM near-shore buoy, where AROME is better.
+Report only; waiting for Ben's pick. Open-Meteo's archive answered "no data" while overloaded:
+the script never caches refusals.
 ## Lead, 31 Oct: Spain/France reliability task force
 Ben's top priority: forecasts and spots in Spain and France must be reliable before he shares
 the app with riders in Barcelona (testers' build = card WHE-70). Ben asked to **finish the work
