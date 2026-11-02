@@ -324,13 +324,14 @@ def main():
         summary.append((lead, res, mt))
 
     print("\n## Summary: winner per day ahead\n")
-    print("Winner = highest CSI among sources that answered on ≥ 90 % of spot-days or fall back by design; "
+    print("Winner = highest CSI among sources (and mixes) that answered themselves on ≥ 90 % of spot-days; "
           "'real' when its CSI gain interval excludes 0.\n")
     print("| Day ahead | Today: CSI / MAE / bias | Best on CSI | CSI gain | MAE gain | Real? | Best on MAE | MAE gain |")
     print("|---|---|---|---|---|---|---|---|")
     for lead, res, mt in summary:
-        best = res[0]
-        bm = min(res, key=lambda x: x[1]["mae"])
+        live = [x for x in res if x[2] >= 0.9 or x[0] == TODAY]
+        best = live[0]
+        bm = min(live, key=lambda x: x[1]["mae"])
         real = best[4]["csi"][0] is not None and best[4]["csi"][0] > 0
         print(f"| {lead} | {100 * mt['csi']:.0f} / {mt['mae']:.1f} / {mt['bias']:+.1f} | {name(best[0])}"
               f" | {pc(best[1]['csi'] - mt['csi'], True)}{iv(best[4]['csi'], True)}"
