@@ -27,6 +27,7 @@ the best 2 h, go days caught (of measured go days), false gos (of forecast go da
 import argparse
 import concurrent.futures as cf
 import datetime as dt
+import hashlib
 import json
 import os
 import random
@@ -54,6 +55,8 @@ TODAY = ("best_match", "sea")
 SINGLES = [(m, c) for m in MODELS for c in CELLS]
 OPT1 = [("meteofrance_arome_france_hd", "land"), ("icon_seamless", "land"), ("ecmwf_ifs025", "sea")]
 REPS = 1000
+CACHE = os.path.join(HERE, ".cache")
+REFUSED = set()
 
 
 def name(src):
@@ -70,10 +73,19 @@ def fetch(lat, lon, model, cell, start, end):
     vars_ = ",".join(f"{v}{s}" for s in sufs.values() for v in ("wind_speed_10m", "wind_direction_10m"))
     out = {n: {} for n in LEADS}
     for lo, hi in months(start, end):
-        j = om("https://previous-runs-api.open-meteo.com/v1/forecast", urllib.parse.urlencode({
+        url = "https://previous-runs-api.open-meteo.com/v1/forecast"
+        body = urllib.parse.urlencode({
             "latitude": f"{lat:.5f}", "longitude": f"{lon:.5f}", "hourly": vars_,
             "wind_speed_unit": "kn", "timezone": "GMT", "start_date": lo, "end_date": hi,
-            "models": model, "cell_selection": cell}))
+            "models": model, "cell_selection": cell})
+        j = om(url, body)
+        if "error" in j:
+            # When overloaded (2 Nov) Open-Meteo answers "No data is available for this location"
+            # for in-domain points too: never keep a refusal, it is retried on the next online run.
+            path = os.path.join(CACHE, hashlib.sha1((url + body).encode()).hexdigest())
+            if os.path.exists(path) and not os.environ.get("BACKTEST_OFFLINE"):
+                os.remove(path)
+            REFUSED.add((model, cell, f"{lat:.3f},{lon:.3f}"))
         h = j.get("hourly") or {}
         for n, suf in sufs.items():
             sp, d = h.get(f"wind_speed_10m{suf}") or [], h.get(f"wind_direction_10m{suf}") or []
@@ -260,6 +272,10 @@ def main():
     sites = [s for s in sites if s[1] not in drop]
     fc = all_forecasts(sites, a.workers)
     if a.fetch:
+        by = {}
+        for m, c, _ in REFUSED:
+            by[(m, c)] = by.get((m, c), 0) + 1
+        print("refused (model, cell): sites", sorted(by.items()), file=sys.stderr)
         return
     rows = rows_for(sites, fc)
     picks = pick_best_two(rows)
