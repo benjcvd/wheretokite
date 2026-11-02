@@ -1,7 +1,114 @@
-# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80, WHE-87)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
+
+## Which forecast for each day ahead, today to +5 (WHE-87, 2 Nov): one 3-model mix beats today's at every lead
+
+**In plain words.** I tested every source Open-Meteo keeps past forecasts for, each on the beach
+point and the sea point, for each day ahead from today to +5, against 32 trusted sites over 84 days
+(8 Aug – 30 Oct: 19 French masts, 5 southern Spanish masts, 2 Canary masts, 3 buoys, Barcelona
+airport and Port Bocana Sud; 2,618 spot-days, 788 measured go days per lead). One rule wins,
+the same everywhere: **the mean of Météo-France seamless (beach point), ECMWF 9 km (sea point) and
+GFS (sea point)**. Météo-France has no forecast past day 3, so from day 4 the rule falls back to
+ECMWF 9 km + GFS by itself.
+For riders (measured): on today and tomorrow it catches about 1 more go day in 10 (66 → 75 %,
+65 → 73 %) **and** sends fewer people to a dead beach (false gos 23 → 20 %, 26 → 22 %). On days
+2–3 it's a tie on go days, with a smaller best-2 h error. On days 4–5 it's slightly better (borderline).
+It reads strong days as strong more often than today's source (it doesn't soften storms).
+
+**What the app reads today is not what you think.** "Best match" is not "AROME, then ARPEGE"
+everywhere. In the past forecasts it copies ICON-EU on 76–81 % of hours in Spain and at the buoys;
+in France it's mostly something unnamed (ICON-D2/AROME blend). Live this afternoon it was Météo-France at
+Sant Pere, ICON at Sète and none of the named models at Castelldefels. So today the app reads an
+unnamed, place-dependent mix. Naming the models fixes that.
+
+### Winner per day ahead (all 32 sites; Δ = mix minus today, 95 % interval over dates)
+
+| Day ahead | Recommended source (exact Open-Meteo names) | Go days caught | False gos | CSI* gain | Best-2 h error | Bias today → mix |
+|---|---|---|---|---|---|---|
+| 0 (today) | `meteofrance_seamless` land + `ecmwf_ifs` sea + `gfs_seamless` sea | 66 → 75 % | 23 → 20 % | **+8 (+5…+11)** | 2.7 → 2.1 kn | −0.8 → −0.3 |
+| +1 | same | 65 → 73 % | 26 → 22 % | **+7 (+4…+10)** | 3.1 → 2.4 kn | −0.7 → −0.5 |
+| +2 | same | 64 → 64 % | 24 → 21 % | +1 (−3…+4) tie | 3.1 → 2.7 kn | −1.0 → −0.9 |
+| +3 | same | 62 → 60 % | 27 → 24 % | −0 (−4…+3) tie | 3.3 → 2.8 kn | −1.1 → −1.0 |
+| +4 | `ecmwf_ifs` sea + `gfs_seamless` sea (Météo-France has no forecast this far) | 54 → 58 % | 32 → 30 % | +3 (+0…+6) | 3.7 → 3.2 kn | −1.4 → −0.8 |
+| +5 (Pro) | same | 55 → 60 % | 35 → 33 % | +4 (+1…+7) | 4.0 → 3.3 kn | −1.2 → −0.7 |
+
+\*CSI = go days caught ÷ (caught + missed + false gos): one score that punishes missed days and dead
+beaches equally. The error gain (best 2 h) is real at every lead (interval excludes 0).
+
+Runners-up, for the record: Météo-France seamless on the beach point alone ties the mix on day 0
+(CSI +8) but adds false gos from day 1; AROME HD/2.5 only exist to day 1 and only in AROME's domain
+(79 % of spot-days); WHE-61 Option 1 (AROME HD + ICON beach, ECMWF 25 km sea) misses go days at
+every lead (−5 to −11 points caught); every model on the beach point reads 1–3 kn low except
+Météo-France; ECMWF 9 km beats ECMWF 25 km on error at every lead. Full tables:
+[results/whe87.md](../tools/backtest/results/whe87.md).
+
+### Per group (CSI / bias kn, today → mix) and robustness
+
+| Day ahead | Barcelona (2 masts) | Canaries | France | South Spain | POEM near-shore buoy | Begur/Tarragona buoys |
+|---|---|---|---|---|---|---|
+| 0 | 19 → 42 | 72 → 75 | 56 → 67 | 33 → 41 | **53 → 32** | 69 → 80 |
+| +1 | 14 → 28 | 67 → 79 | 55 → 62 | 26 → 48 | **54 → 39** | 73 → 74 |
+| +2 | 22 → 20 | 67 → 74 | 57 → 57 | 22 → 41 | **48 → 29** | 67 → 69 |
+| +3 | 18 → 16 | 70 → 74 | 53 → 53 | 19 → 32 | **45 → 24** | 65 → 64 |
+| +4 | 18 → 10 | 63 → 74 | 44 → 49 | 16 → 32 | 33 → 23 | 56 → 52 |
+| +5 | 9 → 9 | 61 → 68 | 44 → 49 | 18 → 33 | 34 → 30 | 60 → 55 |
+
+- Without the 19 French masts: the mix still wins day 1 (CSI +6, +2…+11), day 0 borderline (+4, −1…+9), ties after.
+- Without the Canaries and southern Spain: same picture as the full set (day 0 +9, day 1 +5, ties 2–3).
+- Strong wind (131 spot-days measured ≥ 22 kn, mean 26.5 kn): the mix reads them at 24 kn on day 0 vs 22.6
+  today; it reads ≥ 18 kn on 92 % of them vs 79 % (day 0), 76 % vs 63 % at day 4. Safer, not milder.
+- [Checks](../tools/backtest/results/whe87_checks.md),
+  [without France](../tools/backtest/results/whe87_no_france.md),
+  [without the south](../tools/backtest/results/whe87_no_south.md).
+
+### Real days (forecast the day before, best 2 h kn)
+
+| Day | Where | Measured | Today | Mix |
+|---|---|---|---|---|
+| 26 Aug | Begur buoy | 18, go | 9 | 18, go |
+| 1 Oct | Barcelona airport (Castelldefels) | 4 | 9 | 0 |
+| 19 Oct | Port Bocana Sud (Barceloneta) | 23, go | 10 | 19, go |
+| 27 Aug | Tarragona buoy | 19, go | 21, go | 13, go |
+| 27 Oct | Begur buoy | 13 | 7 | 14, false go |
+
+### What could make this wrong
+
+- **Near-shore water (POEM, Roussillon) goes the other way**: there today's source is AROME HD and the
+  mix loses badly (CSI 53 → 32 on day 0, reads 3 kn low). One buoy, two spots, 146 spot-days: too few to
+  overturn 30 other sites, but it's the one place measured *on the water near a beach*, which is where
+  riders are. WHE-62 saw the same. If you know a spot where AROME nails the thermal, that's this effect.
+- **Part of the gain is cancellation**: GFS reads high (+0.1…+0.5 kn), ECMWF low (−0.7…−1.2). If one
+  model is upgraded the mix shifts; re-run `whe87.py` after any big model change.
+- **Day 0 is optimistic**: Previous Runs' day 0 is the latest run (0–6 h ahead); the app's morning look is similar.
+- **Masts sit on land**: 21 of 32 sites are shore masts. The result survives dropping France, but the
+  mix being slightly low at masts could still mean slightly low on water (buoys: −0.3…+0.0 kn at day 0–1).
+- **One autumn**: 84 days, August–October, both thermal and synoptic days, no winter storms. Re-check in spring.
+- Barcelona days 2–5 show no gain (157 spot-days, 50 go days: noisy).
+
+### Cost in Open-Meteo calls
+
+Today: 1 request per batch of up to 100 spots (best match, sea point, 6 variables). The mix needs 2
+requests per batch (one per point: Météo-France on the beach point; ECMWF 9 km + GFS on the sea point),
+like WHE-61 Option 1. Open-Meteo bills per location per request; it doesn't document whether 2 models in
+one request count once or twice, so **estimated 2× to 3× today's calls**. New Worker cache keys (one-time
+refill). From day 4 the beach-point request can be skipped.
+
+### Recommendation
+
+1. **Ship the mix as one rule for every day ahead (recommended)**: `meteofrance_seamless` on the beach
+   point + `ecmwf_ifs` + `gfs_seamless` on the sea point, mean of what answers. Real gain today and
+   tomorrow, never worse elsewhere on average, safer on strong days, and the app finally names its models.
+   Cost 2–3× calls.
+2. Same as 1 but `meteofrance_seamless` beach point alone for today and tomorrow: same day-0 score, more false gos on day 1, two rules instead of one.
+3. Keep best match: cheapest, but it reads an unnamed, place-dependent model and misses ~1 go day in 10 at days 0–1.
+
+Before building 1, a one-week live check on POEM-like near-beach spots (WHE-62 buoy) would be wise.
+
+    python3 tools/backtest/whe87.py --fetch      # ~4k weighted Open-Meteo calls, once
+    BACKTEST_OFFLINE=1 python3 tools/backtest/whe87.py > tools/backtest/results/whe87.md
+    BACKTEST_OFFLINE=1 python3 tools/backtest/whe87_checks.py > tools/backtest/results/whe87_checks.md
 
 ## One correction learned from measurements, the same at every spot (WHE-80, 2 Nov): don't ship it
 

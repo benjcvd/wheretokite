@@ -54,6 +54,12 @@ CELLS = ["land", "sea"]
 TODAY = ("best_match", "sea")
 SINGLES = [(m, c) for m in MODELS for c in CELLS]
 OPT1 = [("meteofrance_arome_france_hd", "land"), ("icon_seamless", "land"), ("ecmwf_ifs025", "sea")]
+# Fixed mixes named after the cross-validated "best two" picks (so they are a rule, not re-picked per week)
+BLENDS = {"Option 1 mix": OPT1,
+          "Mix MF beach + ECMWF 9 km sea": [("meteofrance_seamless", "land"), ("ecmwf_ifs", "sea")],
+          "Mix ECMWF 9 km + GFS, sea": [("ecmwf_ifs", "sea"), ("gfs_seamless", "sea")],
+          "Mix MF beach + ECMWF 9 km + GFS sea": [("meteofrance_seamless", "land"), ("ecmwf_ifs", "sea"),
+                                                  ("gfs_seamless", "sea")]}
 REPS = 1000
 CACHE = os.path.join(HERE, ".cache")
 REFUSED = set()
@@ -173,7 +179,7 @@ def predict(r, cand):
     if isinstance(cand, tuple):
         s, own = (ser[cand], True) if cand in ser else (ser[TODAY], False)
     else:
-        members = OPT1 if cand == "Option 1 mix" else r["best_two"]
+        members = BLENDS.get(cand) or r["best_two"]
         s = blend(ser, members)
         own = s is not None and all(m in ser for m in members)
         s = s or ser[TODAY]
@@ -281,7 +287,7 @@ def main():
     picks = pick_best_two(rows)
     for r in rows:
         r["best_two"] = picks[(r["lead"], week_parity(r["day"]))]
-    cands = SINGLES + ["Option 1 mix", "Mean of best two"]
+    cands = SINGLES + list(BLENDS) + ["Mean of best two"]
     for r in rows:
         r["pred"] = {c: predict(r, c) for c in cands}
 
