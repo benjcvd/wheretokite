@@ -223,3 +223,12 @@ catches the most real go days. The only real gain is a correction per spot from 
 station's past misses, which exists only where an open, trusted station sits next to the spot.
 Tricky: an error gain from a correction tied to the forecast speed is regression to the mean;
 always check the 25 kn+ hours.
+
+**Forecast accuracy, 2 Nov (WHE-87).** Which source for each day ahead (0–5): 9 Open-Meteo sources
+× beach/sea point + mixes, 32 trusted sites, 84 days (`tools/backtest/whe87.py`, `whe87_checks.py`).
+Today's "best match" turns out to be an unnamed, place-dependent model (mostly ICON-EU in Spain in the
+archive). One rule wins at every lead: mean of `meteofrance_seamless` (beach point) + `ecmwf_ifs` +
+`gfs_seamless` (sea point); Météo-France drops out from day 4. Real gain days 0–1, tie 2–3, slight
+gain 4–5, strong days read stronger. Only dissent: the POEM near-shore buoy, where AROME is better.
+Report only; waiting for Ben's pick. Open-Meteo's archive answered "no data" while overloaded:
+the script never caches refusals.
