@@ -155,7 +155,38 @@ final class ConfidenceTests: XCTestCase {
         XCTAssertEqual(no.scoreBeforeChance, go.finalScore)
     }
 
-    /// A spot pushed up into the top by the caps gets its own check in the next round.
+    /// Verdict first (Ben, 2 Nov): a 30 "Go" ranks above a 69 "Not sure", which ranks above a
+    /// "No"; spots never checked come after those, and spots at 0 last.
+    func testVerdictRanksBeforeGrade() {
+        func rec(_ id: String, _ score: Int, _ v: KiteVerdict?) -> SpotRecommendation {
+            var r = SpotRecommendation(spot: Spot(id: id, name: id, latitude: 45, longitude: 1, seaFacingDeg: 165),
+                                       driveMinutes: 30, driveIsEstimate: true, windScore: score, finalScore: score,
+                                       window: nil, hours: [], reason: "")
+            r.chance = v.map { KiteChance(chance: 0.5, verdict: $0, leadDays: 1, minWindKn: 11, modelBestKn: [:]) }
+            return r
+        }
+        let list = [rec("unchecked", 80, nil), rec("zero", 0, nil), rec("no", 39, .no),
+                    rec("notSure", 69, .notSure), rec("go", 30, .go), rec("go2", 55, .go)]
+        XCTAssertEqual(list.sorted(by: Recommender.ranks).map(\.id), ["go2", "go", "notSure", "no", "unchecked", "zero"])
+    }
+
+    /// Searching end to end: the top pick is a Go even when a Not sure had the higher grade.
+    func testTopPickIsAGoOverAHigherNotSure() async throws {
+        let all = spots(2)
+        let shaky = all[1].longitude
+        let conf = FakeConfidence { _ in 1 }
+        conf.modelSpeeds = { $0.longitude == shaky ? [10, 11, 12, 13] : [18, 18, 18, 18] }
+        // s0000: light in the blend (lower grade) but the models agree on wind; s0001: 16 kn.
+        let r = Recommender(spots: all, forecast: FakeForecast { $0.longitude == shaky ? 16 : 11.1 },
+                            driveTime: StraightLineDriveTime(), confidence: conf)
+        let result = try await r.search(request, profile: rider, today: "2026-10-01")
+        let recs = result.recommendations
+        XCTAssertEqual(recs.map(\.kiteVerdict), [.go, .notSure])
+        XCTAssertEqual(recs[0].spot.id, "s0000")
+        XCTAssertLessThan(recs[0].finalScore, recs[1].finalScore)
+    }
+
+    /// While fewer than `confidenceTop` spots are Go, the next unchecked spots are checked.
     func testPromotedSpotsAreCheckedToo() async throws {
         let conf = FakeConfidence { _ in 1 }
         conf.modelSpeeds = { _ in [5, 5, 6, 6] }   // every spot: No
@@ -164,8 +195,9 @@ final class ConfidenceTests: XCTestCase {
         let result = try await r.search(request, profile: rider, today: "2026-10-01")
         XCTAssertEqual(conf.calls.count, r.chanceRounds)
         XCTAssertEqual(result.recommendations.filter { $0.chance != nil }.count, r.confidenceTop * r.chanceRounds)
-        // Unchecked spots keep their grade and sit on top: 3 rounds of 10 can't cover 40 spots.
-        XCTAssertNil(result.recommendations[0].chance)
+        // Unchecked spots keep their grade and rank after the checked ones.
+        XCTAssertNotNil(result.recommendations[0].chance)
+        XCTAssertNil(result.recommendations.last?.chance)
     }
 
     func testChanceFollowsTheMarginAboveMinWind() {

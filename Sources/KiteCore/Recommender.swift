@@ -98,8 +98,8 @@ public struct SearchResult: Sendable {
 ///    exceeds the max drive.
 /// 6. Chance to kite: the weather models are compared at the top `confidenceTop` spots (one
 ///    request): each gets Go / Not sure / No, a "Not sure" or "No" caps its grade, and the list
-///    is re-ranked. Spots that move up into the top are checked in a further round
-///    (`chanceRounds` at most).
+///    is re-ranked verdict first (Go, Not sure, No, unchecked). While fewer than `confidenceTop`
+///    spots are Go, the next ones are checked in a further round (`chanceRounds` at most).
 public struct Recommender: Sendable {
     public var spots: [Spot]
     public var forecast: ForecastProvider
@@ -130,7 +130,7 @@ public struct Recommender: Sendable {
     /// Spots whose models are compared (step 6), best first. One request whatever the number,
     /// but each location counts against the Open-Meteo quota (with 4 models, more than once).
     public var confidenceTop = 10
-    /// Requests at most for step 6 (spots promoted by a cap get checked in the next round).
+    /// Requests at most for step 6 (the next best unchecked spots each round).
     public var chanceRounds = 3
 
     public init(spots: [Spot], forecast: ForecastProvider, driveTime: DriveTimeProvider,
@@ -178,10 +178,22 @@ public struct Recommender: Sendable {
         return spotIsland == originIsland
     }
 
+    /// Ranking order: spots that score before those at 0, then the verdict (Go, Not sure, No,
+    /// then spots the models weren't compared at), then the grade, wind score, shorter drive.
+    /// Verdict first so a "Not sure" never sits above a "Go" (Ben, 2 Nov).
     static func ranks(_ a: SpotRecommendation, before b: SpotRecommendation) -> Bool {
-        (a.finalScore, a.windScore, -a.driveMinutes) != (b.finalScore, b.windScore, -b.driveMinutes)
-            ? (a.finalScore, a.windScore, -a.driveMinutes) > (b.finalScore, b.windScore, -b.driveMinutes)
-            : a.spot.id < b.spot.id
+        let ka = (a.finalScore > 0 ? 0 : 1, verdictRank(a), -a.finalScore, -a.windScore, a.driveMinutes)
+        let kb = (b.finalScore > 0 ? 0 : 1, verdictRank(b), -b.finalScore, -b.windScore, b.driveMinutes)
+        return ka != kb ? ka < kb : a.spot.id < b.spot.id
+    }
+
+    static func verdictRank(_ r: SpotRecommendation) -> Int {
+        switch r.chance?.verdict {
+        case .go: 0
+        case .notSure: 1
+        case .no: 2
+        case nil: 3
+        }
     }
 
     /// Step 4: which spots to ask a real ETA for, given the current ranking (best first).
@@ -291,14 +303,17 @@ public struct Recommender: Sendable {
     }
 
     /// Step 6: compare the models at the top spots that score, turn their agreement into a
-    /// chance to kite, cap the grade of "Not sure" / "No" spots and re-rank. Repeats for spots
-    /// that move up into the top. A failed check changes nothing.
+    /// chance to kite, cap the grade of "Not sure" / "No" spots and re-rank (verdict first).
+    /// While fewer than `confidenceTop` spots are Go, the next best unchecked spots are checked
+    /// (`chanceRounds` requests at most). A failed check changes nothing.
     func checkChance(_ ranked: [SpotRecommendation], confidence: ConfidenceProvider, scorer: Scorer,
                      request: SearchRequest, today: String) async -> [SpotRecommendation] {
         var out = ranked
         var checked = Set<String>()
         for _ in 0..<max(0, chanceRounds) {
-            let todo = out.prefix(max(0, confidenceTop)).filter { $0.finalScore > 0 && !checked.contains($0.id) }
+            guard out.filter({ $0.chance?.verdict == .go }).count < confidenceTop else { break }
+            // Unchecked spots rank below checked ones, in grade order among themselves.
+            let todo = Array(out.filter { $0.finalScore > 0 && !checked.contains($0.id) }.prefix(max(0, confidenceTop)))
             guard !todo.isEmpty else { break }
             checked.formUnion(todo.map(\.id))
             // Each model's best 2 h is looked for over the searched hours, as in the tuning.
