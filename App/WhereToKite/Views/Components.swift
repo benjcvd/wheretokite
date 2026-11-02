@@ -11,8 +11,7 @@ enum ScoreStyle {
     static func gradient(_ score: Int) -> LinearGradient {
         let colors: [Color] = switch KiteVerdict(grade: score) {
         case .go: [Color(red: 0.05, green: 0.70, blue: 0.48), Color(red: 0.00, green: 0.47, blue: 0.75)]
-        case .worthATry: [Color(red: 0.52, green: 0.76, blue: 0.16), Color(red: 0.12, green: 0.60, blue: 0.42)]
-        case .coinFlip: [Color(red: 0.96, green: 0.72, blue: 0.05), Color(red: 0.93, green: 0.52, blue: 0.10)]
+        case .worthATry: [Color(red: 0.70, green: 0.76, blue: 0.12), Color(red: 0.30, green: 0.62, blue: 0.30)]
         case .longShot: [Color(red: 0.95, green: 0.48, blue: 0.20), Color(red: 0.82, green: 0.26, blue: 0.30)]
         case .noGo: [Color(red: 0.42, green: 0.46, blue: 0.54), Color(red: 0.28, green: 0.31, blue: 0.40)]
         }
@@ -109,8 +108,7 @@ extension KiteVerdict {
     var color: Color {
         switch self {
         case .go: Color(red: 0.13, green: 0.72, blue: 0.42)
-        case .worthATry: Color(red: 0.45, green: 0.70, blue: 0.12)
-        case .coinFlip: Color(red: 0.90, green: 0.66, blue: 0.00)
+        case .worthATry: Color(red: 0.62, green: 0.70, blue: 0.05)
         case .longShot: Color(red: 0.95, green: 0.48, blue: 0.18)
         case .noGo: Color(.systemGray)
         }
@@ -155,6 +153,7 @@ struct ChanceInfoButton: View {
                 ForEach(KiteVerdict.allCases, id: \.self) { v in
                     Text("**\(Vocab.verdict(v))** (\(Vocab.verdictBand(v))): \(Vocab.verdictMeaning(v))")
                 }
+                Text("A No go caused by a safety rule (storm, kiting ban, darkness, offshore wind) says which one.")
                 Text("The grade weighs the wind, gusts and direction for you, and how likely the wind is. We compare four weather models: when they aren't sure, a spot is Worth a try at best; when they see too little wind, a Long shot at best.")
                 Text("Forecasts are never perfect: this is our best estimate. In our tests on past days, wind the models called likely came true about 85 % of the time. The further ahead the day, the less sure any forecast is.")
             }
@@ -195,10 +194,7 @@ struct VerdictBanner: View {
     }
 
     private var detail: String {
-        let base = [Vocab.verdictMeaning(verdict), Vocab.windReason(rec.chance?.outlook, capped: rec.scoreBeforeChance != nil)]
-            .compactMap { $0 }.joined(separator: " ")
-        guard let lead = rec.chance?.leadDays, lead >= 3 else { return base }
-        return base + " " + String(localized: "\(lead) days ahead: it can still change.")
+        rec.safetyReason.map(Vocab.safetyReason) ?? Vocab.verdictMeaning(verdict)
     }
 }
 

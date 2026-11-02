@@ -41,7 +41,7 @@ struct ResultsSection: View {
     }
 
     /// Score from which the top spot gets the "go" card.
-    static let verdictMinimum = ScoringRules().verdictFromGrade.coinFlip   // Go, Worth a try or Coin flip
+    static let verdictMinimum = ScoringRules().verdictFromGrade.worthATry   // Go or Worth a try
 
     // MARK: Result
 

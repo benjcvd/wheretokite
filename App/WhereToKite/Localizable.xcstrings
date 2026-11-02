@@ -313,22 +313,6 @@
         }
       }
     },
-    "%lld days ahead: it can still change." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Faltan %lld días: aún puede cambiar."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dans %lld jours : ça peut encore changer."
-          }
-        }
-      }
-    },
     "%lld degrees, %@" : {
       "localizations" : {
         "es" : {
@@ -652,6 +636,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Beaucoup"
+          }
+        }
+      }
+    },
+    "A No go caused by a safety rule (storm, kiting ban, darkness, offshore wind) says which one." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si un No go se debe a una regla de seguridad (tormenta, prohibición, noche, viento offshore), te decimos cuál."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quand un No go vient d'une règle de sécurité (orage, interdiction, nuit, vent offshore), on te dit laquelle."
           }
         }
       }
@@ -1426,23 +1426,6 @@
         }
       }
     },
-    "Coin flip" : {
-      "comment" : "Verdict: grade 40 to 54",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cara o cruz"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pile ou face"
-          }
-        }
-      }
-    },
     "Coming soon. Everything you use today stays free." : {
       "localizations" : {
         "es" : {
@@ -1455,22 +1438,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bientôt. Tout ce que tu utilises aujourd'hui reste gratuit."
-          }
-        }
-      }
-    },
-    "Could go either way." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Puede salir bien o mal."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ça peut aller dans un sens comme dans l'autre."
           }
         }
       }
@@ -1926,6 +1893,22 @@
         }
       }
     },
+    "Everything lines up: expect a good session." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo encaja: cuenta con una buena sesión."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout est réuni : attends-toi à une bonne session."
+          }
+        }
+      }
+    },
     "except at high tide" : {
       "localizations" : {
         "es" : {
@@ -2181,22 +2164,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bien"
-          }
-        }
-      }
-    },
-    "Good session expected." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se espera una buena sesión."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bonne session en vue."
           }
         }
       }
@@ -2459,6 +2426,22 @@
         }
       }
     },
+    "It's dark at these hours." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A estas horas ya es de noche."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il fait nuit à ces heures-là."
+          }
+        }
+      }
+    },
     "It's on alerts" : {
       "localizations" : {
         "es" : {
@@ -2587,6 +2570,22 @@
         }
       }
     },
+    "Kiting is banned here at these hours." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El kite está prohibido aquí a estas horas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le kite est interdit ici à ces heures-là."
+          }
+        }
+      }
+    },
     "Language" : {
       "localizations" : {
         "es" : {
@@ -2685,7 +2684,7 @@
       }
     },
     "Long shot" : {
-      "comment" : "Verdict: grade 20 to 39",
+      "comment" : "Verdict: grade 20 to 49",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -2697,6 +2696,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Peu probable"
+          }
+        }
+      }
+    },
+    "Looks promising, but the forecast can still shift. Good odds, no guarantee." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pinta bien, pero la previsión aún puede cambiar. Buenas opciones, sin garantías."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ça s'annonce bien, mais la prévision peut encore bouger. De bonnes chances, sans garantie."
           }
         }
       }
@@ -2860,22 +2875,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Matin"
-          }
-        }
-      }
-    },
-    "Most likely good, but we can't be sure." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lo más probable es que esté bien, pero no podemos asegurarlo."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sûrement bien, mais on ne peut pas en être sûrs."
           }
         }
       }
@@ -3380,18 +3379,18 @@
         }
       }
     },
-    "Not worth it, or unsafe." : {
+    "Not worth the trip today." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No merece la pena, o no es seguro."
+            "value" : "Hoy no merece la pena el viaje."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ça n'en vaut pas la peine, ou c'est dangereux."
+            "value" : "Pas la peine de faire la route aujourd'hui."
           }
         }
       }
@@ -3441,6 +3440,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "offshore"
+          }
+        }
+      }
+    },
+    "Offshore wind: it would blow you out to sea." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viento offshore: te llevaría mar adentro."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent offshore : il te pousserait vers le large."
           }
         }
       }
@@ -3798,18 +3813,18 @@
         }
       }
     },
-    "Probably not. Only if you don't want to miss any chance." : {
+    "Probably not enough, but there's an outside chance. Only if you'd hate to miss it." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Probablemente no. Solo si no quieres perderte ninguna oportunidad."
+            "value" : "Seguramente no habrá suficiente, aunque hay una pequeña posibilidad. Solo si no quieres perdértelo por nada."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Probablement pas. Seulement si tu ne veux rater aucune chance."
+            "value" : "Sûrement pas assez, mais il reste une petite chance. Seulement si tu ne veux surtout pas le rater."
           }
         }
       }
@@ -4928,54 +4943,6 @@
         }
       }
     },
-    "The weather models agree on the wind." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los modelos meteorológicos coinciden en el viento."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les modèles météo sont d'accord sur le vent."
-          }
-        }
-      }
-    },
-    "The weather models aren't sure there will be enough wind for you." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los modelos meteorológicos no están seguros de que tengas viento suficiente."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les modèles météo ne sont pas sûrs que tu auras assez de vent."
-          }
-        }
-      }
-    },
-    "The weather models see too little wind for you." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los modelos meteorológicos ven poco viento para ti."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les modèles météo voient trop peu de vent pour toi."
-          }
-        }
-      }
-    },
     "The whole week, not just the next four days." : {
       "localizations" : {
         "es" : {
@@ -5068,6 +5035,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "risque d'orage"
+          }
+        }
+      }
+    },
+    "Thunderstorm risk: stay off the water." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riesgo de tormenta: no salgas al agua."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Risque d'orage : reste à terre."
           }
         }
       }
@@ -5952,7 +5935,7 @@
       }
     },
     "Worth a try" : {
-      "comment" : "Verdict: grade 55 to 69",
+      "comment" : "Verdict: grade 50 to 69",
       "localizations" : {
         "es" : {
           "stringUnit" : {
