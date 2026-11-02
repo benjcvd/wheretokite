@@ -44,6 +44,13 @@ public struct SpotRecommendation: Sendable, Identifiable {
         let problem = Recommender.mainProblem(slice.isEmpty ? hours : slice)
         return ["thunderstorm risk", "kiting banned", "dark", "offshore"].contains(problem) ? problem : nil
     }
+    /// True when an hour the score is made of (best window, else the scored hours) is
+    /// side-offshore and still scores: the app shows "Side-offshore: advanced only" (WHE-75).
+    public var hasSideOffshore: Bool {
+        let range = window ?? scoredHours
+        let slice = range.map { r in hours.filter { $0.wind.hour >= r.start && $0.wind.hour < r.end } } ?? hours
+        return slice.contains { $0.score > 0 && $0.flags.contains("side-offshore") }
+    }
     /// Local hour (spot time) a thunderstorm is forecast to start, when it comes during the
     /// session or soon after it (`ScoringRules.stormAlertHoursAfter`): "Storm from 4 pm".
     public var stormFrom: Int? = nil
