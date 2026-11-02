@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T21:49:22Z",
+  "generatedAt": "2026-11-02T21:38:54Z",
   "region": "europe",
   "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); spot selection curated by WhereToKite",
   "spots": [
@@ -2252,7 +2252,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 78.4,
       "source": "curated",
-      "notes": "Authorised summer kite zone; flat water on the Badia dels Alfacs (west) side.",
+      "notes": "Summer thermal (S) spot; flat, shallow water on the Badia dels Alfacs (west) side, about 1 m deep in places. Schools report signposted kite zones in summer.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2292,13 +2292,13 @@
     {
       "id": "es-platja-dels-eucaliptus-ebro-delta",
       "name": "Platja dels Eucaliptus (Ebro delta)",
-      "latitude": 40.6532,
-      "longitude": 0.77977,
+      "latitude": 40.65165,
+      "longitude": 0.78052,
       "seaFacingDeg": 151.3,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 272.7,
+      "distanceToShoreM": 90.8,
       "source": "curated",
-      "notes": "Shallow water at the root of the Trabucador; beginner-friendly.",
+      "notes": "Shallow water at the root of the Trabucador, where the schools teach; beginner-friendly. In summer ride only the signposted kite zone.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2313,7 +2313,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 24.4,
       "source": "curated",
-      "notes": "Authorised summer kite zone; best in mestral (NW, cross-shore), summer southerlies are offshore.",
+      "notes": "Mainly an autumn–spring spot: best in mestral (NW, cross-shore); summer southerlies are offshore. Schools ride a signposted zone; one guide says the beach is closed to kites in summer. Check the signs on site.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2328,7 +2328,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Remote sandspit at the north of the delta; access on foot; flat water in the bay.",
+      "notes": "Remote sandspit at the north of the delta; access on foot; flat water in the bay. No school or marked kite zone here: ride only if you know the spot.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2404,7 +2404,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 256.1,
       "source": "curated",
-      "notes": "Long beach south of the village; garbí and levante.",
+      "notes": "Long beach south of the village; garbí and levante. The council has opened a marked kite zone on Platja de l'Arenal (before Camping Cala d'Oques); if it runs this summer, kiting is allowed there.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2492,28 +2492,6 @@
       "distanceToShoreM": 51.2,
       "source": "curated",
       "notes": "Beach east of Tarragona; garbí and levante.",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-torredembarra",
-      "name": "Torredembarra",
-      "latitude": 41.1433,
-      "longitude": 1.41236,
-      "seaFacingDeg": 150.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 45.2,
-      "source": "curated",
-      "notes": "Off-season spot: kiting banned 1 Jun–30 Sep. Keep off the protected Muntanyans dunes east of town.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2622,10 +2600,24 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 37.0,
       "source": "curated",
-      "notes": "Authorised summer kite zone (online registration required).",
+      "notes": "Town kite zone 1 Jun–mid Sep at Platja de la Pineda, between Carrer 9 and Carrer 11: weekdays 15–19 h only (2026), closed weekends and holidays, free licence and vest from the office at Passeig Marítim 159. Outside those hours kiting is banned in summer. Free the rest of the year.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
+      "bans": [
+        {
+          "from": "06-01",
+          "to": "09-30",
+          "startHour": 0,
+          "endHour": 15
+        },
+        {
+          "from": "06-01",
+          "to": "09-30",
+          "startHour": 19,
+          "endHour": 24
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -2637,7 +2629,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 12.6,
       "source": "curated",
-      "notes": "City beach; off-season levante / gregal days only.",
+      "notes": "City beach; the city bans kiting 1 Jun–30 Sep. Off-season levante / gregal days only, away from the boat channels.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2659,7 +2651,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 27.6,
       "source": "curated",
-      "notes": "No official kite zone: kiting banned 1 Jun–30 Sep; off-season levante / gregal days only.",
+      "notes": "No kite zone: the city bans kiting 1 Jun–30 Sep (Capitania Marítima rule); off-season levante / gregal days only, away from the boat channels.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2675,11 +2667,11 @@
     {
       "id": "es-badalona",
       "name": "Badalona",
-      "latitude": 41.44184,
-      "longitude": 2.2467,
-      "seaFacingDeg": 118.8,
+      "latitude": 41.44148,
+      "longitude": 2.24667,
+      "seaFacingDeg": 118.6,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 45.2,
+      "distanceToShoreM": 38.1,
       "source": "curated",
       "notes": "City beach north of Barcelona; levante and gregal days.",
       "country": "ES",
@@ -2763,7 +2755,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 28.4,
       "source": "curated",
-      "notes": "Town beach; easterlies and summer thermal.",
+      "notes": "Town beach; garbí (SW summer thermal) cross-shore. Gregal and levante bring shorebreak and chop, not for beginners. Quieter by the Ridaura mouth; the wind drops south of the harbour wall.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2801,10 +2793,11 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 24.8,
       "source": "curated",
-      "notes": "Sheltered bay north of Palamós; easterlies and summer thermal. Irregular shoreline near the spot; orientation less certain.",
+      "notes": "Sheltered bay north of Palamós; easterlies and summer thermal; N/NW winds blow offshore. Irregular shoreline near the spot; orientation less certain.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
+      "tier": "pro",
       "bans": [
         {
           "from": "06-01",
@@ -2822,7 +2815,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 14.1,
       "source": "curated",
-      "notes": "Long open beach south of the Ter mouth; easterlies and summer thermal; tramuntana side-off.",
+      "notes": "Long open beach south of the Ter mouth; easterlies and summer thermal; tramuntana side-off. Kites restricted 1 Jun–30 Sep (Pals tourist office), no summer kite zone.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2837,13 +2830,13 @@
     {
       "id": "es-l-estartit-gola-del-ter",
       "name": "L'Estartit – Gola del Ter",
-      "latitude": 42.04077,
-      "longitude": 3.19326,
-      "seaFacingDeg": 97.5,
+      "latitude": 42.03697,
+      "longitude": 3.19761,
+      "seaFacingDeg": 97.2,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 262.4,
+      "distanceToShoreM": 150.6,
       "source": "curated",
-      "notes": "Summer kite zone (1 Jun–30 Sep) run by the local school; kite pass / registration required.",
+      "notes": "Kite zone on La Pletera beach, a beach concession run by the local school; in summer launch there only, other water sports stay beyond the swim buoys. Easterlies and summer thermal; tramuntana side-off.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2858,7 +2851,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 42.4,
       "source": "curated",
-      "notes": "Town beach at the south end of the Gulf of Roses; tramuntana and easterlies.",
+      "notes": "Town beach at the south end of the Gulf of Roses; tramuntana and easterlies. Packed with swimmers in summer.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2902,7 +2895,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 269.5,
       "source": "curated",
-      "notes": "Authorised summer kite zone (beginner and advanced sectors); tramuntana and summer thermal. Also: Empuriabrava – La Rubina (5 km north, easterlies).",
+      "notes": "Kite areas of about 200 m each: Cortal de la Vila (schools and free riding) and Cortal de la Devesa (run by the La Ballena Alegre campsite); authorised summer kite zone, stay in the marked channels. Tramuntana and summer thermal. Also: Empuriabrava – La Rubina (5 km north, easterlies).",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -2933,7 +2926,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 20.4,
       "source": "curated",
-      "notes": "Authorised summer kite zone at the Santa Margarida end (natural park beach); best in easterlies.",
+      "notes": "The only kite beach in Castelló d'Empúries: signposted zone at the Santa Margarida end (Aiguamolls natural park, use the marked dune paths); best in easterlies.",
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
@@ -7057,7 +7050,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 7.0,
       "source": "curated",
-      "notes": "Bays near the airport (Chicken Bay, Devil's Bay): very strong and consistent meltemi (NW, offshore-ish over low land), flat water. Experienced riders; centres on site. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (97° locally vs 54° over ±1.5 km).",
+      "notes": "Three bays near the airport (Chicken Bay for learning, Gun Bay, Devil's Bay): very strong and consistent meltemi from the north, over low land, flat water. A tour operator reports that kiting is not allowed in the bays while the windsurf centres are open (about 9:00–19:00): check locally. The dedicated kite beach is reported to be Agrilaopotamos, a few km away. Irregular shoreline near the spot; orientation less certain. Shoreline bends here (97° locally vs 54° over ±1.5 km).",
       "country": "GR",
       "region": "Karpathos",
       "waterType": "sea",
@@ -7074,7 +7067,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 0.0,
       "source": "curated",
-      "notes": "Isthmus with two sides: waves on the west side, flatter water on the east side. Meltemi (NW) May–Sept, often strong; schools on site.",
+      "notes": "Sandbar isthmus with two sides: waves on the west side, flatter lagoon on the east side (the wind is stronger and steadier there). Meltemi (NW) May–Sept, strongest July–Aug, a few knots above the rest of Rhodes; crowded in season. Schools teach on the lagoon, but one local site says kiting is restricted on the flat side: check the rules on the spot.",
       "country": "GR",
       "region": "Rhodes",
       "waterType": "sea",
@@ -7118,7 +7111,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 61.8,
       "source": "curated",
-      "notes": "Long sandy beach on the north coast; meltemi (NW) side-onshore, chop and small waves. Several kite centres, good for learning.",
+      "notes": "North-west coast of Kos, accelerated between the islands offshore: thermal meltemi (NW) from about noon to sunset, strong from June to September. Waist-deep sandbank about 50 m out, chop to small waves on windy days. The permitted kite zone is downwind where the beach is narrow with trees: tricky launch and landing. Several kite centres.",
       "country": "GR",
       "region": "Kos",
       "waterType": "sea",
@@ -7146,13 +7139,13 @@
     {
       "id": "gr-mikri-vigla",
       "name": "Mikri Vigla",
-      "latitude": 37.02788,
-      "longitude": 25.3712,
-      "seaFacingDeg": 311.8,
+      "latitude": 37.02819,
+      "longitude": 25.37027,
+      "seaFacingDeg": 314.4,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 12.6,
+      "distanceToShoreM": 73.9,
       "source": "curated",
-      "notes": "Meltemi (N) side-shore; flat-ish water on the south side, waves on the north side. Kite centre on site.",
+      "notes": "Meltemi (N), May–Sep, funnelled between Naxos and Paros: side-onshore, flat-ish water. A rocky headland splits the beach: kite on the north side, swimmers on the south. Narrow beach and rocky cape: some experience needed. Several IKO schools on site.",
       "country": "GR",
       "region": "Naxos",
       "waterType": "sea",
@@ -7169,7 +7162,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 80.9,
       "source": "curated",
-      "notes": "Channel towards Antiparos: meltemi (N) side-shore, flat to choppy water. Kite centre on site; watch the ferry route. Also: Golden Beach / New Golden Beach on the east coast (meltemi side-shore, chop; mainly windsurf).",
+      "notes": "Channel towards Antiparos: the meltemi (N) is accelerated through the 1 km strait; flat in the shallows, choppy when it blows hard; current in the channel. Two kite centres; watch the Paros–Antiparos ferry route. Also: Golden Beach / New Golden Beach on the east coast (meltemi side-shore, chop; mainly windsurf).",
       "country": "GR",
       "region": "Paros",
       "waterType": "sea",
@@ -7185,7 +7178,7 @@
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
-      "notes": "Bay near Mykonos town; meltemi (N) side-offshore, flat water. Kite school in summer. Irregular shoreline near the spot; orientation less certain.",
+      "notes": "North-west bay: the meltemi (N) is funnelled by the hills, strong late June to early September, gusty above 30 kt. Not very wide: ride upwind for space. Kite school on the beach; crowded in season. Irregular shoreline near the spot; orientation less certain.",
       "country": "GR",
       "region": "Mykonos",
       "waterType": "sea",
@@ -7315,6 +7308,24 @@
       "region": "Dubrovnik-Neretva",
       "waterType": "sea",
       "directionCheck": "uncertain"
+    },
+    {
+      "id": "hr-bol-brac",
+      "name": "Bol (Brač)",
+      "latitude": 43.25704,
+      "longitude": 16.63449,
+      "seaFacingDeg": 178.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 28.9,
+      "source": "curated",
+      "notes": "Maestral accelerated by the Brač–Hvar channel, strong and gusty: experienced riders. Launch near Zlatni Rat is restricted in peak season, riders use spots 1–2 km away. Schools in Bol.",
+      "country": "HR",
+      "region": "Split-Dalmatia",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6114709"
     },
     {
       "id": "hr-nin-kraljicina-plaza",
@@ -8624,6 +8635,24 @@
       "waterType": "sea",
       "tier": "pro",
       "directionCheck": "agrees"
+    },
+    {
+      "id": "mt-golden-bay",
+      "name": "Golden Bay",
+      "latitude": 35.93373,
+      "longitude": 14.34444,
+      "seaFacingDeg": 232.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 17.1,
+      "source": "curated",
+      "notes": "Sandy bay open to the NW, works with NW cold-front winds (onshore); for more experienced riders than Mellieħa. Swimming-zone lines close the beach to kiting in summer, check locally.",
+      "country": "MT",
+      "region": "Malta",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r7118334"
     },
     {
       "id": "mt-melliea-bay-gadira",
@@ -18993,6 +19022,268 @@
         [
           40.0162,
           3.7909
+        ]
+      ]
+    },
+    {
+      "id": "r6114709",
+      "name": "Brač",
+      "outline": [
+        [
+          43.3199,
+          16.4081
+        ],
+        [
+          43.309,
+          16.4294
+        ],
+        [
+          43.3159,
+          16.4352
+        ],
+        [
+          43.3052,
+          16.4372
+        ],
+        [
+          43.3038,
+          16.4463
+        ],
+        [
+          43.313,
+          16.4475
+        ],
+        [
+          43.3097,
+          16.456
+        ],
+        [
+          43.2987,
+          16.4536
+        ],
+        [
+          43.2977,
+          16.4635
+        ],
+        [
+          43.308,
+          16.4656
+        ],
+        [
+          43.2967,
+          16.4693
+        ],
+        [
+          43.2965,
+          16.4833
+        ],
+        [
+          43.2848,
+          16.4895
+        ],
+        [
+          43.293,
+          16.497
+        ],
+        [
+          43.2783,
+          16.4997
+        ],
+        [
+          43.2832,
+          16.5088
+        ],
+        [
+          43.2736,
+          16.5147
+        ],
+        [
+          43.2553,
+          16.634
+        ],
+        [
+          43.2712,
+          16.8551
+        ],
+        [
+          43.2811,
+          16.8666
+        ],
+        [
+          43.2883,
+          16.8606
+        ],
+        [
+          43.2806,
+          16.8736
+        ],
+        [
+          43.2841,
+          16.8829
+        ],
+        [
+          43.2957,
+          16.8805
+        ],
+        [
+          43.2993,
+          16.8946
+        ],
+        [
+          43.3078,
+          16.8854
+        ],
+        [
+          43.3139,
+          16.8995
+        ],
+        [
+          43.3252,
+          16.8637
+        ],
+        [
+          43.3298,
+          16.8663
+        ],
+        [
+          43.343,
+          16.8403
+        ],
+        [
+          43.3406,
+          16.8313
+        ],
+        [
+          43.3327,
+          16.837
+        ],
+        [
+          43.3305,
+          16.8298
+        ],
+        [
+          43.3403,
+          16.8226
+        ],
+        [
+          43.3353,
+          16.7994
+        ],
+        [
+          43.3399,
+          16.7912
+        ],
+        [
+          43.3462,
+          16.8196
+        ],
+        [
+          43.3546,
+          16.7985
+        ],
+        [
+          43.3491,
+          16.7821
+        ],
+        [
+          43.3573,
+          16.7815
+        ],
+        [
+          43.3619,
+          16.7427
+        ],
+        [
+          43.3467,
+          16.7436
+        ],
+        [
+          43.3469,
+          16.7351
+        ],
+        [
+          43.362,
+          16.7358
+        ],
+        [
+          43.3589,
+          16.7202
+        ],
+        [
+          43.3716,
+          16.6794
+        ],
+        [
+          43.3811,
+          16.6076
+        ],
+        [
+          43.3758,
+          16.6057
+        ],
+        [
+          43.3883,
+          16.5489
+        ],
+        [
+          43.3832,
+          16.5119
+        ],
+        [
+          43.3926,
+          16.4409
+        ],
+        [
+          43.3893,
+          16.4286
+        ],
+        [
+          43.3834,
+          16.4296
+        ],
+        [
+          43.3683,
+          16.4505
+        ],
+        [
+          43.3577,
+          16.4452
+        ],
+        [
+          43.3497,
+          16.464
+        ],
+        [
+          43.3534,
+          16.4541
+        ],
+        [
+          43.3448,
+          16.4337
+        ],
+        [
+          43.3303,
+          16.4344
+        ],
+        [
+          43.3286,
+          16.4482
+        ],
+        [
+          43.3253,
+          16.4493
+        ],
+        [
+          43.3227,
+          16.4244
+        ],
+        [
+          43.3336,
+          16.4093
+        ],
+        [
+          43.3199,
+          16.4081
         ]
       ]
     },
