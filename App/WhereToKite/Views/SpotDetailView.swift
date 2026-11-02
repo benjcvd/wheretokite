@@ -36,6 +36,23 @@ struct SpotDetailView: View {
                     .accessibilityElement(children: .combine)
                     .accessibilityIdentifier("stormAlertDetail")
                 }
+                if let side = rec.sideOffshoreLabel {
+                    Label {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(side).font(.subheadline.weight(.bold))
+                            Text("The wind blows partly from the land: gustier, and it pushes you away from the beach. Ride only if you can always get back upwind.")
+                                .font(.footnote)
+                        }
+                    } icon: {
+                        Image(systemName: "arrow.up.backward.and.arrow.down.forward").font(.title3)
+                    }
+                    .foregroundStyle(.orange)
+                    .padding(14)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color.orange.opacity(0.1), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .accessibilityElement(children: .combine)
+                    .accessibilityIdentifier("sideOffshoreAlertDetail")
+                }
                 facts
                 VerdictBanner(rec: rec)
                 chart

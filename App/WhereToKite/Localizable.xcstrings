@@ -6126,6 +6126,169 @@
           }
         }
       }
+    },
+    "Side-offshore: advanced only" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side-offshore: solo nivel avanzado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side-off : confirmés uniquement"
+          }
+        }
+      },
+      "comment" : "Warning: the wind blows slightly from the land; for advanced riders only"
+    },
+    "The wind blows partly from the land: gustier, and it pushes you away from the beach. Ride only if you can always get back upwind." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El viento sopla en parte desde tierra: más racheado, y te aleja de la playa. Navega solo si siempre puedes remontar a barlovento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vent vient en partie de la terre : plus de rafales, et il te pousse vers le large. Ne navigue que si tu sais toujours remonter au vent."
+          }
+        }
+      }
+    },
+    "How offshore are you OK with?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cuánto offshore aceptas?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jusqu'où acceptes-tu l'offshore ?"
+          }
+        }
+      }
+    },
+    "Not at all" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nada"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas du tout"
+          }
+        }
+      },
+      "comment" : "Offshore setting: side-shore wind at most"
+    },
+    "A little side-offshore" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un poco de side-offshore"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un peu de side-off"
+          }
+        }
+      },
+      "comment" : "Offshore setting"
+    },
+    "Cross-shore at most" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cross-shore como máximo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side-shore au maximum"
+          }
+        }
+      }
+    },
+    "Wind partly from the land. Gustier, and it drifts you out." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viento en parte de tierra. Más racheado, y te lleva mar adentro."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent en partie de terre. Plus de rafales, et il te pousse au large."
+          }
+        }
+      }
+    },
+    "%@ · recommended for your level" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · recomendado para tu nivel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · conseillé pour ton niveau"
+          }
+        }
+      }
+    },
+    "Beginners get cross-shore wind at most. Offshore wind never scores, for anyone." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principiantes: cross-shore como máximo. El viento offshore nunca puntúa, para nadie."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Débutant : side-shore au maximum. Le vent offshore ne compte jamais, pour personne."
+          }
+        }
+      }
+    },
+    "Side-offshore spots get an \"advanced only\" warning. Offshore wind never scores, for anyone." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los spots con side-offshore llevan el aviso «solo nivel avanzado». El viento offshore nunca puntúa, para nadie."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les spots en side-off portent l'alerte « confirmés uniquement ». Le vent offshore ne compte jamais, pour personne."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
