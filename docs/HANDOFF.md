@@ -213,3 +213,13 @@ masts are sheltered, not broken. Against those two open masts the forecast is ab
 light. A Go almost always comes true (98 %), but it catches only 13 % of the real go days.
 Empordà and the Ebro delta still have no open sensor. Tricky: the Open-Meteo quota resets at
 01:00 CET, and `whe86.py` buffers its output until the end.
+
+**Forecast accuracy, 2 Nov (WHE-80).** One correction learned from measurements and applied the
+same way at every spot doesn't help riders. On average the forecast is already level at the
+trusted stations. Each station is off by its own few knots, and one rule for all spots can't
+know which. The textbook version cuts the error a little only by pulling strong winds down
+(storms would look milder), so it's ruled out for safety. With a fair Go cut-off, no correction
+catches the most real go days. The only real gain is a correction per spot from its own
+station's past misses, which exists only where an open, trusted station sits next to the spot.
+Tricky: an error gain from a correction tied to the forecast speed is regression to the mean;
+always check the 25 kn+ hours.

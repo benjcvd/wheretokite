@@ -1,7 +1,75 @@
-# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
+
+## One correction learned from measurements, the same at every spot (WHE-80, 2 Nov): don't ship it
+
+**In plain words.** I learned a correction from 28 trusted stations (18 French masts, 5 southern
+Spanish, 2 Canary, the POEM buoy, the Begur and Tarragona buoys) and tested it on weeks it never
+saw, at stations it never saw. That second part matters: most spots have no station of their own.
+Barcelona airport and Port Bocana Sud were a test only, never used to learn.
+
+Three ways to correct, all the same at every spot (by model, day ahead and wind direction vs the beach):
+- **speed bands**: the textbook method (MOS). Add the usual miss for that forecast speed.
+- **one factor**: multiply by measured ÷ forecast.
+- **quantile map**: stretch the forecast so its spread matches the measured spread.
+
+**What came out (measured, 12 weeks, Aug–Oct 2026):**
+- On average the forecast is **already level** at these stations: −0.3 kn, day ahead 0–3. Each
+  station is off by its own amount, from −3.7 kn (Gran Canaria) to +4.1 kn (Le Touquet). A
+  correction that's the same at every spot can't fix that, because it doesn't know which station
+  it's at.
+- **Speed bands** cut the average error by only **0.05–0.4 kn** (2–10 %, not the 10–40 % hoped
+  for). It does it by pulling every forecast toward the middle: calm hours get +2 to +4 kn,
+  25 kn+ forecasts lose 3–5 kn. **Storms vanish**: hours measured 25 kn+ shown under 20 kn go
+  from **28 % to 50 %** a day ahead, and from 49 % to 78 % at day 5. Real go days with a Go
+  drop (378 → 355 a day ahead).
+- **One factor** and **quantile map** keep the storms but make the average error **worse** (+0.1 kn).
+- **The fair test for riders**: give each method its own Go cut-off, tuned so a Go comes true
+  85 % of the time on other weeks. **No correction catches the most real go days** at every day
+  ahead from 0 to 4. A day ahead: 403 of 732 with no correction, against 387 / 397 / 389 with a
+  correction.
+- **Barcelona test** (airport for Castelldefels, Bocana Sud for Barceloneta): speed bands shrink
+  the 2.5 kn shortfall to 1.3 kn and the error 3.3 → 2.8 kn. But the gain is in light hours. On
+  sea-breeze afternoons the forecast still reads 10 kn against 17–20 measured. Go still fires on
+  0–3 of 50 real go days.
+
+**For riders**: nothing would get better. With speed bands, strong and stormy days would look
+milder than they are. That's a safety problem, so it rules them out on its own.
+
+**What would work, and where:** a correction per station, learned from **its own** past misses,
+beats every pooled method on everything (error 2.7 vs 3.0 kn a day ahead, 10 kn+ hours 3.6 vs
+4.1, storms read under 20 kn 13 % vs 28 %). But it only exists where a trusted station sits
+next to the spot (about 30 spots). It also learns the mast's own sheltering. A Catalan mast
+would teach the spot to read half the wind (WHE-84). So it's a separate decision, not this card's.
+
+**Recommendation**
+1. Don't ship a pooled correction. Keep today's wind as the models give it (recommended).
+2. Per-spot correction where an open, trusted station sits within ~5 km, learned only from
+   coastal/airport/buoy stations Ben accepts. A new card, report first, then a choice.
+3. Speed bands for light winds only (never lower a forecast). It lifts calm hours, which nobody
+   rides, and does nothing for Go. Not worth it.
+
+**What could make this wrong**
+- 12 weeks of late summer and autumn, mostly France (18 of 28 stations). Winter storms and
+  spring thermals aren't in it. The per-station biases might also shift by season.
+- The truth stations are land masts brought to 10 m, not the water. Where the sea is windier
+  (WHE-62: POEM reads 1–3 kn above every model), the right correction is up, and no mast can teach it.
+- The Go cut-offs (WHE-82) were tuned on these same stations without a correction. The
+  equal-reliability test re-tunes them per method to keep it fair. Its cut-offs are pooled over
+  all stations, the scored one included, the same way for every method.
+- Only best match is scored for the wind shown. Gusts weren't tested (the cached Previous Runs
+  hold speed and direction only).
+
+**Sanity check, a day ahead, measured / today / speed bands / own station (kn):**
+- Tarifa, 20 Sep, levante, 12 UTC: 31 / 25 / 23 / 26. Speed bands make a storm milder.
+- Castelldefels (airport), 14 Sep, sea breeze, 15 UTC: 19 / 10 / 11 / 12. No correction rescues it.
+- Hyères Almanarre, 17 Sep, 14 UTC: 19 / 28 / 24 / 25. Here speed bands help: the forecast was too strong.
+- Carro, 8 Oct, mistral, 16 UTC: 29 / 20 / 19 / 20.
+
+Full tables (by area, day ahead, station; Go before and after): `tools/backtest/results/whe80.md`.
+Script: `BACKTEST_OFFLINE=1 python3 tools/backtest/mos80.py` (cache only, ~1.5 min).
 
 ## Barcelona's open masts: Catalan forecasts read low, not high (WHE-86, 2 Nov)
 
