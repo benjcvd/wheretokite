@@ -4,34 +4,22 @@ import KiteCore
 // MARK: - Score colours (traffic-light, like Surfline's ratings: green = go)
 
 enum ScoreStyle {
-    static func color(_ score: Int) -> Color {
-        switch score {
-        case 75...: Color(red: 0.13, green: 0.78, blue: 0.45)
-        case 50..<75: Color(red: 0.98, green: 0.76, blue: 0.10)
-        case 1..<50: Color(red: 1.00, green: 0.55, blue: 0.20)
-        default: Color(.systemGray)
-        }
-    }
+    /// One colour per verdict band, green (Go) to grey (No go).
+    static func color(_ score: Int) -> Color { KiteVerdict(grade: score).color }
 
-    /// Rich two-stop gradient for large surfaces (hero card, badges).
+    /// Rich two-stop gradient for large surfaces (hero card, badges), per verdict band.
     static func gradient(_ score: Int) -> LinearGradient {
-        let colors: [Color] = switch score {
-        case 75...: [Color(red: 0.05, green: 0.70, blue: 0.48), Color(red: 0.00, green: 0.47, blue: 0.75)]
-        case 50..<75: [Color(red: 0.96, green: 0.62, blue: 0.05), Color(red: 0.93, green: 0.38, blue: 0.16)]
-        case 1..<50: [Color(red: 0.95, green: 0.42, blue: 0.22), Color(red: 0.82, green: 0.22, blue: 0.36)]
-        default: [Color(red: 0.42, green: 0.46, blue: 0.54), Color(red: 0.28, green: 0.31, blue: 0.40)]
+        let colors: [Color] = switch KiteVerdict(grade: score) {
+        case .go: [Color(red: 0.05, green: 0.70, blue: 0.48), Color(red: 0.00, green: 0.47, blue: 0.75)]
+        case .worthATry: [Color(red: 0.70, green: 0.76, blue: 0.12), Color(red: 0.30, green: 0.62, blue: 0.30)]
+        case .longShot: [Color(red: 0.95, green: 0.48, blue: 0.20), Color(red: 0.82, green: 0.26, blue: 0.30)]
+        case .noGo: [Color(red: 0.42, green: 0.46, blue: 0.54), Color(red: 0.28, green: 0.31, blue: 0.40)]
         }
         return LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
     }
 
-    static func label(_ score: Int) -> String {
-        switch score {
-        case 75...: String(localized: "Great", comment: "Score rating")
-        case 50..<75: String(localized: "Good", comment: "Score rating")
-        case 1..<50: String(localized: "Marginal", comment: "Score rating")
-        default: String(localized: "No go", comment: "Score rating")
-        }
-    }
+    /// The verdict for a grade, the same bands as the pill (`KiteVerdict(grade:)`).
+    static func label(_ score: Int) -> String { Vocab.verdict(KiteVerdict(grade: score)) }
 }
 
 /// Windy-style colour scale for wind speed in knots.
@@ -115,44 +103,98 @@ struct Pill: View {
     }
 }
 
-struct ConfidenceBanner: View {
-    let confidence: ForecastConfidence
-
-    private var color: Color {
-        switch confidence.rating {
-        case .high: ScoreStyle.color(80)
-        case .medium: ScoreStyle.color(60)
-        case .low: ScoreStyle.color(30)
+extension KiteVerdict {
+    /// Green (Go) to grey (No go).
+    var color: Color {
+        switch self {
+        case .go: Color(red: 0.13, green: 0.72, blue: 0.42)
+        case .worthATry: Color(red: 0.62, green: 0.70, blue: 0.05)
+        case .longShot: Color(red: 0.95, green: 0.48, blue: 0.18)
+        case .noGo: Color(.systemGray)
         }
     }
+}
 
-    private var detail: String {
-        var parts = [String]()
-        if confidence.leadDays > 0 {
-            parts.append(String(localized: "\(confidence.leadDays) days ahead"))
-        }
-        parts.append(String(localized: "models agree within ±\(Int(confidence.speedSpreadKn.rounded())) kn"))
-        if let d = confidence.directionSpreadDeg { parts.append(String(format: "±%.0f°", d)) }
-        return parts.joined(separator: " · ")
+/// The verdict next to a grade. `onColor`: white text for the coloured hero card. Short and
+/// shrinkable so the longest label ("Ça vaut le coup") fits under a score on a small iPhone.
+struct VerdictPill: View {
+    let verdict: KiteVerdict
+    var onColor = false
+    var maxWidth: CGFloat? = nil
+
+    var body: some View {
+        Text(Vocab.verdict(verdict))
+            .font(.caption2.weight(.bold))
+            .lineLimit(1)
+            .minimumScaleFactor(0.7)
+            .padding(.horizontal, 7)
+            .padding(.vertical, 3)
+            .frame(maxWidth: maxWidth)
+            .fixedSize(horizontal: maxWidth == nil, vertical: true)
+            .foregroundStyle(onColor ? Color.white : verdict.color)
+            .background(onColor ? Color.black.opacity(0.22) : verdict.color.opacity(0.14), in: Capsule())
+            .accessibilityIdentifier("verdict")
     }
+}
+
+/// Why a forecast verdict is only an estimate (the "i" button next to it).
+struct ChanceInfoButton: View {
+    @State private var shown = false
+
+    var body: some View {
+        Button { shown = true } label: {
+            Image(systemName: "info.circle")
+        }
+        .accessibilityLabel(Text("What the labels mean"))
+        .accessibilityIdentifier("verdictInfo")
+        .popover(isPresented: $shown) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("What the labels mean").font(.headline)
+                ForEach(KiteVerdict.allCases, id: \.self) { v in
+                    Text("**\(Vocab.verdict(v))** (\(Vocab.verdictBand(v))): \(Vocab.verdictMeaning(v))")
+                }
+                Text("A No go caused by a safety rule (storm, kiting ban, darkness, offshore wind) says which one.")
+                Text("The grade weighs the wind, gusts and direction for you, and how likely the wind is. We compare four weather models: when they aren't sure, a spot is Worth a try at best; when they see too little wind, a Long shot at best.")
+                Text("Forecasts are never perfect: this is our best estimate. In our tests on past days, wind the models called likely came true about 85 % of the time. The further ahead the day, the less sure any forecast is.")
+            }
+            .font(.subheadline)
+            .padding()
+            .frame(idealWidth: 320)
+            .fixedSize(horizontal: false, vertical: true)
+            .presentationCompactAdaptation(.popover)
+        }
+    }
+}
+
+/// The verdict on a spot's page: "Go" + why + the info button.
+struct VerdictBanner: View {
+    let rec: SpotRecommendation
+
+    private var verdict: KiteVerdict { rec.kiteVerdict }
 
     var body: some View {
         HStack(spacing: 10) {
-            Image(systemName: confidence.rating == .high ? "checkmark.seal.fill" : "exclamationmark.triangle.fill")
-                .font(.title3)
-                .foregroundStyle(color)
+            Circle()
+                .fill(verdict.color)
+                .frame(width: 14, height: 14)
             VStack(alignment: .leading, spacing: 1) {
-                Text(Vocab.confidence(confidence.rating))
+                Text(Vocab.verdict(verdict))
                     .font(.subheadline.weight(.semibold))
                 Text(detail)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
             Spacer(minLength: 0)
+            ChanceInfoButton()
         }
         .padding(12)
-        .background(color.opacity(0.12), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .accessibilityElement(children: .combine)
+        .background(verdict.color.opacity(0.12), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("verdictBanner")
+    }
+
+    private var detail: String {
+        rec.safetyReason.map(Vocab.safetyReason) ?? Vocab.verdictMeaning(verdict)
     }
 }
 

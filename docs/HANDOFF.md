@@ -303,3 +303,22 @@ on the hour before a storm.
   (option 1 recommended on both). WHE-65 finished, waits on Ben's Palamós answer.
 - Freeze still on for anything else. Next for the Lead: once WHE-82 and WHE-87 are approved and the Catalan answers
   are in, merge and prepare WHE-70.
+## Product: Barcelona scoring check (2026-10-31)
+
+WHE-64 is in review with [the report](docs/SCORING_CHECK_BCN.md#findings-worst-first). No rule changed. The ranking is sensible on Llevant, Mestral and the Empordà thermal, but four things would embarrass us with Barcelona testers: a top pick ending an hour before a thunderstorm, a "gusty" flag that fires on almost every hour (the forecast's gusts average 1.77× the mean, the rule expects 1.4×) and halves every score, side-offshore spots still listed, and marginal spots showing the wrong reason. Each fix waits on Ben's pick and becomes its own card with a before/after.
+
+## Product: storm alert (2026-10-31, WHE-74)
+
+Ben chose not to penalise storms ahead much: the spot now says "Storm from 4:00 PM" (card, top card, spot page) when a storm starts during the session, the rest of the slot or within 2 h after the window, and only the hour just before a storm is docked (×0.8). Storm hours still score 0. Rules in `ScoringRules.stormAlertHoursAfter` / `preStormFactor`. In review: Ben to OK the 80 % and the wording. Not handled: a storm just *before* the window.
+
+## Product: gusts by level and intensity (2026-10-31)
+
+WHE-73 is in review with [the before/after](docs/GUSTS_BY_LEVEL.md#before--after-on-the-whe-64-days). Gust tolerance is now judged against the forecast's normal gust ratio (~1.75× the mean) and graded by level and intensity; the gust limit and the "overpowered" margin rise with intensity for intermediate and advanced riders, never for beginners; mean-wind limits are untouched. "Gusty" shows only when it costs ≥10 %. Side effect to keep in mind: good days now bunch near 100 for intermediates, so the score separates spots less. If Forecast accuracy changes the blend or calibrates gusts, revisit the tolerances in `ScoringRules`.
+
+## Product: chance to kite (2026-11-02, WHE-82)
+
+Each top spot now carries Go / Not sure / No from the four weather models (WHE-81 method, WHE-84 cut-offs tuned so a Go came true ~85 %). It replaces the models-disagree penalty and the confidence badge. Not sure caps the grade at 69 and No at 39 so a high grade never says No; this re-ranks marginal days (24 Oct: La Palme 97 → 69). In review: Ben tests on his phone and settles the wording. Unproven in Catalonia (no trustworthy ground truth there). The CLI's `--server` flag goes through the Worker when Open-Meteo's per-IP quota is spent.
+Ben's first test (2 Nov): a "Not sure" ranked above a "Go" confused him. The ranking is now verdict first (Go, Not sure, No, unchecked), then grade; the top card follows the same order.
+Then Ben's final rule (same day): the label reads off the final grade (Go 70+, Maybe 40–69, No under 40); the wind chance only caps the grade (uncertain ≤ 69, unlikely ≤ 39); ranking is on the grade again. Colours and headings use the same bands so the app never says two things.
+Final shape (Ben, 2 Nov): five levels off the grade (Go 70+, Worth a try 55, Coin flip 40, Long shot 20, No go), each with its own colour; the big card's heading is gone because it repeated the label.
+Then four levels (Ben dropped Coin flip): Go 70+, Worth a try 50–69, Long shot 20–49, No go; the spot page shows Ben's sentence per level, or the safety reason for a No go. The big card shows from 50.

@@ -21,7 +21,7 @@ final class WeightsTests: XCTestCase {
     }
 
     func testWeightsChangeWhatCounts() {
-        let gusty = hour(16, gust: 26, from: 165 + 50)
+        let gusty = hour(16, gust: 31, from: 165 + 50)   // 1.94×: gusty even by forecast standards
         let base = Scorer(profile: rider(nil), intensity: 0).score(gusty, seaFacingDeg: 165).score
         let ignoreGusts = Scorer(profile: rider(ScoreWeights(steadiness: 0)), intensity: 0).score(gusty, seaFacingDeg: 165).score
         let hateGusts = Scorer(profile: rider(ScoreWeights(steadiness: 2)), intensity: 0).score(gusty, seaFacingDeg: 165).score

@@ -11,18 +11,44 @@ public struct ScoringRules: Sendable {
     public var sessionHours = 2
     /// When distance matters, a spot at the max drive time loses this fraction of its score.
     public var maxDistancePenalty = 0.3
-    /// When the weather models disagree at a spot, it loses up to this fraction of its score:
-    /// nothing while they agree within ±2 kn and 30°, all of it from ±6 kn or 60°.
-    public var maxDisagreementPenalty = 0.15
+    /// A storm starting up to this many hours after the best window ends (or later in the
+    /// searched hours) is announced on the spot: "Storm from 4 pm".
+    public var stormAlertHoursAfter = 2
+    /// The hour just before a storm hour keeps this share of its score: outflow gusts and
+    /// cells arriving early. Light on purpose (Ben, 31 Oct): the alert does the warning.
+    public var preStormFactor = 0.8
 
     public init() {}
 
-    /// Share of the score a spot keeps given how much the models disagree there (1 = all).
-    public func agreementFactor(speedSpreadKn: Double, directionSpreadDeg: Double?) -> Double {
-        let speed = (speedSpreadKn - 2) / 4
-        let direction = ((directionSpreadDeg ?? 0) - 30) / 30
-        return 1 - maxDisagreementPenalty * min(1, max(0, speed, direction))
+    // MARK: Chance to kite (WHE-81 method, WHE-84 tuning: docs/MODEL_BACKTEST.md)
+
+    /// chance = Φ((models' mean best 2 h − rider's min wind + bias) / √(spread² + error²)).
+    /// Fitted per day ahead on France, southern Spain and the buoys (Catalan masts left out),
+    /// Go cut-off tuned so a Go came true ≥ 85 % on the tuning weeks. Each lead had two fits
+    /// (even / odd weeks): bias and error are their mean, the cut-off the stricter of the two.
+    /// Days 5+ were never tested: day 4's numbers with a stricter cut-off.
+    public func chanceTuning(leadDays: Int) -> ChanceTuning {
+        switch max(0, leadDays) {
+        case 0: ChanceTuning(biasKn: -0.25, errorKn: 2.0, goFrom: 0.68)
+        case 1: ChanceTuning(biasKn: -0.25, errorKn: 2.25, goFrom: 0.73)
+        case 2: ChanceTuning(biasKn: 0, errorKn: 2.5, goFrom: 0.70)
+        case 3: ChanceTuning(biasKn: 0, errorKn: 2.75, goFrom: 0.79)
+        case 4: ChanceTuning(biasKn: -1, errorKn: 4.5, goFrom: 0.71)
+        default: ChanceTuning(biasKn: -1, errorKn: 5, goFrom: 0.80)
+        }
     }
+
+    /// Below the Go cut-off, wind is "uncertain" from this chance, "unlikely" under it
+    /// (WHE-84: no promise attached to the middle band; a 70 % band didn't hold up).
+    public var uncertainWindFrom = 0.40
+
+    /// Highest grade a spot keeps when the wind is uncertain / unlikely: so uncertain wind is at
+    /// best "Worth a try" and unlikely wind at best a "Long shot".
+    public var uncertainWindMaxScore = 69
+    public var unlikelyWindMaxScore = 39
+
+    /// Lowest final grade of each verdict (Ben, 2 Nov); "No go" below `longShot`.
+    public var verdictFromGrade = (go: 70, worthATry: 50, longShot: 20)
 
     /// Tides smaller than this (m, low to high water over the day) are ignored.
     public var minTidalRange = 0.5
@@ -42,12 +68,54 @@ public struct ScoringRules: Sendable {
         }
     }
 
-    /// Hard safety limits per level: (max mean wind, max gust) in knots.
-    public func limits(_ level: Level) -> (wind: Double, gust: Double) {
-        switch level {
+    /// Hard safety limits: (max mean wind, max gust) in knots. The mean-wind limit is fixed
+    /// per level. The gust limit is fixed for beginners and rises with session intensity for
+    /// intermediate and advanced riders (Ben, 31 Oct 2026): forecast gusts run at 1.6–1.9×
+    /// the mean, so a fixed 34 kn shut intermediates out from about 19 kn of mean wind.
+    /// `intensity`: 0 chill … 1 intense, nil = all types (counts as 0.5).
+    public func limits(_ level: Level, intensity: Double? = nil) -> (wind: Double, gust: Double) {
+        let i = min(1, max(0, intensity ?? 0.5))
+        return switch level {
         case .beginner: (20, 25)
-        case .intermediate: (28, 34)
-        case .advanced: (40, 48)
+        case .intermediate: (28, 34 + 6 * i)
+        case .advanced: (40, 48 + 6 * i)
+        }
+    }
+
+    /// Gust excess ((gust − mean) / mean) tolerated before the steady-wind factor drops.
+    /// Calibrated on the forecast, not on station gusts: across the WHE-64 Barcelona days the
+    /// blend gives gusts at 1.75× the mean on a typical hour (1.5–2.1×), so "gusty" means
+    /// gustier than that. Beginners are strictest, advanced riders and intense sessions most
+    /// lenient. Excess 0.8 = gusts at 1.8× the mean.
+    public func gustTolerance(_ level: Level, intensity: Double?) -> Double {
+        let i = min(1, max(0, intensity ?? 0.5))
+        return switch level {
+        case .beginner: 0.55 + 0.15 * i
+        case .intermediate: 0.7 + 0.2 * i
+        case .advanced: 0.8 + 0.3 * i
+        }
+    }
+
+    /// Steady-wind factor lost per unit of gust excess beyond the tolerance (floor 0.3).
+    public func gustPenaltySlope(_ level: Level) -> Double {
+        switch level {
+        case .beginner: 2
+        case .intermediate: 1.5
+        case .advanced: 1
+        }
+    }
+
+    /// The "gusty" label shows when the steady-wind factor falls below this.
+    public var gustyFlagBelow = 0.9
+
+    /// How far (kn) gusts may exceed the kite's top wind before the hour is "overpowered in
+    /// gusts". Fixed for beginners, wider for advanced riders and intense sessions.
+    public func gustOverpowerMarginKn(_ level: Level, intensity: Double?) -> Double {
+        let i = min(1, max(0, intensity ?? 0.5))
+        return switch level {
+        case .beginner: 5
+        case .intermediate: 5 + 4 * i
+        case .advanced: 8 + 4 * i
         }
     }
 
@@ -156,7 +224,7 @@ public struct Scorer: Sendable {
     /// `angle`: 0 onshore … 180 offshore; nil = beach orientation unknown.
     public func score(_ w: HourlyWind, relativeAngle angle: Double?) -> HourScore {
         var flags: [String] = []
-        let limits = rules.limits(profile.level)
+        let limits = rules.limits(profile.level, intensity: intensity)
         if w.speedKn > limits.wind || w.gustKn > limits.gust {
             return HourScore(wind: w, score: 0, kite: nil, relativeAngle: angle, flags: ["too strong for level"])
         }
@@ -173,14 +241,15 @@ public struct Scorer: Sendable {
                              flags: [tooLight ? "too light" : "too strong for quiver"])
         }
 
-        // 2. Gustiness: chill sessions want steady wind, intense ones tolerate more.
+        // 2. Gustiness: beginners and chill sessions want steady wind; advanced riders and
+        // intense sessions tolerate more (tolerances in ScoringRules).
         let gustFactor = (w.gustKn - w.speedKn) / max(w.speedKn, 1)
-        var tolerance = 0.3 + 0.2 * (intensity ?? 0.5)
-        if profile.level == .beginner { tolerance -= 0.05 }
-        if profile.level == .advanced { tolerance += 0.1 }
-        var gust = gustFactor <= tolerance ? 1 : max(0.3, 1 - (gustFactor - tolerance) * 1.5)
-        if gustFactor > tolerance { flags.append("gusty") }
-        if w.gustKn > kite.maxKn + 5 {
+        let tolerance = rules.gustTolerance(profile.level, intensity: intensity)
+        var gust = gustFactor <= tolerance ? 1
+            : max(0.3, 1 - (gustFactor - tolerance) * rules.gustPenaltySlope(profile.level))
+        // Flag only when it costs something visible, so "gusty" tells a gusty day from a normal one.
+        if gust < rules.gustyFlagBelow { flags.append("gusty") }
+        if w.gustKn > kite.maxKn + rules.gustOverpowerMarginKn(profile.level, intensity: intensity) {
             gust *= profile.level == .beginner ? 0.4 : 0.75
             flags.append("overpowered in gusts")
         }

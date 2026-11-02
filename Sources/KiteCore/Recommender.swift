@@ -28,8 +28,25 @@ public struct SpotRecommendation: Sendable, Identifiable {
     /// How much the weather models agree here, for the top-ranked spots (nil for the others,
     /// or when the check failed).
     public var confidence: ForecastConfidence? = nil
-    /// Share of the score kept after the models-disagree penalty (1 = none).
-    public var agreementFactor: Double = 1
+    /// How likely the rider gets enough wind here, from the weather models (top-ranked spots
+    /// only, nil when the models couldn't be compared).
+    public var chance: KiteChance? = nil
+    /// The grade before uncertain / unlikely wind capped it (nil = not capped).
+    public var scoreBeforeChance: Int? = nil
+    /// Go / Worth a try / Long shot / No go, read off the final grade.
+    public var kiteVerdict: KiteVerdict { KiteVerdict(grade: finalScore) }
+
+    /// For a "No go": the safety rule behind it, when there is one ("thunderstorm risk",
+    /// "kiting banned", "dark", "offshore"), from the hours the score is made of.
+    public var safetyReason: String? {
+        guard kiteVerdict == .noGo else { return nil }
+        let slice = scoredHours.map { s in hours.filter { $0.wind.hour >= s.start && $0.wind.hour < s.end } } ?? hours
+        let problem = Recommender.mainProblem(slice.isEmpty ? hours : slice)
+        return ["thunderstorm risk", "kiting banned", "dark", "offshore"].contains(problem) ? problem : nil
+    }
+    /// Local hour (spot time) a thunderstorm is forecast to start, when it comes during the
+    /// session or soon after it (`ScoringRules.stormAlertHoursAfter`): "Storm from 4 pm".
+    public var stormFrom: Int? = nil
 
     public init(spot: Spot, driveMinutes: Double, driveIsEstimate: Bool, windScore: Int, finalScore: Int,
                 window: (start: Int, end: Int)?, hours: [HourScore], reason: String) {
@@ -87,8 +104,10 @@ public struct SearchResult: Sendable {
 ///    top `verifyTop`, within `maxETARequests` per search (MapKit throttles ~50/min).
 /// 5. Spots never verified keep the estimate (`driveIsEstimate`) and are dropped if it
 ///    exceeds the max drive.
-/// 6. Confidence: the weather models are compared at the top `confidenceTop` spots (one
-///    request); where they disagree a spot loses a little score, and the list is re-ranked.
+/// 6. Chance to kite: the weather models are compared at the top `confidenceTop` spots (one
+///    request): uncertain wind caps the grade at 69 (Maybe at best), unlikely wind at 39 (No),
+///    and the list is re-ranked on the grade. Spots that move up into the top are checked in a
+///    further round (`chanceRounds` at most).
 public struct Recommender: Sendable {
     public var spots: [Spot]
     public var forecast: ForecastProvider
@@ -119,6 +138,8 @@ public struct Recommender: Sendable {
     /// Spots whose models are compared (step 6), best first. One request whatever the number,
     /// but each location counts against the Open-Meteo quota (with 4 models, more than once).
     public var confidenceTop = 10
+    /// Requests at most for step 6 (spots promoted by a cap get checked in the next round).
+    public var chanceRounds = 3
 
     public init(spots: [Spot], forecast: ForecastProvider, driveTime: DriveTimeProvider,
                 confidence: ConfidenceProvider? = ConfidenceEstimator()) {
@@ -215,6 +236,7 @@ public struct Recommender: Sendable {
                 .filter { request.hours.contains($0.hour) }
                 .map { scorer.score($0, sides: c.spot.allSides) }
             c.hours = Self.applySafety(c.spot, to: c.hours, day: request.day)
+            c.hours = Self.applyStormBuffer(c.hours, day: day.hours, rules: rules)
             c.hours = Self.applyTide(c.spot.tide, to: c.hours, day: day.hours, rules: rules)
             c.estimate = estimates[c.spot.id] ?? c.estimate
             c.rec = recommend(c.spot, hours: c.hours, drive: c.estimate, request: request, driveIsEstimate: true,
@@ -223,6 +245,7 @@ public struct Recommender: Sendable {
             c.tideSummary = c.rec?.tideSummary
             c.utcOffset = day.utcOffsetSeconds
             c.rec?.utcOffsetSeconds = c.utcOffset
+            if let rec = c.rec { c.rec?.stormFrom = Self.stormStart(rec, day: day.hours, searched: request.hours, rules: rules) }
             cands[c.spot.id] = c
         }
 
@@ -251,6 +274,7 @@ public struct Recommender: Sendable {
                                                    driveIsEstimate: false, weights: profile.scoreWeights)
                         cands[id]?.rec?.tideSummary = c.tideSummary
                         cands[id]?.rec?.utcOffsetSeconds = c.utcOffset
+                        cands[id]?.rec?.stormFrom = c.rec?.stormFrom
                     }
                 }
             }
@@ -267,34 +291,51 @@ public struct Recommender: Sendable {
             }
         }
         recs.sort(by: Self.ranks)
-        if let confidence { recs = await checkAgreement(recs, confidence: confidence, request: request, today: today) }
+        if let confidence {
+            recs = await checkChance(recs, confidence: confidence, scorer: scorer, request: request, today: today)
+        }
 
         return SearchResult(request: request, recommendations: recs, excluded: excluded, stats: stats)
     }
 
-    /// Step 6: compare the models at the top spots that score; where they disagree, lower the
-    /// score by `agreementFactor` and re-rank. A failed check changes nothing.
-    func checkAgreement(_ ranked: [SpotRecommendation], confidence: ConfidenceProvider,
-                        request: SearchRequest, today: String) async -> [SpotRecommendation] {
-        let top = ranked.prefix(max(0, confidenceTop)).enumerated().filter { $0.element.finalScore > 0 }
-        guard !top.isEmpty else { return ranked }
-        // The rider's session: the best window, else the hours the score comes from.
-        let queries = top.map { _, rec in
-            let h = rec.window ?? rec.scoredHours
-            return ConfidenceQuery(coordinate: rec.spot.coordinate,
-                                   hours: h.map { $0.start...max($0.start, $0.end - 1) } ?? request.hours)
-        }
-        guard let confs = try? await confidence.estimates(for: queries, day: request.day, today: today),
-              confs.count == queries.count else { return ranked }
+    /// Step 6: compare the models at the top spots that score, turn their agreement into a
+    /// chance to kite, cap the grade where wind is uncertain / unlikely and re-rank. Repeats for
+    /// spots that move up into the top. A failed check changes nothing.
+    func checkChance(_ ranked: [SpotRecommendation], confidence: ConfidenceProvider, scorer: Scorer,
+                     request: SearchRequest, today: String) async -> [SpotRecommendation] {
         var out = ranked
-        for ((i, _), c) in zip(top, confs) {
-            out[i].confidence = c
-            guard c.modelsCompared.count >= 2 else { continue }
-            let f = rules.agreementFactor(speedSpreadKn: c.speedSpreadKn, directionSpreadDeg: c.directionSpreadDeg)
-            out[i].agreementFactor = f
-            out[i].finalScore = Int((Double(out[i].finalScore) * f).rounded())
+        var checked = Set<String>()
+        for _ in 0..<max(0, chanceRounds) {
+            let todo = out.prefix(max(0, confidenceTop)).filter { $0.finalScore > 0 && !checked.contains($0.id) }
+            guard !todo.isEmpty else { break }
+            checked.formUnion(todo.map(\.id))
+            // Each model's best 2 h is looked for over the searched hours, as in the tuning.
+            let queries = todo.map { ConfidenceQuery(coordinate: $0.spot.coordinate, hours: request.hours) }
+            guard let confs = try? await confidence.estimates(for: queries, day: request.day, today: today),
+                  confs.count == queries.count else { break }
+            for (rec, c) in zip(todo, confs) {
+                guard let i = out.firstIndex(where: { $0.id == rec.id }) else { continue }
+                out[i].confidence = c
+                // Hours safety closed (storm, ban, dark) can't make the chance.
+                let open = Set(rec.hours.filter { h in
+                    !["thunderstorm risk", "kiting banned", "dark"].contains(h.flags.first ?? "")
+                }.map(\.wind.hour))
+                guard let chance = scorer.kiteChance(models: c.modelHours, sides: rec.spot.allSides,
+                                                     hours: open, leadDays: c.leadDays) else { continue }
+                out[i].chance = chance
+                let cap = switch chance.outlook {
+                case .likely: Int.max
+                case .uncertain: rules.uncertainWindMaxScore
+                case .unlikely: rules.unlikelyWindMaxScore
+                }
+                if out[i].finalScore > cap {
+                    out[i].scoreBeforeChance = out[i].finalScore
+                    out[i].finalScore = cap
+                }
+            }
+            out.sort(by: Self.ranks)
         }
-        return out.sorted(by: Self.ranks)
+        return out
     }
 
     /// When nothing works on the searched day: the first of `days` with a spot scoring at least
@@ -315,9 +356,11 @@ public struct Recommender: Sendable {
                 guard let f = forecasts[day]?[c.spot.id] else { continue }
                 var hours = f.hours.filter { r.hours.contains($0.hour) }.map { scorer.score($0, sides: c.spot.allSides) }
                 hours = Self.applySafety(c.spot, to: hours, day: day)
+                hours = Self.applyStormBuffer(hours, day: f.hours, rules: rules)
                 hours = Self.applyTide(c.spot.tide, to: hours, day: f.hours, rules: rules)
-                let rec = recommend(c.spot, hours: hours, drive: c.estimate, request: r, driveIsEstimate: true,
+                var rec = recommend(c.spot, hours: hours, drive: c.estimate, request: r, driveIsEstimate: true,
                                     weights: profile.scoreWeights)
+                rec.stormFrom = Self.stormStart(rec, day: f.hours, searched: r.hours, rules: rules)
                 if best.map({ Self.ranks(rec, before: $0) }) ?? true { best = rec }
             }
             if let best, best.finalScore >= minimum { return (day, best) }
@@ -437,6 +480,37 @@ public struct Recommender: Sendable {
             }
             return h
         }
+    }
+
+    /// The hour just before a storm hour (from the whole day's forecast, so a storm right after
+    /// the searched hours counts too) keeps `preStormFactor` of its score, flagged
+    /// "storm nearby". Storm hours themselves are already 0 (`applySafety`).
+    static func applyStormBuffer(_ hours: [HourScore], day: [HourlyWind], rules: ScoringRules) -> [HourScore] {
+        let stormHours = Set(day.filter(\.stormRisk).map(\.localTime))
+        guard !stormHours.isEmpty else { return hours }
+        return hours.map { h in
+            guard !h.wind.stormRisk, let next = Self.nextHour(h.wind.localTime), stormHours.contains(next) else { return h }
+            var h = h
+            h.score *= rules.preStormFactor
+            h.flags.append("storm nearby")
+            return h
+        }
+    }
+
+    /// "2026-08-24T15:00" → "2026-08-24T16:00"; nil at the end of the day.
+    static func nextHour(_ localTime: String) -> String? {
+        let h = Int(localTime.dropFirst(11).prefix(2)) ?? 0
+        guard h < 23 else { return nil }
+        return String(localTime.prefix(11)) + String(format: "%02d", h + 1) + String(localTime.dropFirst(13))
+    }
+
+    /// First storm hour from the start of the rider's session (best window, else the scored
+    /// hours) to the later of the searched hours' end and `stormAlertHoursAfter` past the session.
+    static func stormStart(_ rec: SpotRecommendation, day: [HourlyWind], searched: ClosedRange<Int>,
+                           rules: ScoringRules) -> Int? {
+        guard let session = rec.window ?? rec.scoredHours else { return nil }
+        let last = max(searched.upperBound, session.end - 1 + rules.stormAlertHoursAfter)
+        return day.first { $0.stormRisk && $0.hour >= session.start && $0.hour <= last }?.hour
     }
 
     /// Tide state per hour from the day's sea levels: 0 = low water, 1 = high water. nil when

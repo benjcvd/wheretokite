@@ -41,6 +41,7 @@ enum Vocab {
         case "heavy rain": String(localized: "heavy rain")
         case "rain": String(localized: "rain")
         case "unstable air": String(localized: "unstable air", comment: "Risk of squalls")
+        case "storm nearby": String(localized: "storm next hour", comment: "A thunderstorm is forecast the following hour")
         case "tide too low": String(localized: "tide too low")
         case "tide too high": String(localized: "tide too high")
         case "no forecast": String(localized: "no forecast")
@@ -67,11 +68,45 @@ enum Vocab {
         }.joined(separator: " · ")
     }
 
-    static func confidence(_ rating: ForecastConfidence.Rating) -> String {
-        switch rating {
-        case .high: String(localized: "High forecast confidence")
-        case .medium: String(localized: "Medium forecast confidence")
-        case .low: String(localized: "Low forecast confidence")
+    /// The overall verdict next to a grade.
+    static func verdict(_ v: KiteVerdict) -> String {
+        switch v {
+        case .go: String(localized: "Go", comment: "Verdict: grade 70 or more")
+        case .worthATry: String(localized: "Worth a try", comment: "Verdict: grade 50 to 69")
+        case .longShot: String(localized: "Long shot", comment: "Verdict: grade 20 to 49")
+        case .noGo: String(localized: "No go", comment: "Verdict: grade under 20")
+        }
+    }
+
+    /// "70–100": the grades of a verdict.
+    static func verdictBand(_ v: KiteVerdict) -> String {
+        let b = ScoringRules().verdictFromGrade
+        return switch v {
+        case .go: "\(b.go)–100"
+        case .worthATry: "\(b.worthATry)–\(b.go - 1)"
+        case .longShot: "\(b.longShot)–\(b.worthATry - 1)"
+        case .noGo: "0–\(b.longShot - 1)"
+        }
+    }
+
+    /// What a verdict means, in one plain sentence (Ben, 2 Nov).
+    static func verdictMeaning(_ v: KiteVerdict) -> String {
+        switch v {
+        case .go: String(localized: "Everything lines up: expect a good session.")
+        case .worthATry: String(localized: "Looks promising, but the forecast can still shift. Good odds, no guarantee.")
+        case .longShot: String(localized: "Probably not enough, but there's an outside chance. Only if you'd hate to miss it.")
+        case .noGo: String(localized: "Not worth the trip today.")
+        }
+    }
+
+    /// The sentence for a "No go" caused by a safety rule (`SpotRecommendation.safetyReason`).
+    static func safetyReason(_ reason: String) -> String {
+        switch reason {
+        case "thunderstorm risk": String(localized: "Thunderstorm risk: stay off the water.")
+        case "kiting banned": String(localized: "Kiting is banned here at these hours.")
+        case "dark": String(localized: "It's dark at these hours.")
+        case "offshore": String(localized: "Offshore wind: it would blow you out to sea.")
+        default: verdictMeaning(.noGo)
         }
     }
 
