@@ -1,10 +1,26 @@
 import Foundation
 
-/// The plain answer next to a spot's grade: will there be enough wind to ride?
+/// The plain answer next to a spot's grade, read straight off the final grade (Ben, 2 Nov):
+/// 70–100 Go, 40–69 Maybe, 0–39 No. The wind chance only caps the grade (`WindOutlook`), so a
+/// Go needs both likely wind and good conditions overall.
 public enum KiteVerdict: String, Sendable, CaseIterable {
     case go = "Go"
-    case notSure = "Not sure"
+    case maybe = "Maybe"
     case no = "No"
+
+    public init(grade: Int, rules: ScoringRules = .init()) {
+        self = grade >= rules.goFromGrade ? .go : grade >= rules.maybeFromGrade ? .maybe : .no
+    }
+}
+
+/// What the weather models say about getting enough wind.
+public enum WindOutlook: String, Sendable, CaseIterable {
+    /// Above the tuned cut-off for that day ahead (a Go came true ~85 % in WHE-84's tests).
+    case likely
+    /// From `ScoringRules.uncertainWindFrom` up to the cut-off: grade capped at 69.
+    case uncertain
+    /// Below that: grade capped at 39.
+    case unlikely
 }
 
 /// How likely a spot is kiteable for this rider in the searched hours, from how far the weather
@@ -13,7 +29,7 @@ public enum KiteVerdict: String, Sendable, CaseIterable {
 public struct KiteChance: Sendable {
     /// 0…1.
     public var chance: Double
-    public var verdict: KiteVerdict
+    public var outlook: WindOutlook
     public var leadDays: Int
     /// The rider's lowest usable wind (smallest kite's bottom), kn.
     public var minWindKn: Double
@@ -31,7 +47,7 @@ public struct KiteChance: Sendable {
     public var percent: Int { Int((chance * 100).rounded()) }
 
     public var summary: String {
-        String(format: "%@ (%d %%) · models' best %.0f kn ±%.0f vs %.0f kn needed", verdict.rawValue, percent,
+        String(format: "wind %@ (%d %%) · models' best %.0f kn ±%.0f vs %.0f kn needed", outlook.rawValue, percent,
                meanKn, spreadKn, minWindKn)
     }
 }
@@ -73,10 +89,10 @@ extension Scorer {
         }
         guard best.count >= 2 else { return nil }
         let t = rules.chanceTuning(leadDays: leadDays)
-        var c = KiteChance(chance: 0, verdict: .no, leadDays: leadDays, minWindKn: minWind, modelBestKn: best)
+        var c = KiteChance(chance: 0, outlook: .unlikely, leadDays: leadDays, minWindKn: minWind, modelBestKn: best)
         let z = (c.meanKn - minWind + t.biasKn) / sqrt(c.spreadKn * c.spreadKn + t.errorKn * t.errorKn)
         c.chance = Self.phi(z)
-        c.verdict = c.chance >= t.goFrom ? .go : c.chance >= rules.notSureFrom ? .notSure : .no
+        c.outlook = c.chance >= t.goFrom ? .likely : c.chance >= rules.uncertainWindFrom ? .uncertain : .unlikely
         return c
     }
 

@@ -38,14 +38,18 @@ public struct ScoringRules: Sendable {
         }
     }
 
-    /// Below the Go cut-off, "Not sure" from this chance, "No" under it (WHE-84: no promise
-    /// attached to the middle band; a 70 % "most likely" band didn't hold up).
-    public var notSureFrom = 0.40
+    /// Below the Go cut-off, wind is "uncertain" from this chance, "unlikely" under it
+    /// (WHE-84: no promise attached to the middle band; a 70 % band didn't hold up).
+    public var uncertainWindFrom = 0.40
 
-    /// Highest grade a spot keeps when the models say "Not sure" / "No", so the grade and the
-    /// verdict never contradict each other (a 90 is never a "No").
-    public var notSureMaxScore = 69
-    public var noMaxScore = 39
+    /// Highest grade a spot keeps when the wind is uncertain / unlikely: so uncertain wind is at
+    /// best a Maybe and unlikely wind a No.
+    public var uncertainWindMaxScore = 69
+    public var unlikelyWindMaxScore = 39
+
+    /// Verdict bands on the final grade (Ben, 2 Nov): Go from 70, Maybe from 40, No below.
+    public var goFromGrade = 70
+    public var maybeFromGrade = 40
 
     /// Tides smaller than this (m, low to high water over the day) are ignored.
     public var minTidalRange = 0.5

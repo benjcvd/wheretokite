@@ -150,43 +150,41 @@ final class ConfidenceTests: XCTestCase {
         let go = result.recommendations[0], no = result.recommendations[1]
         XCTAssertEqual(go.kiteVerdict, .go)
         XCTAssertNil(go.scoreBeforeChance)
+        XCTAssertEqual(no.chance?.outlook, .unlikely)
         XCTAssertEqual(no.kiteVerdict, .no)
-        XCTAssertEqual(no.finalScore, r.rules.noMaxScore)
+        XCTAssertEqual(no.finalScore, r.rules.unlikelyWindMaxScore)
         XCTAssertEqual(no.scoreBeforeChance, go.finalScore)
     }
 
-    /// Verdict first (Ben, 2 Nov): a 30 "Go" ranks above a 69 "Not sure", which ranks above a
-    /// "No"; spots never checked come after those, and spots at 0 last.
-    func testVerdictRanksBeforeGrade() {
-        func rec(_ id: String, _ score: Int, _ v: KiteVerdict?) -> SpotRecommendation {
-            var r = SpotRecommendation(spot: Spot(id: id, name: id, latitude: 45, longitude: 1, seaFacingDeg: 165),
-                                       driveMinutes: 30, driveIsEstimate: true, windScore: score, finalScore: score,
-                                       window: nil, hours: [], reason: "")
-            r.chance = v.map { KiteChance(chance: 0.5, verdict: $0, leadDays: 1, minWindKn: 11, modelBestKn: [:]) }
-            return r
-        }
-        let list = [rec("unchecked", 80, nil), rec("zero", 0, nil), rec("no", 39, .no),
-                    rec("notSure", 69, .notSure), rec("go", 30, .go), rec("go2", 55, .go)]
-        XCTAssertEqual(list.sorted(by: Recommender.ranks).map(\.id), ["go2", "go", "notSure", "no", "unchecked", "zero"])
+    /// The label reads off the final grade (Ben, 2 Nov): 70+ Go, 40–69 Maybe, under 40 No.
+    func testVerdictBandsOnTheGrade() {
+        XCTAssertEqual([100, 70, 69, 40, 39, 0].map { KiteVerdict(grade: $0) }, [.go, .go, .maybe, .maybe, .no, .no])
     }
 
-    /// Searching end to end: the top pick is a Go even when a Not sure had the higher grade.
-    func testTopPickIsAGoOverAHigherNotSure() async throws {
-        let all = spots(2)
-        let shaky = all[1].longitude
+    /// Uncertain wind holds a 100 at 69, a Maybe, and it ranks under a 75 with likely wind;
+    /// a Go needs good conditions too: likely wind with a grade of 55 stays Maybe.
+    func testUncertainWindIsAMaybeAndRanksOnTheGrade() async throws {
+        let all = spots(3)
+        let shaky = all[1].longitude, light = all[2].longitude
         let conf = FakeConfidence { _ in 1 }
         conf.modelSpeeds = { $0.longitude == shaky ? [10, 11, 12, 13] : [18, 18, 18, 18] }
-        // s0000: light in the blend (lower grade) but the models agree on wind; s0001: 16 kn.
-        let r = Recommender(spots: all, forecast: FakeForecast { $0.longitude == shaky ? 16 : 11.1 },
+        // s0000 12 kn: good, s0001 16 kn: best in the blend, s0002 11.1 kn: barely powered.
+        let r = Recommender(spots: all, forecast: FakeForecast { $0.longitude == shaky ? 16 : $0.longitude == light ? 11.1 : 12 },
                             driveTime: StraightLineDriveTime(), confidence: conf)
-        let result = try await r.search(request, profile: rider, today: "2026-10-01")
-        let recs = result.recommendations
-        XCTAssertEqual(recs.map(\.kiteVerdict), [.go, .notSure])
-        XCTAssertEqual(recs[0].spot.id, "s0000")
-        XCTAssertLessThan(recs[0].finalScore, recs[1].finalScore)
+        let recs = try await r.search(request, profile: rider, today: "2026-10-01").recommendations
+        let byID = Dictionary(uniqueKeysWithValues: recs.map { ($0.id, $0) })
+        XCTAssertEqual(byID["s0001"]?.chance?.outlook, .uncertain)
+        XCTAssertEqual(byID["s0001"]?.finalScore, r.rules.uncertainWindMaxScore)
+        XCTAssertEqual(byID["s0001"]?.kiteVerdict, .maybe)
+        XCTAssertEqual(byID["s0002"]?.chance?.outlook, .likely)
+        XCTAssertEqual(byID["s0002"]?.kiteVerdict, .maybe)
+        XCTAssertEqual(recs.first?.id, "s0000")
+        XCTAssertEqual(recs.first?.kiteVerdict, .go)
+        // Ranked on the grade, so every Go comes first.
+        XCTAssertEqual(recs.map(\.finalScore), recs.map(\.finalScore).sorted(by: >))
     }
 
-    /// While fewer than `confidenceTop` spots are Go, the next unchecked spots are checked.
+    /// A spot pushed up into the top by the caps gets its own check in the next round.
     func testPromotedSpotsAreCheckedToo() async throws {
         let conf = FakeConfidence { _ in 1 }
         conf.modelSpeeds = { _ in [5, 5, 6, 6] }   // every spot: No
@@ -195,9 +193,8 @@ final class ConfidenceTests: XCTestCase {
         let result = try await r.search(request, profile: rider, today: "2026-10-01")
         XCTAssertEqual(conf.calls.count, r.chanceRounds)
         XCTAssertEqual(result.recommendations.filter { $0.chance != nil }.count, r.confidenceTop * r.chanceRounds)
-        // Unchecked spots keep their grade and rank after the checked ones.
-        XCTAssertNotNil(result.recommendations[0].chance)
-        XCTAssertNil(result.recommendations.last?.chance)
+        // Unchecked spots keep their grade and sit on top: 3 rounds of 10 can't cover 40 spots.
+        XCTAssertNil(result.recommendations[0].chance)
     }
 
     func testChanceFollowsTheMarginAboveMinWind() {
@@ -210,13 +207,13 @@ final class ConfidenceTests: XCTestCase {
             return scorer.kiteChance(models: m, sides: side, hours: Set(10..<18), leadDays: lead)
         }
         let minWind = scorer.kiteRanges.map(\.minKn).min()!    // 11 kn for 75 kg on a 12
-        XCTAssertEqual(chance([18, 18, 18, 18])?.verdict, .go)
-        XCTAssertEqual(chance([minWind, minWind, minWind, minWind])?.verdict, .notSure)   // just under 50 %
-        XCTAssertEqual(chance([8, 8, 8, 8])?.verdict, .no)
+        XCTAssertEqual(chance([18, 18, 18, 18])?.outlook, .likely)
+        XCTAssertEqual(chance([minWind, minWind, minWind, minWind])?.outlook, .uncertain)   // just under 50 %
+        XCTAssertEqual(chance([8, 8, 8, 8])?.outlook, .unlikely)
         // Same mean, models far apart: less sure.
         XCTAssertLessThan(chance([8, 22, 10, 20])!.chance, chance([15, 15, 15, 15])!.chance)
         // Offshore wind is no wind for the rider.
-        XCTAssertEqual(chance([20, 20, 20, 20], dir: 345)?.verdict, .no)
+        XCTAssertEqual(chance([20, 20, 20, 20], dir: 345)?.outlook, .unlikely)
         // One model only: nothing to go on.
         XCTAssertNil(chance([18]))
         // Further out, the same forecast is less sure.
