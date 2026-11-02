@@ -46,11 +46,18 @@ while let a = it.next() {
 
 let profileURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".wheretokite/profile.json")
 var profile = (try? JSONDecoder().decode(RiderProfile.self, from: Data(contentsOf: profileURL)))
-if args["weight"] != nil || args["kites"] != nil || args["level"] != nil {
+if args["weight"] != nil || args["kites"] != nil || args["level"] != nil || args["offshore"] != nil {
     var p = profile ?? RiderProfile(weightKg: 75, kites: [9, 12], level: .intermediate)
     if let w = args["weight"] { p.weightKg = Double(w) ?? fail("bad --weight") }
     if let k = args["kites"] { p.kites = k.split(separator: ",").map { Double($0) ?? fail("bad --kites") } }
     if let l = args["level"] { p.level = Level(rawValue: l) ?? fail("level: beginner|intermediate|advanced") }
+    switch args["offshore"] {
+    case nil: if args["level"] != nil { p.offshore = nil }   // a new level brings its default
+    case "default": p.offshore = nil
+    case "none": p.offshoreTolerance = .sideShoreOnly
+    case "side": p.offshoreTolerance = .sideOffshore
+    default: fail("offshore: none|side|default")
+    }
     try? FileManager.default.createDirectory(at: profileURL.deletingLastPathComponent(), withIntermediateDirectories: true)
     try JSONEncoder().encode(p).write(to: profileURL)
     profile = p
