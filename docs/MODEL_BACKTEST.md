@@ -1,7 +1,23 @@
-# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80, WHE-88)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
+
+## Built: no Go beyond +3 days, same rule everywhere (WHE-88, 2 Nov)
+
+**In plain words.** Your pick on WHE-81, built on Product's WHE-82 grade levels. The agreement rule
+(cut-offs tuned to 85 % in WHE-84) sets the grade at every day ahead. At **+4 and +5 days** a Go is
+held back to **Worth a try at best**, with the reason "too far ahead to promise" (WHE-81: a Go that
+far out came true only 62–67 % in the Mediterranean and on open coast). Long shot and No go are
+untouched; the chance number is kept. **No regional rule:** you asked that all the app's logic be
+global (2 Nov), so Catalonia gets the same rule as everywhere else.
+
+### What could make this wrong
+- Catalonia is still unverified (WHE-84: its masts read half the forecast; only Barcelona's open
+  port masts, WHE-86, check it: Go 98 % over 17 dates). A Catalan Go is shown without proof.
+- Day 2–3 in southern Spain came true only 60–71 % in WHE-84 (8–17 Go days, too few to call), and
+  the Canaries failed WHE-72: both still show Go.
+- The Ebro mestral Go may be wrong (WHE-63: Illa de Buda 6–10 kn vs models 15–21).
 
 ## One correction learned from measurements, the same at every spot (WHE-80, 2 Nov): don't ship it
 

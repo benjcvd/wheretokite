@@ -113,6 +113,8 @@ let spotsURL = URL(fileURLWithPath: args["spots"] ?? "Data/spots.json")
 let catalog: SpotCatalog
 do { catalog = try SpotCatalog.load(from: spotsURL) } catch { fail("can't load spots from \(spotsURL.path): \(error)") }
 
+// --server https://…workers.dev: through the WhereToKite server (shared cache), as the app does.
+let server = args["server"].flatMap(URL.init(string:)).map(ForecastServer.wheretokite) ?? .openMeteo
 let driveTime: DriveTimeProvider = flags.contains("straight-line") ? StraightLineDriveTime() : MapKitDriveTime()
 
 /// Past forecasts from a file, for replaying days (WHE-63).
@@ -150,8 +152,9 @@ if let path = args["replay"] {
 
 var recommender = Recommender(
     spots: catalog.spots,
-    forecast: CachedForecastProvider(upstream: OpenMeteoProvider()),
-    driveTime: driveTime)
+    forecast: CachedForecastProvider(upstream: OpenMeteoProvider(server: server)),
+    driveTime: driveTime,
+    confidence: ConfidenceEstimator(server: server))
 recommender.islands = catalog.islands ?? []
 
 // MARK: Run
@@ -177,13 +180,13 @@ let shown = result.recommendations.filter { flags.contains("all") || $0.finalSco
 if shown.isEmpty { print("No kiteable spot found. Use --all to see why each spot fails.") }
 for (i, r) in shown.enumerated() {
     let name = r.spot.name.count > 32 ? String(r.spot.name.prefix(31)) + "…" : r.spot.name
-    let models = r.confidence.map { c in
-        " · models: \(c.rating.rawValue.lowercased()) ±\(Int(c.speedSpreadKn.rounded())) kn"
-            + (c.directionSpreadDeg.map { " ±\(Int($0.rounded()))°" } ?? "")
-            + (r.agreementFactor < 1 ? " (−\(Int(((1 - r.agreementFactor) * 100).rounded())) %)" : "")
+    let models = r.chance.map { c in
+        " · \(c.summary)" + (r.scoreBeforeChance.map { " (grade \($0) → \(r.finalScore))" } ?? "")
     } ?? ""
-    print(String(format: "%2d. %3d  %@  %@", i + 1, r.finalScore,
-                 name.padding(toLength: 32, withPad: " ", startingAt: 0), r.reason + models))
+    print(String(format: "%2d. %3d %@ %@  %@", i + 1, r.finalScore,
+                 r.kiteVerdict.rawValue.padding(toLength: 11, withPad: " ", startingAt: 0),
+                 name.padding(toLength: 32, withPad: " ", startingAt: 0),
+                 r.reason + (r.stormFrom.map { String(format: " · ⚡ storm from %02d:00", $0) } ?? "") + models))
 }
 
 let hourlyCount = Int(args["hourly"] ?? "0") ?? 0

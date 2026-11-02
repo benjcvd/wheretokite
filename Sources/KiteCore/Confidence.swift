@@ -11,6 +11,20 @@ public struct ForecastConfidence: Sendable {
     /// Mean disagreement on direction, in degrees (only counted when there is real wind).
     public var directionSpreadDeg: Double?
     public var modelsCompared: [String]
+    /// Each model's plausible hourly wind over the whole day (spot-local hours), for the
+    /// chance to kite (`Scorer.kiteChance`).
+    public var modelHours: [String: [ModelWind]] = [:]
+
+    public init(score: Int, rating: Rating, leadDays: Int, speedSpreadKn: Double, directionSpreadDeg: Double?,
+                modelsCompared: [String], modelHours: [String: [ModelWind]] = [:]) {
+        self.score = score
+        self.rating = rating
+        self.leadDays = leadDays
+        self.speedSpreadKn = speedSpreadKn
+        self.directionSpreadDeg = directionSpreadDeg
+        self.modelsCompared = modelsCompared
+        self.modelHours = modelHours
+    }
 
     public var summary: String {
         var parts = ["\(rating.rawValue) confidence (\(score)/100)",
@@ -18,6 +32,19 @@ public struct ForecastConfidence: Sendable {
                      String(format: "models agree within ±%.0f kn", speedSpreadKn)]
         if let d = directionSpreadDeg { parts.append(String(format: "±%.0f° direction", d)) }
         return parts.joined(separator: " · ")
+    }
+}
+
+/// One model's wind for one local hour.
+public struct ModelWind: Sendable, Equatable {
+    public var hour: Int
+    public var speedKn: Double
+    public var directionDeg: Double
+
+    public init(hour: Int, speedKn: Double, directionDeg: Double) {
+        self.hour = hour
+        self.speedKn = speedKn
+        self.directionDeg = directionDeg
     }
 }
 
@@ -42,7 +69,9 @@ public protocol ConfidenceProvider: Sendable {
 /// independent models disagree the forecast is uncertain. Checked per spot (the models can
 /// agree at home and disagree two hours up the coast), all spots in one multi-location request.
 public struct ConfidenceEstimator: ConfidenceProvider {
-    public var models = ["ecmwf_ifs025", "gfs_seamless", "icon_seamless", "meteofrance_seamless"]
+    /// The four models the chance to kite was tuned on (WHE-81/84): best match, Météo-France
+    /// (AROME 1.3 km for the first two days, then ARPEGE), ICON and ECMWF.
+    public var models = ["best_match", "meteofrance_seamless", "icon_seamless", "ecmwf_ifs025"]
     public var session: URLSession = .shared
     public var server: ForecastServer
     /// When set, `server` is ignored: the failover picks the server for each request.
@@ -195,9 +224,20 @@ public struct ConfidenceEstimator: ConfidenceProvider {
         let s = Int(max(0, min(100, score)).rounded())
         let rating: ForecastConfidence.Rating = s >= 70 ? .high : s >= 45 ? .medium : .low
 
+        var perModel: [String: [ModelWind]] = [:]
+        for m in models {
+            guard let speeds = hourly["wind_speed_10m_\(m)"], let dirs = hourly["wind_direction_10m_\(m)"] else { continue }
+            let winds = speeds.indices.compactMap { h -> ModelWind? in
+                guard let s = speeds[h], let d = dirs[safe: h] ?? nil,
+                      HourlyWind.isPlausible(speedKn: s, gustKn: s, directionDeg: d) else { return nil }
+                return ModelWind(hour: h, speedKn: s, directionDeg: d)
+            }
+            if !winds.isEmpty { perModel[m] = winds }
+        }
+
         return ForecastConfidence(score: s, rating: rating, leadDays: leadDays,
                                   speedSpreadKn: speedSpread, directionSpreadDeg: dirSpread,
-                                  modelsCompared: models.filter(used.contains))
+                                  modelsCompared: models.filter(used.contains), modelHours: perModel)
     }
 
     static func daysBetween(_ a: String, _ b: String) -> Int {
