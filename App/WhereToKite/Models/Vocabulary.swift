@@ -68,21 +68,25 @@ enum Vocab {
         }.joined(separator: " · ")
     }
 
-    /// The plain verdict next to a grade: "Go", "Not sure", "No".
+    /// The plain verdict next to a grade: "Go", "Maybe", "No".
     static func verdict(_ v: KiteVerdict) -> String {
         switch v {
-        case .go: String(localized: "Go", comment: "Verdict: you will most likely have enough wind")
-        case .notSure: String(localized: "Not sure", comment: "Verdict: the weather models don't agree on enough wind")
-        case .no: String(localized: "No", comment: "Verdict: not enough wind expected")
+        case .go: String(localized: "Go", comment: "Verdict: grade 70 or more")
+        case .maybe: String(localized: "Maybe", comment: "Verdict: grade 40 to 69")
+        case .no: String(localized: "No", comment: "Verdict: grade under 40")
         }
     }
 
-    /// One line under the verdict, on the spot's page.
-    static func verdictDetail(_ v: KiteVerdict) -> String {
-        switch v {
-        case .go: String(localized: "The weather models agree there will be enough wind for you.")
-        case .notSure: String(localized: "The weather models don't agree there will be enough wind for you.")
-        case .no: String(localized: "The weather models don't see enough usable wind for you.")
+    /// One line under the verdict, on the spot's page: why, from the wind outlook when the
+    /// models were compared.
+    static func verdictDetail(_ v: KiteVerdict, outlook: WindOutlook?) -> String {
+        switch (v, outlook) {
+        case (.go, .some): String(localized: "Good conditions, and the weather models agree on the wind.")
+        case (.go, nil): String(localized: "Good conditions in the forecast.")
+        case (.maybe, .uncertain): String(localized: "The weather models aren't sure there will be enough wind for you.")
+        case (.maybe, _): String(localized: "Rideable, but not the best conditions for you.")
+        case (.no, .unlikely): String(localized: "The weather models don't see enough usable wind for you.")
+        case (.no, _): String(localized: "Poor conditions for you.")
         }
     }
 

@@ -6,9 +6,9 @@ import KiteCore
 enum ScoreStyle {
     static func color(_ score: Int) -> Color {
         switch score {
-        case 75...: Color(red: 0.13, green: 0.78, blue: 0.45)
-        case 50..<75: Color(red: 0.98, green: 0.76, blue: 0.10)
-        case 1..<50: Color(red: 1.00, green: 0.55, blue: 0.20)
+        case 70...: Color(red: 0.13, green: 0.78, blue: 0.45)
+        case 40..<70: Color(red: 0.98, green: 0.76, blue: 0.10)
+        case 1..<40: Color(red: 1.00, green: 0.55, blue: 0.20)
         default: Color(.systemGray)
         }
     }
@@ -16,22 +16,16 @@ enum ScoreStyle {
     /// Rich two-stop gradient for large surfaces (hero card, badges).
     static func gradient(_ score: Int) -> LinearGradient {
         let colors: [Color] = switch score {
-        case 75...: [Color(red: 0.05, green: 0.70, blue: 0.48), Color(red: 0.00, green: 0.47, blue: 0.75)]
-        case 50..<75: [Color(red: 0.96, green: 0.62, blue: 0.05), Color(red: 0.93, green: 0.38, blue: 0.16)]
-        case 1..<50: [Color(red: 0.95, green: 0.42, blue: 0.22), Color(red: 0.82, green: 0.22, blue: 0.36)]
+        case 70...: [Color(red: 0.05, green: 0.70, blue: 0.48), Color(red: 0.00, green: 0.47, blue: 0.75)]
+        case 40..<70: [Color(red: 0.96, green: 0.62, blue: 0.05), Color(red: 0.93, green: 0.38, blue: 0.16)]
+        case 1..<40: [Color(red: 0.95, green: 0.42, blue: 0.22), Color(red: 0.82, green: 0.22, blue: 0.36)]
         default: [Color(red: 0.42, green: 0.46, blue: 0.54), Color(red: 0.28, green: 0.31, blue: 0.40)]
         }
         return LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
     }
 
-    static func label(_ score: Int) -> String {
-        switch score {
-        case 75...: String(localized: "Great", comment: "Score rating")
-        case 50..<75: String(localized: "Good", comment: "Score rating")
-        case 1..<50: String(localized: "Marginal", comment: "Score rating")
-        default: String(localized: "No go", comment: "Score rating")
-        }
-    }
+    /// Go / Maybe / No: the same bands as the verdict pill (`KiteVerdict(grade:)`).
+    static func label(_ score: Int) -> String { Vocab.verdict(KiteVerdict(grade: score)) }
 }
 
 /// Windy-style colour scale for wind speed in knots.
@@ -119,7 +113,7 @@ extension KiteVerdict {
     var color: Color {
         switch self {
         case .go: ScoreStyle.color(85)
-        case .notSure: .orange
+        case .maybe: .orange
         case .no: .secondary
         }
     }
@@ -127,13 +121,13 @@ extension KiteVerdict {
     var systemImage: String {
         switch self {
         case .go: "checkmark.circle.fill"
-        case .notSure: "questionmark.circle.fill"
+        case .maybe: "questionmark.circle.fill"
         case .no: "xmark.circle.fill"
         }
     }
 }
 
-/// "Go" / "Not sure" / "No" next to a grade. `onColor`: white text for the coloured hero card.
+/// "Go" / "Maybe" / "No" next to a grade. `onColor`: white text for the coloured hero card.
 struct VerdictPill: View {
     let verdict: KiteVerdict
     var onColor = false
@@ -159,14 +153,14 @@ struct ChanceInfoButton: View {
         Button { shown = true } label: {
             Image(systemName: "info.circle")
         }
-        .accessibilityLabel(Text("About Go, Not sure and No"))
+        .accessibilityLabel(Text("About Go, Maybe and No"))
         .accessibilityIdentifier("verdictInfo")
         .popover(isPresented: $shown) {
             VStack(alignment: .leading, spacing: 10) {
-                Text("Go, Not sure, No").font(.headline)
-                Text("Forecasts are never perfect. We compare four weather models and give you our best estimate of whether you'll have enough wind.")
-                Text("In our tests on past days, a Go came true about 85 % of the time.")
-                Text("Not sure means the models don't agree: check again closer to the day. The further ahead the day, the less sure any forecast is.")
+                Text("Go, Maybe, No").font(.headline)
+                Text("Each spot's label comes from its grade: Go from 70, Maybe from 40, No below.")
+                Text("The grade weighs the wind, gusts and direction for you, and how likely the wind is. We compare four weather models: when they aren't sure, a spot is a Maybe at best; when they see too little wind, it's a No.")
+                Text("Forecasts are never perfect: this is our best estimate. In our tests on past days, wind the models called likely came true about 85 % of the time. The further ahead the day, the less sure any forecast is.")
             }
             .font(.subheadline)
             .padding()
@@ -177,10 +171,11 @@ struct ChanceInfoButton: View {
     }
 }
 
-/// The verdict on a spot's page: "Go" + what it means + the info button.
+/// The verdict on a spot's page: "Go" + why + the info button.
 struct VerdictBanner: View {
-    let verdict: KiteVerdict
-    let leadDays: Int?
+    let rec: SpotRecommendation
+
+    private var verdict: KiteVerdict { rec.kiteVerdict }
 
     var body: some View {
         HStack(spacing: 10) {
@@ -204,9 +199,9 @@ struct VerdictBanner: View {
     }
 
     private var detail: String {
-        let base = Vocab.verdictDetail(verdict)
-        guard let leadDays, leadDays >= 3 else { return base }
-        return base + " " + String(localized: "\(leadDays) days ahead: it can still change.")
+        let base = Vocab.verdictDetail(verdict, outlook: rec.chance?.outlook)
+        guard let lead = rec.chance?.leadDays, lead >= 3 else { return base }
+        return base + " " + String(localized: "\(lead) days ahead: it can still change.")
     }
 }
 

@@ -41,7 +41,7 @@ struct ResultsSection: View {
     }
 
     /// Score from which the top spot gets the "go" card.
-    static let verdictMinimum = 40
+    static let verdictMinimum = ScoringRules().maybeFromGrade   // Go or Maybe
 
     // MARK: Result
 
@@ -100,8 +100,8 @@ struct ResultsSection: View {
                                ? String(localized: "No known spot within \(DriveSteps.label(result.request.maxDriveMinutes)) of you. Allow a longer drive or pick another start point.")
                                : String(localized: "No known spot within \(DriveSteps.label(result.request.maxDriveMinutes)) of \(options.start.name). Allow a longer drive or pick another start point."))
             } else if !good.isEmpty {
-                NoSpotCard(title: String(localized: "Nothing great"),
-                           message: String(localized: "Only marginal conditions, listed below. Try another day or session, or allow a longer drive."))
+                NoSpotCard(title: String(localized: "No good spot"),
+                           message: String(localized: "Every spot in reach is a No, listed below. Try another day or session, or allow a longer drive."))
             } else {
                 NoSpotCard(title: String(localized: "No kiteable spot"),
                            message: String(localized: "Not enough good wind. Try another day or session, or allow a longer drive."))
@@ -118,7 +118,7 @@ struct ResultsSection: View {
 
             if !good.isEmpty {
                 HStack {
-                    Text(!hasVerdict ? "Marginal" : good.count > 1 ? "Also good" : "On the map")
+                    Text(!hasVerdict ? "Spots in reach" : good.count > 1 ? "Other spots" : "On the map")
                         .font(.title3.bold())
                     Spacer()
                     // With a single good spot the list would be empty (the spot is the card
@@ -228,10 +228,10 @@ struct VerdictCard: View {
     let rec: SpotRecommendation
 
     private var eyebrow: String {
-        switch rec.finalScore {
-        case 75...: String(localized: "Go kite")
-        case 50..<75: String(localized: "Worth the trip")
-        default: String(localized: "Kiteable, just")
+        switch rec.kiteVerdict {
+        case .go: String(localized: "Go kite")
+        case .maybe: String(localized: "Maybe worth the trip")
+        case .no: String(localized: "Kiteable, just")
         }
     }
 
@@ -252,7 +252,7 @@ struct VerdictCard: View {
                 VStack(spacing: 6) {
                     ScoreRing(score: rec.finalScore)
                         .frame(width: 60, height: 60)
-                    if let v = rec.kiteVerdict { VerdictPill(verdict: v, onColor: true) }
+                    VerdictPill(verdict: rec.kiteVerdict, onColor: true)
                 }
             }
 
@@ -383,7 +383,7 @@ struct SpotCard: View {
         HStack(spacing: 12) {
             VStack(spacing: 6) {
                 ScoreBadge(score: rec.finalScore)
-                if let v = rec.kiteVerdict { VerdictPill(verdict: v) }
+                VerdictPill(verdict: rec.kiteVerdict)
             }
             VStack(alignment: .leading, spacing: 4) {
                 Text(rec.spot.name)
