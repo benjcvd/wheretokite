@@ -140,7 +140,7 @@ public struct Recommender: Sendable {
     public var confidenceTop = 10
     /// Requests at most for step 6 (spots promoted by a cap get checked in the next round).
     public var chanceRounds = 3
-    /// Where and how far ahead the chance may say Go (no Go beyond +3, none yet in Catalonia).
+    /// How far ahead the chance may say Go (no Go beyond +3 days, same everywhere).
     public var goPolicy = GoPolicy()
 
     public init(spots: [Spot], forecast: ForecastProvider, driveTime: DriveTimeProvider,
@@ -324,7 +324,7 @@ public struct Recommender: Sendable {
                 }.map(\.wind.hour))
                 guard let chance = scorer.kiteChance(models: c.modelHours, sides: rec.spot.allSides,
                                                      hours: open, leadDays: c.leadDays,
-                                                     region: rec.spot.region, policy: goPolicy) else { continue }
+                                                     policy: goPolicy) else { continue }
                 out[i].chance = chance
                 let cap = switch chance.outlook {
                 case .likely: Int.max

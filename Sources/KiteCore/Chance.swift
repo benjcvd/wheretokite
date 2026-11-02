@@ -69,26 +69,18 @@ public enum GoHeldBack: String, Sendable, CaseIterable {
     /// More than `GoPolicy.lastGoLead` days ahead: in WHE-81 a Go at +4/+5 came true only
     /// 62–67 % in the Mediterranean and on open coast (Ben, 2 Nov: no Go beyond +3).
     case tooFarAhead = "too far ahead to promise"
-    /// A region where no Go has been checked against wind on the water or real sessions yet.
-    case notCheckedHere = "not checked on the water here yet"
 }
 
-/// Where and how far ahead the chance may say Go (Ben's pick on WHE-81, 2 Nov: labels today to
-/// +3 days, softer beyond, Catalonia only after a water or session check).
+/// How far ahead the chance may say Go (Ben's pick on WHE-81, 2 Nov: labels today to +3 days,
+/// softer beyond). The same everywhere: no rule depends on the region (Ben, 2 Nov).
 public struct GoPolicy: Sendable, Equatable {
     /// Last day ahead (0 = today) a Go can be shown.
     public var lastGoLead = 3
-    /// `Spot.region` values where Go waits for a check. Catalonia: its weather-service masts
-    /// read about half the forecast, so WHE-81/84 couldn't verify a Go there; Barcelona's open
-    /// port masts (WHE-86) are the only partial check so far.
-    public var uncheckedRegions: Set<String> = ["Catalunya"]
 
     public init() {}
 
-    public func heldBack(leadDays: Int, region: String?) -> GoHeldBack? {
-        if leadDays > lastGoLead { return .tooFarAhead }
-        if let region, uncheckedRegions.contains(region) { return .notCheckedHere }
-        return nil
+    public func heldBack(leadDays: Int) -> GoHeldBack? {
+        leadDays > lastGoLead ? .tooFarAhead : nil
     }
 }
 
@@ -106,7 +98,7 @@ extension Scorer {
     /// Chance from each model's hourly wind. `hours`: the local hours that may count (searched
     /// hours that safety didn't close). nil when fewer than two models have the hours.
     public func kiteChance(models: [String: [ModelWind]], sides: [SpotSide], hours: Set<Int>,
-                           leadDays: Int, region: String? = nil, policy: GoPolicy = .init()) -> KiteChance? {
+                           leadDays: Int, policy: GoPolicy = .init()) -> KiteChance? {
         guard let minWind = kiteRanges.map(\.minKn).min(), let probe = kiteRanges.first?.optimalKn else { return nil }
         let n = max(1, rules.sessionHours)
         var best: [String: Double] = [:]
@@ -133,7 +125,7 @@ extension Scorer {
         let z = (c.meanKn - minWind + t.biasKn) / sqrt(c.spreadKn * c.spreadKn + t.errorKn * t.errorKn)
         c.chance = Self.phi(z)
         c.outlook = c.chance >= t.goFrom ? .likely : c.chance >= rules.uncertainWindFrom ? .uncertain : .unlikely
-        if c.outlook == .likely, let why = policy.heldBack(leadDays: leadDays, region: region) {
+        if c.outlook == .likely, let why = policy.heldBack(leadDays: leadDays) {
             c.outlook = .uncertain
             c.goHeldBack = why
         }

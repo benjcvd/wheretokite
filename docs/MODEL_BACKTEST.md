@@ -3,37 +3,21 @@
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
 
-## Built: Go only where it was proven (WHE-88, 2 Nov, waiting for your check)
+## Built: no Go beyond +3 days, same rule everywhere (WHE-88, 2 Nov)
 
 **In plain words.** Your pick on WHE-81, built on Product's WHE-82 grade levels. The agreement rule
-(WHE-81, cut-offs tuned to 85 % in WHE-84) already decides the grade at every day ahead. Now a Go
-is held back in two cases and the spot shows **Worth a try at best**, with the reason:
-
-| Case | Why (measured) | What the rider sees |
-|---|---|---|
-| **+4 and +5 days** | WHE-81: Go came true only 62–67 % in the Mediterranean and on open coast | Worth a try · "too far ahead to promise" |
-| **Catalonia** (`region` Catalunya, 32 spots) | WHE-84: the Catalan masts read half the forecast, so no Go there could be checked; only Barcelona's open port masts (WHE-86, Go 98 % over 17 dates) are a partial check | Worth a try · "not checked on the water here yet" |
-
-Today to +3 outside Catalonia: unchanged (Go when the models agree, ≥ 82 % came true in France).
-Long shot and No go are never touched; the chance number itself is kept.
-
-**What changes for riders (measured on the live forecast, 3 Nov afternoon from Barcelona, 180 min):**
-the four Ebro delta spots (L'Ampolla, El Trabucador, Riumar, Fangar) had a Go grade (72–100) on
-the mestral and now show 68–69 Worth a try "not checked on the water here yet". Nothing else in the
-top 19 moved. **From Barcelona, Catalan spots can't show a Go any more** until a check lifts it.
-
-**How to lift Catalonia.** `GoPolicy.uncheckedRegions` in `Sources/KiteCore/Chance.swift` (one line,
-the Recommender's `goPolicy`). What would justify it: a dozen dated sessions from you (spot, day,
-rode or not), or wind measured on the water near a Catalan beach, scored the WHE-84 way.
+(cut-offs tuned to 85 % in WHE-84) sets the grade at every day ahead. At **+4 and +5 days** a Go is
+held back to **Worth a try at best**, with the reason "too far ahead to promise" (WHE-81: a Go that
+far out came true only 62–67 % in the Mediterranean and on open coast). Long shot and No go are
+untouched; the chance number is kept. **No regional rule:** you asked that all the app's logic be
+global (2 Nov), so Catalonia gets the same rule as everywhere else.
 
 ### What could make this wrong
-- Catalonia is matched by the catalogue's `region` text: if a spot's region is renamed or missing,
-  the hold silently stops there.
-- Day 2–3 in southern Spain came true only 60–71 % in WHE-84 (8–17 Go days, too few to call): still
-  shown as Go, same rule everywhere as you asked.
-- The Canaries failed WHE-72 and islands were "too few" in WHE-81: still shown as Go.
-- The Ebro mestral Go may have been wrong anyway (WHE-63: Illa de Buda measured 6–10 kn while the
-  models said 15–21); holding it back hides that question, it doesn't answer it.
+- Catalonia is still unverified (WHE-84: its masts read half the forecast; only Barcelona's open
+  port masts, WHE-86, check it: Go 98 % over 17 dates). A Catalan Go is shown without proof.
+- Day 2–3 in southern Spain came true only 60–71 % in WHE-84 (8–17 Go days, too few to call), and
+  the Canaries failed WHE-72: both still show Go.
+- The Ebro mestral Go may be wrong (WHE-63: Illa de Buda 6–10 kn vs models 15–21).
 
 ## One correction learned from measurements, the same at every spot (WHE-80, 2 Nov): don't ship it
 

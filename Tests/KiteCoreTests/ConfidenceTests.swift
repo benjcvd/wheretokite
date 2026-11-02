@@ -241,22 +241,19 @@ final class ConfidenceTests: XCTestCase {
         XCTAssertGreaterThan(chance([14, 14, 14, 14], lead: 0)!.chance, chance([14, 14, 14, 14], lead: 4)!.chance)
     }
 
-    /// Ben's pick on WHE-81: Go today to +3 only, and none in Catalonia until it's checked.
-    func testGoHeldBackBeyondDay3AndInCatalonia() {
+    /// Ben's pick on WHE-81: Go today to +3 only, the same in every region.
+    func testGoHeldBackBeyondDay3() {
         let scorer = Scorer(profile: rider, intensity: nil)
         let side = [SpotSide(name: nil, seaFacingDeg: 165, waterSectorDeg: nil)]
         let m = Dictionary(uniqueKeysWithValues: (0..<4).map { i in
             ("m\(i)", (10..<18).map { ModelWind(hour: $0, speedKn: 22, directionDeg: 170) })
         })
-        func chance(lead: Int, region: String? = nil) -> KiteChance? {
-            scorer.kiteChance(models: m, sides: side, hours: Set(10..<18), leadDays: lead, region: region)
+        func chance(lead: Int) -> KiteChance? {
+            scorer.kiteChance(models: m, sides: side, hours: Set(10..<18), leadDays: lead)
         }
         for lead in 0...3 {
             XCTAssertEqual(chance(lead: lead)?.outlook, .likely, "day \(lead)")
             XCTAssertNil(chance(lead: lead)?.goHeldBack)
-            XCTAssertEqual(chance(lead: lead, region: "Occitanie")?.outlook, .likely)
-            XCTAssertEqual(chance(lead: lead, region: "Catalunya")?.outlook, .uncertain)
-            XCTAssertEqual(chance(lead: lead, region: "Catalunya")?.goHeldBack, .notCheckedHere)
         }
         for lead in 4...6 {
             XCTAssertEqual(chance(lead: lead)?.outlook, .uncertain, "day \(lead)")
@@ -265,17 +262,12 @@ final class ConfidenceTests: XCTestCase {
         }
         // Only a Go is held back: weak wind stays unlikely, with no reason attached.
         let light = m.mapValues { $0.map { ModelWind(hour: $0.hour, speedKn: 7, directionDeg: 170) } }
-        let weak = scorer.kiteChance(models: light, sides: side, hours: Set(10..<18), leadDays: 5, region: "Catalunya")
+        let weak = scorer.kiteChance(models: light, sides: side, hours: Set(10..<18), leadDays: 5)
         XCTAssertEqual(weak?.outlook, .unlikely)
         XCTAssertNil(weak?.goHeldBack)
-        // Policy can be lifted per region once checked.
-        var open = GoPolicy()
-        open.uncheckedRegions = []
-        XCTAssertEqual(scorer.kiteChance(models: m, sides: side, hours: Set(10..<18), leadDays: 1,
-                                         region: "Catalunya", policy: open)?.outlook, .likely)
     }
 
-    /// In a search: a held-back Go keeps at most "Worth a try" and ranks under a real Go.
+    /// In a search: same rule in Catalonia as elsewhere; at +4 a Go is Worth a try at best.
     func testHeldBackGoIsWorthATryInTheList() async throws {
         var all = spots(2)
         all[0].region = "Catalunya"
@@ -285,16 +277,14 @@ final class ConfidenceTests: XCTestCase {
         let r = Recommender(spots: all, forecast: FakeForecast { _ in 16 }, driveTime: StraightLineDriveTime(),
                             confidence: conf)
         var recs = try await r.search(request, profile: rider, today: "2026-10-01").recommendations
-        XCTAssertEqual(recs.map(\.id), ["s0001", "s0000"])
-        XCTAssertEqual(recs[0].kiteVerdict, .go)
-        XCTAssertEqual(recs[1].kiteVerdict, .worthATry)
-        XCTAssertEqual(recs[1].chance?.goHeldBack, .notCheckedHere)
-        XCTAssertEqual(recs[1].finalScore, r.rules.uncertainWindMaxScore)
+        XCTAssertEqual(recs.map(\.kiteVerdict), [.go, .go])
+        XCTAssertEqual(recs.compactMap(\.chance?.goHeldBack), [])
 
         conf.leadDays = 4
         recs = try await r.search(request, profile: rider, today: "2026-10-01").recommendations
         XCTAssertEqual(recs.map(\.kiteVerdict), [.worthATry, .worthATry])
         XCTAssertEqual(recs.compactMap(\.chance?.goHeldBack), [.tooFarAhead, .tooFarAhead])
+        XCTAssertEqual(recs.map(\.finalScore), [r.rules.uncertainWindMaxScore, r.rules.uncertainWindMaxScore])
     }
 
     func testPhi() {
