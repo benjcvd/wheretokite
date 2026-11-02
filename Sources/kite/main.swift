@@ -147,7 +147,7 @@ for (i, r) in shown.enumerated() {
         " · \(c.summary)" + (r.scoreBeforeChance.map { " (grade \($0) → \(r.finalScore))" } ?? "")
     } ?? ""
     print(String(format: "%2d. %3d %@ %@  %@", i + 1, r.finalScore,
-                 r.kiteVerdict.rawValue.padding(toLength: 5, withPad: " ", startingAt: 0),
+                 r.kiteVerdict.rawValue.padding(toLength: 11, withPad: " ", startingAt: 0),
                  name.padding(toLength: 32, withPad: " ", startingAt: 0),
                  r.reason + (r.stormFrom.map { String(format: " · ⚡ storm from %02d:00", $0) } ?? "") + models))
 }

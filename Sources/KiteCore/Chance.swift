@@ -1,15 +1,23 @@
 import Foundation
 
-/// The plain answer next to a spot's grade, read straight off the final grade (Ben, 2 Nov):
-/// 70–100 Go, 40–69 Maybe, 0–39 No. The wind chance only caps the grade (`WindOutlook`), so a
-/// Go needs both likely wind and good conditions overall.
+/// The overall decision next to a spot's grade, read straight off the final grade (Ben, 2 Nov):
+/// 70–100 Go, 55–69 Worth a try, 40–54 Coin flip, 20–39 Long shot, 0–19 No go. The wind chance
+/// only caps the grade (`WindOutlook`), so a Go needs both likely wind and good conditions.
 public enum KiteVerdict: String, Sendable, CaseIterable {
+    /// Good session expected.
     case go = "Go"
-    case maybe = "Maybe"
-    case no = "No"
+    /// Most likely good, can't be sure.
+    case worthATry = "Worth a try"
+    case coinFlip = "Coin flip"
+    /// Probably not; only if you don't want to miss any chance.
+    case longShot = "Long shot"
+    /// Not worth it, or unsafe.
+    case noGo = "No go"
 
     public init(grade: Int, rules: ScoringRules = .init()) {
-        self = grade >= rules.goFromGrade ? .go : grade >= rules.maybeFromGrade ? .maybe : .no
+        let b = rules.verdictFromGrade
+        self = grade >= b.go ? .go : grade >= b.worthATry ? .worthATry : grade >= b.coinFlip ? .coinFlip
+            : grade >= b.longShot ? .longShot : .noGo
     }
 }
 
@@ -17,9 +25,9 @@ public enum KiteVerdict: String, Sendable, CaseIterable {
 public enum WindOutlook: String, Sendable, CaseIterable {
     /// Above the tuned cut-off for that day ahead (a Go came true ~85 % in WHE-84's tests).
     case likely
-    /// From `ScoringRules.uncertainWindFrom` up to the cut-off: grade capped at 69.
+    /// From `ScoringRules.uncertainWindFrom` up to the cut-off: grade capped at 69 (Worth a try at best).
     case uncertain
-    /// Below that: grade capped at 39.
+    /// Below that: grade capped at 39 (Long shot at best).
     case unlikely
 }
 

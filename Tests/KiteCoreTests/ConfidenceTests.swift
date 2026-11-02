@@ -151,18 +151,19 @@ final class ConfidenceTests: XCTestCase {
         XCTAssertEqual(go.kiteVerdict, .go)
         XCTAssertNil(go.scoreBeforeChance)
         XCTAssertEqual(no.chance?.outlook, .unlikely)
-        XCTAssertEqual(no.kiteVerdict, .no)
+        XCTAssertEqual(no.kiteVerdict, .longShot)   // unlikely wind: a long shot at best
         XCTAssertEqual(no.finalScore, r.rules.unlikelyWindMaxScore)
         XCTAssertEqual(no.scoreBeforeChance, go.finalScore)
     }
 
-    /// The label reads off the final grade (Ben, 2 Nov): 70+ Go, 40–69 Maybe, under 40 No.
+    /// The label reads off the final grade (Ben, 2 Nov): five bands.
     func testVerdictBandsOnTheGrade() {
-        XCTAssertEqual([100, 70, 69, 40, 39, 0].map { KiteVerdict(grade: $0) }, [.go, .go, .maybe, .maybe, .no, .no])
+        XCTAssertEqual([100, 70, 69, 55, 54, 40, 39, 20, 19, 0].map { KiteVerdict(grade: $0) },
+                       [.go, .go, .worthATry, .worthATry, .coinFlip, .coinFlip, .longShot, .longShot, .noGo, .noGo])
     }
 
-    /// Uncertain wind holds a 100 at 69, a Maybe, and it ranks under a 75 with likely wind;
-    /// a Go needs good conditions too: likely wind with a grade of 55 stays Maybe.
+    /// Uncertain wind holds a 100 at 69 ("Worth a try") and it ranks under a 75 with likely
+    /// wind; a Go needs good conditions too: likely wind with a grade in the 60s isn't a Go.
     func testUncertainWindIsAMaybeAndRanksOnTheGrade() async throws {
         let all = spots(3)
         let shaky = all[1].longitude, light = all[2].longitude
@@ -175,9 +176,9 @@ final class ConfidenceTests: XCTestCase {
         let byID = Dictionary(uniqueKeysWithValues: recs.map { ($0.id, $0) })
         XCTAssertEqual(byID["s0001"]?.chance?.outlook, .uncertain)
         XCTAssertEqual(byID["s0001"]?.finalScore, r.rules.uncertainWindMaxScore)
-        XCTAssertEqual(byID["s0001"]?.kiteVerdict, .maybe)
+        XCTAssertEqual(byID["s0001"]?.kiteVerdict, .worthATry)
         XCTAssertEqual(byID["s0002"]?.chance?.outlook, .likely)
-        XCTAssertEqual(byID["s0002"]?.kiteVerdict, .maybe)
+        XCTAssertNotEqual(byID["s0002"]?.kiteVerdict, .go)
         XCTAssertEqual(recs.first?.id, "s0000")
         XCTAssertEqual(recs.first?.kiteVerdict, .go)
         // Ranked on the grade, so every Go comes first.

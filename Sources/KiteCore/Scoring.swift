@@ -43,13 +43,12 @@ public struct ScoringRules: Sendable {
     public var uncertainWindFrom = 0.40
 
     /// Highest grade a spot keeps when the wind is uncertain / unlikely: so uncertain wind is at
-    /// best a Maybe and unlikely wind a No.
+    /// best "Worth a try" and unlikely wind at best a "Long shot".
     public var uncertainWindMaxScore = 69
     public var unlikelyWindMaxScore = 39
 
-    /// Verdict bands on the final grade (Ben, 2 Nov): Go from 70, Maybe from 40, No below.
-    public var goFromGrade = 70
-    public var maybeFromGrade = 40
+    /// Lowest final grade of each verdict (Ben, 2 Nov); "No go" below `longShot`.
+    public var verdictFromGrade = (go: 70, worthATry: 55, coinFlip: 40, longShot: 20)
 
     /// Tides smaller than this (m, low to high water over the day) are ignored.
     public var minTidalRange = 0.5
