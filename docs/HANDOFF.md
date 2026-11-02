@@ -187,16 +187,6 @@ other 24 spots it reads 2–3 kn high on masts and ~1 kn high at open-sea buoys:
 half of them false, worst in Catalonia. The open choice is still today's setup vs option 1.
 Tricky: the previous month's Copernicus buoy file appears late; `buoys.py` falls back to daily files.
 
-**Forecast accuracy, 1 Nov (WHE-81).** "Chance you'll kite" checked against Ben's pass bar (labels
-Go / Probably / Long shot / No, held-out weeks, tomorrow vs 3 days out, per country). The agreement
-rule (4 models' margin above 12 kn and their spread) passes in France at both lead times (Go came true
-86 %, wrong gos 14 % vs 38 % today). Spain fails with every method because the Catalan masts measured
-a go on only 3 % of days (sheltered?); the south looks right but has too few Go days. The ECMWF
-ensemble is never clearly better and costs 7–8x the quota. Tricky: past ensembles come only from
-ECMWF's AWS archive (`tools/backtest/ens_fetch.py --lead 1|3`, about 1–2 h each, S3 throttles,
-resumable; `pip3 install --user eccodes`). Catalonia needs water or rider truth before its labels
-can be trusted.
-
 **Forecast accuracy, 1 Nov (WHE-84).** The 24 % Spain Go hit rate came from the Catalan Meteocat
 masts, which read about half the forecast in every direction while the Begur and Tarragona buoys
 agree with the models. Height, time base, averaging and the go/offshore rules were checked and
@@ -223,3 +213,13 @@ catches the most real go days. The only real gain is a correction per spot from 
 station's past misses, which exists only where an open, trusted station sits next to the spot.
 Tricky: an error gain from a correction tied to the forecast speed is regression to the mean;
 always check the 25 kn+ hours.
+
+**Forecast accuracy, 2 Nov (WHE-81).** "Chance you'll kite" checked against Ben's refined bar:
+labels Go / Probably / Long shot / No, every day ahead (today to +5), grouped by place, sea and day
+type, one method everywhere. The agreement rule (4 models' margin above 12 kn and their spread, one
+fit for all) passes on all masts at every lead and fails, reported not tuned, in Catalonia (masts
+measure a go on 3 % of days), on +4/+5 in the Mediterranean (too sure), and on sea-breeze days, but
+only through Catalonia. The ECMWF ensemble fails everywhere except the Atlantic. Islands, lagoons,
+Tarifa/Calais and the buoy have too few days. Tricky: AWS's ECMWF bucket throttled to a crawl, so
+`ens_fetch.py` uses the Google Cloud mirror. This study used up Open-Meteo's free daily limit on this
+machine once: Previous Runs with 12 variables over 38 sites is heavy.

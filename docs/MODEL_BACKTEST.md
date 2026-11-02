@@ -261,89 +261,115 @@ Drop "Most likely" as a 70 % band; if the app needs a second label, make it a pl
 (chance 40 % up to the Go cut-off) with no promise attached. For Catalonia, the next step is
 ground truth: your memory of a few dated days at Sant Pere and Riumar, or a water station.
 
-## "Chance you'll kite": models agreeing or a 51-member ensemble? (WHE-81, 1 Nov)
+## "Chance you'll kite": models agreeing or a 51-member ensemble? (WHE-81, 2 Nov)
 
 **In plain words.** Each spot-day gets a label: **Go** (chance ≥ 70 %), **Probably** (40–70 %),
-**Long shot** (15–40 %), **No** (< 15 %). Your pass bar: each label's real hit rate must land in its
-own band, on days not used to tune it, separately for tomorrow and for 3 days out, per country, with
-enough days behind it (I used ≥ 30 spot-days over ≥ 15 dates). Truth: 36 shore masts in Spain and
-France plus the POEM buoy, 84 days (8 Aug – 30 Oct). A real go = two hours in a row at 12–28 kn,
-direction not offshore.
+**Long shot** (15–40 %), **No** (< 15 %). Your pass bar: each label's real hit rate lands in its
+own band, on days not used to tune it, for every day ahead the app shows (today, +1 … +5), checked
+by kind of place and kind of day, with one method everywhere. A cell needs ≥ 30 spot-days over
+≥ 15 dates; below that it's "too few to judge". Truth: 36 shore masts in Spain and France plus the
+POEM buoy, 84 days (8 Aug – 30 Oct). A real go = two hours in a row at 12–28 kn, direction not
+offshore.
 
 - **(A) Agreement rule** (your idea): how far the 4 models' best 2 h sits above 12 kn, and how
-  much they disagree, becomes a chance. Two numbers to tune, the same everywhere.
+  much they disagree, becomes a chance. Same 4 models at every lead (best match, Météo-France,
+  ICON, ECMWF), and one formula fitted once for all leads and places: b = −1 kn, s = 3 kn. Both
+  halves of the data gave the same numbers.
 - **(B) Existing go rule run on each of ECMWF's 51 ensemble members**: chance = share that say go.
 
 **Verdict (measured).**
-- **France passes with A, both lead times.** Tomorrow: Go 86 % came true, Probably 59 %, Long
-  shot 29 %, No 4 %. 3 days out: 86 / 61 / 30 / 6 %. Wrong gos on "Go": 14 %, against 38 % for
-  today's yes/no forecast. It also passes at 15 kn+.
-- **Spain fails, with every method.** That's Catalonia: its masts measured a go on only 3 % of days,
-  so even "Go" days were windy at the mast 8 % of the time. Andalusia + Valencia look right (Go
-  75 %, Probably 61 %, Long shot 40 % tomorrow) but have only 8 Go days: too few to pass. The
-  Canaries are too few on their own as well.
-- **B is never clearly better, and usually worse.** It passes in France at 12 kn (Go 76 %), but
-  it's too sure overall (Go 63 % tomorrow) and fails France at 15 kn. It costs about 7–8× the
-  Open-Meteo quota. **Keep A.**
-- **One offset per country doesn't rescue Spain.** The two halves of the data disagree (−4.5 kn
-  vs −2 kn), so it's tuning to noise, and Go days get too few to judge.
-- **3 days out holds up almost as well as tomorrow** (skill +0.38 vs +0.41). That's
-  summer-autumn: steady thermals are easy to see coming. Expect winter to be worse.
+- **A passes on all masts at every day ahead, today to +5.** "Go" came true 82 / 81 / 83 / 80 /
+  77 / 71 % (today → +5). Wrong gos at "≥ 50 %": 24–27 % up to +3, 35–36 % at +4/+5. Today's
+  yes/no forecast: 36–39 % up to +3, 43–46 % at +4/+5.
+- **B fails on all masts at every lead** ("Go" came true 63–69 %). It's worse than A on skill at
+  every lead from today to +3, beyond the 95 % interval; at +5 the two are tied. **Keep A.**
+- **Where A passes:** Atlantic/Channel coasts (all leads), weather-system days (all leads), open
+  coast (today → +3), Mediterranean (+1 → +3), everything without the Catalan masts (all leads).
+- **Where A fails, reported, not tuned:**
+  1. **Catalonia** (10 masts), every lead: "Go" came true 4–15 %. These masts measured a go on 3 %
+     of days. Most likely sheltered masts (WHE-62 found the sea windier), but not proven.
+  2. **Sea-breeze days**, most leads ("Go" 59–67 %). That's Catalonia again: without the Catalan
+     masts, sea-breeze days pass ("Go" 71–79 % at today, +1, +3, +5).
+  3. **+4 and +5 days in the Mediterranean and on open coast**: "Go" 62–67 %, "Probably" 32–35 %.
+     The labels are too sure that far out. This is the Pro range: a real limit, not a truth problem.
+  4. **Strait/funnel**: fails, but only because of the two Empordà spots on Catalan masts. Tarifa
+     + Calais alone look right ("Go" 92–100 % today/+1) but have ~12 Go days: too few.
+- **Too few days to judge:** island (Canaries, Corsica), lagoon (Mar Menor, Étang de Berre),
+  strait without Empordà, the POEM buoy, and calm days ("Go" is almost never given there).
+  Islands and lagoons look right where there are enough days ("Go" 90–100 %), but don't count them
+  as proven.
+- **At 15 kn+** the picture is the same, one day shorter: A passes all masts today → +3 and fails
+  at +4/+5 ("Go" 65–68 %).
 
-**What this means.** A works and can be trusted in France. In Catalonia, where testers start, it
-can't be shown to work yet. I can't tell whether the models are wrong or the masts are sheltered:
-WHE-62 found the sea windier than these land stations, and the POEM buoy (water) says every
-method under-calls (Long shot days were windy 63 % of the time). There's not enough buoy data to
-pass or fail anything.
+**What this means.** Labels from A can be trusted from today to +3 days on Atlantic and Channel
+coasts and the non-Catalan Mediterranean. At +4/+5 they're too optimistic everywhere except the
+Atlantic. Catalonia can't be shown to work, because the masts there disagree with every forecast
+and every method. Testers start in Catalonia, so that's the gap to close.
 
 **Recommendation.**
-1. Adopt A as the method. Show labels in France now; in Spain show them only after WHE-80 (the
-   land-vs-water correction) and a Catalan check on the water or against your own sessions.
+1. Adopt A. Show the labels today → +3 where they pass. At +4/+5 (Pro), show the labels one step
+   softer, e.g. no "Go" beyond +3, and say why in the app. Before Catalan labels ship, check
+   Catalonia against water or your own sessions, and against WHE-80's land-vs-water correction.
    (recommended)
-2. Adopt A everywhere now and accept that Catalan labels are unproven.
-3. Ensemble members (B): no. Not better, much more expensive.
+2. Adopt A everywhere, all leads, and accept that +4/+5 and Catalonia are unproven.
+3. Ensemble members (B): no. Fails the bar, worse than A, 7–8× the quota.
 
-### Labels at 12 kn+: share that came true (spot-days / dates), held-out weeks
+### Pass / fail, 12 kn+, A (agreement rule). "P*" = passes, some labels too few; "n" = too few
 
-| Method · lead | Group | Go | Probably | Long shot | No | Wrong gos on Go | Bar |
-|---|---|---|---|---|---|---|---|
-| A · tomorrow | France | 86 % (260/58) | 59 % (206/71) | 29 % (268/74) | 4 % | 14 % | **pass** |
-| A · 3 days | France | 86 % (221/59) | 61 % (189/68) | 30 % (315/79) | 6 % | 14 % | **pass** |
-| A · tomorrow | Spain | 52 % (54/41) | 47 % (125/61) | 17 % (235/72) | 4 % | 48 % | fail: Go too sure |
-| A · 3 days | Spain | 58 % (59/44) | 43 % (127/57) | 17 % (240/72) | 4 % | 42 % | fail: Go too sure |
-| A · tomorrow | Catalonia | 8 % (26/21) | 9 % (57/33) | 7 % (181/60) | 1 % | 92 % | fail (truth in doubt) |
-| A · tomorrow | Andalusia + Valencia | 75 % (8/8) | 61 % (31/22) | 40 % (40/30) | 4 % | 25 % | too few days |
-| B · tomorrow | France | 76 % (411/72) | 43 % (90/54) | 34 % (85/50) | 7 % | 24 % | pass |
-| B · 3 days | France | 79 % (341/65) | 44 % (138/60) | 29 % (193/69) | 7 % | 21 % | pass |
-| B · tomorrow | Spain | 35 % (195/66) | 27 % (79/44) | 22 % (108/45) | 5 % | 65 % | fail |
-| B · 3 days | Spain | 37 % (154/55) | 21 % (117/50) | 13 % (152/57) | 7 % | 63 % | fail |
-| A · tomorrow | POEM buoy (water) | 92 % (24/13) | 73 % (22/16) | 63 % (30/23) | 19 % | 8 % | too few days |
+| Group | today | +1 | +2 | +3 | +4 | +5 (Pro) |
+|---|---|---|---|---|---|---|
+| All masts | P · Go 82 % | P · 81 % | P · 83 % | P · 80 % | P · 77 % | P · 71 % |
+| Open coast (28 pairs) | P · 78 % | P · 77 % | P · 79 % | P · 77 % | F · 74 % | F · 67 % |
+| Strait / funnel (Tarifa, Calais, Empordà) | F* · 71 % | F* · 62 % | P* · 67 % | F* · 56 % | F* · 59 % | F* · 53 % |
+| Island (Canaries, Corsica) | P* · 100 % | P* · 100 % | P · 100 % | P* · 100 % | P* · 100 % | P* · 100 % |
+| Lagoon (Mar Menor, Étang de Berre) | P* · 100 % | P* · 100 % | P* · 100 % | P* · 96 % | P* · 91 % | P* · 90 % |
+| Mediterranean | F · 74 % | P · 72 % | P · 75 % | P · 71 % | F · 63 % | F · 62 % |
+| Atlantic / Channel | P · 88 % | P · 88 % | P · 89 % | P · 87 % | P · 86 % | P · 77 % |
+| Sea-breeze days | F · 64 % | F · 59 % | P · 73 % | F · 66 % | F · 62 % | F · 67 % |
+| Weather-system days | P · 85 % | P · 84 % | P · 85 % | P · 83 % | P · 81 % | P · 76 % |
+| Catalonia (masts) | F* · 15 % | F* · 8 % | F* · 9 % | F* · 9 % | F* · 4 % | F* · 5 % |
+| All masts without Catalonia | P · 88 % | P · 87 % | P · 90 % | P · 86 % | P · 85 % | P · 77 % |
 
-At 15 kn+: A passes France for both leads (tomorrow Go 74 %, 3 days 78 %); B fails France (Go 64–66 %).
-Today's yes/no forecast is wrong on 38 % (tomorrow) and 39 % (3 days) of its gos on all masts.
-Overall skill (Brier, all masts): A +0.41 / +0.38 (tomorrow / 3 days), B +0.20 / +0.22, today +0.05 /
-+0.03. The A − B gap is outside the 95 % interval at both leads. Full tables, the 15 kn labels and
-the regions: `tools/backtest/results/whe81.md`.
+The percentage is how often "Go" came true. A failing cell can also come from another label: the
+Mediterranean today fails on "Long shot" (13 %, just under its band). B's grid (fails on all masts
+at every lead, passes Atlantic/Channel), A1's grid, every label's hit rate with its interval, and
+the 15 kn tables are in `tools/backtest/results/whe81.md`.
 
-**How A works.** chance = Φ((models' mean best 2 h − 12 kn + b) / √(spread² + s²)), with b ≈ −1 kn and
-s ≈ 2.5–3 kn, fitted per lead time on the other weeks. Both halves of the data gave nearly the same
-numbers. Models: best match (sea cell), AROME 1.3 (beach cell), ICON (beach cell), ECMWF (sea cell);
-at 3 days AROME has stopped, so Météo-France's seamless model stands in for it. The app's confidence
-request already fetches 4 models, so A needs no new requests.
+### Skill and wrong gos per day ahead (all masts, 12 kn+, go = chance ≥ 50 %)
 
-**Concrete days.** Sant Pere Pescador, 15 Aug: today said go, A gave 21 % (Long shot), the
-ensemble 0 %; measured dead. Cayeux-sur-Mer, 9 Oct: today said no, A and the ensemble said 100 %;
-measured go. Segur de Calafell, 28 Aug: ensemble 90 %, A 21 %; measured dead.
+| Day ahead | Today's yes/no: skill · wrong gos | A: skill · wrong gos · go days caught | B: skill · wrong gos | A − B skill, 95 % |
+|---|---|---|---|---|
+| today | +0.12 · 36 % | +0.47 · 24 % · 66 % | +0.21 · 41 % | +0.18 … +0.34 |
+| +1 | +0.05 · 38 % | +0.43 · 26 % · 61 % | +0.20 · 40 % | +0.16 … +0.28 |
+| +2 | +0.09 · 36 % | +0.42 · 25 % · 56 % | +0.24 · 41 % | +0.14 … +0.27 |
+| +3 | +0.03 · 39 % | +0.38 · 27 % · 53 % | +0.22 · 41 % | +0.11 … +0.22 |
+| +4 | −0.10 · 43 % | +0.28 · 35 % · 47 % | not fetched | – |
+| +5 (Pro) | −0.16 · 46 % | +0.24 · 36 % · 47 % | +0.20 · 44 % | −0.03 … +0.11 |
+
+A gives fewer wrong gos than today's forecast at every lead, but it also says go less often: it
+catches fewer real go days (47–66 % vs today's 55–68 %).
+
+**How it was run.** Model forecasts from Open-Meteo Previous Runs: today = latest run, which is
+fresher than what a rider sees in the morning, so A's "today" is a bit flattering. Ensemble
+forecasts from ECMWF's open archive: 00 UTC run for today (out ~08 UTC), 12 UTC run of D−N
+otherwise. For today, +2 and +5 the ensemble covers every other day (42 dates), because the
+archive throttled downloads; +4 wasn't fetched for B. Day type comes from the same-day model
+forecast at the spot, never the station. Calm: best 2 h < 8 kn. Sea breeze: calm morning, onshore
+afternoon, ≥ 4 kn up. Weather system: everything else.
+
+**Concrete days.** Sant Pere Pescador, 15 Aug (+1): today's forecast said go, A 21 %, ensemble 0 %;
+measured dead. Cayeux-sur-Mer, 9 Oct (+1): today's said no, A and ensemble 100 %; measured go.
+Segur de Calafell, 28 Aug (+1): ensemble 90 %, A 21 %; measured dead.
 
 **What could make this wrong.**
-- Truth is land masts. In Catalonia they look sheltered (3 % go days), so the Spain result may be
-  about the masts rather than the forecast. Only water or rider data can settle it.
-- Summer and early autumn only. Winter storms and day-3 decay in winter aren't tested.
-- One rider (75 kg, 9 + 12 m, intermediate: 12–28 kn). No gusts in the station data, so the
-  gust part of the score isn't tested. B used the go rule (range + direction) on each member, not
-  the full Swift scorer; gusts are the only part missing, and they're untested for A too.
-- Ensemble read every 3 h from the 12 UTC run, interpolated. Spot-days aren't independent:
-  intervals resample whole dates.
+- Truth is land masts. Catalonia's look sheltered, so its failure may be about the masts, not the
+  forecast. Only water or rider data can settle it. The POEM buoy alone is too few.
+- Summer–autumn only. The +4/+5 days and storms in winter aren't tested.
+- One rider (75 kg, 9 + 12 m, intermediate: 12–28 kn). No gusts in the station data. B used the go
+  rule (range + direction) on each member, not the full Swift scorer.
+- The place groups are small: strait = 3 pairs, island = 3, lagoon = 2. A group "passing" there
+  isn't strong evidence.
+- Spot-days aren't independent: intervals resample whole dates.
 
 ## AROME 1.3 first, then best match, on the sea point (WHE-78, 1 Nov): don't ship it
 
