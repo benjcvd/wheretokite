@@ -113,6 +113,31 @@ final class StoreScreenshotsTests: XCTestCase {
         snapshot(app.screenshot(), "storm-spot")
     }
 
+    /// WHE-75: an advanced rider on 14 May 2026 (Ponent): Segur de Calafell gets W at ~110°,
+    /// side-offshore, and shows the "advanced only" warning. SIDE_OFFSHORE_SHOTS=1.
+    @MainActor
+    func testSideOffshoreWarning() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["SIDE_OFFSHORE_SHOTS"] == "1", "on demand")
+        func plist(_ json: String) -> String { "<" + json.utf8.map { String(format: "%02x", $0) }.joined() + ">" }
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "-AppleLanguages", "(en)", "-disclaimerAccepted", "YES",
+            "-riderProfile", plist(#"{"weightKg":75,"kites":[9,12],"level":"advanced"}"#),
+            "-searchDay", "2026-05-14", "-searchOrigin", "41.3874,2.1686",
+        ]
+        app.launch()
+        XCTAssertTrue(app.buttons["topSpot"].waitForExistence(timeout: 90), "results never loaded")
+        let warned = app.buttons.containing(NSPredicate(format: "label CONTAINS 'Side-offshore: advanced only'")).firstMatch
+        for _ in 0..<6 where !warned.isHittable { app.swipeUp() }
+        XCTAssertTrue(warned.exists, "no side-offshore warning in the list")
+        sleep(1)
+        snapshot(app.screenshot(), "side-offshore-results")
+        warned.tap()
+        XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
+        sleep(3)  // map tiles
+        snapshot(app.screenshot(), "side-offshore-spot")
+    }
+
     @MainActor
     private func snapshot(_ shot: XCUIScreenshot, _ name: String) {
         let a = XCTAttachment(screenshot: shot)
