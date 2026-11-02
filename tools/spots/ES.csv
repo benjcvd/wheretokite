@@ -2,10 +2,10 @@ country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Spain — format: tools/spots/README.md
 # Catalunya: kiting is banned on all Catalan beaches 1 Jun–30 Sep except in authorised kite zones.
 ES,Catalunya,Sant Pere Pescador,sea,osm:w110579310,E,"Authorised summer kite zone (beginner and advanced sectors); tramuntana and summer thermal. Also: Empuriabrava – La Rubina (5 km north, easterlies).",,,,
-ES,Catalunya,Castelldefels,sea,osm:w1084529243,S,Authorised summer kite zone (online registration required).,,,,
-ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,NE,"Authorised summer kite zone; best in mestral (NW, cross-shore), summer southerlies are offshore.",,,,
-ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,osm:r14500385,SE,Shallow water at the root of the Trabucador; beginner-friendly.,,,,
-ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W:bay side|E:sea side,Authorised summer kite zone; flat water on the Badia dels Alfacs (west) side.,,,,
+ES,Catalunya,Castelldefels,sea,osm:w1084529243,S,"Town kite zone 1 Jun–mid Sep at Platja de la Pineda, between Carrer 9 and Carrer 11: weekdays 15–19 h only (2026), closed weekends and holidays, free licence and vest from the office at Passeig Marítim 159. Outside those hours kiting is banned in summer. Free the rest of the year.",,,,06-01..09-30 00:00-15:00;06-01..09-30 19:00-24:00
+ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,NE,"Mainly an autumn–spring spot: best in mestral (NW, cross-shore); summer southerlies are offshore. Schools ride a signposted zone; one guide says the beach is closed to kites in summer. Check the signs on site.",,,,
+ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,osm:r14500385,SE,"Shallow water at the root of the Trabucador, where the schools teach; beginner-friendly. In summer ride only the signposted kite zone.",,,,
+ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W:bay side|E:sea side,"Summer thermal (S) spot; flat, shallow water on the Badia dels Alfacs (west) side, about 1 m deep in places. Schools report signposted kite zones in summer.",,,,
 # Comunitat Valenciana: summer kiting only in the few buoyed channels / zones.
 ES,Comunitat Valenciana,Valencia – El Perellonet,sea,osm:w168406914,E,"Municipal buoyed kite zone south of the Perellonet river mouth, open year-round; Kitezone club. Also: Sueca – Mareny de Barraquetes (summer channel for club members, free off-season).",,,,
 ES,Comunitat Valenciana,Oliva,sea,osm:r21201264,ENE,Oliva Nova; in summer kiting only in the authorised zone (club rescue boat). Also: Dénia – Les Deveses (marked kite zone just south).,,,,
@@ -54,7 +54,7 @@ ES,Catalunya,L'Estartit – Gola del Ter,sea,osm:n4409310492,E,Summer kite zone 
 # pro: local / secondary beach — local club zone
 ES,Catalunya,Malgrat de Mar – La Pomareda,sea,osm:w702224528,SE,Municipal kite zone looked after by Club Kite Malgrat; SW thermal Mar–Sep.,,,pro,
 # pro: local / secondary beach — no kite zone, off-season only
-ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,No official kite zone: kiting banned 1 Jun–30 Sep; off-season levante / gregal days only.,,,pro,06-01..09-30
+ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,"No kite zone: the city bans kiting 1 Jun–30 Sep (Capitania Marítima rule); off-season levante / gregal days only, away from the boat channels.",,,pro,06-01..09-30
 # pro: local / secondary beach — off-season local spot
 ES,Catalunya,Torredembarra,sea,osm:r12040184,SE,Off-season spot: kiting banned 1 Jun–30 Sep. Keep off the protected Muntanyans dunes east of town.,,,pro,06-01..09-30
 # pro: local / secondary beach — off-season local spot
@@ -139,7 +139,7 @@ ES,Catalunya,Cambrils (Platja del Regueral),sea,osm:r1747893,SE,Shallow sandy ba
 ES,Catalunya,Palamós (La Fosca),sea,osm:r8268914,SE,Sheltered bay north of Palamós; easterlies and summer thermal.,,,,06-01..09-30
 ES,Catalunya,Calafell,sea,osm:r12075608,SSE,Town beach next to Segur de Calafell; garbí and levante.,,,pro,06-01..09-30
 ES,Catalunya,Salou (Platja de Llevant),sea,osm:r5208459,S,Town beach; levante and garbí.,,,pro,06-01..09-30
-ES,Catalunya,L'Hospitalet de l'Infant,sea,osm:r2173868,SE,Long beach south of the village; garbí and levante.,,,pro,06-01..09-30
+ES,Catalunya,L'Hospitalet de l'Infant,sea,osm:r2173868,SE,"Long beach south of the village; garbí and levante. The council has opened a marked kite zone on Platja de l'Arenal (before Camping Cala d'Oques); if it runs this summer, kiting is allowed there.",,,pro,06-01..09-30
 ES,Catalunya,L'Almadrava (Vandellòs),sea,osm:r2862387,SE,Quiet beach south of L'Hospitalet; garbí and levante.,,,pro,06-01..09-30
 ES,Catalunya,L'Ampolla (Platja de l'Arenal),sea,osm:r14507565,E,Shallow beach facing the Badia del Fangar; good for learning.,,,pro,06-01..09-30
 ES,Catalunya,Punta del Fangar (Ebro delta),sea,osm:n1241794242,NE:sea side|SW:Fangar bay,Remote sandspit at the north of the delta; access on foot; flat water in the bay.,,,pro,06-01..09-30
@@ -149,7 +149,7 @@ ES,Catalunya,Vilassar de Mar,sea,osm:r2154205,SE,Maresme beach; levante and summ
 ES,Catalunya,Vilanova i la Geltrú (La Farola),sea,osm:r10224714,S,Town beach by the lighthouse; garbí and levante.,,,pro,06-01..09-30
 ES,Catalunya,Creixell,sea,osm:r12040635,SSE,Beach west of Torredembarra; garbí and levante.,,,pro,06-01..09-30
 ES,Catalunya,Altafulla,sea,osm:r2172793,SSE,Beach east of Tarragona; garbí and levante.,,,pro,06-01..09-30
-ES,Catalunya,Barcelona – Barceloneta,sea,osm:r7333373,SE,City beach; off-season levante / gregal days only.,,,pro,06-01..09-30
+ES,Catalunya,Barcelona – Barceloneta,sea,osm:r7333373,SE,"City beach; the city bans kiting 1 Jun–30 Sep. Off-season levante / gregal days only, away from the boat channels.",,,pro,06-01..09-30
 ES,Catalunya,Sant Martí d'Empúries,sea,osm:r4018289,E,Beach in the Gulf of Roses south of Sant Pere Pescador; easterlies; tramuntana side-off.,,,pro,06-01..09-30
 ES,Catalunya,L'Escala (Platja dels Riells),sea,osm:r1669340,NE,Town beach at the south end of the Gulf of Roses; tramuntana and easterlies.,,,pro,06-01..09-30
 ES,Catalunya,Platja d'Aro,sea,osm:r8280402,SE,Town beach; easterlies and summer thermal.,,,pro,06-01..09-30
