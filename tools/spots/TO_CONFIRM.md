@@ -245,3 +245,13 @@ Questions:
 - Liepāja: pin is the town centre, moved to the beach by the build.
 - Neusiedl am See: zone rules. Siófok: only Hungarian spot (Velence, other Balaton launches?).
 - Left out: Walchensee, Kochelsee, Ammersee, Lipno (kite rules unclear), Slovakia, Slovenia.
+
+## Settled: Tarifa levante (WHE-85, 3 Nov, no change to the catalogue)
+- Balneario faces WSW (250°, Apple Maps agrees), so levante (E) is **straight offshore** there. Schools describe
+  it exactly so: "Levante spot, offshore wind, experts only" (kitefuntarifa.com Balneario page; alexpastorkiteclub.com
+  Tarifa guide; iksurfmag.com Tarifa guide). So the offshore rule is right to score it 0 for normal riders: the
+  geometry is correct, the riders who use it in levante are experts accepting offshore.
+- Los Lances / Valdevaqueros: guides call levante side-offshore / "works with both winds"; Los Lances is 227°,
+  Valdevaqueros 214° from OSM coastline (agrees). Not changed: no official or first-hand source to widen them.
+- Faking it with a wide `sector` would make levante look safe for everyone; refused (worst case = offshore stays 0).
+- Real fix would be a scoring decision (e.g. an expert-only offshore allowance), not a catalogue one: card for the Lead.
