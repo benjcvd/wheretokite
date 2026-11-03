@@ -2700,18 +2700,18 @@
         }
       }
     },
-    "Looks promising, but the forecast can still shift. Good odds, no guarantee." : {
+    "Could work, but the forecast can still shift. Good odds, no guarantee." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pinta bien, pero la previsión aún puede cambiar. Buenas opciones, sin garantías."
+            "value" : "Puede salir, pero la previsión aún puede cambiar. Buenas opciones, sin garantías."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ça s'annonce bien, mais la prévision peut encore bouger. De bonnes chances, sans garantie."
+            "value" : "Ça peut le faire, mais la prévision peut encore bouger. De bonnes chances, sans garantie."
           }
         }
       }
@@ -6177,18 +6177,18 @@
         }
       }
     },
-    "Good wind in the forecast, but too far ahead to promise a Go. Check again closer to the day." : {
+    "The wind looks good, but it's too early to promise a Go: check again %lld days before." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buen viento previsto, pero es demasiado pronto para prometer un Go. Vuelve a mirar cuando se acerque el día."
+            "value" : "El viento pinta bien, pero aún es pronto para prometer un Go: vuelve a mirar %lld días antes."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bon vent prévu, mais c'est trop loin pour promettre un Go. Revérifie à l'approche du jour."
+            "value" : "Le vent s'annonce bien, mais c'est trop tôt pour promettre un Go : revérifie %lld jours avant."
           }
         }
       }

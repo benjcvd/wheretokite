@@ -90,7 +90,7 @@ enum Vocab {
     /// Why a spot says "Looks promising" rather than Go.
     static func goHeldBack(_ why: GoHeldBack) -> String {
         switch why {
-        case .tooFarAhead: String(localized: "Good wind in the forecast, but too far ahead to promise a Go. Check again closer to the day.")
+        case .tooFarAhead: String(localized: "The wind looks good, but it's too early to promise a Go: check again \(GoPolicy().lastGoLead) days before.")
         }
     }
 
@@ -109,7 +109,7 @@ enum Vocab {
     static func verdictMeaning(_ v: KiteVerdict) -> String {
         switch v {
         case .go: String(localized: "Everything lines up: expect a good session.")
-        case .worthATry: String(localized: "Looks promising, but the forecast can still shift. Good odds, no guarantee.")
+        case .worthATry: String(localized: "Could work, but the forecast can still shift. Good odds, no guarantee.")
         case .longShot: String(localized: "Probably not enough, but there's an outside chance. Only if you'd hate to miss it.")
         case .noGo: String(localized: "Not worth the trip today.")
         }
