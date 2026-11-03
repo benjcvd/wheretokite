@@ -255,3 +255,7 @@ Questions:
   Valdevaqueros 214° from OSM coastline (agrees). Not changed: no official or first-hand source to widen them.
 - Faking it with a wide `sector` would make levante look safe for everyone; refused (worst case = offshore stays 0).
 - Real fix would be a scoring decision (e.g. an expert-only offshore allowance), not a catalogue one: card for the Lead.
+
+## Settled: Murcia, Almería, Granada (WHE-98, 3 Nov, rule of 2 Nov)
+- **El Zapillo summer ban (15 Jun–15 Sep)**: no official text found (town hall, beach ordinance, BOP searched). Worst case applies: ban stays, notes say the source is missing. If a local school or the Almería bando shows kiting is allowed, lift it.
+- **Los Nietos / Roquetas summer rules**: no kite-specific rule found. Roquetas ordinance art. 12 bans sail craft only inside buoyed bathing zones; notes updated.
