@@ -38,6 +38,9 @@ Cards titled "Validate the … spots, checked against Windy" follow
 - Windy in Chrome as a visitor, both ways, in the report.
 - Update only your zone's line in `tools/spots/validation/status.csv`. Never set `validated`:
   the Lead does that after merging.
+- Parallel lanes (3 Nov): you have Spain (`ES.csv`) and the Roussillon zone. France Med spots
+  owns the rest of `FR-mediterranean.csv` and the lakes; France Atlantic spots owns
+  `FR-atlantic.csv`. Don't edit their files.
 
 ## Scope
 
