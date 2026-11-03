@@ -245,3 +245,9 @@ Questions:
 - Liepāja: pin is the town centre, moved to the beach by the build.
 - Neusiedl am See: zone rules. Siófok: only Hungarian spot (Velence, other Balaton launches?).
 - Left out: Walchensee, Kochelsee, Ammersee, Lipno (kite rules unclear), Slovakia, Slovenia.
+
+## Roussillon / Leucate (WHE-67), settled 2 Nov 2026
+- Leucate – Le Goulet: archived. Leucate tourist office (en.tourisme-leucate.com, "Leucate top spots") lists Le Goulet for windsurf / wingfoil / SUP only; its 2024-25 guide puts the free kite zone at Coussoules (KSL). Blogs mention a kite sector towards Île de la Rascasse, unconfirmed → worst case.
+- Coussoules: kite zone secured by KSL by the old lifeguard post, windsurf zone upwind; La Franqui cliff-side exit channel closed to kites (OT guide 2025-26 and spot map 2026-27). No dated ban encoded (no official text found).
+- Canet / Saint-Cyprien: no source found for the "municipal decree May–Sept" wording; notes now only say a kite area is signed (Pont des Basses; Saint-Cyprien north beach, per tourisme-saint-cyprien.com and tourisme-pyreneesorientales.com). Check with the town halls if a dated ban is wanted.
+- Not re-verified: Argelès Le Racou, Torreilles, La Palme, Port-la-Nouvelle, Barcarès (3 Colonnes / Dosses) kept as they were.
