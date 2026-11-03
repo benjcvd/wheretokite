@@ -42,6 +42,9 @@ second pass with web research is worth doing.
 - Mallorca – Pollença: zone at Can Cullerassa?
 - Embalse de La Loteta: launch (pinned at the marina, not the club's south spot).
 - Huelva summer zones.
+- **Spain gap pass vs Windy (WHE-92, settled without Ben)**: El Cotillo (Los Lagos) ready to add once Overpass answers (row in the gap table). Not added, unclear = no: Zahara de los Atunes,
+  Conil, Cullera, Zarautz / Basque coast, Formentera (Ses Illetes closed May-Oct per spain.info), Ibiza Cala Martina (Nov-May only),
+  Fornells (5 km from Cala Tirant), Mazarrón / Cabo de Palos / Águilas. Sources and reasons: docs/ES_COVERAGE_GAPS.md.
 - Left out: Ibiza, Basque Country, Embalse del Ebro, Lo Pagán, El Saler, Patacona, Cullera,
   Fornells, El Cotillo.
 - Portugal pass (2026-10-22), still open:
