@@ -255,3 +255,10 @@ Questions:
   Valdevaqueros 214° from OSM coastline (agrees). Not changed: no official or first-hand source to widen them.
 - Faking it with a wide `sector` would make levante look safe for everyone; refused (worst case = offshore stays 0).
 - Real fix would be a scoring decision (e.g. an expert-only offshore allowance), not a catalogue one: card for the Lead.
+
+## Gap pass Italy / Greece / Germany (WHE-91, settled without Ben, 2026-11-03)
+- Added: Kos – Psalidi (GR, basic; sportif.travel Kos Kitesurf Centre + greeka/Kos guides), Prerow (DE, pro; visit-mv.com
+  Kiteschule Darss + Surfspot Prerow; 8 km from Zingst; Nordstrand lies in the national park, zoning not checked).
+- Not added (worst case, sources too thin): Eckernförde (only a tourism page), Puzziteddu IT (only a promotional listing, no school
+  on site found), Kos – Kefalos/Kohilari (kite school mention but no OSM beach reachable; revisit), Torre Mozza IT, Torbole (Garda kite limits).
+- Windy's lists were not re-browsed this run; the larger gap (IT 7%, GR 10%) needs a Chrome pass per country, one card each.
