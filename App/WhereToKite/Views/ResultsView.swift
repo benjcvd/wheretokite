@@ -240,7 +240,7 @@ struct VerdictCard: View {
                 VStack(spacing: 6) {
                     ScoreRing(score: rec.finalScore)
                         .frame(width: 60, height: 60)
-                    VerdictPill(verdict: rec.kiteVerdict, onColor: true)
+                    VerdictPill(rec: rec, onColor: true)
                 }
             }
 
@@ -380,7 +380,7 @@ struct SpotCard: View {
         HStack(spacing: 12) {
             VStack(spacing: 6) {
                 ScoreBadge(score: rec.finalScore)
-                VerdictPill(verdict: rec.kiteVerdict, maxWidth: 70)
+                VerdictPill(rec: rec, maxWidth: 70)
             }
             .frame(width: 70)
             VStack(alignment: .leading, spacing: 4) {

@@ -79,6 +79,21 @@ enum Vocab {
         }
     }
 
+    /// The label on a spot: "Looks promising" for a Go held back because the day is too far
+    /// ahead (WHE-89), else the plain verdict.
+    static func verdict(_ rec: SpotRecommendation) -> String {
+        rec.goHeldBack != nil
+            ? String(localized: "Looks promising", comment: "Label: would be a Go, but the day is too far ahead to promise one")
+            : verdict(rec.kiteVerdict)
+    }
+
+    /// Why a spot says "Looks promising" rather than Go.
+    static func goHeldBack(_ why: GoHeldBack) -> String {
+        switch why {
+        case .tooFarAhead: String(localized: "The wind looks good, but it's too early to promise a Go: check again \(GoPolicy().lastGoLead) days before.")
+        }
+    }
+
     /// "70–100": the grades of a verdict.
     static func verdictBand(_ v: KiteVerdict) -> String {
         let b = ScoringRules().verdictFromGrade
@@ -94,7 +109,7 @@ enum Vocab {
     static func verdictMeaning(_ v: KiteVerdict) -> String {
         switch v {
         case .go: String(localized: "Everything lines up: expect a good session.")
-        case .worthATry: String(localized: "Looks promising, but the forecast can still shift. Good odds, no guarantee.")
+        case .worthATry: String(localized: "Could work, but the forecast can still shift. Good odds, no guarantee.")
         case .longShot: String(localized: "Probably not enough, but there's an outside chance. Only if you'd hate to miss it.")
         case .noGo: String(localized: "Not worth the trip today.")
         }

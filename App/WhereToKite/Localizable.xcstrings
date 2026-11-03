@@ -2700,18 +2700,18 @@
         }
       }
     },
-    "Looks promising, but the forecast can still shift. Good odds, no guarantee." : {
+    "Could work, but the forecast can still shift. Good odds, no guarantee." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pinta bien, pero la previsión aún puede cambiar. Buenas opciones, sin garantías."
+            "value" : "Puede salir, pero la previsión aún puede cambiar. Buenas opciones, sin garantías."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ça s'annonce bien, mais la prévision peut encore bouger. De bonnes chances, sans garantie."
+            "value" : "Ça peut le faire, mais la prévision peut encore bouger. De bonnes chances, sans garantie."
           }
         }
       }
@@ -6156,6 +6156,55 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jusqu'à %lld kn. Vent : légèrement side-offshore accepté, signalé « confirmés uniquement ». Offshore jamais."
+          }
+        }
+      }
+    },
+    "Looks promising" : {
+      "comment" : "Label: would be a Go, but the day is too far ahead to promise one",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prometedor"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prometteur"
+          }
+        }
+      }
+    },
+    "The wind looks good, but it's too early to promise a Go: check again %lld days before." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El viento pinta bien, pero aún es pronto para prometer un Go: vuelve a mirar %lld días antes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vent s'annonce bien, mais c'est trop tôt pour promettre un Go : revérifie %lld jours avant."
+          }
+        }
+      }
+    },
+    "**Looks promising**: a Go more than %lld days ahead. Forecasts that far out are too unsure to promise one." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Prometedor**: un Go a más de %lld días. Tan lejos, las previsiones son demasiado inciertas para prometerlo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Prometteur** : un Go à plus de %lld jours. Si loin, les prévisions sont trop incertaines pour en promettre un."
           }
         }
       }

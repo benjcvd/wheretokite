@@ -35,6 +35,13 @@ public struct SpotRecommendation: Sendable, Identifiable {
     public var scoreBeforeChance: Int? = nil
     /// Go / Worth a try / Long shot / No go, read off the final grade.
     public var kiteVerdict: KiteVerdict { KiteVerdict(grade: finalScore) }
+    /// Set when this spot would be a Go but the day is too far ahead to promise one: the grade
+    /// was a Go before the chance capped it. The app then says "Looks promising" (Ben, WHE-89).
+    public var goHeldBack: GoHeldBack? {
+        guard let why = chance?.goHeldBack, let before = scoreBeforeChance,
+              KiteVerdict(grade: before) == .go, kiteVerdict == .worthATry else { return nil }
+        return why
+    }
 
     /// For a "No go": the safety rule behind it, when there is one ("thunderstorm risk",
     /// "kiting banned", "dark", "offshore"), from the hours the score is made of.
