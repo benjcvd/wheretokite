@@ -285,6 +285,24 @@ final class ConfidenceTests: XCTestCase {
         XCTAssertEqual(recs.map(\.kiteVerdict), [.worthATry, .worthATry])
         XCTAssertEqual(recs.compactMap(\.chance?.goHeldBack), [.tooFarAhead, .tooFarAhead])
         XCTAssertEqual(recs.map(\.finalScore), [r.rules.uncertainWindMaxScore, r.rules.uncertainWindMaxScore])
+        XCTAssertEqual(recs.compactMap(\.goHeldBack), [.tooFarAhead, .tooFarAhead])   // "Looks promising"
+    }
+
+    /// The spot only says "Looks promising" when the grade itself was a Go: a 60 held back is a
+    /// plain Worth a try.
+    func testGoHeldBackNeedsAGoGrade() async throws {
+        let conf = FakeConfidence { _ in 1 }
+        conf.modelSpeeds = { _ in [18, 18, 18, 18] }
+        conf.leadDays = 4
+        let r = Recommender(spots: spots(1), forecast: FakeForecast { _ in 16 }, driveTime: StraightLineDriveTime(),
+                            confidence: conf)
+        var rec = try await r.search(request, profile: rider, today: "2026-10-01").recommendations[0]
+        XCTAssertEqual(rec.goHeldBack, .tooFarAhead)
+        rec.scoreBeforeChance = 60
+        rec.finalScore = 60
+        XCTAssertNil(rec.goHeldBack)
+        rec.scoreBeforeChance = nil
+        XCTAssertNil(rec.goHeldBack)
     }
 
     func testPhi() {

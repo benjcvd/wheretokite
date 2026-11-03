@@ -6159,6 +6159,55 @@
           }
         }
       }
+    },
+    "Looks promising" : {
+      "comment" : "Label: would be a Go, but the day is too far ahead to promise one",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prometedor"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prometteur"
+          }
+        }
+      }
+    },
+    "Good wind in the forecast, but too far ahead to promise a Go. Check again closer to the day." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buen viento previsto, pero es demasiado pronto para prometer un Go. Vuelve a mirar cuando se acerque el día."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bon vent prévu, mais c'est trop loin pour promettre un Go. Revérifie à l'approche du jour."
+          }
+        }
+      }
+    },
+    "**Looks promising**: a Go more than %lld days ahead. Forecasts that far out are too unsure to promise one." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Prometedor**: un Go a más de %lld días. Tan lejos, las previsiones son demasiado inciertas para prometerlo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Prometteur** : un Go à plus de %lld jours. Si loin, les prévisions sont trop incertaines pour en promettre un."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
