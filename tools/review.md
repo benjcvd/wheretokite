@@ -22,7 +22,7 @@ a lagoon or an isthmus. Fix a wrong one in `tools/curated_spots.csv` (pin it wit
 | Weymouth – Portland Harbour | uncertain | NNE 29° | Apple water at 348° vs OSM 29° (41° apart) | [map](https://www.openstreetmap.org/?mlat=50.57048&mlon=-2.45698#map=16/50.57048/-2.45698) |
 | Neretva delta | uncertain | S 185° | 59% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=43.01946&mlon=17.44707#map=16/43.01946/17.44707) |
 | Tramore | uncertain | SW 225° | Apple water at 183° vs OSM 225° (42° apart) | [map](https://www.openstreetmap.org/?mlat=52.17069&mlon=-7.13298#map=16/52.17069/-7.13298) |
-| Oualidia | uncertain | N 7° | Apple water at 325° vs OSM 7° (42° apart) | [map](https://www.openstreetmap.org/?mlat=32.73721&mlon=-9.03385#map=16/32.73721/-9.03385) |
+| Oualidia | uncertain | N 7° | Apple water at 325° vs OSM 7° (43° apart) | [map](https://www.openstreetmap.org/?mlat=32.73721&mlon=-9.03385#map=16/32.73721/-9.03385) |
 | IJmuiden | uncertain | WSW 248° | Apple water at 283° vs OSM 248° (35° apart) | [map](https://www.openstreetmap.org/?mlat=52.45767&mlon=4.55474#map=16/52.45767/4.55474) |
 | Vrouwenpolder | disagrees | N 350° | Apple water at 224° vs OSM 350° (126° apart) | [map](https://www.openstreetmap.org/?mlat=51.58917&mlon=3.64553#map=16/51.58917/3.64553) |
 | Zandmotor | uncertain | NW 307° | Apple water at 347° vs OSM 307° (40° apart) | [map](https://www.openstreetmap.org/?mlat=52.05489&mlon=4.18895#map=16/52.05489/4.18895) |
