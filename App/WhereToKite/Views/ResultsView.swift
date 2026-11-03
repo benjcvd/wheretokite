@@ -268,6 +268,15 @@ struct VerdictCard: View {
                     .accessibilityIdentifier("stormAlert")
             }
 
+            if let side = rec.sideOffshoreLabel {
+                Label(side, systemImage: "arrow.up.backward.and.arrow.down.forward")
+                    .font(.subheadline.weight(.bold))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(.black.opacity(0.25), in: Capsule())
+                    .accessibilityIdentifier("sideOffshoreAlert")
+            }
+
             if !rec.warnings.isEmpty {
                 Label(rec.warnings.map(Vocab.term).joined(separator: ", "), systemImage: "exclamationmark.triangle.fill")
                     .font(.footnote.weight(.semibold))
@@ -394,6 +403,12 @@ struct SpotCard: View {
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(.red)
                         .accessibilityIdentifier("stormAlert")
+                }
+                if let side = rec.sideOffshoreLabel {
+                    Label(side, systemImage: "arrow.up.backward.and.arrow.down.forward")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.orange)
+                        .accessibilityIdentifier("sideOffshoreAlert")
                 }
                 if !rec.warnings.isEmpty {
                     Label(rec.warnings.map(Vocab.term).joined(separator: ", "), systemImage: "exclamationmark.triangle")
@@ -546,9 +561,17 @@ extension SpotRecommendation {
         return problem + String(localized: "\(speed) kn (gusts \(Int(gust.rounded()))) \(dir)")
     }
 
-    /// The storm alert has its own line ("Storm from 4 pm"), so its flag isn't repeated.
+    /// The storm and side-offshore alerts have their own line, so their flags aren't repeated.
     var warnings: [String] {
-        Array(Set(windowHours.flatMap(\.flags))).filter { stormFrom == nil || $0 != "storm nearby" }.sorted()
+        Array(Set(windowHours.flatMap(\.flags)))
+            .filter { (stormFrom == nil || $0 != "storm nearby") && !(hasSideOffshore && $0 == "side-offshore") }
+            .sorted()
+    }
+
+    /// "Side-offshore: advanced only" when a scored hour is side-offshore (WHE-75).
+    var sideOffshoreLabel: String? {
+        hasSideOffshore ? String(localized: "Side-offshore: advanced only",
+                                 comment: "Warning: the wind blows slightly from the land; for advanced riders only") : nil
     }
 
     /// "Storm from 4 pm" (spot time, the phone's hour format) when a thunderstorm is forecast
