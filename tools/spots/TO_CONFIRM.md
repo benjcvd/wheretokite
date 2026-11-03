@@ -245,3 +245,10 @@ Questions:
 - Liepāja: pin is the town centre, moved to the beach by the build.
 - Neusiedl am See: zone rules. Siófok: only Hungarian spot (Velence, other Balaton launches?).
 - Left out: Walchensee, Kochelsee, Ammersee, Lipno (kite rules unclear), Slovakia, Slovenia.
+
+## Gap pass Italy / Greece / Germany (WHE-91, settled without Ben, 2026-11-03)
+- Added: Kos – Psalidi (GR, basic; sportif.travel Kos Kitesurf Centre + greeka/Kos guides), Prerow (DE, pro; visit-mv.com
+  Kiteschule Darss + Surfspot Prerow; 8 km from Zingst; Nordstrand lies in the national park, zoning not checked).
+- Not added (worst case, sources too thin): Eckernförde (only a tourism page), Puzziteddu IT (only a promotional listing, no school
+  on site found), Kos – Kefalos/Kohilari (kite school mention but no OSM beach reachable; revisit), Torre Mozza IT, Torbole (Garda kite limits).
+- Windy's lists were not re-browsed this run; the larger gap (IT 7%, GR 10%) needs a Chrome pass per country, one card each.
