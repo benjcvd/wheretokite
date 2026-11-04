@@ -39,3 +39,17 @@ Ours → Windy: Pont des Basses, 3 Colonnes, Dosses, Coussoules, La Palme, Port-
 No Windy marker: Le Goulet (archived), Torreilles (archived).
 
 Counts: 9 spots checked, 11 Windy markers, 7 matched, 0 added, 3 archived (Goulet, Racou, Torreilles).
+
+## Windy-only markers: Pro pass (WHE-122, 4 Nov 2026)
+
+Rule: Windy-only markers go in as Pro unless one of the good reasons applies
+([method](../../tools/spots/validation/README.md#the-method-slowly-one-spot-at-a-time)). Pins from OSM beach ways only.
+
+| Windy marker | Result | Why / sources |
+|---|---|---|
+| Les Pilotis (3) | **added (Pro)** `Leucate – Les Pilotis (Leucate Plage)`, OSM way 41749055 | Leucate tourist office top-spots page lists kitesurf / kitefoil there (sea spot, no rule given); kite-and-windsurfing-guide.com: similar to nearby beaches, bigger waves in marin; German spot guide: powerful waves with a more northerly wind. Earlier "5 km from Coussoules" note is not a reason. Summer sea rule from the first pass stays in notes (check town rules). |
+| Argelès Plage (4) | **added (Pro)** `Argelès-sur-Mer – Plage Nord`, OSM way 72147216 (unnamed beach at the north end) | One source: kite-and-windsurfing-guide.com "Plage Nord, Argelès: has recently become a kite spot", steep shorebreak. No school or town page, so notes say to check bathing rules. Racou (south end, ~5 km) stays archived. Windy's exact marker position not used. |
+| La Mine, Étang de Leucate (5) | left out | Reason 3 (not a kite spot): Leucate tourist office lists La Mine for windsurf / SUP only, a beginners' windsurf launch. |
+| Étang de Leucate, Salses side (3) | left out | Reason 4 (no OSM element / no named launch): school pages only mention downwind runs and boat trips on the Étang de Salses (Unikite), KiteSchool Leucate sits at Los Clots on the Saint-Laurent side; no fixed shore to pin. |
+
+Counts: 11 Windy markers, 7 matched, 2 added (Pro), 2 left out. Our spots in the zone: 9 → 11 (Dosses free, 2 new Pro, 3 archived unchanged).
