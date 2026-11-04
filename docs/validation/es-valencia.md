@@ -43,3 +43,15 @@ Ours not on Windy by that name: Arenales del Sol, Embalse de La Loteta (Aragón 
 Windy count in the zone coast: about 22 markers; matched 5 of our 8.
 
 Candidates for a later pass (need two sources each): Cullera, Gandía, Xàbia, Torrevieja – La Mata.
+
+## Second look at the Windy-only beaches (4 Nov, Ben asked for more, in Pro)
+
+Three added as `pro` (each with one weak commercial source plus one guide, so not basic):
+- **Gandía – Playa Norte** (`w29141808`): authorised kite channel per a [hotel guide](https://www.hoteltresanclas.com/en/blog-tourism-gandia/kitesurf-gandia) and a [Kiteforum spot page](https://se.kiteforum.com/kitesurf/spot/playa_de_gandia); no kite school confirmed in town.
+- **Cullera – Platja del Racó** (`w487511742`): schools [Kiteloose](https://www.yumping.com/kitesurf/kiteloose--e19635122) and [Radical Windsurf Center](https://www.comunitatvalenciana.com/es/valencia/cullera/nautica/radical-windsurf-center-1); beach rules not found.
+- **El Campello – Muchavista** (`w26586601`): "Tobago" spot and Aloha Sport school, per a [Barceló guide](https://www.barcelo.com/guia-turismo/es/espana/alicante/que-ver/surf-alicante/); Windy shows markers at La Albufereta / San Juan nearby.
+
+Not added: Xàbia (no kite school or zone found, Arenal is a calm family beach), Torrevieja – La Mata (surf and paddle only), El Saler (park ban), El Pollo (within 10 km of Perellonet), Xeraco / L'Ahuir (association channel, 1 source), La Albufereta (old guide text only).
+Mar Menor / Los Alcázares belongs to the Murcia zone.
+
+Build check after the additions: no PROBLEMS, Apple Maps agrees 9, uncertain 0, disagrees 0. Counts: 8 spots checked, 22 Windy markers, 1 spot added to the zone beside Tamarit's 3 Pro additions.
