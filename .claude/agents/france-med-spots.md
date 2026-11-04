@@ -35,7 +35,10 @@ Cards titled "Validate the … spots, checked against Windy" follow
   Never judge a spot from memory or by analogy with its neighbours.
 - These cards may use up to 25 web searches (two sources per spot plus the Windy step).
   Commit after each few spots so a cut session loses little.
-- Windy in Chrome as a visitor, both ways, in the report.
+- Windy in Chrome as a visitor, both ways, in the report. Windy kite markers we don't have
+  are **added as Pro unless one of the good reasons** listed in the method applies (Ben, 4 Nov).
+- Your reply to Ben and the card note always carry the Windy comparison: counts, a table of
+  every missing marker (added or why not), and one line on any big gap. Step 4 of the method.
 - Update only your zone's line in `tools/spots/validation/status.csv`. Never set `validated`:
   the Lead does that after merging.
 
