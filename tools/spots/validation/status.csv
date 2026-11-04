@@ -11,7 +11,7 @@ es-north,todo,val-es-north,,,,,,,
 es-canarias,todo,val-es-canarias,,,,,,,
 fr-roussillon,doing,WHE-67,,,,,1,,2026-11-03
 fr-narbonne,todo,val-fr-narbonne,,,,,,,
-fr-thau,todo,val-fr-thau,,,,,,,
+fr-thau,review,val-fr-thau,5,6,5,0,1,docs/validation/fr-thau.md,2026-11-04
 fr-montpellier,todo,val-fr-montpellier,,,,,,,
 fr-camargue,todo,val-fr-camargue,,,,,,,
 fr-var,todo,val-fr-var,,,,,,,

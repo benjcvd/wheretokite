@@ -24,11 +24,17 @@ second pass with web research is worth doing.
   beaches, Capbreton / Hossegor, Moisson-Lavacourt.
 
 ## France — Mediterranean (FR-mediterranean.csv)
-- Exact launches: Marseillan (pinned at Maldormir), Frontignan – Ingril, Saint-Cyprien –
-  Pont des Basses, Lac de la Ganguise (Auberge Le Cathare?).
+- Exact launches: Saint-Cyprien – Pont des Basses, Lac de la Ganguise (Auberge Le Cathare?).
+- Settled (WHE-96, 3 Nov, [report](../../docs/validation/fr-thau.md)): Marseillan stays at Maldormir
+  (the launch the spot guides name). Frontignan – Étang d'Ingril archived: free kiting suspended,
+  schools only (Hérault Tourisme; ActuNautique June 2026; earlier order premar 318/2023).
+- Frontignan sea side / Les Aresquiers, not added (WHE-96): kited and on Windy, but the kite zone's
+  position and rules aren't settled by an official source (bunkers at Les Aresquiers vs west end of
+  Frontignan-Plage; tramontane offshore). Add it if a town or prefectoral text turns up.
+- Mèze – La Pinède: the school is at Le Taurus / Plage du Thalassa; "La Pinède" is unconfirmed. Not renamed (id).
 - Bonifacio – Balistra: still kited since the school closed in 2023?
 - Weak pins (bus stop / place node): Carnon – Petit Travers, Narbonne – La Nautique,
-  Ganguise, Ingril; L'Espiguette is on a restaurant at the main car park.
+  Ganguise; L'Espiguette is on a restaurant at the main car park.
 - Leucate, not added (no reliable OSM position, possibly duplicates): La Mine (likely = Le Goulet),
   Les Pilotis (Port Leucate?), the west shore of the Étang de Leucate near Salses.
 - Not added as duplicate: Argelès-Plage (= Le Racou).
