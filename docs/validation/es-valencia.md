@@ -16,42 +16,56 @@ Web-search budget was exceeded slightly (12 searches) to settle the Santa Pola f
 | Santa Pola – La Gola (was basic) | **archived** | The council says each year the authorities refuse kites at La Gola and the kite channel is at Tamarit ([Alicante Plaza, 27 Aug 2023](https://alicanteplaza.es/el-gobierno-de-santa-pola-se-defiende-las-criticas-en-el-tamarit-y-asevera-que-el-kitesurf-no-puede-ir-a-la-gola)). Old note "open year-round" was wrong. |
 | Santa Pola – Tamarit (**added**, basic) | added | Pin: OSM beach way `w71365123`. Official council decree 5779/2022, no. 2024-2016 of 9 Jul 2024 ([PDF](https://santapola.es/wp-content/uploads/2024/07/Decreto-Kitesurf.pdf)): channel 120 m wide; Oct–May free; June and September free weekdays, weekends 14–17 h; Holy Week, July, August weekdays 14–17 h, weekends banned. Decree runs to 31 May 2025 "unless agreed otherwise" and is renewed each year; 2026 text not found. Schools: Escuela Española Kitesurf Alicante, Parrés Center ([Comunitat Valenciana](https://www.comunitatvalenciana.com/es/alacant-alicante/santa-pola/nautica/parres-center)). `banned` encodes only July–August outside 14–17 h; the weekday/weekend rule can't be encoded, so it is in notes. |
 | Elche – Arenales del Sol (pro) | ok, notes fixed | Kite courses and Parrés WaterSports ([listing](https://www.comunitatvalenciana.com/es/alacant-alicante/elx-elche/nautica/parres-watersports)); no official channel or rules found. Stays pro; note now says to ask the school. |
-| Guardamar – Els Tossals (pro) | **archived** | No school, kite zone or rule found for this beach; Guardamar courses don't name it; dune protected area. Worst case. |
-| Burriana – El Arenal (pro) | **archived** | One regional guide (S–SW wind) and a shop; no school, no kite zone. Windy shows a Burriana marker, which only tells us it exists. |
+| Guardamar – Els Tossals (pro) | **kept Pro** (4 Nov rule; was archived) | No school, kite zone or rule found for this beach; Guardamar courses don't name it; dune protected area. Worst case. |
+| Burriana – El Arenal (pro) | **kept Pro** (4 Nov rule; was archived) | One regional guide (S–SW wind) and a shop; no school, no kite zone. Windy shows a Burriana marker, which only tells us it exists. |
 | Embalse de La Loteta (basic) | ok | Club Kitesurf La Loteta, 260+ members, hub of Aragón kite ([Zaragoza city](https://zaragoza.es/sede/portal/juventud/info-joven/servicio/noticia/339366)); Cierzo Festival 2025 ([zaragozala](https://zaragozala.com/zaragoza-provincia/la-loteta-acoge-el-cierzo-festival-2025/)); stop on the national circuit ([GoAragon](https://www.goaragon.eu/zaragoza-province-a-sea-of-proposals-in-aquatic-activities/)). Cierzo (NW) along the reservoir, sector 360 kept. Pin at the marina still open in TO_CONFIRM. |
 
 Not verified on satellite (Chrome was used for Windy and the decree only): pins come from OSM elements and
 the pipeline's Apple Maps direction check; see the build result below.
 
-## Windy, both ways (markers read by hovering as a visitor, 3 Nov)
+## Windy, both ways (markers read by hovering as a visitor, 3–4 Nov)
 
-Windy markers in the zone's coast, north to south, and our spot:
+Rule of 4 Nov applied: every Windy kite marker we lacked is added as Pro unless a listed reason holds.
+About 36 markers named in the Comunitat Valenciana (Aragón not browsed): 33 now covered by a spot of ours, 3 not added (below).
 
 | Windy marker | Ours |
 |---|---|
-| Burriana | Burriana (archived) |
-| La Patacona, El Saler, El Perelló | Perellonet (El Perelló is the nearest marker); El Saler and Patacona: not added, left out earlier, no kite zone (El Saler park ban) |
-| Mareny de Barraquetes | Sueca – Mareny (archived, club-only) |
-| El Pollo, Río Júcar (Cullera), Playa de Xeraco, Gandía | missing, not added: no second source gathered, none famous nationally |
-| Oliva, El Vergel, El Paquebote | Oliva |
-| Denia, Xàbia | Dénia – Les Deveses (Xàbia: missing, not added) |
-| Santa Pola (x2), La Ermita | Santa Pola – Tamarit (La Gola archived) |
-| Guardamar, Playa de la Mata | Guardamar (archived); La Mata not added |
-| La Albufereta, other Alicante/Benidorm/Altea markers | not added |
+| Peñíscola | **added (Pro)** Peñíscola – Playa Norte |
+| Benicàssim | **added (Pro)** Benicàssim – Voramar |
+| Burriana | Burriana – El Arenal (back to Pro) |
+| El Port de Sagunt | **added (Pro)** Sagunto – Platja del Port de Sagunt |
+| Pobla de Farnals | **added (Pro)** Pobla de Farnals – Platja Nord |
+| La Patacona | **added (Pro)** Valencia – La Patacona |
+| El Saler | **added (Pro)** Valencia – El Saler |
+| El Perelló | same beach as Valencia – El Perellonet (3 km, same water and winds) |
+| Mareny de Barraquetes | Sueca – Mareny (back to Pro: the club-only note has no official source) |
+| El Pollo | **not added**: no OSM beach carries that name, no pin |
+| Río Júcar | same beach as Cullera – Platja del Racó |
+| Playa de Xeraco | **added (Pro)** Xeraco – Platja de Xeraco |
+| Gandía | Gandía – Playa Norte (Pro) |
+| Oliva | Oliva |
+| El Vergel | **not added**: no OSM beach found for the name, no pin |
+| El Paquebote | **added (Pro)** Dénia – L'Almadrava (El Paquebote) |
+| Denia | Dénia – Les Deveses |
+| Xàbia | **added (Pro)** Xàbia – Platja de l'Arenal (calm family beach) |
+| Calpe | **added (Pro)** Calp – Platja de l'Arenal |
+| Altea | **added (Pro)** Altea – Albir (Algar mouth) |
+| La Vila Joiosa | **added (Pro)** La Vila Joiosa – Platja Centre (mostly surf) |
+| El Campello, San Juan (2 markers) | El Campello – Muchavista (Pro); San Juan is the same beach |
+| La Albufereta (+ one more in Alicante) | **added (Pro)** Alicante – La Albufereta; the other marker is the same beach |
+| Santa Pola (2) | Santa Pola – Tamarit (Playa Lisa is 0.6 km away, same water) |
+| La Ermita | **not added**: not found in OSM by that name, no pin |
+| Guardamar | Guardamar – Els Tossals (back to Pro) |
+| Playa de la Mata | **added (Pro)** Torrevieja – La Mata |
+| Playa Chica | **not added**: the only OSM "Playa Chica" is in Tenerife, no pin |
+| Torre Derribada and markers further south | Murcia zone |
+| La Gola (our old spot) | archived: the council says the authorities refuse kites there |
 
-Ours not on Windy by that name: Arenales del Sol, Embalse de La Loteta (Aragón not browsed).
-Windy count in the zone coast: about 22 markers; matched 5 of our 8.
+Ours not on Windy: Arenales del Sol, Embalse de La Loteta (Aragón not browsed).
+Counts: 14 new Pro rows this pass plus Gandía, Cullera, El Campello and Tamarit earlier; Burriana, Guardamar and Mareny restored to Pro; 1 archived (La Gola).
 
-Candidates for a later pass (need two sources each): Cullera, Gandía, Xàbia, Torrevieja – La Mata.
+Sources for the new rows: [kite-and-windsurfing-guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/la-patacona-costa-del-azahar-valencia-spain.html) (Patacona, Pobla, Port de Sagunt, Peñíscola, Benicàssim, Xeraco), [Unplug](https://www.unplug-kitesurf.com/spots/el-saler-spain) (El Saler), [kitejungle](https://kitejungle.com/kite-places/spain/calp) and [wannakitesurf](https://en.wannakitesurf.com/spot/Europe/Spain/Comunidad_Valenciana/Calpe) (Calpe, Altea), [Barceló guide](https://www.barcelo.com/guia-turismo/en/spain/alicante/things-to-do/surfing-in-alicante/) (Alicante coast), [regional kite page](https://nautica.comunitatvalenciana.com/en/recursos/kitesurfing-and-windsurfing) (Dénia, Burriana), [Zoak](https://en.yumping.com/water-sports/centro-nautico-zoak--e19647740) (Guardamar).
 
-## Second look at the Windy-only beaches (4 Nov, Ben asked for more, in Pro)
+## Build check (4 Nov)
 
-Three added as `pro` (each with one weak commercial source plus one guide, so not basic):
-- **Gandía – Playa Norte** (`w29141808`): authorised kite channel per a [hotel guide](https://www.hoteltresanclas.com/en/blog-tourism-gandia/kitesurf-gandia) and a [Kiteforum spot page](https://se.kiteforum.com/kitesurf/spot/playa_de_gandia); no kite school confirmed in town.
-- **Cullera – Platja del Racó** (`w487511742`): schools [Kiteloose](https://www.yumping.com/kitesurf/kiteloose--e19635122) and [Radical Windsurf Center](https://www.comunitatvalenciana.com/es/valencia/cullera/nautica/radical-windsurf-center-1); beach rules not found.
-- **El Campello – Muchavista** (`w26586601`): "Tobago" spot and Aloha Sport school, per a [Barceló guide](https://www.barcelo.com/guia-turismo/es/espana/alicante/que-ver/surf-alicante/); Windy shows markers at La Albufereta / San Juan nearby.
-
-Not added: Xàbia (no kite school or zone found, Arenal is a calm family beach), Torrevieja – La Mata (surf and paddle only), El Saler (park ban), El Pollo (within 10 km of Perellonet), Xeraco / L'Ahuir (association channel, 1 source), La Albufereta (old guide text only).
-Mar Menor / Los Alcázares belongs to the Murcia zone.
-
-Build check after the additions: no PROBLEMS, Apple Maps agrees 9, uncertain 0, disagrees 0. Counts: 8 spots checked, 22 Windy markers, 1 spot added to the zone beside Tamarit's 3 Pro additions.
+`build_spots.py` on the zone rows: no PROBLEMS; Apple Maps direction check agrees 26 of 26 (Benicàssim faces SSE, Albufereta S, L'Almadrava N: hints set to match).

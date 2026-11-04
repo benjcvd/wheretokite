@@ -65,18 +65,33 @@ ES,Comunitat Valenciana,Gandía – Playa Norte,sea,osm:w29141808,E,"Authorised 
 ES,Comunitat Valenciana,Cullera – Platja del Racó,sea,osm:w487511742,E,"Kite school Kiteloose and the Radical windsurf centre both work from Cullera; rules for the beach in summer not found, ask the school.",,,pro,
 # pro: added from the Windy comparison (WHE-93, 2026-11-04)
 ES,Comunitat Valenciana,El Campello – Muchavista,sea,osm:w26586601,SE,"Tobago spot on Muchavista beach, one of the main spots of the Alicante coast per a regional guide; Aloha Sport school on the beach. NW and E winds.",,,pro,
-# archived: unconfirmed — only one regional guide names the beach, no school or kite zone found (WHE-93, 2026-11-03)
-ES,Comunitat Valenciana,Burriana – El Arenal,sea,osm:r2155770,SE,Winter spot for southerlies; flat water between the harbour moles.,,,archived,
-# archived: restricted (club / permit / summer ban) — club-only summer channel, near El Perellonet
-ES,Comunitat Valenciana,Sueca – Mareny de Barraquetes,sea,osm:r14908251,E,Summer channel (Jun–Aug) for Barraquetes Vent club members only; free off-season. Summer garbí thermal.,,,archived,
+# pro: added from the Windy comparison (WHE-93, 4 Nov)
+ES,Comunitat Valenciana,Peñíscola – Playa Norte,sea,osm:r2169000,E,"Long sandy beach north of the old town; summer Garbí thermal makes it one of the few kiteable stretches of this coast. No school or kite zone found: check with the town.",,,pro,
+ES,Comunitat Valenciana,Benicàssim – Voramar,sea,osm:r2169044,SE,"Works mainly in winter low-pressure systems (waves); the summer Garbí fades here. Beach with groynes: check the town for summer kite rules.",,,pro,
+ES,Comunitat Valenciana,Sagunto – Platja del Port de Sagunt,sea,osm:w77661728,E,"Long beach at the port of Sagunt; kite guide lists it, few details. No kite zone found: ask locally.",,,pro,
+ES,Comunitat Valenciana,Pobla de Farnals – Platja Nord,sea,osm:w156305142,E,"Winter wave spot 15 min from Valencia (levante). No kite zone found: check town rules in summer.",,,pro,
+ES,Comunitat Valenciana,Valencia – La Patacona,sea,osm:r5813033,E,"Called the most popular kite beach of Valencia by a kite guide; levante too light for windsurf, choppy with NE winter wind. No official kite zone found: summer rules to check.",,,pro,
+ES,Comunitat Valenciana,Valencia – El Saler,sea,osm:w187152775,E,"Flat to choppy, lifeguards, NE to E thermal, June–September best; IKO school Kiteboarding Valencia in the El Saler area. Inside the Albufera park: in summer kite only in marked zones.",,,pro,
+ES,Comunitat Valenciana,Xeraco – Platja de Xeraco,sea,osm:r2071554,E,"Long beach from the Xeraco river mouth towards Gandía; kite guide spot. An association-run kite channel exists at l'Ahuir (south).",,,pro,
+ES,Comunitat Valenciana,Dénia – L'Almadrava (El Paquebote),sea,osm:w779926489,N,"El Paquebote is a wave spot at the Girona river mouth; Prokite Center is nearby at Els Poblets. Check with the school whether kiting is allowed on this beach.",,,pro,
+ES,Comunitat Valenciana,Xàbia – Platja de l'Arenal,sea,osm:w172858335,E,"Only sand beach of Xàbia: shallow, calm, mostly families; no kite zone found. Check town rules.",,,pro,
+ES,Comunitat Valenciana,Calp – Platja de l'Arenal,sea,osm:r2172143,S,"Poniente beach, faces south: one of the few places in the region for S–SW winds, but the wind is irregular. School Activacostablanca Kitesurfing listed.",,,pro,
+ES,Comunitat Valenciana,Altea – Albir (Algar mouth),sea,osm:r2172147,E,"The Algar river mouth is described as one of the best levante (east) spots of the coast in spring and summer. Pinned on the Albir beach beside it.",,,pro,
+ES,Comunitat Valenciana,La Vila Joiosa – Platja Centre,sea,osm:r11142220,SE,"Mostly a surf beach with a rocky bottom; listed among winter kite spots. Moderate S–SW winds.",,,pro,
+ES,Comunitat Valenciana,Alicante – La Albufereta,sea,osm:w21620928,S,"Small sandy beach 3 km from Alicante centre, old windsurf spot; kite details are dated. Check locally.",,,pro,
+ES,Comunitat Valenciana,Torrevieja – La Mata,sea,osm:r14404210,E,"Long beach; good in light breezes and a stronger easterly (windsurf guide). No kite school found in Torrevieja: nearest is Centro Náutico Zoak in Guardamar.",,,pro,
+# pro: Windy marker, one guide as source — kept as Pro by the 4 Nov rule (WHE-93)
+ES,Comunitat Valenciana,Burriana – El Arenal,sea,osm:r2155770,SE,"Arenal beach, S–SW winds and flat sea per the regional kite guide; no school or kite zone found, ask locally.",,,pro,
+# pro: Windy marker; summer channel is for club members (no official source for the restriction), free off-season (WHE-93, 4 Nov)
+ES,Comunitat Valenciana,Sueca – Mareny de Barraquetes,sea,osm:r14908251,E,Summer channel (Jun–Aug) for Barraquetes Vent club members only; free off-season. Summer garbí thermal.,,,pro,
 # pro: cluster duplicate — next to Oliva
 ES,Comunitat Valenciana,Dénia – Les Deveses,sea,osm:r2172009,ENE,Marked kite zone at the north end of Dénia (Les Deveses); summer thermal and winter tramuntana.,,,pro,
 # pro: cluster duplicate — near Santa Pola Tamarit
 ES,Comunitat Valenciana,Elche – Arenales del Sol,sea,osm:w177395067,E,Beach with kite schools (Parrés WaterSports and others); no official channel or rules found online: ask the school.,,,pro,
 # archived: kites not allowed — Santa Pola council says the authorities refuse La Gola each year; the channel is at Tamarit (WHE-93, 2026-11-03)
 ES,Comunitat Valenciana,Santa Pola – La Gola,sea,q:Playa de La Gola Santa Pola,SE,"Not open to kites: the town asks every year, the competent authorities refuse; the kite channel is at Tamarit.",,,archived,
-# archived: unconfirmed — no school, kite zone or rule found for Els Tossals; dune protected area (WHE-93, 2026-11-03)
-ES,Comunitat Valenciana,Guardamar – Els Tossals,sea,osm:w54057854,E,Designated kite area by the dunes.,,,archived,
+# pro: Windy marker, one guide as source — kept as Pro by the 4 Nov rule (WHE-93)
+ES,Comunitat Valenciana,Guardamar – Els Tossals,sea,osm:w54057854,E,"Beach by the dunes (protected area); Centro Náutico Zoak runs kite lessons in Guardamar. No official kite zone found: ask the school.",,,pro,
 # pro: cluster duplicate — Mar Menor, Los Narejos kept
 ES,Murcia,Mar Menor – Los Nietos,lagoon,osm:w294026685,N,"Shallow flat water, onshore in NE/E; beginner-friendly, no summer restriction at the end of the promenade.",,,pro,
 # pro: cluster duplicate — Mar Menor, Los Narejos kept
