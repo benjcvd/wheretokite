@@ -61,5 +61,5 @@ Windy kite markers in the zone → ours:
 Ours → Windy: Contis and Biscarrosse-Plage have no Windy kite marker (Contis archived; Biscarrosse
 kept as pro on two other sources). Every other spot matches a marker.
 
-Counts: 16 Windy markers in the zone (excluding Gironde), 8 matched to our spots (13 markers incl.
-duplicates); 9 missing, none added.
+Counts: 17 Windy kite markers hovered in the zone (excluding the Gironde ones), 8 matched to our
+spots, 9 missing, none added.
