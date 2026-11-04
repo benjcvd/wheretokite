@@ -12,12 +12,15 @@ second pass with web research is worth doing.
 - Arcachon – Les Arbousiers, Claouey, Andernos – Le Bétey: exact summer bans.
 - Oléron – La Perroche: banned in summer?
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
-- Hendaye, Anglet – La Madrague: summer windows.
+- Settled (WHE-108, worst case, see [report](../../docs/validation/fr-basque-landes.md#calls-made-under-the-2-nov-rule-look-it-up-else-assume-the-worst)):
+  Anglet – La Madrague no kiting during lifeguard hours 13 Jun–15 Sep (kite order 2023/592 not online);
+  Hendaye July–August ban kept (no town order found). Contis archived (one source).
+  Soustons lake not added (association says kiting too dangerous).
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
 - La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
 - Weak pins (snapped from a village / street): Hemmes de Marck, Wimereux – Pointe aux Oies,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
-  Les Arbousiers, Navarrosse.
+  Les Arbousiers (Navarrosse fixed in WHE-108).
 - Ouistreham Riva-Bella: really a separate spot from Merville (3.5 km)?
 - Left out as uncertain: Les Sables-d'Olonne, Jonville / Réville, Saint-Germain-sur-Ay,
   Locmariaquer, Le Rohu, Kerguelen, La Palue, Dunkerque Digue du Break, Cap-Ferret ocean
