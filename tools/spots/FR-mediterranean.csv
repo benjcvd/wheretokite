@@ -1,11 +1,12 @@
 country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # France: Mediterranean coast, Corsica, Alps / south-eastern lakes — format: tools/spots/README.md
 # Roussillon (Pyrénées-Orientales)
-FR,Roussillon,Saint-Cyprien / Canet – Pont des Basses,sea,osm:n13075748610,E,Kite zone regulated by municipal decree from May to September (marked channel). Waves with SE / thermal; tramontane offshore: experienced riders.,,,,
+FR,Roussillon,Saint-Cyprien / Canet – Pont des Basses,sea,osm:n13075748610,E,"Signed kite area at the south end of the Canet Lido, by the Pont des Basses (a dedicated area is also signed on Saint-Cyprien north beach). Check the towns' summer rules. Waves with SE / thermal; tramontane offshore: experienced riders.",,,,
 FR,Roussillon,Le Barcarès – Les 3 Colonnes,sea,osm:w591387982,E,Official kite zone; narrow launch behind the dunes. Waves with marin (SE) and summer thermal; tramontane offshore. Also: Parc des Dosses on the Étang de Leucate for flat water by tramontane (experts).,,,,
 # Languedoc (Aude, Hérault, Gard)
-FR,Languedoc,Leucate – Le Goulet,lagoon,osm:w215452317,W,Shallow flat water on the Étang de Leucate below Leucate village; first place the tramontane hits. Helmet and impact vest recommended (shallow).,,,,
-FR,Languedoc,Leucate – Les Coussoules / La Franqui,sea,osm:r3158694,ESE,Famous tramontane spot (Mondial du Vent); the tramontane (NW) is offshore here: experts only. Waves with marin (SE). Summer: kite zones only.,,,,
+# archived: the Leucate tourist office lists Le Goulet for windsurf / wingfoil / SUP only and puts the free kite zone at Coussoules; blogs disagree on a kite sector towards Île de la Rascasse, so worst case applied (2 Nov 2026)
+FR,Languedoc,Leucate – Le Goulet,lagoon,osm:w215452317,W,Shallow flat water on the Étang de Leucate below Leucate village; first place the tramontane hits. Helmet and impact vest recommended (shallow).,,,archived,
+FR,Languedoc,Leucate – Les Coussoules / La Franqui,sea,osm:r3158694,ESE,"Famous tramontane spot (Mondial du Vent); the tramontane (NW) is offshore here: experts only. Waves with marin (SE). In season the kite zone is the one secured by the KSL club beside the old lifeguard post (windsurf zone upwind, to the north). The exit channel on the La Franqui cliff side is closed to kites.",,,,
 FR,Languedoc,Étang de La Palme,lagoon,osm:n4299104622,W,"Shallow flat-water lagoon, safe by tramontane (onshore at the launch); schools on site. Good for learning.",,,,
 FR,Languedoc,Gruissan – La Vieille Nouvelle,sea,osm:w49202040,ESE,"Glassy water by tramontane, which is offshore and strong: experienced riders, drift risk, no lifeguards. Sandy track access (2.15 m height bar). No riding on the Étang de l'Ayrolle. Also: Les Chalets / Grazel (sea side, waves with marin; small Grazel lagoon), Narbonne-Plage 8 km north-east.",,,,
 FR,Languedoc,Sète – Pont-Levis,lagoon,osm:n8431319287,NW,"Étang de Thau reference flat-water spot. Launch from the sandbank safe zone, one kite at a time; tramontane (NW) onshore. Booties (urchins). Also: Marseillan and Mèze on the Étang de Thau; Les 3 Digues on the sea side (summer kite zone).",,,,
@@ -32,12 +33,12 @@ FR,Corse,Calvi – La Pinède,sea,osm:w40323298,NNE,"Big sandy bay; W (libeccio)
 FR,Alpes,Lac de Monteynard,lake,osm:n4390731413,E,"Famous thermal spot: strong south wind in spring and summer afternoons, north return wind. Main launches at Treffort.",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
-# pro: local / secondary beach — local Roussillon beach
-FR,Roussillon,Argelès-sur-Mer – Le Racou,sea,osm:w80445334,E,"Summer (June–Sept): kite only in the buoyed zone, reached through the marked channel. Waves with marin (SE), tramontane offshore.",,,pro,
-# pro: cluster duplicate — between Canet and Barcarès
-FR,Roussillon,Torreilles – Le Blockhaus,sea,osm:n343226792,E,"Summer kite zone left of the lifeguard post (north beach, towards the Agly mouth). Works with SE / thermal; tramontane offshore.",,,pro,
-# pro: cluster duplicate — Étang de Leucate, Le Goulet kept
-FR,Roussillon,Le Barcarès – Parc des Dosses (Étang de Leucate),lagoon,osm:w739431495,W,"Flat water by tramontane (offshore, often 30 kn+): experienced riders; no launching on the main lagoon side, keep clear of the wake cable. UCPA Éole (Cap Coudalère) next door suits intermediates.",,,pro,
+# archived: no kite school or official kite-zone page found for Argelès / Le Racou (only a spot-guide mention of Plage Nord and Windy markers); worst case applied (WHE-67, 2026-11-03)
+FR,Roussillon,Argelès-sur-Mer – Le Racou,sea,osm:w80445334,E,"Summer (June–Sept): kite only in the buoyed zone, reached through the marked channel. Waves with marin (SE), tramontane offshore.",,,archived,
+# archived: Blockhaus beach club closed, only one school (Free Air) and one blog; not a Windy marker; 5 km from Barcarès (WHE-67, 2026-11-03)
+FR,Roussillon,Torreilles – Le Blockhaus,sea,osm:n343226792,E,"Summer kite zone left of the lifeguard post (north beach, towards the Agly mouth). Works with SE / thermal; tramontane offshore.",,,archived,
+# free (Ben, 4 Nov 2026): lagoon flat-water Tramontane spot now that Le Goulet is archived (Windy marker, department tourist office lists it)
+FR,Roussillon,Le Barcarès – Parc des Dosses (Étang de Leucate),lagoon,osm:w739431495,W,"Flat water by tramontane (offshore, often 30 kn+): experienced riders; no launching on the main lagoon side, keep clear of the wake cable. UCPA Éole (Cap Coudalère) next door suits intermediates.",,,,
 # pro: cluster duplicate — between La Palme and Gruissan
 FR,Languedoc,Port-la-Nouvelle,sea,osm:r5810590,ESE,Wide beach exposed to the tramontane (offshore: experienced riders) and to marin (waves). Summer: kite zone only.,,,pro,
 # pro: cluster duplicate — 3 km from La Vieille Nouvelle

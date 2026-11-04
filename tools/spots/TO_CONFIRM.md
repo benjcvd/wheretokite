@@ -266,3 +266,10 @@ Questions:
 ## Settled: Murcia, Almería, Granada (WHE-98, 3 Nov, rule of 2 Nov)
 - **El Zapillo summer ban (15 Jun–15 Sep)**: no official text found (town hall, beach ordinance, BOP searched). Worst case applies: ban stays, notes say the source is missing. If a local school or the Almería bando shows kiting is allowed, lift it.
 - **Los Nietos / Roquetas summer rules**: no kite-specific rule found. Roquetas ordinance art. 12 bans sail craft only inside buoyed bathing zones; notes updated.
+
+## Roussillon / Leucate (WHE-67), settled 2 Nov 2026
+- Leucate – Le Goulet: archived. Leucate tourist office (en.tourisme-leucate.com, "Leucate top spots") lists Le Goulet for windsurf / wingfoil / SUP only; its 2024-25 guide puts the free kite zone at Coussoules (KSL). Blogs mention a kite sector towards Île de la Rascasse, unconfirmed → worst case.
+- Coussoules: kite zone secured by KSL by the old lifeguard post, windsurf zone upwind; La Franqui cliff-side exit channel closed to kites (OT guide 2025-26 and spot map 2026-27). No dated ban encoded (no official text found).
+- Canet / Saint-Cyprien: no source found for the "municipal decree May–Sept" wording; notes now only say a kite area is signed (Pont des Basses; Saint-Cyprien north beach, per tourisme-saint-cyprien.com and tourisme-pyreneesorientales.com). Check with the town halls if a dated ban is wanted.
+- Not re-verified: Argelès Le Racou, Torreilles, La Palme, Port-la-Nouvelle, Barcarès (3 Colonnes / Dosses) kept as they were.
+- WHE-67 second pass (3 Nov 2026), settled: Argelès – Le Racou and Torreilles – Le Blockhaus archived (no school or official kite-zone page; worst case). Not added: Argelès Plage, Les Pilotis (Leucate Plage), La Mine (windsurf / SUP per the tourist office). Parc des Dosses kept pro; Ben may want it basic now that Le Goulet is archived (the only flat-water Tramontane spot in the area).
