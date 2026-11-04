@@ -57,9 +57,20 @@ a marker. No Windy marker: Claouey (archived), Les Arbousiers (kept pro: officia
 Counts: 9 spots checked, 17 Windy markers in the zone, 7 matched, 0 added, 1 archived (Claouey),
 1 promoted (Le Bétey → basic). Basic 3 → 3 (Claouey out, Le Bétey in), pro 6 → 5, archived 0 → 1.
 
+## Spot check (2026-11-04)
+
+`build_spots.py` on the 8 live Gironde rows: exit 0, no PROBLEMS. Apple Maps: 7 agree, 1 uncertain.
+- La Hume `uncertain`: OSM shore faces 305° (NW), Apple's water is at 354° (N). The beach sits
+  on the south shore of the basin between harbour jetties and oyster flats, so both point at
+  the basin; harmless, the default 180° sector covers W to NE as the school says.
+- Les Arbousiers: still snapped from the "Plage des Arbousiers" bus stop, then moved onto the
+  W-facing shore (44.644 N, 1.196 W), which is the beach. Weak pin, stays in `TO_CONFIRM.md`.
+- Lac de Lacanau: moved from the OSM kite area to the nearest shore facing SW; normal for a lake pin.
+
 ## Risks
 
-- **Spot check**: see the build result in the card. Python 3.9 (LibreSSL 2.8.3) fails the TLS
-  handshake with overpass-api.de and the mail.ru mirror times out, so the build stalled twice.
+- System Python 3.9 (LibreSSL 2.8.3) fails the TLS handshake with overpass-api.de and the
+  mail.ru mirror times out, so the plain build hangs. This check ran through a curl shim that
+  only replaces `urlopen` (no pipeline change). CI uses its own Python, so it isn't affected.
 - Hourtin summer ban rests on the State's summary of the 2014 order; if the school zone is open
   all year, the ban is too strict (safe direction).
