@@ -7,9 +7,9 @@ ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,NE,"Mainly an autumn–s
 ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,osm:r14500385,SE,"Shallow water at the root of the Trabucador, where the schools teach; beginner-friendly. In summer ride only the signposted kite zone.",,,,
 ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W:bay side|E:sea side,"Summer thermal (S) spot; flat, shallow water on the Badia dels Alfacs (west) side, about 1 m deep in places. Schools report signposted kite zones in summer.",,,,
 # Comunitat Valenciana: summer kiting only in the few buoyed channels / zones.
-ES,Comunitat Valenciana,Valencia – El Perellonet,sea,osm:w168406914,E,"Municipal buoyed kite zone south of the Perellonet river mouth, open year-round; Kitezone club. Also: Sueca – Mareny de Barraquetes (summer channel for club members, free off-season).",,,,
+ES,Comunitat Valenciana,Valencia – El Perellonet,sea,osm:w168406914,E,"Municipal buoyed kite zone south of the Perellonet river mouth with Kitezone club (municipal lifeguard 14:30–19:30 in summer, 2017–18 tenders). Rules changed more than once: the Albufera park refused the canals in 2023, so check the club for the current season. Also: Sueca – Mareny de Barraquetes (summer channel for club members, free off-season).",,,,
 ES,Comunitat Valenciana,Oliva,sea,osm:r21201264,ENE,Oliva Nova; in summer kiting only in the authorised zone (club rescue boat). Also: Dénia – Les Deveses (marked kite zone just south).,,,,
-ES,Comunitat Valenciana,Santa Pola – La Gola,sea,q:Playa de La Gola Santa Pola,SE,"La Gola open to kites year-round; neighbouring Playa Lisa is closed to kites in summer. Also: Elche – Arenales del Sol (north), Guardamar – Els Tossals (south).",,,,
+ES,Comunitat Valenciana,Santa Pola – Tamarit,sea,osm:w71365123,E,"Town kite channel 120 m wide (council decree 9 Jul 2024, renewed yearly): Oct–May free; June and September free on weekdays, weekends 14–17 h only; Holy Week, July and August weekdays 14–17 h only, weekends banned. La Gola (south) is not open to kites. Also: Elche – Arenales del Sol (north).",,,,07-01..08-31 00:00-14:00;07-01..08-31 17:00-24:00
 # Murcia
 ES,Murcia,Mar Menor – Los Narejos,lagoon,osm:w107723436,SE,"Flat-water lagoon, kite zone and school; E and SW (lebeche) most common. Also: Los Nietos (south shore, onshore in NE/E), La Manga – Isla del Ciervo.",,,,
 # Andalucía — Mediterranean
@@ -59,16 +59,18 @@ ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,"
 ES,Catalunya,Torredembarra,sea,osm:r12040184,SE,Off-season spot: kiting banned 1 Jun–30 Sep. Keep off the protected Muntanyans dunes east of town.,,,archived,06-01..09-30
 # pro: local / secondary beach — off-season local spot
 ES,Catalunya,La Pineda,sea,q:Platja de la Pineda Vila-seca,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).,,,pro,06-01..09-30
-# pro: local / secondary beach — local winter spot
-ES,Comunitat Valenciana,Burriana – El Arenal,sea,osm:r2155770,SE,Winter spot for southerlies; flat water between the harbour moles.,,,pro,
+# archived: unconfirmed — only one regional guide names the beach, no school or kite zone found (WHE-93, 2026-11-03)
+ES,Comunitat Valenciana,Burriana – El Arenal,sea,osm:r2155770,SE,Winter spot for southerlies; flat water between the harbour moles.,,,archived,
 # archived: restricted (club / permit / summer ban) — club-only summer channel, near El Perellonet
 ES,Comunitat Valenciana,Sueca – Mareny de Barraquetes,sea,osm:r14908251,E,Summer channel (Jun–Aug) for Barraquetes Vent club members only; free off-season. Summer garbí thermal.,,,archived,
 # pro: cluster duplicate — next to Oliva
 ES,Comunitat Valenciana,Dénia – Les Deveses,sea,osm:r2172009,ENE,Marked kite zone at the north end of Dénia (Les Deveses); summer thermal and winter tramuntana.,,,pro,
-# pro: cluster duplicate — 8 km from Santa Pola
-ES,Comunitat Valenciana,Elche – Arenales del Sol,sea,osm:w177395067,E,Municipal kite area with schools.,,,pro,
-# pro: cluster duplicate — south of Santa Pola
-ES,Comunitat Valenciana,Guardamar – Els Tossals,sea,osm:w54057854,E,Designated kite area by the dunes.,,,pro,
+# pro: cluster duplicate — near Santa Pola Tamarit
+ES,Comunitat Valenciana,Elche – Arenales del Sol,sea,osm:w177395067,E,Beach with kite schools (Parrés WaterSports and others); no official channel or rules found online: ask the school.,,,pro,
+# archived: kites not allowed — Santa Pola council says the authorities refuse La Gola each year; the channel is at Tamarit (WHE-93, 2026-11-03)
+ES,Comunitat Valenciana,Santa Pola – La Gola,sea,q:Playa de La Gola Santa Pola,SE,"Not open to kites: the town asks every year, the competent authorities refuse; the kite channel is at Tamarit.",,,archived,
+# archived: unconfirmed — no school, kite zone or rule found for Els Tossals; dune protected area (WHE-93, 2026-11-03)
+ES,Comunitat Valenciana,Guardamar – Els Tossals,sea,osm:w54057854,E,Designated kite area by the dunes.,,,archived,
 # pro: cluster duplicate — Mar Menor, Los Narejos kept
 ES,Murcia,Mar Menor – Los Nietos,lagoon,osm:w294026685,N,"Shallow flat water, onshore in NE/E; beginner-friendly, no summer restriction at the end of the promenade.",,,pro,
 # pro: cluster duplicate — Mar Menor, Los Narejos kept
