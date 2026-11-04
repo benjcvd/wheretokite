@@ -155,3 +155,7 @@ FR,Pays basque,Hendaye,sea,osm:w234073850,N,"Long, gently sloping sandy beach fa
 FR,Grand Est,Lac d'Orient – Mesnil-Saint-Père,lake,osm:w117776916,NW,"Experienced riders, March to October, through the local clubs (AWA, Flysurf10); beaches closed 15 June–15 September.",,,archived,
 # archived: restricted (club / permit / summer ban) — club-only lake
 FR,Grand Est,Lac de Madine,lake,osm:n6760961924,SW,"Club-only (AKL membership and FFVL licence required); main beach for SW–W winds, gusty.",,,archived,
+# pro: local / secondary beach — added 4 Nov from Windy markers (WHE-108); council kite zone, wild beach with a strong current
+FR,Landes,Tarnos – Plage du Métro,sea,osm:w303968640,W,"Long wild sandy beach north of the Adour jetty, an onshore summer thermal spot (afternoons, best from the north). Part of the beach is set aside for kiters; strong current, intermediate riders. Plage de la Digue, 1.5 km south, is listed as a kite zone too.",,,pro,
+# pro: restricted (club / permit / summer ban) — added 4 Nov from Windy markers (WHE-108); kiting only off-season in a reserved zone
+FR,Pays basque,Saint-Jean-de-Luz,sea,osm:w18893856,E,"Sheltered town bay beach. Kiting only off-season in a reserved zone and never during lifeguard hours, so no kiting here in summer (worst case: dates assumed, check the town's posted order). Surf schools in town also teach kite.",,,pro,06-15..09-15
