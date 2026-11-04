@@ -38,6 +38,9 @@ Cards titled "Validate the … spots, checked against Windy" follow
 - Windy in Chrome as a visitor, both ways, in the report.
 - Update only your zone's line in `tools/spots/validation/status.csv`. Never set `validated`:
   the Lead does that after merging.
+- Several zone cards may run at the same time, each on its own ticket branch. Edit only your
+  zone's rows, your zone's report and your zone's line in `status.csv`, so merges stay clean.
+  Chrome is shared: open your own tab and close it when done.
 
 ## Scope
 
