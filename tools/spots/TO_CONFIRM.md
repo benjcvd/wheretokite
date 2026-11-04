@@ -262,3 +262,7 @@ Questions:
 - Not added (worst case, sources too thin): Eckernförde (only a tourism page), Puzziteddu IT (only a promotional listing, no school
   on site found), Kos – Kefalos/Kohilari (kite school mention but no OSM beach reachable; revisit), Torre Mozza IT, Torbole (Garda kite limits).
 - Windy's lists were not re-browsed this run; the larger gap (IT 7%, GR 10%) needs a Chrome pass per country, one card each.
+
+## Settled: Murcia, Almería, Granada (WHE-98, 3 Nov, rule of 2 Nov)
+- **El Zapillo summer ban (15 Jun–15 Sep)**: no official text found (town hall, beach ordinance, BOP searched). Worst case applies: ban stays, notes say the source is missing. If a local school or the Almería bando shows kiting is allowed, lift it.
+- **Los Nietos / Roquetas summer rules**: no kite-specific rule found. Roquetas ordinance art. 12 bans sail craft only inside buoyed bathing zones; notes updated.

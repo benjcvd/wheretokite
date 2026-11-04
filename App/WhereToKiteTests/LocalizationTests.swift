@@ -65,10 +65,11 @@ final class LocalizationTests: XCTestCase {
         for flag in ["too light", "too strong for level", "too strong for quiver", "gusty", "overpowered in gusts",
                      "offshore component", "beach orientation unknown", "thunderstorm risk", "kiting banned", "dark",
                      "heavy rain", "rain", "unstable air", "tide too low", "tide too high", "no forecast",
-                     "poor conditions", "offshore"] {
+                     "poor conditions", "offshore", "side-offshore"] {
             XCTAssertFalse(Vocab.term(flag).isEmpty, flag)
         }
         XCTAssertEqual(Vocab.term("too strong for level"), "too strong for your level")
+        XCTAssertEqual(Vocab.term("side-offshore"), "side-offshore")
         XCTAssertEqual(Vocab.tide("High 14:20 · Low 08:05, 20:35"), "High 14:20 · Low 08:05, 20:35")
     }
 }
