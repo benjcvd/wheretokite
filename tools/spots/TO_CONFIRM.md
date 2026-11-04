@@ -8,8 +8,16 @@ curated **without web verification** (knowledge + OpenStreetMap + Apple Maps che
 second pass with web research is worth doing.
 
 ## France — Channel / Atlantic (FR-atlantic.csv)
-- Bassin d'Arcachon – La Hume: closed during the hunting season (Oct–Nov)?
-- Arcachon – Les Arbousiers, Claouey, Andernos – Le Bétey: exact summer bans.
+- Gironde (WHE-109, settled 4 Nov, worst case): La Hume stays closed Oct–Nov (town order cited
+  by the school, text not found); Le Bétey stays closed Jul–Aug (State guide: only the Andernos
+  kite channel in season); Les Arbousiers closed before 19:00 in Jul–Aug (State guide, 2020);
+  Claouey archived (no kite channel, school closed, no Windy marker).
+- Lac d'Hourtin-Carcans: State guide says kite only 15 Nov–31 Mar (order of 1 Sept 2014),
+  encoded; the Hourtin 2025 lake map shows a kite zone with no dates. If the school zone is
+  open all year, narrow the ban.
+- Gironde candidates (Windy 5★), not added yet: Grand Crohot / L'Horizon (State kite channel
+  at L'Horizon; guides: kite zone south of the Grand Crohot blockhaus), Montalivet (Carakas
+  kite school). Need a second source each and an OSM pin.
 - Oléron – La Perroche: banned in summer?
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
 - Hendaye, Anglet – La Madrague: summer windows.
@@ -17,7 +25,7 @@ second pass with web research is worth doing.
 - La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
 - Weak pins (snapped from a village / street): Hemmes de Marck, Wimereux – Pointe aux Oies,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
-  Les Arbousiers, Navarrosse.
+  Les Arbousiers (bus stop beside the beach), Navarrosse.
 - Ouistreham Riva-Bella: really a separate spot from Merville (3.5 km)?
 - Left out as uncertain: Les Sables-d'Olonne, Jonville / Réville, Saint-Germain-sur-Ay,
   Locmariaquer, Le Rohu, Kerguelen, La Palue, Dunkerque Digue du Break, Cap-Ferret ocean
