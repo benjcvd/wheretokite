@@ -66,3 +66,31 @@ Windy markers (name = Windy's nearest-place label, not a position we use):
 Ours with no Windy marker: Platja d'Alcúdia (marker not distinct from Sa Marina's) and Cala Tirant
 (nearest marker is Fornells, 4 km east). Counts: about 18 Windy markers seen across the islands (not all hovered), 4 matched
 to our spots, 0 added, 0 archived.
+
+## Windy markers added as Pro (WHE-123, 2026-11-04)
+
+Rule of 4 Nov: a Windy kite marker we don't have goes in as Pro unless one of the four good reasons
+applies. Markers re-read as a visitor (hover, kite layer): 17 in the islands, 4 matched to our
+spots (Es Barcares, El Buzón ~ Platja de Muro, Son Serra de Marina, Son Bou), 9 added as Pro,
+4 left out. Pins are OSM elements, never Windy's positions. Spots: 7 → 16 (3 free, 13 Pro).
+
+**Not yet checked:** `spot-check` could not run (Overpass down on 4 Nov); the Apple Maps direction check of the 9 new rows is still to do.
+
+| Windy marker | Result | Sources (one is enough for Pro) |
+|---|---|---|
+| Ciudad Jardín (Playa de Palma) | added (Pro) `osm:r2174956` | [unplug-kitesurf spot page](https://www.unplug-kitesurf.com/spots/mallorca-ciudad-jardin-spain) (S/SW winds, winter); [mallorca.com guide](https://www.mallorca.com/en/guide/activities/sport/wassersport/kitesurfen-mallorca) names Playa de Palma a main kite hotspot |
+| S'Arenal | added (Pro) `osm:n13825691265` | mallorca.com guide; Club Náutico S'Arenal kite services; Mallorca Magazin 2013 (kiting possible year-round in the Bay of Palma). 7 km from Ciudad Jardín, so a separate launch |
+| Santa Ponça | added (Pro) `osm:w5257679` | [kite-and-windsurfing-guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/santa-ponca-mallorca-spain.html): winter spot |
+| Sa Rapita | added (Pro) `osm:w57737438` | [unplug-kitesurf](https://www.unplug-kitesurf.com/spots/mallorca-sa-rapita-spain); [kite-and-windsurfing-guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/sa-rapita-mallorca-spain.html); school Cuatro Vientos |
+| Punta Prima (Menorca) | added (Pro) `osm:r1581445` | kite-and-windsurfing-guide Punta Prima page: Club Kitesurf Menorca station, Nov–May |
+| Playa d'en Bossa (Ibiza) | added (Pro) `osm:w119370890` | [Kiteforum](https://se.kiteforum.com/kitesurf/spot/Ibiza___Playa_d_en_Bossa); Wikiloc (NE/E/SE from October, closed in summer) |
+| Cala Martina (Ibiza) | added (Pro) `osm:w132655686` | [unplug-kitesurf](https://www.unplug-kitesurf.com/spots/ibiza-cala-martina-spain) (S/SW, Oct–May); Kiteforum page |
+| Ses Illetes (Formentera) | added (Pro) `osm:w737053149` | spain.info (best Balearic spot out of season; park ban May–Oct); Yumping rental at Playa de Illetes |
+| Ca Marí / Platja Migjorn (Formentera) | added (Pro) `osm:w1381403167` | [kite-and-windsurfing-guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/platja-migjorn-ca-mari-formentera-spain.html) |
+| Son Moll / Cala Rajada | left out: no OSM element fits | Only a webcam page and generic water-sports providers found; no source says kiters launch there and no kite beach can be named |
+| Fornells (Menorca) | left out: windsurf only per a local source | windfornells.com says a kite centre is not viable in the bay; Cala Tirant (4 km) is ours |
+| Es Carbó (Mallorca) | left out: private beach per a guide | kite-and-windsurfing-guide: beach belongs to a private finca, almost nobody rides; Es Trenc / Sa Ràpita (3 km) is added |
+| San Antoni (Ibiza) | left out: no OSM element fits | Only a guide page for "Cala Pinet", not found in OSM; the town beach is a bay of moored boats; no school |
+
+Summer rules: no official text found, so every new row keeps the restriction in `notes` and has no
+`banned` field (2 Nov rule). Ibiza is Nov–May only per spain.info; Illetes is banned May–Oct per the park.
