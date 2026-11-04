@@ -63,3 +63,16 @@ kept as pro on two other sources). Every other spot matches a marker.
 
 Counts: 17 Windy kite markers hovered in the zone (excluding the Gironde ones), 8 matched to our
 spots, 9 missing, none added.
+
+## Should the 9 missing Windy markers be Pro spots? (4 Nov, Ben's question)
+
+Searched again for each; verdict: **none added**.
+
+| Marker | Finding | Verdict |
+|---|---|---|
+| Tarnos – La Digue | Listed as a kite zone by [plages.tv](https://www.plages.tv/detail/plage-de-la-digue-tarnos-40220) and a spot guide ([wannakitesurf](https://en.wannakitesurf.com/spot/Europe/France/Aquitaine/Tarnos): good PM, current is a hazard); no school, no town order found, wild beach next to the Adour jetty, 3 km from Anglet | Closest candidate; not added (worst case: no official zone). Revisit if Ben knows it |
+| Tarnos – Métro | Only mentioned as the neighbouring beach, next to a military firing range | Not added |
+| Biarritz / Bidart / Erromardie | Surf beaches; Marinella (north Biarritz) "kitesurfing should be avoided in summer" ([kiteforum](https://se.kiteforum.com/kitesurf/spot/Marinella)); no kite rules found | Not added |
+| Saint-Jean-de-Luz | Kiting only off-season in a reserved zone, never during lifeguard hours ([Figaro Nautisme](https://figaronautisme.meteoconsult.fr/actus-nautisme-escales/2021-09-14/60410-saint-jean-de-luz-les-incontournables-de-la-station-balneaire-basque)); no school | Not added |
+| Capbreton / Hossegor | Surf and wing; Hossegor kite discouraged in summer; the real kite beach is Estagnots, already ours ([vvanat Capbreton](https://vvanat.fr/blog/kite-surf-capbreton/)) | Not added |
+| Soustons lake | Too dangerous for kites (see above) | Not added |
