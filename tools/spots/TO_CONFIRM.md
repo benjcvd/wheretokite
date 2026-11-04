@@ -25,10 +25,9 @@ second pass with web research is worth doing.
 
 ## France — Mediterranean (FR-mediterranean.csv)
 - Exact launches: Marseillan (pinned at Maldormir), Frontignan – Ingril, Saint-Cyprien –
-  Pont des Basses, Lac de la Ganguise (Auberge Le Cathare?).
+  Pont des Basses.
 - Bonifacio – Balistra: still kited since the school closed in 2023?
-- Weak pins (bus stop / place node): Carnon – Petit Travers, Narbonne – La Nautique,
-  Ganguise, Ingril; L'Espiguette is on a restaurant at the main car park.
+- Weak pins (bus stop / place node): Carnon – Petit Travers, Ingril; L'Espiguette is on a restaurant at the main car park.
 - Leucate, not added (no reliable OSM position, possibly duplicates): La Mine (likely = Le Goulet),
   Les Pilotis (Port Leucate?), the west shore of the Étang de Leucate near Salses.
 - Not added as duplicate: Argelès-Plage (= Le Racou).
@@ -36,6 +35,14 @@ second pass with web research is worth doing.
 - Le Barcarès Les 3 Colonnes: pin on the beach element, 680 m from an old community GPS (7 years). Same beach, left as is.
 - Leucate Le Goulet: pin is the spot's camper-van car park, about 200 m from the lagoon. No beach or kite feature is
   mapped on that shore, so nothing better to point at; the forecast grid is kilometres wide, so it reads the same wind.
+
+### Narbonne to Agde, settled without Ben (WHE-95, 2026-11-04, rule of 2 Nov)
+- Lac de la Ganguise: archived. VNF says a prefectoral decree bans kitesurfing on the lake.
+- Sérignan – La Grande Maïre: archived. No kite school or kite guide found, not on Windy.
+- Gruissan – Les Chalets: Étang du Grazel side removed (kiting reported banned by town decree; text not found).
+- Narbonne – La Nautique: harbour-node pin kept (no beach mapped nearer; same forecast cell).
+- Not added: Cap d'Agde Richelieu (4 km from La Tamarissière), Lac de Jouarres (minor lake).
+- Report: [fr-narbonne](../../docs/validation/fr-narbonne.md).
 
 ## Spain outside Catalonia / Portugal (ES.csv, PT.csv)
 - Mar Menor: rules after the lagoon's environmental crisis.

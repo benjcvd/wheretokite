@@ -7,7 +7,7 @@ FR,Roussillon,Le Barcarès – Les 3 Colonnes,sea,osm:w591387982,E,Official kite
 FR,Languedoc,Leucate – Le Goulet,lagoon,osm:w215452317,W,Shallow flat water on the Étang de Leucate below Leucate village; first place the tramontane hits. Helmet and impact vest recommended (shallow).,,,,
 FR,Languedoc,Leucate – Les Coussoules / La Franqui,sea,osm:r3158694,ESE,Famous tramontane spot (Mondial du Vent); the tramontane (NW) is offshore here: experts only. Waves with marin (SE). Summer: kite zones only.,,,,
 FR,Languedoc,Étang de La Palme,lagoon,osm:n4299104622,W,"Shallow flat-water lagoon, safe by tramontane (onshore at the launch); schools on site. Good for learning.",,,,
-FR,Languedoc,Gruissan – La Vieille Nouvelle,sea,osm:w49202040,ESE,"Glassy water by tramontane, which is offshore and strong: experienced riders, drift risk, no lifeguards. Sandy track access (2.15 m height bar). No riding on the Étang de l'Ayrolle. Also: Les Chalets / Grazel (sea side, waves with marin; small Grazel lagoon), Narbonne-Plage 8 km north-east.",,,,
+FR,Languedoc,Gruissan – La Vieille Nouvelle,sea,osm:w49202040,ESE,"Glassy water by tramontane, which is offshore and strong: experienced riders, drift risk, no lifeguards. Sandy track access (2.15 m height bar). No riding on the Étang de l'Ayrolle. Also: Les Chalets 3 km north (waves with marin), Narbonne-Plage 8 km north-east.",,,,
 FR,Languedoc,Sète – Pont-Levis,lagoon,osm:n8431319287,NW,"Étang de Thau reference flat-water spot. Launch from the sandbank safe zone, one kite at a time; tramontane (NW) onshore. Booties (urchins). Also: Marseillan and Mèze on the Étang de Thau; Les 3 Digues on the sea side (summer kite zone).",,,,
 FR,Languedoc,Carnon – Petit Travers,sea,osm:n3017067163,S,"Long wild beach between Carnon and La Grande-Motte; works S to SW. Les Roquilles (Carnon west) is forbidden in summer. Also: La Grande-Motte (Grand Travers / Couchant zones), Maguelone 7 km south-west (summer zone).",,,,
 FR,Languedoc,Le Grau-du-Roi – L'Espiguette,sea,q:Plage de l'Espiguette,S,"Huge wild beach; works S, SE, SW and NW. Long walk from the car park; crowded in summer. Also: Port-Camargue – Plage Sud (flat by NW / mistral) and Le Boucanet (W waves).",,,,
@@ -40,20 +40,20 @@ FR,Roussillon,Torreilles – Le Blockhaus,sea,osm:n343226792,E,"Summer kite zone
 FR,Roussillon,Le Barcarès – Parc des Dosses (Étang de Leucate),lagoon,osm:w739431495,W,"Flat water by tramontane (offshore, often 30 kn+): experienced riders; no launching on the main lagoon side, keep clear of the wake cable. UCPA Éole (Cap Coudalère) next door suits intermediates.",,,pro,
 # pro: cluster duplicate — between La Palme and Gruissan
 FR,Languedoc,Port-la-Nouvelle,sea,osm:r5810590,ESE,Wide beach exposed to the tramontane (offshore: experienced riders) and to marin (waves). Summer: kite zone only.,,,pro,
-# pro: cluster duplicate — 3 km from La Vieille Nouvelle
-FR,Languedoc,Gruissan – Les Chalets / Grazel,sea,osm:w49248872,SE:Plage des Chalets|NW:Étang du Grazel:lagoon,"Sea side: Défi Wind beach, waves with marin, tramontane offshore. Étang du Grazel: small enclosed shallow lagoon used by the kite school, flat in any wind.",,,pro,
+# pro: cluster duplicate — 3 km from La Vieille Nouvelle. Étang du Grazel side removed (WHE-95): kiting there is reported banned by town decree.
+FR,Languedoc,Gruissan – Les Chalets / Grazel,sea,osm:w49248872,SE,"Plage des Chalets (Défi Wind beach): waves with marin, tramontane offshore: experienced riders. Kiting on the small Étang du Grazel behind it is reported banned by a town decree: don't launch there.",,,pro,
 # pro: cluster duplicate — 8 km from Gruissan
-FR,Languedoc,Narbonne-Plage – Créneau Naturel,sea,osm:n1724005026,SE,"Wild beach west of Narbonne-Plage with a kite zone. Flat water by tramontane (offshore), waves with marin.",,,pro,
+FR,Languedoc,Narbonne-Plage – Créneau Naturel,sea,osm:n1724005026,SE,"Wild beach at the south-west end of Narbonne-Plage. Summer: kite only in the town's marked kite zone, by the Pech Rouge outlet dyke (no lifeguards, 25 m buffer from the bathing zone). Flat water by tramontane (offshore), waves with marin.",,,pro,
 # archived: restricted (club / permit / summer ban) — school-run zone, day pass required
 FR,Languedoc,Saint-Pierre-la-Mer – Pissevaches,sea,osm:n12005699213,SE,"300 m kite-only zone run by a school (day pass and RC insurance required, open on tramontane days). Must be able to ride upwind.",,,archived,
 # pro: cluster duplicate — Bages-Sigean lagoon, La Palme / Gruissan kept
 FR,Languedoc,Narbonne – La Nautique,lagoon,osm:n6815096936,SSW,Étang de Bages-Sigean nautical base; kite sector in the south-east part of the lagoon. Flat water by tramontane.,,,pro,
-# pro: minor lake — small tolerated zone
-FR,Languedoc,Lac de la Ganguise,lake,osm:r2079969,NE,"Kite tolerated only in a small zone reached via the Auberge Le Cathare (Belflou). Venturi with autan (SE), often 25–30 kn+. Not for beginners; leave the water when firefighting planes operate.",,,pro,
-# pro: local / secondary beach — local beach, short summer zone
-FR,Languedoc,Sérignan – La Grande Maïre,sea,osm:n9022469891,SSE,Summer: kite only in the short zone between Sérignan-Plage and Portiragnes-Plage. Thermal / marin sea breeze.,,,pro,
+# archived: banned — a prefectoral decree bans kitesurfing on the lake (VNF, 2026); not on Windy (WHE-95)
+FR,Languedoc,Lac de la Ganguise,lake,osm:r2079969,NE,"Kite banned by prefectoral decree (VNF). Formerly tolerated only in a small zone reached via the Auberge Le Cathare (Belflou). Venturi with autan (SE), often 25–30 kn+. Not for beginners; leave the water when firefighting planes operate.",,,archived,
+# archived: uncertain reputation — no kite school or kite spot guide found, not on Windy (WHE-95)
+FR,Languedoc,Sérignan – La Grande Maïre,sea,osm:n9022469891,SSE,Summer: kite only in the short zone between Sérignan-Plage and Portiragnes-Plage. Thermal / marin sea breeze.,,,archived,
 # pro: local / secondary beach — local beach
-FR,Languedoc,Agde – La Tamarissière,sea,osm:w114843096,S,Only beach in Agde where kiting is allowed in summer (kite zone near the Hérault mouth). Works with W to SE winds.,,,pro,
+FR,Languedoc,Agde – La Tamarissière,sea,osm:w114843096,S,"Agde's official kite zone, at the west end of the beach (gravel track); the only place in Agde for kiting in summer. Works W to SE; north wind is offshore and gusty. Groynes near the shore: not for beginners. Also: Richelieu Est in Cap d'Agde, 4 km east (by the jetty, schools ride from a boat).",,,pro,
 # pro: cluster duplicate — Étang de Thau, Sète Pont-Levis kept
 FR,Languedoc,Marseillan – Étang de Thau,lagoon,osm:w370485330,NW,Western Étang de Thau near Marseillan-Plage / Maldormir: flat shallow water by tramontane. Keep clear of oyster farms; check local rules (association Camikas).,,,pro,
 # pro: cluster duplicate — Étang de Thau, Sète Pont-Levis kept

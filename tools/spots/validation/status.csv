@@ -10,7 +10,7 @@ es-galicia,todo,val-es-galicia,,,,,,,
 es-north,todo,val-es-north,,,,,,,
 es-canarias,todo,val-es-canarias,,,,,,,
 fr-roussillon,doing,WHE-67,,,,,1,,2026-11-03
-fr-narbonne,todo,val-fr-narbonne,,,,,,,
+fr-narbonne,review,WHE-95,8,9,7,0,2,docs/validation/fr-narbonne.md,2026-11-04
 fr-thau,todo,val-fr-thau,,,,,,,
 fr-montpellier,todo,val-fr-montpellier,,,,,,,
 fr-camargue,todo,val-fr-camargue,,,,,,,
