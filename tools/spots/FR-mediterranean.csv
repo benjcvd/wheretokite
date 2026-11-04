@@ -8,7 +8,7 @@ FR,Languedoc,Leucate – Le Goulet,lagoon,osm:w215452317,W,Shallow flat water on
 FR,Languedoc,Leucate – Les Coussoules / La Franqui,sea,osm:r3158694,ESE,Famous tramontane spot (Mondial du Vent); the tramontane (NW) is offshore here: experts only. Waves with marin (SE). Summer: kite zones only.,,,,
 FR,Languedoc,Étang de La Palme,lagoon,osm:n4299104622,W,"Shallow flat-water lagoon, safe by tramontane (onshore at the launch); schools on site. Good for learning.",,,,
 FR,Languedoc,Gruissan – La Vieille Nouvelle,sea,osm:w49202040,ESE,"Glassy water by tramontane, which is offshore and strong: experienced riders, drift risk, no lifeguards. Sandy track access (2.15 m height bar). No riding on the Étang de l'Ayrolle. Also: Les Chalets / Grazel (sea side, waves with marin; small Grazel lagoon), Narbonne-Plage 8 km north-east.",,,,
-FR,Languedoc,Sète – Pont-Levis,lagoon,osm:n8431319287,NW,"Étang de Thau reference flat-water spot. Launch from the sandbank safe zone, one kite at a time; tramontane (NW) onshore. Booties (urchins). Also: Marseillan and Mèze on the Étang de Thau; Les 3 Digues on the sea side (summer kite zone).",,,,
+FR,Languedoc,Sète – Pont-Levis,lagoon,osm:n8431319287,NW,"Étang de Thau reference flat-water spot, kite zone open all year. Launch from the sandbank safe zone, one kite at a time; no jumping in front of the launch or along the dyke. Tramontane (NW) onshore; avoid east wind (offshore, gusty off Mont Saint-Clair). Keep clear of the hospital heliport zone and, in summer, of the second dyke (nesting birds). Booties (urchins). Also: Marseillan and Mèze on the Étang de Thau; Les 3 Digues on the sea side (summer kite zone).",,,,
 FR,Languedoc,Carnon – Petit Travers,sea,osm:n3017067163,S,"Long wild beach between Carnon and La Grande-Motte; works S to SW. Les Roquilles (Carnon west) is forbidden in summer. Also: La Grande-Motte (Grand Travers / Couchant zones), Maguelone 7 km south-west (summer zone).",,,,
 FR,Languedoc,Le Grau-du-Roi – L'Espiguette,sea,q:Plage de l'Espiguette,S,"Huge wild beach; works S, SE, SW and NW. Long walk from the car park; crowded in summer. Also: Port-Camargue – Plage Sud (flat by NW / mistral) and Le Boucanet (W waves).",,,,
 # Camargue and Provence (Bouches-du-Rhône)
@@ -55,13 +55,13 @@ FR,Languedoc,Sérignan – La Grande Maïre,sea,osm:n9022469891,SSE,Summer: kite
 # pro: local / secondary beach — local beach
 FR,Languedoc,Agde – La Tamarissière,sea,osm:w114843096,S,Only beach in Agde where kiting is allowed in summer (kite zone near the Hérault mouth). Works with W to SE winds.,,,pro,
 # pro: cluster duplicate — Étang de Thau, Sète Pont-Levis kept
-FR,Languedoc,Marseillan – Étang de Thau,lagoon,osm:w370485330,NW,Western Étang de Thau near Marseillan-Plage / Maldormir: flat shallow water by tramontane. Keep clear of oyster farms; check local rules (association Camikas).,,,pro,
+FR,Languedoc,Marseillan – Étang de Thau,lagoon,osm:w370485330,NW,"Western Étang de Thau at Maldormir, near Marseillan-Plage: flat shallow water, best in tramontane (N to NW, onshore). Small launch; don't walk inland (protected bird area). Keep clear of oyster farms. Also: the Marseillan village shore (Tabarka, Kithau school) 3 km north.",,,pro,
 # pro: cluster duplicate — Étang de Thau, Sète Pont-Levis kept
-FR,Languedoc,Mèze – La Pinède,lagoon,osm:n8951413979,S,"North shore of the Étang de Thau; flat water, backup spot when the sea is too rough. School on site.",,,pro,
+FR,Languedoc,Mèze – La Pinède,lagoon,osm:n8951413979,S,"North shore of the Étang de Thau by the Le Taurus nautical centre: flat water and waist-deep sandbanks, good for learning; backup when the sea is too rough. Southerly winds are onshore; tramontane (NW) blows off the shore. School on site (Fil d'Air).",,,pro,
 # pro: cluster duplicate — Sète sea beach, Pont-Levis kept
-FR,Languedoc,Sète – Les 3 Digues,sea,q:Plage des Trois Digues Sète,SE,"One of the few beaches where kiting is allowed in summer (kite zone). Thermal / SW onshore; avoid north wind (offshore, gusty).",,,pro,
-# pro: local / secondary beach — local learning lagoon
-FR,Languedoc,Frontignan – Étang d'Ingril,lagoon,osm:n1305757756,N,Shallow lagoon behind Frontignan-Plage: you stand almost everywhere. Good for learning; flat by tramontane.,,,pro,
+FR,Languedoc,Sète – Les 3 Digues,sea,osm:n14082437492,SE,"Lido beach between Sète and Marseillan with a kite zone at beach accesses 53–54: one of the few beaches kited in summer. Southerly thermal onshore; avoid north wind (offshore, gusty). Watch for swimmers in summer.",,,pro,
+# archived: free kiting suspended, schools only (Hérault Tourisme page; ActuNautique, June 2026). Prefectoral order 318/2023 (premar Méditerranée) had a daytime kite zone in the south of the lagoon; WHE-96
+FR,Languedoc,Frontignan – Étang d'Ingril,lagoon,osm:n1305757756,N,"Shallow lagoon behind Frontignan-Plage. Free kiting is suspended: lessons with local schools only.",,,archived,
 # pro: cluster duplicate — 7 km from Carnon – Petit Travers
 FR,Languedoc,Villeneuve-lès-Maguelone – Maguelone,sea,osm:w389802445,S,Summer: kiting only in the Maguelone zone (Prévost beach banned in summer; little train from the car park). Tramontane is offshore: safety boat compulsory.,,,pro,
 # pro: cluster duplicate — continuation of Petit Travers / Grand Travers
