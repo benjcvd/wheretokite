@@ -10,7 +10,7 @@ es-galicia,review,val-es-galicia,7,30,5,3,0,docs/validation/es-galicia.md,2026-1
 es-north,todo,val-es-north,,,,,,,
 es-canarias,todo,val-es-canarias,,,,,,,
 fr-roussillon,review,WHE-122,11,11,7,2,3,docs/validation/fr-roussillon.md,2026-11-04
-fr-narbonne,todo,val-fr-narbonne,,,,,,,
+fr-narbonne,review,WHE-95,8,9,7,0,2,docs/validation/fr-narbonne.md,2026-11-04
 fr-thau,review,val-fr-thau,7,6,3,2,1,docs/validation/fr-thau.md,2026-11-05
 fr-montpellier,review,WHE-97,6,9,5,0,0,docs/validation/fr-montpellier.md,2026-11-05
 fr-camargue,review,WHE-102,8,10,7,0,0,docs/validation/fr-camargue.md,2026-11-05
