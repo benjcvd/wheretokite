@@ -7,8 +7,8 @@ FR,Côte d'Opale,Le Touquet,sea,q:Le Touquet-Paris-Plage,W,"Launch north of Aqua
 FR,Baie de Somme,Le Crotoy,sea,q:Le Crotoy plage,SW,Tidal bay: rideable around high tide only. Do not cross the yellow buoys of the nature reserve. Also: Cayeux-sur-Mer – La Mollière on the sea side of the bay (all tides).,,high,,
 FR,Normandie,Quiberville,sea,osm:n8446819588,N,"Marked kite zone (mandatory); works WSW to NW. Pebble beach, sand at low tide.",,,,
 FR,Normandie,Merville-Franceville,sea,osm:w809904096,N,"Dedicated kite zone at the west end of Boulevard Wattier, open all year (the only kite beach in July–August). Keep out of the bird reserve at the Orne estuary to the west. Also: Ouistreham – Riva-Bella 5 km west (low tide only).",,,,
-FR,Normandie,Utah Beach,sea,q:Utah Beach,E,Huge beach; best at low to mid tide.,,,,
-FR,Normandie,Agon-Coutainville,sea,osm:w195421511,W,Also: Gouville-sur-Mer 10 km north.,,,,
+FR,Normandie,Utah Beach,sea,osm:w258074739,E,"12 km of gently sloping sand on the east coast, mainly an easterly-wind spot (flat in offshore W, small waves onshore). Ride around high tide: mussel and oyster beds show up on the beach at low water. No school on the beach (the Jullouville school comes here in east winds).",,not-low,,
+FR,Normandie,Agon-Coutainville,sea,osm:w195421511,W,"Wide sand beach by the Coutainville sailing school; the Gouville school brings its students here, all levels. No kite order found: ask the town hall in summer. Also: Gouville-sur-Mer 10 km north.",,,,
 FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,Bay of Mont-Saint-Michel: huge tidal range; ride around high tide.,,high,,
 FR,Bretagne,Lancieux,sea,osm:w385324966,N,"Flat, shallow bay; best at low tide. July–August: Saint-Sieu beach is closed, launch at Tête de Chien (low tide) or Roche Morin (high tide). Also: Saint-Malo – Le Sillon 12 km east (urban, summer launch zone).",,,,
 FR,Bretagne,Hillion – Bon Abri,sea,osm:w425935259,N,"Bay of Saint-Brieuc: huge tidal range, ride mid to high tide. Nature reserve nearby. Also: Plérin – Les Rosaires across the bay for easterly winds.",,not-low,,
@@ -67,15 +67,25 @@ FR,Normandie,Houlgate,sea,osm:w108806424,N,,,,pro,
 # pro: local / secondary beach — secondary Calvados beach
 FR,Normandie,Asnelles,sea,q:Asnelles,N,Mulberry harbour remains offshore; summer: kiting usually only outside bathing hours.,,,pro,
 # pro: local / secondary beach — local harbour spot
-FR,Normandie,Cherbourg – Collignon,sea,osm:n13289366918,N,"Flat water inside the Cherbourg breakwater, around high tide; works W to NE.",,high,pro,
+FR,Normandie,Cherbourg – Collignon,sea,osm:n13289366918,N,"Flat water inside the Cherbourg breakwater, around high tide; works W to NE (a strong NE thermal draws the crowd; S wind is side-offshore, avoid). Stones on the left at low tide and a current at the river mouth.",,high,pro,
 # pro: local / secondary beach — local Cotentin beach
-FR,Normandie,Urville-Nacqueville,sea,osm:w219863717,N,,,,pro,
+FR,Normandie,Urville-Nacqueville,sea,osm:w219863717,N,"Home of the Pôle Nautique de la Hague, the only kite school in the Cotentin (lessons and rental, in the old fort). Check the tide and the local rules with the school.",,,pro,
 # pro: local / secondary beach — local Cotentin wave spot
-FR,Normandie,Siouville-Hague,sea,osm:w210570710,W,"Wave spot, all tides.",,,pro,
+FR,Normandie,Siouville-Hague,sea,osm:w210570710,W,"Wave spot, all tides, experienced riders. Best wave-riding spot in Normandy; the Hague school (Pôle Nautique) gives lessons here.",,,pro,
 # pro: cluster duplicate — 10 km from Agon-Coutainville
-FR,Normandie,Gouville-sur-Mer,sea,q:Plage de Gouville-sur-Mer,W,,,,pro,
+FR,Normandie,Gouville-sur-Mer,sea,osm:w198334177,W,"Beach opposite the campsite, open and shallow, good for beginners; base of the Pôle Kitesurf Normandie school. Not the Cabines de bains beach (oyster parks).",,,pro,
 # pro: local / secondary beach — local Granville beach
-FR,Normandie,Jullouville,sea,osm:n14064270382,W,Best from mid to low tide.,,not-high,pro,
+FR,Normandie,Jullouville,sea,osm:n14064270382,W,"Wide open 2 km beach, flat shallow water, small summer thermal; main W-wind spot of the Fifty Kite school at medium and big tides (Kairon-plage on small tides). Best from mid to low tide.",,not-high,pro,
+# pro: Windy marker, added in the Cotentin validation (WHE-116)
+FR,Normandie,Vauville,sea,osm:n1723311188,W,"Big dune bay (dunes are a nature reserve: carry the gear over them, respect the rules). Works in S, NW and NE summer thermal winds; big shorebreak at high tide, so wait for the tide to turn. Waves less clean than Siouville. The Hague school gives lessons here.",,not-high,pro,
+# pro: Windy marker, added in the Cotentin validation (WHE-116)
+FR,Normandie,Sciotot,sea,osm:w100286484,W,"Named with Siouville and Urville as one of the known kite beaches of the Manche. Option in SE wind. Check tide and rules locally.",,,pro,
+# pro: Windy marker, added in the Cotentin validation (WHE-116)
+FR,Normandie,Barneville-Carteret,sea,osm:w223989961,W,"Barneville beach next to Carteret: NW wind comes cross-shore from the right, waves best about 1 h after high tide, rocks show at low tide and the water is chopped at the breakwater (S current). The town's water-sports centre runs courses.",,not-low,pro,
+# pro: Windy marker, added in the Cotentin validation (WHE-116)
+FR,Normandie,Anneville-sur-Mer,sea,osm:w202965913,W,"Beach used by the mobile Pôle Kitesurf Normandie school when the wind and tide suit; wide, open and stone-free. One school source only.",,,pro,
+# pro: Windy marker, added in the Cotentin validation (WHE-116)
+FR,Normandie,Jonville (Réville),sea,osm:n13993449146,E,"Beach of Jonville listed by the Barfleur tourist guide for kitesurf, kayak and windsurf. One tourist-guide source and no school: check tide and wind locally.",,,pro,
 # pro: cluster duplicate — 12 km from Lancieux; urban, summer zone restrictions
 FR,Bretagne,Saint-Malo – Le Sillon,sea,osm:w485330850,NW,1 Jul–1 Sep: mandatory launch zone between the Kyriad hotel and Avenue Fuentès. Beach disappears at high spring tides.,,not-high,pro,
 # pro: restricted (club / permit / summer ban) — banned daytime in summer; Lancieux kept

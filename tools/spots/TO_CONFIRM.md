@@ -20,6 +20,8 @@ second pass with web research is worth doing.
 - Gironde candidates (Windy 5★), not added yet: Grand Crohot / L'Horizon (State kite channel
   at L'Horizon; guides: kite zone south of the Grand Crohot blockhaus), Montalivet (Carakas
   kite school). Need a second source each and an OSM pin.
+
+- Cotentin west (WHE-116): no municipal or préfecture kite order found for any of the 7 spots, so no `banned` rule is encoded; Vauville (dune nature reserve), Utah Beach (shellfish beds) and Agon / Jullouville summer limits are worded in `notes` with "check the town hall". Jonville / Réville, once left out as uncertain, is now in as Pro (Windy marker, 3 stars, one tourist-guide source): the pin is the OSM beach of Jonville, to be checked by a local. See docs/validation/fr-cotentin.md.
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
 - Hendaye, Anglet – La Madrague: summer windows.
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
