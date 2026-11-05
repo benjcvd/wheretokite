@@ -357,3 +357,20 @@ All three workstreams are merged into local `main` (a2ba377). Ben's decisions to
   water and facing; the build falls back to curl when the system Python can't reach Overpass.
 - Merge gotcha: ticket branches overlap heavily (each starts from atlas/spot-improvement). On a
   row conflict, keep the version from the zone that owns the row; union TO_CONFIRM sections.
+
+## Where the Lead stopped (6 Nov, 00:25)
+- Main has 137 commits not on GitHub (validation merge). My `git push` is blocked by the
+  permission guard: Ben runs it in Terminal (WHE-134). After the push, watch
+  `catalog-build.yml`, `git pull` its `Data/spots.json` commit, then propose the osm-cache refresh.
+- Ben's call (6 Nov): no TestFlight round. Ship v1.0 straight to the App Store; the Barcelona
+  riders test it informally. Order: WHE-77 (weekday bans, safety rule, Ben reviews) → fresh
+  archive → WHE-70 submit steps.
+- Still to merge: WHE-79 ticket branch (docs only, decision "ship nothing"), WHE-101 Huelva
+  (now on atlas/spot-improvement), WHE-117 Normandy east (review), WHE-124 when done.
+  Spot improvement was told to merge main into its branch first.
+- France Med spots is fully merged with no cards: Ben can archive it. France Atlantic spots
+  only holds WHE-108 (Tarnos question). Ben wants role classes instanced per ticket, not more
+  workstreams: new zone cards go to `spot-improvement`.
+- Check before marking a ticket merged: a ticket's commit can miss its CSV edits (WHE-115's
+  only had a stray file; Atlas later committed "remaining changes"). Compare the report and
+  the CSV, not just the branch.
