@@ -12,9 +12,9 @@ FR,Normandie,Agon-Coutainville,sea,osm:w195421511,W,Also: Gouville-sur-Mer 10 km
 FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,Bay of Mont-Saint-Michel: huge tidal range; ride around high tide.,,high,,
 FR,Bretagne,Lancieux,sea,osm:w385324966,N,"Flat, shallow bay; best at low tide. July–August: Saint-Sieu beach is closed, launch at Tête de Chien (low tide) or Roche Morin (high tide). Also: Saint-Malo – Le Sillon 12 km east (urban, summer launch zone).",,,,
 FR,Bretagne,Hillion – Bon Abri,sea,osm:w425935259,N,"Bay of Saint-Brieuc: huge tidal range, ride mid to high tide. Nature reserve nearby. Also: Plérin – Les Rosaires across the bay for easterly winds.",,not-low,,
-FR,Bretagne,Saint-Michel-en-Grève (Lieue de Grève),sea,q:Lieue de Grève,N,,,,,
-FR,Bretagne,Santec – Le Dossen,sea,q:Plage du Dossen,W,,,,,
-FR,Bretagne,Keremma,sea,osm:n1723311861,N,5 km of beach between the Kernic and Goulven bays; flat water at low tide. Also: Guissény – Le Vougot 10 km west.,,,,
+FR,Bretagne,Saint-Michel-en-Grève (Lieue de Grève),sea,osm:w1104426535,N,"Huge 4 km sandy beach, no rocks, gentle waves: the easiest place in the area to learn. The sea goes out up to 3 km at low tide (long walk to the water, then a vast flat standing-depth area). Kite's Cool school on the beach (March to November). Saint-Efflam, at the west end, is the same beach.",,,,
+FR,Bretagne,Santec – Le Dossen,sea,osm:w660959116,W,"Waves; best in S to SW wind, works N to S. In westerlies the inshore water is blocked at high tide: ride low tide. Rocks, all visible. Bathing zone in summer (about 1 June to 15 September, one blog, no town text found): keep clear of swimmers. Green algae in summer at the south river mouth. Kite Sans Frontière teaches here.",,,,
+FR,Bretagne,Keremma,sea,osm:n1723311861,N,"The reference spot of North Finistère: 5 km of beach between the Kernic and Goulven bays, FFVL-labelled and looked after by the Finistère Kite Association. Flat lagoon-like water at low tide (about 500 m of launch space), choppy at high tide. Best in NW wind (NW to NE works). Rocks and a strong current at the river mouth. Dunes are Natura 2000: stay on the paths. The Goulven bird reserve on the west side is closed to all boats. Lifeguards in summer only. Also: Guissény – Le Vougot 10 km west.",,,,
 FR,Bretagne,Pentrez,sea,osm:w373179545,W,"Long west-facing beach on the Bay of Douarnenez (about 4 km of sand at low tide, 2.5 km at high tide); waves, side-shore in S to SW winds. Kite zone listed by the beach directories; kite school West Gliss in Saint-Nic. Rip currents are reported on the beach.",,,,
 FR,Bretagne,La Torche,sea,osm:w304662418,W,"Kiters launch north of the point (towards Tronoën), away from the surfers; waves. Intermediate to expert; currents in the water, rocks only near the point. Kite schools at Plomeur (Twentynine, CEKB). Check the beach signs. Also: Tronoën 1.5 km north (kite zone about 300 m south of the car park; current towards the bunker at high tide).",,,,
 FR,Bretagne,Mousterlin,sea,q:Plage de Mousterlin,SW,West of the Pointe de Mousterlin; shown as a kite zone on the beach page and in the Brittany tourism board's list of kite spots; an association teaches here. Also: Bénodet – Lagune du Letty 2.5 km west (flat-water lagoon behind the dune spit).,,,,
@@ -87,15 +87,19 @@ FR,Bretagne,Erquy – Caroual,sea,osm:w28750087,W,Kite zone away from the bathin
 # pro: cluster duplicate — Saint-Brieuc bay, Hillion kept
 FR,Bretagne,Plérin – Les Rosaires,sea,osm:w233870060,NE,"Easterly-wind spot; busy with families in summer, ride off-season.",,,pro,
 # pro: cluster duplicate — 10 km from Keremma
-FR,Bretagne,Guissény – Le Vougot,sea,osm:w224287590,NW,,,,pro,
+FR,Bretagne,Guissény – Le Vougot,sea,osm:w224287590,NW,"Big west-facing beach, no school on site. Thermal wind stronger than at Le Dossen, waves build at high tide but stay easy. Many stones in the water and a shorebreak at high tide. A kite zone is listed on the beach.",,,pro,
 # pro: local / secondary beach — local Abers beach
-FR,Bretagne,Landéda – Sainte-Marguerite,sea,osm:n1284316076,W,Sheltered; flat water at low tide. Summer kite zone.,,,pro,
+FR,Bretagne,Landéda – Sainte-Marguerite,sea,osm:n1284316076,W,"Sheltered bay behind the dunes, flat water; works S to NNE, best W to NNW. Sources disagree on the tide (flat at low tide vs. enough water only around high tide): check the tide before rigging. Strong current as the bay empties on big tides, reefs. Summer bathing zone in the south part, 1 July to 30 August (one blog, no town text found). Landéda school AvelWest.",,,pro,
 # pro: local / secondary beach — local Abers beach
-FR,Bretagne,Lampaul-Ploudalmézeau – Trois Moutons,sea,osm:w220203518,N,"Tréompan dunes; calm water, beach narrows at high tide. Summer kite zone.",,,pro,
+FR,Bretagne,Lampaul-Ploudalmézeau – Trois Moutons,sea,osm:w220203518,N,"Tréompan dunes, one of the windiest beaches of the coast. Best in W to NW wind with waves: higher water, better waves. Long walk to the water at low tide, beach narrow at high tide. Marked kite zones to the left of the beach in July and August.",,,pro,
 # pro: local / secondary beach — local Iroise beach
-FR,Bretagne,Le Conquet – Blancs Sablons,sea,q:Plage des Blancs Sablons Le Conquet,NW,,,,pro,
+FR,Bretagne,Le Conquet – Blancs Sablons,sea,osm:w134893086,NW,"West-facing beach under cliffs, catches swell: not for beginners. Wind SW to N, best W to NNW (summer NE thermals suit freeride). Best at mid tide: huge shorebreak and gusty wind close inshore at high tide, waves close out at low tide. Swimming zone on the west part 1 July to 31 August (one blog, no town text found).",,,pro,
 # pro: restricted (club / permit / summer ban) — gusty, closed in daytime July–August
-FR,Bretagne,Brest – Moulin Blanc,sea,osm:w23432320,S,"Flat water in the Rade de Brest, gusty wind. Closed 1 July–31 August 09:00–19:00.",,,pro,07-01..08-31 09:00-19:00
+FR,Bretagne,Brest – Moulin Blanc,sea,osm:w23432320,S,"Flat water in the Rade de Brest, gusty; best in strong SW wind (onshore). Popular city spot. A spot guide mentions a kite channel in summer. We keep the old closure (1 July–31 August 09:00–19:00) until a Brest text confirms what is allowed.",,,pro,07-01..08-31 09:00-19:00
+# pro: Windy-only marker (WHE-114), kite guide
+FR,Bretagne,Primel-Trégastel,sea,osm:w569352256,W,"Experienced kiters only: the guide says best in NE wind (offshore on this west-facing beach), rocks on both sides and some under water, most dangerous towards low tide. Moderate waves, enough for freeride.",,,pro,
+# pro: Windy-only marker (WHE-114), kite guide
+FR,Bretagne,Lannion – Beg Léguer,sea,osm:w344152262,W,Freeride spot that becomes a wave spot above 20 knots; cross-on wind from the left is best and the cliffs give some shelter. Best on the rising tide. Rocks on the right and a shorebreak at high tide.,,,pro,
 # pro: local / secondary beach — local Crozon beach; Pentrez kept
 FR,Bretagne,Crozon – Goulien,sea,osm:w783301189,W,"Waves; main kite beach of the Crozon peninsula. Crescent beach of the Anse de Dinan, less exposed to swell than La Palue, so riders come here in strong wind or big swell. NE is the wave-kite wind; avoid W wind with a big swell; at low tide you slalom between rocks. Also: Kersiguénou in the middle of the crescent, for S winds.",,,pro,
 # pro: restricted (club / permit / summer ban) — reported midday summer ban, Mousterlin kept

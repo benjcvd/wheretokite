@@ -338,3 +338,8 @@ Questions:
 - Summer rules, none found in an official text, so notes only, `banned` empty: Île-Tudy midday ban (reported, lifeguards 13:00 to 19:00 in July and August), Le Ster ban in summer thermal winds and Kersidan ban in high summer (both from the kite guide), La Torche signs. Worst case for riders: obey the signs.
 - Not added: La Palue (surf beach, one blog line on kites), Saint-Tugen (surf), Audierne (beach cannot be told apart), Pointe Saint-Gilles (no source), Glénan (boat access).
 
+## North Finistère and Brest (WHE-114), settled 5 Nov 2026
+- Brest – Moulin Blanc: the summer closure (1 Jul–31 Aug 09:00–19:00) in `banned` has no source we could find; the Brittany tourist office page only lists lifeguards 13–19 h, and a kite guide mentions a "kite channel in summer". Worst case kept (ban stays). If a Brest or Le Relecq-Kerhuon text shows a kite channel, the ban could become a corridor rule.
+- Landéda – Sainte-Marguerite: sources disagree on the tide (flat at low tide vs. navigable only about 2 h either side of high water). No tide window set; both views in the notes. Local check welcome.
+- Summer swimming zones at Dossen (1 Jun–15 Sep), Sainte-Marguerite south (1 Jul–30 Aug) and Blancs Sablons west (1 Jul–31 Aug) come from one blog (vvanat.fr), no town text found. In notes only, not in `banned`.
+- Left out of the catalogue, no local kite source or nothing to pin: Les Amiets, Boutrouilles, Île de Vierge, Trez Hir, Saint-Jean-du-Doigt, Trezmeur, Grève Rose, Kernisi (no launch place), Térénez and Île Grande (no beach in OSM).
