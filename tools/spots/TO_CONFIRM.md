@@ -26,7 +26,8 @@ second pass with web research is worth doing.
 ## France — Mediterranean (FR-mediterranean.csv)
 - Exact launches: Marseillan (pinned at Maldormir), Frontignan – Ingril, Saint-Cyprien –
   Pont des Basses, Lac de la Ganguise (Auberge Le Cathare?).
-- Bonifacio – Balistra: still kited since the school closed in 2023?
+- Bonifacio – Balistra: still kited since the school closed in 2023? Settled 2026-11-05 (WHE-104): Windy marker (4 stars) and unplug-kitesurf.com page still list it, stays Pro; school closure not confirmed either way.
+- Corsica (WHE-104, 2026-11-05): Figari bay "closed to kites in summer" (vvanat.fr, single blog) and Lozari "no kiting in summer" (kite-and-windsurfing-guide.com) have no official text: kept in notes, no ban encoded. 16 Windy-only Corsica markers (Palombaggia, Tizzano, Propriano, Macinaggio, Saleccia, L'Ostriconi...) not added yet, no kite source found: see docs/validation/fr-corse.md.
 - Weak pins (bus stop / place node): Narbonne – La Nautique, Ganguise, Ingril.
   Settled 2026-11-05 (WHE-97): Carnon – Petit Travers now sits on the OSM kite-zone area; L'Espiguette stays on the
   restaurant node at the main car park (the beach polygons are long relations with centres 1.5 km away).
