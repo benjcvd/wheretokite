@@ -20,7 +20,7 @@ FR,Provence,Carro,sea,osm:w610782025,SW,"Experienced riders only: tight rocky la
 FR,Provence,Marseille – Pointe Rouge,sea,q:Plage de la Pointe Rouge Marseille,NW,Mistral spot (Pointe Rouge / Bonneveine): advanced riders. Kiting banned on the beaches in summer (about mid-June to mid-September).,,,,06-15..09-15
 # Var
 FR,Var,Six-Fours – Le Brusc,sea,osm:w354842415,W,"Plage des Charmettes, sheltered from swell by the Embiez islands; SW to NW (mistral). Technical launch (rocks). Kiting banned June–September.",,,,06-01..09-30
-FR,Var,Hyères – L'Almanarre,sea,q:Plage de l'Almanarre,W,World-famous W / SW spot. Kite zone between beach gates 16 and 21 with marked channel; ride beyond the 300 m buoys. Crowded in summer (15 June–15 Sept rules). Also: Le Mérou (L'Ayguade) for east wind.,,,,
+FR,Var,Hyères – L'Almanarre,sea,q:Plage de l'Almanarre,W,"World-famous W / SW spot. Kite zone between beach gates 16 and 21 with marked channel; ride beyond the 300 m buoys. Town rules (Hyères kite code): launch only from the marked channel, nothing in the 300 m band outside it, beach marshal 15 June–15 Sept. Crowded in summer. Also: Le Mérou (L'Ayguade) for east wind.",,,,
 FR,Var,Fréjus – Saint-Aygulf,sea,osm:w339192637,SE,Summer: kite zone at the Argens mouth (Base Nature side); late Sept to early June: Saint-Aygulf (Esclamandes) kite zone. Thermal S and E winds.,,,,
 # Côte d'Azur
 # Corse
@@ -85,6 +85,10 @@ FR,Provence,Fos-sur-Mer – Le Cavaou,sea,osm:n11612506186,S,Beach at the end of
 FR,Var,Hyères – Le Mérou,sea,osm:w198196306,SE,"Hyères' second official kite zone (L'Ayguade), for east wind: flat by west wind, choppy by east wind. Small launch area: intermediate / advanced.",,,pro,
 # pro: local / secondary beach — tight rocky urban launch
 FR,Côte d'Azur,Cannes – Palm Beach,sea,osm:n2470907668,S,"Only kite spot of Cannes (Pointe de la Croisette, old heliport launch). Very narrow rocky launch, boat traffic: experienced riders only.",220,,pro,
+# pro: Windy marker added (WHE-103), regional tourism listing
+FR,Var,Saint-Cyr-sur-Mer – Les Lecques,sea,osm:w331213777,SW,"Kite spot of the Baie des Lecques, used outside the bathing season only: the Saint-Cyr tourist office lists it open 16 October to 14 March, launching from the south end of the beach (beach 3 car park, near the Tapis de Sable hotel) and riding beyond the 300 m line. No wind or level information found: check the town hall before going.",,,pro,03-15..10-15
+# pro: Windy marker added (WHE-103), regional tourism listing
+FR,Var,Bormes-les-Mimosas – Cabasson,sea,osm:w27272205,SW,"Small bay beside the Fort de Brégançon, listed by the regional tourism board as a kite and windsurf spot, open 1 October to 31 May only. The beach faces south-west, so the mistral (NW) blows side-shore, which fits the tourism listing ("mistral days"); one guide also names E / NE / SE for the Brégançon side. Intermediate and expert riders.",,,pro,06-01..09-30
 # pro: cluster duplicate — Bonifacio cluster, Tonnara / Piantarella kept
 FR,Corse,Bonifacio – Balistra,sea,osm:w188083468,E,"Wild beach with a shallow lagoon behind it. Flat water by W (offshore, venturi), small waves by E. The local school closed in 2023.",,,pro,
 # pro: minor lake — single small zone
