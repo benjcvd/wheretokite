@@ -38,7 +38,8 @@ spots in the app.
 - `banned` (optional): when kiting is NOT allowed (official bans, summer bathing zones), as
   `MM-DD..MM-DD [HH:MM-HH:MM]` rules separated by `;` — e.g. `06-15..09-15 11:00-19:00` (15 June
   to 15 September, 11 to 19 h) or `07-01..08-31` (all day in July–August). Ranges may wrap over
-  the new year (`11-01..02-28`). Those hours score 0 in the app. Keep the human explanation in
+  the new year (`11-01..02-28`). Add days of the week to limit a rule to them: `06-01..09-30 sat,sun`
+  (summer weekends, all day; quote the field, it has a comma); a public holiday is a one-day range (`08-15..08-15`). Those hours score 0 in the app. Keep the human explanation in
   `notes`. Only encode bans you are confident about.
 - `tide` (optional): when the spot works, for spots that genuinely depend on the tide
   (tidal flats, bays that dry out, shallow lagoons, sandbars that cover): `high` (around

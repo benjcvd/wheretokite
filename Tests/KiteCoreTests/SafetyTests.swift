@@ -26,6 +26,25 @@ final class SafetyTests: XCTestCase {
         XCTAssertFalse(winter.covers(monthDay: "07-01", hour: 15))
     }
 
+    func testWeekdayBans() throws {
+        XCTAssertEqual(SpotBan.isoWeekday("2026-11-06"), 5)   // Friday
+        XCTAssertEqual(SpotBan.isoWeekday("2027-07-03"), 6)   // Saturday
+        XCTAssertEqual(SpotBan.isoWeekday("2027-07-04"), 7)   // Sunday
+        XCTAssertEqual(SpotBan.isoWeekday("2028-02-29"), 2)   // Tuesday, leap day
+        XCTAssertNil(SpotBan.isoWeekday("nope"))
+        // Castelldefels: summer weekends closed all day, weekdays open 15-19 h.
+        let s = try spot(bans: [SpotBan(from: "06-01", to: "09-30", weekdays: [6, 7]),
+                                SpotBan(from: "06-01", to: "09-30", startHour: 0, endHour: 15),
+                                SpotBan(from: "06-01", to: "09-30", startHour: 19, endHour: 24)])
+        XCTAssertTrue(s.isBanned(day: "2027-07-03", hour: 16))    // Saturday afternoon
+        XCTAssertTrue(s.isBanned(day: "2027-07-04", hour: 16))    // Sunday afternoon
+        XCTAssertFalse(s.isBanned(day: "2027-07-05", hour: 16))   // Monday afternoon: open
+        XCTAssertTrue(s.isBanned(day: "2027-07-05", hour: 12))    // Monday morning: closed
+        XCTAssertFalse(s.isBanned(day: "2027-10-02", hour: 16))   // Saturday out of season
+        // Unknown day: a weekday ban still applies.
+        XCTAssertTrue(SpotBan(from: "06-01", to: "09-30", weekdays: [6]).covers(monthDay: "07-01", hour: 12))
+    }
+
     func testHardLimits() throws {
         let s = try spot(bans: [SpotBan(from: "07-01", to: "08-31", startHour: 12, endHour: 14)])
         let hours = [hour(10, code: 95), hour(11, code: 80, cape: 2000), hour(12), hour(16, light: false), hour(17, rain: 2),
