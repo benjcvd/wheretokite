@@ -76,5 +76,6 @@ kite is not mentioned, surf zones are flagged in summer ([Noticias de Gipuzkoa](
 - Asturian summer rules (Luanco, San Lorenzo, Arbeyal, Salinas): no ordinance text found; town hall pages (Gozón, Gijón) would settle them.
 
 ## Build
-`build_spots.py` on the 20 zone rows (curl wrapper, Overpass mostly down): no PROBLEMS; Apple Maps check agrees 19, uncertain 1 (Laida: water faces WNW,
-hint changed N → NW; an estuary mouth, experts only). Salinas, Laredo and Gorliz were moved to the shore the build computed (about 100 m).
+`build_spots.py` on the 20 zone rows (curl wrapper, Overpass mostly down): no PROBLEMS. Apple Maps check: agrees 19, uncertain 1 (Liencres: Apple
+water at 269°, OSM 320°; the beach is a bay mouth, kept, hint N → NW to match OSM). Laida: the build computes WNW, hint changed N → NW.
+Salinas, Laredo and Gorliz were moved to the shore the build computed (about 100 m).
