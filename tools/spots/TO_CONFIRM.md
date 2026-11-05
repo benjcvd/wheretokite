@@ -10,7 +10,8 @@ second pass with web research is worth doing.
 ## France — Channel / Atlantic (FR-atlantic.csv)
 - Bassin d'Arcachon – La Hume: closed during the hunting season (Oct–Nov)?
 - Arcachon – Les Arbousiers, Claouey, Andernos – Le Bétey: exact summer bans.
-- Oléron – La Perroche: banned in summer?
+- Oléron – La Perroche: summer ban reported by guides only (WHE-110, 2026-11-05), no town order found; kept in notes, not encoded.
+- Charente-Maritime (WHE-110): Ré tip and Oléron west-coast wave spots on Windy (Lizay, Baleines, Grignon, Les Palles, Grand Village, Côte Sauvage) left out: only surf sources, see docs/validation/fr-charente.md. Oléron – Gatseau is thin (one directory listing).
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
 - Hendaye, Anglet – La Madrague: summer windows.
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
@@ -26,9 +27,19 @@ second pass with web research is worth doing.
 ## France — Mediterranean (FR-mediterranean.csv)
 - Exact launches: Marseillan (pinned at Maldormir), Frontignan – Ingril, Saint-Cyprien –
   Pont des Basses, Lac de la Ganguise (Auberge Le Cathare?).
-- Bonifacio – Balistra: still kited since the school closed in 2023?
-- Weak pins (bus stop / place node): Carnon – Petit Travers, Narbonne – La Nautique,
-  Ganguise, Ingril; L'Espiguette is on a restaurant at the main car park.
+- Bonifacio – Balistra: still kited since the school closed in 2023? Settled 2026-11-05 (WHE-104): Windy marker (4 stars) and unplug-kitesurf.com page still list it, stays Pro; school closure not confirmed either way.
+- Corsica (WHE-104, 2026-11-05): Figari bay "closed to kites in summer" (vvanat.fr, single blog) and Lozari "no kiting in summer" (kite-and-windsurfing-guide.com) have no official text: kept in notes, no ban encoded. 16 Windy-only Corsica markers (Palombaggia, Tizzano, Propriano, Macinaggio, Saleccia, L'Ostriconi...) not added yet, no kite source found: see docs/validation/fr-corse.md.
+- Weak pins (bus stop / place node): Narbonne – La Nautique, Ganguise, Ingril.
+  Settled 2026-11-05 (WHE-97): Carnon – Petit Travers now sits on the OSM kite-zone area; L'Espiguette stays on the
+  restaurant node at the main car park (the beach polygons are long relations with centres 1.5 km away).
+- Camargue and Provence (WHE-102, 2026-11-05): the summer bans on Marseille – Pointe Rouge and Fos – Le Cavaou
+  (about 15 Jun–15 Sep) have no official text I could find (a blog cites a 2020 prefectoral order for Marseille, a
+  kite guide says Cavaou's signs show no dates). Worst case applied: bans stay, wording in notes says unconfirmed.
+  Saintes-Maries Plage Est restored as Pro. Left out: Saintes-Maries "Wave" (west of the harbour, no source names
+  the beach), Les Renaires (Côte Bleue rocks, no source), Plage Olga (town beach on the Carteau bay).
+- Montpellier coast (WHE-97, 2026-11-05): Le Boucanet's 1 Jun–15 Sep closure and the 2014 La Grande-Motte order
+  (n°156) come from guides only, no official page found: kept in notes, no ban encoded. Palavas-les-Flots, Étang du
+  Ponant and Étang de l'Or (Windy markers) left out, reasons in docs/validation/fr-montpellier.md.
 - Leucate, not added (no reliable OSM position, possibly duplicates): La Mine (likely = Le Goulet),
   Les Pilotis (Port Leucate?), the west shore of the Étang de Leucate near Salses.
 - Not added as duplicate: Argelès-Plage (= Le Racou).
@@ -39,10 +50,10 @@ second pass with web research is worth doing.
 
 ## Spain outside Catalonia / Portugal (ES.csv, PT.csv)
 - Mar Menor: rules after the lagoon's environmental crisis.
-- Mallorca – Pollença: zone at Can Cullerassa?
+- Mallorca – Pollença: zone at Can Cullerassa? Settled 2026-11-03 (WHE-94): no kite-zone source for it (only a windsurf beach), pin stays on Sa Marina. Details in docs/validation/es-balears.md.
 - Embalse de La Loteta: launch (pinned at the marina, not the club's south spot).
 - Huelva summer zones.
-- Left out: Ibiza, Basque Country, Embalse del Ebro, Lo Pagán, El Saler, Patacona, Cullera,
+- Left out (Ibiza and Formentera re-checked 2026-11-03, WHE-94: kiting Nov–May only, no school, Ses Illetes banned May–Oct, stays out): Ibiza, Basque Country, Embalse del Ebro, Lo Pagán, El Saler, Patacona, Cullera,
   Fornells, El Cotillo.
 - Portugal pass (2026-10-22), still open:
   - Porto Santo: really famous for kiting? Pinned on Praia da Fontinha (middle of the 9 km
@@ -245,3 +256,53 @@ Questions:
 - Liepāja: pin is the town centre, moved to the beach by the build.
 - Neusiedl am See: zone rules. Siófok: only Hungarian spot (Velence, other Balaton launches?).
 - Left out: Walchensee, Kochelsee, Ammersee, Lipno (kite rules unclear), Slovakia, Slovenia.
+
+## Settled: Tarifa levante (WHE-85, 3 Nov, no change to the catalogue)
+- Balneario faces WSW (250°, Apple Maps agrees), so levante (E) is **straight offshore** there. Schools describe
+  it exactly so: "Levante spot, offshore wind, experts only" (kitefuntarifa.com Balneario page; alexpastorkiteclub.com
+  Tarifa guide; iksurfmag.com Tarifa guide). So the offshore rule is right to score it 0 for normal riders: the
+  geometry is correct, the riders who use it in levante are experts accepting offshore.
+- Los Lances / Valdevaqueros: guides call levante side-offshore / "works with both winds"; Los Lances is 227°,
+  Valdevaqueros 214° from OSM coastline (agrees). Not changed: no official or first-hand source to widen them.
+- Faking it with a wide `sector` would make levante look safe for everyone; refused (worst case = offshore stays 0).
+- Real fix would be a scoring decision (e.g. an expert-only offshore allowance), not a catalogue one: card for the Lead.
+
+## Gap pass Italy / Greece / Germany (WHE-91, settled without Ben, 2026-11-03)
+- Added: Kos – Psalidi (GR, basic; sportif.travel Kos Kitesurf Centre + greeka/Kos guides), Prerow (DE, pro; visit-mv.com
+  Kiteschule Darss + Surfspot Prerow; 8 km from Zingst; Nordstrand lies in the national park, zoning not checked).
+- Not added (worst case, sources too thin): Eckernförde (only a tourism page), Puzziteddu IT (only a promotional listing, no school
+  on site found), Kos – Kefalos/Kohilari (kite school mention but no OSM beach reachable; revisit), Torre Mozza IT, Torbole (Garda kite limits).
+- Windy's lists were not re-browsed this run; the larger gap (IT 7%, GR 10%) needs a Chrome pass per country, one card each.
+
+## Settled: Murcia, Almería, Granada (WHE-98, 3 Nov, rule of 2 Nov)
+- **El Zapillo summer ban (15 Jun–15 Sep)**: no official text found (town hall, beach ordinance, BOP searched). Worst case applies: ban stays, notes say the source is missing. If a local school or the Almería bando shows kiting is allowed, lift it.
+- **Los Nietos / Roquetas summer rules**: no kite-specific rule found. Roquetas ordinance art. 12 bans sail craft only inside buoyed bathing zones; notes updated.
+
+## Roussillon / Leucate (WHE-67), settled 2 Nov 2026
+- Leucate – Le Goulet: archived. Leucate tourist office (en.tourisme-leucate.com, "Leucate top spots") lists Le Goulet for windsurf / wingfoil / SUP only; its 2024-25 guide puts the free kite zone at Coussoules (KSL). Blogs mention a kite sector towards Île de la Rascasse, unconfirmed → worst case.
+- Coussoules: kite zone secured by KSL by the old lifeguard post, windsurf zone upwind; La Franqui cliff-side exit channel closed to kites (OT guide 2025-26 and spot map 2026-27). No dated ban encoded (no official text found).
+- Canet / Saint-Cyprien: no source found for the "municipal decree May–Sept" wording; notes now only say a kite area is signed (Pont des Basses; Saint-Cyprien north beach, per tourisme-saint-cyprien.com and tourisme-pyreneesorientales.com). Check with the town halls if a dated ban is wanted.
+- Not re-verified: Argelès Le Racou, Torreilles, La Palme, Port-la-Nouvelle, Barcarès (3 Colonnes / Dosses) kept as they were.
+- WHE-67 second pass (3 Nov 2026), settled: Argelès – Le Racou and Torreilles – Le Blockhaus archived (no school or official kite-zone page; worst case). Not added: Argelès Plage, Les Pilotis (Leucate Plage), La Mine (windsurf / SUP per the tourist office). Parc des Dosses kept pro; Ben may want it basic now that Le Goulet is archived (the only flat-water Tramontane spot in the area).
+
+## South Brittany: Lorient to Quiberon, Morbihan (WHE-112), settled 5 Nov 2026
+- Penvins tide: sources disagree (Penvins guide and Parcs & Loisirs: best around low tide, avoid the last 2 h of the flood because of shorebreak; other guides: flat and safe at high tide). Worst case applied: no tide window (the old `not-low` removed), both views in the notes.
+- Penthièvre / Saint-Pierre-Quiberon: no official text found for the 29 May–11 Sep bay-side ban (school and guide blogs only), so it stays in notes, not in `banned`. On 14 April 2026 the mayor said she is considering a kite ban on some beaches from summer 2026 (ici.fr, franceinfo): no decree found. Re-check before the summer.
+- Carnac: "kiting banned in summer in the whole commune except Carnac Evasion members" comes from a guide, no decree found. Not encoded; Carnac spots not added.
+- Not added because the build rejects spots under 2 km apart (kept the ones we already had): Kerhostin / Port d'Orange (0.6 km from Penthièvre), Sainte-Barbe (1.8 km from Kerhillio), Mané Guen (1.9 km from Les Sables Blancs, but on the ocean side of the isthmus), Saint-Colomban (1.9 km from Les Sables Blancs), Carnac Grande Plage (1.6 km from Men Du, summer ban). Ben may want Mané Guen or Saint-Colomban to replace Les Sables Blancs; that needs a rule decision.
+- Not added, no local source found (worst case): Île d'Arz, Golfe du Morbihan, Saint-Pierre (Locmariaquer), Govelins, Roaliguen, Le Chel, Damgan (beach not identifiable).
+
+## Var and Côte d'Azur (WHE-103, 2026-11-05), settled without Ben (rule of 2 Nov)
+- Six-Fours – Le Brusc: the 1 Jun–30 Sep ban stays (kiteforum: no kite while the lifeguard post runs; another guide: officially banned all year, tolerated off season). No town or préfecture text found, worst case kept.
+- Added as Pro from Windy: Les Lecques (Saint-Cyr tourist office listing, open 16 Oct–14 Mar) and Cabasson (Bormes tourism listing, open 1 Oct–31 May). Both seasonal bans come from those listings only; no wind or level text found for Les Lecques.
+- Left out for lack of a local kite source (worst case, not added): Bandol, La Coudoulière, Brutal Beach, Les Sablettes, Gigaro, Pampelonne, La Nartelle / La Tour / Plage des Éléphants (Sainte-Maxime), Port Miramar. Le Lavandou: a campsite page says kiting is banned all year at Saint-Clair, Le Lavandou and La Favière. Details in docs/validation/fr-var.md.
+
+## Settled: Tarifa, the Strait and Málaga (WHE-99, 5 Nov, rule of 2 Nov)
+- Tarifa Balneario and Bolonia: the 15 Jun–15 Sep ban has no official source (no Ayuntamiento de Tarifa text found; schools and
+  guides only say "strict in summer" and "winter only" for Bolonia). Worst case: ban kept as encoded, notes say the source is missing.
+- Tarifa Los Lances: the "15 Jun–15 Sep" dates were removed from the note (no source); marked summer zones stay in the note, no ban encoded.
+- Málaga Los Álamos: Aena restricted kiting at Guadalmar in 2015 (plane accident, Euro Weekly News); schools work there today but I
+  found no official text on the current zone. Kept as a free spot with the warning in the note.
+- Palmones: sources disagree on summer; one school says allowed in marked zones. No ban encoded.
+- Windy-only Costa del Sol markers left out for lack of any local source or pinnable beach: Estepona town, Sotogrande, Chilches,
+  Torrox, Playa del Chanquete (a follow-up with school pages could add them).
