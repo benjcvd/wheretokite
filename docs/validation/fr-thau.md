@@ -64,6 +64,19 @@ Past work: rows date from the France Med catalogue (0e694f4), the famous-spots t
 
 Agde markers (La Tamarissière, Malfato) are west of 3.50 E: zone fr-narbonne.
 
+## Windy rule update (WHE-125, 5 Nov)
+
+Ben's rule of 4 Nov: every Windy kite marker is added as Pro unless one of the [good reasons](../../tools/spots/validation/README.md#the-method-slowly-one-spot-at-a-time) applies. Windy table re-read (markers from the 3 Nov browse, nothing scraped):
+
+| Windy marker | Result |
+|---|---|
+| Sète ★★★★★ | matched: Sète – Pont-Levis |
+| Maldormir ★★★ | matched: Marseillan – Étang de Thau |
+| Le Barrou ★★★ | left out: same lagoon shore as Pont-Levis, about 2 km, same winds (reason 2) |
+| Marseillan ★★★★★ | **added (Pro)**: Marseillan – Village (Kithau), pin on the Kithau school node (OSM n7069147734). Sources: [Archipel de Thau](https://en.archipel-thau.com/kithau.html), [vvanat](https://vvanat.fr/blog/spot-de-kitesurf-marseillan-plage/) (school founded at Tabarka in 2003). Faces ESE, so tramontane is offshore there: noted |
+| Frontignan Plage ★★★★★ | **added (Pro)**: Frontignan – Les Aresquiers, pin on the beach way (OSM w1416452809). Sources: [Archipel de Thau](https://www.archipel-thau.com/en/my-stay/things-to-do-in-the-thau-archipelago/all-activities/plage-des-aresquiers-frontignan-en-6263880/) (kite-surf spot), [vvanat](https://vvanat.fr/blog/kitesurf-frontignan-plage/) (official kite zone at the Frontignan end), [Optimum Kitesurf](https://en.archipel-thau.com/optimum-kitesurf.html) school. The earlier doubt about the zone's exact place is not a reason under the new rule; the note says to check the town's beach rules |
+| La Corniche ★★★ | **not added yet**: sea beach on the Sète side (OSM w183957370; [Archipel de Thau](https://en.archipel-thau.com/plage-de-la-corniche.html), [kite-and-windsurfing-guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/sete-occitanie-pyrenees-mediterranee-france.html): water-sports area right of the beach, flat in NW wind). Not the same water as Pont-Levis (sea vs lagoon), so no good reason applies, but `build_spots.py` rejects it as a duplicate (1185 m < 2 km). Row is in the CSV as a comment; card for the Lead |
+
 ## Counts
-5 spots checked · 6 Windy markers, 4 matched or covered, 1 missing not added (1 marker = 2 of ours) · 0 added · 1 archived.
-Before → after: 5 active (1 basic, 4 pro) → 4 active (1 basic, 3 pro), 1 archived.
+Windy markers in the zone: 6 (Sète, Le Barrou, La Corniche, Marseillan, Maldormir, Frontignan Plage). Matched or covered: 3 (Sète, Maldormir, Le Barrou). Added as Pro: 2. Left out: 1 pending a pipeline exception (La Corniche).
+Our spots before → after: 4 active (1 basic, 3 pro) + 1 archived → 6 active (1 basic, 5 pro) + 1 archived.
