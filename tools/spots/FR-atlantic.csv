@@ -5,8 +5,8 @@ FR,Côte d'Opale,Les Hemmes de Marck,sea,osm:n7141980706,N,"Very wide gently slo
 FR,Côte d'Opale,Wissant,sea,osm:w106357501,NW,"Between the two capes (venturi): powerful wind and waves, experienced riders. Also: Sangatte 10 km north-east (windiest of the Côte d'Opale), Wimereux – Pointe aux Oies 12 km south (waves).",,,,
 FR,Côte d'Opale,Le Touquet,sea,q:Le Touquet-Paris-Plage,W,"Launch north of Aqualud; the Canche bay works in E winds around high tide (strong currents). Also: Hardelot 14 km north (low-tide pools), Berck-sur-Mer 14 km south (huge beach, flat pools at low tide).",,,,
 FR,Baie de Somme,Le Crotoy,sea,q:Le Crotoy plage,SW,Tidal bay: rideable around high tide only. Do not cross the yellow buoys of the nature reserve. Also: Cayeux-sur-Mer – La Mollière on the sea side of the bay (all tides).,,high,,
-FR,Normandie,Quiberville,sea,osm:n8446819588,N,"Marked kite zone (mandatory); works WSW to NW. Pebble beach, sand at low tide.",,,,
-FR,Normandie,Merville-Franceville,sea,osm:w809904096,N,"Dedicated kite zone at the west end of Boulevard Wattier, open all year (the only kite beach in July–August). Keep out of the bird reserve at the Orne estuary to the west. Also: Ouistreham – Riva-Bella 5 km west (low tide only).",,,,
+FR,Normandie,Quiberville,sea,osm:n8446819588,N,"Marked kite zone, signposted at the beach entrance: you must stay inside it or kiting can be banned here. Works with W to NW wind (avoid SE to SW offshore). Pebble beach, sand at low tide, tidal currents. Saint-Aubin-sur-Mer next door (school there) is the same stretch.",,,,
+FR,Normandie,Merville-Franceville,sea,osm:w809904096,N,"Kite-R Evolution school on the spot. Town order P-2022/003 (art. 12): kiting allowed all year. 1 Jan to 15 Jun and 16 Sep to 31 Dec the whole beach; 16 Jun to 15 Sep only from the Orne estuary to kite channel no. 1 (channels 2 and 3 are closed to kites). It is the only Calvados beach open to kites in summer. NE wind for flat water, NW for experienced riders; best with tide coefficient 70+. Some sites mention a no-launch strip at the far west end (bird reserve): no text found, ask locally. Ouistreham – Riva-Bella is 5 km west.",,,,
 FR,Normandie,Utah Beach,sea,q:Utah Beach,E,Huge beach; best at low to mid tide.,,,,
 FR,Normandie,Agon-Coutainville,sea,osm:w195421511,W,Also: Gouville-sur-Mer 10 km north.,,,,
 FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,Bay of Mont-Saint-Michel: huge tidal range; ride around high tide.,,high,,
@@ -57,13 +57,23 @@ FR,Baie de Somme,Fort-Mahon-Plage,sea,osm:w1237746823,W,Kite school zone north o
 # pro: cluster duplicate — Somme bay cluster, Le Crotoy kept
 FR,Baie de Somme,Cayeux-sur-Mer – La Mollière,sea,osm:n9450121482,WNW,Between Cayeux and Le Hourdel; kite schools and club in Cayeux.,,,pro,
 # pro: local / secondary beach — urban pebble beach
-FR,Normandie,Le Havre,sea,osm:w804964900,W,"Urban pebble beach, kite schools; works in SW to NW winds.",,,pro,
+FR,Normandie,Le Havre,sea,osm:w804964900,W,"Urban pebble beach. Main launch is below the Le Ponant building (LH Kite association); stay clear of bathers. Launching on pebbles is awkward and the water is choppy at high tide. Schools in town (Max Kite School, École havraise de kitesurf). Works in SW to NW wind. Town hall rule not found: check signs.",,,pro,
 # pro: cluster duplicate — 5 km from Merville-Franceville, low tide only
-FR,Normandie,Ouistreham – Riva-Bella,sea,q:Plage de Riva-Bella,N,Low tide only: at high tide the water reaches the sea wall.,,not-high,pro,
+FR,Normandie,Ouistreham – Riva-Bella,sea,osm:w1280345958,N,"Low tide only: at high tide the water reaches the sea wall and the wind is disturbed. Best with NE (Orne estuary funnel) or NW wind; avoid south (offshore). La Clinique de la Planche school works from the Ouistreham nautical centre, ride 2 h either side of low water. Stay away from the wall and houses; summer: respect the bathing zones.",,not-high,pro,
 # pro: local / secondary beach — secondary Calvados beach
-FR,Normandie,Houlgate,sea,osm:w108806424,N,,,,pro,
+FR,Normandie,Houlgate,sea,osm:r11199900,N,"Kite Paradise school on the beach. At low tide the beach forms sheltered pools, good for learners. Intermediate level, NE to NW wind. Summer: Calvados beaches are closed to kites in the day and reopen after 18:00 (check with the lifeguard post). Dives estuary is next to it.",,,pro,
 # pro: local / secondary beach — secondary Calvados beach
-FR,Normandie,Asnelles,sea,q:Asnelles,N,Mulberry harbour remains offshore; summer: kiting usually only outside bathing hours.,,,pro,
+FR,Normandie,Asnelles,sea,osm:w281098840,N,"Wide sand beach, flat water at best. Slalom riding around the Mulberry harbour remains off Arromanches. No school found. Tide coefficient 70+ is advised. Summer: Calvados beaches are closed to kites in the day and reopen after 18:00 (check with the lifeguard post).",,,pro,
+FR,Normandie,Colleville-Montgomery,sea,osm:r6910448,N,"Wide dune beach, little traffic, beginner friendly, best at low tide. Wind NW to SW side-on (guides vary: NW and NE also listed). Equipment rental at OCEAN Espace Glisse. 2 km west of Ouistreham – Riva-Bella. Summer: the busy bathing zones are closed to kites in the day.",,,pro,
+FR,Normandie,Langrune-sur-Mer,sea,osm:w280958981,N,"Voiles de Nacre sailing club (kitesurf lessons, AFKite licence needed). North-facing beach, NE to NNW wind, intermediate level, tide matters (check times). Summer: bathing zones closed to kites in the day (check the town).",,,pro,
+FR,Normandie,Courseulles-sur-Mer,sea,osm:w173286968,N,"Sailing school of Courseulles gives lessons. Side-on NW to W wind, tide coefficient 70+ advised. Summer: bathing zones closed to kites in the day (check the town).",,,pro,
+FR,Normandie,Ver-sur-Mer,sea,osm:w281007654,N,"Weakly sourced (one kite directory line: chop and small waves, no school found). Summer: bathing zones closed to kites in the day (check the town).",,,pro,
+FR,Normandie,Deauville,sea,osm:r19120654,NW,"Wide sand beach. In summer the supervised swimming zone is closed to kites and the beach is busy; kite zone is elsewhere on the beach, parking near rue Chauvelot. Open all year otherwise, busiest April to September. Trouville across the Touques is the same water.",,,pro,
+FR,Normandie,Fécamp,sea,osm:w137256966,NW,"Pebble beach in town. Kite site listed by the town directory as open in season only: check the rules. Intermediate level, NW wind.",,,pro,
+FR,Normandie,Saint-Valery-en-Caux,sea,osm:r17501659,N,"Pebble beach, shallow and choppy water, beginner level per directories; the beach is listed as a kite site. Check the town rules in summer.",,,pro,
+FR,Normandie,Pourville-sur-Mer,sea,osm:w178390287,N,"Short beach below cliffs, launch and recovery tricky, high tide especially: experienced riders. Best in NW wind (waves), poor in south offshore.",,,pro,
+FR,Normandie,Dieppe,sea,osm:w176438492,N,"Town pebble beach, north-facing, several wind directions, intermediate level. The town directory lists the kite site as open in season only: check the rules before going.",,,pro,
+FR,Normandie,Antifer,sea,osm:w173045886,W,"Tidal spot under the cliffs next to an oil terminal (restricted waters). Works best in SSW to SW wind with some swell; wind stronger and more turbulent than at Le Havre, few usable directions. Not for beginners.",,,pro,
 # pro: local / secondary beach — local harbour spot
 FR,Normandie,Cherbourg – Collignon,sea,osm:n13289366918,N,"Flat water inside the Cherbourg breakwater, around high tide; works W to NE.",,high,pro,
 # pro: local / secondary beach — local Cotentin beach

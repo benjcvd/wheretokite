@@ -19,7 +19,7 @@ second pass with web research is worth doing.
 - Weak pins (snapped from a village / street): Hemmes de Marck, Wimereux – Pointe aux Oies,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
   Les Arbousiers, Navarrosse.
-- Ouistreham Riva-Bella: really a separate spot from Merville (3.5 km)?
+- Ouistreham Riva-Bella: separate spot from Merville. Settled 2026-11-06 (WHE-117): 5 km apart, other water, own school (La Clinique de la Planche), low tide only.
 - Left out as uncertain: Les Sables-d'Olonne, Jonville / Réville, Saint-Germain-sur-Ay,
   Locmariaquer, Le Rohu, Kerguelen, La Palue, Dunkerque Digue du Break, Cap-Ferret ocean
   beaches, Capbreton / Hossegor, Moisson-Lavacourt.
