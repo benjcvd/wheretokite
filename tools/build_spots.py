@@ -51,10 +51,12 @@ import subprocess
 import csv
 import datetime
 import hashlib
+import io
 import json
 import math
 import os
 import re
+import ssl
 import sys
 import time
 import unicodedata
@@ -162,6 +164,49 @@ def service_slot(name, slots=1, min_interval=0.0):
         time.sleep(0.5)
 
 
+# Old system Pythons (macOS /usr/bin/python3: LibreSSL 2.8) fail the TLS handshake with
+# overpass-api.de. On the first TLS failure we switch to curl for the rest of the run.
+_USE_CURL = [os.environ.get("WTK_HTTP") == "curl"]
+
+
+class _CurlResp(io.BytesIO):
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        self.close()
+
+
+def _curl_open(req, timeout):
+    cmd = ["curl", "-sS", "-m", str(int(timeout) + 30), "-w", "\n%{http_code}"]
+    for k, v in req.header_items():
+        cmd += ["-H", "%s: %s" % (k, v)]
+    if req.data is not None:
+        cmd += ["--data-binary", "@-"]
+    cmd.append(req.full_url)
+    p = subprocess.run(cmd, input=req.data, capture_output=True)
+    if p.returncode != 0:
+        raise urllib.error.URLError("curl %d: %s" % (p.returncode, p.stderr.decode(errors="replace")[:200]))
+    body, _, code = p.stdout.rpartition(b"\n")
+    if not code.strip().isdigit() or int(code) >= 400:
+        raise urllib.error.URLError("HTTP %s" % code.decode(errors="replace"))
+    return _CurlResp(body)
+
+
+def http_open(req, timeout):
+    """urllib.request.urlopen, falling back to curl when this Python's TLS is too old."""
+    if not _USE_CURL[0]:
+        try:
+            return urllib.request.urlopen(req, timeout=timeout)
+        except (urllib.error.URLError, OSError) as e:
+            reason = getattr(e, "reason", e)
+            if not (isinstance(reason, ssl.SSLError) or "SSL" in str(e) or "TLS" in str(e)):
+                raise
+            log("  TLS failed in this Python (%s): using curl from now on" % (str(e)[:80],))
+            _USE_CURL[0] = True
+    return _curl_open(req, timeout)
+
+
 def overpass(query, label="", endpoints=None):
     """Run an Overpass QL query (JSON output), with caching, retries, mirrors."""
     path = _cache_path("overpass", query)
@@ -179,7 +224,7 @@ def overpass(query, label="", endpoints=None):
             })
             try:
                 with service_slot("overpass", slots=2, min_interval=1.0):
-                    with urllib.request.urlopen(req, timeout=60) as resp:
+                    with http_open(req, 60) as resp:
                         body = resp.read()
                 text = body.decode("utf-8", errors="replace")
                 if not text.lstrip().startswith("{"):
@@ -211,7 +256,7 @@ def _nominatim_get(endpoint, params):
     url = NOMINATIM + endpoint + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with service_slot("nominatim", slots=1, min_interval=1.1):   # policy: max 1 request/s
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        with http_open(req, 30) as resp:
             obj = json.loads(resp.read().decode("utf-8"))
     _cache_put(path, obj)
     return obj
