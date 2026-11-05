@@ -21,7 +21,7 @@ fr-basque-landes,todo,val-fr-basque-landes,,,,,,,
 fr-gironde,todo,val-fr-gironde,,,,,,,
 fr-charente,todo,val-fr-charente,,,,,,,
 fr-loire,todo,val-fr-loire,,,,,,,
-fr-morbihan,todo,val-fr-morbihan,,,,,,,
+fr-morbihan,review,WHE-112,9,24,6,3,0,docs/validation/fr-morbihan.md,2026-11-05
 fr-finistere-s,todo,val-fr-finistere-s,,,,,,,
 fr-finistere-n,todo,val-fr-finistere-n,,,,,,,
 fr-bretagne-ne,todo,val-fr-bretagne-ne,,,,,,,
