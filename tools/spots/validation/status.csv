@@ -1,7 +1,7 @@
 zone,status,card,spots_checked,windy_markers,windy_matched,added,archived,report,updated
 es-catalunya,validated,WHE-65 WHE-66 WHE-83 WHE-59 WHE-2,31,33,31,0,1,tools/spots/TO_CONFIRM.md#catalunya-catalan-rows-of-escsv,2026-11-02
 es-valencia,validated,WHE-93,10,36,33,18,1,docs/validation/es-valencia.md,2026-11-05
-es-murcia-almeria,review,val-es-murcia-almeria,7,15,5,0,0,docs/validation/es-murcia-almeria.md,2026-11-03
+es-murcia-almeria,review,val-es-murcia-almeria WHE-124,14,15,5,7,0,docs/validation/es-murcia-almeria.md,2026-11-06
 es-strait,validated,val-es-strait,12,21,10,5,0,docs/validation/es-strait.md,2026-11-05
 es-cadiz,validated,WHE-100,7,15,7,4,0,docs/validation/es-cadiz.md,2026-11-05
 es-huelva,todo,val-es-huelva,,,,,,,

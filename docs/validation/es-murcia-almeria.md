@@ -53,7 +53,7 @@ used only to learn the marker names (from the table above), never for positions.
 |---|---|---|
 | Playa de Levante (5) | added (Pro) – Cabo de Palos – Playa de Levante, `r2115915` | Only a swim-spot listing ([Wild Open Water](https://wildopenwater.com/swimspot/playa-levante-cabo-palos-murcia-región-de-murcia-spain)) mentions kiteboarding. Thin; notes say so and warn about the marine reserve |
 | Torre Derribada (4) | added (Pro) – San Pedro del Pinatar – Torre Derribada, `n1459233700` | [Kiteforum](https://se.kiteforum.com/kitesurf/spot/torre_derribada) (flat/shallow, all levels, parking), [Wild Open Water](https://wildopenwater.com/swimspot/playa-torre-derribada-murcia-regi%C3%B3n-de-murcia-spain) |
-| Pudrimel (3) | added (Pro) – La Manga – Playa del Pudrimel, `w478799430` | [Kite & windsurfing guide, Costa Cálida page](https://kite-and-windsurfing-guide.com/en/continents/countries/regions/costa-clida--mar-menor) (shallow, flat, medium launch area); the winds the guide lists look offshore on the lagoon side, so the note says to check |
+| Pudrimel (3) | **archived** – La Manga – Playa del Pudrimel, `w478799430` | Build check failed: pin faces S (170°), Apple Maps sees water E (76°), and the guide's listed winds (NNE–E) would be offshore on the lagoon side it names. Which shore people launch from is unclear, so it is kept archived, ready to revive. Original source: [Kite & windsurfing guide, Costa Cálida page](https://kite-and-windsurfing-guide.com/en/continents/countries/regions/costa-clida--mar-menor) (shallow, flat, medium launch area) |
 | Pueblo Cálido (3) | **left out** – no pin | [Guide page](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/pueblo-calido-costa-calida-mar-menor-spain.html) gives no town or position; OSM only has a bus stop of that name in La Manga. No beach element can be tied to it, so it can't be pinned |
 | Lo Pollo (3) | left out – same beach as Los Nietos | [Guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/lo-pollo-costa-calida-mar-menor-spain.html): "500 m west of Los Nietos", same water and winds |
 | Culoperro (4) | added (Pro) – Guardias Viejas – Culoperro, `w1474398096` (Los Baños beach) | [Wannakitesurf](https://wannakitesurf.com/spot/Europe/Spain/Andalucia/Culoperro/) (E wind onshore, waves/freeride, Oct–May), [Barceló](https://www.barcelo.com/guia-turismo/es/espana/almeria/que-ver/surf-en-almeria-las-mejores-playas/) places Culo Perro by Los Baños de Guardias Viejas |
@@ -67,5 +67,5 @@ Duplicate rule (fb58a7b, 1 km, same water and facing): only Lo Pollo is left out
 
 Unrated rule (5 Nov): every missing marker above had 2 to 5 stars when I browsed it as a visitor on 3 Nov, so the unrated rule (Pro only with a local source, else archived) does not apply to any of them.
 
-Counts: 15 Windy kite markers in the zone: 5 matched to our existing spots, 7 added as Pro, 3 left out (Pueblo Cálido: can't be pinned;
-Lo Pollo: same beach as Los Nietos; Torrenueva: no kite source). Our spots 7 → 14 (2 free, 12 Pro, 0 archived).
+Counts: 15 Windy kite markers in the zone: 5 matched to our existing spots, 6 added as Pro + Pudrimel added as archived, 3 left out (Pueblo Cálido: can't be pinned;
+Lo Pollo: same beach as Los Nietos; Torrenueva: no kite source). Our spots 7 → 14 (2 free, 11 Pro, 1 archived: Pudrimel).
