@@ -25,11 +25,10 @@ second pass with web research is worth doing.
   beaches, Capbreton / Hossegor, Moisson-Lavacourt.
 
 ## France — Mediterranean (FR-mediterranean.csv)
-- Exact launches: Marseillan (pinned at Maldormir), Frontignan – Ingril, Saint-Cyprien –
-  Pont des Basses, Lac de la Ganguise (Auberge Le Cathare?).
+- Exact launches: Saint-Cyprien – Pont des Basses, Lac de la Ganguise (Auberge Le Cathare?).
 - Bonifacio – Balistra: still kited since the school closed in 2023? Settled 2026-11-05 (WHE-104): Windy marker (4 stars) and unplug-kitesurf.com page still list it, stays Pro; school closure not confirmed either way.
 - Corsica (WHE-104, 2026-11-05): Figari bay "closed to kites in summer" (vvanat.fr, single blog) and Lozari "no kiting in summer" (kite-and-windsurfing-guide.com) have no official text: kept in notes, no ban encoded. 16 Windy-only Corsica markers (Palombaggia, Tizzano, Propriano, Macinaggio, Saleccia, L'Ostriconi...) not added yet, no kite source found: see docs/validation/fr-corse.md.
-- Weak pins (bus stop / place node): Narbonne – La Nautique, Ganguise, Ingril.
+- Weak pins (bus stop / place node): Narbonne – La Nautique, Ganguise.
   Settled 2026-11-05 (WHE-97): Carnon – Petit Travers now sits on the OSM kite-zone area; L'Espiguette stays on the
   restaurant node at the main car park (the beach polygons are long relations with centres 1.5 km away).
 - Camargue and Provence (WHE-102, 2026-11-05): the summer bans on Marseille – Pointe Rouge and Fos – Le Cavaou
@@ -40,6 +39,12 @@ second pass with web research is worth doing.
 - Montpellier coast (WHE-97, 2026-11-05): Le Boucanet's 1 Jun–15 Sep closure and the 2014 La Grande-Motte order
   (n°156) come from guides only, no official page found: kept in notes, no ban encoded. Palavas-les-Flots, Étang du
   Ponant and Étang de l'Or (Windy markers) left out, reasons in docs/validation/fr-montpellier.md.
+- Settled (WHE-96, 3 Nov, [report](../../docs/validation/fr-thau.md)): Marseillan stays at Maldormir
+  (the launch the spot guides name). Frontignan – Étang d'Ingril archived: free kiting suspended,
+  schools only (Hérault Tourisme; ActuNautique June 2026; earlier order premar 318/2023).
+- Frontignan sea side / Les Aresquiers: added as Pro (WHE-125, Windy rule). Position of the official kite zone (Aresquiers end vs west end of Frontignan-Plage) still unsettled; note tells riders to check the town's beach rules.
+- Sète – La Corniche (Windy marker): added as Pro once the build kept different-water spots apart (WHE-127).
+- Mèze – La Pinède: the school is at Le Taurus / Plage du Thalassa; "La Pinède" is unconfirmed. Not renamed (id).
 - Leucate, not added (no reliable OSM position, possibly duplicates): La Mine (likely = Le Goulet),
   Les Pilotis (Port Leucate?), the west shore of the Étang de Leucate near Salses.
 - Not added as duplicate: Argelès-Plage (= Le Racou).
