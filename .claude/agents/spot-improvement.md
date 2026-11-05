@@ -35,12 +35,16 @@ Cards titled "Validate the … spots, checked against Windy" follow
   Never judge a spot from memory or by analogy with its neighbours.
 - These cards may use up to 25 web searches (two sources per spot plus the Windy step).
   Commit after each few spots so a cut session loses little.
-- Windy in Chrome as a visitor, both ways, in the report.
+- Windy in Chrome as a visitor, both ways, in the report. Windy kite markers we don't have
+  are **added as Pro unless one of the good reasons** listed in the method applies (Ben, 4 Nov). Unrated Windy markers (no rating or 0) need a local source and nothing odd to go in as Pro; otherwise add them as `archived` (Ben, 5 Nov);
+  this overrides "famous only" and the 10 km rule for those additions.
+- Your reply to Ben and the card note always carry the Windy comparison: counts, a table of
+  every missing marker (added or why not), and one line on any big gap. Step 4 of the method.
 - Update only your zone's line in `tools/spots/validation/status.csv`. Never set `validated`:
   the Lead does that after merging.
-- Parallel lanes (3 Nov): you have Spain (`ES.csv`) and the Roussillon zone. France Med spots
-  owns the rest of `FR-mediterranean.csv` and the lakes; France Atlantic spots owns
-  `FR-atlantic.csv`. Don't edit their files.
+- Several zone cards may run at the same time, each on its own ticket branch. Edit only your
+  zone's rows, your zone's report and your zone's line in `status.csv`, so merges stay clean.
+  Chrome is shared: open your own tab and close it when done.
 
 ## Scope
 

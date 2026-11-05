@@ -41,12 +41,39 @@ the report with a verdict and the sources:
 **2. Windy, both ways** (Claude in Chrome, as a visitor only: hover the kite markers on
 `windy.com/?<lat>,<lon>,9,p:kitespots`; never scrape, never copy positions). Table in the report:
 every Windy kite marker in the zone → our spot or "missing"; every spot of ours → Windy marker
-or "not on Windy". For each missing one: is it famous by our standard (two independent sources)?
-Add it (pin from OSM through the pipeline), or say why not. Ignore pure surf markers.
+or "not on Windy". Ignore pure surf markers.
+
+**Missing markers are added as Pro by default** (Ben, 4 Nov). A Windy kite marker we don't
+have goes into the catalogue as `tier` pro (pin from OSM through the pipeline, sector and notes
+from a school, club or town page) **unless there is a good reason not to**, written in the
+table. Good reasons, and only these:
+- kiting is banned there all year, or the only access is through a school (official source);
+- it's the same beach as one of ours (same water, under about 2 km, same winds): say which;
+- it isn't a kite spot (surf, wing or windsurf only; harbour; private) per a local source;
+- no OSM element fits the place where people ride, so it can't be pinned.
+**Unrated markers** (no rating or 0 on Windy, read as a visitor sees it, never from Windy's
+data; Ben, 5 Nov) are not skipped, but the bar is higher: they go in as Pro only with a local
+source confirming people kite there (school, club or town page; a forum alone isn't enough)
+and nothing odd about them (pin on a real beach or lake, road access, winds that make sense).
+If anything looks weird or the source is missing, add the row as `archived` with
+`# archived: unrated on Windy, <why>`, so it's kept and easy to revive.
+
+"Not famous enough", "only one source" or "close to another spot" are **not** reasons. One
+source (a school, a club, a forum thread) is enough for Pro. The 10 km rule of
+`../README.md` doesn't apply to these Pro additions.
 
 **3. Close the zone.** `spot-check` on the CSV with no PROBLEMS; commit on your branch; update
 your zone's line in `status.csv` (`review`, counts, report path, date); card → `review` with
 `Why:` / `Status:` / `Check:` / `You:`; stop. Don't start another zone.
+
+**4. Your reply to Ben** (and the card note) always contains the Windy comparison, not just the
+report link:
+- the counts: Windy markers in the zone, matched to ours, added as Pro, left out; our spots
+  before → after (free / Pro / archived);
+- a short table of every Windy marker we don't have: name → `added (Pro)` or the reason it
+  was left out, in a few words;
+- when Windy shows clearly more spots than we have after your pass (say 3 or more), one line
+  explaining the gap.
 
 Open questions go to `TO_CONFIRM.md` under the country, settled with the rule of 2 Nov (look it
 up, else assume the worst). Ask Ben (card → `waiting`) only when the worst case would remove a
