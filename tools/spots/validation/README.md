@@ -47,6 +47,9 @@ or "not on Windy". Ignore pure surf markers.
 have goes into the catalogue as `tier` pro (pin from OSM through the pipeline, sector and notes
 from a school, club or town page) **unless there is a good reason not to**, written in the
 table. Good reasons, and only these:
+- Windy shows the spot with no rating, or a rating of 0 (Ben, 5 Nov): note it as
+  "unrated on Windy" and skip it. Read the rating as a visitor sees it on the marker or spot
+  card; never pull it from Windy's data;
 - kiting is banned there all year, or the only access is through a school (official source);
 - it's the same beach as one of ours (same water, under about 2 km, same winds): say which;
 - it isn't a kite spot (surf, wing or windsurf only; harbour; private) per a local source;
