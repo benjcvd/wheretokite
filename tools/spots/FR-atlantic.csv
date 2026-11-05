@@ -28,9 +28,10 @@ FR,Charente-Maritime,Île de Ré – Rivedoux,sea,osm:w1497408059,N,"North beach
 FR,Charente-Maritime,Châtelaillon-Plage,sea,osm:n6620491493,W,"Kite area south of the main beach, in front of the sea wall; two blue flags mark it in summer and it is restricted then (check the town hall). Flat at low tide with rocks offshore, good riding at high tide. School on site. Exposed to swell.",,,,
 FR,Charente-Maritime,Oléron – Plage des Huttes,sea,osm:w1494402921,W,"5 km beach, windy all year, sheltered from the open ocean; works S to NW and most of all in NW wind (Seulières end). Flat at low tide, shore break at high tide, beach narrows at high tide. A kite zone is set aside in summer (blue flags) and the town hall limits hours: check before riding. Rocks and currents on big tides; schools on the beach.",,,,
 FR,Charente-Maritime,La Palmyre – Bonne Anse,sea,osm:r2953870,S,"Sheltered shallow bay with a muddy bottom, school on the esplanade. Works in every wind except N and NE. Ride the rising tide, about 2 h either side of high water; strong currents when the bay empties.",,not-low,,
-FR,Gironde,Lac d'Hourtin-Carcans,lake,q:Hourtin Port,W,Lake: flat water; stay south of the yellow buoy line.,,,,
-FR,Gironde,Lac de Lacanau,lake,osm:w340755108,,Lake: flat water; use the marked channel in summer. Also: Lacanau-Océan 7 km west for waves (experienced riders).,,,,
-FR,Gironde,Bassin d'Arcachon – Claouey,sea,osm:w570377210,SE,"Tidal basin, 2–3 h either side of high tide; muddy bottom, oyster shells. Closed July–August. Also: Andernos (Le Bétey), La Hume and Les Arbousiers elsewhere on the basin.",,high,,07-01..08-31
+FR,Gironde,Lac d'Hourtin-Carcans,lake,osm:w127254533,W,"Big flat-water lake, launch at Hourtin Port on the east shore. State rules (prefectoral order of 1 Sept 2014): kiting only from 15 November to 31 March, north of the Pointe Blanche – Lacanau channel line, away from the shore strip; the town map shows a kite zone. Check with the schools before a summer session.",,,,04-01..11-14
+FR,Gironde,Lac de Lacanau,lake,osm:w340755108,,"Flat, shallow lake with schools at Le Moutchic. Kiting is allowed only in the marked zones either side of the channel to the Talaris marina (prefectoral order of 1 Sept 2014). Also: Lacanau-Océan 7 km west for waves.",,,,
+# archived: no kite channel at Claouey in the State beach rules (Gironde boating guide, Feb 2024: only windsurf channels on the basin side of Lège-Cap Ferret), the Cap Ferret kite school has closed, no Windy kite marker. Basin spot kept: Le Bétey.
+FR,Gironde,Bassin d'Arcachon – Claouey,sea,osm:w570377210,SE,"Tidal basin, 2–3 h either side of high tide; muddy bottom, oyster shells. Closed July–August. Also: Andernos (Le Bétey), La Hume and Les Arbousiers elsewhere on the basin.",,high,archived,07-01..08-31
 FR,Landes,Lac de Cazaux – Navarrosse,lake,osm:n8680293181,N,"Flat, shallow lake (Cazaux-Sanguinet), south shore. Navarrosse launch September–May; June–August use the kite zone at Mayotte (just east). Also: Port de l'Estey (Sanguinet) on the same lake.",,,,
 FR,Landes,Mimizan,sea,osm:w222354554,W,Plage Sud kite zone; keep away from the river mouth currents.,,,,
 FR,Pays basque,Anglet – La Madrague,sea,osm:w157127409,W,"Waves, experienced riders. Allowed November–May; in season only early morning and after 19:00 via the marked channel. Also: Hendaye (only Basque beach without cliffs, banned in July–August).",,,,
@@ -128,15 +129,14 @@ FR,Charente-Maritime,Oléron – Gatseau,sea,osm:w1238639059,S,"South-facing bay
 # pro: local / secondary beach — local estuary beach
 FR,Gironde,Le Verdon – La Chambrette,sea,osm:w577835350,NE,"Estuary beach for E to NE winds, 2 h either side of high tide.",,high,pro,
 # pro: cluster duplicate — Lac de Lacanau kept; summer restrictions
-FR,Gironde,Lacanau-Océan,sea,osm:w697650794,W,"Waves, experienced riders. Summer: kiting before 19:00 only in the Super-Sud zone.",,,pro,
-# pro: cluster duplicate — Arcachon basin cluster, Claouey kept
-FR,Gironde,Bassin d'Arcachon – Andernos (Le Bétey),sea,osm:w540519748,SW,"Tidal basin, around high tide only. Closed July–August.",,high,pro,07-01..08-31
+FR,Gironde,Lacanau-Océan,sea,osm:w697650794,W,"Ocean beach break, experienced riders; strong currents (baïnes). Kite at Super Sud, away from the surf and bathing zones; summer rules are set by the town each year.",,,pro,
+FR,Gironde,Bassin d'Arcachon – Andernos (Le Bétey),sea,osm:w540519748,SW,"Shallow tidal basin, ride 3 h either side of high tide; sandbank to stand on at low water. In summer kites may only cross the 300 m strip through the marked Andernos kite channel; treated as closed in July–August. Also: La Hume and Les Arbousiers on the south shore.",,high,,07-01..08-31
 # pro: cluster duplicate — Arcachon basin cluster, banned in summer
-FR,Gironde,Bassin d'Arcachon – Les Arbousiers,sea,q:Plage des Arbousiers Arcachon,W,"Sandbank at low tide, strong current at high tide. Banned in summer.",,,pro,07-01..08-31
+FR,Gironde,Bassin d'Arcachon – Les Arbousiers,sea,q:Plage des Arbousiers Arcachon,W,"Sandbank with footing at low tide (beginners), current and chop over moorings at high tide (experienced riders). In the summer bathing season, kites only through the Arbousiers channel and only after 19:00 (State boating guide, town order).",,,pro,07-01..08-31 00:00-19:00
 # pro: cluster duplicate — Arcachon basin cluster, Claouey kept
-FR,Gironde,Bassin d'Arcachon – La Hume,sea,q:Plage de la Hume Gujan-Mestras,N,Tidal basin: ride around high tide. Closed in the hunting season (October–November).,,high,pro,10-01..11-30
+FR,Gironde,Bassin d'Arcachon – La Hume,sea,osm:w172893400,N,"Shallow tidal basin, ride 3 h either side of high tide; launch through the marked channel at La Hume harbour. Watch the hunting hides on the right and oyster shells. Treated as closed in the hunting season (October–November, town order).",,high,pro,10-01..11-30
 # pro: local / secondary beach — local ocean beach
-FR,Gironde,La Teste – La Salie,sea,osm:n13034064294,W,Ocean beach at the south end of the basin entrance; supervised zone late June–early September.,,,pro,
+FR,Gironde,La Teste – La Salie,sea,osm:n13034064294,W,"Ocean beach south of the Pyla dune, waves. From 25 June to 5 September kites launch only in the 100 m kite zone 100 m north of the La Salie Nord bathing area (or at La Lagune), flagged daily; keep 50 m from the Wharf at La Salie Sud (La Teste order 2019-358).",,,pro,
 # pro: cluster duplicate — same lake as Navarrosse
 FR,Landes,Lac de Sanguinet – Port de l'Estey,lake,osm:n1771842358,NW,"Water launch, intermediate riders; avoid the buoyed zone to the north.",,,pro,
 # pro: local / secondary beach — local Landes ocean beach
