@@ -76,7 +76,7 @@ spots (Es Barcares, El Buzón ~ Platja de Muro, Son Serra de Marina, Son Bou), 9
 
 Ratings: read from the hover card as a visitor (5 Nov). All 13 missing markers show 2 to 5 stars, so none is "unrated on Windy" and the 5 Nov rule skips nothing here.
 
-**Not yet checked:** `spot-check` could not run (Overpass down on 4 Nov); the Apple Maps direction check of the 9 new rows is still to do.
+`spot-check` (5 Nov): no PROBLEMS; Apple Maps direction check agrees on all 9 new rows (the one `uncertain` in the file is Los Caños de Meca, Cádiz, not ours).
 
 | Windy marker | Result | Sources (one is enough for Pro) |
 |---|---|---|
