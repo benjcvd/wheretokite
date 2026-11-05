@@ -2,7 +2,7 @@
 
 Date: 2026-11-05. Method: [validation method](../../tools/spots/validation/README.md#the-method-slowly-one-spot-at-a-time).
 Past work: no earlier sourced pass on these rows (`git log` on `ES.csv` shows only pipeline commits). Before this pass the zone had
-7 spots (1 free, 6 Pro) and no Basque spot.
+7 spots (2 free, 5 Pro) and no Basque spot.
 
 Limits of this pass, said plainly:
 - Overpass was down, so pins come from OSM elements found through Nominatim (name search and id lookup), not `osm_lookup.py`.
@@ -27,7 +27,7 @@ Limits of this pass, said plainly:
 ## Windy, both ways (browsed as a visitor, 5 Nov, markers hovered; names only, no positions copied)
 
 Windy kite markers in the zone: 25 (10 Asturias, 6 Cantabria, 9 Basque Country incl. one reservoir; Hendaye, 5 stars, is French and
-out of zone). Matched to ours: 5. Added as Pro: 13. Left out: 7. Our spots: 7 (1 free, 6 Pro, 0 archived) → 20 (1 free, 19 Pro, 0 archived).
+out of zone). Matched to ours: 5. Added as Pro: 13. Left out: 7. Our spots: 7 (2 free, 5 Pro, 0 archived) → 20 (2 free, 18 Pro, 0 archived).
 
 | Windy marker (stars) | Result |
 |---|---|
@@ -74,3 +74,7 @@ kite is not mentioned, surf zones are flagged in summer ([Noticias de Gipuzkoa](
 - Pins not checked on satellite; Overpass was down, so pins use Nominatim-found OSM elements. Re-run the build when Overpass is back.
 - Suances, Sopelana, Ulibarri-Gamboa, La Charca, Hondarribia: retry once Overpass is back (see table).
 - Asturian summer rules (Luanco, San Lorenzo, Arbeyal, Salinas): no ordinance text found; town hall pages (Gozón, Gijón) would settle them.
+
+## Build
+`build_spots.py` on the 20 zone rows (curl wrapper, Overpass mostly down): no PROBLEMS; Apple Maps check agrees 19, uncertain 1 (Laida: water faces WNW,
+hint changed N → NW; an estuary mouth, experts only). Salinas, Laredo and Gorliz were moved to the shore the build computed (about 100 m).
