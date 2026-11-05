@@ -29,9 +29,9 @@ ES,Galicia,Razo (Carballo),sea,osm:w39473257,NW,"Open Atlantic beach with waves 
 ES,Galicia,A Lanzada,sea,osm:w173598722,W,"Huge exposed beach with clean waves; best in SW–W wind from autumn to spring. Intermediate and up; rocks in the water and to the south. A spot guide says kiting is not allowed here in summer (no official text found): check with the schools. Also: O Grove – A Mexilloeira (sheltered ría, flat in N–NE).",,,,
 ES,Galicia,Redondela – Cesantes,sea,osm:w161470986,W,"Flat shallow water at the head of the Vigo ría (San Simón inlet); SW summer thermal in the afternoon, gusty NE off the land in high pressure. Home of the TMKiteClub and the Kitefest. Boats on the south side, sharp mussels in the sand. Also: Vigo – O Vao (flat behind Toralla island in W–NW).",,,,
 # Asturias
-ES,Asturias,Salinas – San Juan de Nieva,sea,osm:w516073411,NW,"Strong wind and waves; advanced riders. Also: Gijón – El Arbeyal (sheltered, N–NE) and San Lorenzo (NE–E).",,,,
+ES,Asturias,Salinas – San Juan de Nieva,sea,osm:w516073411,NW,"Main west-wind spot of Asturias (SW to NW): a wide 3 km beach with strong wind and waves, for experienced riders. In bathing season kiters use a separate entrance and follow the lifeguards. Also: Gijón – El Arbeyal (NE and NW) and San Lorenzo (NE–E).",,,,
 # Cantabria
-ES,Cantabria,Somo,sea,q:Playa de Somo,NW,"Waves on the open beach; flat water in La Poza (Miera estuary) at low–mid tide, schools there.",,,,
+ES,Cantabria,Somo,sea,q:Playa de Somo,NW,"Waves on the open beach; flat water in La Poza (Miera estuary), where the Northwind school teaches. NW and W work at any tide; NE and E are offshore and best at low to mid tide. SW is gusty (Los Peligros is the alternative). Never ride in the red and green buoyed channel to Pedreña. Guides mention a kite launch zone 15 Jun–15 Sep about 1 km west of the car park.",,,,
 # Inland
 ES,Aragón,Embalse de La Loteta,lake,osm:n1477213876,,"Reservoir ridden in the cierzo (NW), which blows along its length; south launch area with Club Kitesurf La Loteta. Shallow and rocky in places: check the water level.",360,,,
 # Illes Balears
@@ -120,15 +120,29 @@ ES,Galicia,Patos (Nigrán),sea,osm:w37909121,W,"Surf-first beach south of Vigo: 
 ES,Galicia,San Xurxo (Ferrol),sea,osm:w646340311,NNE,"Horseshoe bay near Ferrol: summer NE thermal, side-offshore and very gusty (16–25 kn), onshore at the south end; 1–2 kn current, so not for beginners. No school. Rougher option: Doniños.",,,pro,
 ES,Galicia,Boiro – Carragueiros,sea,osm:w108818579,SW,"Sheltered Ría de Arousa beach: SW wind blows in with chop and shorebreak, NE is gusty; big standing area at high tide, long walk at low tide. Only a few locals ride here.",,,pro,
 # pro: cluster duplicate — Gijón area, Salinas kept
-ES,Asturias,Gijón – El Arbeyal,sea,osm:r2324779,NE,"Sheltered by the breakwater, N–NE; all levels. Space depends on the tide.",,,pro,
+ES,Asturias,Gijón – El Arbeyal,sea,osm:r2324779,NE,"Shell-shaped beach sheltered by the Musel breakwater; works in NE and NW. Rocky bottom at low tide, offshore winds are gusty. In bathing season enter near El Musel and ride upwind outside the buoys; not for beginners.",,,pro,
 # pro: cluster duplicate — Gijón area, Salinas kept
-ES,Asturias,Gijón – San Lorenzo,sea,osm:w517332406,N,NE–E; launch space depends on the tide; summer restrictions.,,not-high,pro,
+ES,Asturias,Gijón – San Lorenzo,sea,osm:w517332406,N,"NE and E winds; the beach is small at high tide. In bathing season lifeguards allow one small channel (around stairs 8–10) and you ride outside the yellow buoys; ask on site.",,not-high,pro,
 # pro: local / secondary beach — local spot
-ES,Asturias,Luanco – Santa Marina,sea,q:Playa de Luanco,E,Protected by jetties; works in E–SE and N.,,,pro,
+ES,Asturias,Luanco – Santa Marina,sea,osm:w1106005817,E,"Small bay beach protected by jetties; E and SE winds come in less gusty, N and NW also work. Watch the shorebreak when launching. Spot guides say the municipal rules ban kitesurfing in summer (no ordinance text found): ask the town hall or lifeguards.",,,pro,
 # pro: local / secondary beach — bay beach near Somo, summer ban
-ES,Cantabria,Santander – Los Peligros,sea,osm:w28423268,SE,"Bay beach for SW (gusty, choppy); no kiting 1 Jun–30 Sep.",,,pro,06-01..09-30
+ES,Cantabria,Santander – Los Peligros,sea,osm:w28423268,SE,"Urban bay beach, SW wind only (gusty, choppy), any tide. The Northwind school says navigation is prohibited 1 Jun–30 Sep (no official text found, so the ban is kept).",,,pro,06-01..09-30
 # pro: local / secondary beach — local Cantabria spot
-ES,Cantabria,Laredo – Salvé,sea,q:Playa de Salvé Laredo,NE,Flat water; stay upwind of bathers.,,,pro,
+ES,Cantabria,Laredo – Salvé,sea,osm:w159113808,NE,"E is onshore (spring–summer, any tide); NE, W and NW also work near the Regatón at the end of the beach. In summer ride parallel to the beach and stay upwind of bathers; good upwind skills needed.",,,pro,
+# Windy-only additions, Asturias / Cantabria / Basque Country (WHE-106)
+ES,Asturias,Ría de Rodiles,sea,osm:w319610737,N,"U-shaped bay by the Villaviciosa estuary, open to the north: only NNW, N and NNE winds work (a headland blocks NE). Ask locally about the tide.",120,,pro,
+ES,Asturias,Playón de Bayas,sea,osm:w36867848,N,"Long exposed beach west of Avilés with chop and waves; spot guides list it for kiting but give little detail. Check conditions on site.",,,pro,
+ES,Asturias,La Espasa (Caravia),sea,osm:w144635801,N,"NE wind. In bathing season a marked zone lets kiters launch and ride without entering the swimming area; there is a surf school on the beach.",,,pro,
+ES,Asturias,Peñarronda (Castropol),sea,osm:w42731080,N,"Exposed beach on the Galician border, listed in kite spot directories with few details; expect waves. Check conditions on site.",,,pro,
+ES,Cantabria,Oyambre,sea,osm:w61326060,N,"Large exposed Atlantic beach in the Oyambre natural park, with waves; listed by several spot guides, but none gives wind directions. Experienced riders.",,,pro,
+ES,Cantabria,Liencres (Valdearenas),sea,osm:w201943677,NW,"E wind is the stable one (side-shore, best at low to mid tide); NE, W and NW also work. Waves and currents: not for beginners. Parking is difficult in summer.",,,pro,
+ES,Cantabria,Oriñón,sea,osm:w83639992,N,"Beach near Castro-Urdiales listed by spot guides for kiting, with few details on wind. Check conditions on site.",,,pro,
+ES,Euskadi,Ereaga (Getxo),sea,osm:w18892941,NW,"Bilbao estuary beach: NW and SW winds work best, pure W is gusty. Freeride conditions unless there is a big swell. Water quality is poor (port and industry).",,,pro,
+ES,Euskadi,La Arena (Muskiz),sea,osm:w159040670,NW,"Onshore NW wind in winter; freeride works without swell, moderate waves at low tide. Strong shorebreak at high tide; not for beginners.",,,pro,
+ES,Euskadi,Gorliz,sea,osm:w30091262,N,"Sheltered bay with cleaner water than the Bilbao beaches; slightly gusty WNW wind, a wave breaks by the mole in swell. Onshore wind and the road behind: experienced riders.",,,pro,
+ES,Euskadi,Laida (Mundaka),sea,osm:w22812090,NW,"Urdaibai estuary mouth with strong tidal currents; best in S to SW wind, flat water in the river at high tide. Experts only.",,,pro,
+ES,Euskadi,Zarautz,sea,osm:w723169573,N,"Mainly a surf beach: kiting needs a strong WNW wind, the beach narrows at high tide and the left side is gusty when the wind goes more westerly. Crowded in summer.",,,pro,
+ES,Euskadi,Zurriola (Donostia),sea,osm:w649475151,NW,"Strong W wind for waves, NW onshore for kiting only. Bathers and surfers share the beach (marked surf zones in summer) and shorebreak is strong at high tide; no kite article found in the beach rules, so ask the lifeguards.",,,pro,
 # pro: cluster duplicate — between Son Serra and Pollença
 ES,Illes Balears,Mallorca – Platja de Muro,sea,osm:w100010935,NE,"Small authorised channel; crowded in summer, best off-season.",,,pro,
 # pro: local / secondary beach — Menorca, Cala Tirant kept
