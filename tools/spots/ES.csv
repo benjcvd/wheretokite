@@ -24,10 +24,10 @@ ES,Andalucía,Chiclana – Sancti Petri,sea,osm:w198773943,SW,"Winter: free; sum
 # Andalucía — Huelva
 ES,Andalucía,El Portil,sea,osm:w1156218337,S,"Flat water behind the El Rompido sandspit (cross the Río Piedras); strong currents. Also: Punta Umbría (open beach, waves).",,,,
 # Galicia
-ES,Galicia,Doniños (Ferrol),sea,q:Praia de Doniños,W,"Exposed Atlantic beach: waves, experienced riders.",,,,
-ES,Galicia,Razo (Carballo),sea,q:Praia de Razo,NW,Open Atlantic (waves); the Baldaio lagoon next door is flat at high tide.,,,,
-ES,Galicia,A Lanzada,sea,osm:w173598722,W,"Huge exposed beach; best autumn–winter. Also: O Grove – A Mexilloeira (sheltered ría, flat in N–NE).",,,,
-ES,Galicia,Redondela – Cesantes,sea,osm:w161470986,W,Flat water at the head of the Vigo ría; SW summer thermal. Also: Vigo – O Vao (flat behind Toralla island in W–NW).,,,,
+ES,Galicia,Doniños (Ferrol),sea,osm:w646340327,W,"Exposed Atlantic beach with waves; kite area is the left side of the bay (Punta Penencia). Best in N–NE cross-shore wind, S–SW gets rough fast; experienced riders. Local crowd is protective: ride respectfully. Alternative: San Xurxo.",,,,
+ES,Galicia,Razo (Carballo),sea,osm:w39473257,NW,"Open Atlantic beach with waves and strong currents, best in NE wind; winter SW is hard to control. Experienced riders. Inside the Razo–Baldaio nature reserve: the lagoon behind is flat at high tide but stay out of it as the tide drops (bird sanctuary, kite ban feared).",,,,
+ES,Galicia,A Lanzada,sea,osm:w173598722,W,"Huge exposed beach with clean waves; best in SW–W wind from autumn to spring. Intermediate and up; rocks in the water and to the south. A spot guide says kiting is not allowed here in summer (no official text found): check with the schools. Also: O Grove – A Mexilloeira (sheltered ría, flat in N–NE).",,,,
+ES,Galicia,Redondela – Cesantes,sea,osm:w161470986,W,"Flat shallow water at the head of the Vigo ría (San Simón inlet); SW summer thermal in the afternoon, gusty NE off the land in high pressure. Home of the TMKiteClub and the Kitefest. Boats on the south side, sharp mussels in the sand. Also: Vigo – O Vao (flat behind Toralla island in W–NW).",,,,
 # Asturias
 ES,Asturias,Salinas – San Juan de Nieva,sea,osm:w516073411,NW,"Strong wind and waves; advanced riders. Also: Gijón – El Arbeyal (sheltered, N–NE) and San Lorenzo (NE–E).",,,,
 # Cantabria
@@ -102,11 +102,15 @@ ES,Andalucía,Isla Cristina – La Casita Azul,sea,osm:w225560425,S,Designated k
 # pro: local / secondary beach — local Huelva spot
 ES,Andalucía,Ayamonte – Isla Canela,sea,osm:w123911782,S,"Shallow sandbars by the Guadiana mouth, beginner-friendly; SW thermal Apr–Sep.",,,pro,
 # pro: cluster duplicate — 5 km from A Lanzada
-ES,Galicia,O Grove – A Mexilloeira,sea,osm:w51842113,N,Sheltered ría beach: flat water in N–NE; school.,,,pro,
+ES,Galicia,O Grove – A Mexilloeira,sea,osm:w51842113,N,"Sheltered ría beach: flat water in N–NE wind; kite schools on the beach (Kite Galicia, Escuela Española KiteSurf). No official kite rule found.",,,pro,
 # pro: local / secondary beach — local ría spot
-ES,Galicia,A Illa de Arousa – O Bao,sea,osm:r3019704,S,Flat water in the ría; works in S–SE (winter).,,,pro,
+ES,Galicia,A Illa de Arousa – O Bao,sea,osm:r3019704,S:South side|N:North side,"Flat to choppy water in the ría, on both sides of the bridge: south side in S winds, north side in the summer northerlies (N–NE is the main wind). Kite schools on the island (Kiteboarding Galicia, Papaventos club). Watch the bridge and the road.",,,pro,
 # pro: cluster duplicate — Vigo ría, Cesantes kept
-ES,Galicia,Vigo – O Vao,sea,osm:r5294013,NW,Flat water behind the Toralla island in W–NW.,,,pro,
+ES,Galicia,Vigo – O Vao,sea,osm:r5294013,NW,"Flat water behind the Toralla island in W–NW wind. Named as a place where kiting is practised in the ría (one source, no school found; no official rule found): ask locally.",,,pro,
+# pro: added from the Windy kite markers (WHE-105); one kite source each, see docs/validation/es-galicia.md
+ES,Galicia,Patos (Nigrán),sea,osm:w37909121,W,"Surf-first beach south of Vigo: strong N wind straight onto the beach with swell gives a good session; the headland blocks S winds; summer is often flat or light. Kite schools run lessons at Patos and Playa América. Busy, buoyed beach; no official kite rule found.",,,pro,
+ES,Galicia,San Xurxo (Ferrol),sea,osm:w646340311,NNE,"Horseshoe bay near Ferrol: summer NE thermal, side-offshore and very gusty (16–25 kn), onshore at the south end; 1–2 kn current, so not for beginners. No school. Rougher option: Doniños.",,,pro,
+ES,Galicia,Boiro – Carragueiros,sea,osm:w108818579,SW,"Sheltered Ría de Arousa beach: SW wind blows in with chop and shorebreak, NE is gusty; big standing area at high tide, long walk at low tide. Only a few locals ride here.",,,pro,
 # pro: cluster duplicate — Gijón area, Salinas kept
 ES,Asturias,Gijón – El Arbeyal,sea,osm:r2324779,NE,"Sheltered by the breakwater, N–NE; all levels. Space depends on the tide.",,,pro,
 # pro: cluster duplicate — Gijón area, Salinas kept
