@@ -63,7 +63,7 @@ Garbí (41 days, 7 go): ECMWF sea +2.0 kn day ahead, 14 false go; the app +0.3.
 - **Same-day runs** for the app's full-year numbers; riders plan a day ahead.
 - One year, 28 easterly go days: a 1–2 kn shift is the smallest difference this can see.
 
-### Recommendation
+### Recommendation (Ben, 6 Nov: ship nothing)
 
 1. Ship nothing: today's mix already reads easterlies about right here, and every way to catch more
    of them adds false go on garbí days. (recommended)
