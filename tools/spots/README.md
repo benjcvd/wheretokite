@@ -68,10 +68,10 @@ What makes a spot "well known" (include it):
   describing a kite zone.
 - Kitesurfing allowed at least part of the year. Exclude spots banned all year. Mention
   seasonal bans / summer-only zones / permits in `notes`.
-- One row per launch that kiters treat as a separate spot. Launches less than 2 km apart
-  are one spot (the build rejects duplicates within 2 km); pick the main launch. Exception:
-  two launches on different water (sea and lagoon, or sea and lake) are kept as separate
-  spots, with a warning.
+- One row per launch that kiters treat as a separate spot. Launches less than 1 km apart,
+  on the same water and facing the same way, are one spot (the build rejects them); pick the
+  main launch. Launches on different water (sea and lagoon or lake), or whose beaches face
+  45° or more apart, are separate spots at any distance (the build keeps them with a warning).
 - Skip pure wave-surf beaches, harbours, and places only reachable by boat (downwinder
   destinations).
 

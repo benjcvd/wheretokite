@@ -48,7 +48,7 @@ have goes into the catalogue as `tier` pro (pin from OSM through the pipeline, s
 from a school, club or town page) **unless there is a good reason not to**, written in the
 table. Good reasons, and only these:
 - kiting is banned there all year, or the only access is through a school (official source);
-- it's the same beach as one of ours (same water, under about 2 km, same winds): say which;
+- it's the same beach as one of ours (same water, under 1 km, facing the same way): say which;
 - it isn't a kite spot (surf, wing or windsurf only; harbour; private) per a local source;
 - no OSM element fits the place where people ride, so it can't be pinned.
 **Unrated markers** (no rating or 0 on Windy, read as a visitor sees it, never from Windy's
