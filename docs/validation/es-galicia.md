@@ -44,12 +44,26 @@ Windy marker → ours. About 30 kite markers between Bares and A Guarda (Portugu
 | Carragueiros (2) | **added (Pro)** |
 | Boiro (4) | same Boiro shore as Carragueiros, pin not identified: follow-up |
 | El Bao (3), south side of the Ría de Vigo | probably O Vao / Toralla side (matched on the map name, not on position); not confirmed: follow-up |
-| Valdoviño (4), Cedeira (4), Ares (3), Santa Cristina (4), Sabón (3), Playa Grande de Mino (2), Fornos (1), Bares (1) | **not done yet** (follow-up card): no school or kite source read yet in this pass |
-| Laxe (3), Nemina (4), Carnota (3) | **not done yet** (follow-up): visitacostadamorte.com names Traba and Soesto (Laxe) as well-known kite beaches; Nemina is a surf spot per local schools |
-| Aguieira (3), As Furnas (3), Ancoradoiro (3), Abelleira (2), Playa a Ladeira (2), Agrelo (1), Nerga (2) | **not done yet** (follow-up): the kite guide lists Aguieira, As Furnas, A Ladeira; Kiteforum lists Nerga (S–SW, beginner to expert) but the beach to pin is unclear (several beaches around Nerga); Yumping lists Agrelo as a school spot |
+| Valdoviño (4) | **added (Pro)** as Valdoviño – A Frouxeira, `w652244114` ([guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/valdovino-rias-altas-galicia-spain.html): NE and W, experts, rip and shorebreak) |
+| Ares (3) | **added (Pro)**, `w168803798` ([guide, Ares-Seselle](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/ares-seselle-rias-altas-galicia-spain.html): SW cross-on, rocks, cables) |
+| Santa Cristina (4) | **added (Pro)**, `w89682701` ([Kiteskull school](https://en.yumping.com/water-sports/kiteskull--e18475), [Furacán](https://www.yumping.com/en/kitesurfing/furacan-kite-escola--e19620946), guide) |
+| Fornos (1) | **added (Pro)**, Playa de Morouzos `w383452004` ([guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/fornos-rias-altas-galicia-spain.html)) |
+| Laxe (3) | **added (Pro)**, `w651998067` ([guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/laxe-rias-altas-galicia-spain.html): flat behind the harbour walls in NE) |
+| Carnota (3) | **added (Pro)**, `w976147496` ([guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/carnota-rias-baixas-galicia-spain.html), Furacán lists it) |
+| Ancoradoiro (3) | **added (Pro)**, `w205501862` ([guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/ancoradoiro-rias-baixas-galicia-spain.html)) |
+| Playa a Ladeira (2) | **added (Pro)** as Corrubedo – A Ladeira, `w1135421647` ([guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/corrubedo-a-ladeira-rias-baixas-galicia-spain.html): thermal N–NW F5–7 in summer; nature-reserve fine) |
+| Aguieira (3) | **added (Pro)**, `w294809917` ([guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/aguieira-rias-baixas-galicia-spain.html); Furacán lists it) |
+| Agrelo (1) | **added (Pro)**, `w62073655` ([Unplug](https://www.unplug-kitesurf.com/spots/agrelo-beach-spain): N–NNW, all levels) |
+| As Furnas (3) | left out: the guide calls it "more of a surf spot", kites rare (surf only per a local guide) |
+| Nemina (4) | left out: surf spot per local schools |
+| Cedeira (4) | left out: the guide names no kite beach (bay, gusty NE at high tide), so no OSM element can be chosen |
+| Bares (1) | left out: only a harbour (Porto de Bares, freestyle in offshore W); no beach element fits where people ride |
+| Nerga (2) | left out: guide says a secluded beach with boulders and shorebreak, but several beaches (Folla, Temperán, Area das Patas) and no source names which: cannot be pinned |
+| Abelleira (2) | left out: guide mentions a shallow lagoon for locals but no beach is named; several beaches in the parish: cannot be pinned |
+| Sabón (3), Playa Grande de Miño (2) | left out: Sabón is a surf beach with polluted water per the guide; no kite source found for either |
+| Boiro (4), El Bao (3) | follow-up still open: probably Carragueiros and O Vao (matched by name only) |
 
 Ours → Windy: Doniños (no marker under that name; San Xurxo and Valdoviño are the neighbours) and O Vao (see El Bao above)
 have no certain Windy marker. Windy positions were used only to learn that spots exist, never for pins.
 
-Big gap: Windy shows about 20 kite markers we still lack in Galicia. I did not reach the rule's bar for them in this pass
-(one source and a safe OSM pin each); these are not "good reasons" to leave them out, so they go on a follow-up card.
+Big gap (closed 5 Nov, WHE-128): 10 more Windy markers added as Pro (Galicia now 20 spots); 8 left out for the reasons above.
