@@ -41,7 +41,7 @@ second pass with web research is worth doing.
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
   Les Arbousiers, Navarrosse.
 - Côte d'Opale south / Baie de Somme (WHE-118, 2026-11-05): summer kite zones at Berck, Le Touquet, Hardelot, Cayeux come from FFVL sheets and guides only, no arrêté found, so none is encoded in `banned` (docs/validation/fr-opale-s.md). Wimereux town beach, Ambleteuse, Audresselles, Baie de la Canche and Hourdel left out (same shores as spots we have, or no launch).
-- Ouistreham Riva-Bella: really a separate spot from Merville (3.5 km)?
+- Ouistreham Riva-Bella: separate spot from Merville. Settled 2026-11-06 (WHE-117): 5 km apart, other water, own school (La Clinique de la Planche), low tide only.
 - Left out as uncertain: Les Sables-d'Olonne, Jonville / Réville, Saint-Germain-sur-Ay,
   Locmariaquer, Le Rohu, Kerguelen, La Palue, Dunkerque Digue du Break, Cap-Ferret ocean
   beaches, Capbreton / Hossegor, Moisson-Lavacourt.
