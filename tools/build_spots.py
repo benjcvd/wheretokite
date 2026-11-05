@@ -39,7 +39,7 @@ Pipeline
      `access: "ferry"` and, when it lies on an OSM place=island, `island` plus
      the island's simplified outline in the catalogue's `islands` (the app only
      shows such spots to someone on the same island).
-  5. Checks: distance to shore, duplicate spots (< 2 km), OSM kite objects
+  5. Checks: distance to shore, duplicate spots (< 1 km, same water and facing), OSM kite objects
      nearby (corroboration), and reference orientations; the script exits 1 if
      a reference is off by more than 30 deg or a spot is unusable.
 """
@@ -79,7 +79,8 @@ ORIENT_WINDOW = 400.0       # metres along the shore each side
 COAST_SEARCH = 3000.0       # max distance spot -> shore
 MAX_SHORE_DIST = 1500.0     # beyond this the spot is rejected
 HINT_SNAP_RADIUS = 1500.0   # how far we may move a spot to the hinted shore
-DUP_RADIUS = 2000.0
+DUP_RADIUS = 1000.0   # same water, same facing: closer than this = one spot (Ben, 5 Nov)
+DUP_FACING_DEG = 45.0  # beaches facing this much apart are different spots, even side by side
 SNAP_IF_FARTHER = 300.0    # move located points this far from the shore onto it
 MIN_WATER_EXTENT = 800.0    # ignore ponds smaller than this (bbox diagonal)
 
@@ -1242,7 +1243,18 @@ def main():
         ids.add(a["id"])
         for b in spots[i + 1:]:
             d = haversine(a["latitude"], a["longitude"], b["latitude"], b["longitude"])
-            if d < DUP_RADIUS:
+            if d >= DUP_RADIUS:
+                continue
+            # Sea and lagoon (or lake) launches a short walk apart are different spots:
+            # different water, different winds (e.g. Sète La Corniche vs Pont-Levis).
+            turn = abs((a["seaFacingDeg"] - b["seaFacingDeg"] + 180) % 360 - 180)
+            if a.get("waterType") != b.get("waterType"):
+                warnings.append("%s (%s) and %s (%s) are %.0f m apart: kept, different water"
+                                % (a["id"], a.get("waterType"), b["id"], b.get("waterType"), d))
+            elif turn >= DUP_FACING_DEG:
+                warnings.append("%s and %s are %.0f m apart: kept, beaches face %.0f° apart"
+                                % (a["id"], b["id"], d, turn))
+            else:
                 problems.append("%s and %s are only %.0f m apart" % (a["id"], b["id"], d))
 
     # report
