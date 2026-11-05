@@ -29,6 +29,9 @@ second pass with web research is worth doing.
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
 - La Baule: settled 2026-11-05 (WHE-111): Plage Benoît stays (flat banks at low to mid tide, rideevolve guide); summer access is only the K13 channel at the Pornichet border (Pornichet order ARR2026-212), so the summer ban stays. The La Baule 2016 order was a 404: find the current one if possible.
 - Pays de la Loire / Vendée (WHE-111): 12 Windy markers left out, see docs/validation/fr-loire.md. Revive if a school page names the beach: Barbâtre (Noirmoutier), Les Générelles (La Tranche), Les Conches, Sauveterre. Archived: Notre-Dame-de-Monts. Summer rules for Fromentine, La Tranche, Pen Bron and Saint-Brevin come from guides only: no order found.
+
+- Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL). Lac du Der checked in WHE-120 (2026-11-05): the 15 Jun-15 Sep red zone comes from a club Facebook snippet only, no RPP or town text found; kept in notes, not encoded.
+- La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
 - Weak pins (snapped from a village / street): Hemmes de Marck, Wimereux – Pointe aux Oies,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
   Les Arbousiers (bus stop beside the beach), Navarrosse.

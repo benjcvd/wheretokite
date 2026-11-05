@@ -16,7 +16,7 @@ fr-montpellier,review,WHE-97,6,9,5,0,0,docs/validation/fr-montpellier.md,2026-11
 fr-camargue,review,WHE-102,8,10,7,0,0,docs/validation/fr-camargue.md,2026-11-05
 fr-var,review,WHE-103,5,25,5,2,0,docs/validation/fr-var.md,2026-11-05
 fr-corse,review,WHE-104,12,27,5,6,0,docs/validation/fr-corse.md,2026-11-05
-fr-lakes,todo,val-fr-lakes,,,,,,,
+fr-lakes,review,WHE-120,3,3,3,0,0,docs/validation/fr-lakes.md,2026-11-05
 fr-basque-landes,todo,val-fr-basque-landes,,,,,,,
 fr-gironde,review,WHE-109,9,17,7,0,1,docs/validation/fr-gironde.md,2026-11-04
 fr-charente,review,WHE-110,9,24,9,3,0,docs/validation/fr-charente.md,2026-11-05
