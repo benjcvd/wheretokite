@@ -18,9 +18,9 @@ ES,Andalucía,Málaga – Los Álamos,sea,osm:w1555163983,SE,"Official kite zone
 # Andalucía — Strait and Cádiz Atlantic coast
 ES,Andalucía,Tarifa – Los Lances,sea,osm:w1134220405,SW,"Los Lances Norte (Río Jara–Waves). Summer: school and free-rider zones only, no kiting from Río Jara to town 15 Jun–15 Sep. Also: Tarifa – Balneario (experts only, rocks and currents; no kiting 15 Jun–15 Sep).",,,,
 ES,Andalucía,Tarifa – Valdevaqueros,sea,osm:w186110526,S,Includes Punta Paloma; summer kite zone is crowded; rocks at low tide. Also: Bolonia (no kiting in summer).,,,,
-ES,Andalucía,Los Caños de Meca,sea,q:Playa de Los Caños de Meca,SE,Levante spot; rocks towards the lighthouse at low tide; officially no kiting in summer.,,,,
-ES,Andalucía,El Palmar (Vejer),sea,q:Playa de El Palmar Vejer de la Frontera,SW,"Westerlies; ride the south end, watch surfers and bathers; rocks at low tide.",,,,
-ES,Andalucía,Chiclana – Sancti Petri,sea,osm:w198773943,SW,"Winter: free; summer only inside the water-sports channels. Also: San Fernando – Camposoto (westerlies), Cádiz – Cortadura (rocky, high tide).",,,,
+ES,Andalucía,Los Caños de Meca,sea,q:Playa de Los Caños de Meca,SE,"Levante (E) spot, works from about force 6 in Tarifa; the wind is lighter than in the Strait. Reef and rocks on the beach; kiters launch down the point towards the Trafalgar lighthouse. Intermediate and above. A school page says part of the beach is reserved in summer and marked bathing zones must be respected; no official text found, ask a local school.",,,,
+ES,Andalucía,El Palmar (Vejer),sea,q:Playa de El Palmar Vejer de la Frontera,SW,"Poniente (W to NW) is the main wind; levante is weak here. Powerful shorebreak at high tide and a strong current in poniente: experienced riders. Mostly a surf beach. A spot guide says kiting is banned here in summer; no official text found, so treat summer as closed.",,,,
+ES,Andalucía,Chiclana – Sancti Petri,sea,osm:w198773943,SW,"La Barrosa beach, south end at Sancti Petri. Poniente (W to NW) works once strong; levante from the SSE also. The Sancti Petri island shelters it from west swell. Kite Surf Chiclana has run lessons on the beach since 2006. A spot guide says kiting is banned June to September; no official text found, ask the school.",,,,
 # Andalucía — Huelva
 ES,Andalucía,El Portil,sea,osm:w1156218337,S,"Flat water behind the El Rompido sandspit (cross the Río Piedras); strong currents. Also: Punta Umbría (open beach, waves).",,,,
 # Galicia
@@ -88,13 +88,23 @@ ES,Andalucía,Tarifa – Balneario,sea,osm:w672119807,SW,"Experts only (rocks, c
 # pro: cluster duplicate — near Valdevaqueros, no kiting in summer
 ES,Andalucía,Bolonia,sea,q:Playa de Bolonia,S,No kiting in summer.,,,pro,06-15..09-15
 # pro: cluster duplicate — Cádiz–Chiclana coast, Sancti Petri kept
-ES,Andalucía,San Fernando – Camposoto,sea,osm:r16174862,SW,Westerlies; summer channel at the end of the promenade; local kite club.,,,pro,
+ES,Andalucía,San Fernando – Camposoto,sea,osm:r16174862,SW,"Strong poniente (W) with messy waves and a powerful shorebreak at high tide. Former military zone: old shell casings can turn up on the beach. No kite club or summer rule found: ask locally.",,,pro,
 # pro: cluster duplicate — Cádiz–Chiclana coast, Sancti Petri kept
-ES,Andalucía,Cádiz – Cortadura,sea,osm:w91048435,W,"Westerlies; rocky bottom, high tide recommended.",,not-low,pro,
+ES,Andalucía,Cádiz – Cortadura,sea,osm:w91048435,W,"Long city beach south of Cádiz. Poniente (cross-on) or levante (cross-off); best in winter and spring. Buoyed bathing areas in summer. An earlier note advised high tide (not re-confirmed).",,not-low,pro,
 # pro: local / secondary beach — Bay of Cádiz local spot
-ES,Andalucía,El Puerto – Valdelagrana,sea,osm:w23911521,SW,Space in winter and summer (summer water-sports channel).,,,pro,
+ES,Andalucía,El Puerto – Valdelagrana,sea,osm:w23911521,SW,"Two kite schools on the beach (Cadiz Kite, Foreño). Long beach; the west-facing part is further south. Summer: stay out of bathing areas and ask the schools about the water-sports channel.",,,pro,
 # pro: local / secondary beach — local winter spot
-ES,Andalucía,Rota – El Rompidillo,sea,osm:w194605149,SE,Winter spot for all levels; move elsewhere in the bathing season.,,,pro,
+ES,Andalucía,Rota – El Rompidillo,sea,osm:w194605149,SE,"City beach on the levante side: used outside the bathing season to avoid the gusty offshore levante at Playa de la Luz. A spot guide says kiting is banned in Rota in summer; no official text found, so treat summer as closed.",,,pro,
+# pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "Rota, Playa Luz"
+ES,Andalucía,Rota – Playa de la Luz,sea,osm:w439452759,SW,"Kiters start at the west end of Playa de la Costilla, in front of Hotel Playa de la Luz; bump-and-jump spot further south. Levante is gusty and cross-offshore: solid kite skills needed. Narrow at high tide, a few rocks at low tide, small reef. A spot guide says kiting is banned in Rota in summer; no official text found.",,,pro,
+# pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "La Ballena"
+ES,Andalucía,Rota – La Ballena,sea,osm:r19621021,W,"Costa Ballena beach north of Rota. Thermal west wind in summer, per a spot guide and the Kiteforum spot page. Check the Rota beach rules for summer.",,,pro,
+# pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "Punta Candor"
+ES,Andalucía,Rota – Punta Candor,sea,osm:w194942516,W,"Small headland with a rocky bottom and open swell: waves above mast height on big days, best at low to mid tide. South wind is cross-off, north to north-west cross-on. Experienced riders; low-pressure southerlies often drop by afternoon, so go early.",,,pro,
+# pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "La Victoria"
+ES,Andalucía,Cádiz – La Victoria,sea,osm:w162311083,W,"Cádiz city beach, north of Cortadura. Beach break near shore and a reef break further out, best with south-west low-pressure winds. Busy in summer: check the city's beach rules.",,,pro,
+# pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "Conil" and Total Kitesurf (Conil)
+ES,Andalucía,Conil – Los Bateles,sea,osm:r11384131,W,"Poniente (W to NW) is best, stronger the more northerly it is; levante from the SSE works on its last day. Waves a bit smaller than El Palmar. A small marked kite zone on the beach, which is busy in July and August. Total Kitesurf has a school here.",,,pro,
 # pro: cluster duplicate — 7 km from El Portil
 ES,Andalucía,Punta Umbría,sea,osm:w889930861,S,Long open beach with waves; SW thermal; summer restrictions near bathers.,,,pro,
 # pro: local / secondary beach — local Huelva spot

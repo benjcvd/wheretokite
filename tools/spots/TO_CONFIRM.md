@@ -277,3 +277,7 @@ Questions:
 - Canet / Saint-Cyprien: no source found for the "municipal decree May–Sept" wording; notes now only say a kite area is signed (Pont des Basses; Saint-Cyprien north beach, per tourisme-saint-cyprien.com and tourisme-pyreneesorientales.com). Check with the town halls if a dated ban is wanted.
 - Not re-verified: Argelès Le Racou, Torreilles, La Palme, Port-la-Nouvelle, Barcarès (3 Colonnes / Dosses) kept as they were.
 - WHE-67 second pass (3 Nov 2026), settled: Argelès – Le Racou and Torreilles – Le Blockhaus archived (no school or official kite-zone page; worst case). Not added: Argelès Plage, Les Pilotis (Leucate Plage), La Mine (windsurf / SUP per the tourist office). Parc des Dosses kept pro; Ben may want it basic now that Le Goulet is archived (the only flat-water Tramontane spot in the area).
+
+## Settled: Cádiz coast (WHE-100, 5 Nov, rule of 2 Nov)
+- Summer kite bans at La Barrosa / Sancti Petri, El Palmar, Rota (all three beaches) and the reserved summer area at Caños de Meca come only from spot guides and school pages; no town or Costas text found. Rule applied: `banned` stays empty (no official source), the notes say to treat summer as closed or ask a school. Details in `docs/validation/es-cadiz.md`.
+- Windy markers left out: Buzo (no OSM beach fits, sources don't say which beach), Cádiz city (no kite source), Barbate (surf listings only), Sanlúcar de Barrameda (OSM has only unnamed beaches there, can't tell which one kiters use).
