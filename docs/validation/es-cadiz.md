@@ -20,7 +20,7 @@ fetches; no school site was opened one by one. Pins were not eyeballed on satell
 | San Fernando – Camposoto | fixed (notes) | `osm:r16174862`, faces WSW (249°), shore 13 m, Apple agrees | "Local kite club" and "summer channel" removed: nothing found (the town's summer sports programme lists surf, kayak, no kite club). Summer rule unknown, notes say ask locally | [Guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/camposoto-costa-de-la-luz-cadiz-spain.html): strong poniente, shorebreak at high tide, ex-military zone. [Camposoto beach listing](https://wildopenwater.com/swimspot/playa-camposoto-c%C3%A1diz-andaluc%C3%ADa-spain) says kiteboarding suitable. Thin, kept as Pro. Windy 3 stars |
 | Cádiz – Cortadura | fixed (notes) | `osm:w91048435`, faces WSW (249°), shore 43 m, Apple agrees | Buoyed bathing areas in summer (press). `tide: not-low` came from the first pass; the sources I found don't confirm it, so it is flagged "not re-confirmed" and kept | [Guide, Cortadura](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/cortadura-costa-de-la-luz-cadiz-spain.html) and the Costa de la Luz list: poniente cross-on or levante cross-off, winter and spring best. Windy 2 stars |
 | El Puerto – Valdelagrana | fixed (notes) | `osm:w23911521`, faces WSW (247°), shore 142 m, Apple agrees | "Water-sports channel" claim unsourced: removed, "ask the schools" instead | Two schools on the beach: [Cadiz Kite](https://www.yumping.com/en/kitesurfing/cadiz-kite--e19741352) and [Foreño](https://www.yumping.com/en/water-sports/foreno-escuela-de-kitesurf--e19756858); [Kiteforum spot page](https://se.kiteforum.com/kitesurf/spot/valdelagrana). Windy 4 stars |
-| Rota – El Rompidillo | fixed (notes) | `osm:w194605149`, faces ESE (106°), shore 58 m, Apple agrees | Guide: kiting banned all over Rota in summer; no official text, in notes | [Guide, Rota Playa Luz](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/rota-playa-luz-costa-de-la-luz-cadiz-spain.html): Rompidillo is the out-of-season levante alternative. **Only one kite source**; kept as Pro. No Windy marker of its own |
+| Rota – El Rompidillo | fixed (notes, absorbs Playa de la Luz) | `osm:w194605149`, faces ESE (106°), shore 58 m, Apple agrees | Guide: kiting banned all over Rota in summer; no official text, in notes | [Guide, Rota Playa Luz](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/rota-playa-luz-costa-de-la-luz-cadiz-spain.html): Rompidillo is the out-of-season levante alternative. **Only one kite source**; kept as Pro. No Windy marker of its own |
 
 Tide: no local source gives a tide window for any of the seven, so none was changed (only Cortadura carries `not-low`).
 Sectors are left empty (build default from the facing and hint).
@@ -37,7 +37,7 @@ Windy marker → ours (15 markers from Sanlúcar to Barbate; Bolonia belongs to 
 | Camposoto (3) | San Fernando – Camposoto |
 | Cortadura (2) | Cádiz – Cortadura |
 | Valdelagrana (4) | El Puerto – Valdelagrana |
-| Rota (5) | **added (Pro)** Rota – Playa de la Luz (the kite guide's "Rota, Playa Luz"); Rompidillo is a different aspect, kept |
+| Rota (5) | Rota – El Rompidillo (same launch area: the guide's "Playa Luz" launch is 856 m away; the build rejects spots under 2 km apart, so its details went into the Rompidillo note) |
 | La Ballena (3) | **added (Pro)** Rota – La Ballena |
 | Punta Candor (3) | **added (Pro)** Rota – Punta Candor (one source: the guide) |
 | La Victoria (5) | **added (Pro)** Cádiz – La Victoria (about 2 km north of Cortadura but a different beach break) |
@@ -48,11 +48,11 @@ Windy marker → ours (15 markers from Sanlúcar to Barbate; Bolonia belongs to 
 | Sanlúcar de Barrameda (4) | left out: Las Piletas and Bajo de Guía are used per school listings, but OSM has only unnamed beaches there, so no pin I can trust |
 
 Ours → Windy: every spot has a marker except Rompidillo (nearest: Rota).
-Counts: Windy markers in the zone 15; matched to ours 6 (Caños, Palmar, La Barrosa = Sancti Petri, Camposoto, Cortadura, Valdelagrana); added as Pro 5 (Playa de la Luz for the "Rota" marker, La Ballena, Punta Candor, La Victoria, Conil); left out 4 (Buzo, Cádiz, Barbate, Sanlúcar).
-Our spots 7 → 12: 3 free (Caños, Palmar, Sancti Petri), 9 Pro, 0 archived.
+Counts: Windy markers in the zone 15; matched to ours 7 (Caños, Palmar, La Barrosa = Sancti Petri, Camposoto, Cortadura, Valdelagrana, Rota = Rompidillo); added as Pro 4 (La Ballena, Punta Candor, La Victoria, Conil); left out 4 (Buzo, Cádiz, Barbate, Sanlúcar).
+Our spots 7 → 11: 3 free (Caños, Palmar, Sancti Petri), 8 Pro, 0 archived.
 Gap: Windy still shows 4 markers we lack; each lacks a pinnable place or any kite source, none is left out for being minor.
 
 ## Open
 - Summer rules for Barrosa, Palmar, Rota, Caños: no official text found (`TO_CONFIRM.md`, settled rule of 2 Nov).
 - Pins not eyeballed on satellite.
-- Build check of the five new rows was blocked by OSM server timeouts when this was written: see the card note for the result.
+- Build check: `spot-check` on the eleven Cádiz rows, no PROBLEMS after Playa de la Luz was folded into Rompidillo; Caños stays `uncertain` (point curves, explained above).
