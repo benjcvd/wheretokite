@@ -296,3 +296,13 @@ Questions:
 - Six-Fours – Le Brusc: the 1 Jun–30 Sep ban stays (kiteforum: no kite while the lifeguard post runs; another guide: officially banned all year, tolerated off season). No town or préfecture text found, worst case kept.
 - Added as Pro from Windy: Les Lecques (Saint-Cyr tourist office listing, open 16 Oct–14 Mar) and Cabasson (Bormes tourism listing, open 1 Oct–31 May). Both seasonal bans come from those listings only; no wind or level text found for Les Lecques.
 - Left out for lack of a local kite source (worst case, not added): Bandol, La Coudoulière, Brutal Beach, Les Sablettes, Gigaro, Pampelonne, La Nartelle / La Tour / Plage des Éléphants (Sainte-Maxime), Port Miramar. Le Lavandou: a campsite page says kiting is banned all year at Saint-Clair, Le Lavandou and La Favière. Details in docs/validation/fr-var.md.
+
+## Settled: Tarifa, the Strait and Málaga (WHE-99, 5 Nov, rule of 2 Nov)
+- Tarifa Balneario and Bolonia: the 15 Jun–15 Sep ban has no official source (no Ayuntamiento de Tarifa text found; schools and
+  guides only say "strict in summer" and "winter only" for Bolonia). Worst case: ban kept as encoded, notes say the source is missing.
+- Tarifa Los Lances: the "15 Jun–15 Sep" dates were removed from the note (no source); marked summer zones stay in the note, no ban encoded.
+- Málaga Los Álamos: Aena restricted kiting at Guadalmar in 2015 (plane accident, Euro Weekly News); schools work there today but I
+  found no official text on the current zone. Kept as a free spot with the warning in the note.
+- Palmones: sources disagree on summer; one school says allowed in marked zones. No ban encoded.
+- Windy-only Costa del Sol markers left out for lack of any local source or pinnable beach: Estepona town, Sotogrande, Chilches,
+  Torrox, Playa del Chanquete (a follow-up with school pages could add them).
