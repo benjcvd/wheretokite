@@ -314,3 +314,7 @@ Questions:
 - Landéda – Sainte-Marguerite: sources disagree on the tide (flat at low tide vs. navigable only about 2 h either side of high water). No tide window set; both views in the notes. Local check welcome.
 - Summer swimming zones at Dossen (1 Jun–15 Sep), Sainte-Marguerite south (1 Jul–30 Aug) and Blancs Sablons west (1 Jul–31 Aug) come from one blog (vvanat.fr), no town text found. In notes only, not in `banned`.
 - Left out of the catalogue, no local kite source or nothing to pin: Les Amiets, Boutrouilles, Île de Vierge, Trez Hir, Saint-Jean-du-Doigt, Trezmeur, Grève Rose, Kernisi (no launch place), Térénez and Île Grande (no beach in OSM).
+
+## Settled: Cádiz coast (WHE-100, 5 Nov, rule of 2 Nov)
+- Summer kite bans at La Barrosa / Sancti Petri, El Palmar, Rota (all three beaches) and the reserved summer area at Caños de Meca come only from spot guides and school pages; no town or Costas text found. Rule applied: `banned` stays empty (no official source), the notes say to treat summer as closed or ask a school. Details in `docs/validation/es-cadiz.md`.
+- Windy markers left out: Buzo (no OSM beach fits, sources don't say which beach), Cádiz city (no kite source), Barbate (surf listings only), Sanlúcar de Barrameda (OSM has only unnamed beaches there, can't tell which one kiters use).
