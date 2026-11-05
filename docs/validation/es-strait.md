@@ -23,7 +23,7 @@ Tide: not applicable (Strait and Mediterranean beaches, tidal range small); the 
 
 ## Windy, both ways (browsed as a visitor, 5 Nov, kite markers hovered)
 
-Windy markers in the zone box: 21 (plus Benavides 2 stars just west of it, and Gibraltar, which is not in our countries). Matched to ours: 10 (5 by name, 5 on the same beach). Added as Pro: 5. Left out: 6.
+Windy markers in the zone box: 21 (plus Benavides 2 stars just west of it, and Gibraltar, which is not in our countries). Matched to ours: 9 (5 by name, 4 on the same beach, under 1 km or the same pin: Río Jara and Arte Vida = Los Lances Norte, Playa Chica next to Balneario, Guadalmar = Los Álamos). Added as Pro: 7 (WHE-129 added Punta Paloma and Playamar). Left out: 5.
 
 | Windy marker (stars) | Ours |
 |---|---|
@@ -32,11 +32,11 @@ Windy markers in the zone box: 21 (plus Benavides 2 stars just west of it, and G
 | Bolonia (5) | Bolonia |
 | Palmones (4) | Palmones |
 | Los Monteros (5) | Los Monteros |
-| Punta Paloma (5) | matched: same beach as Valdevaqueros (our note already says "includes Punta Paloma"), under 2 km |
+| Punta Paloma (5) | **added (Pro, WHE-129)** `Tarifa – Punta Paloma`, `w236380310` (unnamed OSM beach at the Punta Paloma dunes); about 3 km from the Valdevaqueros pin, so not a duplicate under the 1 km rule. [Unplug](https://www.unplug-kitesurf.com/spots/punta-paloma-spain), [kite-and-windsurfing-guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/punta-paloma-estrecho-de-gibraltar-tarifa-spain.html), [Kite Fun Tarifa guide](https://kitefuntarifa.com/en/blog/guide-kitesurf-spots-winds-tarifa.html) |
 | Río Jara (5), Arte Vida (5) | matched: same beach as Los Lances (Río Jara is Los Lances Norte), same water |
 | Playa Chica (5) | matched: Tarifa town beach next to Balneario, same water, under 1 km |
 | Guadalmar (4) | matched: same stretch as Los Álamos (our note says "Los Álamos / Guadalmar") |
-| Playamar (5) | left out: same beach strip as Los Álamos, about 1.5 km, same winds; a guide says windsurfers use it for parking |
+| Playamar (5) | **added (Pro, WHE-129)** `Torremolinos – Playamar`, `r21356057`, about 1.7 km from the Los Álamos pin (over the 1 km rule). [kite-and-windsurfing-guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/playamar-costa-del-sol-malaga-spain.html) (thermal like Los Álamos, mainly for first tries), [Unplug](https://www.unplug-kitesurf.com/schools/doctorkite) lists it as a beginner spot; Torremolinos schools on Yumping |
 | Getares (4) | **added (Pro)** `Algeciras – Getares`, OSM beach `w178722711`; Kite Fun Tarifa + Unplug |
 | El Heaven (4) | **added (Pro)** `Estepona – Guadalmansa (Heaven)`, `w576972096`; Heaven Kite School is on that beach |
 | San Pedro (4) | **added (Pro)** `San Pedro de Alcántara`, `w322423323`; Costa del Sol spot guide |
@@ -55,7 +55,7 @@ Windy names were used only to learn that spots exist, never for positions.
 
 ## Check
 `spot-check` on this zone's 12 rows (subset CSV; the full ES.csv build stalled on Overpass timeouts): no PROBLEMS, Apple Maps agrees on all 12.
-Spots before → after: 7 → 12 (free 3, Pro 9, archived 0).
+Spots before → after: 7 → 14 (free 3, Pro 11, archived 0).
 
 ## Open
 - Tarifa Balneario and Bolonia summer bans (15 Jun–15 Sep) have no official source; kept as the safe choice → `TO_CONFIRM.md`.

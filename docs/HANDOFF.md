@@ -347,3 +347,13 @@ All three workstreams are merged into local `main` (a2ba377). Ben's decisions to
 **Lead, 3 Nov: France and Spain validation before launch.** Ben wants every French and Spanish spot checked by hand and compared with Windy before launch, slowly. Split into 30 zones of at most about 9 spots (`tools/spots/validation/zones.json`), one card each for Spot improvement. Method in `tools/spots/validation/README.md`; status per zone in `status.csv`; map from `python3 tools/validation_map.py` → `docs/validation_map.html`. Only Catalonia counted as validated (WHE-65/66/83/59/2). The old France audit of 8 Oct predates the sourced method, so it doesn't count. A zone becomes `validated` only when the Lead merges it; regenerate the map after each merge. WHE-68/69/92 were replaced; WHE-91 (Italy, Greece, Germany) is on hold.
 
 **Lead, where I stopped (3 Nov 17:30).** Main is ahead of GitHub by the WHE-75 merge and the docs/validation commits; push only on Ben's word. WHE-70: Ben uploads the TestFlight build himself from the Organizer archive "WhereToKite 03-11-2026 WHE-70" with `docs/TESTFLIGHT_UPLOAD.md`; close the card when he says it's live. Validation queue: WHE-67 (Roussillon) and Valencia and the Balearics zone cards are `ready` for Spot improvement; after merging each zone, set its `status.csv` line to `validated`, run `python3 tools/validation_map.py`, commit, and move the next 1–2 zone cards to `ready` (order: the rest of Spain and the Mediterranean, then the Atlantic going north, lakes last). Each ticket worktree starts from main at creation, so older ones need `git merge main` first.
+
+## France and Spain validation merged (5 Nov, Lead)
+- 22 zone cards merged into main locally (not pushed): Spain 164 spots, France 191 (Atlantic 133,
+  Med 58). Combined spot check clean. Held for Ben: WHE-79, WHE-92, WHE-108; still running:
+  WHE-101, WHE-117, WHE-124.
+- Rules settled this week: Windy-only markers go in as Pro unless a listed reason applies
+  (unrated ones need a local source, else archived); duplicates only under 1 km on the same
+  water and facing; the build falls back to curl when the system Python can't reach Overpass.
+- Merge gotcha: ticket branches overlap heavily (each starts from atlas/spot-improvement). On a
+  row conflict, keep the version from the zone that owns the row; union TO_CONFIRM sections.

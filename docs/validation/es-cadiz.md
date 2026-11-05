@@ -37,7 +37,7 @@ Windy marker → ours (15 markers from Sanlúcar to Barbate; Bolonia belongs to 
 | Camposoto (3) | San Fernando – Camposoto |
 | Cortadura (2) | Cádiz – Cortadura |
 | Valdelagrana (4) | El Puerto – Valdelagrana |
-| Rota (5) | Rota – El Rompidillo (same launch area: the guide's "Playa Luz" launch is 856 m away; the build rejects spots under 2 km apart, so its details went into the Rompidillo note) |
+| Rota (5) | Rota – El Rompidillo; the guide's second launch, Playa de la Luz, is **added back (Pro, WHE-129)**: 856 m away but facing SW against Rompidillo's ESE (107° apart), so the 1 km rule keeps both (`osm:w439452759`, Playa de la Costilla) |
 | La Ballena (3) | **added (Pro)** Rota – La Ballena |
 | Punta Candor (3) | **added (Pro)** Rota – Punta Candor (one source: the guide) |
 | La Victoria (5) | **added (Pro)** Cádiz – La Victoria (about 2 km north of Cortadura but a different beach break) |
@@ -48,8 +48,8 @@ Windy marker → ours (15 markers from Sanlúcar to Barbate; Bolonia belongs to 
 | Sanlúcar de Barrameda (4) | left out: Las Piletas and Bajo de Guía are used per school listings, but OSM has only unnamed beaches there, so no pin I can trust |
 
 Ours → Windy: every spot has a marker except Rompidillo (nearest: Rota).
-Counts: Windy markers in the zone 15; matched to ours 7 (Caños, Palmar, La Barrosa = Sancti Petri, Camposoto, Cortadura, Valdelagrana, Rota = Rompidillo); added as Pro 4 (La Ballena, Punta Candor, La Victoria, Conil); left out 4 (Buzo, Cádiz, Barbate, Sanlúcar).
-Our spots 7 → 11: 3 free (Caños, Palmar, Sancti Petri), 8 Pro, 0 archived.
+Counts: Windy markers in the zone 15; matched to ours 7 (Caños, Palmar, La Barrosa = Sancti Petri, Camposoto, Cortadura, Valdelagrana, Rota = Rompidillo, which now also has Playa de la Luz as its own row); added as Pro 4 (La Ballena, Punta Candor, La Victoria, Conil); the 2 km rule had kept nothing else out; left out 4 (Buzo, Cádiz, Barbate, Sanlúcar).
+Our spots 7 → 12 (WHE-129 added Playa de la Luz; was 11 before): 3 free (Caños, Palmar, Sancti Petri), 9 Pro, 0 archived.
 Gap: Windy still shows 4 markers we lack; each lacks a pinnable place or any kite source, none is left out for being minor.
 
 ## Open
