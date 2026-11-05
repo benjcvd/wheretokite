@@ -22,6 +22,8 @@ second pass with web research is worth doing.
   kite school). Need a second source each and an OSM pin.
 
 - Cotentin west (WHE-116): no municipal or préfecture kite order found for any of the 7 spots, so no `banned` rule is encoded; Vauville (dune nature reserve), Utah Beach (shellfish beds) and Agon / Jullouville summer limits are worded in `notes` with "check the town hall". Jonville / Réville, once left out as uncertain, is now in as Pro (Windy marker, 3 stars, one tourist-guide source): the pin is the OSM beach of Jonville, to be checked by a local. See docs/validation/fr-cotentin.md.
+
+- Côte d'Opale north (WHE-119, 2026-11-05): Dunkerque summer kite zone (500 m west of Terminus post, 1 Jul–31 Aug) is from a local guide only, prefectoral text not found: kept in notes. Gravelines PFP rules come from the 2024 mayor's order (check 2026). Les Hemmes de Marck pin is still a hamlet node (Apple direction disagrees; OSM N kept). Dunkerque Digue du Braek (Windy 1 star, port sea wall) left out: no OSM element for the riding place. Calais – Blériot-Plage has thin kite sources.
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
 - Hendaye, Anglet – La Madrague: summer windows.
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).

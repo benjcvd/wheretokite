@@ -1,8 +1,8 @@
 country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # France: North Sea, Channel, Atlantic coasts and northern / western inland lakes — format: tools/spots/README.md
-FR,Côte d'Opale,Malo-les-Bains (Dunkerque),sea,osm:w520745148,N,Dunkerque Flysurfing Club beach; very wide at low tide. Also: Bray-Dunes 12 km east (huge flat beach by the Belgian border).,,,,
-FR,Côte d'Opale,Les Hemmes de Marck,sea,osm:n7141980706,N,"Very wide gently sloping beach, flattish water behind sandbanks; best in NW to NE winds. Also: Calais – Blériot-Plage 8 km west; Gravelines – Petit-Fort-Philippe 12 km east (flat petite mer at high tide).",,,,
-FR,Côte d'Opale,Wissant,sea,osm:w106357501,NW,"Between the two capes (venturi): powerful wind and waves, experienced riders. Also: Sangatte 10 km north-east (windiest of the Côte d'Opale), Wimereux – Pointe aux Oies 12 km south (waves).",,,,
+FR,Côte d'Opale,Malo-les-Bains (Dunkerque),sea,osm:w520745148,N,"Dunkerque Flysurfing Club beach; wide sand flats at low tide, shared with sand yachts and wingers. Local guides say 1 Jul–31 Aug the kite zone shrinks to about 500 m west of the Terminus lifeguard post (prefect's order, text not found: ask the town), the dune zone east towards Leffrinckoucke stays open all year. Short chop in strong wind; offshore and gusty in south wind. Also: Bray-Dunes 12 km east.",,,,
+FR,Côte d'Opale,Les Hemmes de Marck,sea,osm:n7141980706,N,"Very wide gently sloping beach (sand-yacht base on it), flattish water behind sandbanks; best in NW to NE winds, quiet, good for freeride and beginners. Platier d'Oye nature reserve nearby: stay on the beach. Also: Calais – Blériot-Plage 8 km west; Gravelines – Petit-Fort-Philippe 12 km east.",,,,
+FR,Côte d'Opale,Wissant,sea,osm:w106357501,NW,"Between the two capes (venturi): often strong wind and waves, confirmed riders. Wide at low tide, more swell and tougher at high tide; sea-wall rocks and currents. Kite schools on site. In SW wind a downwind run to Sangatte works. Also: Sangatte 10 km north-east.",,,,
 FR,Côte d'Opale,Le Touquet,sea,osm:w239544467,W,"Kite school Kitezone launches north of the seafront (Saint-Jean 2 car park). Works in SW to N winds; very big tide range, the beach is wide at low tide. The Canche bay works in E winds around high tide (strong currents). In summer the bathing zone is closed to all board sports. Also: Hardelot 14 km north (low-tide pools), Berck-sur-Mer 14 km south (huge beach, flat pools at low tide).",,,,
 FR,Baie de Somme,Le Crotoy,sea,osm:w587524736,SW,Tidal bay: rideable around high tide only. Do not cross the yellow buoys: kiting is banned in the Baie de Somme nature reserve (Somme Tourisme; the reserve charter says the same). Local schools are at Cayeux and use Le Crotoy at high tide.,,high,,
 FR,Normandie,Quiberville,sea,osm:n8446819588,N,"Marked kite zone (mandatory); works WSW to NW. Pebble beach, sand at low tide.",,,,
@@ -40,12 +40,16 @@ FR,Grand Est,Lac du Der – Giffaumont,lake,q:Plage de Giffaumont-Champaubert,,K
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — 12 km from Malo-les-Bains
-FR,Côte d'Opale,Bray-Dunes,sea,osm:r10626833,N,"Huge flat beach next to the Belgian border; shallow at low tide, more chop at high tide.",,,pro,
+FR,Côte d'Opale,Bray-Dunes,sea,osm:r10626833,N,"Huge flat beach next to the Belgian border; quieter than Dunkerque, regular wind (NW most often); shallow at low tide, more chop at high tide. High season: check the town's beach rules.",,,pro,
+# pro: Windy marker (3 stars); Dunkerque local guide: free dune zone all year, wrecks offshore
+FR,Côte d'Opale,Leffrinckoucke,sea,osm:w234115857,N,"Dune beach just east of Malo-les-Bains, the 'batteries' zone that local guides say stays open to kites all year (when Malo is limited in summer). Several wrecks offshore: be careful. Same winds as Malo.",,,pro,
+# pro: Windy marker (3 stars); kite-forum spot page, campsites mention kite lessons nearby
+FR,Côte d'Opale,Zuydcoote,sea,osm:w234116167,N,"Dune beach between Leffrinckoucke and Bray-Dunes: open sand, regular wind like the rest of the Dunes de Flandre. Dunes are a protected area: use the marked beach access. No school found on the spot.",,,pro,
 # pro: cluster duplicate — Dunkerque/Calais cluster, Les Hemmes de Marck kept
-FR,Côte d'Opale,Gravelines – Petit-Fort-Philippe,sea,osm:w610168882,N,"'Petite mer' behind the sandbank: flat water around high tide with big coefficients, open sea outside. Buoyed kite zone.",,,pro,
-FR,Côte d'Opale,Calais – Blériot-Plage,sea,osm:w35894485,NNW,Watch the wooden groynes at high tide.,,,pro,
+FR,Côte d'Opale,Gravelines – Petit-Fort-Philippe,sea,osm:w610168882,N,"Wide beach, water shallow almost everywhere (a good place to learn); north dunes side is the kite and sand-yacht area. Town order (2024): kites are banned in the supervised bathing zone, and elsewhere only from 100 m east of it; lifeguards 1 Jul–1 Sep, 10:30–18:30. Big tide range: more space at low tide.",,,pro,
+FR,Côte d'Opale,Calais – Blériot-Plage,sea,osm:w35894485,NNW,"Decent freeride in west winds at low tide, waves in NE storms from mid-tide; launch near the jetty. Ferry traffic nearby, busy swimming zone in summer, wooden groynes at high tide. Thin kite sources: check locally.",,,pro,
 # pro: cluster duplicate — 10 km from Wissant, same coast
-FR,Côte d'Opale,Sangatte,sea,osm:r12146698,NW,"Windiest spot of the Côte d'Opale, long waves; groynes on the beach. Kite school on site.",,,pro,
+FR,Côte d'Opale,Sangatte,sea,osm:r12146698,NW,"Windiest spot of the Côte d'Opale (often over 30 knots, strong gusts): confirmed riders only. Breakwaters on the beach are a hazard. Kite school on site.",,,pro,
 # pro: cluster duplicate — 12 km from Wissant
 FR,Côte d'Opale,Wimereux – Pointe aux Oies,sea,osm:n8849229717,W,"Main launch between Wimereux and Ambleteuse: big beach, dunes to rig, SW to N winds via W. Rocks at the point and along the beach; NE to E is offshore and dangerous. Beach is narrow at high tide. Wimkite school uses it. The town beach of Wimereux works at low tide only (about 3 h either side). One guide reports no kiting before 19:00 in July–August, not confirmed by an official text.",,,pro,
 # pro: local / secondary beach — school beach near Boulogne
