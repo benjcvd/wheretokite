@@ -31,8 +31,9 @@ python3 tools/build_spots.py --curated tools/spots/XX.csv --out /tmp/xx.json --r
   the review file. Tidal flats drawn as land and lakes behind a beach are common harmless
   causes. Say so in your report instead of forcing a hint.
 - **Ferry**: `access: ferry` only for real islands.
-- **Duplicates**: launches less than 2 km apart are rejected. Keep the main launch and
-  mention the other one in `notes`.
+- **Duplicates**: launches less than 1 km apart, on the same water and facing the same way,
+  are rejected. Keep the main launch and mention the other one in `notes`. Different water
+  or beaches facing 45° or more apart are kept (warning only).
 
 ## 3. Report
 

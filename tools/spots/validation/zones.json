@@ -1,0 +1,36 @@
+{
+  "_doc": "Validation zones for France and Spain. A spot belongs to the first zone whose regions list its CSV region and whose optional box [minLat, maxLat, minLon, maxLon] contains it. Owned by the Lead; status lives in status.csv. Method: README.md.",
+  "zones": [
+    {"id": "es-catalunya",   "country": "ES", "name": "Catalonia",                                 "regions": ["Catalunya"]},
+    {"id": "es-valencia",    "country": "ES", "name": "Valencia and Aragón",                       "regions": ["Comunitat Valenciana", "Aragón"]},
+    {"id": "es-murcia-almeria","country": "ES", "name": "Murcia, Almería and Granada",             "regions": ["Murcia", "Andalucía"], "box": [36.0, 38.5, -3.9, 0.0]},
+    {"id": "es-strait",      "country": "ES", "name": "Tarifa, the Strait and Málaga",             "regions": ["Andalucía"], "box": [35.9, 36.8, -5.8, -3.9]},
+    {"id": "es-cadiz",       "country": "ES", "name": "Cádiz coast (Rota to Caños de Meca)",       "regions": ["Andalucía"], "box": [36.1, 36.8, -6.6, -5.8]},
+    {"id": "es-huelva",      "country": "ES", "name": "Huelva",                                    "regions": ["Andalucía"], "box": [36.8, 37.6, -7.6, -6.6]},
+    {"id": "es-balears",     "country": "ES", "name": "Balearic Islands",                          "regions": ["Illes Balears"]},
+    {"id": "es-galicia",     "country": "ES", "name": "Galicia",                                   "regions": ["Galicia"]},
+    {"id": "es-north",       "country": "ES", "name": "Asturias, Cantabria and the Basque Country","regions": ["Asturias", "Cantabria", "País Vasco", "Euskadi"]},
+    {"id": "es-canarias",    "country": "ES", "name": "Canary Islands",                            "regions": ["Canarias"]},
+
+    {"id": "fr-roussillon",  "country": "FR", "name": "Roussillon and Leucate",                    "regions": ["Roussillon", "Languedoc"], "box": [42.4, 43.03, 2.9, 3.2]},
+    {"id": "fr-narbonne",    "country": "FR", "name": "Narbonne, Gruissan to Agde, inland lakes",  "regions": ["Languedoc"], "box": [43.03, 43.7, 1.5, 3.5]},
+    {"id": "fr-thau",        "country": "FR", "name": "Étang de Thau and Sète",                    "regions": ["Languedoc"], "box": [43.3, 43.48, 3.5, 3.85]},
+    {"id": "fr-montpellier", "country": "FR", "name": "Montpellier coast to L'Espiguette",         "regions": ["Languedoc"], "box": [43.45, 43.6, 3.85, 4.2]},
+    {"id": "fr-camargue",    "country": "FR", "name": "Camargue and Provence",                     "regions": ["Camargue", "Provence"]},
+    {"id": "fr-var",         "country": "FR", "name": "Var and Côte d'Azur",                       "regions": ["Var", "Côte d'Azur"]},
+    {"id": "fr-corse",       "country": "FR", "name": "Corsica",                                   "regions": ["Corse"]},
+    {"id": "fr-lakes",       "country": "FR", "name": "Alpine and inland lakes",                   "regions": ["Alpes", "Grand Est"]},
+    {"id": "fr-basque-landes","country": "FR", "name": "Landes and Pays basque",                   "regions": ["Landes", "Pays basque"]},
+    {"id": "fr-gironde",     "country": "FR", "name": "Gironde and Arcachon",                      "regions": ["Gironde"]},
+    {"id": "fr-charente",    "country": "FR", "name": "Charente-Maritime (Ré, Oléron, La Rochelle)","regions": ["Charente-Maritime"]},
+    {"id": "fr-loire",       "country": "FR", "name": "Pays de la Loire and Vendée",               "regions": ["Pays de la Loire"]},
+    {"id": "fr-morbihan",    "country": "FR", "name": "South Brittany (Lorient to Quiberon, Morbihan)","regions": ["Bretagne"], "box": [47.0, 47.8, -3.7, -2.0]},
+    {"id": "fr-finistere-s", "country": "FR", "name": "South Finistère (Crozon to Bénodet)",       "regions": ["Bretagne"], "box": [47.7, 48.3, -4.7, -3.7]},
+    {"id": "fr-finistere-n", "country": "FR", "name": "North Finistère and Brest",                 "regions": ["Bretagne"], "box": [48.3, 48.8, -5.0, -3.4]},
+    {"id": "fr-bretagne-ne", "country": "FR", "name": "North-east Brittany (Plérin to Saint-Malo)","regions": ["Bretagne"], "box": [48.4, 48.8, -3.4, -1.5]},
+    {"id": "fr-cotentin",    "country": "FR", "name": "Cotentin (Normandy west)",                  "regions": ["Normandie"], "box": [48.5, 50.0, -2.0, -1.0]},
+    {"id": "fr-normandie-e", "country": "FR", "name": "Calvados and Seine-Maritime (Normandy east)","regions": ["Normandie"], "box": [49.0, 50.2, -1.0, 1.6]},
+    {"id": "fr-opale-s",     "country": "FR", "name": "Côte d'Opale south and Baie de Somme",      "regions": ["Côte d'Opale", "Baie de Somme"], "box": [50.0, 50.85, 1.0, 2.0]},
+    {"id": "fr-opale-n",     "country": "FR", "name": "Côte d'Opale north (Wissant to Dunkirk)",   "regions": ["Côte d'Opale"], "box": [50.85, 51.2, 1.5, 2.7]}
+  ]
+}

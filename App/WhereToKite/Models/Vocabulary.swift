@@ -34,6 +34,7 @@ enum Vocab {
         case "gusty": String(localized: "gusty")
         case "overpowered in gusts": String(localized: "overpowered in gusts")
         case "offshore component", "offshore": String(localized: "offshore", comment: "Wind angle to the beach")
+        case "side-offshore": String(localized: "side-offshore", comment: "Wind angle to the beach")
         case "beach orientation unknown": String(localized: "beach direction unknown")
         case "thunderstorm risk": String(localized: "thunderstorm risk")
         case "kiting banned": String(localized: "kiting banned")

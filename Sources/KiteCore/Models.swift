@@ -162,6 +162,20 @@ public enum Level: String, Codable, CaseIterable, Sendable {
     case beginner, intermediate, advanced
 }
 
+/// How offshore a wind the rider accepts (WHE-75, Ben's rule of 31 Oct). Side-offshore wind
+/// comes over land (gustier) and drifts you out if you can't get back upwind: advanced only,
+/// always flagged. Pure offshore scores 0 for everyone (`ScoringRules.directionScore`).
+public enum OffshoreTolerance: String, Codable, CaseIterable, Sendable {
+    /// Side-shore at most. Default for beginners and intermediates.
+    case sideShoreOnly
+    /// A little side-offshore. Default for advanced riders.
+    case sideOffshore
+
+    public static func `default`(for level: Level) -> OffshoreTolerance {
+        level == .advanced ? .sideOffshore : .sideShoreOnly
+    }
+}
+
 /// Persisted once, reused for every search.
 /// How much each part of the score matters to the rider: 0 = ignore, 1 = default, 2 = a lot.
 /// Applied as exponents on the 0…1 factors (and as a multiplier on the drive penalty), so 1
@@ -190,6 +204,14 @@ public struct RiderProfile: Codable, Equatable, Sendable {
     public var level: Level
     /// nil = defaults (optional so profiles saved before weights existed still load).
     public var weights: ScoreWeights?
+    /// The rider's choice; nil = the default for their level (`offshoreTolerance`).
+    public var offshore: OffshoreTolerance?
+
+    /// What the scoring uses. Beginners never get side-offshore, whatever was saved.
+    public var offshoreTolerance: OffshoreTolerance {
+        get { level == .beginner ? .sideShoreOnly : offshore ?? .default(for: level) }
+        set { offshore = newValue == .default(for: level) ? nil : newValue }
+    }
 
     public var scoreWeights: ScoreWeights {
         get { weights ?? ScoreWeights() }

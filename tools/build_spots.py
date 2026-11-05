@@ -39,7 +39,7 @@ Pipeline
      `access: "ferry"` and, when it lies on an OSM place=island, `island` plus
      the island's simplified outline in the catalogue's `islands` (the app only
      shows such spots to someone on the same island).
-  5. Checks: distance to shore, duplicate spots (< 2 km), OSM kite objects
+  5. Checks: distance to shore, duplicate spots (< 1 km, same water and facing), OSM kite objects
      nearby (corroboration), and reference orientations; the script exits 1 if
      a reference is off by more than 30 deg or a spot is unusable.
 """
@@ -51,10 +51,12 @@ import subprocess
 import csv
 import datetime
 import hashlib
+import io
 import json
 import math
 import os
 import re
+import ssl
 import sys
 import time
 import unicodedata
@@ -79,7 +81,8 @@ ORIENT_WINDOW = 400.0       # metres along the shore each side
 COAST_SEARCH = 3000.0       # max distance spot -> shore
 MAX_SHORE_DIST = 1500.0     # beyond this the spot is rejected
 HINT_SNAP_RADIUS = 1500.0   # how far we may move a spot to the hinted shore
-DUP_RADIUS = 2000.0
+DUP_RADIUS = 1000.0   # same water, same facing: closer than this = one spot (Ben, 5 Nov)
+DUP_FACING_DEG = 45.0  # beaches facing this much apart are different spots, even side by side
 SNAP_IF_FARTHER = 300.0    # move located points this far from the shore onto it
 MIN_WATER_EXTENT = 800.0    # ignore ponds smaller than this (bbox diagonal)
 
@@ -161,6 +164,49 @@ def service_slot(name, slots=1, min_interval=0.0):
         time.sleep(0.5)
 
 
+# Old system Pythons (macOS /usr/bin/python3: LibreSSL 2.8) fail the TLS handshake with
+# overpass-api.de. On the first TLS failure we switch to curl for the rest of the run.
+_USE_CURL = [os.environ.get("WTK_HTTP") == "curl"]
+
+
+class _CurlResp(io.BytesIO):
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        self.close()
+
+
+def _curl_open(req, timeout):
+    cmd = ["curl", "-sS", "-m", str(int(timeout) + 30), "-w", "\n%{http_code}"]
+    for k, v in req.header_items():
+        cmd += ["-H", "%s: %s" % (k, v)]
+    if req.data is not None:
+        cmd += ["--data-binary", "@-"]
+    cmd.append(req.full_url)
+    p = subprocess.run(cmd, input=req.data, capture_output=True)
+    if p.returncode != 0:
+        raise urllib.error.URLError("curl %d: %s" % (p.returncode, p.stderr.decode(errors="replace")[:200]))
+    body, _, code = p.stdout.rpartition(b"\n")
+    if not code.strip().isdigit() or int(code) >= 400:
+        raise urllib.error.URLError("HTTP %s" % code.decode(errors="replace"))
+    return _CurlResp(body)
+
+
+def http_open(req, timeout):
+    """urllib.request.urlopen, falling back to curl when this Python's TLS is too old."""
+    if not _USE_CURL[0]:
+        try:
+            return urllib.request.urlopen(req, timeout=timeout)
+        except (urllib.error.URLError, OSError) as e:
+            reason = getattr(e, "reason", e)
+            if not (isinstance(reason, ssl.SSLError) or "SSL" in str(e) or "TLS" in str(e)):
+                raise
+            log("  TLS failed in this Python (%s): using curl from now on" % (str(e)[:80],))
+            _USE_CURL[0] = True
+    return _curl_open(req, timeout)
+
+
 def overpass(query, label="", endpoints=None):
     """Run an Overpass QL query (JSON output), with caching, retries, mirrors."""
     path = _cache_path("overpass", query)
@@ -178,7 +224,7 @@ def overpass(query, label="", endpoints=None):
             })
             try:
                 with service_slot("overpass", slots=2, min_interval=1.0):
-                    with urllib.request.urlopen(req, timeout=60) as resp:
+                    with http_open(req, 60) as resp:
                         body = resp.read()
                 text = body.decode("utf-8", errors="replace")
                 if not text.lstrip().startswith("{"):
@@ -210,7 +256,7 @@ def _nominatim_get(endpoint, params):
     url = NOMINATIM + endpoint + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with service_slot("nominatim", slots=1, min_interval=1.1):   # policy: max 1 request/s
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        with http_open(req, 30) as resp:
             obj = json.loads(resp.read().decode("utf-8"))
     _cache_put(path, obj)
     return obj
@@ -1242,7 +1288,18 @@ def main():
         ids.add(a["id"])
         for b in spots[i + 1:]:
             d = haversine(a["latitude"], a["longitude"], b["latitude"], b["longitude"])
-            if d < DUP_RADIUS:
+            if d >= DUP_RADIUS:
+                continue
+            # Sea and lagoon (or lake) launches a short walk apart are different spots:
+            # different water, different winds (e.g. Sète La Corniche vs Pont-Levis).
+            turn = abs((a["seaFacingDeg"] - b["seaFacingDeg"] + 180) % 360 - 180)
+            if a.get("waterType") != b.get("waterType"):
+                warnings.append("%s (%s) and %s (%s) are %.0f m apart: kept, different water"
+                                % (a["id"], a.get("waterType"), b["id"], b.get("waterType"), d))
+            elif turn >= DUP_FACING_DEG:
+                warnings.append("%s and %s are %.0f m apart: kept, beaches face %.0f° apart"
+                                % (a["id"], b["id"], d, turn))
+            else:
                 problems.append("%s and %s are only %.0f m apart" % (a["id"], b["id"], d))
 
     # report
