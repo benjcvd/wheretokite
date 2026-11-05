@@ -40,10 +40,10 @@ ES,Illes Balears,Mallorca – Son Serra de Marina,sea,q:Platja de Son Serra de M
 ES,Illes Balears,Menorca – Cala Tirant,sea,osm:r1591017,N,Waves with the tramuntana (N); summer: designated launch area only.,,,,
 # Canarias
 ES,Canarias,Fuerteventura – Flag Beach (Corralejo),sea,osm:w684867252,E,,,,,
-ES,Canarias,Fuerteventura – Sotavento,sea,q:Risco del Paso,SE,"Lagoon at low tide (flat, knee-deep); open sea at high tide. World Cup venue. Also: Costa Calma (flatter water, fewer riders).",,,,
+ES,Canarias,Fuerteventura – Sotavento,sea,q:Risco del Paso,SE,"Tidal lagoon: flat and shallow for a few hours around high tide, mostly on spring tides; at low tide a long walk to the water. Check the tide table. Cross-offshore trade wind, gusty in summer. Beginner friendly, World Cup venue.",,,,
 ES,Canarias,Lanzarote – Famara,sea,q:Playa de Famara,NW,"Waves, trade wind; currents.",,,,
-ES,Canarias,Lanzarote – Costa Teguise,sea,osm:w96680017,E,"Las Cucharas; waves, schools; gusty close to shore.",,,,
-ES,Canarias,Gran Canaria – Pozo Izquierdo,sea,q:Pozo Izquierdo,E,"Very strong wind, waves, rocky: experts. Also: Vargas (trade wind, waves), Bahía Feliz (smaller waves, school).",,,,
+ES,Canarias,Lanzarote – Costa Teguise,sea,osm:w96680017,E,"Las Cucharas bay: calmer inside, chop and swell outside; schools. Gusty close to shore when the wind is too northerly. Los Charcos, 500 m upwind, is the expert-only shallow wave spot.",,,,
+ES,Canarias,Gran Canaria – Pozo Izquierdo,sea,q:Pozo Izquierdo,E,"Very strong trade wind, lava-rock entry (worse at low tide), waves with swell: experts only. Riders launch from the Salinas side, south of the bay; the bay beach itself is reported closed to kiters (no official text found), so ask locally.",,,,
 ES,Canarias,Tenerife – El Médano,sea,osm:w28492650,SE,Trade wind May–Oct; shallow water at the north end.,,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
@@ -173,13 +173,18 @@ ES,Illes Balears,Mallorca – Platja de Muro,sea,osm:w100010935,NE,"Small author
 # pro: local / secondary beach — Menorca, Cala Tirant kept
 ES,Illes Balears,Menorca – Son Bou,sea,osm:r1592814,S,Waves in westerlies; summer: designated launch area only.,,,pro,
 # pro: cluster duplicate — 5 km from Sotavento
-ES,Canarias,Fuerteventura – Costa Calma,sea,osm:r1543928,SE,"Flatter water, fewer riders than Sotavento.",,,pro,
+ES,Canarias,Fuerteventura – Costa Calma,sea,osm:r1543928,SE,"Playa de la Barca, the northern half of the Sotavento beach: flat lagoon at high tide, open water otherwise; schools on site. Check the tide table.",,,pro,
 # pro: local / secondary beach — local easterly option
 ES,Canarias,Lanzarote – Playa Honda,sea,osm:r18367853,S,"Best Lanzarote option in easterlies: long beach, flat water.",,,pro,
 # pro: cluster duplicate — 7 km from Pozo Izquierdo
 ES,Canarias,Gran Canaria – Vargas,sea,osm:w473890331,E,Strong trade wind Apr–Sep; waves.,,,pro,
 # pro: school-only — school beach near Pozo Izquierdo
 ES,Canarias,Gran Canaria – Bahía Feliz,sea,osm:w133266290,SE,Smaller waves than Pozo / Vargas; school (Club Mistral).,,,pro,
+# pro: from the Windy-only list (WHE-107); kite-and-windsurfing-guide, unplug-kitesurf
+ES,Canarias,Fuerteventura – Majanicho,sea,osm:w188309585,N,"Small north-coast bay, waves; one of the most used wave-kite spots of the north. Experienced riders.",,,pro,
+ES,Canarias,Gran Canaria – Playa del Hombre,sea,osm:w124154837,NE,"Cliff-backed beach north of Arinaga; downwind exit is difficult, so strong upwind riders only. Waves with swell.",,,pro,
+ES,Canarias,Gran Canaria – Playa del Águila,sea,osm:w204938457,S,"Next to Bahía Feliz with similar wind but more swell, especially in easterlies; intermediate riders.",,,pro,
+ES,Canarias,Gran Canaria – Arinaga,sea,osm:w289064914,E,"Flat to choppy water, steady trade wind, long pebbly beach; intermediate riders. Best May–September.",,,pro,
 
 # Added 2026-10-22 (Barcelona-area benchmark). Positions from OSM; summer ban = Catalan coast
 # rule until an authorised summer kite zone is confirmed (tools/spots/TO_CONFIRM.md).
