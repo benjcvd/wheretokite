@@ -23,7 +23,7 @@ Windy → ours:
 |---|---|---|
 | Plage de Maguelone (4) | Maguelone | matched |
 | Palavas-les-Flots (5) | none | **left out** (reason 3, not a kite spot): Let's Kite says there is no kite zone on Palavas beach itself; Palavas schools (L'Effet Kiteschool, Monki) boat their students to Petit Travers or Maguelone. The Prévost beach on Palavas's edge is the Maguelone spot. |
-| Le Grand Travers (3) | La Grande-Motte | **left out** (reason 2, same beach): second zone of the town order (access 59–60; Universkite, Monki, Zoomkite, Toploc), but only 1.6 km from our La Grande-Motte pin, same water and winds; the build refuses two spots under 2 km. Folded into the La Grande-Motte notes. |
+| Le Grand Travers (3) | La Grande-Motte – Le Grand Travers | **added (Pro)** on 2026-11-05 (WHE-130), after the duplicate rule dropped to 1 km: second zone of the town order (access 59–60; Universkite, Monki, Zoomkite, Toploc per the earlier check), pin `osm:w26478845` (beach Grand Travers), 1.6 km from the port zone. Spot guides (Hérault tourism, kite-and-windsurfing-guide) place the kite area at accesses 59–60. One guide reports a 15 Jun–15 Sep kite ban, not official, so kept in notes only. |
 | Étang de l'Or (1) | none | **left out** (reason 3): Hérault windsurf guide says the lagoon is unsuitable for kitesurf; tourist office promotes the sea spot at Carnon instead; lowest rating on the map. |
 | La Grande Motte (5) | La Grande-Motte | matched |
 | Étang du Ponant (5) | none | **left out** (reasons 3 and 4): GlissEvolution lists the lagoon for windsurf, wing, catamaran and SUP only, run from the Windsurf Park base; an older Hérault guide says no kitesurf; two school listings mention kite but are unclear. Protected lagoon, and no OSM beach or kite feature to pin (only the water body). Worst case applied. |
@@ -34,6 +34,6 @@ Windy → ours:
 
 Ours → Windy: Maguelone, La Grande-Motte, Boucanet, Port-Camargue, L'Espiguette have a marker; Carnon – Petit Travers has none under that name.
 
-Counts: 9 Windy markers in the zone (Palavas included, it falls inside the box), 5 matched, 0 added, 4 left out.
-Our spots in the zone: 6 → 6 (2 free, 4 Pro, 0 archived).
-Gap: none worth a line; the four left out are a lagoon, a windsurf pond, a town beach with no kite zone and a second zone of the same beach.
+Counts: 9 Windy markers in the zone (Palavas included, it falls inside the box), 5 matched, 1 added (Le Grand Travers, WHE-130), 3 left out.
+Our spots in the zone: 6 → 7 (2 free, 5 Pro, 0 archived).
+Gap: none worth a line; the three left out are a lagoon, a windsurf pond and a town beach with no kite zone.
