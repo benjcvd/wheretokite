@@ -327,3 +327,7 @@ Questions:
 - Palmones: sources disagree on summer; one school says allowed in marked zones. No ban encoded.
 - Windy-only Costa del Sol markers left out for lack of any local source or pinnable beach: Estepona town, Sotogrande, Chilches,
   Torrox, Playa del Chanquete (a follow-up with school pages could add them).
+
+## Settled: Cádiz coast (WHE-100, 5 Nov, rule of 2 Nov)
+- Summer kite bans at La Barrosa / Sancti Petri, El Palmar, Rota (all three beaches) and the reserved summer area at Caños de Meca come only from spot guides and school pages; no town or Costas text found. Rule applied: `banned` stays empty (no official source), the notes say to treat summer as closed or ask a school. Details in `docs/validation/es-cadiz.md`.
+- Windy markers left out: Buzo (no OSM beach fits, sources don't say which beach), Cádiz city (no kite source), Barbate (surf listings only), Sanlúcar de Barrameda (OSM has only unnamed beaches there, can't tell which one kiters use).
