@@ -48,6 +48,6 @@ Windy → ours (21 markers in the zone box):
 
 Ours → Windy: all of ours have a marker except Guissény – Le Vougot (not on Windy).
 
-Counts: 21 Windy markers (8 distinct beaches matched to our 7, the Dossen pair counting once), 2 added (Pro), 12 left out. Our spots in the zone: 8 → 10 (basic 3 → 3, pro 5 → 7, archived 0).
+Counts: 21 Windy markers, 8 matched to ours (the two Dossen markers are one beach), 2 added (Pro), 11 left out. Our spots in the zone: 8 → 10 (basic 3 → 3, pro 5 → 7, archived 0).
 
 Gap: Windy shows 21 markers against our 10. Most of the rest have no local kite source, or no beach to pin (Térénez, Île Grande, Kernisi), or are the same beach as one of ours.
