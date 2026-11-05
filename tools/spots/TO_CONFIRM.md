@@ -12,6 +12,7 @@ second pass with web research is worth doing.
 - Arcachon – Les Arbousiers, Claouey, Andernos – Le Bétey: exact summer bans.
 - Oléron – La Perroche: summer ban reported by guides only (WHE-110, 2026-11-05), no town order found; kept in notes, not encoded.
 - Charente-Maritime (WHE-110): Ré tip and Oléron west-coast wave spots on Windy (Lizay, Baleines, Grignon, Les Palles, Grand Village, Côte Sauvage) left out: only surf sources, see docs/validation/fr-charente.md. Oléron – Gatseau is thin (one directory listing).
+- Cotentin west (WHE-116): no municipal or préfecture kite order found for any of the 7 spots, so no `banned` rule is encoded; Vauville (dune nature reserve), Utah Beach (shellfish beds) and Agon / Jullouville summer limits are worded in `notes` with "check the town hall". Jonville / Réville, once left out as uncertain, is now in as Pro (Windy marker, 3 stars, one tourist-guide source): the pin is the OSM beach of Jonville, to be checked by a local. See docs/validation/fr-cotentin.md.
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
 - Hendaye, Anglet – La Madrague: summer windows.
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
