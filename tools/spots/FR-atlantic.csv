@@ -9,9 +9,9 @@ FR,Normandie,Quiberville,sea,osm:n8446819588,N,"Marked kite zone (mandatory); wo
 FR,Normandie,Merville-Franceville,sea,osm:w809904096,N,"Dedicated kite zone at the west end of Boulevard Wattier, open all year (the only kite beach in July–August). Keep out of the bird reserve at the Orne estuary to the west. Also: Ouistreham – Riva-Bella 5 km west (low tide only).",,,,
 FR,Normandie,Utah Beach,sea,q:Utah Beach,E,Huge beach; best at low to mid tide.,,,,
 FR,Normandie,Agon-Coutainville,sea,osm:w195421511,W,Also: Gouville-sur-Mer 10 km north.,,,,
-FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,Bay of Mont-Saint-Michel: huge tidal range; ride around high tide.,,high,,
-FR,Bretagne,Lancieux,sea,osm:w385324966,N,"Flat, shallow bay; best at low tide. July–August: Saint-Sieu beach is closed, launch at Tête de Chien (low tide) or Roche Morin (high tide). Also: Saint-Malo – Le Sillon 12 km east (urban, summer launch zone).",,,,
-FR,Bretagne,Hillion – Bon Abri,sea,osm:w425935259,N,"Bay of Saint-Brieuc: huge tidal range, ride mid to high tide. Nature reserve nearby. Also: Plérin – Les Rosaires across the bay for easterly winds.",,not-low,,
+FR,Bretagne,Cherrueix,sea,q:Cherrueix plage,N,"Bay of Mont-Saint-Michel: huge tidal range, flat shallow water only when the tide covers the flats, so ride around high tide. Works in W to NW and NE winds. Shared with land yachts (char à voile), which use the same beach.",,high,,
+FR,Bretagne,Lancieux,sea,osm:w385324966,N,"Flat, shallow bay with rocks: stay mid-bay and avoid riding alone (south wind blows offshore). Launch point depends on the wind and tide: Tête de Chien for W wind, Rougeret (Saint-Jacut) for N to NE. 1 Jul–31 Aug: Saint-Sieu and Briantais beaches are closed, launch at Tête de Chien (low tide) or Roche Morin (high tide); schools and guides report it, no town order found, so not encoded.",,,,
+FR,Bretagne,Hillion – Bon Abri,sea,osm:w425935259,N,"Bay of Saint-Brieuc, intermediate level: works in N to NNW wind, ride mid to high tide (the beach is kilometres wide at low tide). The Baie de Saint-Brieuc nature reserve borders the beach: respect its signs and the birds. Plérin – Les Rosaires across the bay works for easterly winds.",,not-low,,
 FR,Bretagne,Saint-Michel-en-Grève (Lieue de Grève),sea,q:Lieue de Grève,N,,,,,
 FR,Bretagne,Santec – Le Dossen,sea,q:Plage du Dossen,W,,,,,
 FR,Bretagne,Keremma,sea,osm:n1723311861,N,5 km of beach between the Kernic and Goulven bays; flat water at low tide. Also: Guissény – Le Vougot 10 km west.,,,,
@@ -75,15 +75,18 @@ FR,Normandie,Gouville-sur-Mer,sea,q:Plage de Gouville-sur-Mer,W,,,,pro,
 # pro: local / secondary beach — local Granville beach
 FR,Normandie,Jullouville,sea,osm:n14064270382,W,Best from mid to low tide.,,not-high,pro,
 # pro: cluster duplicate — 12 km from Lancieux; urban, summer zone restrictions
-FR,Bretagne,Saint-Malo – Le Sillon,sea,osm:w485330850,NW,1 Jul–1 Sep: mandatory launch zone between the Kyriad hotel and Avenue Fuentès. Beach disappears at high spring tides.,,not-high,pro,
+FR,Bretagne,Saint-Malo – Le Sillon,sea,osm:w485330850,NW,"Urban beach. 1 Jul–1 Sep a launch zone is mandatory (about 300 m wide, between the Kyriad hotel and the stairs facing avenue Fuentès, marked by flags); a 300 m kite channel is set by a 2004 maritime-prefecture order, with no seasonal ban reported by the city's beach rules. Most of the beach is covered at high spring tides.",,not-high,pro,
 # pro: restricted (club / permit / summer ban) — banned daytime in summer; Lancieux kept
-FR,Bretagne,Saint-Lunaire – Longchamp,sea,osm:w290703254,N,Banned 10:00–20:00 from 15 June to 15 September.,,,pro,06-15..09-15 10:00-20:00
+FR,Bretagne,Saint-Lunaire – Longchamp,sea,osm:w290703254,N,"Kitesurf is banned on all four beaches of Saint-Lunaire from 10:00 to 20:00, 15 June to 15 September (town hall, beaches page). Outside those hours and dates it is a known Emerald Coast spot.",,,pro,06-15..09-15 10:00-20:00
 # pro: local / secondary beach — local Côtes-d'Armor beach
-FR,Bretagne,Sables-d'Or-les-Pins,sea,osm:w46505869,NW,"Wide shallow beach, mixed sand / shallow water.",,,pro,
+FR,Bretagne,Sables-d'Or-les-Pins,sea,osm:w46505869,NW,Wide sandy beach sheltered from west swell by Cap Fréhel. Best in NE wind (the Erquy school gives lessons here then); NW wind is irregular. Ride mid tide to low tide for steadier wind. Summer bathers: leave the 300 m band through the channel and check the town's rules.,,,pro,
 # pro: local / secondary beach — local Côtes-d'Armor beach
-FR,Bretagne,Erquy – Caroual,sea,osm:w28750087,W,Kite zone away from the bathing area; best in SW to NW winds.,,,pro,
+FR,Bretagne,Erquy – Caroual,sea,osm:w28750087,W,"Kite zone on the west half of the beach only: the half next to the village is a supervised swimming area, no launching. Needs WSW or more for steady wind; at high tide the Pointe de Pléneuf makes it gusty, so mid to low tide is better. Intermediate level, shared with land yachts and swimmers.",,,pro,
 # pro: cluster duplicate — Saint-Brieuc bay, Hillion kept
-FR,Bretagne,Plérin – Les Rosaires,sea,osm:w233870060,NE,"Easterly-wind spot; busy with families in summer, ride off-season.",,,pro,
+FR,Bretagne,Plérin – Les Rosaires,sea,osm:w233870060,NE,"Fallback for easterly winds (also N, NE and NW work) in the Bay of Saint-Brieuc. About 2 km of sand, choppy water, gusty in places, intermediate level. Strong tides and currents near the channels; stay clear of the supervised swimming zone in summer.",,,pro,
+FR,Bretagne,Saint-Cast – Grande Plage,sea,osm:w516133611,E,"Preferred spot of the Emerald Coast schools when the wind turns east. Summer: kiting before 10:00 and after 19:30 and only below mid-tide, 15 Jun–15 Sep, per a school regulation page (no town order found, so not encoded); check with the town hall.",,,pro,
+FR,Bretagne,Saint-Jacut – Le Rougeret,sea,osm:w120673305,N,"North side of the Lancieux bay, for N to NE winds; watch the cliff and shorebreak at high tide. In July and August, school pages say kiting from the Saint-Jacut beaches is banned at high tide; no town order found, so not encoded.",,,pro,
+FR,Bretagne,Étables – Les Godelins,sea,osm:w126196903,NE,"Flat water at low tide behind a sandbank, rocks on both sides. Works in N to NE wind; careful with mussel shells and with the tide. Kite school O-Rider'School works at Binic-Étables.",,low,pro,
 # pro: cluster duplicate — 10 km from Keremma
 FR,Bretagne,Guissény – Le Vougot,sea,osm:w224287590,NW,,,,pro,
 # pro: local / secondary beach — local Abers beach
