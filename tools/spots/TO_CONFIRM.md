@@ -30,6 +30,11 @@ second pass with web research is worth doing.
 - Weak pins (bus stop / place node): Narbonne – La Nautique, Ganguise, Ingril.
   Settled 2026-11-05 (WHE-97): Carnon – Petit Travers now sits on the OSM kite-zone area; L'Espiguette stays on the
   restaurant node at the main car park (the beach polygons are long relations with centres 1.5 km away).
+- Camargue and Provence (WHE-102, 2026-11-05): the summer bans on Marseille – Pointe Rouge and Fos – Le Cavaou
+  (about 15 Jun–15 Sep) have no official text I could find (a blog cites a 2020 prefectoral order for Marseille, a
+  kite guide says Cavaou's signs show no dates). Worst case applied: bans stay, wording in notes says unconfirmed.
+  Saintes-Maries Plage Est restored as Pro. Left out: Saintes-Maries "Wave" (west of the harbour, no source names
+  the beach), Les Renaires (Côte Bleue rocks, no source), Plage Olga (town beach on the Carteau bay).
 - Montpellier coast (WHE-97, 2026-11-05): Le Boucanet's 1 Jun–15 Sep closure and the 2014 La Grande-Motte order
   (n°156) come from guides only, no official page found: kept in notes, no ban encoded. Palavas-les-Flots, Étang du
   Ponant and Étang de l'Or (Windy markers) left out, reasons in docs/validation/fr-montpellier.md.
