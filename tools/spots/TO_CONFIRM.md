@@ -306,3 +306,9 @@ Questions:
 - Palmones: sources disagree on summer; one school says allowed in marked zones. No ban encoded.
 - Windy-only Costa del Sol markers left out for lack of any local source or pinnable beach: Estepona town, Sotogrande, Chilches,
   Torrox, Playa del Chanquete (a follow-up with school pages could add them).
+
+## North Finistère and Brest (WHE-114), settled 5 Nov 2026
+- Brest – Moulin Blanc: the summer closure (1 Jul–31 Aug 09:00–19:00) in `banned` has no source we could find; the Brittany tourist office page only lists lifeguards 13–19 h, and a kite guide mentions a "kite channel in summer". Worst case kept (ban stays). If a Brest or Le Relecq-Kerhuon text shows a kite channel, the ban could become a corridor rule.
+- Landéda – Sainte-Marguerite: sources disagree on the tide (flat at low tide vs. navigable only about 2 h either side of high water). No tide window set; both views in the notes. Local check welcome.
+- Summer swimming zones at Dossen (1 Jun–15 Sep), Sainte-Marguerite south (1 Jul–30 Aug) and Blancs Sablons west (1 Jul–31 Aug) come from one blog (vvanat.fr), no town text found. In notes only, not in `banned`.
+- Left out of the catalogue, no local kite source or nothing to pin: Les Amiets, Boutrouilles, Île de Vierge, Trez Hir, Saint-Jean-du-Doigt, Trezmeur, Grève Rose, Kernisi (no launch place), Térénez and Île Grande (no beach in OSM).
