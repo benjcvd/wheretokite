@@ -17,7 +17,7 @@ or town-hall page could be found for the rules, so none is encoded in `banned`.
 
 ## Windy, both ways (browsed 2026-11-05, zoom 10 and 12 around 47.6 N, 3.2 W)
 
-Windy → ours (22 markers in the zone; Pont Mahé and Sorlock belong to Loire-Atlantique, zone fr-loire):
+Windy → ours (24 markers in the zone; Pont Mahé and Sorlock are in Loire-Atlantique, zone fr-loire, not counted):
 
 | Windy marker (stars) | Ours | Decision |
 |---|---|---|
@@ -46,6 +46,6 @@ Windy → ours (22 markers in the zone; Pont Mahé and Sorlock belong to Loire-A
 
 Ours → Windy: Fort-Bloqué, Gâvres (La Caserne), Kerhillio, Penthièvre, Penvins have a marker. Les Sables Blancs has no marker of its own.
 
-Counts: 22 Windy markers (20 in Morbihan scope + the 2 Loire-Atlantique ones not counted: 20 listed above), 5 matched, 3 added (Pro), 12 left out. Our spots in the zone: 6 → 9 (basic 2 → 4, pro 4 → 5, archived 0).
+Counts: 24 Windy markers, 5 matched, 3 added (Pro), 16 left out. Our spots in the zone: 6 → 9 (basic 2 → 4, pro 4 → 5, archived 0).
 
-Big gap: Windy has about 20 markers against our 9. The main reasons are the 2 km build rule (the Plouharnel / Carnac / Quiberon coast has a marker every 1–2 km), the Carnac summer ban, and Golfe du Morbihan / Rhuys markers with no local source.
+Big gap: Windy has 24 markers against our 9. The main reasons are the 2 km build rule (the Plouharnel / Carnac / Quiberon coast has a marker every 1–2 km), the Carnac summer ban, and Golfe du Morbihan / Rhuys markers with no local source.
