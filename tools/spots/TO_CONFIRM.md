@@ -10,7 +10,8 @@ second pass with web research is worth doing.
 ## France — Channel / Atlantic (FR-atlantic.csv)
 - Bassin d'Arcachon – La Hume: closed during the hunting season (Oct–Nov)?
 - Arcachon – Les Arbousiers, Claouey, Andernos – Le Bétey: exact summer bans.
-- Oléron – La Perroche: banned in summer?
+- Oléron – La Perroche: summer ban reported by guides only (WHE-110, 2026-11-05), no town order found; kept in notes, not encoded.
+- Charente-Maritime (WHE-110): Ré tip and Oléron west-coast wave spots on Windy (Lizay, Baleines, Grignon, Les Palles, Grand Village, Côte Sauvage) left out: only surf sources, see docs/validation/fr-charente.md. Oléron – Gatseau is thin (one directory listing).
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
 - Hendaye, Anglet – La Madrague: summer windows.
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
