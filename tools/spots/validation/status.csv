@@ -23,7 +23,7 @@ fr-charente,review,WHE-110,9,24,9,3,0,docs/validation/fr-charente.md,2026-11-05
 fr-loire,review,WHE-111,8,27,6,9,1,docs/validation/fr-loire.md,2026-11-05
 fr-morbihan,review,WHE-112,9,24,6,3,0,docs/validation/fr-morbihan.md,2026-11-05
 fr-finistere-s,todo,val-fr-finistere-s,,,,,,,
-fr-finistere-n,todo,val-fr-finistere-n,,,,,,,
+fr-finistere-n,review,WHE-114,8,21,8,2,0,docs/validation/fr-finistere-n.md,2026-11-05
 fr-bretagne-ne,todo,val-fr-bretagne-ne,,,,,,,
 fr-cotentin,todo,val-fr-cotentin,,,,,,,
 fr-normandie-e,todo,val-fr-normandie-e,,,,,,,
