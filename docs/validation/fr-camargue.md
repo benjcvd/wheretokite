@@ -34,7 +34,7 @@ Windy → ours:
 | Le Jai (5) | Le Jaï | matched |
 | Marseille (5) | Pointe Rouge | matched |
 | Saintes-Maries Speed (1) | Plage Est | matched (speed canal beside the east beach), restored as Pro |
-| Plage Olga (4) | none | **left out** (reason 3, and same bay as Carteau, about 2 km): plages.tv describes it as the industrial town beach and Carteau as the kite beach; no source names a kite zone at Olga. |
+| Plage Olga (4) | none | **left out** (reason 3 only; the 2 km distance is no longer a reason, rechecked 2026-11-05, WHE-130): plages.tv describes it as the industrial, pebbly, wild/naturist town beach and Carteau as the kite beach; no school, club or guide names a kite zone at Olga. |
 | Les Renaires (2) | none | **left out** (reasons 3 and 4): rocky Côte Bleue shore near Ponteau, no school, club or guide mentions kiting there, and OSM has no element by that name to pin. |
 | Saintes-Maries Wave (4) | none | **left out** (reason 4): waves west of the harbour per kite-and-windsurfing-guide, but no source names the beach and OSM has several unnamed beaches there; can't pin it honestly. Flagged in `TO_CONFIRM.md`. |
 
