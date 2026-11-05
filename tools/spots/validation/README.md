@@ -47,13 +47,17 @@ or "not on Windy". Ignore pure surf markers.
 have goes into the catalogue as `tier` pro (pin from OSM through the pipeline, sector and notes
 from a school, club or town page) **unless there is a good reason not to**, written in the
 table. Good reasons, and only these:
-- Windy shows the spot with no rating, or a rating of 0 (Ben, 5 Nov): note it as
-  "unrated on Windy" and skip it. Read the rating as a visitor sees it on the marker or spot
-  card; never pull it from Windy's data;
 - kiting is banned there all year, or the only access is through a school (official source);
-- it's the same beach as one of ours (same water, under about 2 km, same winds): say which;
+- it's the same beach as one of ours (same water, under 1 km, facing the same way): say which;
 - it isn't a kite spot (surf, wing or windsurf only; harbour; private) per a local source;
 - no OSM element fits the place where people ride, so it can't be pinned.
+**Unrated markers** (no rating or 0 on Windy, read as a visitor sees it, never from Windy's
+data; Ben, 5 Nov) are not skipped, but the bar is higher: they go in as Pro only with a local
+source confirming people kite there (school, club or town page; a forum alone isn't enough)
+and nothing odd about them (pin on a real beach or lake, road access, winds that make sense).
+If anything looks weird or the source is missing, add the row as `archived` with
+`# archived: unrated on Windy, <why>`, so it's kept and easy to revive.
+
 "Not famous enough", "only one source" or "close to another spot" are **not** reasons. One
 source (a school, a club, a forum thread) is enough for Pro. The 10 km rule of
 `../README.md` doesn't apply to these Pro additions.

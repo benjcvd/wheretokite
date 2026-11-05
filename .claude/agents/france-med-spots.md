@@ -36,7 +36,7 @@ Cards titled "Validate the … spots, checked against Windy" follow
 - These cards may use up to 25 web searches (two sources per spot plus the Windy step).
   Commit after each few spots so a cut session loses little.
 - Windy in Chrome as a visitor, both ways, in the report. Windy kite markers we don't have
-  are **added as Pro unless one of the good reasons** listed in the method applies (Ben, 4 Nov). Windy markers with no rating or a rating of 0 are skipped as "unrated on Windy" (Ben, 5 Nov).
+  are **added as Pro unless one of the good reasons** listed in the method applies (Ben, 4 Nov). Unrated Windy markers (no rating or 0) need a local source and nothing odd to go in as Pro; otherwise add them as `archived` (Ben, 5 Nov).
 - Your reply to Ben and the card note always carry the Windy comparison: counts, a table of
   every missing marker (added or why not), and one line on any big gap. Step 4 of the method.
 - Update only your zone's line in `tools/spots/validation/status.csv`. Never set `validated`:
