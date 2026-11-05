@@ -63,6 +63,8 @@ used only to learn the marker names (from the table above), never for positions.
 | Carchuna (2) | added (Pro) – Carchuna, `n13093975140` (Playa Salmonete) | [Kite & windsurfing guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/carchuna-costa-tropical-almeria-spain.html), [granadaspain.co.uk](https://granadaspain.co.uk/carchuna-playa/), AWA Watersports Carchuna courses |
 | Salobreña (4) | matched earlier to Playa Granada | The school 18 Nudos runs from Punta del Río in Salobreña ([Yumping](https://en.yumping.com/water-sports/18-nudos-surf-club--e19703478)); a few km from Playa Granada. Left as matched |
 
+Duplicate rule (fb58a7b, 1 km, same water and facing): only Lo Pollo is left out for closeness; it is about 500 m from Los Nietos on the same shore, so it stays a duplicate. Nothing else here was left out as "too close".
+
 Unrated rule (5 Nov): every missing marker above had 2 to 5 stars when I browsed it as a visitor on 3 Nov, so the unrated rule (Pro only with a local source, else archived) does not apply to any of them.
 
 Counts: 15 Windy kite markers in the zone: 5 matched to our existing spots, 7 added as Pro, 3 left out (Pueblo Cálido: can't be pinned;
