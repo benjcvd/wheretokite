@@ -19,7 +19,7 @@ fr-corse,review,WHE-104,12,27,5,6,0,docs/validation/fr-corse.md,2026-11-05
 fr-lakes,todo,val-fr-lakes,,,,,,,
 fr-basque-landes,todo,val-fr-basque-landes,,,,,,,
 fr-gironde,todo,val-fr-gironde,,,,,,,
-fr-charente,todo,val-fr-charente,,,,,,,
+fr-charente,review,WHE-110,9,24,9,3,0,docs/validation/fr-charente.md,2026-11-05
 fr-loire,todo,val-fr-loire,,,,,,,
 fr-morbihan,review,WHE-112,9,24,6,3,0,docs/validation/fr-morbihan.md,2026-11-05
 fr-finistere-s,todo,val-fr-finistere-s,,,,,,,

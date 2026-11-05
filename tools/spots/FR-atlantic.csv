@@ -24,10 +24,10 @@ FR,Pays de la Loire,Assérac – Pont-Mahé,sea,osm:w467953849,W,"Shallow bay, y
 FR,Pays de la Loire,La Baule,sea,q:Plage de La Baule,S,"Plage Benoît: flat water behind the sandbank at low tide, kite schools. 15 June–15 September: banned from the beach, experienced riders only via the K13 channel at the La Baule / Pornichet border.",,,,06-15..09-15
 FR,Pays de la Loire,Notre-Dame-de-Monts,sea,q:Plage de Notre-Dame-de-Monts,W,"Wide beach at low tide. Also: Fromentine 7 km north (flat channel facing Noirmoutier, 2 h either side of low tide).",,,,
 FR,Pays de la Loire,La Tranche-sur-Mer,sea,osm:w107576526,SW,"Plage du Phare, facing Île de Ré: waves and current, good level needed. May–September: the only beach where kiting is allowed.",,,,
-FR,Charente-Maritime,Île de Ré – Rivedoux,sea,osm:w1497408059,N,"North beach, marked kite zone; flat, works NW to NE. Oyster beds reduce space at low tide. Also: Les Portes (Trousse-Chemise) at the north tip for N to E winds.",,not-low,,
-FR,Charente-Maritime,Châtelaillon-Plage,sea,osm:w131602195,W,"Kite area south of the main beach; all tides. Also: La Rochelle – Aytré 6 km north (muddy bay, around high tide).",,,,
-FR,Charente-Maritime,Oléron – Plage des Huttes,sea,osm:w1494402921,W,"Flat basin behind the reef around low tide, shore break at high tide. Avoid the bathing zones in summer. Also: Plaisance (N to E winds), Gatseau (south-facing bay, flat at high tide).",,,,
-FR,Charente-Maritime,La Palmyre – Bonne Anse,sea,osm:r2953870,S,"Sheltered shallow bay, best on the rising tide (strong ebb currents).",,not-low,,
+FR,Charente-Maritime,Île de Ré – Rivedoux,sea,osm:w1497408059,N,"North beach (bridge to the esplanade), partly reserved for kitesurfing; sheltered from waves, shallow, school on the beach. Works NW to NE (guides). Oyster beds cut the space at low tide, so best from mid to high tide. Stay away from the bridge. Summer limits are set by the town hall: check the buoyed zone.",,not-low,,
+FR,Charente-Maritime,Châtelaillon-Plage,sea,osm:n6620491493,W,"Kite area south of the main beach, in front of the sea wall; two blue flags mark it in summer and it is restricted then (check the town hall). Flat at low tide with rocks offshore, good riding at high tide. School on site. Exposed to swell.",,,,
+FR,Charente-Maritime,Oléron – Plage des Huttes,sea,osm:w1494402921,W,"5 km beach, windy all year, sheltered from the open ocean; works S to NW and most of all in NW wind (Seulières end). Flat at low tide, shore break at high tide, beach narrows at high tide. A kite zone is set aside in summer (blue flags) and the town hall limits hours: check before riding. Rocks and currents on big tides; schools on the beach.",,,,
+FR,Charente-Maritime,La Palmyre – Bonne Anse,sea,osm:r2953870,S,"Sheltered shallow bay with a muddy bottom, school on the esplanade. Works in every wind except N and NE. Ride the rising tide, about 2 h either side of high water; strong currents when the bay empties.",,not-low,,
 FR,Gironde,Lac d'Hourtin-Carcans,lake,q:Hourtin Port,W,Lake: flat water; stay south of the yellow buoy line.,,,,
 FR,Gironde,Lac de Lacanau,lake,osm:w340755108,,Lake: flat water; use the marked channel in summer. Also: Lacanau-Océan 7 km west for waves (experienced riders).,,,,
 FR,Gironde,Bassin d'Arcachon – Claouey,sea,osm:w570377210,SE,"Tidal basin, 2–3 h either side of high tide; muddy bottom, oyster shells. Closed July–August. Also: Andernos (Le Bétey), La Hume and Les Arbousiers elsewhere on the basin.",,high,,07-01..08-31
@@ -116,15 +116,15 @@ FR,Pays de la Loire,Fromentine,sea,osm:r2982134,W,"Flat water in the channel fac
 # pro: local / secondary beach — local Vendée beach
 FR,Pays de la Loire,Bretignolles-sur-Mer,sea,osm:n13123697769,W,"Kite zone on the Plage des Dunes, buoyed in July–August.",,,pro,
 # pro: cluster duplicate — second Île de Ré spot, Rivedoux kept
-FR,Charente-Maritime,Île de Ré – Les Portes (Trousse-Chemise),sea,osm:w260764654,NE,Flat shallow bay with a sandbank at low tide; works N to E. Strong currents near the Fier d'Ars.,,,pro,
+FR,Charente-Maritime,Île de Ré – Les Portes (Trousse-Chemise),sea,osm:w260764654,NE,"Flat water on the sandbank (Banc du Bucheron) that shows at low tide; works E, NE and N, blowing you back to the beach. Confirmed riders: strong current along the bank towards the Fier d'Ars, check the tide first. Club and travelling school on site.",,,pro,
 # pro: cluster duplicate — muddy, 6 km from Châtelaillon
-FR,Charente-Maritime,La Rochelle – Aytré,sea,osm:n6801705155,W,"Muddy shallow bay, ride 2 h either side of high tide; works SW to NW.",,high,pro,
+FR,Charente-Maritime,La Rochelle – Aytré,sea,osm:n6801705155,W,"Long beach with muddy shallow water, shells and mussels (wear shoes). Ride about 2 h either side of high tide; works SW to NW. Crowded on windy days, school on site.",,high,pro,
 # pro: cluster duplicate — Oléron cluster, Plage des Huttes kept
-FR,Charente-Maritime,Oléron – Plaisance,sea,osm:w1238604909,NE,"Works N to E, all tides; marked kite zone in summer.",,,pro,
+FR,Charente-Maritime,Oléron – Plaisance,sea,osm:w1238604909,NE,"Calm, shallow water, no swell or rocks (mussels: wear shoes); good for learning. Works N to NE, and morning SE; any tide. In summer the allowed zone is on the left of the beach and kiting is only before the lifeguards open (11:00) and after 19:00: check the town hall.",,,pro,
 # pro: restricted (club / permit / summer ban) — banned in summer; Oléron cluster
-FR,Charente-Maritime,Oléron – La Perroche,sea,osm:w176499349,SW,"Rocks, intermediate riders; banned in summer.",,,pro,
+FR,Charente-Maritime,Oléron – La Perroche,sea,osm:w176499349,SW,"Intermediate to expert: SW to W wind, hard to ride downwind, big shore break at high tide. Reported banned in summer (with La Rémigeasse next door; town orders since 2022): no official text found, check the town hall. Rémigeasse beach is being rebuilt in 2026.",,,pro,
 # pro: cluster duplicate — Oléron cluster, La Palmyre opposite
-FR,Charente-Maritime,Oléron – Gatseau,sea,q:Plage de Gatseau,S,Shallow south-facing bay; flat around high tide.,,not-low,pro,
+FR,Charente-Maritime,Oléron – Gatseau,sea,osm:w1238639059,S,"South-facing bay at the tip of the island, flat around high tide. Hard to reach (small train from Saint-Trojan), no school. Strong tidal currents near the Maumusson pass: local knowledge needed.",,not-low,pro,
 # pro: local / secondary beach — local estuary beach
 FR,Gironde,Le Verdon – La Chambrette,sea,osm:w577835350,NE,"Estuary beach for E to NE winds, 2 h either side of high tide.",,high,pro,
 # pro: cluster duplicate — Lac de Lacanau kept; summer restrictions
@@ -153,3 +153,6 @@ FR,Pays basque,Hendaye,sea,osm:n5228438622,N,Only Basque beach without cliffs. B
 FR,Grand Est,Lac d'Orient – Mesnil-Saint-Père,lake,osm:w117776916,NW,"Experienced riders, March to October, through the local clubs (AWA, Flysurf10); beaches closed 15 June–15 September.",,,archived,
 # archived: restricted (club / permit / summer ban) — club-only lake
 FR,Grand Est,Lac de Madine,lake,osm:n6760961924,SW,"Club-only (AKL membership and FFVL licence required); main beach for SW–W winds, gusty.",,,archived,
+FR,Charente-Maritime,Île de Ré – La Couarde (Peu Ragot),sea,osm:w194912872,SW,"Windiest beach of the island in summer thermal wind; a kite zone is listed on the beach and a kite school works from La Couarde (Boutillon). Lifeguarded 11:00-19:00 in July and August: check the town hall for the kite corridor.",,,pro,
+FR,Charente-Maritime,Île de Ré – Le Gros Jonc,sea,osm:w194912874,SW,"Big beach at Le Bois-Plage with a stretch kept for gliding sports next to the bathing area; named by island guides as a kite spot. Works best at high tide on sand. No kite school confirmed: check locally.",,,pro,
+FR,Charente-Maritime,Fouras – Plage Nord,sea,osm:w89679888,N,"Tourist office says kitesurfing is possible on the north beach; watch the rocks at low tide. No school on the beach (nearest at Châtelaillon).",,not-low,pro,
