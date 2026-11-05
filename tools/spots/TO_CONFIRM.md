@@ -27,8 +27,12 @@ second pass with web research is worth doing.
 - Exact launches: Marseillan (pinned at Maldormir), Frontignan – Ingril, Saint-Cyprien –
   Pont des Basses, Lac de la Ganguise (Auberge Le Cathare?).
 - Bonifacio – Balistra: still kited since the school closed in 2023?
-- Weak pins (bus stop / place node): Carnon – Petit Travers, Narbonne – La Nautique,
-  Ganguise, Ingril; L'Espiguette is on a restaurant at the main car park.
+- Weak pins (bus stop / place node): Narbonne – La Nautique, Ganguise, Ingril.
+  Settled 2026-11-05 (WHE-97): Carnon – Petit Travers now sits on the OSM kite-zone area; L'Espiguette stays on the
+  restaurant node at the main car park (the beach polygons are long relations with centres 1.5 km away).
+- Montpellier coast (WHE-97, 2026-11-05): Le Boucanet's 1 Jun–15 Sep closure and the 2014 La Grande-Motte order
+  (n°156) come from guides only, no official page found: kept in notes, no ban encoded. Palavas-les-Flots, Étang du
+  Ponant and Étang de l'Or (Windy markers) left out, reasons in docs/validation/fr-montpellier.md.
 - Leucate, not added (no reliable OSM position, possibly duplicates): La Mine (likely = Le Goulet),
   Les Pilotis (Port Leucate?), the west shore of the Étang de Leucate near Salses.
 - Not added as duplicate: Argelès-Plage (= Le Racou).
