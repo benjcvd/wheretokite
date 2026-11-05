@@ -4,7 +4,7 @@ es-valencia,validated,WHE-93,10,36,33,18,1,docs/validation/es-valencia.md,2026-1
 es-murcia-almeria,review,val-es-murcia-almeria,7,15,5,0,0,docs/validation/es-murcia-almeria.md,2026-11-03
 es-strait,validated,val-es-strait,12,21,10,5,0,docs/validation/es-strait.md,2026-11-05
 es-cadiz,validated,WHE-100,7,15,7,4,0,docs/validation/es-cadiz.md,2026-11-05
-es-huelva,todo,val-es-huelva,,,,,,,
+es-huelva,review,WHE-101,8,9,7,4,0,docs/validation/es-huelva.md,2026-11-05
 es-balears,validated,WHE-94+WHE-123,16,17,4,9,0,docs/validation/es-balears.md,2026-11-05
 es-galicia,validated,val-es-galicia,7,30,5,3,0,docs/validation/es-galicia.md,2026-11-05
 es-north,validated,val-es-north,7,25,5,13,0,docs/validation/es-north.md,2026-11-05

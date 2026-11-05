@@ -87,7 +87,7 @@ second pass with web research is worth doing.
 - Mar Menor: rules after the lagoon's environmental crisis.
 - Mallorca – Pollença: zone at Can Cullerassa? Settled 2026-11-03 (WHE-94): no kite-zone source for it (only a windsurf beach), pin stays on Sa Marina. Details in docs/validation/es-balears.md.
 - Embalse de La Loteta: launch (pinned at the marina, not the club's south spot).
-- Huelva summer zones.
+- Huelva summer zones. Settled 2026-11-05 (WHE-101): no source for any Huelva kite zone or summer dates (the old Casita Azul "restricted from 15 Jun" claim was unsourced and is removed); notes say keep clear of bathers, no `banned`. Details in docs/validation/es-huelva.md.
 - Left out (Ibiza and Formentera re-checked 2026-11-03, WHE-94: kiting Nov–May only, no school, Ses Illetes banned May–Oct, stays out): Ibiza, Basque Country, Embalse del Ebro, Lo Pagán, El Saler, Patacona, Cullera,
   Fornells, El Cotillo.
 - Portugal pass (2026-10-22), still open:
