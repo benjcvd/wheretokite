@@ -1,7 +1,7 @@
 # Canary Islands validation (zone es-canarias, WHE-107)
 
 Date: 2026-11-05. Method: [validation README](../../tools/spots/validation/README.md). 10 spots in
-`tools/spots/ES.csv` before, 13 after (3 added as Pro). Past work: initial Spain pass and the 2026-10
+`tools/spots/ES.csv` before, 14 after (4 added as Pro). Past work: initial Spain pass and the 2026-10
 trimming only; no Canary-specific sourced check in `git log`.
 
 **Limits (said plainly):**
@@ -30,7 +30,7 @@ trimming only; no Canary-specific sourced check in `git log`.
 
 Windy kite markers in the zone: **24** (Fuerteventura 6, Lanzarote 6, Gran Canaria 9, Tenerife 3; none on La Palma/La Gomera/El Hierro read).
 Matched to ours: 7 (Sotavento, Flag Beach, Famara, Playa Honda, Vargas, Salinas de Pozo = our Pozo Izquierdo, Medano Bay).
-Added Pro: 3. Left out: 14.
+Added Pro: 4. Left out: 13.
 
 | Windy marker (★) | Result |
 |---|---|
@@ -48,16 +48,16 @@ Added Pro: 3. Left out: 14.
 | La Pared (4) | left out: surf spot, weak wind per a Dutch spot guide (hanglos/guides) |
 | La Santa (4) | left out for now: sources conflict (reef surf spot), no pin checked |
 | La Garita (3) | left out for now: beginner beach, one guide, no pin checked |
-| Los Charcos (5) | left out: same bay as Costa Teguise, 500 m upwind (expert shallow chop); now named in its notes |
+| Los Charcos (5) | left out: 662 m from Costa Teguise and faces 132° vs 124° (8° apart): duplicate under the 1 km rule (main fb58a7b). Named in Costa Teguise's notes |
 | La Graciosa north (1) | left out: 1 star, island only by boat, no pin |
 | Playa del Hombre (4) | **added (Pro)**, OSM w124154837, Kiteforum (experts only, cliffs downwind) |
 | Gáldar (3), Jinámar (2), Punta Blanca (3) | left out: no kite source found |
 | Maspalomas (5), Ketchup (3), Güímar (4) | left out for now: kite sources exist (unplug, kite-and-windsurfing-guide) but Maspalomas is a nature-reserve dune beach shared with bathers and naturists, and Ketchup / Güímar could not be pinned (Overpass timeouts). Second pass |
-| Playa del Águila (4) | left out: same water as Bahía Feliz (adjacent beach, same winds), per guide |
+| Playa del Águila (4) | **added (Pro)**, OSM w204938457, 1.2 km from Bahía Feliz and faces 142° vs 166°; kite-and-windsurfing-guide (more swell in easterlies) |
 
 Ours → Windy: Costa Calma, Bahía Feliz: no marker of their own (Costa Calma sits inside Windy's Sotavento marker area; Bahía Feliz next to Playa del Águila).
 
-**Gap:** Windy shows 24 markers and we cover 10 of them. Most missing ones are secondary or surf beaches, but 5 have kite sources
+**Gap:** Windy shows 24 markers and we cover 11 of them. Most missing ones are secondary or surf beaches, but 5 have kite sources
 (El Cotillo, Maspalomas, Ketchup, Güímar, La Santa) and need a second pass once Overpass answers.
 
 ## Sources

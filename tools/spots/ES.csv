@@ -131,7 +131,8 @@ ES,Canarias,Gran Canaria – Vargas,sea,osm:w473890331,E,Strong trade wind Apr�
 ES,Canarias,Gran Canaria – Bahía Feliz,sea,osm:w133266290,SE,Smaller waves than Pozo / Vargas; school (Club Mistral).,,,pro,
 # pro: from the Windy-only list (WHE-107); kite-and-windsurfing-guide, unplug-kitesurf
 ES,Canarias,Fuerteventura – Majanicho,sea,osm:w188309585,N,"Small north-coast bay, waves; one of the most used wave-kite spots of the north. Experienced riders.",,,pro,
-ES,Canarias,Gran Canaria – Playa del Hombre,sea,osm:w124154837,E,"Cliff-backed beach north of Arinaga; downwind exit is difficult, so strong upwind riders only. Waves with swell.",,,pro,
+ES,Canarias,Gran Canaria – Playa del Hombre,sea,osm:w124154837,NE,"Cliff-backed beach north of Arinaga; downwind exit is difficult, so strong upwind riders only. Waves with swell.",,,pro,
+ES,Canarias,Gran Canaria – Playa del Águila,sea,osm:w204938457,S,"Next to Bahía Feliz with similar wind but more swell, especially in easterlies; intermediate riders.",,,pro,
 ES,Canarias,Gran Canaria – Arinaga,sea,osm:w289064914,E,"Flat to choppy water, steady trade wind, long pebbly beach; intermediate riders. Best May–September.",,,pro,
 
 # Added 2026-10-22 (Barcelona-area benchmark). Positions from OSM; summer ban = Catalan coast
