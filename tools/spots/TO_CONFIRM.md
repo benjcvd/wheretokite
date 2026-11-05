@@ -299,3 +299,12 @@ Questions:
 ## Settled: Cádiz coast (WHE-100, 5 Nov, rule of 2 Nov)
 - Summer kite bans at La Barrosa / Sancti Petri, El Palmar, Rota (all three beaches) and the reserved summer area at Caños de Meca come only from spot guides and school pages; no town or Costas text found. Rule applied: `banned` stays empty (no official source), the notes say to treat summer as closed or ask a school. Details in `docs/validation/es-cadiz.md`.
 - Windy markers left out: Buzo (no OSM beach fits, sources don't say which beach), Cádiz city (no kite source), Barbate (surf listings only), Sanlúcar de Barrameda (OSM has only unnamed beaches there, can't tell which one kiters use).
+## Settled: Tarifa, the Strait and Málaga (WHE-99, 5 Nov, rule of 2 Nov)
+- Tarifa Balneario and Bolonia: the 15 Jun–15 Sep ban has no official source (no Ayuntamiento de Tarifa text found; schools and
+  guides only say "strict in summer" and "winter only" for Bolonia). Worst case: ban kept as encoded, notes say the source is missing.
+- Tarifa Los Lances: the "15 Jun–15 Sep" dates were removed from the note (no source); marked summer zones stay in the note, no ban encoded.
+- Málaga Los Álamos: Aena restricted kiting at Guadalmar in 2015 (plane accident, Euro Weekly News); schools work there today but I
+  found no official text on the current zone. Kept as a free spot with the warning in the note.
+- Palmones: sources disagree on summer; one school says allowed in marked zones. No ban encoded.
+- Windy-only Costa del Sol markers left out for lack of any local source or pinnable beach: Estepona town, Sotogrande, Chilches,
+  Torrox, Playa del Chanquete (a follow-up with school pages could add them).

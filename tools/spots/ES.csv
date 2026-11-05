@@ -14,10 +14,10 @@ ES,Comunitat Valenciana,Santa Pola – La Gola,sea,q:Playa de La Gola Santa Pola
 ES,Murcia,Mar Menor – Los Narejos,lagoon,osm:w107723436,SE,"Flat-water lagoon, kite zone and school; E and SW (lebeche) most common. Also: Los Nietos (south shore, onshore in NE/E), La Manga – Isla del Ciervo.",,,,
 # Andalucía — Mediterranean
 ES,Andalucía,Almerimar,sea,osm:w1474402756,S,"Poniente (W) spot by the marina: flat between the breakwaters, waves further out. Also: Roquetas de Mar – Las Salinas (levante).",,,,
-ES,Andalucía,Málaga – Los Álamos,sea,osm:w1555163983,SE,"Official kite zone (Los Álamos / Guadalmar), moved during the bathing season; SW thermal Apr–Oct.",,,,
+ES,Andalucía,Málaga – Los Álamos,sea,osm:w1555163983,SE,"Málaga's kite zone (Guadalmar–Los Álamos), with schools. Afternoon poniente plus SW sea breeze, 15–20 kn in spring and summer; gusty and offshore towards evening. Crowded (up to 40 kites). Aena (airport) restricted kiting here in 2015 after a plane accident; check the current zone with a school.",,,,
 # Andalucía — Strait and Cádiz Atlantic coast
-ES,Andalucía,Tarifa – Los Lances,sea,osm:w1134220405,SW,"Los Lances Norte (Río Jara–Waves). Summer: school and free-rider zones only, no kiting from Río Jara to town 15 Jun–15 Sep. Also: Tarifa – Balneario (experts only, rocks and currents; no kiting 15 Jun–15 Sep).",,,,
-ES,Andalucía,Tarifa – Valdevaqueros,sea,osm:w186110526,S,Includes Punta Paloma; summer kite zone is crowded; rocks at low tide. Also: Bolonia (no kiting in summer).,,,,
+ES,Andalucía,Tarifa – Los Lances,sea,osm:w1134220405,SW,"Los Lances Norte (Río Jara), the main Tarifa kite beach, all levels, levante or poniente. In summer there are marked zones for bathers, schools and free-riders: stay in them. The south of the beach is for bathing only. Exact summer dates not confirmed by an official source. Also: Tarifa – Balneario (experts only, strong levante).",,,,
+ES,Andalucía,Tarifa – Valdevaqueros,sea,osm:w186110526,S,"Includes Punta Paloma. Levante is side-offshore (drift), poniente is the easy wind. Narrow summer riding area shared with bathers and windsurfers, very crowded; rocks in parts of the area. Not for beginners in strong levante.",,,,
 ES,Andalucía,Los Caños de Meca,sea,q:Playa de Los Caños de Meca,SE,"Levante (E) spot, works from about force 6 in Tarifa; the wind is lighter than in the Strait. Reef and rocks on the beach; kiters launch down the point towards the Trafalgar lighthouse. Intermediate and above. A school page says part of the beach is reserved in summer and marked bathing zones must be respected; no official text found, ask a local school.",,,,
 ES,Andalucía,El Palmar (Vejer),sea,q:Playa de El Palmar Vejer de la Frontera,SW,"Poniente (W to NW) is the main wind; levante is weak here. Powerful shorebreak at high tide and a strong current in poniente: experienced riders. Mostly a surf beach. A spot guide says kiting is banned here in summer; no official text found, so treat summer as closed.",,,,
 ES,Andalucía,Chiclana – Sancti Petri,sea,osm:w198773943,SW,"La Barrosa beach, south end at Sancti Petri. Poniente (W to NW) works once strong; levante from the SSE also. The Sancti Petri island shelters it from west swell. Kite Surf Chiclana has run lessons on the beach since 2006. A spot guide says kiting is banned June to September; no official text found, ask the school.",,,,
@@ -80,13 +80,13 @@ ES,Andalucía,Roquetas de Mar – Las Salinas,sea,osm:w186053977,E,"Quiet beach 
 # pro: local / secondary beach — local spot
 ES,Andalucía,Motril – Playa Granada,sea,osm:w96307227,S,Levante and poniente; shorebreak in strong poniente. School on the beach.,,,pro,
 # pro: local / secondary beach — buoyed-channel local spot
-ES,Andalucía,Marbella – Los Monteros,sea,osm:r1714644,S,Río Real: summer access only through the buoyed channel (levante); poniente waves in winter. Rocky entry.,,,pro,
+ES,Andalucía,Marbella – Los Monteros,sea,osm:r1714644,S,"Río Real / Los Monteros: flat water in levante, poniente waves in winter. Rocky entry at Río Real. The town hall agreed a 300 m kite zone on Playa Los Monteros with Marbella Kite Club (2019); in summer use the official zone and channels.",,,pro,
 # pro: local / secondary beach — weaker strong-levante fallback for Tarifa
-ES,Andalucía,Algeciras – Palmones,sea,osm:w236560364,S,Strong-levante alternative to Tarifa (weaker wind); no kiting in summer; keep out of the river and marsh reserve.,,,pro,
+ES,Andalucía,Algeciras – Palmones,sea,osm:w236560364,S,"Levante only: the fallback when levante is very strong at Tarifa. All levels, but crowded with schools. Keep out of the river, lagoon and marsh. Sources disagree on summer: one school says kiting is allowed in marked zones, another says not; no official ban found.",,,pro,
 # pro: cluster duplicate — Tarifa town, experts only; Los Lances kept
-ES,Andalucía,Tarifa – Balneario,sea,osm:w672119807,SW,"Experts only (rocks, currents); levante freestyle, poniente waves. No kiting 15 Jun–15 Sep.",,,pro,06-15..09-15
+ES,Andalucía,Tarifa – Balneario,sea,osm:w672119807,SW,"Experts only: strong levante is straight offshore, rocks and currents. Used mostly outside summer. No kiting 15 Jun–15 Sep (dates from earlier passes, official source not found; kept as the safe choice).",,,pro,06-15..09-15
 # pro: cluster duplicate — near Valdevaqueros, no kiting in summer
-ES,Andalucía,Bolonia,sea,q:Playa de Bolonia,S,No kiting in summer.,,,pro,06-15..09-15
+ES,Andalucía,Bolonia,sea,q:Playa de Bolonia,S,"Tolerated in winter only, east side of the bay from the village outskirts; waves in winter. No kiting in summer (dates not confirmed by an official source, kept as the safe choice).",,,pro,06-15..09-15
 # pro: cluster duplicate — Cádiz–Chiclana coast, Sancti Petri kept
 ES,Andalucía,San Fernando – Camposoto,sea,osm:r16174862,SW,"Strong poniente (W) with messy waves and a powerful shorebreak at high tide. Former military zone: old shell casings can turn up on the beach. No kite club or summer rule found: ask locally.",,,pro,
 # pro: cluster duplicate — Cádiz–Chiclana coast, Sancti Petri kept
@@ -174,3 +174,9 @@ ES,Illes Balears,Ibiza – Platja d'en Bossa,sea,osm:w119370890,SE,"South coast 
 ES,Illes Balears,Ibiza – Cala Martina,sea,osm:w132655686,SW,"Small beach on the north-east coast, south and south-west winds (very onshore), mostly Oct–May. Little room on land: one guide says launch from a boat. Kiting only Nov–May on Ibiza, check the signs.",,,pro,
 ES,Illes Balears,Formentera – Ses Illetes,sea,osm:w737053149,W,"Park beach at Ses Salines with flat turquoise water; a known Balearic spot outside the tourist season. Kiting banned May–Oct inside the Ses Salines park per tourist-board sources. Rentals and courses on the beach.",,,pro,
 ES,Illes Balears,Formentera – Platja de Migjorn (Ca Marí),sea,osm:w1381403167,S,"Long south-coast beach; works in light easterlies for freeride, shorebreak when the wind is strong. Summer restrictions apply near bathers.",,,pro,
+# pro: Windy-only marker (WHE-99); Costa del Sol thermal beaches, one guide / school source each
+ES,Andalucía,Estepona – Guadalmansa (Heaven),sea,osm:w576972096,S,"Heaven Kite School is based on this beach. Light thermal levante or poniente; crowded in summer and bathing zones apply, so ask the school where to launch.",,,pro,
+ES,Andalucía,Marbella – Cabopino,sea,osm:w230611183,S,"Listed by the Costa del Sol spot guide. Light thermal levante or poniente; crowded in summer and bathing zones apply, so check the local rules before launching.",,,pro,
+ES,Andalucía,San Pedro de Alcántara,sea,osm:w322423323,S,"Listed by the Costa del Sol spot guide. Light thermal levante or poniente; crowded in summer and bathing zones apply, so check the local rules before launching.",,,pro,
+ES,Andalucía,Mijas – El Chaparral,sea,osm:w544536226,S,"Listed by the Costa del Sol spot guide. Light thermal levante or poniente; crowded in summer and bathing zones apply, so check the local rules before launching.",,,pro,
+ES,Andalucía,Algeciras – Getares,sea,osm:w178722711,E,"Levante spot, a calmer fallback when Tarifa is above about 30 knots; onshore wind, intermediate and advanced riders. A travel site reports no kiting 15 Jun–15 Sep; official source not found, so not encoded.",,,pro,
