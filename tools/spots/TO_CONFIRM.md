@@ -30,6 +30,12 @@ second pass with web research is worth doing.
 - Weak pins (snapped from a village / street): Hemmes de Marck, Wimereux – Pointe aux Oies,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
   Les Arbousiers (bus stop beside the beach), Navarrosse.
+
+- La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
+- Weak pins (snapped from a village / street): Hemmes de Marck,
+  Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
+  Les Arbousiers, Navarrosse.
+- Côte d'Opale south / Baie de Somme (WHE-118, 2026-11-05): summer kite zones at Berck, Le Touquet, Hardelot, Cayeux come from FFVL sheets and guides only, no arrêté found, so none is encoded in `banned` (docs/validation/fr-opale-s.md). Wimereux town beach, Ambleteuse, Audresselles, Baie de la Canche and Hourdel left out (same shores as spots we have, or no launch).
 - Ouistreham Riva-Bella: really a separate spot from Merville (3.5 km)?
 - Left out as uncertain: Les Sables-d'Olonne, Jonville / Réville, Saint-Germain-sur-Ay,
   Locmariaquer, Le Rohu, Kerguelen, La Palue, Dunkerque Digue du Break, Cap-Ferret ocean
