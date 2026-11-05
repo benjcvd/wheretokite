@@ -291,3 +291,8 @@ Questions:
 - Carnac: "kiting banned in summer in the whole commune except Carnac Evasion members" comes from a guide, no decree found. Not encoded; Carnac spots not added.
 - Not added because the build rejects spots under 2 km apart (kept the ones we already had): Kerhostin / Port d'Orange (0.6 km from Penthièvre), Sainte-Barbe (1.8 km from Kerhillio), Mané Guen (1.9 km from Les Sables Blancs, but on the ocean side of the isthmus), Saint-Colomban (1.9 km from Les Sables Blancs), Carnac Grande Plage (1.6 km from Men Du, summer ban). Ben may want Mané Guen or Saint-Colomban to replace Les Sables Blancs; that needs a rule decision.
 - Not added, no local source found (worst case): Île d'Arz, Golfe du Morbihan, Saint-Pierre (Locmariaquer), Govelins, Roaliguen, Le Chel, Damgan (beach not identifiable).
+
+## Var and Côte d'Azur (WHE-103, 2026-11-05), settled without Ben (rule of 2 Nov)
+- Six-Fours – Le Brusc: the 1 Jun–30 Sep ban stays (kiteforum: no kite while the lifeguard post runs; another guide: officially banned all year, tolerated off season). No town or préfecture text found, worst case kept.
+- Added as Pro from Windy: Les Lecques (Saint-Cyr tourist office listing, open 16 Oct–14 Mar) and Cabasson (Bormes tourism listing, open 1 Oct–31 May). Both seasonal bans come from those listings only; no wind or level text found for Les Lecques.
+- Left out for lack of a local kite source (worst case, not added): Bandol, La Coudoulière, Brutal Beach, Les Sablettes, Gigaro, Pampelonne, La Nartelle / La Tour / Plage des Éléphants (Sainte-Maxime), Port Miramar. Le Lavandou: a campsite page says kiting is banned all year at Saint-Clair, Le Lavandou and La Favière. Details in docs/validation/fr-var.md.

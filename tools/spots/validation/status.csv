@@ -14,8 +14,9 @@ fr-narbonne,todo,val-fr-narbonne,,,,,,,
 fr-thau,todo,val-fr-thau,,,,,,,
 fr-montpellier,review,WHE-97,6,9,5,0,0,docs/validation/fr-montpellier.md,2026-11-05
 fr-camargue,review,WHE-102,8,10,7,0,0,docs/validation/fr-camargue.md,2026-11-05
-fr-var,todo,val-fr-var,,,,,,,
+fr-var,review,WHE-103,5,25,5,2,0,docs/validation/fr-var.md,2026-11-05
 fr-corse,review,WHE-104,12,27,5,6,0,docs/validation/fr-corse.md,2026-11-05
+fr-corse,todo,val-fr-corse,,,,,,,
 fr-lakes,todo,val-fr-lakes,,,,,,,
 fr-basque-landes,todo,val-fr-basque-landes,,,,,,,
 fr-gironde,todo,val-fr-gironde,,,,,,,
