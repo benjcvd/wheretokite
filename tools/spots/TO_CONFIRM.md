@@ -28,9 +28,8 @@ second pass with web research is worth doing.
 - Settled (WHE-96, 3 Nov, [report](../../docs/validation/fr-thau.md)): Marseillan stays at Maldormir
   (the launch the spot guides name). Frontignan – Étang d'Ingril archived: free kiting suspended,
   schools only (Hérault Tourisme; ActuNautique June 2026; earlier order premar 318/2023).
-- Frontignan sea side / Les Aresquiers, not added (WHE-96): kited and on Windy, but the kite zone's
-  position and rules aren't settled by an official source (bunkers at Les Aresquiers vs west end of
-  Frontignan-Plage; tramontane offshore). Add it if a town or prefectoral text turns up.
+- Frontignan sea side / Les Aresquiers: added as Pro (WHE-125, Windy rule). Position of the official kite zone (Aresquiers end vs west end of Frontignan-Plage) still unsettled; note tells riders to check the town's beach rules.
+- Sète – La Corniche (Windy marker): row ready but commented out, the build rejects it as a duplicate of Pont-Levis (1185 m, different water). Needs a pipeline exception.
 - Mèze – La Pinède: the school is at Le Taurus / Plage du Thalassa; "La Pinède" is unconfirmed. Not renamed (id).
 - Bonifacio – Balistra: still kited since the school closed in 2023?
 - Weak pins (bus stop / place node): Carnon – Petit Travers, Narbonne – La Nautique,
