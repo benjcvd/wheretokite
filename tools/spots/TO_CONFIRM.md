@@ -12,6 +12,7 @@ second pass with web research is worth doing.
 - Arcachon – Les Arbousiers, Claouey, Andernos – Le Bétey: exact summer bans.
 - Oléron – La Perroche: summer ban reported by guides only (WHE-110, 2026-11-05), no town order found; kept in notes, not encoded.
 - Charente-Maritime (WHE-110): Ré tip and Oléron west-coast wave spots on Windy (Lizay, Baleines, Grignon, Les Palles, Grand Village, Côte Sauvage) left out: only surf sources, see docs/validation/fr-charente.md. Oléron – Gatseau is thin (one directory listing).
+- Côte d'Opale north (WHE-119, 2026-11-05): Dunkerque summer kite zone (500 m west of Terminus post, 1 Jul–31 Aug) is from a local guide only, prefectoral text not found: kept in notes. Gravelines PFP rules come from the 2024 mayor's order (check 2026). Les Hemmes de Marck pin is still a hamlet node (Apple direction disagrees; OSM N kept). Dunkerque Digue du Braek (Windy 1 star, port sea wall) left out: no OSM element for the riding place. Calais – Blériot-Plage has thin kite sources.
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
 - Hendaye, Anglet – La Madrague: summer windows.
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
