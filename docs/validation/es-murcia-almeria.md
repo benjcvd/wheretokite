@@ -42,3 +42,26 @@ Not hovered: two Almuñécar markers (outside this zone).
 ## Open
 - El Zapillo summer ban has no official source → `TO_CONFIRM.md`.
 - Pins not eyeballed on satellite; Chrome was only used for Windy.
+
+## Windy follow-up: missing markers added as Pro (WHE-124, 5 Nov)
+
+WHE-98 left out every marker below under the old "famous only" rule. Under the 4 Nov rule they go in as Pro unless
+one of the listed good reasons applies. Pins are OSM elements found by name search or the OSM lookup tool; Windy was
+used only to learn the marker names (from the table above), never for positions. Facing is whatever the build computes.
+
+| Windy marker (stars) | Result | Source / reason |
+|---|---|---|
+| Playa de Levante (5) | added (Pro) – Cabo de Palos – Playa de Levante, `r2115915` | Only a swim-spot listing ([Wild Open Water](https://wildopenwater.com/swimspot/playa-levante-cabo-palos-murcia-región-de-murcia-spain)) mentions kiteboarding. Thin; notes say so and warn about the marine reserve |
+| Torre Derribada (4) | added (Pro) – San Pedro del Pinatar – Torre Derribada, `n1459233700` | [Kiteforum](https://se.kiteforum.com/kitesurf/spot/torre_derribada) (flat/shallow, all levels, parking), [Wild Open Water](https://wildopenwater.com/swimspot/playa-torre-derribada-murcia-regi%C3%B3n-de-murcia-spain) |
+| Pudrimel (3) | added (Pro) – La Manga – Playa del Pudrimel, `w478799430` | [Kite & windsurfing guide, Costa Cálida page](https://kite-and-windsurfing-guide.com/en/continents/countries/regions/costa-clida--mar-menor) (shallow, flat, medium launch area); the winds the guide lists look offshore on the lagoon side, so the note says to check |
+| Pueblo Cálido (3) | **left out** – no pin | [Guide page](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/pueblo-calido-costa-calida-mar-menor-spain.html) gives no town or position; OSM only has a bus stop of that name in La Manga. No beach element can be tied to it, so it can't be pinned |
+| Lo Pollo (3) | left out – same beach as Los Nietos | [Guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/lo-pollo-costa-calida-mar-menor-spain.html): "500 m west of Los Nietos", same water and winds |
+| Culoperro (4) | added (Pro) – Guardias Viejas – Culoperro, `w1474398096` (Los Baños beach) | [Wannakitesurf](https://wannakitesurf.com/spot/Europe/Spain/Andalucia/Culoperro/) (E wind onshore, waves/freeride, Oct–May), [Barceló](https://www.barcelo.com/guia-turismo/es/espana/almeria/que-ver/surf-en-almeria-las-mejores-playas/) places Culo Perro by Los Baños de Guardias Viejas |
+| Punta Entinas (3) | added (Pro) – Punta Entinas, `w895905424` | [Guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/punta-entinas-costa-tropical-almeria-spain.html), Yumping lessons ([1](https://en.yumping.com/deals/kitesurfing/almeria/private-kitesurfing-class-at-punta-entinas-beach-2-h--o57260), [2](https://en.yumping.com/deals/kitesurfing/almeria/kitesurf-initiation-class-punta-entinas-beach--o57266)) |
+| Retamar (3) | added (Pro) – Almería – Retamar, `w170338804` | [Unplug](https://www.unplug-kitesurf.com/schools/borakiteschool) lists it as a beginner spot; no school on site. Thin |
+| Torrenueva (4) | **left out** – no kite source | Only generic water-sports listings; no school, guide or forum page names it for kiting. Same stretch of coast as Carchuna / Playa Granada. Not one of the listed good reasons: Ben may overrule |
+| Carchuna (2) | added (Pro) – Carchuna, `n13093975140` (Playa Salmonete) | [Kite & windsurfing guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/carchuna-costa-tropical-almeria-spain.html), [granadaspain.co.uk](https://granadaspain.co.uk/carchuna-playa/), AWA Watersports Carchuna courses |
+| Salobreña (4) | matched earlier to Playa Granada | The school 18 Nudos runs from Punta del Río in Salobreña ([Yumping](https://en.yumping.com/water-sports/18-nudos-surf-club--e19703478)); a few km from Playa Granada. Left as matched |
+
+Counts: 15 Windy kite markers in the zone: 5 matched to our existing spots, 7 added as Pro, 3 left out (Pueblo Cálido: can't be pinned;
+Lo Pollo: same beach as Los Nietos; Torrenueva: no kite source). Our spots 7 → 14 (2 free, 12 Pro, 0 archived).
