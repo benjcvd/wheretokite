@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T01:43:51Z",
+  "generatedAt": "2026-11-06T08:46:20Z",
   "region": "europe",
   "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); spot selection curated by WhereToKite",
   "spots": [
@@ -6440,11 +6440,11 @@
     {
       "id": "fr-benodet-lagune-du-letty",
       "name": "Bénodet – Lagune du Letty",
-      "latitude": 47.86118,
-      "longitude": -4.0759,
-      "seaFacingDeg": 13.9,
+      "latitude": 47.86552,
+      "longitude": -4.08546,
+      "seaFacingDeg": 166.0,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
+      "distanceToShoreM": 84.2,
       "source": "curated",
       "notes": "Flat-water lagoon (Mer Blanche) behind the dune spit; riders launch at the slipway below the UCPA. Works only in southerly winds and only around high tide (the lagoon dries out at low water, strong tidal currents): go with a local instructor the first time. Plenty of room beyond the sandbar. Natura 2000 site.",
       "country": "FR",
