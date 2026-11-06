@@ -197,6 +197,7 @@ final class SearchModel {
         // Free plan: the famous spots only (Pro adds the secondary ones).
         let available = proSpots ? catalog : catalog.filter { $0.tier != "pro" }
         recommender.spots = UserSpotStore.merged(catalog: available, user: userSpots)
+        if nextWindow.map({ $0.day <= (Self.testDay ?? options.day) }) ?? false { nextWindow = nil }
         error = nil
         errorIsLocation = false
         do {
@@ -226,7 +227,8 @@ final class SearchModel {
             if lookaheadDays > 0, (result.recommendations.first?.finalScore ?? 0) < ResultsSection.verdictMinimum {
                 let later = DayOption.next(lookaheadDays).map(\.id).filter { $0 > req.day }
                 next = await recommender.nextGoodWindow(for: req, days: later, profile: profile,
-                                                        minimum: ResultsSection.verdictMinimum)
+                                                        minimum: ResultsSection.verdictMinimum,
+                                                        today: DayOption.today.id)
             }
             try Task.checkCancellation()
             self.result = result
@@ -240,6 +242,7 @@ final class SearchModel {
             if Task.isCancelled { return }   // e.g. URLError.cancelled from a superseded search
             appLog.error("search failed: \(String(describing: error), privacy: .public)")
             self.error = Vocab.error(error)
+            self.nextWindow = nil
             errorIsLocation = error is LocationError || error is CLError
             progress = nil
         }

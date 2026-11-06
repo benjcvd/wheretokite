@@ -349,10 +349,12 @@ public struct Recommender: Sendable {
     }
 
     /// When nothing works on the searched day: the first of `days` with a spot scoring at least
-    /// `minimum` within the same drive and hours, from straight-line drive estimates. Uses the
-    /// forecasts the search already cached for the coming week, so it costs no extra calls.
+    /// `minimum` within the same drive and hours. A quick screen on the forecasts the search
+    /// already cached (straight-line drives, no model check) skips the flat days; a day that
+    /// passes is then confirmed with the full search (real drives, the models' chance cap), so
+    /// the card promises exactly what that day's search shows (WHE-136).
     public func nextGoodWindow(for request: SearchRequest, days: [String], profile: RiderProfile,
-                               minimum: Int) async -> (day: String, recommendation: SpotRecommendation)? {
+                               minimum: Int, today: String) async -> (day: String, recommendation: SpotRecommendation)? {
         let (reach, _) = reachable(from: request.origin, maxDriveMinutes: request.maxDriveMinutes,
                                    estimator: estimator, slack: 1)
         guard !reach.isEmpty, !days.isEmpty,
@@ -373,7 +375,12 @@ public struct Recommender: Sendable {
                 rec.stormFrom = Self.stormStart(rec, day: f.hours, searched: r.hours, rules: rules)
                 if best.map({ Self.ranks(rec, before: $0) }) ?? true { best = rec }
             }
-            if let best, best.finalScore >= minimum { return (day, best) }
+            guard let best, best.finalScore >= minimum else { continue }
+            if Task.isCancelled { return nil }
+            if let full = try? await search(r, profile: profile, today: today),
+               let top = full.recommendations.first, top.finalScore >= minimum {
+                return (day, top)
+            }
         }
         return nil
     }
