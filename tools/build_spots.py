@@ -702,12 +702,16 @@ def slugify(s):
 
 
 TIDE_RULES = ("", "high", "low", "mid", "not-low", "not-high")
-_BAN = re.compile(r"^(\d\d)-(\d\d)\.\.(\d\d)-(\d\d)(?:\s+(\d\d):(\d\d)-(\d\d):(\d\d))?$")
+_BAN = re.compile(r"^(\d\d)-(\d\d)\.\.(\d\d)-(\d\d)(?:\s+(\d\d):(\d\d)-(\d\d):(\d\d))?"
+                  r"(?:\s+([a-z]{3}(?:,[a-z]{3})*))?$")
+_WEEKDAYS = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
 
 
 def parse_bans(text):
-    """'06-15..09-15 11:00-19:00; 07-01..08-31' -> [{"from": "06-15", "to": "09-15",
-    "startHour": 11, "endHour": 19}, {"from": "07-01", "to": "08-31"}]. None if malformed.
+    """'06-15..09-15 11:00-19:00; 07-01..08-31; 06-01..09-30 sat,sun' -> [{"from": "06-15",
+    "to": "09-15", "startHour": 11, "endHour": 19}, {"from": "07-01", "to": "08-31"},
+    {"from": "06-01", "to": "09-30", "weekdays": [6, 7]}]. None if malformed.
+    Weekdays are ISO numbers (1 = Monday).
     Dates are inclusive month-day (a range may wrap over the new year); hours are the
     local hours covered, end exclusive (minutes round outwards)."""
     out = []
@@ -725,6 +729,11 @@ def parse_bans(text):
             if not (0 <= h1 < end <= 24):
                 return None
             ban["startHour"], ban["endHour"] = h1, end
+        if m.group(9):
+            names = m.group(9).split(",")
+            if any(n not in _WEEKDAYS for n in names):
+                return None
+            ban["weekdays"] = sorted({_WEEKDAYS.index(n) + 1 for n in names})
         out.append(ban)
     return out
 
@@ -765,7 +774,7 @@ def _read_csv(path):
             continue   # kept in the CSV for reference, never built
         r["bans"] = parse_bans(r.get("banned") or "")
         if r["bans"] is None:
-            raise SystemExit("%s: bad banned value %r (format: MM-DD..MM-DD [HH:MM-HH:MM]; ...)"
+            raise SystemExit("%s: bad banned value %r (format: MM-DD..MM-DD [HH:MM-HH:MM] [mon,...,sun]; ...)"
                              % (path, r.get("banned")))
         r["tide"] = r.get("tide") or ""
         if r["tide"] not in TIDE_RULES:

@@ -91,6 +91,7 @@ second pass with web research is worth doing.
 - **Spain gap pass vs Windy (WHE-92, settled without Ben)**: El Cotillo stays out (retry 6 Nov: La Concha pin faces SW, so N/NE winds would be offshore; no safe pin for the kite area). Not added, unclear = no: Zahara de los Atunes,
   Conil, Cullera, Zarautz / Basque coast, Formentera (Ses Illetes closed May-Oct per spain.info), Ibiza Cala Martina (Nov-May only),
   Fornells (5 km from Cala Tirant), Mazarrón / Cabo de Palos / Águilas. Sources and reasons: docs/ES_COVERAGE_GAPS.md.
+- **Canaries second look (WHE-133, 6 Nov, settled without Ben)**: Ketchup, Güímar (Puerto de Güímar), La Santa and La Garita (Arrieta, Lanzarote) stay out: only one kite guide each (kite-and-windsurfing-guide.com), no school or town page naming them as kite spots; Güímar is a 35 km fallback with a tight launch, La Santa is a surf break with a lagoon for beginners, La Garita is an exposed beach with a surf point (best surf wind W). Maspalomas / Faro stays out: the same guide says police have stopped kiters inflating there and windsurf is the only officially allowed sport; no official text found. Unclear = no. El Cotillo: see WHE-92 above. Details in docs/validation/es-canarias.md.
 - Left out (Ibiza and Formentera re-checked 2026-11-03, WHE-94: kiting Nov–May only, no school, Ses Illetes banned May–Oct, stays out): Ibiza, Basque Country, Embalse del Ebro, Lo Pagán, El Saler, Patacona, Cullera,
   Fornells, El Cotillo.
 - Portugal pass (2026-10-22), still open:

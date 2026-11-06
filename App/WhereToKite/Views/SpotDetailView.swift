@@ -163,7 +163,7 @@ struct SpotDetailView: View {
         }
     }
 
-    /// "15 Jun – 15 Sep, 11–19 h" (month-days as in the catalogue, any year).
+    /// "15 Jun – 15 Sep, 11–19 h" or "1 Jun – 30 Sep, Sat, Sun" (month-days as in the catalogue, any year).
     static func banLabel(_ ban: SpotBan) -> String {
         func day(_ md: String) -> String {
             let p = md.split(separator: "-").compactMap { Int($0) }
@@ -173,6 +173,10 @@ struct SpotDetailView: View {
         }
         var s = "\(day(ban.from)) – \(day(ban.to))"
         if let a = ban.startHour, let b = ban.endHour { s += ", \(a)–\(b) h" }
+        if let days = ban.weekdays, !days.isEmpty {
+            let names = Calendar.current.shortWeekdaySymbols   // index 0 = Sunday
+            s += ", " + days.map { names[$0 % 7] }.joined(separator: ", ")
+        }
         return s
     }
 

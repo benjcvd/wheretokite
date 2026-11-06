@@ -44,7 +44,8 @@ public struct Spot: Codable, Hashable, Sendable, Identifiable {
     /// Kiting is banned at this spot on `day` ("yyyy-MM-dd") during local hour `hour`.
     public func isBanned(day: String, hour: Int) -> Bool {
         let md = String(day.dropFirst(5))   // "MM-dd"
-        return (bans ?? []).contains { $0.covers(monthDay: md, hour: hour) }
+        let wd = SpotBan.isoWeekday(day)
+        return (bans ?? []).contains { $0.covers(monthDay: md, hour: hour, weekday: wd) }
     }
     /// When the spot works with the tide: "high" | "low" | "mid" | "not-low" | "not-high".
     /// nil = any tide (or no tide).
@@ -133,26 +134,50 @@ public struct Island: Codable, Hashable, Sendable {
 }
 
 /// A period when kiting is not allowed: inclusive month-days (may wrap over the new year),
-/// optionally only between two local hours (end exclusive).
+/// optionally only between two local hours (end exclusive), optionally only on some days of
+/// the week (WHE-77: Castelldefels' summer zone is closed at weekends).
 public struct SpotBan: Codable, Hashable, Sendable {
     /// "MM-dd"
     public var from: String
     public var to: String
     public var startHour: Int?
     public var endHour: Int?
+    /// ISO days of the week the ban applies on, 1 = Monday … 7 = Sunday. nil = every day.
+    public var weekdays: [Int]?
 
-    public init(from: String, to: String, startHour: Int? = nil, endHour: Int? = nil) {
+    public init(from: String, to: String, startHour: Int? = nil, endHour: Int? = nil, weekdays: [Int]? = nil) {
         self.from = from
         self.to = to
         self.startHour = startHour
         self.endHour = endHour
+        self.weekdays = weekdays
     }
 
-    public func covers(monthDay md: String, hour: Int) -> Bool {
+    /// `weekday` is ISO (1 = Monday). When the day is unknown, a weekday-only ban still
+    /// applies: safety first.
+    public func covers(monthDay md: String, hour: Int, weekday: Int? = nil) -> Bool {
         let inDates = from <= to ? (from...to).contains(md) : (md >= from || md <= to)
         guard inDates else { return false }
+        if let days = weekdays, !days.isEmpty, let wd = weekday, !days.contains(wd) { return false }
         guard let s = startHour, let e = endHour else { return true }
         return hour >= s && hour < e
+    }
+
+    /// ISO day of the week (1 = Monday … 7 = Sunday) of a "yyyy-MM-dd" date, nil if malformed.
+    /// Pure calendar arithmetic, no time zone involved.
+    public static func isoWeekday(_ day: String) -> Int? {
+        let p = day.prefix(10).split(separator: "-").compactMap { Int($0) }
+        guard p.count == 3, (1...12).contains(p[1]), (1...31).contains(p[2]) else { return nil }
+        // Days from 1970-01-01 (a Thursday), Howard Hinnant's days_from_civil.
+        let y = p[1] <= 2 ? p[0] - 1 : p[0]
+        let era = (y >= 0 ? y : y - 399) / 400
+        let yoe = y - era * 400
+        let mp = (p[1] + 9) % 12
+        let doy = (153 * mp + 2) / 5 + p[2] - 1
+        let doe = yoe * 365 + yoe / 4 - yoe / 100 + doy
+        let days = era * 146097 + doe - 719468
+        let r = ((days % 7) + 7) % 7            // 0 = Thursday
+        return (r + 3) % 7 + 1
     }
 }
 
