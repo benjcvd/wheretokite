@@ -9,11 +9,12 @@ a lagoon or an isthmus. Fix a wrong one in `tools/curated_spots.csv` (pin it wit
 |---|---|---|---|---|
 | Neusiedl am See | uncertain | S 184° | Apple water at 222° vs OSM 184° (38° apart) | [map](https://www.openstreetmap.org/?mlat=47.92852&mlon=16.83501#map=16/47.92852/16.83501) |
 | Oostduinkerke – Groenendijk | disagrees | NNW 333° | 15% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=51.14159&mlon=2.69691#map=16/51.14159/2.69691) |
+| Liencres (Valdearenas) | uncertain | NW 320° | Apple water at 269° vs OSM 320° (51° apart) | [map](https://www.openstreetmap.org/?mlat=43.44479&mlon=-3.97111#map=16/43.44479/-3.97111) |
 | Los Caños de Meca | uncertain | SE 130° | Apple water at 172° vs OSM 130° (41° apart) | [map](https://www.openstreetmap.org/?mlat=36.18484&mlon=-6.03227#map=16/36.18484/-6.03227) |
+| Bassin d'Arcachon – La Hume | uncertain | NW 305° | Apple water at 354° vs OSM 305° (49° apart) | [map](https://www.openstreetmap.org/?mlat=44.64541&mlon=-1.11429#map=16/44.64541/-1.11429) |
 | Cherrueix | disagrees | N 355° | 0% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=48.60647&mlon=-1.70918#map=16/48.60647/-1.70918) |
-| Gâvres | uncertain | W 262°, NE 34° | 89% water on the claimed side; 41% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=47.68866&mlon=-3.35941#map=16/47.68866/-3.35941) |
+| Gâvres | uncertain | WSW 258°, NE 34° | 86% water on the claimed side; 41% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=47.68907&mlon=-3.35968#map=16/47.68907/-3.35968) |
 | Gravelines – Petit-Fort-Philippe | uncertain | NNW 334° | Apple water at 299° vs OSM 334° (36° apart) | [map](https://www.openstreetmap.org/?mlat=51.00662&mlon=2.11002#map=16/51.00662/2.11002) |
-| Gruissan – Les Chalets / Grazel | uncertain | ESE 120°, NNW 332° | 100% water on the claimed side; 52% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=43.10255&mlon=3.11789#map=16/43.10255/3.11789) |
 | Lac du Salagou | uncertain | NW 316° | Apple water at 259° vs OSM 316° (57° apart) | [map](https://www.openstreetmap.org/?mlat=43.64754&mlon=3.38780#map=16/43.64754/3.38780) |
 | Le Barcarès – Parc des Dosses (Étang de Leucate) | disagrees | W 273° | Apple water at 26° vs OSM 273° (113° apart) | [map](https://www.openstreetmap.org/?mlat=42.84139&mlon=3.03156#map=16/42.84139/3.03156) |
 | Les Hemmes de Marck | disagrees | N 357° | Apple water at 271° vs OSM 357° (86° apart) | [map](https://www.openstreetmap.org/?mlat=50.98668&mlon=1.96195#map=16/50.98668/1.96195) |
