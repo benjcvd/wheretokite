@@ -374,3 +374,7 @@ All three workstreams are merged into local `main` (a2ba377). Ben's decisions to
 - Check before marking a ticket merged: a ticket's commit can miss its CSV edits (WHE-115's
   only had a stray file; Atlas later committed "remaining changes"). Compare the report and
   the CSV, not just the branch.
+
+## Lead, 6 Nov: v1.0 archive ready, backlog tidied
+
+The validated France and Spain catalogue is on GitHub and live (751 spots). On 6 Nov, GitHub refused every git push for about half an hour ("fatal error in commit_refs", even for an empty branch) while its API worked. It cleared by itself, so if it happens again, just wait and retry. Bans can now name days of the week (WHE-77, `06-01..09-30 sat,sun`, the field must be quoted in the CSV): Castelldefels is closed on summer weekends and on 24 Jun, 15 Aug and 11 Sep. Its local holidays aren't known yet. Letty was fixed with an OSM pin on the UCPA (north shore) rather than a manual facing, which keeps the "positions from OSM only" rule intact. The catalogue build now cancels an older run when a newer push arrives, and it rebases before pushing. The osm-cache snapshot was refreshed the same day. The 1.0 archive (main 30498ab) is in Xcode's Organizer; Ben uploads and submits it (WHE-70), since Xcode can't use his Apple account from an agent session. The old docs/TODO.md is retired: its ideas are parked cards.
