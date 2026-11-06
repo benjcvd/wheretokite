@@ -45,7 +45,7 @@ reviewer. Claude writes the code and explains its decisions. Ben decides on spot
 rules and product. He writes in English or French: answer in the language of his message.
 He wants processes automated, with his review as the only manual step.
 
-Current state, open topics and next steps: `docs/HANDOFF.md`. Pending work: `docs/TODO.md`.
+Current state, open topics and next steps: `docs/HANDOFF.md`. Pending work: the board, `.atlas/board.json`.
 Product review: `docs/BLIND_SPOTS.md`. Spot questions for Ben: `tools/spots/TO_CONFIRM.md`.
 
 ## Layout

@@ -348,7 +348,7 @@ Questions:
 - Windy markers left out: Buzo (no OSM beach fits, sources don't say which beach), Cádiz city (no kite source), Barbate (surf listings only), Sanlúcar de Barrameda (OSM has only unnamed beaches there, can't tell which one kiters use).
 
 ## South Finistère, Crozon to Bénodet (WHE-113), settled 5 Nov 2026
-- Letty lagoon pin faces N (the dune spit looking over the lagoon) but riders launch on the north shore at the UCPA slipway, where the guides say it works in S winds. The app therefore sees S wind as offshore. No OSM element sits on the north shore (checked: only the spit and Pointe Saint-Gilles beaches), and a second side in the hint cannot be set there. Needs either an OSM beach or kite feature on that shore or a build option for a manual facing: card for the Lead. Left as is (worst case: spot stays Pro).
+- Letty lagoon: settled 6 Nov (WHE-132). Pinned on the UCPA Bénodet-Glénan centre (OSM node, north shore, where riders launch); it now faces SSE, so southerly winds score as onshore. Apple Maps agrees.
 - Summer rules, none found in an official text, so notes only, `banned` empty: Île-Tudy midday ban (reported, lifeguards 13:00 to 19:00 in July and August), Le Ster ban in summer thermal winds and Kersidan ban in high summer (both from the kite guide), La Torche signs. Worst case for riders: obey the signs.
 - Not added: La Palue (surf beach, one blog line on kites), Saint-Tugen (surf), Audierne (beach cannot be told apart), Pointe Saint-Gilles (no source), Glénan (boat access).
 
