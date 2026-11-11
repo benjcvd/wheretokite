@@ -9,7 +9,7 @@ export interface PageEnv {
   GITHUB_REPO?: string;
 }
 
-const UPDATED = "20 October 2026";
+const UPDATED = "11 November 2026";
 
 const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -72,6 +72,7 @@ your own spots and your location stay on your phone.</p>
 <tr><td>Positions of kite spots, and the rough area of your start point (about 10 km)</td>
 <td>The WhereToKite server, which asks Open-Meteo (or Open-Meteo directly from your phone when the server can't be reached)</td><td>Wind and tide forecasts</td></tr>
 <tr><td>Your start point</td><td>Apple Maps, directly from your phone</td><td>Drive times</td></tr>
+<tr><td>The spot you tap Directions for</td><td>Apple Maps or Google Maps, whichever you pick, opened from your phone</td><td>Driving directions</td></tr>
 <tr><td>“How was it?” answers (spot, day, score, rating)</td><td>The WhereToKite server</td><td>Checking and improving the scores</td></tr>
 <tr><td>Crash and performance reports from iOS (MetricKit)</td><td>The WhereToKite server</td><td>Fixing bugs</td></tr>
 <tr><td>Reports you send (“Report an issue”): the category, your text, the spot, the app version and your country</td>
@@ -99,6 +100,7 @@ processing terms and the EU–US Data Privacy Framework).</li>
 and the rough search area, usually from the server. When the server can't be reached, your
 phone asks Open-Meteo directly, which then also sees your IP address.</li>
 <li><strong>Apple</strong> (Maps, crash reports, and App Store purchases, under Apple's privacy policy).</li>
+<li><strong>Google</strong> (only if you pick Google Maps for directions: the Google Maps app or website opens on the spot, under Google's privacy policy).</li>
 <li><strong>GitHub</strong> (public reports; US, Data Privacy Framework).</li>
 </ul>
 
