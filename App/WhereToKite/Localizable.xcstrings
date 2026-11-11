@@ -1876,6 +1876,22 @@
         }
       }
     },
+    "Edit your hours" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar tus horas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier tes heures"
+          }
+        }
+      }
+    },
     "Evening" : {
       "comment" : "Session slot",
       "localizations" : {
@@ -2326,6 +2342,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heure par heure"
+          }
+        }
+      }
+    },
+    "Hours after sunset never count." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las horas después de la puesta de sol nunca cuentan."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les heures après le coucher du soleil ne comptent jamais."
           }
         }
       }
