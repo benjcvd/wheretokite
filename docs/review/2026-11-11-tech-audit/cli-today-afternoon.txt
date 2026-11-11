@@ -1,0 +1,10 @@
+$ date
+Wed Nov 11 17:52:37 CET 2026
+$ .build/debug/kite --day today --slot afternoon --drive 120
+WhereToKite · 2026-11-11 afternoon · ≤120 min drive
+Rider: 75 kg · kites 9/12 m · intermediate · all types
+Kite ranges: 9 m 15–27 kn · 12 m 11–20 kn
+Forecast at Malgrat de Mar – La Pomareda: High confidence (89/100) · today · models agree within ±2 kn · ±5° direction
+(27 spots ranked in 2.5s · 33 in reach · 33 forecast · 1/1 real ETAs)
+
+ 1.  39 Long shot   Malgrat de Mar – La Pomareda      16:00–18:00 · 11–12 kn (gusts 16) SW side-onshore · 12 m · 1h02 · wind unlikely (11 %) · models' best 8 kn ±1 vs 11 kn needed (grade 76 → 39)
