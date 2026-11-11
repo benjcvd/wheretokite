@@ -52,7 +52,7 @@ public struct SpotRecommendation: Sendable, Identifiable {
         return ["thunderstorm risk", "kiting banned", "dark", "offshore"].contains(problem) ? problem : nil
     }
     /// True when an hour the score is made of (best window, else the scored hours) is
-    /// side-offshore and still scores: the app shows "Side-offshore: advanced only" (WHE-75).
+    /// side-offshore and still scores: the app shows "Side-offshore: stay upwind" (WHE-75, WHE-160).
     public var hasSideOffshore: Bool {
         let range = window ?? scoredHours
         let slice = range.map { r in hours.filter { $0.wind.hour >= r.start && $0.wind.hour < r.end } } ?? hours

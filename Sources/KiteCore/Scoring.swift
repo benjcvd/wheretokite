@@ -127,11 +127,23 @@ public struct ScoringRules: Sendable {
     /// offshore, limited angle" (Ben, 2 Nov; was 130°). Lagoons and points reach it later
     /// through their catalogue water sector.
     public var offshoreFromDeg = 120.0
+    /// Where an intermediate who opts in to side-offshore drops to 0 (WHE-160 proposal).
+    public var intermediateSideOffshoreToDeg = 110.0
+
+    /// Angle at which side-offshore stops scoring for a rider who accepts it; nil = not allowed
+    /// at this level. Never beyond `offshoreFromDeg`.
+    public func sideOffshoreLimitDeg(_ level: Level) -> Double? {
+        switch level {
+        case .beginner: nil
+        case .intermediate: min(intermediateSideOffshoreToDeg, offshoreFromDeg)
+        case .advanced: offshoreFromDeg
+        }
+    }
 
     /// Score for the angle between wind and beach. 0° = straight onshore,
     /// 90° = cross-shore, 180° = straight offshore (dangerous: blows you out to sea).
-    /// Beginners and intermediates drop to 0 at `sideShoreMaxDeg`; advanced riders at
-    /// `offshoreFromDeg`.
+    /// Side-shore only drops to 0 at `sideShoreMaxDeg`; side-offshore at the level's
+    /// `sideOffshoreLimitDeg` (intermediate 110°, advanced 120°).
     public func directionScore(relativeAngle a: Double, level: Level,
                                offshore: OffshoreTolerance = .sideShoreOnly) -> Double {
         let upToSideShore: [(Double, Double)] = switch level {
@@ -139,9 +151,11 @@ public struct ScoringRules: Sendable {
         case .intermediate: [(0, 0.55), (30, 0.9), (45, 1), (65, 1), (90, 0.85)]
         case .advanced: [(0, 0.6), (30, 0.9), (45, 1), (70, 1), (90, 0.9)]
         }
-        let tail: [(Double, Double)] = offshore == .sideOffshore && level != .beginner
-            ? [(offshoreFromDeg - 10, 0.4), (offshoreFromDeg, 0), (180, 0)]
-            : [(sideShoreMaxDeg, 0), (180, 0)]
+        let tail: [(Double, Double)] = if offshore == .sideOffshore, let limit = sideOffshoreLimitDeg(level) {
+            [(limit - 10, 0.4), (limit, 0), (180, 0)]
+        } else {
+            [(sideShoreMaxDeg, 0), (180, 0)]
+        }
         return interpolate(upToSideShore + tail, a)
     }
 }

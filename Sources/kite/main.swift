@@ -14,6 +14,8 @@ import KiteCore
 //   --style X             chill | intense | all | 0…1 (default all)
 //   --distance-matters    penalise far spots (default off)
 //   --weight KG --kites 9,12 --level L   update the saved rider profile
+//   --offshore side-shore|side-offshore  rider's offshore choice, capped by level (a new
+//                         --level without it resets to the level's default)
 //   --spots FILE          spot catalogue (default Data/spots.json)
 //   --straight-line       skip Apple Maps, estimate all drive times (shown as ~)
 //   --hourly N            print the hourly breakdown for the top N spots
@@ -46,11 +48,18 @@ while let a = it.next() {
 
 let profileURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".wheretokite/profile.json")
 var profile = (try? JSONDecoder().decode(RiderProfile.self, from: Data(contentsOf: profileURL)))
-if args["weight"] != nil || args["kites"] != nil || args["level"] != nil {
+if args["weight"] != nil || args["kites"] != nil || args["level"] != nil || args["offshore"] != nil {
     var p = profile ?? RiderProfile(weightKg: 75, kites: [9, 12], level: .intermediate)
     if let w = args["weight"] { p.weightKg = Double(w) ?? fail("bad --weight") }
     if let k = args["kites"] { p.kites = k.split(separator: ",").map { Double($0) ?? fail("bad --kites") } }
-    if let l = args["level"] { p.level = Level(rawValue: l) ?? fail("level: beginner|intermediate|advanced") }
+    if let l = args["level"] {
+        p.level = Level(rawValue: l) ?? fail("level: beginner|intermediate|advanced")
+        p.offshoreChoice = nil
+    }
+    if let o = args["offshore"] {
+        p.offshoreTolerance = o == "side-shore" ? .sideShoreOnly : o == "side-offshore" ? .sideOffshore
+            : fail("offshore: side-shore|side-offshore")
+    }
     try? FileManager.default.createDirectory(at: profileURL.deletingLastPathComponent(), withIntermediateDirectories: true)
     try JSONEncoder().encode(p).write(to: profileURL)
     profile = p
@@ -168,7 +177,7 @@ let kitesText = profile.kites.map { String(format: "%g", $0) }.joined(separator:
 print("""
 
 WhereToKite · \(request.day) \(slot.rawValue) · ≤\(Int(request.maxDriveMinutes)) min drive\(request.distanceMatters ? " (distance matters)" : "")
-Rider: \(Int(profile.weightKg)) kg · kites \(kitesText) m · \(profile.level.rawValue) · \(styleText)
+Rider: \(Int(profile.weightKg)) kg · kites \(kitesText) m · \(profile.level.rawValue) (\(profile.offshoreTolerance == .sideOffshore ? "side-offshore to \(Int(ScoringRules().sideOffshoreLimitDeg(profile.level) ?? 0))°" : "side-shore only")) · \(styleText)
 Kite ranges: \(Scorer(profile: profile, intensity: intensity).kiteRanges.map { String(format: "%g m %.0f–%.0f kn", $0.size, $0.minKn, $0.maxKn) }.joined(separator: " · "))
 """)
 if let c = result.confidence { print("Forecast at \(result.recommendations[0].spot.name): \(c.summary)") }

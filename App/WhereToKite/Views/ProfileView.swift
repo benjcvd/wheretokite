@@ -319,7 +319,10 @@ struct ProfileFields: View {
                     ForEach(Level.allCases, id: \.self) { level in
                         let on = profile.level == level
                         Button {
-                            withAnimation(.snappy) { profile.level = level }
+                            withAnimation(.snappy) {
+                                profile.level = level
+                                profile.offshoreChoice = nil   // back to the new level's default
+                            }
                         } label: {
                             VStack(spacing: 6) {
                                 Image(systemName: level.symbol).font(.title3)
@@ -336,6 +339,17 @@ struct ProfileFields: View {
                         .accessibilityAddTraits(on ? .isSelected : [])
                         .sensoryFeedback(.selection, trigger: on)
                     }
+                }
+            }
+
+            if OffshoreTolerance.choices(for: profile.level).count > 1 {
+                section(String(localized: "Wind off the land"), footer: offshoreFooter) {
+                    Picker(String(localized: "Wind off the land"), selection: $profile.offshoreTolerance) {
+                        Text("Side-shore only").tag(OffshoreTolerance.sideShoreOnly)
+                        Text("Slightly side-offshore").tag(OffshoreTolerance.sideOffshore)
+                    }
+                    .pickerStyle(.segmented)
+                    .accessibilityIdentifier("offshorePicker")
                 }
             }
         }
@@ -388,9 +402,17 @@ struct ProfileFields: View {
         let limits = ScoringRules().limits(profile.level)
         return switch profile.level {
         case .beginner: String(localized: "Up to \(Int(limits.wind)) kn. Wind: onshore or side-onshore only.")
-        case .intermediate: String(localized: "Up to \(Int(limits.wind)) kn. Wind: side-shore at most, never from the land.")
-        case .advanced: String(localized: "Up to \(Int(limits.wind)) kn. Wind: slightly side-offshore accepted, flagged \"advanced only\". Offshore never.")
+        case .intermediate, .advanced: String(localized: "Up to \(Int(limits.wind)) kn.", comment: "Level limit: maximum mean wind")
         }
+    }
+
+    private var offshoreFooter: String {
+        if profile.offshoreTolerance == .sideShoreOnly {
+            return String(localized: "Spots count only when the wind blows along the beach or onto it.")
+        }
+        return profile.level == .advanced
+            ? String(localized: "Spots also count when the wind comes a little from the land, up to 30° past side-shore. They get a warning. Straight offshore never counts.")
+            : String(localized: "Spots also count when the wind comes a little from the land, up to 20° past side-shore. They get a warning. Straight offshore never counts.")
     }
 }
 
