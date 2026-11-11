@@ -22,6 +22,7 @@
 		5C8142654A0B9DBA7BF0CF94 /* UserSpotStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277E1AB34764B92F4C025FD /* UserSpotStoreTests.swift */; };
 		68D5BF90B15390B8575A5E9C /* LanguageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDB922F46EA3D20BBEA2101 /* LanguageTests.swift */; };
 		74D228B8A399ECAF1133D419 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A01B4CE0810383D176FFA /* SearchModel.swift */; };
+		756D47EA201E3B72A454882C /* SpotMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974B81F34D32683F552F3E6 /* SpotMapView.swift */; };
 		76F4B08BDA4F515B48C056E1 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AEDABBBAD636DA97F841E /* AppConfig.swift */; };
 		8014EBB88D41746E8117AF2E /* MySpotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026921E739C6680077EFE36 /* MySpotsView.swift */; };
 		8398D6ECE120CF911C21091A /* CoastlineGuess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF133A500C253B3DD84ED7 /* CoastlineGuess.swift */; };
@@ -80,6 +81,7 @@
 		9F4A01B4CE0810383D176FFA /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		78E352EF510DCE05C57699A2 /* wheretokite */ = {isa = PBXFileReference; lastKnownFileType = folder; name = wheretokite; path = ..; sourceTree = SOURCE_ROOT; };
 		A12A04CF4CA2668485850630 /* spots.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = spots.json; sourceTree = "<group>"; };
+		A974B81F34D32683F552F3E6 /* SpotMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotMapView.swift; sourceTree = "<group>"; };
 		B7F8CEE36F18BFF49D48A748 /* UserSpotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSpotStore.swift; sourceTree = "<group>"; };
 		BBDB922F46EA3D20BBEA2101 /* LanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTests.swift; sourceTree = "<group>"; };
 		CD1827AF8EDFF5D3992BB12C /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				F24F8F5A2E1A5CE0B9DE4F25 /* ResultsView.swift */,
 				E75377D57D07882D0668DAB7 /* SearchView.swift */,
 				8BD9CFE4AAF26F58E94873F1 /* SpotDetailView.swift */,
+				A974B81F34D32683F552F3E6 /* SpotMapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				74D228B8A399ECAF1133D419 /* SearchModel.swift in Sources */,
 				374B81E769D416C899A89FB6 /* SearchView.swift in Sources */,
 				3115EA2AD24EBA409D1B83FB /* SpotDetailView.swift in Sources */,
+				756D47EA201E3B72A454882C /* SpotMapView.swift in Sources */,
 				4D38FA78524DC9FE297B1E67 /* UserSpotStore.swift in Sources */,
 				FB902E2F39BDCCC7EF428E04 /* Vocabulary.swift in Sources */,
 				E382C9BF6E85FA58BC21B22D /* WhereToKiteApp.swift in Sources */,

@@ -11,6 +11,7 @@ struct SpotDetailView: View {
     @State private var showReport = false
     /// Kite whose range the wind chart shows (nil = the suggested kite).
     @State private var chartKiteSize: Double?
+    @State private var showMap = false
     @Environment(FeedbackStore.self) private var feedback
 
     private var coordinate: CLLocationCoordinate2D {
@@ -88,6 +89,7 @@ struct SpotDetailView: View {
         .safeAreaInset(edge: .bottom) { directionsButton }
         .sheet(isPresented: $showScoreInfo) { ScoreInfoSheet(rec: rec) }
         .sheet(isPresented: $showReport) { ReportIssueSheet(spot: rec.spot) }
+        .fullScreenCover(isPresented: $showMap) { SpotMapScreen(rec: rec) }
         .onAppear { feedback.viewed(rec, day: day.id) }
         .toolbar(.hidden, for: .tabBar)
     }
@@ -96,13 +98,7 @@ struct SpotDetailView: View {
 
     private var hero: some View {
         VStack(spacing: 0) {
-            Map(initialPosition: .region(MKCoordinateRegion(
-                center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000))) {
-                Marker(rec.spot.name, systemImage: "wind", coordinate: coordinate)
-                    .tint(ScoreStyle.color(rec.finalScore))
-            }
-            .mapStyle(.hybrid(elevation: .realistic))
-            .frame(height: 210)
+            heroMap
 
             HStack(spacing: 14) {
                 HStack(spacing: 14) {
@@ -132,6 +128,43 @@ struct SpotDetailView: View {
             .background(ScoreStyle.gradient(rec.finalScore))
         }
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+    }
+
+    /// Not draggable inside the scrolling page: a tap opens the full-screen map (WHE-156).
+    private var heroMap: some View {
+        let wind = MapWind.summary(MapWind.highlightedHours(rec))
+        return Map(initialPosition: .region(MKCoordinateRegion(
+            center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)), interactionModes: []) {
+            Marker(rec.spot.name, systemImage: "wind", coordinate: coordinate)
+                .tint(ScoreStyle.color(rec.finalScore))
+            if let wind { SpotWindOverlay(spot: rec.spot, wind: wind) }
+        }
+        .mapStyle(.hybrid(elevation: .realistic))
+        .frame(height: 210)
+        .overlay(alignment: .topLeading) {
+            if let wind {
+                Label(ShoreAngleStyle.label(wind), systemImage: "wind")
+                    .font(.caption.weight(.semibold))
+                    .padding(.horizontal, 9)
+                    .padding(.vertical, 5)
+                    .background(.ultraThinMaterial, in: Capsule())
+                    .padding(10)
+                    .accessibilityIdentifier("spotMapWind")
+            }
+        }
+        .overlay(alignment: .topTrailing) {
+            Image(systemName: "arrow.up.left.and.arrow.down.right")
+                .font(.footnote.weight(.bold))
+                .frame(width: 30, height: 30)
+                .background(.ultraThinMaterial, in: Circle())
+                .padding(10)
+        }
+        .contentShape(Rectangle())
+        .onTapGesture { showMap = true }
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityHint(Text("Open the map full screen"))
+        .accessibilityIdentifier("spotMapHero")
     }
 
     private var facts: some View {
