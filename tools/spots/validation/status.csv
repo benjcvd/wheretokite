@@ -17,7 +17,7 @@ fr-camargue,validated,WHE-102,8,10,7,0,0,docs/validation/fr-camargue.md,2026-11-
 fr-var,validated,WHE-103,5,25,5,2,0,docs/validation/fr-var.md,2026-11-05
 fr-corse,validated,WHE-104,12,27,5,6,0,docs/validation/fr-corse.md,2026-11-05
 fr-lakes,validated,WHE-120,3,3,3,0,0,docs/validation/fr-lakes.md,2026-11-05
-fr-basque-landes,todo,val-fr-basque-landes,,,,,,,
+fr-basque-landes,validated,WHE-108,9,17,8,0,1,docs/validation/fr-basque-landes.md,2026-11-11
 fr-gironde,validated,WHE-109,9,17,7,0,1,docs/validation/fr-gironde.md,2026-11-05
 fr-charente,validated,WHE-110,9,24,9,3,0,docs/validation/fr-charente.md,2026-11-05
 fr-loire,validated,WHE-111,8,27,6,9,1,docs/validation/fr-loire.md,2026-11-05

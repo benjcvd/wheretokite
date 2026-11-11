@@ -33,9 +33,9 @@ FR,Gironde,Lac d'Hourtin-Carcans,lake,osm:w127254533,W,"Big flat-water lake, lau
 FR,Gironde,Lac de Lacanau,lake,osm:w340755108,,"Flat, shallow lake with schools at Le Moutchic. Kiting is allowed only in the marked zones either side of the channel to the Talaris marina (prefectoral order of 1 Sept 2014). Also: Lacanau-Océan 7 km west for waves.",,,,
 # archived: no kite channel at Claouey in the State beach rules (Gironde boating guide, Feb 2024: only windsurf channels on the basin side of Lège-Cap Ferret), the Cap Ferret kite school has closed, no Windy kite marker. Basin spot kept: Le Bétey.
 FR,Gironde,Bassin d'Arcachon – Claouey,sea,osm:w570377210,SE,"Tidal basin, 2–3 h either side of high tide; muddy bottom, oyster shells. Closed July–August. Also: Andernos (Le Bétey), La Hume and Les Arbousiers elsewhere on the basin.",,high,archived,07-01..08-31
-FR,Landes,Lac de Cazaux – Navarrosse,lake,osm:n8680293181,N,"Flat, shallow lake (Cazaux-Sanguinet), south shore. Navarrosse launch September–May; June–August use the kite zone at Mayotte (just east). Also: Port de l'Estey (Sanguinet) on the same lake.",,,,
+FR,Landes,Lac de Cazaux – Navarrosse,lake,osm:w267261585,N,"Flat, shallow lake, beginner-friendly; best in W to N winds. Launch from the beach next to Navarrosse harbour, 16 September–14 June only; 15 June–15 September use the Mayotte campsite beach 800 m east (kite school there). Watch the hunting hide to the NE and the harbour channel. Also: Port de l'Estey (Sanguinet) on the same lake.",,,,
 FR,Landes,Mimizan,sea,osm:w222354554,W,Plage Sud kite zone; keep away from the river mouth currents.,,,,
-FR,Pays basque,Anglet – La Madrague,sea,osm:w157127409,W,"Waves, experienced riders. Allowed November–May; in season only early morning and after 19:00 via the marked channel. Also: Hendaye (only Basque beach without cliffs, banned in July–August).",,,,
+FR,Pays basque,Anglet – La Madrague,sea,osm:w741058698,W,"Waves and a busy surf beach, experienced riders only; stay off the inside where surfers go in and out. Lifeguarded mid-June to mid-September: no kiting during lifeguard hours (10:30–19:00 in July–August, 12:00–18:00 otherwise) or whenever the red flag is up. Local club: Fun Kite Sud Ouest.",,,,06-13..09-15 10:30-19:00
 FR,Grand Est,Lac du Der – Giffaumont,lake,osm:w96321410,W,"Flat lake, intermediate level. Best with SW to W wind, from March to early September when the lake is full (it is drawn down in winter). Kiting is regulated: ask the KDA club (Arrigny port) before going. Reported: red zone closed 15 June-15 September. Respect the bird zones.",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
@@ -186,18 +186,18 @@ FR,Gironde,Bassin d'Arcachon – La Hume,sea,osm:w172893400,N,"Shallow tidal bas
 # pro: local / secondary beach — local ocean beach
 FR,Gironde,La Teste – La Salie,sea,osm:n13034064294,W,"Ocean beach south of the Pyla dune, waves. From 25 June to 5 September kites launch only in the 100 m kite zone 100 m north of the La Salie Nord bathing area (or at La Lagune), flagged daily; keep 50 m from the Wharf at La Salie Sud (La Teste order 2019-358).",,,pro,
 # pro: cluster duplicate — same lake as Navarrosse
-FR,Landes,Lac de Sanguinet – Port de l'Estey,lake,osm:n1771842358,NW,"Water launch, intermediate riders; avoid the buoyed zone to the north.",,,pro,
+FR,Landes,Lac de Sanguinet – Port de l'Estey,lake,osm:n1771842358,NW,"Flat, shallow water; kiting allowed from the harbour all year (lake rules). Tiny launch: the local school takes riders by boat to a sandbank mid-lake. Rocky lumps (alios) on the bottom.",,,pro,
 # pro: local / secondary beach — local Landes ocean beach
-FR,Landes,Biscarrosse-Plage,sea,osm:n8339012619,W,Waves; summer kite zone south of the bathing area.,,,pro,
+FR,Landes,Biscarrosse-Plage,sea,osm:n8339012619,W,"Waves and shorebreak, intermediate to expert riders. Plage Sud: in summer use the kite zone outside the bathing area; never go south of the wooden stakes (military test range).",,,pro,
+# archived: WHE-108 (3 Nov) — only one spot guide mentions kiting here; no school, club, kite zone or Windy kite marker
+FR,Landes,Contis,sea,osm:w201270695,W,Watch the jetties near the river mouth.,,,archived,
 # pro: local / secondary beach — local Landes ocean beach
-FR,Landes,Contis,sea,osm:w329676289,W,Watch the jetties near the river mouth.,,,pro,
-# pro: local / secondary beach — local Landes ocean beach
-FR,Landes,Moliets,sea,osm:w234222592,W,"Waves; large area near the Huchet river mouth, best at high tide.",,,pro,
+FR,Landes,Moliets,sea,osm:w234222592,W,"Beach break with waves; works SW through W to N (the summer N thermal is often stronger here than further south). Best at high tide, with a large area towards the Huchet river mouth.",,,pro,
 # pro: local / secondary beach — local wave spot, summer restrictions
-FR,Landes,Seignosse – Les Estagnots,sea,osm:n3053079146,W,"Waves and current, experienced riders. Only Seignosse beach where kiting is allowed; June–September: signposted zone south of the car park during bathing hours.",,,pro,
+FR,Landes,Seignosse – Les Estagnots,sea,osm:n3053079146,W,"Waves, strong side current and rips, experienced riders. The only Seignosse beach where kiting is allowed; in season use the signposted kite area left (south) of the lifeguarded zone. Summer N–NW thermal is light (10–18 kn). Kite school on the beach.",,,pro,
 FR,Landes,Hossegor – Plage Sud,sea,osm:w916176499,W,"Plage Sud (Point d'Or); Sud Landes Kite school runs courses from here (Hossegor tourist office). Waves and current, experienced riders. Guides advise against kiting in summer during the lifeguarded hours: check the town orders before riding in July–August. Also: Les Estagnots (Seignosse) 2 km south.",,,pro,
 # pro: restricted (club / permit / summer ban) — banned in July–August; Anglet kept
-FR,Pays basque,Hendaye,sea,osm:n5228438622,N,Only Basque beach without cliffs. Banned 1 July–31 August.,,,pro,07-01..08-31
+FR,Pays basque,Hendaye,sea,osm:w234073850,N,"Long, gently sloping sandy beach facing north, the only Basque beach without cliffs; rocks at the west end at low tide. No kiting 1 July–31 August.",,,pro,07-01..08-31
 # archived: restricted (club / permit / summer ban) — club-only lake
 FR,Grand Est,Lac d'Orient – Mesnil-Saint-Père,lake,osm:w117776916,NW,"Experienced riders, March to October, through the local clubs (AWA, Flysurf10); beaches closed 15 June–15 September.",,,archived,
 # archived: restricted (club / permit / summer ban) — club-only lake
@@ -208,3 +208,7 @@ FR,Charente-Maritime,Fouras – Plage Nord,sea,osm:w89679888,N,"Tourist office s
 FR,Côte d'Opale,Boulogne-sur-Mer,sea,osm:w261400606,W,"Advanced level, exposed to SW to W winds. Schools such as APG run sessions in the bay of Boulogne depending on wind and tide. Boat traffic from the port: check the rules of the port.",,,pro,
 FR,Côte d'Opale,Sainte-Cécile,sea,osm:w268635888,W,"Beach between Le Touquet and Hardelot, promoted by the Camiers – Sainte-Cécile tourist office as a gliding spot for experienced riders. Big tide range, groynes make chop. Kitecamp62 uses it when Stella is too rough.",,,pro,
 FR,Côte d'Opale,Stella-Plage,sea,osm:w1290671785,W,Exposed to SW to NW winds from the Channel; often ridden with Merlimont Plage. Kitecamp62 school is based here.,,,pro,
+# pro: local / secondary beach — added 4 Nov from Windy markers (WHE-108); council kite zone, wild beach with a strong current
+FR,Landes,Tarnos – Plage du Métro,sea,osm:w303968640,W,"Long wild sandy beach north of the Adour jetty, an onshore summer thermal spot (afternoons, best from the north). Part of the beach is set aside for kiters; strong current, intermediate riders. Plage de la Digue, 1.5 km south, is listed as a kite zone too.",,,pro,
+# pro: restricted (club / permit / summer ban) — added 4 Nov from Windy markers (WHE-108); kiting only off-season in a reserved zone
+FR,Pays basque,Saint-Jean-de-Luz,sea,osm:w18893856,W,"Sheltered town bay beach. Kiting only off-season in a reserved zone and never during lifeguard hours, so no kiting here in summer (worst case: dates assumed, check the town's posted order). Surf schools in town also teach kite.",,,pro,06-15..09-15

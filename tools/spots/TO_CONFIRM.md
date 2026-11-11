@@ -25,7 +25,10 @@ second pass with web research is worth doing.
 
 - Côte d'Opale north (WHE-119, 2026-11-05): Dunkerque summer kite zone (500 m west of Terminus post, 1 Jul–31 Aug) is from a local guide only, prefectoral text not found: kept in notes. Gravelines PFP rules come from the 2024 mayor's order (check 2026). Les Hemmes de Marck pin is still a hamlet node (Apple direction disagrees; OSM N kept). Dunkerque Digue du Braek (Windy 1 star, port sea wall) left out: no OSM element for the riding place. Calais – Blériot-Plage has thin kite sources.
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
-- Hendaye, Anglet – La Madrague: summer windows.
+- Settled (WHE-108, worst case, see [report](../../docs/validation/fr-basque-landes.md#calls-made-under-the-2-nov-rule-look-it-up-else-assume-the-worst)):
+  Anglet – La Madrague no kiting during lifeguard hours 13 Jun–15 Sep (kite order 2023/592 not online);
+  Hendaye July–August ban kept (no town order found). Contis archived (one source).
+  Soustons lake not added (association says kiting too dangerous).
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
 - La Baule: settled 2026-11-05 (WHE-111): Plage Benoît stays (flat banks at low to mid tide, rideevolve guide); summer access is only the K13 channel at the Pornichet border (Pornichet order ARR2026-212), so the summer ban stays. The La Baule 2016 order was a 404: find the current one if possible.
 - Pays de la Loire / Vendée (WHE-111): 12 Windy markers left out, see docs/validation/fr-loire.md. Revive if a school page names the beach: Barbâtre (Noirmoutier), Les Générelles (La Tranche), Les Conches, Sauveterre. Archived: Notre-Dame-de-Monts. Summer rules for Fromentine, La Tranche, Pen Bron and Saint-Brevin come from guides only: no order found.
@@ -34,12 +37,12 @@ second pass with web research is worth doing.
 - La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
 - Weak pins (snapped from a village / street): Hemmes de Marck, Wimereux – Pointe aux Oies,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
-  Les Arbousiers (bus stop beside the beach), Navarrosse.
+  Les Arbousiers (bus stop beside the beach; Navarrosse fixed in WHE-108).
 
 - La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
 - Weak pins (snapped from a village / street): Hemmes de Marck,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
-  Les Arbousiers, Navarrosse.
+  Les Arbousiers.
 - Côte d'Opale south / Baie de Somme (WHE-118, 2026-11-05): summer kite zones at Berck, Le Touquet, Hardelot, Cayeux come from FFVL sheets and guides only, no arrêté found, so none is encoded in `banned` (docs/validation/fr-opale-s.md). Wimereux town beach, Ambleteuse, Audresselles, Baie de la Canche and Hourdel left out (same shores as spots we have, or no launch).
 - Ouistreham Riva-Bella: really a separate spot from Merville (3.5 km)?
 - Left out as uncertain: Les Sables-d'Olonne, Jonville / Réville, Saint-Germain-sur-Ay,
