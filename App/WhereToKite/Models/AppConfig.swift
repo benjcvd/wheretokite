@@ -68,7 +68,8 @@ enum ServerClient {
 
 /// The spot catalogue: the copy bundled with the app, replaced by a newer one downloaded from
 /// the server (so fixing a spot doesn't need an app release). A download is only used when it
-/// decodes and looks sane; otherwise the bundled copy stays.
+/// decodes and passes `CatalogGate` against the bundled copy (no big drop in spots, no lost
+/// ban or country); otherwise the bundled copy stays.
 enum CatalogStore {
     private static var cacheFile: URL {
         FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
@@ -92,14 +93,12 @@ enum CatalogStore {
         let bundled = bundled()
         if let data = try? Data(contentsOf: cacheFile),
            let downloaded = try? JSONDecoder().decode(SpotCatalog.self, from: data),
-           isSane(downloaded),
+           CatalogGate.accepts(downloaded, reference: bundled),
            (downloaded.generatedAt ?? "") > (bundled?.generatedAt ?? "") {
             return downloaded
         }
         return bundled
     }
-
-    static func isSane(_ c: SpotCatalog) -> Bool { c.spots.count >= 50 }
 
     /// Downloads a newer catalogue in the background (used from the next search on).
     static func refresh() async {
@@ -111,8 +110,12 @@ enum CatalogStore {
         }
         guard let (data, response) = try? await URLSession.shared.data(for: request),
               let http = response as? HTTPURLResponse, http.statusCode == 200,
-              let catalog = try? JSONDecoder().decode(SpotCatalog.self, from: data),
-              isSane(catalog) else { return }
+              let catalog = try? JSONDecoder().decode(SpotCatalog.self, from: data) else { return }
+        let problems = CatalogGate.problems(catalog, reference: bundled())
+        guard problems.isEmpty else {
+            appLog.error("downloaded catalogue refused: \(problems.joined(separator: "; "), privacy: .public)")
+            return
+        }
         try? FileManager.default.createDirectory(at: cacheFile.deletingLastPathComponent(), withIntermediateDirectories: true)
         try? data.write(to: cacheFile, options: .atomic)
         if let etag = http.value(forHTTPHeaderField: "ETag") { UserDefaults.standard.set(etag, forKey: etagKey) }
