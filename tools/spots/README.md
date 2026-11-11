@@ -28,7 +28,7 @@ spots in the app.
   Spots kitable from several shores list one side per direction separated by `|`:
   `DIR:label[:water]`, e.g. `NW:North Sea side|SE:Grevelingen side:lake` (the first side's
   water must be the row's). Each hour is scored on the side where the wind works best.
-- `notes`: shown in the app. Tide dependence, seasonal bans / summer zones, level
+- `notes`: curation memory, **not published** since 11 Nov 2026 (internal remarks leaked into the app). Tide dependence, seasonal bans / summer zones, level
   (e.g. "waves, experienced riders"), access. Quote the field if it has a comma.
 - `sector` (optional, default 180): width in degrees of open water seen from the launch.
   180 = straight beach; < 180 = cove / narrow bay (side winds blow off the land);

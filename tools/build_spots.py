@@ -1121,12 +1121,9 @@ def main():
             problems.append("%s: no shore within %.0f m of %.5f,%.5f (%s)" % (
                 sid, MAX_SHORE_DIST, lat, lon, how))
             continue
-        notes = [r["notes"]] if r["notes"] else []
-        if o["R"] < 0.5:
-            notes.append("Irregular shoreline near the spot; orientation less certain.")
-        if o["wide"] is not None and angdiff(o["facing"], o["wide"]) > 25:
-            notes.append("Shoreline bends here (%.0f° locally vs %.0f° over ±1.5 km)." % (
-                o["facing"], o["wide"]))
+        # The CSV `notes` column is curation memory (sources, doubts, tips mixed together): it is
+        # not published. Riders saw remarks like "official source not found" (Ben, 11 Nov 2026).
+        # To show tips again, add a separate rider-facing column rather than exporting this one.
         nearby = sum(1 for k in kite_objs if haversine(o["lat"], o["lon"], k[0], k[1]) < 3000)
         spot = {
             "id": sid,
@@ -1137,7 +1134,6 @@ def main():
             "orientationSource": o["src"],
             "distanceToShoreM": round(o["dist"], 1),
             "source": "curated",
-            "notes": " ".join(notes) or None,
             "country": r["country"],
             "region": r["region"],
             "waterType": r["water"],
