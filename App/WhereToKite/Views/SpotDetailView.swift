@@ -9,6 +9,8 @@ struct SpotDetailView: View {
     let profile: RiderProfile
     @State private var showScoreInfo = false
     @State private var showReport = false
+    /// Kite whose range the wind chart shows (nil = the suggested kite).
+    @State private var chartKiteSize: Double?
     @Environment(FeedbackStore.self) private var feedback
 
     private var coordinate: CLLocationCoordinate2D {
@@ -143,8 +145,11 @@ struct SpotDetailView: View {
                          "\(w.start)–\(w.end)h" + (rec.windowInMyTime.map { String(localized: " · \($0) yours", comment: "The window in the phone's time zone") } ?? "")
                      } ?? "–",
                      icon: "clock.fill", tint: .blue)
-                Fact(title: String(localized: "Kite"), value: rec.suggestedKite.map { "\($0.size.formatted()) m" } ?? "–",
-                     icon: "wind", tint: .teal)
+                Fact(title: workingKites.count > 1 ? String(localized: "Kites") : String(localized: "Kite"),
+                     value: workingKites.isEmpty ? "–"
+                        : workingKites.map { "\($0.size.formatted()) m" }.formatted(.list(type: .or)),
+                     icon: "wind", tint: .teal, lines: 2)
+                    .accessibilityIdentifier("kiteFact")
             }
             if let tide = rec.tideSummary {
                 GridRow {
@@ -196,9 +201,16 @@ struct SpotDetailView: View {
     private var chart: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Wind vs your kite").font(.headline)
+            if quiver.count > 1 {
+                Picker("Kite", selection: Binding(get: { chartKite?.size ?? 0 }, set: { chartKiteSize = $0 })) {
+                    ForEach(quiver, id: \.size) { k in Text(verbatim: "\(k.size.formatted()) m").tag(k.size) }
+                }
+                .pickerStyle(.segmented)
+                .accessibilityIdentifier("chartKitePicker")
+            }
             Chart {
-                if let k = rec.suggestedKite {
-                    RectangleMark(yStart: .value("Min", k.minKn), yEnd: .value("Max", k.maxKn))
+                if let k = chartKite {
+                    RectangleMark(yStart: .value("Min", min(k.minKn, yMax)), yEnd: .value("Max", min(k.maxKn, yMax)))
                         .foregroundStyle(ScoreStyle.color(80).opacity(0.14))
                         .annotation(position: .overlay, alignment: .topLeading) {
                             Text("\(k.size.formatted()) m range").font(.caption2.weight(.semibold))
@@ -231,8 +243,28 @@ struct SpotDetailView: View {
         .card()
     }
 
+    /// The rider's kites, smallest first, as the chart's switch shows them.
+    private var quiver: [KiteRange] {
+        Scorer(profile: profile, intensity: nil).kiteRanges.sorted { $0.size < $1.size }
+    }
+
+    /// Kites that work for the whole best window, best first (display only).
+    private var workingKites: [KiteRange] { rec.workingKites(in: quiver) }
+
+    private var chartKite: KiteRange? {
+        chartKiteSize.flatMap { s in quiver.first { $0.size == s } } ?? rec.suggestedKite ?? workingKites.first
+            ?? quiver.min { abs($0.optimalKn - meanWind) < abs($1.optimalKn - meanWind) }
+    }
+
+    private var meanWind: Double {
+        rec.hours.isEmpty ? 0 : rec.hours.map(\.wind.speedKn).reduce(0, +) / Double(rec.hours.count)
+    }
+
+    /// Covers the gusts and the suggested kite's range; grows only when the picked kite's range
+    /// starts above that, so its band stays visible (the top of a tall band is clipped).
     private var yMax: Double {
-        let peak = max(rec.hours.map(\.wind.gustKn).max() ?? 0, rec.suggestedKite?.maxKn ?? 0)
+        let peak = max(rec.hours.map(\.wind.gustKn).max() ?? 0, rec.suggestedKite?.maxKn ?? 0,
+                       (chartKite?.minKn ?? 0) + 4)
         return (peak / 5).rounded(.up) * 5 + 5
     }
 
@@ -309,6 +341,7 @@ private struct Fact: View {
     let value: String
     let icon: String
     let tint: Color
+    var lines = 1
 
     var body: some View {
         HStack(spacing: 10) {
@@ -320,7 +353,7 @@ private struct Fact: View {
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 1) {
                 Text(title).font(.caption).foregroundStyle(.secondary)
-                Text(value).font(.subheadline.weight(.semibold)).lineLimit(1).minimumScaleFactor(0.8)
+                Text(value).font(.subheadline.weight(.semibold)).lineLimit(lines).minimumScaleFactor(0.8)
             }
             Spacer(minLength: 0)
         }

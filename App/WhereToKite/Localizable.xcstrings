@@ -2522,6 +2522,22 @@
         }
       }
     },
+    "Kites" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kites"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kites"
+          }
+        }
+      }
+    },
     "kiting banned" : {
       "localizations" : {
         "es" : {

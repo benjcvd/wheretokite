@@ -148,6 +148,44 @@ final class SmokeTests: XCTestCase {
         snapshot(app, "score-info-2")
     }
 
+    /// The spot page names the working kites and the wind chart switches between the
+    /// starter quiver's 9 and 12 m (today's forecast near Barcelona; any spot will do).
+    @MainActor
+    func testKiteSwitchOnWindChart() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchOrigin", "41.3874,2.1686"]
+        app.launch()
+        acceptTerms(app)
+        app.buttons["Start"].tap()
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allow = springboard.buttons["Allow While Using App"]
+        if allow.waitForExistence(timeout: 4) { allow.tap() }
+        app.buttons["optionsChip"].tap()
+        let slider = app.sliders["driveSlider"]
+        XCTAssertTrue(slider.waitForExistence(timeout: 3))
+        slider.adjust(toNormalizedSliderPosition: 1)
+        app.buttons["Done"].tap()
+
+        let topSpot = app.buttons["topSpot"], row = app.buttons["spotRow"].firstMatch
+        let deadline = Date().addingTimeInterval(60)
+        while !topSpot.exists && !row.exists && Date() < deadline { _ = row.waitForExistence(timeout: 1) }
+        if !topSpot.exists && !row.exists { app.swipeUp(); _ = row.waitForExistence(timeout: 5) }
+        (topSpot.exists ? topSpot : row).tap()
+        XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.descendants(matching: .any)["kiteFact"].exists)
+        app.swipeUp()
+        let picker = app.segmentedControls["chartKitePicker"]
+        XCTAssertTrue(picker.waitForExistence(timeout: 3))
+        sleep(1)
+        snapshot(app, "kite-chart-default")
+        let other = picker.buttons.allElementsBoundByIndex.first { !$0.isSelected }
+        XCTAssertNotNil(other)
+        other?.tap()
+        XCTAssertTrue(other?.isSelected ?? false)
+        sleep(1)
+        snapshot(app, "kite-chart-other")
+    }
+
     /// The WhereToKite server doesn't answer (seen in Spain on weekend afternoons): the
     /// forecasts come straight from Open-Meteo and the search still shows spots.
     @MainActor
