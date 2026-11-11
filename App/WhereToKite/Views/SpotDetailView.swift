@@ -65,19 +65,16 @@ struct SpotDetailView: View {
                         .foregroundStyle(.orange)
                         .accessibilityIdentifier("spotBans")
                 }
-                if let notes = rec.spot.notes {
-                    Text(notes).font(.footnote).foregroundStyle(.secondary)
-                }
-                if rec.spot.source != UserSpotStore.source {
+                // Curation notes are internal; only the rider's own notes on their own spots show.
+                if rec.spot.isUserSpot {
+                    if let notes = rec.spot.notes {
+                        Text(notes).font(.footnote).foregroundStyle(.secondary)
+                            .accessibilityIdentifier("spotUserNotes")
+                    }
+                } else {
                     Button("Report an issue with this spot", systemImage: "flag") { showReport = true }
                         .font(.footnote)
                         .accessibilityIdentifier("reportSpot")
-                }
-                if rec.spot.directionCheck == "uncertain" || rec.spot.directionCheck == "disagrees" {
-                    Label("The beach direction isn't confirmed by a second map yet, so on- and offshore may be off.",
-                          systemImage: "exclamationmark.triangle")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
                 }
             }
             .padding(.horizontal)
@@ -207,7 +204,7 @@ struct SpotDetailView: View {
                 }
                 ForEach(rec.hours, id: \.wind.localTime) { h in
                     BarMark(x: .value("Hour", h.wind.hour), y: .value("Wind", h.wind.speedKn), width: 18)
-                        .foregroundStyle(ScoreStyle.gradient(Int((h.score * 100).rounded())))
+                        .foregroundStyle(h.windFit.color)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                     PointMark(x: .value("Hour", h.wind.hour), y: .value("Gust", h.wind.gustKn))
                         .symbol(.circle)
@@ -223,7 +220,8 @@ struct SpotDetailView: View {
                 }
             }
             .frame(height: 190)
-            Text("Bars: average wind (kn), coloured by score · Dots: gusts")
+            WindFitLegend(fits: Set(rec.hours.map(\.windFit)))
+            Text("Bars: average wind (kn) · Dots: gusts")
                 .font(.caption2)
                 .foregroundStyle(.secondary)
         }
@@ -243,28 +241,7 @@ struct SpotDetailView: View {
             Text("Hour by hour").font(.headline)
             VStack(spacing: 0) {
                 ForEach(Array(rec.hours.enumerated()), id: \.element.wind.localTime) { i, h in
-                    HStack(spacing: 10) {
-                        Text(String(format: "%02d:00", h.wind.hour))
-                            .font(.subheadline.weight(.semibold))
-                            .monospacedDigit()
-                            .frame(width: 52, alignment: .leading)
-                        WindArrow(directionDeg: h.wind.directionDeg)
-                            .foregroundStyle(WindStyle.color(h.wind.speedKn))
-                            .frame(width: 20)
-                        VStack(alignment: .leading, spacing: 1) {
-                            Text("\(Int(h.wind.speedKn.rounded())) kn · gusts \(Int(h.wind.gustKn.rounded()))", comment: "Hourly wind")
-                                .font(.subheadline)
-                                .monospacedDigit()
-                            Text(hourDetail(h))
-                                .font(.caption)
-                                .foregroundStyle(h.flags.isEmpty ? Color.secondary : Color.orange)
-                        }
-                        Spacer()
-                        ScoreBadge(score: Int((h.score * 100).rounded()), size: 32)
-                    }
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 9)
-                    .accessibilityElement(children: .combine)
+                    hourRow(h)
                     if i < rec.hours.count - 1 { Divider().padding(.leading, 14) }
                 }
             }
@@ -272,12 +249,63 @@ struct SpotDetailView: View {
         }
     }
 
+    /// Wind first: a bar you can compare at a glance (mean, then gusts lighter), the arrow, and
+    /// on the right the kite for the hour, or a clear "can't ride" mark. No per-hour grade.
+    private func hourRow(_ h: HourScore) -> some View {
+        let fit = h.windFit
+        return HStack(spacing: 10) {
+            Text(String(format: "%02d:00", h.wind.hour))
+                .font(.subheadline.weight(.semibold))
+                .monospacedDigit()
+                .frame(width: 48, alignment: .leading)
+            WindArrow(directionDeg: h.wind.directionDeg)
+                .font(.subheadline)
+                .foregroundStyle(.primary)
+                .frame(width: 18)
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(alignment: .firstTextBaseline, spacing: 4) {
+                    Text(verbatim: "\(Int(h.wind.speedKn.rounded()))")
+                        .font(.headline)
+                    Text("kn", comment: "Knots, after the hourly wind speed")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text("gusts \(Int(h.wind.gustKn.rounded()))", comment: "Hourly gusts in knots")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .monospacedDigit()
+                WindBar(speedKn: h.wind.speedKn, gustKn: h.wind.gustKn, maxKn: yMax, color: fit.color)
+                Text(hourDetail(h))
+                    .font(.caption)
+                    .foregroundStyle(h.flags.isEmpty ? Color.secondary : fit == .noGo ? Color.red : Color.orange)
+            }
+            Spacer(minLength: 4)
+            if fit == .rideable, let k = h.kite {
+                Text(verbatim: "\(k.size.formatted()) m")
+                    .font(.footnote.weight(.semibold))
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .foregroundStyle(fit.color)
+                    .background(fit.color.opacity(0.14), in: Capsule())
+            } else if fit != .rideable {
+                Image(systemName: "nosign")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .accessibilityLabel(Text("Can't ride", comment: "Hour with no rideable wind or unsafe"))
+            }
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 9)
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("hourRow")
+    }
+
     private func hourDetail(_ h: HourScore) -> String {
         var parts = [Vocab.compass(h.wind.directionDeg)]
         if let a = h.relativeAngle { parts[0] += " " + Vocab.angle(a) }
         if let side = h.side, h.score > 0 { parts.append(side) }
-        if let k = h.kite { parts.append("\(k.size.formatted()) m") }
-        parts += h.flags.map(Vocab.term)
+        // Safety reasons come first in the flags (applySafety), so they lead the line.
+        parts = h.flags.map(Vocab.term) + parts
         return parts.joined(separator: " · ")
     }
 
@@ -503,3 +531,80 @@ private struct FactorRow: View {
     }
 }
 
+
+// MARK: - Wind fit (hour by hour, chart colours)
+
+/// What an hour's wind means for the rider, without a grade: rideable with a kite, too light,
+/// too strong, or ruled out (storm, dark, offshore, ban, tide). Safety wins over wind strength.
+enum WindFit: Hashable, CaseIterable {
+    case rideable, tooLight, tooStrong, noGo
+
+    var color: Color {
+        switch self {
+        case .rideable: Color(red: 0.10, green: 0.68, blue: 0.42)
+        case .tooLight: Color(red: 0.45, green: 0.62, blue: 0.85)
+        case .tooStrong: Color(red: 0.88, green: 0.30, blue: 0.30)
+        case .noGo: Color(red: 0.55, green: 0.57, blue: 0.62)
+        }
+    }
+
+    var label: String {
+        switch self {
+        case .rideable: String(localized: "Rideable", comment: "Chart legend: wind fits your kite")
+        case .tooLight: String(localized: "Too light", comment: "Chart legend: not enough wind")
+        case .tooStrong: String(localized: "Too strong", comment: "Chart legend: too much wind")
+        case .noGo: String(localized: "Ruled out", comment: "Chart legend: storm, dark, offshore, ban or tide")
+        }
+    }
+}
+
+extension HourScore {
+    var windFit: WindFit {
+        let safety: Set<String> = ["thunderstorm risk", "kiting banned", "dark", "offshore component"]
+        if flags.contains(where: safety.contains) { return .noGo }
+        if score > 0 { return .rideable }
+        if flags.contains("too light") { return .tooLight }
+        if flags.contains("too strong for level") || flags.contains("too strong for quiver") { return .tooStrong }
+        return .noGo
+    }
+}
+
+/// Horizontal wind bar: mean wind solid, gusts as a lighter extension, on a shared scale.
+private struct WindBar: View {
+    let speedKn: Double
+    let gustKn: Double
+    let maxKn: Double
+    let color: Color
+
+    var body: some View {
+        GeometryReader { geo in
+            let w = geo.size.width
+            let scale = { (kn: Double) in max(4, min(w, w * kn / max(maxKn, 1))) }
+            ZStack(alignment: .leading) {
+                Capsule().fill(Color.secondary.opacity(0.12))
+                Capsule().fill(color.opacity(0.35)).frame(width: scale(max(gustKn, speedKn)))
+                Capsule().fill(color).frame(width: scale(speedKn))
+            }
+        }
+        .frame(height: 8)
+        .accessibilityHidden(true)
+    }
+}
+
+private struct WindFitLegend: View {
+    let fits: Set<WindFit>
+
+    var body: some View {
+        HStack(spacing: 12) {
+            ForEach(WindFit.allCases.filter(fits.contains), id: \.self) { f in
+                HStack(spacing: 4) {
+                    Circle().fill(f.color).frame(width: 8, height: 8)
+                    Text(f.label)
+                }
+            }
+        }
+        .font(.caption2)
+        .foregroundStyle(.secondary)
+        .accessibilityElement(children: .combine)
+    }
+}
