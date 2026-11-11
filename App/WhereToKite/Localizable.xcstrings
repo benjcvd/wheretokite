@@ -56,6 +56,22 @@
         }
       }
     },
+    "**Looks promising**: a Go more than %lld days ahead. Forecasts that far out are too unsure to promise one." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Prometedor**: un Go a más de %lld días. Tan lejos, las previsiones son demasiado inciertas para prometerlo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Prometteur** : un Go à plus de %lld jours. Si loin, les prévisions sont trop incertaines pour en promettre un."
+          }
+        }
+      }
+    },
     "**Steady wind**: gusts compared with the mean wind." : {
       "localizations" : {
         "es" : {
@@ -341,23 +357,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld kilos"
-          }
-        }
-      }
-    },
-    "%lld kn · gusts %lld" : {
-      "comment" : "Hourly wind",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld kn · rachas %2$lld"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld kn · rafales %2$lld"
           }
         }
       }
@@ -1090,18 +1089,18 @@
         }
       }
     },
-    "Bars: average wind (kn), coloured by score · Dots: gusts" : {
+    "Bars: average wind (kn) · Dots: gusts" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Barras: viento medio (kn), con el color de la puntuación · Puntos: rachas"
+            "value" : "Barras: viento medio (kn) · Puntos: rachas"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Barres : vent moyen (kn), colorées selon la note · Points : rafales"
+            "value" : "Barres : vent moyen (kn) · Points : rafales"
           }
         }
       }
@@ -1282,6 +1281,23 @@
         }
       }
     },
+    "Can't ride" : {
+      "comment" : "Hour with no rideable wind or unsafe",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No navegable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas navigable"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "es" : {
@@ -1438,6 +1454,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bientôt. Tout ce que tu utilises aujourd'hui reste gratuit."
+          }
+        }
+      }
+    },
+    "Could work, but the forecast can still shift. Good odds, no guarantee." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede salir, pero la previsión aún puede cambiar. Buenas opciones, sin garantías."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ça peut le faire, mais la prévision peut encore bouger. De bonnes chances, sans garantie."
           }
         }
       }
@@ -2200,6 +2232,23 @@
         }
       }
     },
+    "gusts %lld" : {
+      "comment" : "Hourly gusts in knots",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rachas %lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rafales %lld"
+          }
+        }
+      }
+    },
     "gusty" : {
       "localizations" : {
         "es" : {
@@ -2586,6 +2635,23 @@
         }
       }
     },
+    "kn" : {
+      "comment" : "Knots, after the hourly wind speed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kn"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kn"
+          }
+        }
+      }
+    },
     "Language" : {
       "localizations" : {
         "es" : {
@@ -2700,18 +2766,19 @@
         }
       }
     },
-    "Could work, but the forecast can still shift. Good odds, no guarantee." : {
+    "Looks promising" : {
+      "comment" : "Label: would be a Go, but the day is too far ahead to promise one",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Puede salir, pero la previsión aún puede cambiar. Buenas opciones, sin garantías."
+            "value" : "Prometedor"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ça peut le faire, mais la prévision peut encore bouger. De bonnes chances, sans garantie."
+            "value" : "Prometteur"
           }
         }
       }
@@ -3926,6 +3993,7 @@
       }
     },
     "Rideable" : {
+      "comment" : "Chart legend: wind fits your kite",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -3985,6 +4053,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se navigue %@"
+          }
+        }
+      }
+    },
+    "Ruled out" : {
+      "comment" : "Chart legend: storm, dark, offshore, ban or tide",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descartado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exclu"
           }
         }
       }
@@ -4258,6 +4343,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "side-off"
+          }
+        }
+      }
+    },
+    "Side-offshore: advanced only" : {
+      "comment" : "Warning: the wind blows slightly from the land; for advanced riders only",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side-offshore: solo nivel avanzado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side-off : confirmés uniquement"
           }
         }
       }
@@ -4777,22 +4879,6 @@
         }
       }
     },
-    "The beach direction isn't confirmed by a second map yet, so on- and offshore may be off." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La orientación de la playa aún no está confirmada por un segundo mapa, así que onshore y offshore pueden no ser exactos."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L'orientation de la plage n'est pas encore confirmée par une seconde carte : onshore et offshore peuvent être faussés."
-          }
-        }
-      }
-    },
     "The forecast service didn't answer properly. Try again in a minute." : {
       "localizations" : {
         "es" : {
@@ -4939,6 +5025,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toute la semaine, pas seulement les quatre prochains jours."
+          }
+        }
+      }
+    },
+    "The wind blows partly from the land: gustier, and it pushes you away from the beach. Ride only if you can always get back upwind." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El viento sopla en parte desde tierra: más racheado, y te aleja de la playa. Navega solo si siempre puedes remontar a barlovento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vent vient en partie de la terre : plus de rafales, et il te pousse vers le large. Ne navigue que si tu sais toujours remonter au vent."
+          }
+        }
+      }
+    },
+    "The wind looks good, but it's too early to promise a Go: check again %lld days before." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El viento pinta bien, pero aún es pronto para prometer un Go: vuelve a mirar %lld días antes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le vent s'annonce bien, mais c'est trop tôt pour promettre un Go : revérifie %lld jours avant."
           }
         }
       }
@@ -5153,6 +5271,23 @@
         }
       }
     },
+    "Too light" : {
+      "comment" : "Chart legend: not enough wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poco viento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop léger"
+          }
+        }
+      }
+    },
     "Too little wind likely: the grade is held at %lld (was %lld)" : {
       "localizations" : {
         "en" : {
@@ -5171,6 +5306,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trop peu de vent probable : la note est plafonnée à %1$lld (au lieu de %2$lld)"
+          }
+        }
+      }
+    },
+    "Too strong" : {
+      "comment" : "Chart legend: too much wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demasiado fuerte"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop fort"
           }
         }
       }
@@ -5300,6 +5452,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jusqu'à %lld:00"
+          }
+        }
+      }
+    },
+    "Up to %lld kn. Wind: onshore or side-onshore only." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasta %lld kn. Viento: onshore o side-onshore solamente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jusqu'à %lld kn. Vent : onshore ou side-onshore uniquement."
+          }
+        }
+      }
+    },
+    "Up to %lld kn. Wind: side-shore at most, never from the land." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasta %lld kn. Viento: side-shore como máximo, nunca desde tierra."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jusqu'à %lld kn. Vent : side-shore au maximum, jamais de terre."
+          }
+        }
+      }
+    },
+    "Up to %lld kn. Wind: slightly side-offshore accepted, flagged \"advanced only\". Offshore never." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasta %lld kn. Viento: un poco side-offshore aceptado, con el aviso «solo nivel avanzado». Offshore nunca."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jusqu'à %lld kn. Vent : légèrement side-offshore accepté, signalé « confirmés uniquement ». Offshore jamais."
           }
         }
       }
@@ -6075,136 +6275,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zoome sur la plage pour placer l'épingle."
-          }
-        }
-      }
-    },
-    "Side-offshore: advanced only" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Side-offshore: solo nivel avanzado"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Side-off : confirmés uniquement"
-          }
-        }
-      },
-      "comment" : "Warning: the wind blows slightly from the land; for advanced riders only"
-    },
-    "The wind blows partly from the land: gustier, and it pushes you away from the beach. Ride only if you can always get back upwind." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El viento sopla en parte desde tierra: más racheado, y te aleja de la playa. Navega solo si siempre puedes remontar a barlovento."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le vent vient en partie de la terre : plus de rafales, et il te pousse vers le large. Ne navigue que si tu sais toujours remonter au vent."
-          }
-        }
-      }
-    },
-    "Up to %lld kn. Wind: onshore or side-onshore only." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hasta %lld kn. Viento: onshore o side-onshore solamente."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jusqu'à %lld kn. Vent : onshore ou side-onshore uniquement."
-          }
-        }
-      }
-    },
-    "Up to %lld kn. Wind: side-shore at most, never from the land." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hasta %lld kn. Viento: side-shore como máximo, nunca desde tierra."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jusqu'à %lld kn. Vent : side-shore au maximum, jamais de terre."
-          }
-        }
-      }
-    },
-    "Up to %lld kn. Wind: slightly side-offshore accepted, flagged \"advanced only\". Offshore never." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hasta %lld kn. Viento: un poco side-offshore aceptado, con el aviso «solo nivel avanzado». Offshore nunca."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jusqu'à %lld kn. Vent : légèrement side-offshore accepté, signalé « confirmés uniquement ». Offshore jamais."
-          }
-        }
-      }
-    },
-    "Looks promising" : {
-      "comment" : "Label: would be a Go, but the day is too far ahead to promise one",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prometedor"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prometteur"
-          }
-        }
-      }
-    },
-    "The wind looks good, but it's too early to promise a Go: check again %lld days before." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El viento pinta bien, pero aún es pronto para prometer un Go: vuelve a mirar %lld días antes."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le vent s'annonce bien, mais c'est trop tôt pour promettre un Go : revérifie %lld jours avant."
-          }
-        }
-      }
-    },
-    "**Looks promising**: a Go more than %lld days ahead. Forecasts that far out are too unsure to promise one." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**Prometedor**: un Go a más de %lld días. Tan lejos, las previsiones son demasiado inciertas para prometerlo."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**Prometteur** : un Go à plus de %lld jours. Si loin, les prévisions sont trop incertaines pour en promettre un."
           }
         }
       }
