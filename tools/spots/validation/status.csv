@@ -1,10 +1,10 @@
 zone,status,card,spots_checked,windy_markers,windy_matched,added,archived,report,updated
 es-catalunya,validated,WHE-65 WHE-66 WHE-83 WHE-59 WHE-2,31,33,31,0,1,tools/spots/TO_CONFIRM.md#catalunya-catalan-rows-of-escsv,2026-11-02
 es-valencia,validated,WHE-93,10,36,33,18,1,docs/validation/es-valencia.md,2026-11-05
-es-murcia-almeria,review,val-es-murcia-almeria,7,15,5,0,0,docs/validation/es-murcia-almeria.md,2026-11-03
+es-murcia-almeria,validated,val-es-murcia-almeria WHE-124,14,15,5,7,0,docs/validation/es-murcia-almeria.md,2026-11-11
 es-strait,validated,val-es-strait,12,21,10,5,0,docs/validation/es-strait.md,2026-11-05
 es-cadiz,validated,WHE-100,7,15,7,4,0,docs/validation/es-cadiz.md,2026-11-05
-es-huelva,todo,val-es-huelva,,,,,,,
+es-huelva,validated,WHE-101,8,9,7,4,0,docs/validation/es-huelva.md,2026-11-11
 es-balears,validated,WHE-94+WHE-123,16,17,4,9,0,docs/validation/es-balears.md,2026-11-05
 es-galicia,validated,val-es-galicia,7,30,5,3,0,docs/validation/es-galicia.md,2026-11-05
 es-north,validated,val-es-north,7,25,5,13,0,docs/validation/es-north.md,2026-11-05
@@ -26,6 +26,6 @@ fr-finistere-s,validated,WHE-113,13,15,3,7,0,docs/validation/fr-finistere-s.md,2
 fr-finistere-n,validated,WHE-114,8,21,8,2,0,docs/validation/fr-finistere-n.md,2026-11-05
 fr-bretagne-ne,validated,WHE-115,8,15,5,3,0,docs/validation/fr-bretagne-ne.md,2026-11-05
 fr-cotentin,validated,WHE-116,7,16,6,5,0,docs/validation/fr-cotentin.md,2026-11-05
-fr-normandie-e,todo,val-fr-normandie-e,,,,,,,
+fr-normandie-e,validated,WHE-117,6,22,5,10,0,docs/validation/fr-normandie-e.md,2026-11-11
 fr-opale-s,validated,WHE-118,8,14,6,3,0,docs/validation/fr-opale-s.md,2026-11-05
 fr-opale-n,validated,WHE-119,9,10,6,2,0,docs/validation/fr-opale-n.md,2026-11-05
