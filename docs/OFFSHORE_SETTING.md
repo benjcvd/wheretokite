@@ -1,4 +1,55 @@
-# Side-offshore by level (WHE-75): angle limits and before / after
+# Side-offshore: the rider chooses, the level caps it (WHE-160)
+
+## The rule (proposal, waiting for your OK on the angles)
+
+Wind angle to the beach: 0° = straight onshore, 90° = side-shore (parallel to the beach), 180° = straight offshore.
+Profile → under **Level**, a new **Wind off the land** choice: *Side-shore only* or *Slightly side-offshore*.
+A rider can always choose less than their level allows, never more.
+
+| Level | Choices | Default | Side-offshore scores until |
+|---|---|---|---|
+| Beginner | none (choice hidden) | side-shore only | – (0 from 100°) |
+| Intermediate | side-shore only, slightly side-offshore | **side-shore only** | **110°** (20° past side-shore) |
+| Advanced | side-shore only, slightly side-offshore | **slightly side-offshore** (as today) | **120°** (30° past side-shore) |
+
+Direction factor by angle (what the score is multiplied by):
+
+| Angle | 90° | 95° | 100° | 105° | 110° | 115° | 120°+ |
+|---|---|---|---|---|---|---|---|
+| Side-shore only (int. / adv.) | 0.85 / 0.9 | 0.43 / 0.45 | 0 | 0 | 0 | 0 | 0 |
+| Intermediate, side-offshore | 0.85 | 0.63 | 0.4 | 0.2 | 0 | 0 | 0 |
+| Advanced, side-offshore (unchanged) | 0.9 | 0.78 | 0.65 | 0.53 | 0.4 | 0.2 | 0 |
+
+- Straight offshore (120° and beyond) stays 0 for everyone. Lagoons, points and coves keep their own water sector.
+- Every side-offshore hour that scores is flagged on the spot: the warning now reads **"Side-offshore: stay upwind"** (it said "advanced only", wrong now that intermediates can opt in).
+- Changing level resets the choice to the new level's default, so dropping to intermediate never keeps side-offshore by accident.
+- A profile saved by the 31 Oct build (which had an intermediate opt-in) is not opted back in: the new choice is stored under a new name.
+- Advanced riders on the default and every beginner: **no change** in scores.
+- Settings: `ScoringRules.intermediateSideOffshoreToDeg` 110, `offshoreFromDeg` 120.
+
+## Before / after: an intermediate who opts in
+
+`kite --day <day> --slot afternoon --drive 150 --all --straight-line --level intermediate --offshore side-shore|side-offshore`, from Barcelona, 75 kg, 9 and 12 m, archived forecasts, same days as below. Only spots whose score changed:
+
+| Day | Spot | Side-shore only | Slightly side-offshore |
+|---|---|---|---|
+| 2 Jul Tramontana | L'Estartit | 4 | 37 |
+| | Sant Pere Pescador | 0 | 25 |
+| 14 May Ponent | Calafell | 0 | 31 |
+| | Altafulla | 0 | 24 |
+| | Segur de Calafell | 0 | 3 |
+| | Castelldefels | 69 | 92 (grade 92 both times; the "chance of wind" check moved 55 % → 83 %, partly run-to-run noise) |
+| 8 Oct Mestral | Salou | 0 | 23 |
+| | Sant Pere Pescador | 0 | 22 |
+| | Palamós, L'Estartit, Platja d'Aro | 0 | 4, 4, 2 |
+
+For comparison, an advanced rider got 62 at L'Estartit and 61 at Sant Pere on 2 Jul: the intermediate gets less because the window stops 10° earlier. Top picks don't change on any day.
+
+Screenshots: [intermediate, opted in](review/whe160-offshore-intermediate.png) · [advanced default](review/whe160-offshore-advanced.png).
+
+---
+
+# Previous rule: side-offshore by level (WHE-75), angle limits and before / after
 
 ## The rule (Ben, 2 Nov)
 
