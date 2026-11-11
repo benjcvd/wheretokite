@@ -963,6 +963,22 @@
         }
       }
     },
+    "Apple Maps" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Maps"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plans"
+          }
+        }
+      }
+    },
     "around high tide" : {
       "localizations" : {
         "es" : {
@@ -2216,6 +2232,22 @@
         }
       }
     },
+    "Get directions with" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómo llegar con"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Itinéraire avec"
+          }
+        }
+      }
+    },
     "Go" : {
       "comment" : "Verdict: grade 70 or more",
       "localizations" : {
@@ -2246,6 +2278,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bien"
+          }
+        }
+      }
+    },
+    "Google Maps" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google Maps"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google Maps"
           }
         }
       }
@@ -2926,6 +2974,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cartes et temps de trajet : Apple Plans"
+          }
+        }
+      }
+    },
+    "Maps app" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App de mapas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App de cartes"
           }
         }
       }

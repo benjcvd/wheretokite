@@ -12,6 +12,8 @@ struct SpotDetailView: View {
     /// Kite whose range the wind chart shows (nil = the suggested kite).
     @State private var chartKiteSize: Double?
     @State private var showMap = false
+    @State private var askMapsApp = false
+    @AppStorage(MapsApp.storageKey) private var mapsAppRaw = ""
     @Environment(FeedbackStore.self) private var feedback
 
     private var coordinate: CLLocationCoordinate2D {
@@ -374,26 +376,54 @@ struct SpotDetailView: View {
         return parts.joined(separator: " · ")
     }
 
+    /// Directions opens the rider's last maps app; the first time, it asks which one.
+    /// The small menu beside it switches app.
     private var directionsButton: some View {
-        Button {
-            let item: MKMapItem
-            if #available(iOS 26, *) {
-                item = MKMapItem(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), address: nil)
-            } else {
-                item = MKMapItem(placemark: MKPlacemark(coordinate: coordinate))
+        HStack(spacing: 10) {
+            Button {
+                if let app = MapsApp(rawValue: mapsAppRaw) {
+                    openDirections(in: app)
+                } else {
+                    askMapsApp = true
+                }
+            } label: {
+                Label("Directions", systemImage: "car.fill")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 6)
             }
-            item.name = rec.spot.name
-            item.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
-        } label: {
-            Label("Directions", systemImage: "car.fill")
-                .font(.headline)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 6)
+            .prominentButton()
+            .confirmationDialog("Get directions with", isPresented: $askMapsApp, titleVisibility: .visible) {
+                ForEach(MapsApp.allCases) { app in
+                    Button(app.title) { openDirections(in: app) }
+                }
+            }
+
+            Menu {
+                Picker("Maps app", selection: $mapsAppRaw) {
+                    ForEach(MapsApp.allCases) { app in
+                        Text(app.title).tag(app.rawValue)
+                    }
+                }
+            } label: {
+                Label(MapsApp(rawValue: mapsAppRaw)?.title ?? String(localized: "Maps app"), systemImage: "map")
+                    .labelStyle(.iconOnly)
+                    .font(.headline)
+                    .padding(.vertical, 6)
+            }
+            .buttonStyle(.bordered)
+            .accessibilityLabel("Maps app")
+            .accessibilityValue(MapsApp(rawValue: mapsAppRaw)?.title ?? "")
+            .accessibilityIdentifier("mapsAppMenu")
         }
-        .prominentButton()
         .controlSize(.large)
         .padding(.horizontal)
         .padding(.bottom, 8)
+    }
+
+    private func openDirections(in app: MapsApp) {
+        mapsAppRaw = app.rawValue
+        app.open(name: rec.spot.name, latitude: rec.spot.latitude, longitude: rec.spot.longitude)
     }
 }
 

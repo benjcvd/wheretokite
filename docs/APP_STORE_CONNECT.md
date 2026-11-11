@@ -253,6 +253,9 @@ Not collected: contact info, health, financial info, precise location (the start
 from the phone to Apple Maps directly, which is Apple's own service), identifiers, purchases,
 contacts, browsing or search history, sensitive info.
 
+Directions: the phone hands the spot to Apple Maps or Google Maps (the rider's pick). That is the
+rider opening another app, not collection by WhereToKite: nothing to declare, no SDK involved.
+
 These match `App/WhereToKite/PrivacyInfo.xcprivacy` and the `/privacy` page. If one of them
 changes, update all three.
 
