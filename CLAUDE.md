@@ -59,7 +59,7 @@ Product review: `docs/BLIND_SPOTS.md`. Spot questions for Ben: `tools/spots/TO_C
 | `tools/spots/*.csv` | **Source of truth for the spot catalogue**, one file per country. Format and curation rules in `tools/spots/README.md` | CSV |
 | `tools/build_spots.py` | CSV → `Data/spots.json`: locates each spot from OpenStreetMap, computes which way the beach faces, checks it against Apple Maps (`check_directions.swift`), checks road access (Valhalla). Network cache in `tools/.osm_cache/` | Python 3 |
 | `Data/spots.json` | Generated catalogue, bundled in the app and served by `/v1/catalog` | JSON |
-| `.github/` | Automation: `report-triage.yml` (app report → Claude checks it with sources → PR on `tools/spots/` or a comment), `claude-followup.yml` (`@claude` from Ben), `catalog-build.yml` (CSV push on main → rebuild `Data/spots.json`) | GitHub Actions |
+| `.github/` | Automation: `ci.yml` (every push and PR: engine tests, server tests and typecheck, iPhone build and unit tests), `report-triage.yml` (app report → Claude checks it with sources → PR on `tools/spots/` or a comment), `claude-followup.yml` (`@claude` from Ben), `catalog-build.yml` (CSV push on main → rebuild `Data/spots.json`) | GitHub Actions |
 
 How it fits together: the app scores spots on the phone with KiteCore and gets forecasts
 through the Worker. The catalogue goes CSV → build → `Data/spots.json` on `main`, and the Worker
