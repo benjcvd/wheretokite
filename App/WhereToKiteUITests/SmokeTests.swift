@@ -218,6 +218,21 @@ final class SmokeTests: XCTestCase {
         XCTAssertTrue(app.buttons["slot-evening"].exists)
         XCTAssertTrue(app.buttons["slot-custom"].exists)
 
+        // My hours: the first tap selects it, a second one opens the From / Until editor in place.
+        app.buttons["slot-evening"].tap()
+        app.buttons["slot-custom"].tap()
+        let editor = app.descendants(matching: .any)["customHoursEditor"].firstMatch
+        XCTAssertFalse(editor.waitForExistence(timeout: 1), "the first tap must only select My hours")
+        app.buttons["slot-custom"].tap()
+        XCTAssertTrue(editor.waitForExistence(timeout: 3), "My hours editor didn't open")
+        let from = app.steppers["customFrom"]
+        let before = app.buttons["slot-custom"].label
+        from.buttons.element(boundBy: 1).tap()   // increment
+        XCTAssertNotEqual(app.buttons["slot-custom"].label, before, "the session's hours didn't follow the editor")
+        snapshot(app, "my-hours-inline")
+        app.otherElements["PopoverDismissRegion"].firstMatch.tap()
+        XCTAssertFalse(editor.waitForExistence(timeout: 1))
+
         // The drive slider stops at 3 h, without a Pro hint.
         app.buttons["optionsChip"].tap()
         let slider = app.sliders["driveSlider"]
