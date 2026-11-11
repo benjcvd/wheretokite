@@ -79,6 +79,23 @@ public struct SpotRecommendation: Sendable, Identifiable {
         guard let window else { return nil }
         return hours.first { $0.wind.hour >= window.start && $0.kite != nil }?.kite
     }
+
+    /// Every kite of the quiver that works for the whole best window (the window's average wind
+    /// stays inside its range every hour), best first: the suggested kite, then the others by
+    /// how close the window's wind is to their sweet spot. Display only: scoring keeps using
+    /// the best kite per hour.
+    public func workingKites(in quiver: [KiteRange]) -> [KiteRange] {
+        guard let window else { return [] }
+        let winds = hours.filter { $0.wind.hour >= window.start && $0.wind.hour < window.end && $0.kite != nil }
+            .map(\.wind.speedKn)
+        guard !winds.isEmpty else { return [] }
+        let mean = winds.reduce(0, +) / Double(winds.count)
+        let suggested = suggestedKite
+        let others = quiver
+            .filter { k in k.size != suggested?.size && winds.allSatisfy { $0 >= k.minKn && $0 <= k.maxKn } }
+            .sorted { abs(mean - $0.optimalKn) / ($0.maxKn - $0.minKn) < abs(mean - $1.optimalKn) / ($1.maxKn - $1.minKn) }
+        return (suggested.map { [$0] } ?? []) + others
+    }
 }
 
 /// What a search cost, for diagnostics and quota monitoring.
