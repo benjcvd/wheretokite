@@ -1,8 +1,8 @@
 import XCTest
 @testable import KiteCore
 
-/// WHE-75: side-shore at most for beginners and intermediates, a little side-offshore (up to
-/// 120°) for advanced riders, pure offshore 0 for everyone.
+/// WHE-75 / WHE-160: the rider chooses side-shore only or a little side-offshore, the level caps
+/// it (beginner none, intermediate to 110°, advanced to 120°), pure offshore 0 for everyone.
 final class OffshoreToleranceTests: XCTestCase {
     let facing = 180.0   // beach facing south: a wind from 180 is onshore, from 90/270 side-shore
 
@@ -19,7 +19,13 @@ final class OffshoreToleranceTests: XCTestCase {
         Scorer(profile: p, intensity: nil).score(hour(angle: angle), seaFacingDeg: facing)
     }
 
-    func testToleranceFollowsLevel() {
+    func rider(_ level: Level, _ choice: OffshoreTolerance) -> RiderProfile {
+        var p = rider(level)
+        p.offshoreTolerance = choice
+        return p
+    }
+
+    func testDefaultsFollowLevel() {
         XCTAssertEqual(rider(.beginner).offshoreTolerance, .sideShoreOnly)
         XCTAssertEqual(rider(.intermediate).offshoreTolerance, .sideShoreOnly)
         XCTAssertEqual(rider(.advanced).offshoreTolerance, .sideOffshore)
@@ -29,6 +35,45 @@ final class OffshoreToleranceTests: XCTestCase {
         let json = #"{"weightKg":75,"kites":[9,12],"level":"intermediate","offshore":"sideOffshore"}"#
         let p = try JSONDecoder().decode(RiderProfile.self, from: Data(json.utf8))
         XCTAssertEqual(p.offshoreTolerance, .sideShoreOnly)
+    }
+
+    func testChoiceIsCappedByLevel() {
+        XCTAssertEqual(rider(.beginner, .sideOffshore).offshoreTolerance, .sideShoreOnly, "beginner can't opt in")
+        XCTAssertEqual(rider(.intermediate, .sideOffshore).offshoreTolerance, .sideOffshore)
+        XCTAssertEqual(rider(.advanced, .sideShoreOnly).offshoreTolerance, .sideShoreOnly, "less is always allowed")
+        XCTAssertEqual(OffshoreTolerance.choices(for: .beginner), [.sideShoreOnly])
+        // The level's default is stored as nil, so a level change picks up the new default.
+        XCTAssertNil(rider(.advanced, .sideOffshore).offshoreChoice)
+        var p = rider(.advanced)
+        p.level = .intermediate
+        XCTAssertEqual(p.offshoreTolerance, .sideShoreOnly)
+    }
+
+    func testChoiceSurvivesSaveAndLoad() throws {
+        let p = rider(.intermediate, .sideOffshore)
+        let back = try JSONDecoder().decode(RiderProfile.self, from: JSONEncoder().encode(p))
+        XCTAssertEqual(back.offshoreTolerance, .sideOffshore)
+    }
+
+    func testIntermediateSideOffshoreScoresUntil110AndIsFlagged() {
+        let p = rider(.intermediate, .sideOffshore)
+        let h = score(p, 105)
+        XCTAssertGreaterThan(h.score, 0, "105°")
+        XCTAssertTrue(h.flags.contains("side-offshore"))
+        XCTAssertLessThan(h.score, score(p, 90).score)
+        XCTAssertEqual(score(p, 110).score, 0, "110°")
+        XCTAssertTrue(score(p, 110).flags.contains("offshore component"))
+        // Opting in never lowers a score.
+        for a in stride(from: 0.0, through: 180, by: 5) {
+            XCTAssertGreaterThanOrEqual(score(p, a).score, score(rider(.intermediate), a).score, "\(a)°")
+        }
+    }
+
+    func testAdvancedCanStayAtSideShore() {
+        let p = rider(.advanced, .sideShoreOnly)
+        XCTAssertGreaterThan(score(p, 95).score, 0)
+        XCTAssertEqual(score(p, 100).score, 0)
+        XCTAssertEqual(score(p, 110).score, 0)
     }
 
     func testSideShoreOnlyStopsAt100Degrees() {
@@ -58,7 +103,7 @@ final class OffshoreToleranceTests: XCTestCase {
     func testPureOffshoreIsZeroForEveryone() {
         for level in Level.allCases {
             for angle in stride(from: 120.0, through: 180, by: 10) {
-                XCTAssertEqual(score(rider(level), angle).score, 0, "\(level) \(angle)°")
+                XCTAssertEqual(score(rider(level, .sideOffshore), angle).score, 0, "\(level) \(angle)°")
             }
         }
     }
@@ -67,7 +112,7 @@ final class OffshoreToleranceTests: XCTestCase {
         // A lagoon open almost all around (Leucate's étang): a wind that is offshore on the
         // seaward beach is fine here, whatever the setting.
         let lagoon = SpotSide(name: nil, seaFacingDeg: facing, waterSectorDeg: 330)
-        let p = rider(.intermediate)
+        let p = rider(.intermediate, .sideOffshore)
         let h = Scorer(profile: p, intensity: nil).score(hour(angle: 180), side: lagoon)
         XCTAssertGreaterThan(h.score, 0)
         XCTAssertFalse(h.flags.contains("side-offshore"))

@@ -187,18 +187,24 @@ public enum Level: String, Codable, CaseIterable, Sendable {
     case beginner, intermediate, advanced
 }
 
-/// How offshore a wind the rider accepts, set by level (WHE-75, Ben's rule of 2 Nov): beginners
-/// and intermediates side-shore at most; advanced riders a little side-offshore, always flagged.
+/// How offshore a wind the rider accepts (WHE-160): the rider chooses, the level caps the choice.
+/// Beginners side-shore only; intermediates and advanced riders may accept a little side-offshore
+/// (up to `ScoringRules.sideOffshoreLimitDeg`), always flagged.
 /// Side-offshore wind comes over land (gustier) and drifts you out if you can't get back upwind.
 /// Pure offshore scores 0 for everyone (`ScoringRules.directionScore`).
 public enum OffshoreTolerance: String, Codable, CaseIterable, Sendable {
-    /// Side-shore at most: beginners and intermediates.
+    /// Side-shore at most (default for beginners and intermediates).
     case sideShoreOnly
-    /// A little side-offshore: advanced riders.
+    /// A little side-offshore (default for advanced riders, opt-in for intermediates).
     case sideOffshore
 
     public static func `default`(for level: Level) -> OffshoreTolerance {
         level == .advanced ? .sideOffshore : .sideShoreOnly
+    }
+
+    /// What the level lets the rider choose from: less than the level allows, never more.
+    public static func choices(for level: Level) -> [OffshoreTolerance] {
+        level == .beginner ? [.sideShoreOnly] : [.sideShoreOnly, .sideOffshore]
     }
 }
 
@@ -230,9 +236,19 @@ public struct RiderProfile: Codable, Equatable, Sendable {
     public var level: Level
     /// nil = defaults (optional so profiles saved before weights existed still load).
     public var weights: ScoreWeights?
-    /// What the scoring uses: follows the level, no per-rider override (an `offshore` key
-    /// saved by the 31 Oct build is ignored on load).
-    public var offshoreTolerance: OffshoreTolerance { .default(for: level) }
+    /// The rider's own offshore choice; nil = the level's default. Stored under a new key so an
+    /// `offshore` value saved by the 31 Oct build is ignored on load (nobody gets opted in silently).
+    public var offshoreChoice: OffshoreTolerance?
+
+    /// What the scoring uses: the rider's choice, capped by the level (a beginner is always
+    /// side-shore only). Setting the level's default stores nil.
+    public var offshoreTolerance: OffshoreTolerance {
+        get {
+            let choice = offshoreChoice ?? .default(for: level)
+            return OffshoreTolerance.choices(for: level).contains(choice) ? choice : .sideShoreOnly
+        }
+        set { offshoreChoice = newValue == .default(for: level) ? nil : newValue }
+    }
 
     public var scoreWeights: ScoreWeights {
         get { weights ?? ScoreWeights() }

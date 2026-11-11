@@ -568,10 +568,10 @@ extension SpotRecommendation {
             .sorted()
     }
 
-    /// "Side-offshore: advanced only" when a scored hour is side-offshore (WHE-75).
+    /// Shown when a scored hour is side-offshore, which only riders who accept it see (WHE-160).
     var sideOffshoreLabel: String? {
-        hasSideOffshore ? String(localized: "Side-offshore: advanced only",
-                                 comment: "Warning: the wind blows slightly from the land; for advanced riders only") : nil
+        hasSideOffshore ? String(localized: "Side-offshore: stay upwind",
+                                 comment: "Warning: the wind blows slightly from the land and drifts you out") : nil
     }
 
     /// "Storm from 4 pm" (spot time, the phone's hour format) when a thunderstorm is forecast

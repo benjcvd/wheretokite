@@ -114,6 +114,45 @@ final class SmokeTests: XCTestCase {
         snapshot(app, "8b-me-weights")
     }
 
+    /// WHE-160: the offshore choice sits under the level; beginners get none, and a level
+    /// change puts the new level's default back.
+    @MainActor
+    func testOffshoreChoiceFollowsLevel() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchOrigin", "41.3874,2.1686"]
+        app.launch()
+        let start = app.buttons["Start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 5))
+        acceptTerms(app)
+        start.tap()
+        XCTAssertTrue(app.buttons["riderChip"].waitForExistence(timeout: 5))
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allow = springboard.buttons["Allow While Using App"]
+        if allow.waitForExistence(timeout: 4) { allow.tap() }
+        app.buttons["riderChip"].tap()
+        XCTAssertTrue(app.navigationBars["Rider profile"].waitForExistence(timeout: 3))
+        app.swipeUp()
+
+        let sideShore = app.buttons["Side-shore only"]
+        let sideOff = app.buttons["Slightly side-offshore"]
+        // Starter profile: intermediate, side-shore only.
+        XCTAssertTrue(sideShore.waitForExistence(timeout: 3))
+        XCTAssertTrue(sideShore.isSelected)
+        sideOff.tap()
+        XCTAssertTrue(sideOff.isSelected)
+        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS '20° past side-shore'")).firstMatch.exists)
+        snapshot(app, "offshore-intermediate")
+
+        app.buttons["Beginner"].tap()
+        XCTAssertFalse(sideOff.waitForExistence(timeout: 1), "beginners get no choice")
+        app.buttons["Advanced"].tap()
+        XCTAssertTrue(sideOff.waitForExistence(timeout: 3))
+        XCTAssertTrue(sideOff.isSelected, "advanced default")
+        snapshot(app, "offshore-advanced")
+        app.buttons["Intermediate"].tap()
+        XCTAssertTrue(sideShore.isSelected, "level change resets to the level's default")
+    }
+
     /// The "How is this scored?" sheet, opened from any spot (calm days have no top spot).
     @MainActor
     func testScoreInfo() throws {
