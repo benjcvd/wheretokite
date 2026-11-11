@@ -1,7 +1,77 @@
-# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80, WHE-88, WHE-87)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80, WHE-88, WHE-87, WHE-79)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
+
+## Easterlies on the Tarragona coast (WHE-79, 5 Nov): today's app already fixes most of it, ship nothing
+
+Question: on 4 and 31 Oct the Torredembarra beach mast measured 13–14 kn of easterly while the beach
+cells said 6–9, so every setup said no go (WHE-63). Is the easterly under-forecast there, or is the
+beach cell too sheltered? Full output: [whe79 results](tools/backtest/results/whe79.md).
+Script: `tools/backtest/whe79.py`.
+
+### In plain words
+
+- **The easterly itself is forecast right.** At the Tarragona buoy (open sea) every model reads
+  the easterly within 4 % of what was measured (51 days, Jan–Oct). The shortfall only appears at the beach.
+- **The culprit in WHE-63 was the ICON (= best match here) beach cell.** It sits 5–6 km inland at all
+  three spots and reads 3.2 kn low on easterly days (95 % interval −3.8…−2.5), catching 6 of 28
+  measured easterly go days. That was the setup under test on 4 and 31 Oct; the app no longer uses it.
+- **Today's app (WHE-87 mix) is close on easterlies**: −0.5 kn on the same-day run (−0.9…0.0), 17 of
+  28 easterly go days caught, no false go. Most misses are near the line: forecast 10.6–12.4 kn
+  against 12.7–14.4 measured. Day ahead: 4 Oct now caught (14.6 kn, go), 31 Oct still missed (10.9 vs 13.6).
+- **Reading more of the sea cell would catch more easterlies but costs elsewhere**: ECMWF and GFS sea
+  cells catch 21–24 of 28 easterly go days, but read +2 kn too high on garbí days and give 40+ false go
+  over the year. Over all 305 days the app's score (CSI 0.43) ties the best alternatives; nothing is
+  clearly better.
+- **The Torredembarra mast is unusually open to the east**: on the same easterly days Tarragona and
+  Cunit masts read 0.62–0.73 of the forecast, Torredembarra 1.11. A fix tuned to this one mast would
+  be tuned to its exposure, not to the water.
+
+### Results (Torredembarra mast as truth, 2 Jan – 4 Nov 2026, best 2 h between 07 and 17 UTC)
+
+55 easterly days (mast mean direction 45–135°, ≥ 6 kn), 28 measured go (2 h at 12–28 kn).
+
+| Source (cell) | Where the cell is | Easterly error, same day [95 %] | Easterly go caught / false | All days CSI, same day [95 %] |
+|---|---|---|---|---|
+| ICON = best match, beach cell | 5.3 km from pin, inland | −3.1 [−3.7, −2.5] | 6/28, 0 | 0.18 [0.07, 0.32] |
+| AROME HD, beach cell | 0.4 km | −0.3 [−0.9, +0.3] | 20/28, 3 | 0.42 [0.29, 0.55] |
+| MF seamless, beach cell | 0.4 km | −1.3 [−1.7, −0.8] | 14/28, 1 | 0.37 [0.23, 0.52] |
+| ECMWF 9 km, sea cell | 6 km out | +0.8 [+0.3, +1.3] | 24/28, 6 | 0.41 [0.30, 0.52] |
+| GFS, sea cell | 9 km out | +0.5 [−0.2, +1.3] | 21/28, 5 | 0.36 [0.26, 0.47] |
+| best match, sea cell | 4.5 km out | −1.5 [−2.1, −0.9] | 14/28, 0 | 0.43 [0.29, 0.59] |
+| **Today's app** (MF beach + ECMWF sea + GFS sea) | mix | −0.5 [−0.9, 0.0] | 17/28, 0 | 0.43 [0.30, 0.56] |
+
+Day ahead the picture is the same for ICON, ECMWF and GFS (full year). MF/AROME only have day-ahead
+runs from 8 Aug (13 easterly days, 6 go): too few to judge the app's day-ahead score here.
+Garbí (41 days, 7 go): ECMWF sea +2.0 kn day ahead, 14 false go; the app +0.3.
+
+### Real days (sanity check)
+
+- **4 Oct**, mast 14.4 kn at 90°: app day ahead 14.6 go (hit); ICON beach 8.1, AROME beach 10.2.
+- **31 Oct**, mast 13.6 kn at 89°: app 10.9 day ahead, 11.7 same day (miss); ECMWF sea 12.8–13.1 go.
+- **3–6 Mar**, levante storm 16–19 kn: every source said go, the sea cells 20–27 kn (too high).
+
+### What could make this wrong
+
+- **One mast.** No other official mast on this beach; its exposure (open to the east and, I think, sheltered from the
+  south-west by the town) decides the direction pattern. Dropping it leaves no truth at these spots.
+- **The water may be windier than the mast**: buoy 10.9 vs mast 9.0 kn mean on easterly days. If riders
+  get more than the mast, the app is a little more too light than shown here.
+- **The buoy is 40 km out** and measures at 3 m (brought to 10 m): it says the open sea is right, not the
+  first kilometre.
+- **Same-day runs** for the app's full-year numbers; riders plan a day ahead.
+- One year, 28 easterly go days: a 1–2 kn shift is the smallest difference this can see.
+
+### Recommendation (Ben, 6 Nov: ship nothing)
+
+1. Ship nothing: today's mix already reads easterlies about right here, and every way to catch more
+   of them adds false go on garbí days. (recommended)
+2. Read the beach cell's AROME HD instead of MF seamless on day 0–1: +1 kn on easterlies, but 17 false
+   go over the year against 5; a tie on CSI. Not worth a global change.
+3. For WHE-71 (confidence badge): the chance badge still reads ICON on its beach cell, 5 km inland here
+   and 3 kn low on easterlies; that makes the models "disagree" and the badge too cautious on good days.
+   Note for Spot improvement: Creixell's note says "west of Torredembarra"; it is east.
 
 ## Built: no Go beyond +3 days, same rule everywhere (WHE-88, 2 Nov)
 

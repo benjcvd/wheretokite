@@ -232,6 +232,11 @@ archive). One rule wins at every lead: mean of `meteofrance_seamless` (beach poi
 gain 4–5, strong days read stronger. Only dissent: the POEM near-shore buoy, where AROME is better.
 Report only; waiting for Ben's pick. Open-Meteo's archive answered "no data" while overloaded:
 the script never caches refusals.
+
+**Forecast accuracy, 5 Nov (WHE-79).** Tarragona easterlies (Torredembarra, Altafulla, Creixell), Jan–4 Nov:
+the easterly is right at open sea (Tarragona buoy); the WHE-63 misses came from the ICON beach cell, 5 km inland.
+Today's WHE-87 mix is ~0.5 kn low on easterlies and ties the best alternative over the year, so no app change
+is proposed. The ICON land cell still feeds the confidence badge: relevant to WHE-71. `tools/backtest/whe79.py`.
 ## Lead, 31 Oct: Spain/France reliability task force
 Ben's top priority: forecasts and spots in Spain and France must be reliable before he shares
 the app with riders in Barcelona (testers' build = card WHE-70). Ben asked to **finish the work
