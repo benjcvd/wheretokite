@@ -148,6 +148,54 @@ final class SmokeTests: XCTestCase {
         snapshot(app, "score-info-2")
     }
 
+    /// WHE-156: the spot page's map shows the wind against the beach; a tap opens it full
+    /// screen with an hour slider that turns the arrow.
+    @MainActor
+    func testSpotMapFullScreen() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchDay", "2026-10-03",
+                                "-searchOrigin", "41.3874,2.1686"]
+        app.launch()
+        acceptTerms(app)
+        app.buttons["Start"].tap()
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allow = springboard.buttons["Allow While Using App"]
+        if allow.waitForExistence(timeout: 4) { allow.tap() }
+
+        let topSpot = app.buttons["topSpot"], row = app.buttons["spotRow"].firstMatch
+        let deadline = Date().addingTimeInterval(60)
+        while !topSpot.exists && !row.exists && Date() < deadline { _ = row.waitForExistence(timeout: 1) }
+        if !topSpot.exists && !row.exists { app.swipeUp(); _ = row.waitForExistence(timeout: 5) }
+        (topSpot.exists ? topSpot : row).tap()
+
+        let hero = app.descendants(matching: .any)["spotMapHero"]
+        XCTAssertTrue(hero.waitForExistence(timeout: 5))
+        sleep(2)
+        snapshot(app, "spot-map-hero")
+        hero.tap()
+
+        let close = app.buttons["spotMapClose"]
+        XCTAssertTrue(close.waitForExistence(timeout: 5))
+        let hour = app.descendants(matching: .any)["spotMapHour"]
+        XCTAssertTrue(hour.exists)
+        sleep(2)
+        snapshot(app, "spot-map-full")
+        let slider = app.sliders["spotMapHourSlider"]
+        if slider.exists {
+            let before = hour.label
+            slider.adjust(toNormalizedSliderPosition: 0)
+            slider.adjust(toNormalizedSliderPosition: 1)
+            XCTAssertNotEqual(hour.label, before, "moving the slider should change the hour")
+            sleep(1)
+            snapshot(app, "spot-map-full-last-hour")
+        }
+        app.buttons["Map"].tap()
+        sleep(2)
+        snapshot(app, "spot-map-standard")
+        close.tap()
+        XCTAssertTrue(hero.waitForExistence(timeout: 3))
+    }
+
     /// The WhereToKite server doesn't answer (seen in Spain on weekend afternoons): the
     /// forecasts come straight from Open-Meteo and the search still shows spots.
     @MainActor

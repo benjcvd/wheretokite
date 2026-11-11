@@ -18,6 +18,40 @@
         }
       }
     },
+    "%lld kn" : {
+      "comment" : "Wind speed at the tail of the map's wind arrow",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kn"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kn"
+          }
+        }
+      }
+    },
+    "%lld kn · %@" : {
+      "comment" : "Wind on the spot map: speed and angle to the beach",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kn · %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kn · %@"
+          }
+        }
+      }
+    },
     "**%@** (%@): %@" : {
       "localizations" : {
         "en" : {
@@ -2749,6 +2783,22 @@
         }
       }
     },
+    "Map style" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estilo de mapa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Style de carte"
+          }
+        }
+      }
+    },
     "Maps and drive times: Apple Maps" : {
       "localizations" : {
         "es" : {
@@ -3541,6 +3591,22 @@
         }
       }
     },
+    "Open the map full screen" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir el mapa a pantalla completa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir la carte en plein écran"
+          }
+        }
+      }
+    },
     "Open water" : {
       "localizations" : {
         "es" : {
@@ -4017,6 +4083,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comme l'iPhone"
+          }
+        }
+      }
+    },
+    "Satellite" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satélite"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satellite"
           }
         }
       }
