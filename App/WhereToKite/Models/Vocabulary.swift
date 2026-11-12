@@ -39,6 +39,7 @@ enum Vocab {
         case "thunderstorm risk": String(localized: "thunderstorm risk")
         case "kiting banned": String(localized: "kiting banned")
         case "dark": String(localized: "dark", comment: "Before sunrise or after sunset")
+        case "too late": String(localized: "too late", comment: "This hour is over, or over before you can get there")
         case "heavy rain": String(localized: "heavy rain")
         case "rain": String(localized: "rain")
         case "unstable air": String(localized: "unstable air", comment: "Risk of squalls")
@@ -121,6 +122,7 @@ enum Vocab {
         case "thunderstorm risk": String(localized: "Thunderstorm risk: stay off the water.")
         case "kiting banned": String(localized: "Kiting is banned here at these hours.")
         case "dark": String(localized: "It's dark at these hours.")
+        case "too late": String(localized: "Too late: you can't get there before these hours are over.")
         case "offshore": String(localized: "Offshore wind: it would blow you out to sea.")
         default: verdictMeaning(.noGo)
         }

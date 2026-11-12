@@ -236,6 +236,8 @@ final class SearchModel {
                 slot: options.slot, intensity: options.intensity, distanceMatters: options.distanceMatters)
             var req = request
             req.customHours = options.customHours
+            // Today: only the hours still reachable count (WHE-161).
+            if req.day == DayOption.today.id { req.now = Date() }
             let result = try await recommender.search(req, profile: profile, today: DayOption.today.id)
             try Task.checkCancellation()
             if result.stats.forecastMissing > 0 {
