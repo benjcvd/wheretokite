@@ -37,8 +37,11 @@ export const ENDPOINTS: Record<Endpoint, EndpointConfig> = {
   },
 };
 
-export const MAX_LOCATIONS = 400;
+/** The app sends at most 100 spots per request (`OpenMeteoProvider.batchSize`). */
+export const MAX_LOCATIONS = 150;
 export const UPSTREAM_CHUNK = 100;
+/** Missed locations per rate-limit unit: the per-IP limit counts what goes to Open-Meteo. */
+export const LIMIT_UNIT_LOCATIONS = 50;
 /** Bump to invalidate every cached location after a format change. */
 const CACHE_VERSION = "1";
 
@@ -136,6 +139,82 @@ export function parseParams(params: URLSearchParams, endpoint: Endpoint): Parsed
   return { endpoint, shared, locations };
 }
 
+// What the app and the CLI send (KiteCore `Forecast.swift`, `Confidence.swift`), nothing more:
+// every other parameter costs Open-Meteo calls nobody here needs. A new variable or model in
+// the app needs this list (and a server deploy) first; older app versions keep working.
+const FORECAST_HOURLY = ["wind_speed_10m", "wind_gusts_10m", "wind_direction_10m", "weather_code", "cape", "precipitation"];
+const MODELS = ["best_match", "meteofrance_seamless", "ecmwf_ifs", "ecmwf_ifs025", "gfs_seamless", "icon_seamless"];
+
+type Rule = { oneOf: string[]; list?: boolean } | "date";
+
+const FORECAST_RULES: Record<string, Rule> = {
+  hourly: { oneOf: FORECAST_HOURLY, list: true },
+  daily: { oneOf: ["sunrise", "sunset"], list: true },
+  wind_speed_unit: { oneOf: ["kn"] },
+  models: { oneOf: MODELS, list: true },
+  cell_selection: { oneOf: ["land", "sea", "nearest"] },
+  start_date: "date",
+  end_date: "date",
+};
+
+const RULES: Record<Endpoint, Record<string, Rule>> = {
+  forecast: FORECAST_RULES,
+  archive: FORECAST_RULES,
+  marine: { hourly: { oneOf: ["sea_level_height_msl"], list: true }, start_date: "date", end_date: "date" },
+};
+
+/** Days a request may span (end - start), and how far ahead it may reach: Open-Meteo's 16. */
+export const MAX_SPAN_DAYS = 16;
+/** Forecast and marine may start a little in the past: riders west of UTC are a day behind. */
+const FORECAST_PAST_DAYS = 3;
+/** The historical forecast archive starts in 2021 for the models the app reads. */
+const ARCHIVE_FIRST_DAY = "2021-01-01";
+
+const DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+function dayNumber(value: string, name: string): number {
+  const t = DAY.test(value) ? Date.parse(`${value}T00:00:00Z`) : NaN;
+  if (!Number.isFinite(t) || new Date(t).toISOString().slice(0, 10) !== value) {
+    throw new ApiError(400, `Parameter '${name}' must be a date (yyyy-mm-dd), got '${value}'`);
+  }
+  return Math.round(t / 86_400_000);
+}
+
+/**
+ * Refuses anything the app and CLI never send: unknown parameters or values, missing dates,
+ * date ranges longer than 16 days or outside what the endpoint serves. `now` gives today (UTC).
+ */
+export function checkAllowed(req: ParsedRequest, now: number): void {
+  const rules = RULES[req.endpoint];
+  const values = new Map(req.shared);
+  for (const [name, value] of req.shared) {
+    const rule = rules[name];
+    if (!rule) throw new ApiError(400, `Parameter '${name}' is not supported`);
+    if (rule === "date") continue;
+    const items = rule.list ? splitList(value) : [value];
+    const wrong = items.find((v) => !rule.oneOf.includes(v));
+    if (wrong !== undefined) throw new ApiError(400, `Value '${wrong}' is not supported for '${name}'`);
+  }
+  for (const loc of req.locations) {
+    for (const [name, value] of loc.extra) {
+      if (name !== "timezone") throw new ApiError(400, `Parameter '${name}' is not supported`);
+      if (value !== "auto") throw new ApiError(400, `Value '${value}' is not supported for 'timezone'`);
+    }
+  }
+  for (const name of ["hourly", "start_date", "end_date"]) {
+    if (!values.has(name)) throw new ApiError(400, `Parameter '${name}' is required`);
+  }
+  const start = dayNumber(values.get("start_date")!, "start_date");
+  const end = dayNumber(values.get("end_date")!, "end_date");
+  const today = Math.floor(now / 86_400_000);
+  const first = req.endpoint === "archive" ? dayNumber(ARCHIVE_FIRST_DAY, "") : today - FORECAST_PAST_DAYS;
+  if (end < start) throw new ApiError(400, "Parameter 'end_date' must not be before 'start_date'");
+  if (end - start > MAX_SPAN_DAYS) throw new ApiError(400, `At most ${MAX_SPAN_DAYS} days per request`);
+  if (start < first || end > today + MAX_SPAN_DAYS) {
+    throw new ApiError(400, "Parameter 'start_date' or 'end_date' is out of the allowed range");
+  }
+}
+
 function byKey(a: [string, string], b: [string, string]): number {
   return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0;
 }
@@ -212,6 +291,11 @@ export interface ForecastDeps {
   /** Background work that must outlive the response (ctx.waitUntil in the Worker). */
   waitUntil: (p: Promise<unknown>) => void;
   upstreamTimeoutMs?: number;
+  /**
+   * Per-IP limit on what goes upstream: takes one unit, false once the caller is over the
+   * limit. Called once per LIMIT_UNIT_LOCATIONS missed locations (cache hits are free).
+   */
+  limit?: () => Promise<boolean>;
 }
 
 /** Reads GET query or POST form body (query string parameters are merged in). */
@@ -235,9 +319,10 @@ export async function handleForecast(
 ): Promise<Response> {
   const config = ENDPOINTS[endpoint];
   const parsed = parseParams(await readParams(request, 64 * 1024), endpoint);
+  const now = deps.now();
+  checkAllowed(parsed, now);
   const origin = new URL(request.url).origin;
   const keys = parsed.locations.map((loc) => cacheKey(origin, parsed, loc));
-  const now = deps.now();
 
   // 1. Cache lookups (all in parallel; identical locations in one request are looked up once).
   const unique = [...new Set(keys)];
@@ -251,6 +336,16 @@ export async function handleForecast(
 
   // 2. Missing locations upstream, <= UPSTREAM_CHUNK per request, chunks in parallel.
   const missing = unique.filter((k) => !found.has(k));
+  if (deps.limit && missing.length > 0) {
+    // Sequential, at most 3 calls (150 locations): each may count as a subrequest.
+    for (let units = Math.ceil(missing.length / LIMIT_UNIT_LOCATIONS); units > 0; units--) {
+      if (!(await deps.limit())) {
+        const res = apiError(429, "Too many requests");
+        res.headers.set("Retry-After", "60");
+        return res;
+      }
+    }
+  }
   const missingLocs = missing.map((k) => parsed.locations[keys.indexOf(k)]);
   const chunks = chunk(missingLocs.map((loc, i) => ({ loc, key: missing[i] })), UPSTREAM_CHUNK);
   const results = await Promise.all(
