@@ -98,6 +98,14 @@ public struct SpotCatalog: Codable, Sendable {
     /// Islands only reachable by boat that have catalogue spots.
     public var islands: [Island]?
 
+    public init(generatedAt: String?, region: String?, attribution: String?, spots: [Spot], islands: [Island]?) {
+        self.generatedAt = generatedAt
+        self.region = region
+        self.attribution = attribution
+        self.spots = spots
+        self.islands = islands
+    }
+
     public static func load(from url: URL) throws -> SpotCatalog {
         try JSONDecoder().decode(SpotCatalog.self, from: Data(contentsOf: url))
     }

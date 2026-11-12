@@ -20,6 +20,8 @@ import KiteCore
 //   --straight-line       skip Apple Maps, estimate all drive times (shown as ~)
 //   --hourly N            print the hourly breakdown for the top N spots
 //   --all                 also list spots scoring 0, and every excluded spot
+//   --check-catalog NEW --against OLD   CI gate: exit 1 if NEW drops over 10% of OLD's spots, a
+//                         banned spot or a country (the same rule as the app's download check)
 //   --replay FILE         past forecasts instead of Open-Meteo: {"yyyy-MM-dd": {spot id: DayForecast}}
 //                         (tools/backtest/replay.py writes it). Ranks every day in the file, or
 //                         --day; no model-agreement check; prints one JSON line per day.
@@ -42,6 +44,19 @@ while let a = it.next() {
     if ["distance-matters", "straight-line", "all"].contains(key) { flags.insert(key); continue }
     guard let v = it.next() else { fail("missing value for \(a)") }
     args[key] = v
+}
+
+// MARK: Catalogue gate (CI, before committing a rebuilt Data/spots.json)
+
+if let new = args["check-catalog"] {
+    guard let old = args["against"] else { fail("--check-catalog needs --against OLD") }
+    let candidate = (try? SpotCatalog.load(from: URL(fileURLWithPath: new))) ?? fail("can't read \(new)")
+    let reference = (try? SpotCatalog.load(from: URL(fileURLWithPath: old))) ?? fail("can't read \(old)")
+    let problems = CatalogGate.problems(candidate, reference: reference)
+    print("catalogue: \(reference.spots.count) -> \(candidate.spots.count) spots")
+    if problems.isEmpty { print("catalogue gate: OK"); exit(0) }
+    problems.forEach { print("catalogue gate: \($0)") }
+    exit(1)
 }
 
 // MARK: Profile (persisted like the app's saved user info)
