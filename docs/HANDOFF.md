@@ -381,4 +381,6 @@ The validated France and Spain catalogue is on GitHub and live (751 spots). On 6
 
 **Product, 11 Nov (WHE-160).** Offshore is now the rider's choice under Level, capped by level: beginner none, intermediate opt-in to 110°, advanced default 120° (or opt out). Built on atlas/t/whe-160 (f54f9b3, a38cf46), before / after in docs/OFFSHORE_SETTING.md. Safety rule: not to be merged until Ben OKs the angles. The new choice uses a new profile key so the 31 Oct opt-in is not revived.
 
+**Product, 12 Nov (WHE-160).** Ben OK'd the angles but wants no degrees on screen: the choice is now two picture cards (beach drawing, green / orange / red fan) with plain titles, b30dd74. Waiting on his OK of the look, then merge.
+
 **WHE-146 (11 Nov):** GitHub CI added (`.github/workflows/ci.yml`): every push and PR runs server tests and typecheck, engine tests, and the iPhone build with unit tests. UI tests stay manual because they hit the live server. The `macos-26` runner label is only proven once the first push runs.
