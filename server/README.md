@@ -27,8 +27,23 @@ or `https://api.yourdomain.com`.
 
 ### Forecast endpoints (`/v1/forecast`, `/v1/archive`, `/v1/marine`)
 
-These take the same parameters and return the same JSON as Open-Meteo, so the app only swaps
-the host. Parameters can be sent as a query string (GET) or as an
+These return the same JSON as Open-Meteo and take its parameters, but only the ones the app
+and CLI send, so the app only swaps the host. Anything else is refused (400), so nobody can use
+the server to spend its Open-Meteo quota on other data:
+
+| Parameter | Allowed |
+|---|---|
+| `hourly` (forecast, archive) | `wind_speed_10m`, `wind_gusts_10m`, `wind_direction_10m`, `weather_code`, `cape`, `precipitation` |
+| `hourly` (marine) | `sea_level_height_msl` |
+| `daily` | `sunrise`, `sunset` |
+| `models` | `best_match`, `meteofrance_seamless`, `ecmwf_ifs`, `ecmwf_ifs025`, `gfs_seamless`, `icon_seamless` |
+| `wind_speed_unit` · `cell_selection` · `timezone` | `kn` · `land`, `sea`, `nearest` · `auto` |
+| `start_date`, `end_date` | Required. At most 16 days apart, at most 16 days ahead; forecast and marine from 3 days ago, archive from 2021 |
+
+`hourly` is required; `daily`, `models`, `wind_speed_unit` and `cell_selection` only on
+forecast and archive. **A new variable or model in the app must be added here (`RULES` in
+`src/forecast.ts`) and deployed before the app version that sends it.** Older app versions
+keep working. Parameters can be sent as a query string (GET) or as an
 `application/x-www-form-urlencoded` body (POST). Several locations go in comma-separated
 `latitude`/`longitude`. One location returns an object. Several return an array in request
 order, and every element after the first has `location_id` set to its index, as Open-Meteo
@@ -58,9 +73,14 @@ Response headers:
 
 Limits and errors. Errors use Open-Meteo's shape, `{"error":true,"reason":"..."}`:
 
-- 400: missing coordinates, non-numeric coordinates, out-of-range coordinates, more than 400
-  locations, `elevation` count not matching the number of coordinates, or a `format` other
-  than JSON.
+- 400: missing coordinates, non-numeric coordinates, out-of-range coordinates, more than 150
+  locations (the app sends at most 100), a parameter or value outside the table above, or a
+  `format` other than JSON.
+- 429: over the per-IP limit (`FORECAST_LIMITER` in `wrangler.toml`), with `Retry-After: 60`.
+  It counts what goes to Open-Meteo: one unit per 50 locations missing from the cache, 100
+  units a minute, shared by the three routes; cache hits are free. A cold app search uses
+  about 25. The app falls back to Open-Meteo directly on any server error. The IP is only the
+  counter key, never logged. Without the binding there is no limit.
 - 404: unknown path. 405: wrong method. 413: POST body over 64 KB. 415: a POST body that is
   not form-encoded.
 - Errors from Open-Meteo are passed through unchanged (status and body), and nothing is cached
