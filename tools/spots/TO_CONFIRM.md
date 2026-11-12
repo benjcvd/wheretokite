@@ -113,6 +113,12 @@ second pass with web research is worth doing.
     ban dates? Santa Cruz: launch pinned at Praia do Mirante, right? Windy also lists Figueira
     da Foz, Carcavelos, Sesimbra, Tróia, Vila Nova de Milfontes (mostly surf; left out).
 
+- **Portugal north and centre validation (WHE-166, 12 Nov, settled without Ben)**: details in docs/validation/pt-north-centro.md.
+  Aveiro – Praia da Barra archived (no kite source). Matosinhos and Óbidos summer bans stay in notes only: two guides each, no
+  Capitania or câmara text found. Baleal: guides' "Baleal Bay" is the south bay, our pin is the north side; kept, no source says it
+  fails. Left out: Espinho and Figueira da Foz (cannot pin one beach), Afife, Maceda, Pedrógão, Nazaré Norte (surf).
+  Added as Pro: Foz do Douro, Âncora, Furadouro, Estacas (Costa Nova ria), Praia da Vieira.
+
 ## Catalunya (Catalan rows of ES.csv)
 
 ### Settled without Ben (WHE-2, 2026-11-02, rule of 2 Nov: look online, else assume the worst)
