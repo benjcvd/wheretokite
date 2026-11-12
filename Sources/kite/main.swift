@@ -18,6 +18,8 @@ import KiteCore
 //                         --level without it resets to the level's default)
 //   --spots FILE          spot catalogue (default Data/spots.json)
 //   --straight-line       skip Apple Maps, estimate all drive times (shown as ~)
+//   --now HH:MM           clock time of the search on --day (default: the real clock, for
+//                         today only): hours you can't reach by then + drive score 0
 //   --hourly N            print the hourly breakdown for the top N spots
 //   --all                 also list spots scoring 0, and every excluded spot
 //   --check-catalog NEW --against OLD   CI gate: exit 1 if NEW drops over 10% of OLD's spots, a
@@ -132,6 +134,15 @@ if let h = args["hours"] {
     guard p.count == 2, (0...23).contains(p[0]), p[0] < p[1], p[1] <= 24 else { fail("--hours: e.g. 17-20") }
     request.customHours = p[0]...(p[1] - 1)
 }
+// Today's search only scores the hours the rider can still reach (WHE-161).
+if let t = args["now"] {
+    let p = t.split(separator: ":").compactMap { Int($0) }
+    guard p.count == 2, (0...23).contains(p[0]), (0...59).contains(p[1]),
+          let midnight = dayFormatter.date(from: request.day) else { fail("--now: e.g. 17:52") }
+    request.now = midnight.addingTimeInterval(Double(p[0] * 3600 + p[1] * 60))
+} else if request.day == today {
+    request.now = Date()
+}
 
 let spotsURL = URL(fileURLWithPath: args["spots"] ?? "Data/spots.json")
 let catalog: SpotCatalog
@@ -161,6 +172,7 @@ if let path = args["replay"] {
     for day in days {
         var r = request
         r.day = day
+        r.now = nil   // past days: no clock
         let res = try await replay.search(r, profile: profile, today: day)
         let ranked: [[String: Any]] = res.recommendations.map { rec in
             var o: [String: Any] = ["id": rec.spot.id, "score": rec.finalScore, "wind": rec.windScore,
@@ -201,7 +213,8 @@ print(String(format: "(%d spots ranked in %.1fs · %d in reach · %d forecast ·
              result.recommendations.count, elapsed, s.inReach, s.forecastSpots, s.etaReceived, s.etaRequested))
 
 let shown = result.recommendations.filter { flags.contains("all") || $0.finalScore > 0 }
-if shown.isEmpty { print("No kiteable spot found. Use --all to see why each spot fails.") }
+if result.sessionOver { print("This session is over: no spot can be reached before it ends. Try tomorrow.") }
+else if shown.isEmpty { print("No kiteable spot found. Use --all to see why each spot fails.") }
 for (i, r) in shown.enumerated() {
     let name = r.spot.name.count > 32 ? String(r.spot.name.prefix(31)) + "…" : r.spot.name
     let models = r.chance.map { c in

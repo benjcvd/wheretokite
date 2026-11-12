@@ -94,6 +94,17 @@ struct ResultsSection: View {
                     .zoomSource(top.id, in: zoom)
                     .accessibilityIdentifier("topSpot")
                     .accessibilityHint("Shows the hourly forecast and directions")
+            } else if result.sessionOver {
+                NoSpotCard(title: String(localized: "This session is over"),
+                           message: String(localized: "No spot can be reached before the end of this session. Try a later session or tomorrow."))
+                if let tomorrow = DayOption.next(2).last, model.nextWindow == nil {
+                    Button { goToDay(tomorrow.id) } label: {
+                        Label("See tomorrow", systemImage: "arrow.right.circle")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .accessibilityIdentifier("seeTomorrow")
+                }
             } else if result.recommendations.isEmpty {
                 NoSpotCard(title: String(localized: "No spot in reach"),
                            message: options.start.isCurrentLocation

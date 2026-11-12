@@ -3399,6 +3399,22 @@
         }
       }
     },
+    "No spot can be reached before the end of this session. Try a later session or tomorrow." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No llegas a ningún spot antes de que acabe esta sesión. Prueba una sesión más tarde o mañana."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun spot n'est atteignable avant la fin de cette session. Essaie une session plus tard ou demain."
+          }
+        }
+      }
+    },
     "No spot in reach" : {
       "localizations" : {
         "es" : {
@@ -4412,6 +4428,22 @@
         }
       }
     },
+    "See tomorrow" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver mañana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir demain"
+          }
+        }
+      }
+    },
     "Send" : {
       "localizations" : {
         "es" : {
@@ -5254,6 +5286,22 @@
         }
       }
     },
+    "This session is over" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta sesión ha terminado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette session est finie"
+          }
+        }
+      }
+    },
     "This spot" : {
       "localizations" : {
         "es" : {
@@ -5427,6 +5475,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Demain"
+          }
+        }
+      }
+    },
+    "too late" : {
+      "comment" : "This hour is over, or over before you can get there",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "demasiado tarde"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "trop tard"
+          }
+        }
+      }
+    },
+    "Too late: you can't get there before these hours are over." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demasiado tarde: no llegas antes de que acaben estas horas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop tard : tu n'arrives pas avant la fin de ces heures."
           }
         }
       }

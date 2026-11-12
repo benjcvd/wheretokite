@@ -49,7 +49,7 @@ public struct SpotRecommendation: Sendable, Identifiable {
         guard kiteVerdict == .noGo else { return nil }
         let slice = scoredHours.map { s in hours.filter { $0.wind.hour >= s.start && $0.wind.hour < s.end } } ?? hours
         let problem = Recommender.mainProblem(slice.isEmpty ? hours : slice)
-        return ["thunderstorm risk", "kiting banned", "dark", "offshore"].contains(problem) ? problem : nil
+        return ["too late", "thunderstorm risk", "kiting banned", "dark", "offshore"].contains(problem) ? problem : nil
     }
     /// True when an hour the score is made of (best window, else the scored hours) is
     /// side-offshore and still scores: the app shows "Side-offshore: stay upwind" (WHE-75, WHE-160).
@@ -121,6 +121,13 @@ public struct SearchResult: Sendable {
     /// Spots within straight-line reach that were dropped, with why.
     public var excluded: [(Spot, String)]
     public var stats = SearchStats()
+    /// Today, and no spot has an hour left that the rider can reach in time: the session is
+    /// over (WHE-161). The app says so and points to tomorrow.
+    public var sessionOver: Bool {
+        !recommendations.isEmpty && recommendations.allSatisfy { rec in
+            !rec.hours.isEmpty && rec.hours.allSatisfy { $0.flags.first == "too late" }
+        }
+    }
 }
 
 /// Ranks spots for a day.
@@ -272,11 +279,11 @@ public struct Recommender: Sendable {
             c.hours = Self.applyStormBuffer(c.hours, day: day.hours, rules: rules)
             c.hours = Self.applyTide(c.spot.tide, to: c.hours, day: day.hours, rules: rules)
             c.estimate = estimates[c.spot.id] ?? c.estimate
+            c.utcOffset = day.utcOffsetSeconds
             c.rec = recommend(c.spot, hours: c.hours, drive: c.estimate, request: request, driveIsEstimate: true,
-                              weights: profile.scoreWeights)
+                              weights: profile.scoreWeights, utcOffset: c.utcOffset)
             if c.spot.tide != nil { c.rec?.tideSummary = Self.tideSummary(day.hours, rules: rules) }
             c.tideSummary = c.rec?.tideSummary
-            c.utcOffset = day.utcOffsetSeconds
             c.rec?.utcOffsetSeconds = c.utcOffset
             if let rec = c.rec { c.rec?.stormFrom = Self.stormStart(rec, day: day.hours, searched: request.hours, rules: rules) }
             cands[c.spot.id] = c
@@ -304,7 +311,8 @@ public struct Recommender: Sendable {
                         cands[id] = nil
                     } else {
                         cands[id]?.rec = recommend(c.spot, hours: c.hours, drive: minutes, request: request,
-                                                   driveIsEstimate: false, weights: profile.scoreWeights)
+                                                   driveIsEstimate: false, weights: profile.scoreWeights,
+                                                   utcOffset: c.utcOffset)
                         cands[id]?.rec?.tideSummary = c.tideSummary
                         cands[id]?.rec?.utcOffsetSeconds = c.utcOffset
                         cands[id]?.rec?.stormFrom = c.rec?.stormFrom
@@ -349,9 +357,9 @@ public struct Recommender: Sendable {
             for (rec, c) in zip(todo, confs) {
                 guard let i = out.firstIndex(where: { $0.id == rec.id }) else { continue }
                 out[i].confidence = c
-                // Hours safety closed (storm, ban, dark) can't make the chance.
+                // Hours safety closed (storm, ban, dark) or out of reach can't make the chance.
                 let open = Set(rec.hours.filter { h in
-                    !["thunderstorm risk", "kiting banned", "dark"].contains(h.flags.first ?? "")
+                    !["too late", "thunderstorm risk", "kiting banned", "dark"].contains(h.flags.first ?? "")
                 }.map(\.wind.hour))
                 guard let chance = scorer.kiteChance(models: c.modelHours, sides: rec.spot.allSides,
                                                      hours: open, leadDays: c.leadDays,
@@ -395,7 +403,7 @@ public struct Recommender: Sendable {
                 hours = Self.applyStormBuffer(hours, day: f.hours, rules: rules)
                 hours = Self.applyTide(c.spot.tide, to: hours, day: f.hours, rules: rules)
                 var rec = recommend(c.spot, hours: hours, drive: c.estimate, request: r, driveIsEstimate: true,
-                                    weights: profile.scoreWeights)
+                                    weights: profile.scoreWeights, utcOffset: f.utcOffsetSeconds)
                 rec.stormFrom = Self.stormStart(rec, day: f.hours, searched: r.hours, rules: rules)
                 if best.map({ Self.ranks(rec, before: $0) }) ?? true { best = rec }
             }
@@ -410,7 +418,11 @@ public struct Recommender: Sendable {
     }
 
     func recommend(_ spot: Spot, hours: [HourScore], drive: Double, request: SearchRequest,
-                   driveIsEstimate: Bool = false, weights: ScoreWeights = ScoreWeights()) -> SpotRecommendation {
+                   driveIsEstimate: Bool = false, weights: ScoreWeights = ScoreWeights(),
+                   utcOffset: Int? = nil) -> SpotRecommendation {
+        // Today: hours over, or over by the time the rider gets there, can't be the session.
+        let hours = Self.applyArrival(hours, from: Self.firstReachableHour(
+            now: request.now, utcOffset: utcOffset, day: request.day, driveMinutes: drive))
         // Best run of `sessionHours` consecutive hours.
         let n = min(rules.sessionHours, hours.count)
         var bestStart = 0, bestMean = 0.0
@@ -484,7 +496,10 @@ public struct Recommender: Sendable {
     /// Why a spot with no good window isn't a go: "thunderstorm risk", "offshore", "too light"…
     /// Safety first: storms, bans and offshore beat "too light" when both apply.
     public static func mainProblem(_ hours: [HourScore]) -> String {
-        let flags = Set(hours.flatMap(\.flags))
+        // Hours out of reach today only explain a no-go when no hour is left.
+        let reachable = hours.filter { $0.flags.first != "too late" }
+        if reachable.isEmpty, !hours.isEmpty { return "too late" }
+        let flags = Set(reachable.flatMap(\.flags))
         return flags.contains("thunderstorm risk") ? "thunderstorm risk"
             : flags.contains("kiting banned") ? "kiting banned"
             : flags.contains("offshore component") ? "offshore"
@@ -493,6 +508,37 @@ public struct Recommender: Sendable {
             : flags.contains("tide too low") ? "tide too low"
             : flags.contains("tide too high") ? "tide too high"
             : flags.first ?? "poor conditions"
+    }
+
+    /// Today only: the first local hour (spot time) the rider can be on the water, now + drive
+    /// rounded up to the next full hour, in the rider's favour since most drives are estimates.
+    /// 24 or more = nothing left today; nil = no cut (no clock, or a later day). Without the
+    /// spot's UTC offset, the device's is used.
+    static func firstReachableHour(now: Date?, utcOffset: Int?, day: String, driveMinutes: Double) -> Int? {
+        guard let now else { return nil }
+        let offset = utcOffset ?? TimeZone.current.secondsFromGMT(for: now)
+        let local = now.addingTimeInterval(TimeInterval(offset))
+        let gmt = TimeZone(identifier: "GMT")!
+        let localDay = DayString.from(local, timeZone: gmt)
+        if localDay < day { return nil }
+        if localDay > day { return 24 }
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = gmt
+        let c = calendar.dateComponents([.hour, .minute, .second], from: local)
+        let arrival = Double((c.hour ?? 0) * 60 + (c.minute ?? 0)) + Double(c.second ?? 0) / 60 + max(0, driveMinutes)
+        return Int((arrival / 60).rounded(.up))
+    }
+
+    /// Hours before `first` score 0, flagged "too late" (first flag: it trumps the rest).
+    static func applyArrival(_ hours: [HourScore], from first: Int?) -> [HourScore] {
+        guard let first else { return hours }
+        return hours.map { h in
+            guard h.wind.hour < first else { return h }
+            var h = h
+            h.score = 0
+            h.flags.insert("too late", at: 0)
+            return h
+        }
     }
 
     /// Hard limits beyond the wind itself: thunderstorm risk, darkness and seasonal bans score

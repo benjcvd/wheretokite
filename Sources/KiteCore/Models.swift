@@ -299,6 +299,10 @@ public struct SearchRequest: Sendable {
     /// 0 = chill, 1 = intense, nil = "all types".
     public var intensity: Double?
     public var distanceMatters: Bool
+    /// The moment of the search. When the searched day is today at a spot, only the hours the
+    /// rider can reach (now + drive, rounded up to the hour) are scored; earlier ones score 0,
+    /// flagged "too late" (WHE-161). nil = no clock (past days in the CLI, tests).
+    public var now: Date?
 
     public init(origin: Coordinate, maxDriveMinutes: Double, day: String, slot: SessionSlot,
                 intensity: Double?, distanceMatters: Bool) {
