@@ -343,13 +343,11 @@ struct ProfileFields: View {
             }
 
             if OffshoreTolerance.choices(for: profile.level).count > 1 {
-                section(String(localized: "Wind off the land"), footer: offshoreFooter) {
-                    Picker(String(localized: "Wind off the land"), selection: $profile.offshoreTolerance) {
-                        Text("Side-shore only").tag(OffshoreTolerance.sideShoreOnly)
-                        Text("Slightly side-offshore").tag(OffshoreTolerance.sideOffshore)
+                section(String(localized: "Where the wind may come from"), footer: offshoreFooter) {
+                    HStack(spacing: 10) {
+                        offshoreCard(.sideShoreOnly, title: String(localized: "From the sea only"))
+                        offshoreCard(.sideOffshore, title: String(localized: "A little from the land too"))
                     }
-                    .pickerStyle(.segmented)
-                    .accessibilityIdentifier("offshorePicker")
                 }
             }
         }
@@ -407,12 +405,105 @@ struct ProfileFields: View {
     }
 
     private var offshoreFooter: String {
-        if profile.offshoreTolerance == .sideShoreOnly {
-            return String(localized: "Spots count only when the wind blows along the beach or onto it.")
+        profile.offshoreTolerance == .sideShoreOnly
+            ? String(localized: "Spots count only when the wind blows onto the beach or along it.")
+            : String(localized: "Spots also count when the wind comes a little from the land. That wind is gustier and pushes you out, so they get a warning. Wind straight from the land never counts.")
+    }
+
+    /// One choice, drawn: sea on top, beach below, the fan shows where the wind may come from.
+    private func offshoreCard(_ choice: OffshoreTolerance, title: String) -> some View {
+        let on = profile.offshoreTolerance == choice
+        let reachDeg = choice == .sideOffshore ? (ScoringRules().sideOffshoreLimitDeg(profile.level) ?? 90) : 90
+        return Button {
+            withAnimation(.snappy) { profile.offshoreTolerance = choice }
+        } label: {
+            VStack(spacing: 8) {
+                WindFanDrawing(reachDeg: reachDeg)
+                    .frame(height: 78)
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    .accessibilityHidden(true)
+                Text(title)
+                    .font(.footnote.weight(.semibold))
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+                    .frame(maxWidth: .infinity, minHeight: 34)
+            }
+            .padding(8)
+            .foregroundStyle(Color.primary)
+            .background {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color(.secondarySystemGroupedBackground))
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .strokeBorder(on ? Color.accentColor : Color.clear, lineWidth: 2.5)
+            }
         }
-        return profile.level == .advanced
-            ? String(localized: "Spots also count when the wind comes a little from the land, up to 30° past side-shore. They get a warning. Straight offshore never counts.")
-            : String(localized: "Spots also count when the wind comes a little from the land, up to 20° past side-shore. They get a warning. Straight offshore never counts.")
+        .buttonStyle(.plain)
+        .accessibilityLabel(title)
+        .accessibilityIdentifier("offshore-\(choice.rawValue)")
+        .accessibilityAddTraits(on ? .isSelected : [])
+        .sensoryFeedback(.selection, trigger: on)
+    }
+}
+
+/// Top-down beach: sea above, sand below, rider on the shoreline. Green covers the directions the
+/// wind may blow from (onto the beach or along it); past along-the-beach the extra slice over the
+/// land is orange (flagged). The rest of the land side is red: wind straight from land never counts.
+private struct WindFanDrawing: View {
+    /// Widest accepted angle from straight onshore, degrees (90 = along the beach).
+    let reachDeg: Double
+
+    var body: some View {
+        Canvas { ctx, size in
+            let w = size.width, h = size.height
+            let shoreY = h * 0.62
+            ctx.fill(Path(CGRect(origin: .zero, size: size)), with: .color(Color(red: 0.93, green: 0.84, blue: 0.62)))
+            var sea = Path()
+            sea.move(to: .zero)
+            sea.addLine(to: CGPoint(x: w, y: 0))
+            sea.addLine(to: CGPoint(x: w, y: shoreY))
+            sea.addCurve(to: CGPoint(x: 0, y: shoreY),
+                         control1: CGPoint(x: w * 0.66, y: shoreY - 4), control2: CGPoint(x: w * 0.33, y: shoreY + 4))
+            sea.closeSubpath()
+            ctx.fill(sea, with: .color(Color(red: 0.36, green: 0.66, blue: 0.86)))
+
+            let c = CGPoint(x: w / 2, y: shoreY)
+            let r = min(w / 2, shoreY) * 0.95
+            // Degrees from straight onshore (up), clockwise → point on screen.
+            func pt(_ deg: Double, _ radius: CGFloat) -> CGPoint {
+                let a = (deg - 90) * .pi / 180
+                return CGPoint(x: c.x + radius * cos(a), y: c.y + radius * sin(a))
+            }
+            func fan(_ from: Double, _ to: Double) -> Path {
+                var p = Path()
+                p.move(to: c)
+                p.addArc(center: c, radius: r, startAngle: .degrees(from - 90), endAngle: .degrees(to - 90), clockwise: false)
+                p.closeSubpath()
+                return p
+            }
+            ctx.fill(fan(reachDeg, 360 - reachDeg), with: .color(.red.opacity(0.3)))
+            ctx.fill(fan(-90, 90), with: .color(.green.opacity(0.5)))
+            if reachDeg > 90 {
+                ctx.fill(fan(90, reachDeg), with: .color(.orange.opacity(0.8)))
+                ctx.fill(fan(-reachDeg, -90), with: .color(.orange.opacity(0.8)))
+            }
+            // Wind arrows blowing toward the rider.
+            for deg in [-60.0, 0, 60] {
+                let tail = pt(deg, r * 0.95), head = pt(deg, r * 0.4)
+                var a = Path()
+                a.move(to: tail)
+                a.addLine(to: head)
+                let dir = atan2(head.y - tail.y, head.x - tail.x)
+                for s in [-1.0, 1.0] {
+                    a.move(to: head)
+                    a.addLine(to: CGPoint(x: head.x - 6 * cos(dir + s * 0.5), y: head.y - 6 * sin(dir + s * 0.5)))
+                }
+                ctx.stroke(a, with: .color(.white), style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+            }
+            ctx.fill(Path(ellipseIn: CGRect(x: c.x - 4, y: c.y - 4, width: 8, height: 8)), with: .color(.black.opacity(0.75)))
+        }
     }
 }
 
