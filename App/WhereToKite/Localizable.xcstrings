@@ -6441,86 +6441,6 @@
         }
       }
     },
-    "Side-shore only" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Solo side-shore"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Side-shore uniquement"
-          }
-        }
-      }
-    },
-    "Slightly side-offshore" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Un poco side-offshore"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Légèrement side-offshore"
-          }
-        }
-      }
-    },
-    "Spots also count when the wind comes a little from the land, up to 20° past side-shore. They get a warning. Straight offshore never counts." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los spots también cuentan cuando el viento viene un poco desde tierra, hasta 20° más allá del side-shore. Llevan un aviso. El offshore puro nunca cuenta."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les spots comptent aussi quand le vent vient un peu de la terre, jusqu'à 20° au-delà du side-shore. Ils sont signalés. L'offshore franc ne compte jamais."
-          }
-        }
-      }
-    },
-    "Spots also count when the wind comes a little from the land, up to 30° past side-shore. They get a warning. Straight offshore never counts." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los spots también cuentan cuando el viento viene un poco desde tierra, hasta 30° más allá del side-shore. Llevan un aviso. El offshore puro nunca cuenta."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les spots comptent aussi quand le vent vient un peu de la terre, jusqu'à 30° au-delà du side-shore. Ils sont signalés. L'offshore franc ne compte jamais."
-          }
-        }
-      }
-    },
-    "Spots count only when the wind blows along the beach or onto it." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los spots solo cuentan cuando el viento sopla a lo largo de la playa o hacia ella."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les spots ne comptent que si le vent souffle le long de la plage ou vers elle."
-          }
-        }
-      }
-    },
     "Up to %lld kn." : {
       "comment" : "Level limit: maximum mean wind",
       "localizations" : {
@@ -6538,18 +6458,82 @@
         }
       }
     },
-    "Wind off the land" : {
+    "Where the wind may come from" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Viento desde tierra"
+            "value" : "De dónde puede venir el viento"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vent de terre"
+            "value" : "D'où le vent peut venir"
+          }
+        }
+      }
+    },
+    "From the sea only" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo desde el mar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De la mer seulement"
+          }
+        }
+      }
+    },
+    "A little from the land too" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También un poco desde tierra"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un peu de la terre aussi"
+          }
+        }
+      }
+    },
+    "Spots count only when the wind blows onto the beach or along it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los spots solo cuentan cuando el viento sopla hacia la playa o a lo largo de ella."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les spots ne comptent que quand le vent souffle vers la plage ou le long de celle-ci."
+          }
+        }
+      }
+    },
+    "Spots also count when the wind comes a little from the land. That wind is gustier and pushes you out, so they get a warning. Wind straight from the land never counts." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los spots también cuentan cuando el viento viene un poco desde tierra. Ese viento es más racheado y te aleja de la orilla, así que llevan un aviso. El viento que viene directamente de tierra nunca cuenta."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les spots comptent aussi quand le vent vient un peu de la terre. Ce vent est plus rafaleux et te pousse vers le large, donc ils sont signalés. Le vent qui vient droit de la terre ne compte jamais."
           }
         }
       }

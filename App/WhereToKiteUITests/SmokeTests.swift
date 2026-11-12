@@ -133,14 +133,14 @@ final class SmokeTests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Rider profile"].waitForExistence(timeout: 3))
         app.swipeUp()
 
-        let sideShore = app.buttons["Side-shore only"]
-        let sideOff = app.buttons["Slightly side-offshore"]
+        let sideShore = app.buttons["offshore-sideShoreOnly"]
+        let sideOff = app.buttons["offshore-sideOffshore"]
         // Starter profile: intermediate, side-shore only.
         XCTAssertTrue(sideShore.waitForExistence(timeout: 3))
         XCTAssertTrue(sideShore.isSelected)
         sideOff.tap()
         XCTAssertTrue(sideOff.isSelected)
-        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS '20° past side-shore'")).firstMatch.exists)
+        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'a little from the land'")).firstMatch.exists)
         snapshot(app, "offshore-intermediate")
 
         app.buttons["Beginner"].tap()
