@@ -48,4 +48,4 @@ Gap: Windy shows 31 markers against our 12 after this pass. Most of the gap is o
 where I found no kite club. Windy-hovered names were used only to learn that spots exist, never for positions.
 
 ## Build check (14 Nov)
-`build_spots.py` on `ma.csv`: no PROBLEMS, 12 spots. Apple Maps direction check: 11 agree, 1 uncertain (Oualidia: OSM faces N, Apple water at NW, 43° apart; a lagoon, harmless, row kept). Counts: 9 → 12 spots (6 free, 6 Pro... Moulay Bousselham, Oualidia, Lassarga, Achakar, Agadir Bay, Taghazout are Pro), 0 archived.
+`build_spots.py` on `ma.csv`: no PROBLEMS, 12 spots. Apple Maps direction check: 11 agree, 1 uncertain (Oualidia: OSM faces N, Apple water at NW, 43° apart; a lagoon, harmless, row kept). Counts: 9 → 12 spots (6 free, 6 Pro: Moulay Bousselham, Oualidia, Lassarga, Achakar, Agadir Bay, Taghazout are Pro), 0 archived.
