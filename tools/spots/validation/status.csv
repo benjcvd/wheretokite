@@ -39,7 +39,7 @@ ma-all,todo,val-ma-all,,,,,,,
 gr-islands,todo,val-gr-islands,,,,,,,
 gr-mainland,todo,val-gr-mainland,,,,,,,
 de-north-sea-sh,todo,val-de-north-sea-sh,,,,,,,
-de-baltic-sh,todo,val-de-baltic-sh,,,,,,,
+de-baltic-sh,review,WHE-176,11,4,2,0,0,docs/validation/de-baltic-sh.md,2026-11-14
 de-niedersachsen,todo,val-de-niedersachsen,,,,,,,
 de-mv-bayern,todo,val-de-mv-bayern,,,,,,,
 nl-zeeland,todo,val-nl-zeeland,,,,,,,
