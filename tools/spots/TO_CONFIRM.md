@@ -256,6 +256,14 @@ Questions:
   basic? Pakoštane stays archived (no source found). Malta: Golden Bay is called the top spot by some guides and
   Mellieħa by others; summer swimming-zone closure of all beaches is only in guides, no Transport Malta page found,
   so no ban encoded. Golden Bay added as pro (you said yes; Bol stays pro).
+- Southern Italy validation (WHE-170, 2026-11-14, report docs/validation/it-south.md): settled without Ben. Stagnone stays
+  free with a note: kiting inside the reserve is contested (Legambiente, tp24.it 7 Nov 2026, reading the Natura 2000
+  measures for ITA010001 and the 2000 reserve decree; school summaries of harbour-office ordinance 1/2019 limit sailing to
+  about 200 m), but I found no official text banning it, so no `banned`. If the Marsala harbour office or the Region
+  publishes a ban, archive or ban it. The unsourced "kite corridors only" wording at Porto Cesareo and Torre Canne was
+  replaced by "check the local rules". Added 8 Pro spots from Windy (Pellaro, Vieste Spiaggia Lunga, San Foca, Alimini,
+  Apani, Capo Peloro, Gallipoli Lido Pizzo, Marina di Lesina Acquarotta). Open for a second pass: Steccato di Cutro (no OSM
+  element found), Marina di Lizzano / Chiatona, Gabella, Capo Rizzuto, Capo Peloro launch pin, San Foca corridor pin.
 - Left out: Slovenia, Albania, Campania, Lazio, Liguria, Friuli, Chia, Trasimeno, Follonica,
   Bol (now added as pro, see below).
 

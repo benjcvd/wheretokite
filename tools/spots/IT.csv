@@ -8,15 +8,15 @@ IT,Sardegna,Cagliari – Poetto,sea,osm:r14404160,SE,"Long city beach; works wit
 IT,Sardegna,San Teodoro – La Cinta,sea,q:Spiaggia La Cinta,E,"Long sandbar beach; works with levante / scirocco (onshore). Summer: kite corridor only.",,,,
 IT,Sardegna,Putzu Idu,sea,q:Putzu Idu,SW,"Sinis peninsula; mistral (NW) side-shore, chop to small waves. Schools on site. Also: Capo Mannu next door (rocky, big waves, experts only).",,,,
 # Sicilia
-IT,Sicilia,Lo Stagnone (Marsala),lagoon,osm:n12407041259,W,"Shallow flat-water lagoon, standing almost everywhere; many schools. Thermal / scirocco / mistral all work. Keep clear of swimming areas.",,,,
-IT,Sicilia,Mazara del Vallo – Capo Feto,sea,osm:w154960274,SW,"Wild beach next to the Capo Feto nature reserve; flat water inside the reef with W–NW, chop further out. Schools in season.",,,,
-IT,Sicilia,Santa Maria del Focallo,sea,osm:w381744232,S,"Long sandy beach on the south-east coast (Ispica): open sea without heavy waves, a beginner-friendly spot that stays quiet in summer. Schools nearby (Trickite, Sicily Kite School). Also: Pozzallo and Marina di Ragusa along the same coast.",,,,
+IT,Sicilia,Lo Stagnone (Marsala),lagoon,osm:n12407041259,W,"Shallow flat-water lagoon, standing almost everywhere; many schools. Thermal / scirocco / mistral all work. Keep clear of swimming areas. The lagoon is inside the Stagnone nature reserve: kiting is contested (Legambiente says the reserve rules ban it, Nov 2026; schools operate under harbour-office ordinance 1/2019, which limits sailing to about 200 m inside the reserve). No official ban text found: ask your school or the Marsala harbour office.",,,,
+IT,Sicilia,Mazara del Vallo – Capo Feto,sea,osm:w154960274,SW,"Wild beach next to the Capo Feto nature reserve; flat water inside the reef with W–NW, chop further out. Steady NW thermal (16–19 kn) in summer, also works with W and SE. North wind (tramontana) is offshore and gusty: dangerous. Sandy, bumpy access track. Kite school on site (Kitesurf Mazara, IKO).",,,,
+IT,Sicilia,Santa Maria del Focallo,sea,osm:w381744232,S,"Long sandy beach on the south-east coast (Ispica): open sea without heavy waves, a beginner-friendly spot. Best wind W thermal April to October. A kite zone is marked off from June to September: keep about 200 m from the shore. Schools on the beach (Floripa, Sicily Kite School). Also: Pozzallo and Marina di Ragusa along the same coast.",,,,
 # Calabria
-IT,Calabria,Gizzeria – Hang Loose Beach,sea,q:Gizzeria Lido,W,"Very reliable thermal (W–NW) from spring to autumn, funnelled across the narrowest point of Italy. Large kite beach with schools.",,,,
+IT,Calabria,Gizzeria – Hang Loose Beach,sea,q:Gizzeria Lido,W,"Very reliable thermal (W–NW) from spring to autumn, funnelled across the narrowest point of Italy. Large kite beach with schools (Hang Loose Beach, open 1 April to 30 September).",,,,
 # Puglia
-IT,Puglia,Porto Cesareo – Torre Lapillo,sea,osm:r3205744,SW,"Ionian coast; works with W to S winds and the summer sea breeze. Summer: kite corridors only.",,,,
-IT,Puglia,Torre Canne,sea,q:Torre Canne,NE,"Adriatic beach; maestrale (NW) side-shore, flat to choppy. Summer: kite corridors only.",,,,
-IT,Puglia,Margherita di Savoia,sea,q:Margherita di Savoia,NE,"Long shallow Adriatic beach; maestrale (NW) side-shore and thermal. Schools on site.",,,,
+IT,Puglia,Porto Cesareo – Torre Lapillo,sea,osm:r3205744,SW,"Ionian coast, the best-known Salento spot: works with S to WNW winds and the summer sea breeze. Waves over a reef on the north side, flat water in the Strea lagoon to the south. Schools on site. Summer bathing season: check the local rules, no official kite-zone text found.",,,,
+IT,Puglia,Torre Canne,sea,q:Torre Canne,NE,"Adriatic beach; maestrale (NW) and N-NE winds, flat to choppy. Kite school on site (Scuola Kitesurf Puglia, since 2011). Summer bathing season: check the local rules, no official kite-zone text found.",,,,
+IT,Puglia,Margherita di Savoia,sea,q:Margherita di Savoia,NE,"Long shallow Adriatic beach; maestrale (NW) side-shore and thermal. Chop and small waves, wide launch area. Schools on site (Wind People at Lido Valerio, Garganosurf).",,,,
 # Veneto / Trentino-Alto Adige / Lombardia
 IT,Veneto,Rosolina Mare,sea,q:Rosolina Mare,E,"Adriatic beach near the Po delta; bora (NE) and scirocco onshore. Summer: kite corridor only.",,,,
 IT,Lombardia,Lago di Garda – Campione,lake,q:Campione del Garda,E,"Thermal winds: Pelèr (N) in the morning, Ora (S) in the afternoon. Kiting via the local kite centre (boat launch). Also: Malcesine / Navene on the east shore (kite school with boat; Garda kiting regulated by zones and times).",,,,
@@ -31,8 +31,24 @@ IT,Sardegna,Funtanamare,sea,osm:w1086210375,W,Wave spot on the south-west coast;
 # pro: local / secondary beach — local Sassari beach
 IT,Sardegna,Platamona,sea,q:Platamona,N,"Long north-coast beach near Sassari; mistral (NW) cross-shore, chop and waves. Summer: kite corridors only.",,,pro,
 # pro: near a kept spot — same gulf as Margherita di Savoia, which is better known
-IT,Puglia,Manfredonia – Siponto,sea,osm:n493697888,SE,"Shallow beach on the Gulf of Manfredonia; summer thermal and maestrale. Flat water close in, good for learning.",,,pro,
+IT,Puglia,Manfredonia – Siponto,sea,osm:n493697888,SE,"Shallow beach on the Gulf of Manfredonia; summer thermal and maestrale. Flat water close in, good for learning. Kite school on site (Banzai Wave Academy at Scalo dei Saraceni).",,,pro,
 # pro: near a kept spot — across the lake from Campione (kept), the reference Garda kite spot
 IT,Veneto,Lago di Garda – Malcesine,lake,osm:n458123631,W,"East shore; Pelèr (N) in the morning, Ora (S) in the afternoon. Kiting on Garda is regulated (zones / times, often only via a kite centre with boat): check locally.",,,pro,
 # pro: north-coast wave spot near Santa Teresa — 4 spot directories (unplug, kiteforum, spots4kite, surftribe); intermediate to expert
 IT,Sardegna,Rena Majore,sea,osm:w119020437,NW,"Large sandy beach on the north coast: NW wind strongest, choppy to small waves; rocks on both sides and a tricky entry. Crowded with swimmers in summer.",,,pro,
+# pro: Windy marker (5 stars), WHE-170 — several schools on the spit (NewKiteZone, Kiteloop, SeaWind, Sway), Visit Reggio Calabria guide (Oct 2026)
+IT,Calabria,Punta Pellaro,sea,osm:w448166364,NNW,"Sandy spit at the southern tip of Reggio Calabria on the Strait of Messina: north to NNW wind, steadier from spring to summer with the thermal (May to August strongest). Current of 1-2 knots, typical of the strait. Several schools on site.",,,pro,
+# pro: Windy marker (5 stars), WHE-170 — Gargano north coast; schools Gargano Kitesurf School and SurfConcept, Let's Kite guide
+IT,Puglia,Vieste – Spiaggia Lunga (Scialmarino),sea,osm:w89583921,NE,"Long beach on the north side of Gargano, 5 km from Vieste (also called Scialmarino): north and east winds, thermal 10-15 knots May to September. Intermediate level. Crowded in summer, rocks at both ends, possible current. Schools: Gargano Kitesurf, SurfConcept.",,,pro,
+# pro: Windy marker (5 stars), WHE-170 — three schools (Kite Salento, Locals Salento Kitesurf, AK), Salento Kiter spot page
+IT,Puglia,San Foca,sea,osm:w611308428,NE,"Adriatic coast of Salento: best with north winds (tramontana, grecale), which also give chop for freestyle. Works October to May as well as summer. Several schools between San Foca and Torre dell'Orso.",,,pro,
+# pro: Windy marker (4 stars), WHE-170 — AK school at Voi Alimini resort (IKO), Unplug destination page
+IT,Puglia,Alimini,sea,osm:w359667847,E,"Adriatic beach north of Otranto: north wind, intermediate to advanced. School AK at the Voi Alimini resort (also Frassanito next door, advanced, north wind can pass 20 knots).",,,pro,
+# pro: Windy marker (4 stars), WHE-170 — Let's Kite spot guide, Puglia school listing naming Apani as a regular tramontana / maestrale spot
+IT,Puglia,Apani,sea,osm:w484762138,NE,"Sandy beach with shallow water north of Brindisi: north and north-east winds (tramontana, maestrale). Intermediate level, open all year. No school based on the beach.",,,pro,
+# pro: Windy marker (3 stars), WHE-170 — visitcapopeloro.com tourism page, Kite Jungle and Breeza guides; experts only
+IT,Sicilia,Capo Peloro (Torre Faro),sea,osm:n683117714,E,"North-east tip of Sicily on the Strait of Messina, at Il Pilone and Punta del Faro: strong scirocco (to 40 knots) and the strait wind. Stony beach, deep water close in and a strong current: experienced riders only, go with someone who knows it. No school on the spot.",,,pro,
+# pro: Windy marker (3 stars), WHE-170 — school Salento Coast Ovest (FIV, IKO, since 2004), SurfTribe spot page; summer use unclear
+IT,Puglia,Gallipoli – Lido Pizzo,sea,osm:n7522558069,N,"Ionian coast near Gallipoli: NW to SW winds per the school (the kite pitch itself faces north), fine sand, easy entry. School Salento Coast Ovest teaches here, moving to Torre San Giovanni in summer. One older page says the bay is off-limits to kites from June to September: ask the school.",,,pro,
+# pro: Windy marker (3 stars), WHE-170 — schools Crazykiter and Gargano Lake Kite at Acquarotta, Let's Kite spot guide
+IT,Puglia,Marina di Lesina – Acquarotta,sea,osm:n11775800619,N,"Adriatic beach at the mouth of Lake Lesina: sea side with waves in north wind, intermediate, April to September. The lake behind is flat, shallow and kite-school access only (beginners).",,,pro,
