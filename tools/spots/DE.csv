@@ -4,9 +4,9 @@ country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # window. Sources: kitesurftheworld.com, kitemagazin.de (Befahrensverordnung 2023 zones),
 # kite-and-windsurfing-guide.com, lifetravellerz.com, auf-nach-mv.de, kite schools.
 # Nordfriesland / Dithmarschen
-DE,Schleswig-Holstein,Sylt – Westerland,sea,osm:w73822988,W,"Brandenburger Strand: Germany's main wave spot, strong current between the groynes. Experienced riders. Also: K4 by Hörnum (flat channels at low tide, waves at high tide); Hörnum Möwennest on the Wadden side for E winds (around low tide).",,,,
-DE,Schleswig-Holstein,Sylt – List (Königshafen),sea,osm:w740019465,N,"Wadden Sea, shallow flat water. Nature reserve: launch only from the kite beach, ride inside the buoys, about 2–3 h either side of high tide.",,high,,
-DE,Schleswig-Holstein,Sankt Peter-Ording,sea,osm:n9886501949,W,"Ording beach (kite world cup venue): huge beach, flat to small waves, tide-dependent; strong current at times. Also: Büsum – Perlebucht further south (tidal lagoon, around high tide).",,,,
+DE,Schleswig-Holstein,Sylt – Westerland,sea,osm:w73822988,W,"Buhne 16 / Brandenburger Strand (lifeguarded beach): Germany's main wave spot, strong current between the groynes. Intermediate to expert riders. Also: K4 by Hörnum (flat channels at low tide, waves at high tide); Hörnum Möwennest on the Wadden side for E winds (around low tide).",,,,
+DE,Schleswig-Holstein,Sylt – List (Königshafen),sea,osm:w740019465,N,"Wadden Sea, shallow flat water inside a national-park protection zone. Official rules (national park flyer 2021): set up, launch and land only on the kite beach, ride only inside the buoy chain, kite about 3 h either side of high tide.",,high,,
+DE,Schleswig-Holstein,Sankt Peter-Ording,sea,osm:n9886501949,W,"Ording beach (kite world cup venue): huge beach, flat to small waves, tide-dependent (about 2 h either side of high tide); strong current at times. Kite zones lie north and south of the marked bathing area in front of the main beach car park (pile rows and buoys), which is closed to kites; the middle of the sandbank is a bird area. Böhl, to the south, is the usual beginner side. Also: Büsum – Perlebucht further south (tidal lagoon, around high tide).",,,,
 # Niedersachsen
 DE,Niedersachsen,Cuxhaven – Kugelbake,sea,osm:n605290780,NE,"Elbe mouth: current and shipping lane. National park zone, about 3 h either side of high tide. Also: Sahlenburg west of town (large standing area, about 4 h either side of high tide).",,high,,
 DE,Niedersachsen,Schillig,sea,osm:n6641317345,NE,"Wadden Sea, shallow; ride around high tide. Kite school on site. Also: Hooksiel on the Jade further south (around high tide).",,high,,
@@ -36,9 +36,9 @@ DE,Bayern,Chiemsee – Übersee (Feldwies),lake,osm:n2019998067,W,"Kite zone at 
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — south Sylt west beach, Westerland kept
-DE,Schleswig-Holstein,Sylt – K4 (Hörnum),sea,osm:n1898635794,W,"West beach 4 km north of Hörnum: flat channels at low tide, waves at high tide; strong coastal current.",,,pro,
+DE,Schleswig-Holstein,Sylt – K4 (Hörnum),sea,osm:n1898635794,W,"West beach at crossing 74 (big car park), 4 km north of Hörnum: named an official surf and kite beach by the national park. Flat channels at low tide, waves at high tide; strong coastal current. Ask a local school which tide suits you.",,,pro,
 # pro: seasonal/minor — Wadden side, low tide window only
-DE,Schleswig-Holstein,Sylt – Hörnum Möwennest,sea,osm:w159636121,E,Wadden side behind the Möwennest hostel: flat shallow water for E winds. National park: only about 2–3 h either side of low tide.,,low,pro,
+DE,Schleswig-Holstein,Sylt – Hörnum Möwennest,sea,osm:w159636121,E,Wadden side behind the Möwennest hostel: flat shallow water for E winds. National park rules (flyer 2021): kite only about 3 h either side of low tide and keep 300 m (kites included) from the Hörnum Nehrung bird area.,,low,pro,
 # pro: local spot — Wadden Sea, high tide only
 DE,Schleswig-Holstein,Dagebüll,sea,osm:w1185945037,W,"Wadden Sea, by the ferry pier; around high tide only.",,high,pro,
 # pro: local spot — Wadden Sea, high tide only
@@ -46,7 +46,7 @@ DE,Schleswig-Holstein,Nordstrand – Holmer Siel,sea,osm:w612388781,NW,Wadden Se
 # pro: local spot — Wadden Sea, high tide only
 DE,Schleswig-Holstein,Husum – Dockkoog,sea,osm:n5004487464,W,"Wadden Sea, around high tide. Busy in summer; no-go channel south of the point.",,high,pro,
 # pro: local spot — tidal lagoon, Sankt Peter-Ording kept
-DE,Schleswig-Holstein,Büsum – Perlebucht,sea,osm:w731307804,SW,"Northern part of the Perlebucht lagoon only; tidal, ride around high tide.",,high,pro,
+DE,Schleswig-Holstein,Büsum – Perlebucht,sea,osm:w731307804,SW,"Northern part of the Perlebucht only. The lagoon itself is cut off from the sea (flat in any wind) and advanced riders only (VDWS 5 / IKO 3); the shallows in front of it follow the tide, so ride around high tide. Sign in at the kite school; not for E winds (Büsumer Deichhausen then).",,high,pro,
 # pro: cluster duplicate — Cuxhaven, Kugelbake kept
 DE,Niedersachsen,Cuxhaven – Sahlenburg,sea,osm:w323037326,W,Large standing area; about 4 h either side of high tide.,,high,pro,
 # pro: local spot — Elbe estuary, high tide only

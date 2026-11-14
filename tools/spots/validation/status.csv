@@ -38,7 +38,7 @@ it-north-centre,todo,val-it-north-centre,,,,,,,
 ma-all,todo,val-ma-all,,,,,,,
 gr-islands,review,val-gr-islands,10,8,7,0,0,docs/validation/gr-islands.md,2026-11-14
 gr-mainland,todo,val-gr-mainland,,,,,,,
-de-north-sea-sh,todo,val-de-north-sea-sh,,,,,,,
+de-north-sea-sh,review,WHE-175,9,0,0,0,0,docs/validation/de-north-sea-sh.md,2026-11-14
 de-baltic-sh,todo,val-de-baltic-sh,,,,,,,
 de-niedersachsen,todo,val-de-niedersachsen,,,,,,,
 de-mv-bayern,todo,val-de-mv-bayern,,,,,,,
