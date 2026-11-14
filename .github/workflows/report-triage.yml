@@ -53,11 +53,16 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # Label first, then count: runs started in the same burst see each other, instead of
+          # all passing the check before any of them finishes. `triaging` stays on runs that
+          # crash, so they still count.
+          gh label create triaging --color FBCA04 --description "Claude triage in progress" 2>/dev/null || true
+          gh issue edit "$ISSUE" --add-label triaging
           since=$(date -u -v-1d +%Y-%m-%dT%H:%M:%SZ)
-          n=$(gh issue list --label triaged --state all --search "updated:>$since" --json number --jq length)
-          echo "triaged in the last 24 h: $n"
-          if [ "$n" -ge 20 ]; then
-            gh issue edit "$ISSUE" --add-label triage-later
+          n=$(gh issue list --state all --limit 200 --search "label:triaging,triaged updated:>$since" --json number --jq length)
+          echo "triaging or triaged in the last 24 h (this one included): $n"
+          if [ "$n" -gt 20 ]; then
+            gh issue edit "$ISSUE" --add-label triage-later --remove-label triaging
             gh issue comment "$ISSUE" --body "Daily triage limit reached; add the \`triage\` label to run it later."
             echo "skip=true" >> "$GITHUB_OUTPUT"
           fi
@@ -163,17 +168,17 @@ jobs:
                 gh pr edit "$branch" --body-file .triage/body.md
               fi
               gh issue comment "$ISSUE" --body "Proposed fix: $url"
-              gh issue edit "$ISSUE" --add-label triaged --remove-label triage ;;
+              gh issue edit "$ISSUE" --add-label triaged --remove-label triage,triaging ;;
             no-change)
               gh issue comment "$ISSUE" --body-file .triage/body.md
-              gh issue edit "$ISSUE" --add-label triaged --remove-label triage
+              gh issue edit "$ISSUE" --add-label triaged --remove-label triage,triaging
               gh issue close "$ISSUE" --reason "not planned" ;;
             app)
               printf '\n\n_Reply \`@claude fix this\` to get a PR._\n' >> .triage/body.md
               gh issue comment "$ISSUE" --body-file .triage/body.md
-              gh issue edit "$ISSUE" --add-label triaged --remove-label triage ;;
+              gh issue edit "$ISSUE" --add-label triaged --remove-label triage,triaging ;;
             *)
               gh issue comment "$ISSUE" --body-file .triage/body.md
-              gh issue edit "$ISSUE" --add-label triaged,needs-human --remove-label triage ;;
+              gh issue edit "$ISSUE" --add-label triaged,needs-human --remove-label triage,triaging ;;
           esac
 
