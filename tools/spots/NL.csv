@@ -3,10 +3,10 @@ country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Sources: NKV kitespot map (kitesurfvereniging.nl, official zones + seasons), kitegids.nl,
 # kitesurftheworld.com, 35knots.com. Spots marked "verboden" by the NKV are left out.
 # Zeeland
-NL,Zeeland,Brouwersdam,sea,osm:w61728057,NW:North Sea side|SE:Grevelingen side:lake,"Shallow, flat inshore water at low tide on the sea side; the Grevelingen side is a tideless saltwater lake. Separate foil-only zone. Also: Ouddorp beach (accesses 7–9, waves and strong ebb current) 3 km south.",,,,
+NL,Zeeland,Brouwersdam,sea,osm:w61728057,NW:North Sea side|SE:Grevelingen side:lake,"Shallow, flat inshore water at low tide on the sea side; the Grevelingen side is a tideless saltwater lake. Kiting only on the south part of the dam, inside the yellow buoys; very crowded on windy summer and holiday weekends. Separate foil-only zone. Also: Ouddorp beach (accesses 7–9, waves and strong ebb current) 3 km south.",,,,
 NL,Zeeland,Neeltje Jans,sea,osm:r6971055,NW,"North Sea side, park at the Roompotsluis. Flat at low tide, chop at high tide; advanced riders.",,,,
-NL,Zeeland,Vrouwenpolder,sea,osm:n8941093562,NW,"Veerse Gatdam lagoon, best around high tide. From May a buoyed kite zone applies.",,high,,
-NL,Zeeland,Kamperland – Roompot,lagoon,osm:w822498441,N,Oosterschelde: long shallow flat water for N–E winds. Stay out of the channel; oyster shells.,,,,
+NL,Zeeland,Vrouwenpolder,sea,osm:n8941093562,NW,"Veerse Gatdam lagoon, best around high tide. The official kite spot starts right of the Vertigo Sports club, seen from the dam; both sides of the dam can be ridden.",,high,,
+NL,Zeeland,Kamperland – Roompot,lagoon,osm:w822498441,N,"Oosterschelde: long shallow flat water for N–E winds. Official kite zone since 2009: stay inside it, watch swimmers, current and oyster shells; school on site April–October.",,,,
 NL,Zeeland,Domburg,sea,osm:w80401276,NW,"Wave spot by the Westkapelse Zeedijk, experts only; pole rows submerged at high tide. Keep clear of bathing beaches in summer.",,,,
 NL,Zeeland,Cadzand-Bad – Zwin,sea,osm:w548694875,NW,"West of Cadzand-Bad, park at the Zwin visitor centre. Deep water. Also: Vlamingpolder (advanced) just east.",,,,
 # Zuid-Holland
@@ -37,22 +37,24 @@ NL,Wadden Islands,Ameland – Noordzee,sea,osm:n7793664554,N,"1 Mar–1 Nov only
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — 3 km from Brouwersdam
 NL,Zuid-Holland,Ouddorp,sea,osm:n7707273517,NW,"Between beach accesses 7 and 9. Waves and strong ebb current, experienced riders; the sandbank is off-limits (seals).",,,pro,
-# pro: cluster duplicate — 2 km from Cadzand-Bad – Zwin
-NL,Zeeland,Cadzand-Bad – Vlamingpolder,sea,osm:w491657992,NW,Park at the Vlamingpolderweg. Advanced riders.,,,pro,
+# archived: Cadzand-bad oost kite area was lifted by the Westerschelde authority in July 2019 (buoys removed); no current zone found for Vlamingpolder
+NL,Zeeland,Cadzand-Bad – Vlamingpolder,sea,osm:w491657992,NW,Park at the Vlamingpolderweg. Advanced riders.,,,archived,
 # pro: local spot — Westerschelde beach, local
-NL,Zeeland,Breskens – Oost,sea,osm:w491657990,N,"Westerschelde, shallow. Stay well clear of the shipping channel.",,,pro,
+NL,Zeeland,Breskens – Oost,sea,osm:w491657990,N,"Westerschelde, shallow. Official kite area (Westerschelde authority list). Stay well clear of the shipping channel.",,,pro,
 # pro: local spot — Westerschelde beach, local
-NL,Zeeland,Borssele – De Kaloot,sea,osm:w702126930,SW,"Westerschelde beach, shallow; never cross the shipping channel.",,,pro,
+NL,Zeeland,Borssele – De Kaloot,sea,osm:w702126930,SW,"Westerschelde beach, shallow and choppy; stay inside the yellow buoys, never in or beyond the shipping channel. Sharp stones at the channel mouth at low water.",,,pro,
 # pro: local spot — Westerschelde beach, local
-NL,Zeeland,Baarland,sea,osm:w491657989,S,"Westerschelde: strong currents, advanced riders.",,,pro,
+NL,Zeeland,Baarland,sea,osm:w491657989,S,"Westerschelde: strong current and deep mud at low water; kite between the buoys and never enter the inlet on the left. Free parking at the dike.",,,pro,
 # pro: local spot — Westerschelde, high tide only, local
-NL,Zeeland,Paulinapolder,sea,osm:w491657962,N,Westerschelde: only around high tide. Kiting in the channel is forbidden.,,high,pro,
-# pro: local spot — Westerschelde beach, local
-NL,Zeeland,Terneuzen – Put van Terneuzen,sea,osm:w702126929,N,"Westerschelde, shallow; stay out of the shipping channel.",,,pro,
+NL,Zeeland,Paulinapolder,sea,osm:w491657962,N,"Westerschelde: only around high tide, inside the official area along the high-water line. Kiting in the channel is forbidden.",,high,pro,
+# archived: no designated Westerschelde kite zone found for Terneuzen (kiting there is only allowed in designated zones); only a general guide mentions it
+NL,Zeeland,Terneuzen – Put van Terneuzen,sea,osm:w702126929,N,"Westerschelde, shallow; stay out of the shipping channel.",,,archived,
 # pro: local spot — Oosterschelde, Kamperland kept
-NL,Zeeland,Oesterdam (Tholen),lagoon,osm:w822498440,NW,"Oosterschelde side of the dam, shallow water.",,,pro,
+NL,Zeeland,Oesterdam (Tholen),lagoon,osm:w822498440,NW,"Oosterschelde side of the dam: wide shallow zone, good for beginners and freestyle; official kite location. Kiteboardschool and SALT teach there.",,,pro,
 # pro: seasonal/minor — Oosterschelde, winter-only, Kamperland kept
-NL,Zeeland,Ouwerkerk,lagoon,osm:w621302487,S,"Oosterschelde, shallow. Kiting allowed October–April only.",,,pro,05-01..09-30
+NL,Zeeland,Ouwerkerk,lagoon,osm:w621302487,S,"Oosterschelde, shallow. Closed 1 May to 1 October for bathers (Rijkswaterstaat Oosterschelde folder, 2020): kiting October–April only.",,,pro,05-01..09-30
+# archived: unrated on Windguru, legal status unclear (forum says probably not allowed; Rijkswaterstaat map marks a kite location near Plaat van Oude-Tonge but the side of the dam is not stated; one guide says the north side has seasonal limits); pin not checked (beach w141929167 is the only candidate)
+NL,Zeeland,Grevelingendam,sea,osm:w141929167,W,"Grevelingendam near Bruinisse: kiters must keep right of the windsurf zone; showers, toilets, restaurant, paid parking. Wind mostly W–NW, gusty from the south.",,,archived,
 # pro: local spot — Haringvliet, local
 NL,Zuid-Holland,Hellevoetsluis – Haringvliet,lake,osm:w140697685,S,"Haringvliet (no tide), deep water close in.",,,pro,
 # pro: cluster duplicate — 3 km from Oostvoorne

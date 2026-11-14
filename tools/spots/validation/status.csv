@@ -42,7 +42,7 @@ de-north-sea-sh,todo,val-de-north-sea-sh,,,,,,,
 de-baltic-sh,todo,val-de-baltic-sh,,,,,,,
 de-niedersachsen,todo,val-de-niedersachsen,,,,,,,
 de-mv-bayern,todo,val-de-mv-bayern,,,,,,,
-nl-zeeland,todo,val-nl-zeeland,,,,,,,
+nl-zeeland,review,WHE-179,14,12,9,0,3,docs/validation/nl-zeeland.md,2026-11-14
 nl-zuid-holland,todo,val-nl-zuid-holland,,,,,,,
 nl-noord-holland,todo,val-nl-noord-holland,,,,,,,
 nl-wadden,todo,val-nl-wadden,,,,,,,
