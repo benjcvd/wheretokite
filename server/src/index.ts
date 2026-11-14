@@ -3,7 +3,7 @@
 import { handleCatalog } from "./catalog";
 import { type Endpoint, handleForecast } from "./forecast";
 import { handleIngest, type IngestKind } from "./ingest";
-import { buildIssue, fileIssue } from "./github";
+import { buildIssue, fileReportIssue } from "./github";
 import { type PageEnv, privacyPage, supportPage } from "./pages";
 import { ApiError, apiError, type Cache, json, TieredCache } from "./util";
 
@@ -13,12 +13,18 @@ export interface Env extends PageEnv {
   /** Override the spot catalogue source. */
   CATALOG_URL?: string;
   /** Optional Rate Limiting binding for the POST intake endpoints. */
-  INGEST_LIMITER?: { limit(options: { key: string }): Promise<{ success: boolean }> };
+  INGEST_LIMITER?: RateLimiter;
+  /** Stricter per-IP limit for POST /v1/report (each report becomes a public issue). */
+  REPORT_LIMITER?: RateLimiter;
+  /** Ceiling on report issues filed per rolling 24 h, all users together (default 15). */
+  REPORT_ISSUES_PER_DAY?: string;
   /** Fine-grained GitHub token (Issues: read & write) to file reports as issues (secret). */
   GITHUB_TOKEN?: string;
   /** "owner/repo" for report issues (default benjcvd/wheretokite). */
   GITHUB_REPO?: string;
 }
+
+type RateLimiter = { limit(options: { key: string }): Promise<{ success: boolean }> };
 
 export interface Deps {
   cache: Cache;
@@ -56,15 +62,16 @@ export async function handle(request: Request, env: Env, deps: Deps): Promise<Re
     const kind = INGEST_ROUTES[path];
     if (kind) {
       if (request.method !== "POST") return methodNotAllowed("POST");
-      if (env.INGEST_LIMITER) {
-        // The IP is only the rate-limit key: it is never logged or stored.
-        const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
-        const { success } = await env.INGEST_LIMITER.limit({ key: `${kind}:${ip}` });
-        if (!success) return apiError(429, "Too many requests");
+      // The IP is only the rate-limit key: it is never logged or stored.
+      const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
+      for (const limiter of [env.INGEST_LIMITER, kind === "report" ? env.REPORT_LIMITER : undefined]) {
+        if (limiter && !(await limiter.limit({ key: `${kind}:${ip}` })).success) {
+          return apiError(429, "Too many requests");
+        }
       }
       const after = kind === "report"
         ? async (payload: Record<string, unknown>, country?: string) => {
-            const url = await fileIssue(buildIssue(payload, country), env, deps.fetch);
+            const url = await fileReportIssue(buildIssue(payload, country), env, deps.fetch, deps.now());
             if (url) console.log(JSON.stringify({ kind: "github_issue", url }));
           }
         : undefined;
