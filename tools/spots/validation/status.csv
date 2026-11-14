@@ -36,7 +36,7 @@ it-sardegna,todo,val-it-sardegna,,,,,,,
 it-south,todo,val-it-south,,,,,,,
 it-north-centre,todo,val-it-north-centre,,,,,,,
 ma-all,todo,val-ma-all,,,,,,,
-gr-islands,todo,val-gr-islands,,,,,,,
+gr-islands,review,val-gr-islands,10,8,7,0,0,docs/validation/gr-islands.md,2026-11-14
 gr-mainland,todo,val-gr-mainland,,,,,,,
 de-north-sea-sh,todo,val-de-north-sea-sh,,,,,,,
 de-baltic-sh,todo,val-de-baltic-sh,,,,,,,

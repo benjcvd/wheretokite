@@ -286,6 +286,7 @@ Questions:
   - Marmari: the permitted kite zone moved downwind to a narrow beach with trees; our pin is on
     the long beach. OK?
 - Left out: Lesvos, Naxos Laguna, Drepano, other Crete spots.
+- Greek islands validation against Windguru (WHE-173, 2026-11-14, [report](../../docs/validation/gr-islands.md)): notes of Theologos, Golden Beach, Keros and Kouremenos rewritten from schools and guides. Air Riders (Windguru marker, Ialysos, Rhodes; trains at Kremasti beach) not added: only a booking-site source and no OSM beach tied to Kremasti (Overpass was down). Revisit with a school page. Kouremenos is now described by guides as a top Greek kite beach with two kite schools; kept basic.
 
 ## Nordics (DK.csv, NO.csv, SE.csv, FI.csv)
 - Sjællands Odde: launch on the Sejerø Bugt (south) side, or the north side?
