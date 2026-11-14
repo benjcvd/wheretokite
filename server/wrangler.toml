@@ -11,6 +11,8 @@ head_sampling_rate = 1
 [vars]
 CATALOG_URL = "https://raw.githubusercontent.com/benjcvd/wheretokite/main/Data/spots.json"
 GITHUB_REPO = "benjcvd/wheretokite"
+# At most this many app reports become GitHub issues per rolling 24 h; the rest are only logged.
+REPORT_ISSUES_PER_DAY = "15"
 # Shown on /privacy and /support (the App Store links to both).
 OPERATOR_NAME = "Benjamin Chevignard"
 # CONTACT_EMAIL is a secret (the repo is public): npx wrangler secret put CONTACT_EMAIL
@@ -23,6 +25,14 @@ OPERATOR_NAME = "Benjamin Chevignard"
 name = "INGEST_LIMITER"
 namespace_id = "1001"
 simple = { limit = 20, period = 60 }
+
+# Per-IP limit on POST /v1/report on top of the one above: 2 per minute (the shortest window
+# Cloudflare allows is 60 s). A rider sends one report; each report is a public GitHub issue
+# and a Claude triage run. The real ceiling is REPORT_ISSUES_PER_DAY (all users together).
+[[ratelimits]]
+name = "REPORT_LIMITER"
+namespace_id = "1002"
+simple = { limit = 2, period = 60 }
 
 # Uncomment once the domain is on Cloudflare (needed for the shared Cache API, see README).
 # routes = [{ pattern = "api.example.com", custom_domain = true }]
