@@ -409,3 +409,12 @@ Ben asked for an outside audit (summary in chat). He picked: fix the clock bug (
 ## Where the Lead stopped (12 Nov, 11:00)
 
 Main is pushed (catalogue rebuilt by CI to 772 spots, 60 with bans; osm-cache snapshot refreshed on Ben's OK). Ben's calls: Pro spots stay Pro (no "all spots free"); next spot priority Portugal → Italy → Morocco, now 7 zone cards (zones in `tools/spots/validation/zones.json`, map now covers PT/IT/MA). The two Portugal north/Lisbon cards were queued `ready`; feed the rest two at a time and merge each zone (set `validated` in status.csv, rerun `python3 tools/validation_map.py`). Product's branch `atlas/product` holds, unmerged on main: WHE-165 spot-list guard, WHE-161 clock fix, WHE-162 server lockdown, plus WHE-160 offshore choice (now redesigned as two beach-drawing cards, waiting on Ben's look). Merge the first three on their own (cherry-pick the ticket merge commits, or wait for Ben's yes on WHE-160 and merge the whole branch); WHE-162 needs a Worker deploy on Ben's word. Ben will buy the domain (WHE-3) and Open-Meteo plan (WHE-12) later. Open from the audit: willingness to pay (talk to riders, then a trial), storing "How was it?" answers as accuracy ground truth. An uncommitted Xcode-generated change sits in `App/WhereToKite/Localizable.xcstrings`: not ours, leave it or let Product commit it.
+
+## Lead, 14 Nov 15:05: report spam guard (WHE-163)
+
+Committed on main, not pushed or deployed. Cloudflare's rate limiter can't do "per hour" (60 s
+is the longest window), so the per-IP limit on reports is 2 a minute and the real guard is a
+global ceiling: the Worker counts today's `report` issues on GitHub before filing and stops at
+15 (fails closed if GitHub doesn't answer; the report is still in Workers Logs). The triage
+workflow now labels `triaging` before it counts, so a burst can't all slip under the cap.
+Goes live with a Worker deploy plus a push of main, both waiting on Ben's OK.
