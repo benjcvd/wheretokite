@@ -21,8 +21,8 @@ DE,Schleswig-Holstein,Fehmarn – Wulfener Hals,sea,osm:w50165851,S,"Flat shallo
 DE,Schleswig-Holstein,Fehmarn – Grüner Brink,sea,osm:w35337519,N,North coast: works in E winds when other spots are offshore; shared with a dog beach.,,,,
 DE,Schleswig-Holstein,Pelzerhaken,sea,osm:w1053164197,SE,"Long sandy beach, shallow; flat to small waves.",,,,
 # Baltic Sea — Mecklenburg-Vorpommern
-DE,Mecklenburg-Vorpommern,Salzhaff – Pepelow,lagoon,osm:n11047825855,N,"Salzhaff: shallow flat-water lagoon, ideal for learning.",,,,
-DE,Mecklenburg-Vorpommern,Warnemünde,sea,osm:w775199496,N,"Kite access at beach access 13, west of the pier; rough waves in strong N–NW wind.",,,,
+DE,Mecklenburg-Vorpommern,Salzhaff – Pepelow,lagoon,osm:n11047825855,N,"Salzhaff: shallow flat-water lagoon, huge standing area, ideal for learning. Kite school on the Pepelow campsite; works in SW–N winds; free access; season mid-April to October.",,,,
+DE,Mecklenburg-Vorpommern,Warnemünde,sea,osm:w775199496,N,"Kite access at beach access 13, west of the pier (ostsee.de lists beach blocks 12–13 for wind and kite sports); rough waves in strong N–NW wind. Summer: swim zone marked by buoys and a crowded beach in July–August, so little room to launch. For advanced riders.",,,,
 DE,Mecklenburg-Vorpommern,Wustrow,sea,osm:w1343007831,NW:Baltic side|SE:Saaler Bodden side:lagoon,"Baltic side: waves (German Kitesurf Open venue). Bodden side: flat shallow water. Also: Saal on the Saaler Bodden (flat shallow water, kite school).",,,,
 DE,Mecklenburg-Vorpommern,Zingst,sea,osm:n1577732852,N,"Sportstrand at the edge of town; choppy, deep enough for foiling.",,,,
 DE,Mecklenburg-Vorpommern,Rügen – Suhrendorf (Ummanz),lagoon,osm:n11961257106,W,"Bodden: shallow flat water, beginner-friendly.",,,,
@@ -74,11 +74,11 @@ DE,Schleswig-Holstein,Großenbrode,sea,osm:w42734527,S,Flat water and small wave
 # pro: cluster duplicate — 3 km from Gold
 DE,Schleswig-Holstein,Fehmarn – Lemkenhafen (Orther Reede),sea,osm:n261744611,S,Flat shallow water in the Orther Reede.,,,pro,
 # pro: cluster duplicate — Saaler Bodden, Wustrow Bodden side kept
-DE,Mecklenburg-Vorpommern,Saal (Saaler Bodden),lagoon,osm:w124255475,W,Shallow flat water almost everywhere; kite school on site.,,,pro,
+DE,Mecklenburg-Vorpommern,Saal (Saaler Bodden),lagoon,osm:w124255475,W,"Shallow flat water almost everywhere; kite school (Kitesportschule Simon, water sports centre) on site; free access; SW and NW are the best side-shore winds.",,,pro,
 # pro: cluster duplicate — Wieker Bodden, Dranske kept
 DE,Mecklenburg-Vorpommern,Rügen – Wiek,lagoon,osm:n9045420052,W,Wieker Bodden: flat shallow water.,,,pro,
 # pro: local spot — Greifswalder Bodden, choppy and gusty
-DE,Mecklenburg-Vorpommern,Gahlkow,sea,osm:w436196705,N,"Greifswalder Bodden: narrow beach, choppy and gusty.",,,pro,
+DE,Mecklenburg-Vorpommern,Gahlkow,sea,osm:w436196705,N,"Greifswalder Bodden: narrow beach, choppy and gusty; shallow up to about 800 m out; works from W through N to E. WSW wind is gusty: riders move 1 km west to Loissin (kitesafe school there). No school at Gahlkow itself.",,,pro,
 # pro: cluster duplicate — 5 km from Karlshagen
 DE,Mecklenburg-Vorpommern,Usedom – Peenemünde,sea,osm:w1422270438,N,"Choppy, deepens quickly; few facilities.",,,pro,
 # pro: local spot — Achterwasser, local

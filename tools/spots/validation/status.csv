@@ -41,7 +41,7 @@ gr-mainland,todo,val-gr-mainland,,,,,,,
 de-north-sea-sh,todo,val-de-north-sea-sh,,,,,,,
 de-baltic-sh,todo,val-de-baltic-sh,,,,,,,
 de-niedersachsen,todo,val-de-niedersachsen,,,,,,,
-de-mv-bayern,todo,val-de-mv-bayern,,,,,,,
+de-mv-bayern,review,val-de-mv-bayern,16,1,1,0,0,docs/validation/de-mv-bayern.md,2026-11-14
 nl-zeeland,todo,val-nl-zeeland,,,,,,,
 nl-zuid-holland,todo,val-nl-zuid-holland,,,,,,,
 nl-noord-holland,todo,val-nl-noord-holland,,,,,,,

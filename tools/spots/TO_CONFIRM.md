@@ -370,3 +370,8 @@ Questions:
 - Landéda – Sainte-Marguerite: sources disagree on the tide (flat at low tide vs. navigable only about 2 h either side of high water). No tide window set; both views in the notes. Local check welcome.
 - Summer swimming zones at Dossen (1 Jun–15 Sep), Sainte-Marguerite south (1 Jul–30 Aug) and Blancs Sablons west (1 Jul–31 Aug) come from one blog (vvanat.fr), no town text found. In notes only, not in `banned`.
 - Left out of the catalogue, no local kite source or nothing to pin: Les Amiets, Boutrouilles, Île de Vierge, Trez Hir, Saint-Jean-du-Doigt, Trezmeur, Grève Rose, Kernisi (no launch place), Térénez and Île Grande (no beach in OSM).
+
+## Rügen, Mecklenburg, Bavarian lakes (WHE-178), settled 14 Nov 2026
+- No official kite-zone text found for any of the 16 spots, so no `banned` rule encoded; summer swim zones (Warnemünde) in notes only.
+- Chiemsee – Chieming: no new source; kept Pro (old KBC source). Kreptitz not added (kiting prohibited per one listing).
+- Not added, no Windguru marker: Born, Dierhagen, Loissin, Boiensdorf (school on site each). Add if wanted.
