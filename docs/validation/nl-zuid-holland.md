@@ -33,4 +33,4 @@ Windguru markers in the zone named or tagged as kite: **0**. The search "Netherl
 Not on Windguru by name: Hoek van Holland, Zandmotor, Noordwijk, Kijkduin, Hellevoetsluis (not checked individually).
 Note: Oostvoornse Meer (guide spot, flat-water lake) is mentioned in our Oostvoorne note, not a row of its own.
 
-Build check: see commit message.
+Build check: NOT run to the end. Overpass was down (504s, connection refused) and two attempts were killed. The edits change only notes and two tiers (no `locate`), and the CSV parses (71 rows, 11 columns). Rerun `spot-check` on `NL.csv` when Overpass is back, before merging.
