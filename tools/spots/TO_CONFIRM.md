@@ -325,6 +325,17 @@ Questions:
 - Faking it with a wide `sector` would make levante look safe for everyone; refused (worst case = offshore stays 0).
 - Real fix would be a scoring decision (e.g. an expert-only offshore allowance), not a catalogue one: card for the Lead.
 
+## Northern and central Italy, lakes (WHE-171, settled without Ben, 2026-11-14, rule of 2 Nov)
+- Rosolina Mare moved from basic to Pro: the only sources say the kite corridor belongs to the school and free-riders outside it risk
+  fines (one current school page, one 2008 page). If a town or port-authority page shows an open kite beach, move it back to basic.
+- Garda: only Campione and Navene (our Malcesine) are regulated kite beaches; Torbole / Riva (Trentino) are restricted, Toscolano not
+  added. No official text found, so no `banned` rule encoded.
+- Marina di Grosseto is pinned on the Le Marze beach next to the Oasi San Felice, not on the exact school launch: worth a look on satellite.
+- Left out for lack of a local source (second pass, one card per coast): Liguria (Voltri, Sestri, Loano, Andora...), Romagna (Cervia,
+  Cesenatico, Marina di Ravenna, Riccione), Marche (Porto Sant'Elpidio has no OSM beach, Numana, Portonovo is windsurf), Tuscany south
+  (Castiglione, Baratti, Donoratico, Punta Ala banned on some beaches per one guide), Veneto (Punta Sabbioni, Cortellazzo, Bibione),
+  Friuli (Marina Julia / Monfalcone, Barcola). Windy markers and reasons in docs/validation/it-north-centre.md.
+
 ## Gap pass Italy / Greece / Germany (WHE-91, settled without Ben, 2026-11-03)
 - Added: Kos – Psalidi (GR, basic; sportif.travel Kos Kitesurf Centre + greeka/Kos guides), Prerow (DE, pro; visit-mv.com
   Kiteschule Darss + Surfspot Prerow; 8 km from Zingst; Nordstrand lies in the national park, zoning not checked).

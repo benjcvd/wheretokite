@@ -34,7 +34,7 @@ pt-lisboa-madeira,review,val-pt-lisboa-madeira,6,19,6,6,0,docs/validation/pt-lis
 pt-algarve,review,WHE-168,6,25,6,6,0,docs/validation/pt-algarve.md,2026-11-14
 it-sardegna,review,WHE-169,9,29,7,9,0,docs/validation/it-sardegna.md,2026-11-14
 it-south,review,WHE-170,8,44,5,8,0,docs/validation/it-south.md,2026-11-14
-it-north-centre,todo,val-it-north-centre,,,,,,,
+it-north-centre,review,WHE-171,6,62,3,13,0,docs/validation/it-north-centre.md,2026-11-14
 ma-all,review,WHE-172,9,31,9,3,0,docs/validation/ma-all.md,2026-11-14
 gr-islands,review,val-gr-islands,10,8,7,0,0,docs/validation/gr-islands.md,2026-11-14
 gr-mainland,todo,val-gr-mainland,,,,,,,
