@@ -32,7 +32,7 @@ fr-opale-n,validated,WHE-119,9,10,6,2,0,docs/validation/fr-opale-n.md,2026-11-05
 pt-north-centro,review,WHE-166,13,20,8,5,1,docs/validation/pt-north-centro.md,2026-11-12
 pt-lisboa-madeira,review,val-pt-lisboa-madeira,6,19,6,6,0,docs/validation/pt-lisboa-madeira.md,2026-11-12
 pt-algarve,todo,val-pt-algarve,,,,,,,
-it-sardegna,todo,val-it-sardegna,,,,,,,
+it-sardegna,review,WHE-169,9,29,7,9,0,docs/validation/it-sardegna.md,2026-11-14
 it-south,todo,val-it-south,,,,,,,
 it-north-centre,todo,val-it-north-centre,,,,,,,
 ma-all,todo,val-ma-all,,,,,,,

@@ -370,3 +370,10 @@ Questions:
 - Landéda – Sainte-Marguerite: sources disagree on the tide (flat at low tide vs. navigable only about 2 h either side of high water). No tide window set; both views in the notes. Local check welcome.
 - Summer swimming zones at Dossen (1 Jun–15 Sep), Sainte-Marguerite south (1 Jul–30 Aug) and Blancs Sablons west (1 Jul–31 Aug) come from one blog (vvanat.fr), no town text found. In notes only, not in `banned`.
 - Left out of the catalogue, no local kite source or nothing to pin: Les Amiets, Boutrouilles, Île de Vierge, Trez Hir, Saint-Jean-du-Doigt, Trezmeur, Grève Rose, Kernisi (no launch place), Térénez and Île Grande (no beach in OSM).
+
+## Sardinia validation (WHE-169, 14 Nov 2026, settled without Ben)
+- Windy 29 markers vs ours: 9 added as Pro (Petrol Beach, La Caletta, Villasimius – Campulongu, Capo Mannu, Porto Pino,
+  Chia, Vignola Mare, Valledoria – La Foce, Funtana Meiga). Table in `docs/validation/it-sardegna.md`.
+- No ban encoded anywhere: Porto Pollo order 38/2016 covers the bay, not the Porto Liscia pin; Poetto 15 Jun–15 Sep
+  and Porto Pino summer rules come from school pages only (worst case kept in notes).
+- Second look later: Alghero, Mari Ermi, Geremeas, Isola Rossa; Platamona pin on a beach way.

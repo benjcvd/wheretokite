@@ -1,10 +1,10 @@
 country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Italy — format: tools/spots/README.md
 # Sardegna
-IT,Sardegna,Porto Pollo,sea,osm:n454209465,W,"Kite zone on the Porto Liscia (west) side of the Isola dei Gabbiani isthmus; the Porto Pollo bay itself is windsurf only. Mistral (W–NW) and libeccio; schools on site.",,,,
+IT,Sardegna,Porto Pollo,sea,osm:n454209465,W,"Kite zone on the Porto Liscia (west) side of the Isola dei Gabbiani isthmus; the Porto Pollo bay itself is windsurf only (Capitaneria La Maddalena order 38/2016: no kites in the bay from Easter Sunday to 10 Nov; Porto Liscia has a buoyed kite corridor; beyond 200 m from shore otherwise). Mistral (W–NW) and libeccio; schools on site.",,,,
 IT,Sardegna,Punta Trettu,lagoon,osm:n4248171715,NNE,"Flat lagoon-like water inside a metre deep for hundreds of metres, beside Sant'Antioco: the beginner spot of Sardinia. Mistral (NW) and scirocco (SE), thermal in summer. Launch only from the kite beach (small entry fee in season); algae on the bottom. Also: Porto Botte (flat bay).",,,,
 IT,Sardegna,Porto Botte,sea,q:Porto Botte,SW,"Very shallow bay with standing depth far out: flat water, good for learning. Mistral (NW) works best.",,,,
-IT,Sardegna,Cagliari – Poetto,sea,osm:r14404160,SE,"Long city beach; works with scirocco / SE and the summer sea breeze. Summer: kite only in the designated corridors.",,,,
+IT,Sardegna,Cagliari – Poetto,sea,osm:r14404160,SE,"Long city beach; works with scirocco / SE and the summer sea breeze. Summer: no launch corridor and crowded; Hyperisland says the Comune closes it 15 Jun–15 Sep (not an official text, so no ban encoded); kiters move to Petrol Beach or Punta Trettu. Rideable outside that.",,,,
 IT,Sardegna,San Teodoro – La Cinta,sea,q:Spiaggia La Cinta,E,"Long sandbar beach; works with levante / scirocco (onshore). Summer: kite corridor only.",,,,
 IT,Sardegna,Putzu Idu,sea,q:Putzu Idu,SW,"Sinis peninsula; mistral (NW) side-shore, chop to small waves. Schools on site. Also: Capo Mannu next door (rocky, big waves, experts only).",,,,
 # Sicilia
@@ -36,3 +36,13 @@ IT,Puglia,Manfredonia – Siponto,sea,osm:n493697888,SE,"Shallow beach on the Gu
 IT,Veneto,Lago di Garda – Malcesine,lake,osm:n458123631,W,"East shore; Pelèr (N) in the morning, Ora (S) in the afternoon. Kiting on Garda is regulated (zones / times, often only via a kite centre with boat): check locally.",,,pro,
 # pro: north-coast wave spot near Santa Teresa — 4 spot directories (unplug, kiteforum, spots4kite, surftribe); intermediate to expert
 IT,Sardegna,Rena Majore,sea,osm:w119020437,NW,"Large sandy beach on the north coast: NW wind strongest, choppy to small waves; rocks on both sides and a tricky entry. Crowded with swimmers in summer.",,,pro,
+# pro: added from Windy markers, WHE-169 (2026-11-14). Sources per row in docs/validation/it-sardegna.md
+IT,Sardegna,Cagliari – Petrol Beach,sea,osm:w589672450,SE,"The summer kite spot of the Gulf of Cagliari (La Maddalena Spiaggia, Capoterra): thermal SW-S wind on hot days, chop, launch corridor and a school on site. Poetto is closed to kites in summer.",,,pro,
+IT,Sardegna,La Caletta (Siniscola),sea,osm:n648866767,E,"East coast: SE thermal late spring to late summer, plus east winds; kite zone with launch corridor and two schools (Kitesurf La Caletta and Active Kite).",,,pro,
+IT,Sardegna,Villasimius – Campulongu,sea,osm:w367206115,SSW,"Winter spot (Oct–May): W-SW wind at Campulongu, rocks here and there, narrow beach; Porto Giunco next door works with NE. In high season only with a lift service (Sardegna Turismo).",,,pro,
+IT,Sardegna,Capo Mannu,sea,osm:n5375888619,W,"Big wave spot on the Sinis cape: strong mistral (NW) after a few days of wind, shared with surfers, no sandy exit. Experts only. School: Capo Mannu Kite School.",,,pro,
+IT,Sardegna,Porto Pino,sea,osm:w137708402,SSE,"South-west dune beach: mistral side-off and libeccio, gusty near the dunes. Summer: no open kiting (swimmers); the school at Lido Oasi Azzurra has an authorised zone for its guests (1 Jun–30 Sep).",,,pro,
+IT,Sardegna,Chia,sea,osm:w137839773,S,"South coast sand beaches: SE and NW work, waves and chop. Crowded June–September, no kite zone, so a lift or boat is needed in summer; school on site.",,,pro,
+IT,Sardegna,Vignola Mare,sea,osm:w119142991,N,"Far north: the steadiest wind on the north shore (W or E–NE); small kite area, rocks both sides, crowded July–August (keep 100 m from swimmers). Vignola Sports school; Blue Zone courses suspended.",,,pro,
+IT,Sardegna,Valledoria – La Foce,sea,osm:w119752405,NW,"River mouth lagoon (flat) with chop and waves at sea; W best then NE, thermal 14–25 kn in summer. Safe entry and exit; school and shop on site.",,,pro,
+IT,Sardegna,Funtana Meiga,sea,osm:w72445524,W,"Sinis beach used when Capo Mannu is too big: mistral above about 25–30 kn. Wave spot, experienced riders; no school found.",,,pro,
