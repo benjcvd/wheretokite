@@ -34,5 +34,5 @@ pt-lisboa-madeira,review,val-pt-lisboa-madeira,6,19,6,6,0,docs/validation/pt-lis
 pt-algarve,todo,val-pt-algarve,,,,,,,
 it-sardegna,todo,val-it-sardegna,,,,,,,
 it-south,todo,val-it-south,,,,,,,
-it-north-centre,todo,val-it-north-centre,,,,,,,
+it-north-centre,review,WHE-171,6,62,3,13,0,docs/validation/it-north-centre.md,2026-11-14
 ma-all,todo,val-ma-all,,,,,,,
