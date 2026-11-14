@@ -138,8 +138,10 @@ describe("reports as GitHub issues", () => {
   });
 
   it("files the issue when a token is set, and still answers 204 without one", async () => {
-    const gh = vi.fn(async (_url: RequestInfo | URL, _init?: RequestInit) =>
-      new Response(JSON.stringify({ html_url: "https://github.com/x/y/issues/1" }), { status: 201 }));
+    const gh = vi.fn(async (_url: RequestInfo | URL, init?: RequestInit) =>
+      init?.method === "POST"
+        ? new Response(JSON.stringify({ html_url: "https://github.com/x/y/issues/1" }), { status: 201 })
+        : new Response("[]"));
     const deps = makeDeps(gh as unknown as typeof fetch);
     const log = vi.spyOn(console, "log").mockImplementation(() => {});
     const body = JSON.stringify({ kind: "Wrong position", spotId: "es-castelldefels", spotName: "Castelldefels" });
@@ -147,11 +149,52 @@ describe("reports as GitHub issues", () => {
     expect((await handle(req(), {}, deps)).status).toBe(204);
     expect(gh).not.toHaveBeenCalled();                        // no token: log only
     expect((await handle(req(), { GITHUB_TOKEN: "t" }, deps)).status).toBe(204);
-    expect(gh).toHaveBeenCalledTimes(1);
-    const [url, init] = gh.mock.calls[0];
+    expect(gh).toHaveBeenCalledTimes(2);                      // count today's, then file
+    expect(String(gh.mock.calls[0][0])).toContain("/issues?labels=report&state=all&since=");
+    const [url, init] = gh.mock.calls[1];
     expect(String(url)).toBe("https://api.github.com/repos/benjcvd/wheretokite/issues");
     expect((init?.headers as Record<string, string>).Authorization).toBe("Bearer t");
     expect(JSON.parse(init?.body as string).title).toBe("Wrong position: Castelldefels");
+    log.mockRestore();
+  });
+  it("stops filing at the daily ceiling, and fails closed when GitHub can't count", async () => {
+    const now = Date.parse("2026-11-14T12:00:00Z");
+    const recent = { created_at: "2026-11-14T08:00:00Z" };
+    const old = { created_at: "2026-11-12T08:00:00Z" };     // updated today, created earlier
+    let listing: Response = new Response("[]");
+    const gh = vi.fn(async (_url: RequestInfo | URL, init?: RequestInit) =>
+      init?.method === "POST" ? new Response(JSON.stringify({ html_url: "u" }), { status: 201 }) : listing.clone());
+    const deps = makeDeps(gh as unknown as typeof fetch, () => now);
+    const log = vi.spyOn(console, "log").mockImplementation(() => {});
+    const posts = () => gh.mock.calls.filter(([, i]) => i?.method === "POST").length;
+    const req = () => new Request(`${ORIGIN}/v1/report`, { method: "POST", body: '{"kind":"x"}' });
+    const env = { GITHUB_TOKEN: "t", REPORT_ISSUES_PER_DAY: "3" };
+
+    listing = new Response(JSON.stringify([recent, recent, old, old]));
+    expect((await handle(req(), env, deps)).status).toBe(204);
+    expect(posts()).toBe(1);                                   // 2 of 3 used: filed
+    listing = new Response(JSON.stringify([recent, recent, recent]));
+    expect((await handle(req(), env, deps)).status).toBe(204);
+    expect(posts()).toBe(1);                                   // ceiling reached: logged only
+    listing = new Response("boom", { status: 403 });
+    expect((await handle(req(), env, deps)).status).toBe(204);
+    expect(posts()).toBe(1);                                   // can't count: logged only
+    log.mockRestore();
+  });
+
+  it("applies the stricter report limiter only to reports", async () => {
+    const deps = makeDeps(vi.fn() as unknown as typeof fetch);
+    const log = vi.spyOn(console, "log").mockImplementation(() => {});
+    const keys: string[] = [];
+    const env = {
+      INGEST_LIMITER: { limit: async () => ({ success: true }) },
+      REPORT_LIMITER: { limit: async ({ key }: { key: string }) => { keys.push(key); return { success: false }; } },
+    };
+    const req = (path: string) => new Request(`${ORIGIN}${path}`, {
+      method: "POST", body: "{}", headers: { "cf-connecting-ip": "1.2.3.4" } });
+    expect((await handle(req("/v1/report"), env, deps)).status).toBe(429);
+    expect((await handle(req("/v1/feedback"), env, deps)).status).toBe(204);
+    expect(keys).toEqual(["report:1.2.3.4"]);
     log.mockRestore();
   });
 });
