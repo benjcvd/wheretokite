@@ -361,3 +361,8 @@ Questions:
 - Landéda – Sainte-Marguerite: sources disagree on the tide (flat at low tide vs. navigable only about 2 h either side of high water). No tide window set; both views in the notes. Local check welcome.
 - Summer swimming zones at Dossen (1 Jun–15 Sep), Sainte-Marguerite south (1 Jul–30 Aug) and Blancs Sablons west (1 Jul–31 Aug) come from one blog (vvanat.fr), no town text found. In notes only, not in `banned`.
 - Left out of the catalogue, no local kite source or nothing to pin: Les Amiets, Boutrouilles, Île de Vierge, Trez Hir, Saint-Jean-du-Doigt, Trezmeur, Grève Rose, Kernisi (no launch place), Térénez and Île Grande (no beach in OSM).
+
+## Morocco validation pass (WHE-172, 2026-11-14), settled with the rule of 2 Nov
+- Added as pro: Tangier – Achakar (Cap Spartel), Agadir – Bay, Taghazout (Windy 5/3/4 stars; sources are a school page and directories, no local club).
+- Left out, 19 Windy markers (surf breaks, 1-star markers, Rabat–Casablanca–El Jadida beaches): no kite school or club found. Worst case assumed. Revisit Salé, Bouznika, El Jadida/Azemmour (Haouzia) with a local source.
+- Agadir Bay: no marked kite zone and crowded in July–August; no ban encoded (no official text found).
