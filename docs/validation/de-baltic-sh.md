@@ -2,6 +2,7 @@
 
 Date: 2026-11-14. Method: [validation method](../../tools/spots/validation/README.md#windguru-instead-of-windy-from-14-nov) (Windguru instead of Windy).
 Zone = the 11 Baltic rows of `DE.csv` (region Schleswig-Holstein; the North Sea rows belong to WHE-175).
+Build: `spot-check` on `DE.csv`, no PROBLEMS; Apple Maps agrees 51 of 51 (all DE rows).
 Counts: 11 → 11 rows (free 7 → 7, Pro 4 → 4, archived 0 → 0). No spot added, none archived.
 Past work: `git log` on `DE.csv` shows only the Oct catalogue passes and the WHE-91 gap pass; `TO_CONFIRM.md` had two open pin questions (Holnis side, Pelzerhaken launch), still open.
 
