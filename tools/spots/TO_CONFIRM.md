@@ -244,6 +244,11 @@ Questions:
 - Lelystad – Bataviastrand: maps say it faces NE, NKV safe winds suggest W (hint empty).
 - Dümmer, Brombachsee: exact launch; Brombachsee season.
 - Holnis: which side the zone faces. Pelzerhaken: launch (pinned east side).
+- Baltic SH pass (WHE-176, 2026-11-14, settled without Ben): no official kite text found for any spot, so no `banned`.
+  Heiligenhafen: shop guide says Steinwarder is banned and only Graswarder (east of the pier) is allowed, another guide shows a
+  marked zone at east Steinwarder; kept free with the conflict in notes ("experienced only", replaces the old "beginner zone").
+  Wulfener Hals: one guide says kiting only 18:00–10:00 (camping runs the bay), kept with a note. Laboe: harbour-front beach closed
+  in the bathing season per Surf magazine, kept with a note. Fehmarn Strandsatzung 2026 (fehmarn.de PDF) not read: worth a look.
 - Salzhaff – Pepelow: computed NNW, check against the launch shore. Wustrow Bodden side (SSE).
 
 ## Italy / Adriatic / Malta (IT.csv, HR.csv, ME.csv, MT.csv)
