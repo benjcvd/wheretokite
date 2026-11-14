@@ -387,3 +387,8 @@ Questions:
 - No ban encoded anywhere: Porto Pollo order 38/2016 covers the bay, not the Porto Liscia pin; Poetto 15 Jun–15 Sep
   and Porto Pino summer rules come from school pages only (worst case kept in notes).
 - Second look later: Alghero, Mari Ermi, Geremeas, Isola Rossa; Platamona pin on a beach way.
+
+## Morocco validation pass (WHE-172, 2026-11-14), settled with the rule of 2 Nov
+- Added as pro: Tangier – Achakar (Cap Spartel), Agadir – Bay, Taghazout (Windy 5/3/4 stars; sources are a school page and directories, no local club).
+- Left out, 19 Windy markers (surf breaks, 1-star markers, Rabat–Casablanca–El Jadida beaches): no kite school or club found. Worst case assumed. Revisit Salé, Bouznika, El Jadida/Azemmour (Haouzia) with a local source.
+- Agadir Bay: no marked kite zone and crowded in July–August; no ban encoded (no official text found).
