@@ -52,6 +52,61 @@ export function buildIssue(payload: Record<string, unknown>, country?: string): 
   };
 }
 
+/** Issues filed from the app per rolling 24 h, across all users (spam ceiling). */
+export const DEFAULT_REPORT_ISSUES_PER_DAY = 15;
+
+const ghHeaders = (token: string): Record<string, string> => ({
+  Authorization: `Bearer ${token}`,
+  Accept: "application/vnd.github+json",
+  "X-GitHub-Api-Version": "2022-11-28",
+  "User-Agent": "wheretokite-api",
+});
+
+/**
+ * Number of `report` issues created in the last 24 h, or undefined if GitHub can't say.
+ * Lists issues updated since then (a superset) and counts those created since then.
+ */
+export async function reportsFiledLastDay(
+  env: { GITHUB_TOKEN?: string; GITHUB_REPO?: string },
+  doFetch: typeof fetch,
+  now: number,
+): Promise<number | undefined> {
+  if (!env.GITHUB_TOKEN) return undefined;
+  const repo = env.GITHUB_REPO || "benjcvd/wheretokite";
+  const since = new Date(now - 24 * 3600 * 1000).toISOString();
+  try {
+    const res = await doFetch(
+      `https://api.github.com/repos/${repo}/issues?labels=report&state=all&since=${since}&per_page=100`,
+      { headers: ghHeaders(env.GITHUB_TOKEN) },
+    );
+    if (!res.ok) return undefined;
+    const items = (await res.json()) as { created_at?: string }[];
+    return items.filter((i) => i.created_at && i.created_at >= since).length;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * Files a report issue unless today's ceiling is reached. Fails closed: if GitHub can't
+ * tell how many were filed, nothing is filed (the report is still in Workers Logs).
+ */
+export async function fileReportIssue(
+  draft: IssueDraft,
+  env: { GITHUB_TOKEN?: string; GITHUB_REPO?: string; REPORT_ISSUES_PER_DAY?: string },
+  doFetch: typeof fetch,
+  now: number,
+): Promise<string | undefined> {
+  if (!env.GITHUB_TOKEN) return undefined;
+  const cap = Number(env.REPORT_ISSUES_PER_DAY) || DEFAULT_REPORT_ISSUES_PER_DAY;
+  const filed = await reportsFiledLastDay(env, doFetch, now);
+  if (filed === undefined || filed >= cap) {
+    console.log(JSON.stringify({ kind: "github_issue_skipped", reason: filed === undefined ? "count_failed" : "daily_cap", filed, cap }));
+    return undefined;
+  }
+  return fileIssue(draft, env, doFetch);
+}
+
 /** Files the issue; returns its URL, or undefined when not configured / it failed (logged). */
 export async function fileIssue(
   draft: IssueDraft,
@@ -63,13 +118,7 @@ export async function fileIssue(
   try {
     const res = await doFetch(`https://api.github.com/repos/${repo}/issues`, {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
-        Accept: "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-        "User-Agent": "wheretokite-api",
-        "Content-Type": "application/json",
-      },
+      headers: { ...ghHeaders(env.GITHUB_TOKEN), "Content-Type": "application/json" },
       body: JSON.stringify(draft),
     });
     if (!res.ok) {
