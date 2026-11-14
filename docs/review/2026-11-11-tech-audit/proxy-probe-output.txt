@@ -1,0 +1,6 @@
+request 1: HTTP 200, X-Cache MISS
+request 2: HTTP 200, X-Cache MISS
+request 3: HTTP 200, X-Cache MISS
+upstream calls: 12; locations sent upstream: 1200
+forwarded params of first upstream call: forecast_days, hourly, models, latitude, longitude
+hourly forwarded: temperature_2m,relative_humidity_2m,soil_moisture_0_to_1cm

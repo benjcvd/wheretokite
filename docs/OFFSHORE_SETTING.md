@@ -1,53 +1,44 @@
-# Side-offshore setting (WHE-75): angle limits and before / after
+# Side-offshore by level (WHE-75): angle limits and before / after
 
-## The rule
+## The rule (Ben, 2 Nov)
 
 Wind angle to the beach: 0° = straight onshore, 90° = side-shore (parallel to the beach), 180° = straight offshore.
+Set by the rider's level only: there is no separate setting any more. The rule is written under the level picker in the profile.
 
-| Angle | Name | "Not at all" (default beginner, intermediate) | "A little side-offshore" (default advanced) |
+| Angle | Name | Beginner, intermediate | Advanced |
 |---|---|---|---|
 | 0–90° | onshore to side-shore | scores as before | scores as before |
 | 90–100° | still side-shore (10° margin for beach direction and forecast error) | fades to 0 at 100° | scores, no warning |
-| 100–130° | **side-offshore** | **0** | scores, fading 90 % → 40 % at 115° → 0 at 130°; spot shows **"Side-offshore: advanced only"** |
-| 130–180° | **offshore** | 0 | **0, for everyone** |
+| 100–120° | **slightly side-offshore** | **0** | scores, fading 90 % → 40 % at 110° → 0 at 120°; spot shows **"Side-offshore: advanced only"** |
+| 120–180° | **offshore** | 0 | **0, for everyone** |
 
-- Beginners can't pick "A little side-offshore" (greyed out; the engine ignores it even if saved).
+- Under the level picker: beginner "Wind: onshore or side-onshore only", intermediate "side-shore at most, never from the land", advanced "slightly side-offshore accepted, flagged 'advanced only'. Offshore never."
 - Lagoons, points and coves still go through their catalogue water sector first (Leucate's étang still works in winds off the land): unchanged.
-- No regional rules. Settings: `ScoringRules.sideShoreMaxDeg` 100, `offshoreFromDeg` 130.
-- What changed for whom: intermediates used to keep 30–85 % up to 110° and some score up to 125°; now 0 from 100° unless they opt in. Advanced: the curve is exactly the old one (0 at 130°), plus the warning. Beginners: unchanged (0 from 100°).
+- No regional rules. Settings: `ScoringRules.sideShoreMaxDeg` 100, `offshoreFromDeg` 120 (was 130).
+- What changed since the 31 Oct version: intermediates can no longer opt in to side-offshore; advanced riders lose 10° (0 at 120° instead of 130°) and can no longer opt out. Beginners: unchanged.
 
-## Before / after on the WHE-64 days
+## Before / after for advanced riders (130° → 120°)
 
-`kite --day <day> --slot afternoon --drive 150 --all --straight-line`, from Barcelona, 75 kg, 9 and 12 m, archived forecasts. Both versions read the same cached forecast. Only spots whose score or label changed are shown.
-
-### Intermediate (default "Not at all")
+`kite --day <day> --slot afternoon --drive 150 --all --straight-line --level advanced`, from Barcelona, 75 kg, 9 and 12 m, archived forecasts. Only spots whose score changed through this rule are shown (⚠ = "advanced only" warning).
 
 | Day | Spot | Before | After |
 |---|---|---|---|
-| 2 Jul Tramontana | L'Estartit, N 22 kn | 55 | 2 (offshore) |
-| | Sant Pere Pescador, NNW 23 kn | 39 | 0 (offshore) |
-| 14 May Ponent | Calafell, W 16 kn | 51 | 0 (offshore) |
-| | Altafulla | 46 | 0 |
-| | Segur de Calafell | 31 | 0 |
-| | Cambrils | 24 | 0 |
-| | Torredembarra, Creixell, L'Ampolla | 14, 11, 5 | 0 |
-| 8 Oct Mestral | Salou, WNW 17 kn | 46 | 0 |
-| | Sant Pere Pescador | 41 | 0 |
-| | Palamós La Fosca, L'Estartit | 31, 29 | 0 |
-| | L'Ampolla, Platja d'Aro | 25, 25 | 0 |
+| 2 Jul Tramontana | L'Estartit | 68 ⚠ | 62 ⚠ |
+| | Sant Pere Pescador | 66 ⚠ | 61 ⚠ |
+| 14 May Ponent | Calafell | 65 ⚠ | 59 ⚠ |
+| | Segur de Calafell | 50 ⚠ | 39 ⚠ |
+| | Cambrils | 44 ⚠ | 28 (now offshore) |
+| | Torredembarra, Creixell, L'Ampolla | 32, 29, 14 | 7, 3, 1 |
+| 8 Oct Mestral | Salou | 62 ⚠ | 54 ⚠ |
+| | Sant Pere Pescador | 62 ⚠ | 55 ⚠ |
+| | Palamós La Fosca | 49 ⚠ | 40 (now offshore part of the window, no warning) |
+| | L'Estartit, L'Ampolla | 47, 45 ⚠ | 36, 31 ⚠ |
+| | Platja d'Aro | 40 ⚠ | 32 |
 
-Spots still scoring: 2 Jul 7 → 6, 14 May 16 → 9, 8 Oct 21 → 15. The top picks are untouched (Argelès Le Racou on 2 Jul, Castelldefels on 14 May, both side-shore).
-Castelldefels 92 → 69, Platja dels Eucaliptus 69 → 39 and Argelès 58 → 46 also moved, but through the live "chance of wind" check, which varies from run to run: not this change (their wind is cross-shore or side-onshore).
+Top picks are untouched (Castelldefels and the Ebro delta on 14 May, Argelès on 8 Oct, all side-shore or better).
+Altafulla 62 → 39, Platja dels Eucaliptus 69 → 39 and Argelès 81 → 79 also moved, through the live "chance of wind" check, which varies from run to run: not this change.
 
-### Advanced (default "A little side-offshore")
-
-Every score is identical; these spots now carry the warning:
-
-| Day | Spots with "Side-offshore: advanced only" |
-|---|---|
-| 2 Jul | L'Estartit 68, Sant Pere Pescador 66 |
-| 14 May | Calafell 65, Altafulla 62, Segur de Calafell 50, Cambrils 44 |
-| 8 Oct | Salou 62, Sant Pere Pescador 62, Palamós 49, L'Estartit 47, L'Ampolla 45, Platja d'Aro 40 |
+Intermediates: same results as the 31 Oct table (they were already side-shore only by default), see git history of this file.
 
 ## Screenshot
 

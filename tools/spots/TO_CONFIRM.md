@@ -25,7 +25,10 @@ second pass with web research is worth doing.
 
 - Côte d'Opale north (WHE-119, 2026-11-05): Dunkerque summer kite zone (500 m west of Terminus post, 1 Jul–31 Aug) is from a local guide only, prefectoral text not found: kept in notes. Gravelines PFP rules come from the 2024 mayor's order (check 2026). Les Hemmes de Marck pin is still a hamlet node (Apple direction disagrees; OSM N kept). Dunkerque Digue du Braek (Windy 1 star, port sea wall) left out: no OSM element for the riding place. Calais – Blériot-Plage has thin kite sources.
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
-- Hendaye, Anglet – La Madrague: summer windows.
+- Settled (WHE-108, worst case, see [report](../../docs/validation/fr-basque-landes.md#calls-made-under-the-2-nov-rule-look-it-up-else-assume-the-worst)):
+  Anglet – La Madrague no kiting during lifeguard hours 13 Jun–15 Sep (kite order 2023/592 not online);
+  Hendaye July–August ban kept (no town order found). Contis archived (one source).
+  Soustons lake not added (association says kiting too dangerous).
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
 - La Baule: settled 2026-11-05 (WHE-111): Plage Benoît stays (flat banks at low to mid tide, rideevolve guide); summer access is only the K13 channel at the Pornichet border (Pornichet order ARR2026-212), so the summer ban stays. The La Baule 2016 order was a 404: find the current one if possible.
 - Pays de la Loire / Vendée (WHE-111): 12 Windy markers left out, see docs/validation/fr-loire.md. Revive if a school page names the beach: Barbâtre (Noirmoutier), Les Générelles (La Tranche), Les Conches, Sauveterre. Archived: Notre-Dame-de-Monts. Summer rules for Fromentine, La Tranche, Pen Bron and Saint-Brevin come from guides only: no order found.
@@ -34,12 +37,12 @@ second pass with web research is worth doing.
 - La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
 - Weak pins (snapped from a village / street): Hemmes de Marck, Wimereux – Pointe aux Oies,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
-  Les Arbousiers (bus stop beside the beach), Navarrosse.
+  Les Arbousiers (bus stop beside the beach; Navarrosse fixed in WHE-108).
 
 - La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
 - Weak pins (snapped from a village / street): Hemmes de Marck,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
-  Les Arbousiers, Navarrosse.
+  Les Arbousiers.
 - Côte d'Opale south / Baie de Somme (WHE-118, 2026-11-05): summer kite zones at Berck, Le Touquet, Hardelot, Cayeux come from FFVL sheets and guides only, no arrêté found, so none is encoded in `banned` (docs/validation/fr-opale-s.md). Wimereux town beach, Ambleteuse, Audresselles, Baie de la Canche and Hourdel left out (same shores as spots we have, or no launch).
 - Ouistreham Riva-Bella: separate spot from Merville. Settled 2026-11-06 (WHE-117): 5 km apart, other water, own school (La Clinique de la Planche), low tide only.
 - Left out as uncertain: Les Sables-d'Olonne, Jonville / Réville, Saint-Germain-sur-Ay,
@@ -109,6 +112,12 @@ second pass with web research is worth doing.
     Cruz (pro). Alcochete: is `not-low` right on the Tagus flats? Matosinhos: official summer
     ban dates? Santa Cruz: launch pinned at Praia do Mirante, right? Windy also lists Figueira
     da Foz, Carcavelos, Sesimbra, Tróia, Vila Nova de Milfontes (mostly surf; left out).
+
+- **Portugal north and centre validation (WHE-166, 12 Nov, settled without Ben)**: details in docs/validation/pt-north-centro.md.
+  Aveiro – Praia da Barra archived (no kite source). Matosinhos and Óbidos summer bans stay in notes only: two guides each, no
+  Capitania or câmara text found. Baleal: guides' "Baleal Bay" is the south bay, our pin is the north side; kept, no source says it
+  fails. Left out: Espinho and Figueira da Foz (cannot pin one beach), Afife, Maceda, Pedrógão, Nazaré Norte (surf).
+  Added as Pro: Foz do Douro, Âncora, Furadouro, Estacas (Costa Nova ria), Praia da Vieira.
 
 ## Catalunya (Catalan rows of ES.csv)
 
@@ -352,7 +361,7 @@ Questions:
 - Windy markers left out: Buzo (no OSM beach fits, sources don't say which beach), Cádiz city (no kite source), Barbate (surf listings only), Sanlúcar de Barrameda (OSM has only unnamed beaches there, can't tell which one kiters use).
 
 ## South Finistère, Crozon to Bénodet (WHE-113), settled 5 Nov 2026
-- Letty lagoon pin faces N (the dune spit looking over the lagoon) but riders launch on the north shore at the UCPA slipway, where the guides say it works in S winds. The app therefore sees S wind as offshore. No OSM element sits on the north shore (checked: only the spit and Pointe Saint-Gilles beaches), and a second side in the hint cannot be set there. Needs either an OSM beach or kite feature on that shore or a build option for a manual facing: card for the Lead. Left as is (worst case: spot stays Pro).
+- Letty lagoon: settled 6 Nov (WHE-132). Pinned on the UCPA Bénodet-Glénan centre (OSM node, north shore, where riders launch); it now faces SSE, so southerly winds score as onshore. Apple Maps agrees.
 - Summer rules, none found in an official text, so notes only, `banned` empty: Île-Tudy midday ban (reported, lifeguards 13:00 to 19:00 in July and August), Le Ster ban in summer thermal winds and Kersidan ban in high summer (both from the kite guide), La Torche signs. Worst case for riders: obey the signs.
 - Not added: La Palue (surf beach, one blog line on kites), Saint-Tugen (surf), Audierne (beach cannot be told apart), Pointe Saint-Gilles (no source), Glénan (boat access).
 

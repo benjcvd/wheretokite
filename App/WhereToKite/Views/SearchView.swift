@@ -123,7 +123,7 @@ struct SearchView: View {
             .scrollClipDisabled()
 
             DayStrip(selection: $options.day)
-            SlotPicker(selection: $options.slot, customHours: options.customHours)
+            SlotPicker(options: $options)
         }
     }
 
@@ -206,29 +206,37 @@ private struct TitleOnlyIf: LabelStyle {
 }
 
 private struct SlotPicker: View {
-    @Binding var selection: SessionSlot
-    /// Shown under "My hours".
-    let customHours: ClosedRange<Int>
+    @Binding var options: SearchOptions
+    /// The "My hours" editor, opened by tapping that session once it's selected.
+    @State private var editingHours = false
     @Namespace private var highlight
     @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
         HStack(spacing: 4) {
             ForEach(SessionSlot.allCases, id: \.self) { slot in
-                let on = selection == slot
+                let on = options.slot == slot
+                let editable = on && slot == .custom
                 Button {
-                    withAnimation(.snappy) { selection = slot }
+                    if editable { editingHours = true } else { withAnimation(.snappy) { options.slot = slot } }
                 } label: {
-                    let hours = slot == .custom ? customHours : slot.hours
+                    let hours = slot == .custom ? options.customHours : slot.hours
                     VStack(spacing: 1) {
                         // Five across: names only (the icons would push them to "Mor…").
                         Text(slot.label)
                             .font(.subheadline.weight(.semibold))
                             .lineLimit(1)
                             .minimumScaleFactor(typeSize.isAccessibilitySize ? 0.55 : 0.7)
-                        Text(verbatim: "\(hours.lowerBound)–\(hours.upperBound + 1)h")
-                            .font(.caption2)
-                            .foregroundStyle(on ? Color.white.opacity(0.85) : Color.secondary)
+                        HStack(spacing: 2) {
+                            Text(verbatim: "\(hours.lowerBound)–\(hours.upperBound + 1)h")
+                            if editable {
+                                Image(systemName: "pencil").imageScale(.small)
+                            }
+                        }
+                        .font(.caption2)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                        .foregroundStyle(on ? Color.white.opacity(0.85) : Color.secondary)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
@@ -243,14 +251,62 @@ private struct SlotPicker: View {
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel(Text(verbatim: "\(slot.label), \(SessionSlot.label(slot == .custom ? customHours : slot.hours))"))
+                .accessibilityLabel(Text(verbatim: "\(slot.label), \(SessionSlot.label(hours(of: slot)))"))
+                .accessibilityHint(editable ? Text("Edit your hours") : Text(verbatim: ""))
                 .accessibilityIdentifier("slot-\(slot.rawValue)")
                 .accessibilityAddTraits(on ? .isSelected : [])
+                .popover(isPresented: Binding(get: { editingHours && slot == .custom },
+                                              set: { editingHours = $0 })) {
+                    CustomHoursEditor(options: $options)
+                        .padding()
+                        .frame(width: 280)
+                        .presentationCompactAdaptation(.popover)
+                }
             }
         }
         .padding(4)
         .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 17, style: .continuous))
-        .sensoryFeedback(.selection, trigger: selection)
+        .sensoryFeedback(.selection, trigger: options.slot)
+    }
+
+    private func hours(of slot: SessionSlot) -> ClosedRange<Int> {
+        slot == .custom ? options.customHours : slot.hours
+    }
+}
+
+/// From / Until steppers for "My hours". Shown on the home screen and in Search options.
+private struct CustomHoursSteppers: View {
+    @Binding var options: SearchOptions
+
+    var body: some View {
+        Stepper("From \(options.customHours.lowerBound):00",
+                value: Binding(get: { options.customHours.lowerBound }, set: { options.setCustomStart($0) }),
+                in: SearchOptions.customStartRange)
+            .accessibilityIdentifier("customFrom")
+        Stepper("Until \(options.customHours.upperBound + 1):00",
+                value: Binding(get: { options.customHours.upperBound + 1 }, set: { options.setCustomEnd($0) }),
+                in: SearchOptions.customEndRange)
+            .accessibilityIdentifier("customUntil")
+    }
+}
+
+/// The small editor opened from the "My hours" session on the home screen.
+private struct CustomHoursEditor: View {
+    @Binding var options: SearchOptions
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("My hours").font(.headline)
+            CustomHoursSteppers(options: $options)
+                .monospacedDigit()
+            Text("Hours after sunset never count.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .sensoryFeedback(.selection, trigger: options.customHours)
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("customHoursEditor")
     }
 }
 
@@ -303,8 +359,7 @@ struct SearchOptionsSheet: View {
                 }
 
                 Section {
-                    Stepper("From \(options.customHours.lowerBound):00", value: customStart, in: 5...21)
-                    Stepper("Until \(options.customHours.upperBound + 1):00", value: customEnd, in: 6...22)
+                    CustomHoursSteppers(options: $options)
                 } header: {
                     Text("My hours")
                 } footer: {
@@ -345,24 +400,6 @@ struct SearchOptionsSheet: View {
     private var driveIndex: Binding<Double> {
         Binding(get: { Double(DriveSteps.index(of: options.maxDriveMinutes)) },
                 set: { options.maxDriveMinutes = DriveSteps.minutes[Int($0.rounded())] })
-    }
-
-    private var customStart: Binding<Int> {
-        Binding(get: { options.customHours.lowerBound },
-                set: { s in
-                    options.customStart = s
-                    if (options.customEnd ?? 20) <= s { options.customEnd = s + 1 }
-                    options.slot = .custom
-                })
-    }
-
-    private var customEnd: Binding<Int> {
-        Binding(get: { options.customHours.upperBound + 1 },
-                set: { e in
-                    options.customEnd = e
-                    if (options.customStart ?? 17) >= e { options.customStart = e - 1 }
-                    options.slot = .custom
-                })
     }
 
     private var anyStyle: Binding<Bool> {

@@ -17,6 +17,25 @@ struct SearchOptions: Codable, Equatable {
         let s = min(23, max(0, customStart ?? 17)), e = min(24, max(s + 1, customEnd ?? 20))
         return s...(e - 1)
     }
+    /// Editable range for "My hours": from 5:00, until 22:00 at the latest.
+    static let customStartRange = 5...21
+    static let customEndRange = 6...22
+
+    /// Sets the start hour of "My hours" (pushing the end on if needed) and selects that session.
+    mutating func setCustomStart(_ hour: Int) {
+        let s = min(Self.customStartRange.upperBound, max(Self.customStartRange.lowerBound, hour))
+        customStart = s
+        if (customEnd ?? 20) <= s { customEnd = s + 1 }
+        slot = .custom
+    }
+
+    /// Sets the end hour (exclusive) of "My hours" (pulling the start back if needed) and selects that session.
+    mutating func setCustomEnd(_ hour: Int) {
+        let e = min(Self.customEndRange.upperBound, max(Self.customEndRange.lowerBound, hour))
+        customEnd = e
+        if (customStart ?? 17) >= e { customStart = e - 1 }
+        slot = .custom
+    }
     /// nil = all types.
     var intensity: Double? = nil
     var distanceMatters = true
@@ -197,6 +216,7 @@ final class SearchModel {
         // Free plan: the famous spots only (Pro adds the secondary ones).
         let available = proSpots ? catalog : catalog.filter { $0.tier != "pro" }
         recommender.spots = UserSpotStore.merged(catalog: available, user: userSpots)
+        if nextWindow.map({ $0.day <= (Self.testDay ?? options.day) }) ?? false { nextWindow = nil }
         error = nil
         errorIsLocation = false
         do {
@@ -226,7 +246,8 @@ final class SearchModel {
             if lookaheadDays > 0, (result.recommendations.first?.finalScore ?? 0) < ResultsSection.verdictMinimum {
                 let later = DayOption.next(lookaheadDays).map(\.id).filter { $0 > req.day }
                 next = await recommender.nextGoodWindow(for: req, days: later, profile: profile,
-                                                        minimum: ResultsSection.verdictMinimum)
+                                                        minimum: ResultsSection.verdictMinimum,
+                                                        today: DayOption.today.id)
             }
             try Task.checkCancellation()
             self.result = result
@@ -240,6 +261,7 @@ final class SearchModel {
             if Task.isCancelled { return }   // e.g. URLError.cancelled from a superseded search
             appLog.error("search failed: \(String(describing: error), privacy: .public)")
             self.error = Vocab.error(error)
+            self.nextWindow = nil
             errorIsLocation = error is LocationError || error is CLError
             progress = nil
         }

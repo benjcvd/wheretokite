@@ -118,12 +118,14 @@ extension KiteVerdict {
 /// The verdict next to a grade. `onColor`: white text for the coloured hero card. Short and
 /// shrinkable so the longest label ("Ça vaut le coup") fits under a score on a small iPhone.
 struct VerdictPill: View {
-    let verdict: KiteVerdict
+    let rec: SpotRecommendation
     var onColor = false
     var maxWidth: CGFloat? = nil
 
+    private var verdict: KiteVerdict { rec.kiteVerdict }
+
     var body: some View {
-        Text(Vocab.verdict(verdict))
+        Text(Vocab.verdict(rec))
             .font(.caption2.weight(.bold))
             .lineLimit(1)
             .minimumScaleFactor(0.7)
@@ -153,6 +155,7 @@ struct ChanceInfoButton: View {
                 ForEach(KiteVerdict.allCases, id: \.self) { v in
                     Text("**\(Vocab.verdict(v))** (\(Vocab.verdictBand(v))): \(Vocab.verdictMeaning(v))")
                 }
+                Text("**Looks promising**: a Go more than \(GoPolicy().lastGoLead) days ahead. Forecasts that far out are too unsure to promise one.")
                 Text("A No go caused by a safety rule (storm, kiting ban, darkness, offshore wind) says which one.")
                 Text("The grade weighs the wind, gusts and direction for you, and how likely the wind is. We compare four weather models: when they aren't sure, a spot is Worth a try at best; when they see too little wind, a Long shot at best.")
                 Text("Forecasts are never perfect: this is our best estimate. In our tests on past days, wind the models called likely came true about 85 % of the time. The further ahead the day, the less sure any forecast is.")
@@ -178,7 +181,7 @@ struct VerdictBanner: View {
                 .fill(verdict.color)
                 .frame(width: 14, height: 14)
             VStack(alignment: .leading, spacing: 1) {
-                Text(Vocab.verdict(verdict))
+                Text(Vocab.verdict(rec))
                     .font(.subheadline.weight(.semibold))
                 Text(detail)
                     .font(.caption)
@@ -194,7 +197,7 @@ struct VerdictBanner: View {
     }
 
     private var detail: String {
-        rec.safetyReason.map(Vocab.safetyReason) ?? Vocab.verdictMeaning(verdict)
+        rec.safetyReason.map(Vocab.safetyReason) ?? rec.goHeldBack.map(Vocab.goHeldBack) ?? Vocab.verdictMeaning(verdict)
     }
 }
 

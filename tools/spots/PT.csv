@@ -1,9 +1,9 @@
 country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Portugal — format: tools/spots/README.md
-PT,Norte,Viana do Castelo – Cabedelo,sea,osm:w1384166636,W,"Windiest spot in Portugal (nortada): waves outside, flatter by the river-mouth pier. Also: Caminha – Moledo (waves).",,,,
-PT,Norte,Esposende – Ofir,sea,osm:w340980132,W,"Flat knee-deep lagoon in the Cávado estuary behind the Ofir sandspit (walk or school boat), waves on the sea side.",,,,
-PT,Centro,Murtosa – Ria de Aveiro,lagoon,osm:w1107052996,W,"Flat shallow lagoon, nortada thermal Apr–Oct; school (Clube Nortada). Also: Aveiro – Praia da Barra (waves on the ocean side).",,not-low,,
-PT,Centro,Lagoa de Óbidos,lagoon,osm:n1828415085,N,"Flat, waist-deep lagoon; lighter wind (big kites). Guides report kiting closed in summer (about 15 Jun–15 Sep) near the mouth and in the north of the lagoon: then ride by the sailing school or at Bom Sucesso. Also: Peniche – Baleal (ocean).",,not-low,,
+PT,Norte,Viana do Castelo – Cabedelo,sea,osm:w1384166636,W,"Windiest spot in the north (summer nortada, often 25 kn): kite at the north end of Cabedelo behind the big breakwater (flat water) or ride the waves outside. Schools on the beach; some rocks in the water; busy in summer. Also: Caminha – Moledo (waves).",,,,
+PT,Norte,Esposende – Ofir,sea,osm:w340980132,W,"Flat knee-deep lagoon in the Cávado estuary behind the Ofir sandspit: reached by boat only (school transfer from Esposende port), nature reserve; strong current and boat traffic at the river mouth. Waves on the sea side, over the dunes. Pin is the sea beach: the lagoon has no OSM element.",,,,
+PT,Centro,Murtosa – Ria de Aveiro,lagoon,osm:w1107052996,W,"Flat standing-depth lagoon at Praia do Bico (Murtosa), Clube Nortada school on site. Southerlies in winter blow onshore; summer thermal wind is strong, so small kites. Slippery mussel bed (wear shoes); power cable just downwind of the road launch in westerlies. Ankle deep at low tide.",,not-low,,
+PT,Centro,Lagoa de Óbidos,lagoon,osm:n1828415085,N,"Flat, waist-deep lagoon; lighter wind (big kites). Guides report kiting closed in summer (about 15 Jun–15 Sep) near the mouth and in the north of the lagoon: then ride by the sailing school or at Bom Sucesso. Also: Peniche – Baleal (ocean). Summer ban reported by a guide only: no official text found.",,not-low,,
 PT,Lisboa,Guincho,sea,osm:w147727446,W,"Very strong nortada, waves, rocks in the middle of the bay: advanced riders.",,,,
 PT,Lisboa,Fonte da Telha,sea,osm:w222678478,W,"Closest spot to Lisbon; all levels, lighter wind; very busy in summer. Also: São João da Caparica (same coast, further north).",,,,
 PT,Lisboa,Alcochete,sea,osm:w255048764,W,"Flat, shallow water on the Tagus estuary across from Lisbon (Praia dos Moinhos); beginner friendly, school on site. Stones; mud flats at low tide; water quality varies.",,not-low,,
@@ -16,16 +16,26 @@ PT,Madeira,Porto Santo,sea,osm:w142721877,S,9 km beach; N wind is side-offshore 
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — north of Viana do Castelo
-PT,Norte,Caminha – Moledo,sea,osm:w1474542134,W,Waves; nortada (N) in summer.,,,pro,
-# pro: local / secondary beach — ocean side of Aveiro, Ria de Aveiro kept
-PT,Centro,Aveiro – Praia da Barra,sea,osm:w168740954,W,Waves on the ocean side.,,,pro,
+PT,Norte,Caminha – Moledo,sea,osm:w1474542134,W,"Kite Control school on the beach (O Vapor beach bar). Nortada in summer (main season May–Oct), a bit lighter than Viana; flat protected areas for first rides, sandbanks for waves.",,,pro,
+# archived: no kite source found for the ocean side of Praia da Barra (only forecast pages, WHE-166, 12 Nov 2026); Murtosa and Costa Nova cover the Ria de Aveiro
+PT,Centro,Aveiro – Praia da Barra,sea,osm:w168740954,W,Waves on the ocean side.,,,archived,
 # pro: local / secondary beach — mainly a surf spot; Lagoa de Óbidos kept
-PT,Centro,Peniche – Baleal,sea,osm:w138709494,NW,North side of the Baleal isthmus; works in N and S winds on different sides.,,,pro,
+PT,Centro,Peniche – Baleal,sea,osm:w138709494,NW,"North side of the Baleal isthmus; works in N and S winds on different sides. Guides describe the bay as working in most winds, tide independent; strong current in the east of the bay; stay clear of the surf point. Kiting not allowed in the swimming zones in July–August.",,,pro,
 # pro: cluster duplicate — Ria Formosa, Praia de Faro kept
 PT,Algarve,Fuseta (Ria Formosa),lagoon,osm:w78427662,S,"Lagoon: flat water, works around high tide; flat ocean side across the sandbar.",,not-low,pro,
 # pro: secondary Ria Formosa spot (13 km east of Fuseta) — school with a marked 300 m kite area on Ilha de Cabanas
 PT,Algarve,Cabanas de Tavira,sea,osm:w79509901,S,"Ilha de Cabanas (short boat ride from the village): school with a marked kite area. The lagoon side works only around high tide.",,,pro,
 # pro: Porto's city beach — 2 sources (wannakitesurf, kite-and-windsurfing-guide); summer ban reported by guides, no official source found
-PT,Norte,Matosinhos,sea,osm:w338635402,W,"Porto's city beach, south of the harbour wall: chop and small waves, best in S winds; water quality can be poor. Guides report kiting banned in the summer bathing season.",,,pro,
+PT,Norte,Matosinhos,sea,osm:w338635402,W,"Porto's city beach, south of the harbour wall: chop and small waves, best in S winds; water quality can be poor. Two guides report kiting banned in summer, no official text found, so no ban is encoded. Mid to low tide is best, shorebreak at high tide.",,,pro,
 # pro: wave spot between Peniche and Ericeira — 2 sources (unplug-kitesurf, kiteforum); intermediate to expert
 PT,Lisboa,Santa Cruz,sea,osm:w25695668,W,"Long beach with waves in the N nortada (May–Sep); rocks in the water, especially to the south: intermediate to expert riders.",,,pro,
+# pro: Windy 5 stars; kiteforum (N–NW, flat water on the Douro bank, ships and the mole) — WHE-166
+PT,Norte,Foz do Douro – Cabedelo,sea,osm:w1224542321,W,"Sand spit at the Douro mouth: waves on the ocean side, flat water on the river bank. Main winds N to NW, intermediate to expert; ships and the mole are the hazards, best around high tide.",,,pro,
+# pro: Windy 4 stars; guide (S–SW only, launch left of the south breakwater) — WHE-166
+PT,Norte,Vila Praia de Âncora,sea,osm:r4830178,W,"Works in S to SW winds only (houses block the nortada); launch left of the south breakwater, a few rocks at the river mouth. Waves less clean than at Moledo.",,,pro,
+# pro: Windy 3 stars; one guide (works in both usual winds, not popular) — WHE-166
+PT,Centro,Furadouro,sea,osm:w440122681,W,"Between two breakwaters, kiteable in both usual winds but few riders. Heavy shorebreak and strong currents at high tide in winter storms.",,,pro,
+# pro: Windy 3 stars; wannakitesurf and a guide, OSM kitesurfing pitches nearby — WHE-166
+PT,Centro,Aveiro – Estacas (Costa Nova ria),lagoon,osm:w355335635,E,"Shallow lagoon: nortada thermal (16–25 kn) builds through the afternoon, current 1–2 kn, deeper at high tide, sandy bottom; also works in S and W. Launch Estacas, or Biarritz by the bridge for easterlies; wear shoes (shells).",,,pro,
+# pro: Windy 2 stars; one guide (needs strong nortada and swell, few locals) — WHE-166
+PT,Centro,Praia da Vieira,sea,osm:r6196011,W,"Needs a strong nortada with swell: high jumps and short wave rides. Heavy shorebreak at high tide, only a few locals.",,,pro,

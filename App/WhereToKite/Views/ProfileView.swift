@@ -338,57 +338,7 @@ struct ProfileFields: View {
                     }
                 }
             }
-
-            section(String(localized: "How offshore are you OK with?"), footer: offshoreFooter) {
-                VStack(spacing: 8) {
-                    ForEach(OffshoreTolerance.allCases, id: \.self) { tolerance in
-                        offshoreRow(tolerance)
-                    }
-                }
-            }
         }
-    }
-
-    private func offshoreRow(_ tolerance: OffshoreTolerance) -> some View {
-        let on = profile.offshoreTolerance == tolerance
-        let locked = profile.level == .beginner && tolerance == .sideOffshore
-        let title = tolerance == .sideShoreOnly
-            ? String(localized: "Not at all", comment: "Offshore setting: side-shore wind at most")
-            : String(localized: "A little side-offshore", comment: "Offshore setting")
-        let detail = tolerance == .sideShoreOnly
-            ? String(localized: "Cross-shore at most")
-            : String(localized: "Wind partly from the land. Gustier, and it drifts you out.")
-        let isDefault = tolerance == .default(for: profile.level)
-        return Button {
-            withAnimation(.snappy) { profile.offshoreTolerance = tolerance }
-        } label: {
-            HStack(spacing: 12) {
-                Image(systemName: on ? "checkmark.circle.fill" : "circle")
-                    .font(.title3)
-                    .foregroundStyle(on ? Color.accentColor : Color.secondary)
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(title).font(.subheadline.weight(.semibold))
-                    Text(isDefault ? String(localized: "\(detail) · recommended for your level") : detail)
-                        .font(.footnote).foregroundStyle(.secondary)
-                }
-                Spacer(minLength: 0)
-            }
-            .padding(14)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .opacity(locked ? 0.45 : 1)
-        }
-        .buttonStyle(.plain)
-        .disabled(locked)
-        .accessibilityIdentifier("offshore.\(tolerance.rawValue)")
-        .accessibilityAddTraits(on ? .isSelected : [])
-        .sensoryFeedback(.selection, trigger: on)
-    }
-
-    private var offshoreFooter: String {
-        profile.level == .beginner
-            ? String(localized: "Beginners get cross-shore wind at most. Offshore wind never scores, for anyone.")
-            : String(localized: "Side-offshore spots get an \"advanced only\" warning. Offshore wind never scores, for anyone.")
     }
 
     private func kiteChip(_ size: Double) -> some View {
@@ -437,9 +387,9 @@ struct ProfileFields: View {
     private var levelFooter: String {
         let limits = ScoringRules().limits(profile.level)
         return switch profile.level {
-        case .beginner: String(localized: "Only side-on or onshore wind, up to \(Int(limits.wind)) kn.")
-        case .intermediate: String(localized: "Up to \(Int(limits.wind)) kn, no offshore wind.")
-        case .advanced: String(localized: "Up to \(Int(limits.wind)) kn, side-offshore is acceptable.")
+        case .beginner: String(localized: "Up to \(Int(limits.wind)) kn. Wind: onshore or side-onshore only.")
+        case .intermediate: String(localized: "Up to \(Int(limits.wind)) kn. Wind: side-shore at most, never from the land.")
+        case .advanced: String(localized: "Up to \(Int(limits.wind)) kn. Wind: slightly side-offshore accepted, flagged \"advanced only\". Offshore never.")
         }
     }
 }
