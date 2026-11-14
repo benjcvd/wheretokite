@@ -37,7 +37,7 @@ it-south,todo,val-it-south,,,,,,,
 it-north-centre,todo,val-it-north-centre,,,,,,,
 ma-all,todo,val-ma-all,,,,,,,
 gr-islands,todo,val-gr-islands,,,,,,,
-gr-mainland,todo,val-gr-mainland,,,,,,,
+gr-mainland,review,val-gr-mainland,5,1,0,1,0,docs/validation/gr-mainland.md,2026-11-14
 de-north-sea-sh,todo,val-de-north-sea-sh,,,,,,,
 de-baltic-sh,todo,val-de-baltic-sh,,,,,,,
 de-niedersachsen,todo,val-de-niedersachsen,,,,,,,
