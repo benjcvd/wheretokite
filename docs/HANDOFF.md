@@ -418,3 +418,19 @@ global ceiling: the Worker counts today's `report` issues on GitHub before filin
 15 (fails closed if GitHub doesn't answer; the report is still in Workers Logs). The triage
 workflow now labels `triaging` before it counts, so a burst can't all slip under the cap.
 Goes live with a Worker deploy plus a push of main, both waiting on Ben's OK.
+
+## Lead, 15 Nov 22:45: spot push on hold, Windy passes queued
+
+Ben said **don't push yet**: wait until the spot work for the rest of Europe lands, then merge
+`atlas/spot-improvement` (35+ commits ahead), push, and deploy the report spam guard
+(WHE-163, commit 2cd278e) in one go. Before pushing, rerun spot-check on NL.csv and DE.csv
+(Overpass was down during WHE-180 and WHE-206).
+Benchmark: Windy is the standard. The 14 Nov Windguru zones found almost no kite-tagged
+spots, so Greece, Germany and the Netherlands got Windy follow-up cards (WHE-201 to 208 plus
+North Holland and Wadden); WHE-183 Friesland was switched to Windy. The remaining Windguru
+cards (Denmark onwards) should switch to Windy too: Ben was asked but hasn't answered.
+Turkey added (WHE-200, 4 spots); it still needs a zone in zones.json. Albania is the only
+real European gap (asked Ben; no answer).
+Gotcha: Ben moves cards to done himself; trust the board's column, not the "tell the Lead
+to merge" line in notes. PT/IT/MA cards (WHE-166 to 172) are done = approved (asked Ben to
+confirm): set their zones to `validated` in status.csv at merge.
