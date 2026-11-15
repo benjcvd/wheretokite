@@ -24,3 +24,35 @@ Ours with no Windguru kite marker: all five mainland spots. Mainland Windguru co
 Windguru names were used only to learn that spots exist, never for positions.
 
 Not done: Corfu has no zone of its own (Corfu is in none of the zones); Issos Beach and Surf Center Corfu not checked. Evia (Nissakia) and the Peloponnese mainland not looked at.
+
+## Windy, both ways (visitor, Chrome, 15 Nov 2026, WHE-202)
+
+Method: [step 2](../../tools/spots/validation/README.md#the-method-slowly-one-spot-at-a-time), kite-spots layer browsed from Lefkada to Thessaloniki and the Peloponnese, each marker hovered for its name and star rating. Islands (Corfu, Zakynthos, Cyclades, Crete…) are out of this zone. Names only: pins come from OSM, never from Windy.
+Windy shows **24 kite markers** on the mainland, Lefkada, Evia and the Peloponnese. All carry stars (none unrated). Matched to ours: 4. Added as Pro: 11. Left out: 9.
+
+| Windy marker (stars) | Ours / decision |
+|---|---|
+| Agios Ioannis, Lefkada (5) | ours: `Lefkada – Agios Ioannis` |
+| Angelohori (3) | ours: `Thessaloniki – Angelochori` |
+| Schinias (5) | ours: `Attica – Schinias` |
+| Nissakia Loutsa (5) | ours: `Attica – Loutsa (Artemida)` |
+| Oropos (5) | **added (Pro)**: Magic Ride lessons page (east thermal after 15:00), [unplug-kitesurf Athens list](https://www.unplug-kitesurf.com/destinations/athens) |
+| Anavyssos (5) | **added (Pro)**: [kite-and-windsurfing-guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/anavyssos-attica-euboea-skyros-greece.html), unplug list (beginner) |
+| Lavrio (5) | **added (Pro)**: unplug list (beginner, flat and chop), guide list. Thin on wind: noted as such |
+| Vouliagmeni (5) | **added (Pro)**: unplug list (expert, waves), guide (SE gales, powerful waves). Private beach clubs: access limited |
+| Alepoxori (4) | **added (Pro)**: unplug list (Kato Alepochori, beginner, flat), guide list |
+| Lefkandi, Evia (3) | **added (Pro)**: KiteGreece school and Kitepark Lefkadi on the waterfront (unplug list), [Amazing Evia](https://amazingevia.com/en/explore/outdoors-evia/kite-surfing-kai-wind-surfing-stin-evia/) (thermal, beginners) |
+| Raches (5) | **added (Pro)**: Surf Camp Raches school, [unplug Raches page](https://www.unplug-kitesurf.com/spots/raches-greece), [allovergreece](https://www.allovergreece.com/Kitesurf-Spot/Descr/607/903/en) |
+| Astros (3) | **added (Pro)**: [unplug Astros page](https://www.unplug-kitesurf.com/spots/peloponnese-astros-greece) and Athens list (beginner). Single source family |
+| Nafplio (4) | **added (Pro)**: Radical Kite Center, Unlimited Adrenaline courses ([discovernafplio](https://discovernafplio.gr/en/listings/activities/kite-surf-nafplio)), unplug list. Pin: Karathona beach |
+| Mavrovouni, Gythio (3) | **added (Pro)**: [unplug Mavrovouni page](https://www.unplug-kitesurf.com/spots/peloponnese-mavrovouni-greece) (south wind, riding zones) |
+| Faros, Rio–Patras (5) | **added (Pro)**: [Cape Drepano Kite Center](https://www.greeka.com/peloponnese/patra/sports/kitesurfing/patra/cape-drepano-kite-center/), unplug list, surf-magazin Drepano guide. Pin: OSM "Drepano Kite Surfer's Paradise Beach" |
+| Lefkada Lagoon (4) | left out: a guide says the lagoon behind Agios Ioannis is off-limits to kiting (fishing nets); no school or club found |
+| Aghios Nikolaos, Lefkada (4) | left out: sources exist (unplug page, Kleopatra Kite) but no OSM beach could be found to pin it (searches returned nothing) |
+| Vasiliki (5) | left out: guides say kiting is prohibited all year (no official text found, a German magazine mentions kiters at the north end). Worst case kept, as in the Windguru pass |
+| Golden Beach, Karystos (3) | left out: no OSM beach found to pin it |
+| Patra (4), Agia Anna, Evia (2), Agiokambos, Thessaly (4), Finikounda (4), Elafonisos (3) | **left out, no local kite source found** in 12 searches (Finikounda: a 2013 windsurf log only; Elafonisos: a passing mention in a tour article; Agia Anna: only Naxos results; Agiokambos: only the Evia namesake). Not one of the method's listed reasons: Ben to decide if they should go in as bare Pro rows |
+
+Ours with no Windy marker on the mainland: `Epanomi – Potamos`. `Chalikounas` (Corfu) was not checked on Windy.
+Gap: Windy had 24 markers, we had 4. After this pass we cover 15 of 24. Mainland Greece, Attica and the Peloponnese are much denser on Windy than in the Windguru pass, which is why the rows jump from 6 to 17.
+Notes: 11 of the new rows have only guide-level sources, so their sectors are rough (hint from the OSM beach orientation, Apple Maps agrees on all 28 Greek rows). `Vouliagmeni` is a bay node pin and `Lefkandi` a bay node pin; satellite checks not done.
