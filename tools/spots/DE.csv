@@ -94,3 +94,19 @@ DE,Bayern,Brombachsee,lake,osm:w171040640,,Großer Brombachsee: occasional after
 DE,Bayern,Chiemsee – Chieming,lake,osm:n4236313681,W,"East shore, KBC kite club area: works in W–NW winds. Kiting only in the marked zone.",,,pro,
 # pro: 8 km from Zingst (kept) — Darß coast, kite school in Prerow (visit-mv.com Kiteschule Darss + Surfspot Prerow); Nordstrand inside the national park, check zoning
 DE,Mecklenburg-Vorpommern,Prerow,sea,osm:r11936863,N,"Baltic side of the Darß: moderate waves, good with E winds. Kite school in town; the park beach to the north has protected zones, ask locally.",,,pro,
+# pro: added from the Windy pass WHE-206 (15 Nov 2026) — Windy marker "Schaprode" 4 stars; visit-mv.com Schaprode surf spot (free access, flat water, keep clear of the Hiddensee ferry channel)
+DE,Mecklenburg-Vorpommern,Rügen – Schaprode,lagoon,osm:w40089864,NE,"Bodden beach at the Hiddensee ferry port: very flat water, huge standing area. Stay well away from the ferry channel. Free access.",,,pro,
+# pro: Windy marker "Thiessow" 5 stars; ProBoarding Rügen kite school at the Weststrand (visit-mv.com, checkyeti listing, school mapped in OSM)
+DE,Mecklenburg-Vorpommern,Rügen – Thiessow (Weststrand),lagoon,osm:w25681717,W,"Mönchgut: west beach on the Greifswalder Bodden side, shallow water; the ProBoarding kite school meets here. The rugged coast usually gives one workable direction. Free access.",,,pro,
+# pro: Windy marker "Lubmin" 5 stars; visit-mv.com Surfspot Lubmin (free access, SW–NE); Ostsee Kiteschule mapped in OSM at the east end of town
+DE,Mecklenburg-Vorpommern,Lubmin,sea,osm:w1423866550,N,"Wide sandy beach on the Greifswalder Bodden with lots of room on the water; works from SW to NE. Free access. Ostsee Kiteschule at the east end of town. Dog and nudist beaches lie along the same shore: keep to the main beach.",,,pro,
+# pro: Windy marker "Born" 5 stars; Kitesurf & Kanu Born school since 2001 (visit-mv.com, VDWS listing, mapped in OSM); 6 km from Saal across the Bodden
+DE,Mecklenburg-Vorpommern,Born (Saaler Bodden),lagoon,osm:w712040162,S,"Classic Bodden spot: shallow, flat water with some chop, lots of standing room. SW best, S–W works. Small launch area at the campsite: launch from the water. School open April to October.",,,pro,
+# pro: Windy marker "Juliusruh" 3 stars; visit-mv.com Schaabe/Juliusruh (free access, side-shore NE and SE); Kitesurf-Factory school mapped in OSM
+DE,Mecklenburg-Vorpommern,Rügen – Juliusruh (Schaabe),sea,osm:w930073360,E,"Long sandy beach on the Schaabe: shore break, side-shore in NE and SE winds. Free access. Kitesurf-Factory school in Juliusruh (May to October). Stay out of the bathing area.",,,pro,
+# pro: Windy marker "Kühlungsborn" 5 stars; visit-mv.com kite spot Kühlungsborn (free access, W to NE winds give strong waves)
+DE,Mecklenburg-Vorpommern,Kühlungsborn,sea,osm:w1206551977,N,"Baltic waves in strong W to NE wind. Free access per visit-mv. Busy bathing beach in summer: check the local zones and go off season or at quiet hours.",,,pro,
+# pro: Windy marker "Kägsdorf" 3 stars; visit-mv.com Kägsdorf (best in SW wind, large car park behind the dunes); 5 km from Kühlungsborn
+DE,Mecklenburg-Vorpommern,Kägsdorf,sea,osm:w244094195,N,"Quiet beach west of Kühlungsborn: waves, best in SW wind. Large car park right behind the dunes.",,,pro,
+# pro: Windy marker "Ammersee" 5 stars; unplug-kitesurf Ammersee Mühlfeld (shallow, flat with chop, small launch, trees); Kite Factory school listed. Pin at Herrsching east shore
+DE,Bayern,Ammersee – Herrsching (Mühlfeld),lake,osm:w71890612,W,"East shore at Mühlfeld: shallow, flat water with some chop. Small launch area with trees: launch from the water. Check the lake's boating rules; kiting is limited in nature zones.",,,pro,
