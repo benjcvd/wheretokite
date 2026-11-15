@@ -241,6 +241,7 @@ Questions:
   Balephuil, Ballyholme, Cranfield, Mulranny, Portnoo (Narin), Culdaff.
 
 ## Netherlands / Belgium / Germany (NL.csv, BE.csv, DE.csv)
+- Vrouwenpolder: pin is a node on the Veerse Gatdam (water both sides); Apple Maps check disagrees with hint NW. Kept: guides ride both sides (WHE-179).
 - Lelystad – Bataviastrand: maps say it faces NE, NKV safe winds suggest W (hint empty).
 - Dümmer, Brombachsee: exact launch; Brombachsee season.
 - Holnis: which side the zone faces. Pelzerhaken: launch (pinned east side).
