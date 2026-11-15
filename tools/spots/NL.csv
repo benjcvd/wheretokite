@@ -20,7 +20,7 @@ NL,Noord-Holland,Zandvoort,sea,osm:n5140074530,W,"15 Apr–1 Oct launch only in 
 NL,Noord-Holland,IJmuiden,sea,osm:n4508458788,W,Kennemerstrand south of the pier: flat water in the bay. Zone 2 only October–March.,,,,
 NL,Noord-Holland,Wijk aan Zee,sea,osm:w685480572,W,Zones by the Bunker/HangOut and the north pier.,,,,
 NL,Noord-Holland,Camperduin,sea,osm:n12769432787,W,"Small lagoon at low tide, waves outside. Also: Petten 3 km north (Hondsbossche dunes, currents).",,,,
-NL,Wadden Islands,Texel – Paal 17,sea,osm:n3140654634,W,"Kite zones between poles 17.6 and 19 (De Koog). Waves and currents. Also: Paal 28–32 by De Cocksdorp; Wadden side at Dijkmanshuizen (April–September, high tide).",,,,
+NL,Wadden Islands,Texel – Paal 17,sea,osm:n3140654634,W,"Official kite beach between poles 17.60 and 18.99 (De Koog); kiting is not allowed on the built-up beach between poles 19 and 28. Waves and currents. Stay 50 m from the hard sea wall by the lighthouse. Also: Paal 28–32 (De Cocksdorp) and the Wadden side at Dijkmanshuizen (1 April–1 October).",,,,
 NL,Noord-Holland,Muiderberg,lake,osm:w74727107,N,"IJmeer, shallow fresh water; beginner-friendly. Also: Almere – Muiderzand across the IJmeer (deep water, advanced).",,,,
 NL,Noord-Holland,Schellinkhout,lake,osm:n4508462925,S,"Markermeer, shallow and flat; beginner-friendly.",,,,
 # Flevoland, Gelderland
@@ -31,8 +31,8 @@ NL,Friesland,Makkum (IJsselmeer),lake,osm:w1062703366,W,Shallow. Kiting allowed 
 NL,Friesland,Stavoren,lake,osm:w855779507,SW,"It Suderstrand, deep water; advanced riders.",,,,
 # Wadden Sea coast and islands
 NL,Groningen,Lauwersoog,sea,osm:w48517917,N:Wadden Sea side|SE:Lauwersmeer side:lake,"Wadden side: shallow, around high tide, all year. Lauwersmeer side June–September only.",,,,
-NL,Wadden Islands,Terschelling – Noordzee,sea,osm:n48471300,N,"North Sea beach (Midsland aan Zee). Also: Groene Strand near West-Terschelling (shallow flat water, beginner-friendly).",,,,
-NL,Wadden Islands,Ameland – Noordzee,sea,osm:n7793664554,N,"1 Mar–1 Nov only between poles 8.2–11.3 (Nes/Ballum), 17.4–19 (Buren) and 3–4 (Hollum). Also: Wadden side by the Nes ferry pier (3 h either side of high tide).",,,,
+NL,Wadden Islands,Terschelling – Noordzee,sea,osm:n48471300,N,"Whole North Sea coast is open to kiters, waves and current. 1 May–1 Oct: stay 200 m either side of every beach access and more than 100 m out from the waterline (municipal decision 2020). Winter has no limit. Also: Groene Strand (own marked zone).",,,,
+NL,Wadden Islands,Ameland – Noordzee,sea,osm:n7793664554,N,"1 Mar–1 Nov only between poles 8.2–11.3 (Nes/Ballum), 17.4–19 (Buren) and 3–4 (Hollum, strong current). Outside the zones kiting is allowed only 1 Nov–1 Mar (VVV Ameland, citing the municipality). Also: Wadden side west of the Nes ferry dam.",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — 3 km from Brouwersdam
@@ -88,7 +88,7 @@ NL,Noord-Holland,Julianadorp,sea,osm:n4356511096,W,Wide beach; advanced riders.,
 # pro: local spot — secondary beach, Marsdiep currents
 NL,Noord-Holland,Den Helder – Huisduinen,sea,osm:n8303186060,W,"Marsdiep currents, advanced riders.",,,pro,
 # pro: cluster duplicate — second Texel North Sea zone, Paal 17 kept
-NL,Wadden Islands,Texel – Paal 28,sea,osm:n3140565781,NW,Kite zone between poles 28.2 and 32 (De Cocksdorp).,,,pro,
+NL,Wadden Islands,Texel – Paal 28,sea,osm:n3140565781,NW,"Official kite beach between poles 28.20 and 32 (De Cocksdorp), North Sea waves. Kiting is banned between poles 32 and 33.02.",,,pro,
 # pro: seasonal/minor — Wadden side, April–September, high tide only
 NL,Wadden Islands,Texel – Dijkmanshuizen,sea,osm:w109266468,E,"Wadden Sea side, shallow. April–September only; around high tide.",,high,pro,10-01..03-31
 # pro: cluster duplicate — IJmeer, Muiderberg kept
@@ -116,13 +116,13 @@ NL,Friesland,Lemmer,lake,osm:w84485291,SW,Shallow. Kiting allowed October–Apri
 # pro: local spot — Wadden Sea, high tide only, local
 NL,Friesland,Harlingen,sea,osm:w522018972,W,"Wadden Sea, shallow; around high tide.",,high,pro,
 # pro: local spot — island beach, Terschelling/Ameland kept
-NL,Wadden Islands,Vlieland,sea,osm:n4586179268,NW,North Sea beach; the Wadden side is closed.,,,pro,
+NL,Wadden Islands,Vlieland,sea,osm:n4586179268,NW,"North Sea beach west of the Badhuys only (vlieland.nl); the beach east of it up to the harbour and the Wadden Sea are closed to kiters.",,,pro,
 # pro: cluster duplicate — second Terschelling spot
-NL,Wadden Islands,Terschelling – Groene Strand,sea,osm:r16919978,S,"Shallow, flat water near West-Terschelling; beginner-friendly.",,,pro,
+NL,Wadden Islands,Terschelling – Groene Strand,sea,osm:r16919978,S,"Own designated kite zone at West-Terschelling, shallow and flat, beginner-friendly. Around high water only (3 h either side). Stay out of the shipping channel and in the buoyed zone; no launching on the grass by the beach pavilion.",,high,pro,
 # pro: cluster duplicate — second Ameland spot, high tide only
-NL,Wadden Islands,Ameland – Waddenzee,sea,osm:w655410097,S,"By the Nes ferry pier: shallow, 3 h either side of high tide.",,high,pro,
+NL,Wadden Islands,Ameland – Waddenzee,sea,osm:w655410097,S,"West of the Nes ferry dam, in the designated area: shallow, 3 h either side of high tide. Mind the dam and the ferry channel.",,high,pro,
 # pro: local spot — island beach, Lauwersoog/Ameland kept
-NL,Wadden Islands,Schiermonnikoog,sea,osm:n503478243,N,North Sea beach between poles 3 and 5; the Wadden side is closed.,,,pro,
+NL,Wadden Islands,Schiermonnikoog,sea,osm:n503478243,N,"Official activity beach between the Badweg access (east of pavilion Paal 3) and pole 5; kiting is not allowed elsewhere on the beach. Big lagoon at high tide. Wadden side closed.",,,pro,
 # pro: local spot — Eems-Dollard, high tide only, local
 NL,Groningen,Delfzijl,sea,osm:w878065974,NE,"Eems-Dollard beach, shallow; around high tide.",,high,pro,
 # pro: minor lake — winter-only lake
