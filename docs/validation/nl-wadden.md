@@ -1,7 +1,7 @@
 # Validation: Dutch Wadden Islands (zone `nl-wadden`, WHE-182)
 
 Date: 2026-11-15. Method: [validation method](../../tools/spots/validation/README.md#windguru-instead-of-windy-from-14-nov) (Windguru benchmark).
-Counts for the zone: 9 → 9 live spots (free 3 → 3, Pro 6 → 6, archived 0 → 0). Nine rows had notes rewritten from official island rules; one got a tide window.
+Counts for the zone: 9 → 9 live spots (free 3 → 3, Pro 6 → 6, archived 0 → 0). Seven rows had notes rewritten from official island rules and one got a tide window.
 Build: `spot-check` on the 9 zone rows, exit 0, no PROBLEMS, Apple Maps direction check agrees 9/9.
 Past work: `git log` on `NL.csv` shows only the Benelux build, the trim, tiers and the seasonal ban column. Nothing in `TO_CONFIRM.md` on the islands. No earlier check redone.
 
@@ -23,7 +23,7 @@ Limits (said plainly): 5 web searches plus official page reads, Windguru browsed
 
 Windguru has no kite tag and its point names are towns, beaches and weather stations, so I counted points at our beaches. Kite-tagged markers: 0.
 Points seen: Texel (Paal 9, Paal 33, Texel, Dijkmanshuizen), Vlieland, Terschelling (West-Terschelling, Kinnum, Formerum, Oosterend), Ameland (Ballum Strand, Burensteiger, Nes Pier Oost), plus unnamed clusters on Terschelling and Schiermonnikoog. The search box for "kite Wadden" returned nothing.
-Matched to ours: 6 (Texel Dijkmanshuizen, Texel Paal 9/33 area, Vlieland, Terschelling West, Ameland Burensteiger and Nes Pier). Added: 0. Gap line: none, Windguru shows no more kite places than we have.
+Matched to ours: 6 (Dijkmanshuizen, Vlieland, West-Terschelling, Burensteiger, Nes Pier, Ballum Strand). Added: 0. Gap line: none, Windguru shows no more kite places than we have.
 
 | Windguru point | Ours |
 |---|---|
