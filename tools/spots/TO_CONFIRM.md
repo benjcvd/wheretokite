@@ -408,3 +408,8 @@ Questions:
 - Added as pro: Tangier – Achakar (Cap Spartel), Agadir – Bay, Taghazout (Windy 5/3/4 stars; sources are a school page and directories, no local club).
 - Left out, 19 Windy markers (surf breaks, 1-star markers, Rabat–Casablanca–El Jadida beaches): no kite school or club found. Worst case assumed. Revisit Salé, Bouznika, El Jadida/Azemmour (Haouzia) with a local source.
 - Agadir Bay: no marked kite zone and crowded in July–August; no ban encoded (no official text found).
+
+## Rügen, Mecklenburg, Bavarian lakes (WHE-178), settled 14 Nov 2026
+- No official kite-zone text found for any of the 16 spots, so no `banned` rule encoded; summer swim zones (Warnemünde) in notes only.
+- Chiemsee – Chieming: no new source; kept Pro (old KBC source). Kreptitz not added (kiting prohibited per one listing).
+- Not added, no Windguru marker: Born, Dierhagen, Loissin, Boiensdorf (school on site each). Add if wanted.
