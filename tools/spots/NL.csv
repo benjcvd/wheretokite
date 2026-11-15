@@ -10,11 +10,11 @@ NL,Zeeland,Kamperland – Roompot,lagoon,osm:w822498441,N,Oosterschelde: long sh
 NL,Zeeland,Domburg,sea,osm:w80401276,NW,"Wave spot by the Westkapelse Zeedijk, experts only; pole rows submerged at high tide. Keep clear of bathing beaches in summer.",,,,
 NL,Zeeland,Cadzand-Bad – Zwin,sea,osm:w548694875,NW,"West of Cadzand-Bad, park at the Zwin visitor centre. Deep water. Also: Vlamingpolder (advanced) just east.",,,,
 # Zuid-Holland
-NL,Zuid-Holland,Oostvoorne,sea,osm:w92724759,W,"Shallow, beginner-friendly beach. The Oostvoornse Meer (flat-water lake, launch on its north shore) is 1.5 km away. Also: Rockanje Sportstrand (2nd slag) 3 km south; Maasvlakte – Slufter 6 km north (advanced, partly October–April).",,,,
-NL,Zuid-Holland,Hoek van Holland,sea,osm:w28289510,NW,"North of the pier, by the Hoekse Watersport Vereniging. Strong currents, not for beginners.",,,,
+NL,Zuid-Holland,Oostvoorne,sea,osm:w92724759,W,"Shallow, beginner-friendly beach. Former car beach: no road, about 500 m walk from the car park (schools use trolleys); a few wooden posts on the sand. The Oostvoornse Meer (flat-water lake, launch on its north shore) is 1.5 km away. Also: Rockanje Sportstrand (2nd slag) 3 km south; Maasvlakte – Slufter 6 km north (advanced, partly October–April).",,,,
+NL,Zuid-Holland,Hoek van Holland,sea,osm:w28289510,NW,"North of the pier, by the Hoekse Watersport Vereniging. Strong currents, not for beginners. Rotterdam's beach order sets a 500 m kite zone from 1 May to 1 October: ask the club for the exact stretch.",,,,
 NL,Zuid-Holland,Zandmotor,sea,osm:w152867296,NW,"Sand engine with a shallow lagoon, good for learning. Extra restrictions 15 May–15 Sep. Also: Kijkduin just north (surf, currents, submerged groynes).",,,,
-NL,Zuid-Holland,Scheveningen,sea,osm:n1687084831,NW,"Noorderstrand zone north of groyne 42 (lighthouse); waves, currents, busy. Quieter Zwarte Pad (KZVS club) 2 km north.",,,,
-NL,Zuid-Holland,Noordwijk,sea,osm:n11536401225,NW,"Kite zone north of the boulevard; advanced riders. Also: Katwijk 4 km south (deep water, advanced).",,,,
+NL,Zuid-Holland,Scheveningen,sea,osm:n1687084831,NW,"Noorderstrand zone north of groyne 42 (lighthouse); waves, currents, busy, best in SW wind. The water between the pier and the first groyne is for surfers. Quieter Zwarte Pad (KZVS club) 2 km north.",,,,
+NL,Zuid-Holland,Noordwijk,sea,osm:n11536401225,NW,"Kiting only in marked zones: the free zone is at Langevelderslag (3–4 km north, beach entrances 75.5–75.25); the zone north of the boulevard (exits 2–4) is for members of the Noordwijk club (KSN); a lesson zone at exit 21. Advanced riders. Also: Katwijk 4 km south (deep water, advanced).",,,,
 # Noord-Holland
 NL,Noord-Holland,Zandvoort,sea,osm:n5140074530,W,"15 Apr–1 Oct launch only in the six watersport zones (e.g. The Spot); no restrictions the rest of the year. Also: Bloemendaal aan Zee 3 km north (advanced, currents).",,,,
 NL,Noord-Holland,IJmuiden,sea,osm:n4508458788,W,Kennemerstrand south of the pier: flat water in the bay. Zone 2 only October–March.,,,,
@@ -54,19 +54,21 @@ NL,Zeeland,Oesterdam (Tholen),lagoon,osm:w822498440,NW,"Oosterschelde side of th
 # pro: seasonal/minor — Oosterschelde, winter-only, Kamperland kept
 NL,Zeeland,Ouwerkerk,lagoon,osm:w621302487,S,"Oosterschelde, shallow. Kiting allowed October–April only.",,,pro,05-01..09-30
 # pro: local spot — Haringvliet, local
-NL,Zuid-Holland,Hellevoetsluis – Haringvliet,lake,osm:w140697685,S,"Haringvliet (no tide), deep water close in.",,,pro,
+NL,Zuid-Holland,Hellevoetsluis – Haringvliet,lake,osm:w140697685,S,"Haringvliet (no tide), choppy to flat, deep water close in. Riding zones apply: respect them. Chaotic currents near the dam's locks. Best in SW–NW wind, spring and autumn.",,,pro,
 # pro: cluster duplicate — 3 km from Oostvoorne
 NL,Zuid-Holland,Rockanje,sea,osm:n11535255124,W,"Sportstrand (2nd slag): shallow, all year. The bathing beach next to it only October–April.",,,pro,
 # pro: cluster duplicate — 6 km from Oostvoorne, partly seasonal
 NL,Zuid-Holland,Maasvlakte – Slufter,sea,osm:w609718673,W,"Shallow, advanced riders. The Maasvlakte 2 P1–P3 section only October–April; P5/P6 is closed.",,,pro,
 # pro: local spot — secondary beach between Hoek van Holland and Zandmotor
-NL,Zuid-Holland,'s-Gravenzande – Slag Beukel,sea,osm:w44386191,NW,Deep water close in; advanced riders.,,,pro,
+# archived: no kite school, club or kite guide found for this beach (only surf and beach pages; WHE-180, 14 Nov 2026); Kijkduin and Katwijk cover this coast
+NL,Zuid-Holland,'s-Gravenzande – Slag Beukel,sea,osm:w44386191,NW,Deep water close in; advanced riders.,,,archived,
 # pro: cluster duplicate — next to the Zandmotor
 NL,Zuid-Holland,Kijkduin,sea,osm:w96302900,NW,Surf and currents; submerged groynes. Best wind N.,,,pro,
 # pro: local spot — secondary beach between Scheveningen and Noordwijk
-NL,Zuid-Holland,Wassenaarse Slag,sea,osm:n278826705,NW,Deep water close in; advanced riders.,,,pro,
+# archived: no kite school, club or kite guide found for this beach (only surf and beach pages; WHE-180, 14 Nov 2026); Kijkduin and Katwijk cover this coast
+NL,Zuid-Holland,Wassenaarse Slag,sea,osm:n278826705,NW,Deep water close in; advanced riders.,,,archived,
 # pro: cluster duplicate — 4 km from Noordwijk
-NL,Zuid-Holland,Katwijk,sea,osm:w285679616,NW,Deep water close in; advanced riders.,,,pro,
+NL,Zuid-Holland,Katwijk,sea,osm:w285679616,NW,"Kiting allowed in three areas only: by the surf club mid-boulevard, by the kitesurf club north of the boulevard (across the canal), and by the sailing club south. Waves, strong currents, shore break; crowded July–August; advanced riders.",,,pro,
 # pro: cluster duplicate — 3 km from Zandvoort
 NL,Noord-Holland,Bloemendaal aan Zee,sea,osm:r21115187,W,Advanced riders; currents.,,,pro,
 # pro: local spot — secondary North Holland beach
