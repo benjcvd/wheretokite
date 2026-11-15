@@ -42,3 +42,38 @@ Windguru has no kite tag on its Baltic map: every marker is a town forecast poin
 | Chiemsee – Feldwieser Bucht | ours (Chiemsee – Übersee) |
 
 Candidates seen in the guides but not added, no Windguru marker, so the unrated rule is not triggered: Born (Kitesurf & Kanu Born, Saaler Bodden, 6 km from Saal), Dierhagen (LOOP IN school, same water as Saal), Loissin (kitesafe school, 1 km from Gahlkow), Kreptitz (kiting prohibited), Boiensdorf (south Salzhaff, 12 km from Pepelow). Born and Boiensdorf are the ones to add if Ben wants more Baltic Pro spots.
+
+## Windy, both ways (WHE-206, browsed as a visitor in Chrome, 15 Nov 2026)
+
+Method: [step 2](../../tools/spots/validation/README.md#the-method-slowly-one-spot-at-a-time), Windy kite markers hovered one by one (name and stars read from the hover card; no scraping, no positions copied). Pins of the additions come from OSM beach ways (OSM API map boxes, since Overpass was down), checked against the school nodes mapped in OSM. Not seen on satellite.
+
+- Windy kite markers in the zone: **47** (41 on the Baltic from Schwansee to Karlshagen, 6 in Bavaria; Timmendorfer Strand, Priwall, Bodensee and Austria belong to other zones).
+- Matched to ours: **12** (Pepelow, Warnemünde, Zingst, Prerow, Saal, Suhrendorf, Dranske, Wiek, Gahlkow, Karlshagen, Chiemsee, Brombachsee).
+- Added as Pro: **8**. Left out: **27**.
+- Ours not on Windy as a marker: Wustrow, Usedom – Peenemünde, Usedom – Ückeritz, Chiemsee – Chieming (4 of 16).
+- Our spots before → after: 16 → 24 (1 free, 23 Pro, 0 archived; before 1 free, 15 Pro).
+
+| Windy marker (stars) | Result |
+|---|---|
+| Pepelow 5, Warnemünde 5, Zingst 5, Prerow 3, Saal 5, Suhrendorf 5 (Ummanz), Dranske 5, Wiek 5, Gahlkow 4, Karlshagen 4, Chiemsee 5, Brombachsee 5 | ours |
+| Schaprode 4 | **added (Pro)**: visit-mv spot page, beach `w40089864` |
+| Thiessow 5 | **added (Pro)**: ProBoarding school ([visit-mv](https://www.visit-mv.com/surf/kite/2), checkyeti), Weststrand `w25681717` |
+| Lubmin 5 | **added (Pro)**: [visit-mv Surfspot Lubmin](https://www.visit-mv.com/destinations/a-surfspot-lubmin), Ostsee Kiteschule mapped in OSM, beach `w1423866550` |
+| Born 5 | **added (Pro)**: Kitesurf & Kanu Born ([visit-mv](https://www.visit-mv.com/destinations/a-kitesurf-kanu-born), [VDWS](https://www.vdws.de/en/watersport-center/kitesurf-und-kanu-born)), beach `w712040162` |
+| Juliusruh 3 | **added (Pro)**: visit-mv Schaabe/Juliusruh, Kitesurf-Factory school in OSM, beach `w930073360` |
+| Kühlungsborn 5 | **added (Pro)**: visit-mv kite spot page, beach `w1206551977` |
+| Kägsdorf 3 | **added (Pro)**: visit-mv Kägsdorf (SW wind, car park), beach `w244094195` |
+| Ammersee 5 | **added (Pro)**: [unplug Mühlfeld](https://www.unplug-kitesurf.com/spots/ammersee-muehlfeld-germany), beach `w71890612` |
+| Dierhagen 3 | left out: LOOP IN school works on the Saaler Bodden, but no OSM element on the Bodden shore (the Dierhagen beaches in OSM face the Baltic); same water as Saal and Born, 5 km. Second pass |
+| Starnberger See 5 | left out: kite guides name Ambach and Tutzing (W–NW, autumn only), but OSM has only bathing beaches and no kite zone: no pin yet. Second pass |
+| Rosengarten 4, Pritzwald 1 | left out: both on the visit-mv kite list, but no OSM beach found for either village (Overpass down). Second pass |
+| Rerik 4 | left out: Oceanblue school on site, but the guide says mainly off season and the only OSM beach is a nudist area on the Salzhaff: no pin |
+| Hiddensee 5 | left out: boat-only, inside the national park, and no source says kiting is allowed there |
+| Kreptitz 3 | left out: kiting prohibited per an earlier listing (see Dranske note) |
+| Altmühlsee 5 | left out: sources are windsurf only (Schlungenhof), no kite source |
+| Lechstaufe 5 | left out: no kite source found at all |
+| Ahrenshoop 4, Prora 2, Baabe 3, Gager 3, Altefähr 3, Neuhof (Poel) 3, Schwansee 3, Nordstrand 2, Grabow 2, Pruchten 2, Usedom 3, Ahlbeck 3, Ludwigsburg 2, Wohlenberger Wiek 2, Markgrafenheide 2, Polchow 1, Rappin 1, Neu Reddevitz 1 | left out: only an aggregator list or nothing names them as kite spots, no local source (the kite-and-windsurfing-guide lists Baabe, Altefähr, Prora, Grabow, Nordstrand, Polchow, Neu Reddewitz and Markgrafenheide without details). Candidates for a second pass; Markgrafenheide sits in a protected heath |
+
+Gap line: Windy shows 47 markers against our 24 rows after this pass. Most of the 27 left out are 1 to 3 star village markers that no school, club or town page names as a kite spot, or have no OSM beach at the place; they are listed above so a second pass can pick them up when Overpass is back.
+
+Build check (`build_spots.py` on `DE.csv`, 15 Nov): exit 0, no PROBLEMS, Apple Maps agrees on 61 rows. One `uncertain` among ours: Rügen – Schaprode (OSM beach faces N 9°, Apple water at 320°, 49° apart): the pin is the ferry-port beach on a sheltered Bodden inlet, so the exact facing is loose; the spot is flat-water whichever way it faces. Second look worth a satellite check.
