@@ -75,3 +75,5 @@ Added as Pro: 4. Left out: 9. Not on Windy: K4 as its own marker (Windy's Rantum
 
 Gap: Windy shows 20 markers, we match 7 and add 4; the rest are dike spots, conflicting-rules beaches or banned. A second look at Wyk
 and Meldorf (official rules) and the Norddorf and dike pins (OSM elements) could add up to 5 more once Overpass is back.
+
+Build (15 Nov, the 13 zone rows, exit 0): no PROBLEMS, Apple Maps agrees 12 of 13. One `uncertain`: Amrum – Wittdün Badebucht (OSM water faces ESE 121°, Apple 72°, 48° apart). The bay is curved at the island's south-east tip, so both are plausible; hint SE kept, pin to be eyeballed on satellite.
