@@ -30,3 +30,17 @@ GR,Paros,Golden Beach (Chrysi Akti),sea,osm:r453222,SE,"Long beach on the east c
 GR,Thessaloniki,Angelochori,lagoon,q:Angelochori lagoon,W,"Beach at Angelochori west of the airport, with a local summer thermal wind; sand, few waves, all levels, medium crowd. The lagoon behind it is a protected wetland (Natura 2000): keep to the sea side. A windsurf club is on the beach, no kite school found; the nearest is at Epanomi.",,,pro,
 # pro: on Windguru (Kite Club Corfu); visit.corfu.gr kite club page; unplug-kitesurf and kite-and-windsurfing-guide spot pages
 GR,Corfu,Chalikounas,sea,osm:w385774236,W,"Beach between the Korission lagoon and the sea, south-west Corfu: afternoon NW wind from April to September, side-onshore, with some waves. Kite Club Corfu (VDWS station, rescue boat) and a second surf centre on the beach. Korission lagoon behind is a Natura 2000 area: stay on the sea side.",,,pro,
+# pro: Windy kite marker (WHE-201, 15 Nov); two kite schools at Fanes (Meltemi Kiteclub, MKV Kite Station) per lets-kite and kiteandsurfrhodes.com
+GR,Rhodes,Fanes,sea,osm:w283739063,W,"West coast of Rhodes at Fanes, just north of Kalavarda: meltemi (N–NW), May to October, sand and pebble beach. Two kite schools about 100 m away (Meltemi Kiteclub, MKV Kite Station); quieter than the Ixia and Ialyssos coast.",,,pro,
+# pro: Windy kite marker (WHE-201); kitesurfingkos.com, discoveringkos.com and unplug list the Mastichari kite centres
+GR,Kos,Mastichari,sea,osm:w436161363,N,"North coast of Kos, the island's main kite hub: NNW meltemi side-shore in summer, with an afternoon west thermal that turns onshore; chop and small waves, beginner friendly, May to October. Kite centres on the beach (Horizon Surfing Kos, Kitesurfing Kos) with rescue boats.",,,pro,
+# pro: Windy kite marker (WHE-201); iKite (IKO, Heraklion Kite Club) at Amoudara per la-crete-autrement and unplug
+GR,Crete,Amoudara (Heraklion),sea,osm:w376172189,N,"North coast of Crete west of Heraklion: NW–NNW meltemi, gusts possible, flat to choppy, all levels, season May to October. iKite (IKO) runs the school here, open June to early September and by appointment outside it.",,,pro,
+# pro: Windy kite marker (WHE-201); Elafonisi Kite school (la-crete-autrement, unplug)
+GR,Crete,Elafonisi,lagoon,osm:w374311369,W,"Lagoon beach at the south-west tip of Crete: steady west wind, very shallow water, scattered rocks; Elafonisi Kite gives lessons here. Protected, busy beach in summer: keep away from swimmers.",,,pro,
+# pro: Windy kite marker (WHE-201); unplug and booking sites list Ftelia as a beginner kite bay, windsurf and kite
+GR,Mykonos,Ftelia,sea,osm:r5447910,N,"North coast bay of Mykonos, a beginner-rated kite and windsurf bay in the meltemi (N), May to September. No school found on the beach; the nearest kite school is at Korfos.",,,pro,
+# pro: Windy kite marker (WHE-201); Kalafati listed as an intermediate kite spot on unplug and booking sites
+GR,Mykonos,Kalafati,sea,osm:w366181515,E,"East coast beach of Mykonos at Kalafati (Agia Anna): listed by guides as an intermediate kite spot, May to September. Single guide source; no school found on the beach.",,,pro,
+# pro: Windy kite marker (WHE-201); kiterr and kitejungle describe Glyfada as Naxos's second kite option, mostly flat water
+GR,Naxos,Glyfada,sea,osm:w363516715,W,"Glyfada Beach on the south-west coast of Naxos, south of Mikri Vigla: meltemi (N) side-shore, mostly flat water good for learning and freestyle, May to September. Described as the island's second kite spot after Mikri Vigla.",,,pro,

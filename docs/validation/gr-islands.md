@@ -36,3 +36,52 @@ Windguru has no kite rating; I counted markers named as kite or kite/windsurf ce
 Ours with no Windguru kite marker: Afiartis, Golden Beach, Keros, Kouremenos (all with school sources above).
 Out of zone: "Chalikounas, Kite Club Corfu" (Corfu, not in any zone; see the mainland card).
 Windguru names were used only to learn that spots exist, never for positions.
+
+## Windy, both ways (WHE-201, 15 Nov; browsed as a visitor, kite markers hovered island by island at zoom 10–11)
+
+Counts: **50 Windy kite markers** on the islands (Rhodes 8, Kos 7, Crete 14, Naxos 5, Paros 3, Mykonos 3, Lesbos 3, Samos 3, Andros 1, Milos 1, Santorini 1, Lemnos 1). **10 matched** to ours, **7 added as Pro**, **33 not added yet**: 5 checked and left out with a reason, 28 not yet researched (see "Where I stopped").
+Ours before → after (island regions): 11 spots (9 free / 2 Pro / 0 archived) → 18 (9 free / 9 Pro / 0 archived). Afiartis (Karpathos) is not on Windy: Windy has no kite marker on Karpathos.
+Chios and Ikaria have no Windy kite marker. Windy markers on the Turkish coast are out of zone.
+
+### Matched (10)
+
+| Windy marker (stars) | Ours |
+|---|---|
+| Prasonisi (5) | Prasonisi |
+| Theologos (5) | Theologos |
+| Psalidi (3) | Psalidi |
+| Marmari (4) | Marmari |
+| Mikri Vigla (5) | Mikri Vigla |
+| Pounda (5) | Pounta |
+| Golden Beach (4) | Golden Beach |
+| Korfos Bay (4) | Korfos |
+| Keros (5) | Keros |
+| Kouremenos (5) | Kouremenos |
+
+### Added as Pro (7)
+
+| Windy marker (stars) | Ours | Sources |
+|---|---|---|
+| Fanes, Rhodes (4) | Fanes (`osm:w283739063`, the beach in Fanes village) | [lets-kite Fanes](https://lets-kite.com/en/spots/11720/kitesurf/fanes-rhodos), [Kite and Surf Rhodes, Fanes](https://kiteandsurfrhodes.com/en/kitesurfing-windsurfing-rhodes/fanes/): two schools about 100 m away |
+| Mastichari, Kos (4) | Mastichari (`osm:w436161363`) | [kitesurfingkos.com spots](https://www.kitesurfingkos.com/en/spots), [Discovering Kos](https://www.discoveringkos.com/destination-item/kitesurfing-at-mastichari-beach/), [unplug Kos](https://www.unplug-kitesurf.com/destinations/kos) (Horizon Surfing Kos) |
+| Amoudara, Crete (3) | Amoudara (Heraklion) (`osm:w376172189`) | [La Crète autrement](https://www.la-crete-autrement.com/en/kite-surfing-crete/), [unplug Crete](https://www.unplug-kitesurf.com/destinations/crete): iKite (IKO) school |
+| Elafonisi, Crete (5) | Elafonisi (`osm:w374311369`, lagoon) | La Crète autrement and unplug Crete: Elafonisi Kite school |
+| Ftelia, Mykonos (3) | Ftelia (`osm:r5447910`) | [unplug Mykonos](https://www.unplug-kitesurf.com/destinations/mykonos) (beginner kite bay); one source, no school on site |
+| Kalafati, Mykonos (3) | Kalafati (`osm:w366181515`) | unplug Mykonos (intermediate); one source, no school on site |
+| Glyfada, Naxos (3) | Glyfada (`osm:w363516715`) | [Kiterr Naxos guide](https://kiterr.com/kitespots/europe/kiteboarding-naxos-greece/) (second spot after Mikri Vigla, flat water), [Kite Jungle Greece](https://kitejungle.com/kite-places/greece) |
+
+### Checked and left out (5)
+
+| Windy marker (stars) | Why |
+|---|---|
+| Ixia, Rhodes (5) | Sources conflict: schools listed there, but [Surf Magazin's Rhodes guide](https://www.surf-magazin.de/en/spots-and-areas/international/greece/spot-guide-greece-the-best-windsurfing-spots-on-rhodes/) says kiting is prohibited on the narrow pebble beach. No official text, so the worst case applies: not added |
+| Trianda, Rhodes (5) | Same as Ixia (Surf Magazin: kiting prohibited at Trianda; another guide says the F2 centre's restrictions apply) |
+| Falasarna, Crete (5) | La Crète autrement says the main beach is off-limits to kiters and the kite spot is a small bay by the port; no OSM element could be tied to that bay (the OSM beaches are the main ones) |
+| Faliraki, Rhodes (4) | No kite source found in the search (only nightlife and water-park pages) |
+| Air Riders / Kremasti (Windguru pass) | Still out: only an aggregator source and no OSM beach tied to Kremasti |
+
+### Where I stopped: 28 markers not yet researched
+
+Left for a second pass (name, stars): **Rhodes** Plimiri (1), Apolakkia (1). **Kos** Tingaki (3), Kefalos (4), Kohilari (3), Theologos Wave Beach (1, name suggests surf). **Crete** Platanias (3), Kalamion (4), Georgioupoli (3), Rethimno (4), Heraklion (4), Paleochora (4), Matala (4), Phalasarna listed above, Elounda (3), Istro West (3), Faneromeni (1). **Naxos** Agios Prokopis (3), Pyrgaki (1), Amiti (1). **Paros** Santa Maria (2), Tsoukalia (2). **Andros** (5), **Milos** (4), **Santorini** (5). **Lesbos** Sigri (3), Tsixlionta (1), Skala Kallonis (2). **Samos** Kokkari (4), Svallas (1), Psili Ammos (1).
+Guide pages already read that mention some of them: La Crète autrement lists Kalamion, Rethymno and Matala as intermediate spots without a school (one source is enough for Pro, pins still needed); unplug lists Tingaki and Kefalos as beginner spots; SantoriniKite operates at Monolithos (east coast; the Windy marker is elsewhere, check before adding).
+Windy was used only to learn which spots exist; positions come from OSM.
