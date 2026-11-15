@@ -17,12 +17,12 @@ NL,Zuid-Holland,Scheveningen,sea,osm:n1687084831,NW,"Noorderstrand zone north of
 NL,Zuid-Holland,Noordwijk,sea,osm:n11536401225,NW,"Kiting only in marked zones: the free zone is at Langevelderslag (3–4 km north, beach entrances 75.5–75.25); the zone north of the boulevard (exits 2–4) is for members of the Noordwijk club (KSN); a lesson zone at exit 21. Advanced riders. Also: Katwijk 4 km south (deep water, advanced).",,,,
 # Noord-Holland
 NL,Noord-Holland,Zandvoort,sea,osm:n5140074530,W,"15 Apr–1 Oct launch only in the six watersport zones (e.g. The Spot); no restrictions the rest of the year. Also: Bloemendaal aan Zee 3 km north (advanced, currents).",,,,
-NL,Noord-Holland,IJmuiden,sea,osm:n4508458788,W,Kennemerstrand south of the pier: flat water in the bay. Zone 2 only October–March.,,,,
+NL,Noord-Holland,IJmuiden,sea,osm:n4508458788,W,Kennemerstrand south of the pier: flat water in the bay. Zone 2 only October–March. Do not launch in offshore wind (E).,,,,
 NL,Noord-Holland,Wijk aan Zee,sea,osm:w685480572,W,Zones by the Bunker/HangOut and the north pier.,,,,
 NL,Noord-Holland,Camperduin,sea,osm:n12769432787,W,"Small lagoon at low tide, waves outside. Also: Petten 3 km north (Hondsbossche dunes, currents).",,,,
 NL,Wadden Islands,Texel – Paal 17,sea,osm:n3140654634,W,"Official kite beach between poles 17.60 and 18.99 (De Koog); kiting is not allowed on the built-up beach between poles 19 and 28. Waves and currents. Stay 50 m from the hard sea wall by the lighthouse. Also: Paal 28–32 (De Cocksdorp) and the Wadden side at Dijkmanshuizen (1 April–1 October).",,,,
-NL,Noord-Holland,Muiderberg,lake,osm:w74727107,N,"IJmeer, shallow fresh water; beginner-friendly. Also: Almere – Muiderzand across the IJmeer (deep water, advanced).",,,,
-NL,Noord-Holland,Schellinkhout,lake,osm:n4508462925,S,"Markermeer, shallow and flat; beginner-friendly.",,,,
+NL,Noord-Holland,Muiderberg,lake,osm:w74727107,N,"IJmeer, shallow fresh water; beginner-friendly. One of the few legal kite launches on the IJmeer (local news); schools on site. Also: Almere – Muiderzand across the IJmeer (deep water, advanced).",,,,
+NL,Noord-Holland,Schellinkhout,lake,osm:n4508462925,S,"Markermeer, shallow and flat; beginner-friendly. Designated kite spot (Rijkswaterstaat per local news); KiteFEEL school on the dike.",,,,
 # Flevoland, Gelderland
 NL,Gelderland,Strand Horst,lake,osm:w139584425,NW,"Wolderwijd, shallow flat water; beginner-friendly. Also: Elburg on the Veluwemeer (April–September).",,,,
 # Friesland (IJsselmeer)
@@ -72,21 +72,21 @@ NL,Zuid-Holland,Wassenaarse Slag,sea,osm:n278826705,NW,Deep water close in; adva
 # pro: cluster duplicate — 4 km from Noordwijk
 NL,Zuid-Holland,Katwijk,sea,osm:w285679616,NW,"Kiting allowed in three areas only: by the surf club mid-boulevard, by the kitesurf club north of the boulevard (across the canal), and by the sailing club south. Waves, strong currents, shore break; crowded July–August; advanced riders.",,,pro,
 # pro: cluster duplicate — 3 km from Zandvoort
-NL,Noord-Holland,Bloemendaal aan Zee,sea,osm:r21115187,W,Advanced riders; currents.,,,pro,
+NL,Noord-Holland,Bloemendaal aan Zee,sea,osm:r21115187,W,"Mifune Watersports is an IKO school on this beach. Strong currents along the whole coast; advanced riders.",,,pro,
 # pro: local spot — secondary North Holland beach
-NL,Noord-Holland,Castricum aan Zee,sea,osm:n5426388332,W,Shipwreck remains off the beach.,,,pro,
+NL,Noord-Holland,Castricum aan Zee,sea,osm:n5426388332,W,"Lifeguards, showers and parking; Surfschool Castricum teaches kitesurfing. Shipwreck remains off the beach.",,,pro,
 # pro: local spot — secondary North Holland beach
-NL,Noord-Holland,Egmond aan Zee,sea,osm:n11535101927,W,Advanced riders.,,,pro,
+NL,Noord-Holland,Egmond aan Zee,sea,osm:n11535101927,W,"Open beach with parking and showers; strong coastal currents (rescues of kiters drifting from Wijk aan Zee reported). Advanced riders.",,,pro,
 # pro: local spot — secondary North Holland beach
 NL,Noord-Holland,Bergen aan Zee,sea,osm:n12114182501,W,Orange activity zones either side of the main beach access (Hang Loose).,,,pro,
 # pro: cluster duplicate — 3 km from Camperduin
-NL,Noord-Holland,Petten,sea,osm:n11534979208,W,"In front of the Hondsbossche dunes; currents, advanced riders.",,,pro,
+NL,Noord-Holland,Petten,sea,osm:n11534979208,W,"In front of the Hondsbossche dunes. Groynes about every 100 m, stones, strong currents and shore break; lifeguards check that you can ride before you launch, and riding zones apply in summer. Not for beginners.",,,pro,
 # pro: local spot — secondary North Holland beach
-NL,Noord-Holland,Callantsoog,sea,osm:n2687464033,W,Advanced riders.,,,pro,
-# pro: local spot — secondary North Holland beach
-NL,Noord-Holland,Julianadorp,sea,osm:n4356511096,W,Wide beach; advanced riders.,,,pro,
+NL,Noord-Holland,Callantsoog,sea,osm:n2687464033,W,"Kite spot in front of beach pavilion De Stern; SW to NW best. Strong currents along the coast.",,,pro,
+# archived: no kite school, club or kite-guide spot found for Julianadorp (only a surf school at Paal 6 and a recreation page); Callantsoog and Petten cover this coast. Revive if a kite source appears
+NL,Noord-Holland,Julianadorp,sea,osm:n4356511096,W,Wide beach; advanced riders.,,,archived,
 # pro: local spot — secondary beach, Marsdiep currents
-NL,Noord-Holland,Den Helder – Huisduinen,sea,osm:n8303186060,W,"Marsdiep currents, advanced riders.",,,pro,
+NL,Noord-Holland,Den Helder – Huisduinen,sea,osm:n8303186060,W,"Kite spot by the Citadel beach club. Marsdiep currents and waves: advanced riders only. One local page calls the Razende Bol seal area a rest zone, so keep clear of it.",,,pro,
 # pro: cluster duplicate — second Texel North Sea zone, Paal 17 kept
 NL,Wadden Islands,Texel – Paal 28,sea,osm:n3140565781,NW,"Official kite beach between poles 28.20 and 32 (De Cocksdorp), North Sea waves. Kiting is banned between poles 32 and 33.02.",,,pro,
 # pro: seasonal/minor — Wadden side, April–September, high tide only
@@ -94,11 +94,11 @@ NL,Wadden Islands,Texel – Dijkmanshuizen,sea,osm:w109266468,E,"Wadden Sea side
 # pro: cluster duplicate — IJmeer, Muiderberg kept
 NL,Flevoland,Almere – Muiderzand,lake,osm:w391436028,NW,"IJmeer, deep water; advanced riders.",,,pro,
 # pro: local spot — Markermeer, experts only, local
-NL,Noord-Holland,Edam – Galgenveld,lake,osm:w1387153948,E,"Markermeer, shallow; experts only (stones, dike).",,,pro,
+NL,Noord-Holland,Edam – Galgenveld,lake,osm:w1387153948,E,"Markermeer, shallow, only good in easterly wind (N to E sailable). Stones, dike and barbed wire at the launch; experts only.",,,pro,
 # pro: seasonal/minor — IJsselmeer, summer only, local
 NL,Noord-Holland,Medemblik,lake,osm:w692431086,NE,"IJsselmeer, shallow. April–September only.",,,pro,10-01..03-31
 # pro: minor lake — small lake, max 6 riders
-NL,Noord-Holland,Amstelmeer,lake,osm:w1128409330,W,"Lutjestrand south kite beach (max. 6 riders inside the dam); stones and jetties, advanced riders.",,,pro,
+NL,Noord-Holland,Amstelmeer,lake,osm:w1128409330,W,"Lutjestrand: kite beach on the south side of the camping (windsurfers start on the north side). Flat water, no tide or current. Stones and jetties; a rider limit mentioned on an earlier pass was not found again.",,,pro,
 # pro: local spot — Markermeer, local
 NL,Flevoland,Lelystad – Bataviastrand,lake,osm:w555548028,,"Markermeer, deep water; advanced riders.",,,pro,
 # pro: seasonal/minor — Houtribdijk, April–July only
