@@ -2,7 +2,7 @@
 
 Date: 2026-11-15. Method: [validation method](../../tools/spots/validation/README.md#windguru-instead-of-windy-from-14-nov) (Windguru instead of Windy).
 Zone = all rows of `DK.csv` (`dk.csv`).
-Counts: 14 → 15 rows. Free 10 → 7, Pro 3 → 7, archived 1 → 1 (Sønderby and Hejlsminde moved to Pro on weak sources; Bjert Strand added as Pro).
+Counts: 14 → 15 rows. Free 10 → 8, Pro 3 → 6, archived 1 → 1 (Sønderby and Hejlsminde moved to Pro on weak sources; Bjert Strand added as Pro).
 Past work: the CSV header says "not web-verified, general knowledge"; no earlier pass and no Denmark lines in `TO_CONFIRM.md`.
 
 Limits of this pass (said plainly): 9 web searches, one Windguru session. Pins are the unchanged OSM elements, **not re-checked on satellite**.
