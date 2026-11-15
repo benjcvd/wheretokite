@@ -434,3 +434,13 @@ real European gap (asked Ben; no answer).
 Gotcha: Ben moves cards to done himself; trust the board's column, not the "tell the Lead
 to merge" line in notes. PT/IT/MA cards (WHE-166 to 172) are done = approved (asked Ben to
 confirm): set their zones to `validated` in status.csv at merge.
+
+## Lead, 16 Nov 00:20: every spot free, doubtful ones archived
+Ben decided that spots are no longer a Pro feature: the free plan will show every active spot
+(316 basic + 456 pro today; free users saw only 41 %, 22 % in Spain). Pro will sell features
+(range, 7 days, next window, weights, alerts), not spots. The `tier` column stays in the data and
+the gate stays a switch. Doubtful pro rows (no source, club/permit, banned or tolerated, no launch,
+minor lake) move to `archived`, so they never ship. Sweeps run per area (FR Atlantic, FR Med, Spain,
+rest); Product flips the free plan and checks the 150-location server limit and Open-Meteo load.
+Trigger: Cayeux had been hidden as a "duplicate" of Le Crotoy although it works at the opposite tide.
+Also built the Product branch onto Ben's iPhone (15 Nov, not merged to main yet).
