@@ -1,7 +1,7 @@
 # Validation: Sylt, St. Peter-Ording and the Schleswig-Holstein North Sea (zone `de-north-sea-sh`, WHE-175)
 
 Date: 2026-11-14. Method: [Windguru variant](../../tools/spots/validation/README.md#windguru-instead-of-windy-from-14-nov).
-Counts for the zone: 9 → 9 rows (free 3 → 3, Pro 6 → 6, archived 0 → 0). No spot added or archived.
+Counts for the zone after the Windy pass (WHE-203, 15 Nov): 9 → 13 rows (free 3 → 3, Pro 6 → 10, archived 0 → 0). 4 Pro added from Windy markers.
 Past work: `git log` on `DE.csv` shows only the wave 1/2 curation and WHE-91 gap pass (Prerow, not in this zone); nothing in
 `TO_CONFIRM.md` about this zone beyond the general Germany lines. No earlier check redone.
 
@@ -40,3 +40,38 @@ K4, Husum, Nordstrand, Dagebüll (town only).
 | Rantum Ost, Munkmarsch, Wenningstedt, Kampen, Nordseeklinik, Sansibar, "Sylt" | left out: not kite-tagged, no kite source found (Munkmarsch is a windsurf spot) |
 
 Gap: none. Windguru shows no more kite spots than we have.
+
+## Windy, both ways (browsed as a visitor in Chrome, 15 Nov, WHE-203)
+
+Method: step 2 of the [validation method](../../tools/spots/validation/README.md#the-method-slowly-one-spot-at-a-time), markers hovered on the kite-spots layer
+(Sylt to Büsum, plus Helgoland), stars read as a visitor sees them. 6 web searches. Overpass was down all day: pins come from the
+OSM API (`map?bbox`) and Nominatim, not eyeballed on satellite.
+
+**Counts:** 20 Windy kite markers in the zone. Matched to ours: 7 (Sylt, List, Hörnum, St. Peter-Ording, Büsum, Dockkoog, Holmer Siel).
+Added as Pro: 4. Left out: 9. Not on Windy: K4 as its own marker (Windy's Rantum / Hörnum cover it), Möwennest, Dagebüll.
+
+| Windy marker (stars) | Ours / result |
+|---|---|
+| Sylt (4) | matched: Sylt – Westerland |
+| List (3) | matched: Sylt – List (Königshafen) |
+| Hoernum (4) | matched: Sylt – K4 (Hörnum) / Hörnum Möwennest |
+| Rantum (3) | left out, same area as K4: [Kitedrop Sylt](https://www.kitedrop.de/locations/sylt/) names K4 at Rantum as the experienced kiters' spot |
+| Wenningstedt (2) | **added (Pro)**: [Kitedrop](https://www.kitedrop.de/spot/wenningstedt/) spot page, [Südkap Surfing](https://www.suedkap-surfing.de/kursueberblick/kitesurfkurse-sylt) school at Wenningstedt. Pin `osm:w830760032` (small beach way, check on satellite) |
+| St. Peter-Ording (5) | matched: Sankt Peter-Ording |
+| St. Peter-Boehl (4) | **added (Pro)** as Sankt Peter-Böhl: schools meet there ([Kitesurfing Experience](https://www.kitesurfing-experience.de/st-peter-ording), [iKSURFmag](https://www.iksurfmag.com/travel-guides/europe/germany/sankt-peter-ording/)); only tolerated, no official zone (forums 2012-13), said in notes, no ban encoded. Pin `osm:w174287224` |
+| Vollerwiek (1) | left out: guide calls it not an official spot, no school or club ([Kitedrop](https://www.kitedrop.de/spot/simonsberg/) / guide list); no OSM element at a kite place |
+| Buesum (4) | matched: Büsum – Perlebucht |
+| Meldorfer Bucht (4) | left out: sources contradict on legality (south side banned, 400 m north of the harbour mole banned since 2007 per one, allowed per another, Speicherkoog banned), no OSM element at the north-side ramp; worst case per the 2 Nov rule. Sources: [Kite Buddy](https://www.kite-buddy.de/kitespot-meldorf), [ewigkite](https://ewigkite.de/drachesachen/27-spots/225-meldorfer-bucht), [Nordseewindsport school](https://nordseewindsport.de/Konzept/) |
+| Dockkoog (1) | matched: Husum – Dockkoog |
+| Trender Marsch (1) | left out: one guide ([kite-and-windsurfing-guide Nordfriesland](https://web.kite-and-windsurfing-guide.com/de/europa/deutschland/nordfriesland.html)), dike spot, no OSM element at the riding place, can't be pinned |
+| Simonsberg (1) | left out: one guide ([Kitedrop](https://www.kitedrop.de/spot/simonsberg/)), dike spot, no OSM element at the riding place, can't be pinned |
+| Holmer Siel (1) | matched: Nordstrand – Holmer Siel |
+| Wittduen (2) | **added (Pro)** as Amrum – Wittdün Badebucht: [Surfclub Amrum school](https://www.waterstart.de/de/schulen/surfclub-amrum/), [kite guide](https://web.kite-and-windsurfing-guide.com/de/surfspots/kitesurfen-windsurfen-sup/wittduen-amrum-nordfriesische-inseln-deutschland.html), island news on the rules ([amrum-news, Jul 2025](https://www.amrum-news.de/2025/07/10/hinweise-fuer-wassersportler-an-der-amrumer-odde/)). Bird closure in spring (dates differ by source) in notes only. Pin `osm:w90585466` (south-tip beach, bay side to check on satellite) |
+| Norddorfer Strand (2) | left out: school on the beach and a guide say beginners' water, but no OSM beach element at Norddorf (the Kniepsand way centres 4 km away), can't be pinned |
+| Nieblum (2) | **added (Pro)** as Föhr – Nieblum: [Nieblumer Wassersport Schule](https://www.spotnetz.de/Foehr_Nieblum), [Sitkite guide](https://keepseated.com/2019/07/08/sitkite-spotguide-nieblum-auf-foehr/), [Kitereisen TV](https://www.kitereisen.tv/foehr-nieblum-nordfriesland-deutschland-kitespot-kitesurfen/); tide `high`. Pin `osm:w221516977` (a `sport=surfing` way at Nieblum beach) |
+| Wyk (3) | left out: sources conflict (south beach only in school-marked zones; main beach and harbour closed per a guide); worst case, nothing official read. Source: [foehr.de](https://www.foehr.de/surfen-kiten-sup), [Westend Surfing](https://westendsurfing.com/spotguide-kitesurfen-fohr/) |
+| Föhr (1) | left out: no local source tied to this marker (north tip), can't be pinned |
+| Helgoland (5) | left out: kiting and kite flying banned by the municipality ([helgoland.de](https://www.helgoland.de/untersagt-kite-surfen-und-drachen-steigen-lassen/)), official, all year |
+
+Gap: Windy shows 20 markers, we match 7 and add 4; the rest are dike spots, conflicting-rules beaches or banned. A second look at Wyk
+and Meldorf (official rules) and the Norddorf and dike pins (OSM elements) could add up to 5 more once Overpass is back.

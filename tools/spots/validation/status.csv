@@ -38,7 +38,7 @@ it-north-centre,review,WHE-171,6,62,3,13,0,docs/validation/it-north-centre.md,20
 ma-all,review,WHE-172,9,31,9,3,0,docs/validation/ma-all.md,2026-11-14
 gr-islands,review,val-gr-islands,10,8,7,0,0,docs/validation/gr-islands.md,2026-11-14
 gr-mainland,review,val-gr-mainland,5,1,0,1,0,docs/validation/gr-mainland.md,2026-11-14
-de-north-sea-sh,review,WHE-175,9,0,0,0,0,docs/validation/de-north-sea-sh.md,2026-11-14
+de-north-sea-sh,review,WHE-203,9,20,7,4,0,docs/validation/de-north-sea-sh.md,2026-11-15
 de-baltic-sh,review,WHE-176,11,4,2,0,0,docs/validation/de-baltic-sh.md,2026-11-14
 de-niedersachsen,review,val-de-niedersachsen WHE-177,1,0,12,1,0,docs/validation/de-niedersachsen.md,2026-11-14
 de-mv-bayern,review,val-de-mv-bayern,16,1,1,0,0,docs/validation/de-mv-bayern.md,2026-11-14
