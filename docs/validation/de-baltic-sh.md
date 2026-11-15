@@ -41,3 +41,27 @@ Not a full map sweep: Lübeck Bay beyond Pelzerhaken and Eckernförde Bay were n
 | Strande, Surf Club Kiel e.V. (flag) | left out: a windsurf club; Kiel tourism tags Strande beach as a surf spot, no kite source |
 
 Gap: none. Windguru shows no kite-named spot we lack. Fehmarn spots without a Windguru flag (Gold, Wulfener Hals, Lemkenhafen) are in our list from schools and guides.
+
+## Windy, both ways (WHE-204, browsed as a visitor in Chrome, 15 Nov; hover on `p:kitespots` markers, ratings as shown)
+
+**Partly done: stopped here, card stays in `doing`.** Windy has many more kite markers on this coast than the 11 rows we had (about 44 read).
+Adding every one as Pro needs an OSM pin and a local source each (no search tool gives that cheaply), so I did a first tranche
+of the best-supported ones and left the rest listed, undecided. Nothing here is judged from memory: "open" means not yet researched.
+Not browsed on Windy: the Flensburg Förde (Holnis, Schausende: "not checked on Windy"), and one unread marker west of Eckernförde bay.
+
+Counts: 44 markers read; 10 matched to 9 of our rows; 3 added as Pro; 31 open. Ours before → after: free 7 → 7, Pro 4 → 7, archived 0 → 0 (DE Baltic SH).
+
+| Windy marker (stars) | Ours / outcome |
+|---|---|
+| Grüner Brink (5), Gold (5), Wulfener Hals (5), Lemkenhafen (5) | ours |
+| Heiligenhafen (5), Pelzerhaken (5), Laboe (5), Stein (4) | ours |
+| Großenbrode Südstrand (5), Großenbrode West (4) | ours: Großenbrode (one row, west and south beach) |
+| Strande (5) | **added (Pro)**: [kitejungle](https://kitejungle.com/kite-places/germany/strande), [kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/strande-kieler-bucht-germany.html), [Kiel Sailing City](https://kiel-sailing-city.de/en/active/windsurfing-and-kiting). Pin: beach `w553002928` (town beach). Build faces 121°, Apple Maps agrees |
+| Heidkate (5) | **added (Pro)**: [VDWS Surfschule Heidkate](https://www.vdws.de/en/watersport-center/surfschule-heidkate), [kitejungle](https://kitejungle.com/kite-places/germany/heidkate), [Unplug](https://www.unplug-kitesurf.com/spots/heidkate-germany), [kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/heidkate-kieler-bucht-germany.html). Pin `w35094502`, faces 12°, agrees |
+| Hohwacht (4) | **added (Pro)**: [Unplug, Hohwacht Hafen](https://www.unplug-kitesurf.com/spots/hohwacht-hafen-germany), [kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/hohwacht-kieler-bucht-germany.html). No school found, so Pro, guides only. Pin `w34035919`, faces 40°, agrees |
+| Fehmarn: Orth East (5), Westermarkelsdorf (4), Bojendorf (3), Miramar (3), Meeschendorf (3), Teichhof (2), Niobe (2), Presen (1), one unnamed marker on the north coast | open (Orth East and Westermarkelsdorf first: a Fehmarn kite school is named at Westermarkelsdorf; Orth East may be the same water as our Lemkenhafen, to check) |
+| Mainland east: Grömitz (5), Kellenhusen (4), Dahme (4), Damshöved (3), Haffkrug (3), Dazendorf (2), Klostersee (1) | open (a search for Grömitz found no kite school or spot page: needs a local source) |
+| Kiel Bay: Schönberger Strand (3), Kalifornien (3), Falkenstein (3), Weissenhaus (3), Lippe (2), Behrensdorf (1), Hohenfelde (1) | open (kite guide pages exist for Schönberger Strand, Falkenstein and Kalifornien, not yet read) |
+| Eckernförde bay: Grönwold (4), Surendorf (3), Stohl (3), Langholz (2), Karlsminde (2), Aschau (1), Kiekut (1) + one unread | open (Eckernförde tourism has a surf and kite page) |
+
+Gap: yes, 31 Windy markers are still open (about half rated 3 or more). Many of the low-rated ones are probably tiny user-added points; each still needs a source before it goes in.
