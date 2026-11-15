@@ -53,6 +53,7 @@ DE,Schleswig-Holstein,Amrum – Wittdün Badebucht,sea,osm:w90585466,SE,"Shallow
 DE,Schleswig-Holstein,Sankt Peter-Böhl,sea,osm:w174287224,W,"Southern beach of Sankt Peter-Ording, quieter than Ording and the usual beginner side (flat water, no waves) but a long walk over the sand at low tide; tidal currents, take care 1.5 h either side of low water. No official kite zone found here, kiting only tolerated: follow the national park flyer and the local signs.",,,pro,
 # pro: cluster duplicate — Cuxhaven, Kugelbake kept
 DE,Niedersachsen,Cuxhaven – Sahlenburg,sea,osm:w323037326,W,Large standing area; about 4 h either side of high tide.,,high,pro,
+DE,Niedersachsen,Cuxhaven – Grimmershörn,sea,osm:w41751775,,"Grimmershörn bay on the Elbe: kiting allowed per the national park kite flyer and the Cuxkiters club, for experienced riders only. Strong current and the shipping lane, buoys off the beach, no real beach (stone wall and soft mud). Sources disagree on the tide window (3 to 5 h before high tide to 3 h after).",,,pro,
 # pro: local spot — Elbe estuary, high tide only
 DE,Niedersachsen,Otterndorf,sea,osm:w28802403,N,Elbe estuary: strong tidal current and shipping lane nearby; ride around high tide.,,high,pro,
 # pro: local spot — Wadden Sea, high tide only
@@ -70,6 +71,10 @@ DE,Niedersachsen,Dornumersiel,sea,osm:w263031767,N,"Wadden Sea, shallow; marked 
 DE,Niedersachsen,Borkum – Nordstrand,sea,osm:w159750055,W,Marked kite zone on the north beach; island rules limit the hours (not early morning).,,,pro,
 # pro: local spot — island beach, Norderney kept
 DE,Niedersachsen,Langeoog – Nordstrand,sea,osm:w503592289,NW,"Sportstrand on the north beach: waves at high tide, shallow at low tide; island rules limit the hours.",,,pro,
+DE,Niedersachsen,Wangerooge – Nordstrand,sea,osm:w29241398,N,"North beach, open sea: kite zone of the 2023 North Sea navigation order (Nordstrand, from 3 h after sunrise). Keep out of the bathing zone and the nature reserves; the school zone in the west is for lessons only (1 May–15 Sep, 6 kites). Kite school Surfcafé on the island.",,,pro,
+DE,Niedersachsen,Juist – Nordstrand,sea,osm:n5666288076,N,"North beach, open sea: kite zone of the 2023 North Sea navigation order (Nordstrand, from 3 h after sunrise, beyond the bathing zone). Kite schools Ju(i)st Kite and Kitesurf Island on the island. A second zone on the south side (3 h either side of high tide, 1 Apr–31 Oct) is often dangerous with offshore wind.",,,pro,
+DE,Niedersachsen,Baltrum – Nordstrand,sea,osm:w537180418,N,"North beach near the Westdorf kite school: kite zone of the 2023 North Sea navigation order (Nordstrand, from 3 h after sunrise). Never ride in the bathing zone; the nature reserve to the east is closed to kiters.",,,pro,
+DE,Niedersachsen,Spiekeroog – Nordstrand,sea,osm:w218656990,N,"North beach, open sea: the island's marked kite zone starts beside the main bathing beach and does not enter the recreation zone; kiting from 3 h after sunrise (official island page and 2023 North Sea navigation order). The zone crosses part of the main bathing beach: keep clear of it.",,,pro,
 # pro: cluster duplicate — second Flensburg Fjord spot
 DE,Schleswig-Holstein,Flensburger Förde – Schausende,sea,osm:w85471971,N,"Fjord spot next to Holnis (about 1 km): shallow standing area, boat traffic and occasional nets. Best in NE–E, less pretty than Holnis.",,,pro,
 # pro: cluster duplicate — 3 km from Laboe
