@@ -5,4 +5,5 @@ RO,Constanța,Mamaia Nord,sea,osm:n9497355155,E,"North end of Mamaia resort; NE�
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: near a kept spot — next to Vadu (kept), mentioned in its notes
-RO,Constanța,Corbu,sea,q:Plaja Corbu,E,"Wild beach next to Vadu; shallow, works with NE–SE winds.",,,pro,
+# archived: no source recorded for this wild beach (WHE-214, 16 Nov 2026)
+RO,Constanța,Corbu,sea,q:Plaja Corbu,E,"Wild beach next to Vadu; shallow, works with NE–SE winds.",,,archived,

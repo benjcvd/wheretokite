@@ -68,7 +68,8 @@ GB,County Durham,Seaton Carew,sea,q:Seaton Carew,E,"Shallow, flattish water in s
 # pro: busy surf beach, secondary to Blyth – Seaton Sluice
 GB,Tyne and Wear,Tynemouth – Longsands,sea,osm:w221550704,E,Busy surf beach: keep clear of surfers and the lifeguard zone. Kiting banned at neighbouring Whitley Bay / Cullercoats.,,,pro,
 # pro: secondary local beach; seasonal lagoon near Beadnell
-GB,Northumberland,Budle Bay,lagoon,osm:n8906542954,NE,"Tidal lagoon: rideable from ~2 h before to a few hours after high water, chop only. Watersports zone open 1 Apr–31 Oct only (closed Nov–Mar for birds).",,high,pro,11-01..03-31
+# archived: bird closure Nov–Mar, watersports zone open April–October only, chop only, no wider reputation (WHE-214, 16 Nov 2026)
+GB,Northumberland,Budle Bay,lagoon,osm:n8906542954,NE,"Tidal lagoon: rideable from ~2 h before to a few hours after high water, chop only. Watersports zone open 1 Apr–31 Oct only (closed Nov–Mar for birds).",,high,archived,11-01..03-31
 # pro: secondary Wirral spot, West Kirby is the famous one
 GB,Merseyside,Wallasey (New Brighton),sea,q:Wallasey Beach,NW,Low tide lagoon or mid tide; do not kite inside the summer swim flags. Launch by Wallasey Beach Club (Coastal Drive).,,not-high,pro,
 # pro: within ~10 km of a better-known kept spot (West Kirby)
@@ -100,7 +101,8 @@ GB,West Sussex,Bracklesham Bay,sea,q:Bracklesham Bay,S,"Long shallow beach, kite
 # pro: school beach near Lancing
 GB,West Sussex,Littlehampton,sea,"q:East Beach, Littlehampton",S,"East Beach (Sea Road), BKSA school; flat knee- to waist-deep water around low tide.",,low,pro,
 # pro: secondary local beach
-GB,East Sussex,Pevensey Bay,sea,q:Pevensey Bay,S,"Strict summer beach zoning (fines). Shingle at high tide, sand at low; bump and jump.",,not-low,pro,
+# archived: strict summer beach zoning with fines: kiting only tolerated (WHE-214, 16 Nov 2026)
+GB,East Sussex,Pevensey Bay,sea,q:Pevensey Bay,S,"Strict summer beach zoning (fines). Shingle at high tide, sand at low; bump and jump.",,not-low,archived,
 # pro: secondary to Kinmel Bay on the North Wales coast
 GB,North Wales,Llandudno – West Shore,sea,q:West Shore Llandudno,W,,,,pro,
 # pro: secondary Anglesey beach, Rhosneigr is the main spot
@@ -126,7 +128,8 @@ GB,Fife,Leven,sea,q:Leven Beach,SE,"One of the few east-coast spots for SW winds
 # pro: secondary local beach; Tay covered by St Andrews
 GB,Angus,Monifieth,sea,q:Monifieth Beach,S,"Tay estuary: SE–SW, wind accelerates in SW; flat, shallow, easy access.",,,pro,
 # pro: within ~10 km of a better-known kept spot (Balmedie)
-GB,Aberdeenshire,Aberdeen Beach,sea,osm:w949102150,E,"City beach for quick sessions: groynes, rip and onshore mess; Balmedie is usually better.",,,pro,
+# archived: messy city beach (groynes, rip, onshore); Balmedie is the usual choice (WHE-214, 16 Nov 2026)
+GB,Aberdeenshire,Aberdeen Beach,sea,osm:w949102150,E,"City beach for quick sessions: groynes, rip and onshore mess; Balmedie is usually better.",,,archived,
 # pro: within ~10 km of a better-known kept spot (Balmedie)
 GB,Aberdeenshire,Newburgh (Ythan),sea,osm:w314636606,E,"Ythan estuary flat water, 2–3 h either side of high tide.",,high,pro,
 # pro: secondary Moray Firth spot, Lossiemouth kept
