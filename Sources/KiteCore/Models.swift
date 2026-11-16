@@ -311,6 +311,9 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     public var precipitationMm: Double?
     /// The middle of the hour is between sunrise and sunset. nil = unknown (treated as light).
     public var isDaylight: Bool?
+    /// Open-Meteo models this hour's wind comes from, in blend order, Météo-France seamless
+    /// resolved to the model behind it (`ForecastSource`). nil in old caches.
+    public var models: [String]?
 
     /// Thunderstorm forecast, or unstable air (high CAPE) with showers / rain in the same hour:
     /// never a kite hour. High CAPE alone is common on calm summer afternoons and doesn't

@@ -195,6 +195,7 @@ for r in shown.prefix(hourlyCount) {
         String(format: "%@faces %.0f° %@", $0.name.map { "\($0) " } ?? "beach ", $0.seaFacingDeg, Geo.compassName($0.seaFacingDeg))
     }.joined(separator: ", ")
     print("\n\(r.spot.name) — \(facing)")
+    if let source = r.forecastSource { print("Forecast models: \(source)") }
     for h in r.hours {
         let angle = h.relativeAngle.map { String(format: "%3.0f°", $0) } ?? "  ?"
         let kite = h.kite.map { String(format: "%4g m", $0.size) } ?? "    -"
