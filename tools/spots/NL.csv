@@ -102,6 +102,10 @@ NL,Noord-Holland,Edam – Galgenveld,lake,osm:w1387153948,E,"Markermeer, shallow
 NL,Noord-Holland,Medemblik,lake,osm:w692431086,NE,"IJsselmeer, shallow. April–September only.",,,pro,10-01..03-31
 # pro: minor lake — small lake, max 6 riders
 NL,Noord-Holland,Amstelmeer,lake,osm:w1128409330,W,"Lutjestrand: kite beach on the south side of the camping (windsurfers start on the north side). Flat water, no tide or current. Stones and jetties; a rider limit mentioned on an earlier pass was not found again.",,,pro,
+# pro: Windy kite marker (5 stars), WHE-209 16 Nov 2026; one guide source (kite-and-windsurfing-guide Enkhuizen), no school found
+NL,Noord-Holland,Enkhuizen,lake,osm:w90172365,NE,"IJsselmeer, north of the old town: shallow strip about 500 m wide and 2 km long, works in easterly wind. Go a little further out in stronger wind. No school or official rules found; check local signs.",,,pro,
+# pro: Windy kite marker (3 stars), WHE-209 16 Nov 2026; one guide source (kite-and-windsurfing-guide Gouwsee), no school found
+NL,Noord-Holland,Gouwzee,lake,osm:w103802217,E,"Between Monnickendam and Marken: dykes keep the water calm, with smooth strips between seagrass patches. Usual launch at Hemmeland, another off the N518 on the south bank. No school or official rules found; check local signs.",,,pro,
 # pro: local spot — Markermeer, local
 # archived: no source recorded, deep water, advanced riders only (WHE-214, 16 Nov 2026)
 NL,Flevoland,Lelystad – Bataviastrand,lake,osm:w555548028,,"Markermeer, deep water; advanced riders.",,,archived,

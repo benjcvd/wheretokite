@@ -37,3 +37,48 @@ towns and beaches, none tagged kite. Matched to ours: 0 kite-tagged (by name, Be
 
 Guide spots we don't have, not added (no Windguru marker to follow): Hargen aan Zee (about 2 km from Bergen aan Zee, same beach) and Uitgestermeer (inland lake at Uitgeest, no school found).
 No big gap.
+
+## Windy, both ways (browsed as a visitor in Chrome, 16 Nov, WHE-209)
+
+Windy kite markers read by hovering (name and stars), zoom 10–11, on the coast from Zandvoort to Texel, the IJsselmeer and Markermeer shore, and the IJmeer.
+Markers seen in the zone: **21** (a 22nd, Trintelhaven, sits on the Houtribdijk in Flevoland, outside this zone, and is already archived in `NL.csv`).
+**Matched to ours: 16** (Edam matches our archived Galgenveld row; Texel matches Texel – Paal 17, in the Wadden Islands region). **Added as Pro: 2.** **Left out: 3.**
+Our rows in the zone before this pass: 17 (15 live, 2 archived: Julianadorp and Edam – Galgenveld, the latter by WHE-214). After: 19 (17 live, 2 archived).
+
+### Windy marker → ours
+
+| Windy marker (stars) | Ours |
+|---|---|
+| Zandvoort aan Zee (5) | Zandvoort |
+| Bloemendaal aan Zee (4) | Bloemendaal aan Zee |
+| IJmuiden (5) | IJmuiden |
+| Wijk aan Zee (5) | Wijk aan Zee |
+| Castricum aan Zee (5) | Castricum aan Zee |
+| Egmond aan Zee (5) | Egmond aan Zee |
+| Camperduin (4) | Camperduin |
+| Bergen aan Zee (4) | Bergen aan Zee |
+| Petten (4) | Petten |
+| Callantsoog (4) | Callantsoog |
+| Huisduinen (3) | Den Helder – Huisduinen |
+| Texel (5, at De Koog) | Texel – Paal 17 |
+| Medemblik (5) | Medemblik |
+| Schellinkhout (5) | Schellinkhout |
+| Edam (4) | Edam – Galgenveld (archived, WHE-214) |
+| Muiderberg (5) | Muiderberg |
+
+### Windy marker we didn't have
+
+| Windy marker (stars) | Result |
+|---|---|
+| Enkhuizen (5) | **added (Pro)**. [Kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/enkhuizen-ijsselmeer-netherlands.html): shallow strip about 500 m by 2 km north of the old town, easterly wind. Pin: OSM beach `w90172365`, north of the old town. Only the guide as source, no school |
+| Gouwzee (3) | **added (Pro)**. [Kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/gouwsee-ijsselmeer-netherlands.html): calm dyke-sheltered water, launch at Hemmeland. Pin: OSM beach `w103802217` on the Gouwzee shore. Only the guide as source, no school |
+| Uitgeestermeer (4) | left out: [kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/uitgestermeer-noord-holland-netherlands.html) says kiteboarding is prohibited there (windsurf only); no school or club. Same call as the Windguru pass |
+| IJburg (4) | left out: the [guide page](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/markermeer-ijburg-noord-holland-netherlands.html) is windsurf and SUP only, with a windsurf school on site; no source says kiting is allowed on this city beach, and kiting is illegal on much of the IJmeer (NH Nieuws, see Muiderberg). Worst case |
+| Den Oever (4) | left out: no kite school, club, guide page or town page found for Den Oever or Wieringen in two searches, so there is no source for sector or rules. Revive if one appears |
+
+### Ours not on Windy
+
+Julianadorp (already archived) and Amstelmeer have no Windy kite marker.
+
+Gap line: no big gap, Windy shows 5 markers we lacked; 2 added, 3 left out for the reasons above. Added rows are thin (one guide source each, no school): second look if a local rider can confirm them.
+Limits: the two new pins are OSM beach polygons picked from the OSM map data (Overpass was down), not viewed on satellite.
