@@ -275,6 +275,39 @@ final class SmokeTests: XCTestCase {
         XCTAssertTrue(hero.waitForExistence(timeout: 3))
     }
 
+    /// Each not-kiteable row ends with a one-word reason (WHE-219). 24 Aug 2026 had storms
+    /// near Barcelona in the afternoon, so the list holds safety reasons too.
+    @MainActor
+    func testNoGoRowsSayWhy() throws {
+        func plist(_ json: String) -> String { "<" + json.utf8.map { String(format: "%02x", $0) }.joined() + ">" }
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "-disclaimerAccepted", "YES",
+            "-riderProfile", plist(#"{"weightKg":75,"kites":[9,12],"level":"intermediate"}"#),
+            "-searchOptions", plist(#"{"start":{"name":"Barcelona","coordinate":{"latitude":41.3874,"longitude":2.1686}},"maxDriveMinutes":180,"day":"2026-08-24","slot":"afternoon","distanceMatters":false}"#),
+            "-searchDay", "2026-08-24", "-searchOrigin", "41.3874,2.1686",
+        ]
+        app.launch()
+        let list = app.buttons.containing(NSPredicate(format: "label BEGINSWITH 'Not kiteable'")).firstMatch
+        let deadline = Date().addingTimeInterval(60)
+        while !list.exists && Date() < deadline {
+            app.swipeUp()
+            _ = list.waitForExistence(timeout: 2)
+        }
+        XCTAssertTrue(list.exists, "no Not kiteable list")
+        list.tap()
+        let row = app.buttons["noGoRow"].firstMatch
+        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        let words = ["Too late", "Storm", "Banned", "Offshore", "Dark", "Too light", "Too strong", "Tide", "No data", "Poor"]
+        let rows = app.buttons.matching(identifier: "noGoRow").allElementsBoundByIndex
+        for r in rows where r.isHittable {
+            XCTAssertTrue(words.contains { r.label.contains($0) }, "row without a reason: \(r.label)")
+        }
+        app.swipeUp()
+        sleep(1)
+        snapshot(app, "nogo-reasons")
+    }
+
     /// The WhereToKite server doesn't answer (seen in Spain on weekend afternoons): the
     /// forecasts come straight from Open-Meteo and the search still shows spots.
     @MainActor

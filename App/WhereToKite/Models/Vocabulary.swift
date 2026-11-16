@@ -52,6 +52,22 @@ enum Vocab {
         }
     }
 
+    /// The one word on a not-kiteable row (WHE-219).
+    static func noGo(_ reason: NoGoReason) -> String {
+        switch reason {
+        case .tooLate: String(localized: "Too late", comment: "Not-kiteable tag: the session is over, or over before you get there")
+        case .storm: String(localized: "Storm", comment: "Not-kiteable tag: thunderstorm risk")
+        case .banned: String(localized: "Banned", comment: "Not-kiteable tag: kiting is banned at this spot then")
+        case .offshore: String(localized: "Offshore", comment: "Not-kiteable tag: the wind blows from the land")
+        case .dark: String(localized: "Dark", comment: "Not-kiteable tag: before sunrise or after sunset")
+        case .tooLight: String(localized: "Too light", comment: "Chart legend: not enough wind")
+        case .tooStrong: String(localized: "Too strong", comment: "Chart legend: too much wind")
+        case .tide: String(localized: "Tide")
+        case .noForecast: String(localized: "No data", comment: "Not-kiteable tag: no forecast for this spot")
+        case .poor: String(localized: "Poor", comment: "Not-kiteable tag: conditions too poor, no single reason")
+        }
+    }
+
     /// "W", "W & E", "all around", as `Spot.facingSummary`.
     static func facing(_ spot: Spot) -> String? {
         let sides = spot.allSides

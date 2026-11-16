@@ -51,6 +51,13 @@ public struct SpotRecommendation: Sendable, Identifiable {
         let problem = Recommender.mainProblem(slice.isEmpty ? hours : slice)
         return ["too late", "thunderstorm risk", "kiting banned", "dark", "offshore"].contains(problem) ? problem : nil
     }
+    /// For a not-kiteable row: the one-word reason, from the hours the score is made of
+    /// (WHE-219). Same priority as `Recommender.mainProblem`: safety first.
+    public var noGoReason: NoGoReason {
+        guard !hours.isEmpty else { return .noForecast }
+        let slice = scoredHours.map { s in hours.filter { $0.wind.hour >= s.start && $0.wind.hour < s.end } } ?? hours
+        return NoGoReason(problem: Recommender.mainProblem(slice.isEmpty ? hours : slice))
+    }
     /// True when an hour the score is made of (best window, else the scored hours) is
     /// side-offshore and still scores: the app shows "Side-offshore: stay upwind" (WHE-75, WHE-160).
     public var hasSideOffshore: Bool {
@@ -505,9 +512,11 @@ public struct Recommender: Sendable {
             : flags.contains("offshore component") ? "offshore"
             : flags.contains("dark") && !flags.contains("too light") ? "dark"
             : flags.contains("too light") ? "too light"
+            : flags.contains("too strong for level") ? "too strong for level"
+            : flags.contains("too strong for quiver") ? "too strong for quiver"
             : flags.contains("tide too low") ? "tide too low"
             : flags.contains("tide too high") ? "tide too high"
-            : flags.first ?? "poor conditions"
+            : reachable.flatMap(\.flags).first ?? "poor conditions"
     }
 
     /// Today only: the first local hour (spot time) the rider can be on the water, now + drive
@@ -663,4 +672,29 @@ public struct Recommender: Sendable {
         default: "offshore"
         }
     }
+}
+
+/// The one word a not-kiteable row shows, so a rider can tell at a glance whether to wait
+/// (wind, tide) or give up (storm, ban, offshore, dark, too late). WHE-219.
+public enum NoGoReason: String, Sendable, CaseIterable {
+    case tooLate, storm, banned, offshore, dark, tooLight, tooStrong, tide, noForecast, poor
+
+    /// From `Recommender.mainProblem`'s answer.
+    public init(problem: String) {
+        switch problem {
+        case "too late": self = .tooLate
+        case "thunderstorm risk", "storm nearby": self = .storm
+        case "kiting banned": self = .banned
+        case "offshore", "offshore component": self = .offshore
+        case "dark": self = .dark
+        case "too light": self = .tooLight
+        case "too strong for level", "too strong for quiver", "overpowered in gusts": self = .tooStrong
+        case "tide too low", "tide too high": self = .tide
+        case "no forecast": self = .noForecast
+        default: self = .poor
+        }
+    }
+
+    /// A safety rule, not the wind: the spot won't come back later in the day.
+    public var isSafety: Bool { [.storm, .banned, .offshore, .dark].contains(self) }
 }
