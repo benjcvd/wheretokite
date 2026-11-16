@@ -113,6 +113,49 @@ final class StoreScreenshotsTests: XCTestCase {
         snapshot(app.screenshot(), "storm-spot")
     }
 
+    /// WHE-152: the spot page's wind chart and hour by hour, without per-hour grades, on this
+    /// week's live forecast (the first day with a spot to open). HOURLY_SHOTS=1.
+    @MainActor
+    func testSpotHourByHour() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["HOURLY_SHOTS"] == "1", "on demand")
+        func plist(_ json: String) -> String { "<" + json.utf8.map { String(format: "%02x", $0) }.joined() + ">" }
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "-AppleLanguages", "(en)", "-disclaimerAccepted", "YES",
+            "-riderProfile", plist(#"{"weightKg":75,"kites":[9,12],"level":"intermediate"}"#),
+            "-searchOrigin", "41.3874,2.1686",
+        ]
+        app.launch()
+        let topSpot = app.buttons["topSpot"]
+        let noSpot = app.descendants(matching: .any)["noSpot"]
+        func waitForResult() {
+            let deadline = Date().addingTimeInterval(60)
+            while !topSpot.exists && !noSpot.exists && Date() < deadline { _ = topSpot.waitForExistence(timeout: 1) }
+        }
+        waitForResult()
+        var day = 1
+        while !topSpot.exists && day < 7 {
+            app.buttons["day\(day)"].tap()
+            sleep(1)
+            waitForResult()
+            day += 1
+        }
+        XCTAssertTrue(topSpot.exists, "no spot to open this week")
+        topSpot.tap()
+        XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
+        app.swipeUp()
+        sleep(1)
+        snapshot(app.screenshot(), "hourly-chart")
+        app.swipeUp()
+        sleep(1)
+        snapshot(app.screenshot(), "hourly-rows")
+        app.swipeUp()
+        app.swipeUp()
+        sleep(1)
+        XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'beach direction isn'")).firstMatch.exists)
+        snapshot(app.screenshot(), "hourly-bottom")
+    }
+
     /// WHE-75: an advanced rider on 14 May 2026 (Ponent): Segur de Calafell gets W at ~110°,
     /// side-offshore, and shows the "advanced only" warning. SIDE_OFFSHORE_SHOTS=1.
     @MainActor

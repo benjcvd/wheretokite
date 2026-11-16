@@ -9,6 +9,11 @@ struct SpotDetailView: View {
     let profile: RiderProfile
     @State private var showScoreInfo = false
     @State private var showReport = false
+    /// Kite whose range the wind chart shows (nil = the suggested kite).
+    @State private var chartKiteSize: Double?
+    @State private var showMap = false
+    @State private var askMapsApp = false
+    @AppStorage(MapsApp.storageKey) private var mapsAppRaw = ""
     @Environment(FeedbackStore.self) private var feedback
 
     private var coordinate: CLLocationCoordinate2D {
@@ -65,19 +70,16 @@ struct SpotDetailView: View {
                         .foregroundStyle(.orange)
                         .accessibilityIdentifier("spotBans")
                 }
-                if let notes = rec.spot.notes {
-                    Text(notes).font(.footnote).foregroundStyle(.secondary)
-                }
-                if rec.spot.source != UserSpotStore.source {
+                // Curation notes are internal; only the rider's own notes on their own spots show.
+                if rec.spot.isUserSpot {
+                    if let notes = rec.spot.notes {
+                        Text(notes).font(.footnote).foregroundStyle(.secondary)
+                            .accessibilityIdentifier("spotUserNotes")
+                    }
+                } else {
                     Button("Report an issue with this spot", systemImage: "flag") { showReport = true }
                         .font(.footnote)
                         .accessibilityIdentifier("reportSpot")
-                }
-                if rec.spot.directionCheck == "uncertain" || rec.spot.directionCheck == "disagrees" {
-                    Label("The beach direction isn't confirmed by a second map yet, so on- and offshore may be off.",
-                          systemImage: "exclamationmark.triangle")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
                 }
             }
             .padding(.horizontal)
@@ -89,6 +91,7 @@ struct SpotDetailView: View {
         .safeAreaInset(edge: .bottom) { directionsButton }
         .sheet(isPresented: $showScoreInfo) { ScoreInfoSheet(rec: rec) }
         .sheet(isPresented: $showReport) { ReportIssueSheet(spot: rec.spot) }
+        .fullScreenCover(isPresented: $showMap) { SpotMapScreen(rec: rec) }
         .onAppear { feedback.viewed(rec, day: day.id) }
         .toolbar(.hidden, for: .tabBar)
     }
@@ -97,13 +100,7 @@ struct SpotDetailView: View {
 
     private var hero: some View {
         VStack(spacing: 0) {
-            Map(initialPosition: .region(MKCoordinateRegion(
-                center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000))) {
-                Marker(rec.spot.name, systemImage: "wind", coordinate: coordinate)
-                    .tint(ScoreStyle.color(rec.finalScore))
-            }
-            .mapStyle(.hybrid(elevation: .realistic))
-            .frame(height: 210)
+            heroMap
 
             HStack(spacing: 14) {
                 HStack(spacing: 14) {
@@ -135,6 +132,43 @@ struct SpotDetailView: View {
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
+    /// Not draggable inside the scrolling page: a tap opens the full-screen map (WHE-156).
+    private var heroMap: some View {
+        let wind = MapWind.summary(MapWind.highlightedHours(rec))
+        return Map(initialPosition: .region(MKCoordinateRegion(
+            center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)), interactionModes: []) {
+            Marker(rec.spot.name, systemImage: "wind", coordinate: coordinate)
+                .tint(ScoreStyle.color(rec.finalScore))
+            if let wind { SpotWindOverlay(spot: rec.spot, wind: wind) }
+        }
+        .mapStyle(.hybrid(elevation: .realistic))
+        .frame(height: 210)
+        .overlay(alignment: .topLeading) {
+            if let wind {
+                Label(ShoreAngleStyle.label(wind), systemImage: "wind")
+                    .font(.caption.weight(.semibold))
+                    .padding(.horizontal, 9)
+                    .padding(.vertical, 5)
+                    .background(.ultraThinMaterial, in: Capsule())
+                    .padding(10)
+                    .accessibilityIdentifier("spotMapWind")
+            }
+        }
+        .overlay(alignment: .topTrailing) {
+            Image(systemName: "arrow.up.left.and.arrow.down.right")
+                .font(.footnote.weight(.bold))
+                .frame(width: 30, height: 30)
+                .background(.ultraThinMaterial, in: Circle())
+                .padding(10)
+        }
+        .contentShape(Rectangle())
+        .onTapGesture { showMap = true }
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityHint(Text("Open the map full screen"))
+        .accessibilityIdentifier("spotMapHero")
+    }
+
     private var facts: some View {
         Grid(horizontalSpacing: 10, verticalSpacing: 10) {
             GridRow {
@@ -143,8 +177,11 @@ struct SpotDetailView: View {
                          "\(w.start)–\(w.end)h" + (rec.windowInMyTime.map { String(localized: " · \($0) yours", comment: "The window in the phone's time zone") } ?? "")
                      } ?? "–",
                      icon: "clock.fill", tint: .blue)
-                Fact(title: String(localized: "Kite"), value: rec.suggestedKite.map { "\($0.size.formatted()) m" } ?? "–",
-                     icon: "wind", tint: .teal)
+                Fact(title: workingKites.count > 1 ? String(localized: "Kites") : String(localized: "Kite"),
+                     value: workingKites.isEmpty ? "–"
+                        : workingKites.map { "\($0.size.formatted()) m" }.formatted(.list(type: .or)),
+                     icon: "wind", tint: .teal, lines: 2)
+                    .accessibilityIdentifier("kiteFact")
             }
             if let tide = rec.tideSummary {
                 GridRow {
@@ -196,9 +233,16 @@ struct SpotDetailView: View {
     private var chart: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Wind vs your kite").font(.headline)
+            if quiver.count > 1 {
+                Picker("Kite", selection: Binding(get: { chartKite?.size ?? 0 }, set: { chartKiteSize = $0 })) {
+                    ForEach(quiver, id: \.size) { k in Text(verbatim: "\(k.size.formatted()) m").tag(k.size) }
+                }
+                .pickerStyle(.segmented)
+                .accessibilityIdentifier("chartKitePicker")
+            }
             Chart {
-                if let k = rec.suggestedKite {
-                    RectangleMark(yStart: .value("Min", k.minKn), yEnd: .value("Max", k.maxKn))
+                if let k = chartKite {
+                    RectangleMark(yStart: .value("Min", min(k.minKn, yMax)), yEnd: .value("Max", min(k.maxKn, yMax)))
                         .foregroundStyle(ScoreStyle.color(80).opacity(0.14))
                         .annotation(position: .overlay, alignment: .topLeading) {
                             Text("\(k.size.formatted()) m range").font(.caption2.weight(.semibold))
@@ -207,7 +251,7 @@ struct SpotDetailView: View {
                 }
                 ForEach(rec.hours, id: \.wind.localTime) { h in
                     BarMark(x: .value("Hour", h.wind.hour), y: .value("Wind", h.wind.speedKn), width: 18)
-                        .foregroundStyle(ScoreStyle.gradient(Int((h.score * 100).rounded())))
+                        .foregroundStyle(h.windFit.color)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                     PointMark(x: .value("Hour", h.wind.hour), y: .value("Gust", h.wind.gustKn))
                         .symbol(.circle)
@@ -223,7 +267,8 @@ struct SpotDetailView: View {
                 }
             }
             .frame(height: 190)
-            Text("Bars: average wind (kn), coloured by score · Dots: gusts")
+            WindFitLegend(fits: Set(rec.hours.map(\.windFit)))
+            Text("Bars: average wind (kn) · Dots: gusts")
                 .font(.caption2)
                 .foregroundStyle(.secondary)
         }
@@ -231,8 +276,28 @@ struct SpotDetailView: View {
         .card()
     }
 
+    /// The rider's kites, smallest first, as the chart's switch shows them.
+    private var quiver: [KiteRange] {
+        Scorer(profile: profile, intensity: nil).kiteRanges.sorted { $0.size < $1.size }
+    }
+
+    /// Kites that work for the whole best window, best first (display only).
+    private var workingKites: [KiteRange] { rec.workingKites(in: quiver) }
+
+    private var chartKite: KiteRange? {
+        chartKiteSize.flatMap { s in quiver.first { $0.size == s } } ?? rec.suggestedKite ?? workingKites.first
+            ?? quiver.min { abs($0.optimalKn - meanWind) < abs($1.optimalKn - meanWind) }
+    }
+
+    private var meanWind: Double {
+        rec.hours.isEmpty ? 0 : rec.hours.map(\.wind.speedKn).reduce(0, +) / Double(rec.hours.count)
+    }
+
+    /// Covers the gusts and the suggested kite's range; grows only when the picked kite's range
+    /// starts above that, so its band stays visible (the top of a tall band is clipped).
     private var yMax: Double {
-        let peak = max(rec.hours.map(\.wind.gustKn).max() ?? 0, rec.suggestedKite?.maxKn ?? 0)
+        let peak = max(rec.hours.map(\.wind.gustKn).max() ?? 0, rec.suggestedKite?.maxKn ?? 0,
+                       (chartKite?.minKn ?? 0) + 4)
         return (peak / 5).rounded(.up) * 5 + 5
     }
 
@@ -243,28 +308,7 @@ struct SpotDetailView: View {
             Text("Hour by hour").font(.headline)
             VStack(spacing: 0) {
                 ForEach(Array(rec.hours.enumerated()), id: \.element.wind.localTime) { i, h in
-                    HStack(spacing: 10) {
-                        Text(String(format: "%02d:00", h.wind.hour))
-                            .font(.subheadline.weight(.semibold))
-                            .monospacedDigit()
-                            .frame(width: 52, alignment: .leading)
-                        WindArrow(directionDeg: h.wind.directionDeg)
-                            .foregroundStyle(WindStyle.color(h.wind.speedKn))
-                            .frame(width: 20)
-                        VStack(alignment: .leading, spacing: 1) {
-                            Text("\(Int(h.wind.speedKn.rounded())) kn · gusts \(Int(h.wind.gustKn.rounded()))", comment: "Hourly wind")
-                                .font(.subheadline)
-                                .monospacedDigit()
-                            Text(hourDetail(h))
-                                .font(.caption)
-                                .foregroundStyle(h.flags.isEmpty ? Color.secondary : Color.orange)
-                        }
-                        Spacer()
-                        ScoreBadge(score: Int((h.score * 100).rounded()), size: 32)
-                    }
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 9)
-                    .accessibilityElement(children: .combine)
+                    hourRow(h)
                     if i < rec.hours.count - 1 { Divider().padding(.leading, 14) }
                 }
             }
@@ -272,35 +316,114 @@ struct SpotDetailView: View {
         }
     }
 
+    /// Wind first: a bar you can compare at a glance (mean, then gusts lighter), the arrow, and
+    /// on the right the kite for the hour, or a clear "can't ride" mark. No per-hour grade.
+    private func hourRow(_ h: HourScore) -> some View {
+        let fit = h.windFit
+        return HStack(spacing: 10) {
+            Text(String(format: "%02d:00", h.wind.hour))
+                .font(.subheadline.weight(.semibold))
+                .monospacedDigit()
+                .frame(width: 48, alignment: .leading)
+            WindArrow(directionDeg: h.wind.directionDeg)
+                .font(.subheadline)
+                .foregroundStyle(.primary)
+                .frame(width: 18)
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(alignment: .firstTextBaseline, spacing: 4) {
+                    Text(verbatim: "\(Int(h.wind.speedKn.rounded()))")
+                        .font(.headline)
+                    Text("kn", comment: "Knots, after the hourly wind speed")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text("gusts \(Int(h.wind.gustKn.rounded()))", comment: "Hourly gusts in knots")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .monospacedDigit()
+                WindBar(speedKn: h.wind.speedKn, gustKn: h.wind.gustKn, maxKn: yMax, color: fit.color)
+                Text(hourDetail(h))
+                    .font(.caption)
+                    .foregroundStyle(h.flags.isEmpty ? Color.secondary : fit == .noGo ? Color.red : Color.orange)
+            }
+            Spacer(minLength: 4)
+            if fit == .rideable, let k = h.kite {
+                Text(verbatim: "\(k.size.formatted()) m")
+                    .font(.footnote.weight(.semibold))
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .foregroundStyle(fit.color)
+                    .background(fit.color.opacity(0.14), in: Capsule())
+            } else if fit != .rideable {
+                Image(systemName: "nosign")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .accessibilityLabel(Text("Can't ride", comment: "Hour with no rideable wind or unsafe"))
+            }
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 9)
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("hourRow")
+    }
+
     private func hourDetail(_ h: HourScore) -> String {
         var parts = [Vocab.compass(h.wind.directionDeg)]
         if let a = h.relativeAngle { parts[0] += " " + Vocab.angle(a) }
         if let side = h.side, h.score > 0 { parts.append(side) }
-        if let k = h.kite { parts.append("\(k.size.formatted()) m") }
-        parts += h.flags.map(Vocab.term)
+        // Safety reasons come first in the flags (applySafety), so they lead the line.
+        parts = h.flags.map(Vocab.term) + parts
         return parts.joined(separator: " · ")
     }
 
+    /// Directions opens the rider's last maps app; the first time, it asks which one.
+    /// The small menu beside it switches app.
     private var directionsButton: some View {
-        Button {
-            let item: MKMapItem
-            if #available(iOS 26, *) {
-                item = MKMapItem(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), address: nil)
-            } else {
-                item = MKMapItem(placemark: MKPlacemark(coordinate: coordinate))
+        HStack(spacing: 10) {
+            Button {
+                if let app = MapsApp(rawValue: mapsAppRaw) {
+                    openDirections(in: app)
+                } else {
+                    askMapsApp = true
+                }
+            } label: {
+                Label("Directions", systemImage: "car.fill")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 6)
             }
-            item.name = rec.spot.name
-            item.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
-        } label: {
-            Label("Directions", systemImage: "car.fill")
-                .font(.headline)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 6)
+            .prominentButton()
+            .confirmationDialog("Get directions with", isPresented: $askMapsApp, titleVisibility: .visible) {
+                ForEach(MapsApp.allCases) { app in
+                    Button(app.title) { openDirections(in: app) }
+                }
+            }
+
+            Menu {
+                Picker("Maps app", selection: $mapsAppRaw) {
+                    ForEach(MapsApp.allCases) { app in
+                        Text(app.title).tag(app.rawValue)
+                    }
+                }
+            } label: {
+                Label(MapsApp(rawValue: mapsAppRaw)?.title ?? String(localized: "Maps app"), systemImage: "map")
+                    .labelStyle(.iconOnly)
+                    .font(.headline)
+                    .padding(.vertical, 6)
+            }
+            .buttonStyle(.bordered)
+            .accessibilityLabel("Maps app")
+            .accessibilityValue(MapsApp(rawValue: mapsAppRaw)?.title ?? "")
+            .accessibilityIdentifier("mapsAppMenu")
         }
-        .prominentButton()
         .controlSize(.large)
         .padding(.horizontal)
         .padding(.bottom, 8)
+    }
+
+    private func openDirections(in app: MapsApp) {
+        mapsAppRaw = app.rawValue
+        app.open(name: rec.spot.name, latitude: rec.spot.latitude, longitude: rec.spot.longitude)
     }
 }
 
@@ -309,6 +432,7 @@ private struct Fact: View {
     let value: String
     let icon: String
     let tint: Color
+    var lines = 1
 
     var body: some View {
         HStack(spacing: 10) {
@@ -320,7 +444,7 @@ private struct Fact: View {
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 1) {
                 Text(title).font(.caption).foregroundStyle(.secondary)
-                Text(value).font(.subheadline.weight(.semibold)).lineLimit(1).minimumScaleFactor(0.8)
+                Text(value).font(.subheadline.weight(.semibold)).lineLimit(lines).minimumScaleFactor(0.8)
             }
             Spacer(minLength: 0)
         }
@@ -503,3 +627,80 @@ private struct FactorRow: View {
     }
 }
 
+
+// MARK: - Wind fit (hour by hour, chart colours)
+
+/// What an hour's wind means for the rider, without a grade: rideable with a kite, too light,
+/// too strong, or ruled out (storm, dark, offshore, ban, tide). Safety wins over wind strength.
+enum WindFit: Hashable, CaseIterable {
+    case rideable, tooLight, tooStrong, noGo
+
+    var color: Color {
+        switch self {
+        case .rideable: Color(red: 0.10, green: 0.68, blue: 0.42)
+        case .tooLight: Color(red: 0.45, green: 0.62, blue: 0.85)
+        case .tooStrong: Color(red: 0.88, green: 0.30, blue: 0.30)
+        case .noGo: Color(red: 0.55, green: 0.57, blue: 0.62)
+        }
+    }
+
+    var label: String {
+        switch self {
+        case .rideable: String(localized: "Rideable", comment: "Chart legend: wind fits your kite")
+        case .tooLight: String(localized: "Too light", comment: "Chart legend: not enough wind")
+        case .tooStrong: String(localized: "Too strong", comment: "Chart legend: too much wind")
+        case .noGo: String(localized: "Ruled out", comment: "Chart legend: storm, dark, offshore, ban or tide")
+        }
+    }
+}
+
+extension HourScore {
+    var windFit: WindFit {
+        let safety: Set<String> = ["thunderstorm risk", "kiting banned", "dark", "offshore component"]
+        if flags.contains(where: safety.contains) { return .noGo }
+        if score > 0 { return .rideable }
+        if flags.contains("too light") { return .tooLight }
+        if flags.contains("too strong for level") || flags.contains("too strong for quiver") { return .tooStrong }
+        return .noGo
+    }
+}
+
+/// Horizontal wind bar: mean wind solid, gusts as a lighter extension, on a shared scale.
+private struct WindBar: View {
+    let speedKn: Double
+    let gustKn: Double
+    let maxKn: Double
+    let color: Color
+
+    var body: some View {
+        GeometryReader { geo in
+            let w = geo.size.width
+            let scale = { (kn: Double) in max(4, min(w, w * kn / max(maxKn, 1))) }
+            ZStack(alignment: .leading) {
+                Capsule().fill(Color.secondary.opacity(0.12))
+                Capsule().fill(color.opacity(0.35)).frame(width: scale(max(gustKn, speedKn)))
+                Capsule().fill(color).frame(width: scale(speedKn))
+            }
+        }
+        .frame(height: 8)
+        .accessibilityHidden(true)
+    }
+}
+
+private struct WindFitLegend: View {
+    let fits: Set<WindFit>
+
+    var body: some View {
+        HStack(spacing: 12) {
+            ForEach(WindFit.allCases.filter(fits.contains), id: \.self) { f in
+                HStack(spacing: 4) {
+                    Circle().fill(f.color).frame(width: 8, height: 8)
+                    Text(f.label)
+                }
+            }
+        }
+        .font(.caption2)
+        .foregroundStyle(.secondary)
+        .accessibilityElement(children: .combine)
+    }
+}

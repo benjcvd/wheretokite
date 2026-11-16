@@ -60,6 +60,16 @@ Ours → Windy: Costa Calma, Bahía Feliz: no marker of their own (Costa Calma s
 **Gap:** Windy shows 24 markers and we cover 11 of them. Most missing ones are secondary or surf beaches, but 5 have kite sources
 (El Cotillo, Maspalomas, Ketchup, Güímar, La Santa) and need a second pass once Overpass answers.
 
+## Second look (WHE-133, 6 Nov)
+
+Ketchup, Güímar, La Santa, La Garita, Maspalomas and El Cotillo re-checked with 6 more searches: **none added**.
+- Ketchup (Gran Canaria south), Puerto de Güímar (Tenerife), La Santa and La Garita (Lanzarote): one kite guide each
+  (kite-and-windsurfing-guide.com), no school or town page naming them as kite spots, so the two-source rule fails. La Garita's only
+  kite hint is a Windy page listing a rental school, which is not a local source. Güímar is a fallback for northerly wind only, narrow
+  beach inside breakwaters; La Santa is a surf break with a small lagoon.
+- Maspalomas (Faro / Punta): same guide says police have stopped kiters there, only windsurf is clearly allowed; no ordinance found. Worst case applies: stays out.
+- El Cotillo: unchanged (WHE-92: no safe pin).
+
 ## Sources
 unplug-kitesurf.com (Arinaga, Costa Calma, Los Charcos), kitejungle.com (Flag Beach, Pozo/Salinas, El Cotillo), se.kiteforum.com spot pages,
 kite-and-windsurfing-guide.com (Majanicho, Playa Honda, Ketchup), thekitespot.com, wannakitesurf.com, surf-magazin.de (Pozo, Vargas), lanzaroteguidebook.com,

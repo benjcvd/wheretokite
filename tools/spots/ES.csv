@@ -22,7 +22,7 @@ ES,Andalucía,Los Caños de Meca,sea,q:Playa de Los Caños de Meca,SE,"Levante (
 ES,Andalucía,El Palmar (Vejer),sea,q:Playa de El Palmar Vejer de la Frontera,SW,"Poniente (W to NW) is the main wind; levante is weak here. Powerful shorebreak at high tide and a strong current in poniente: experienced riders. Mostly a surf beach. A spot guide says kiting is banned here in summer; no official text found, so treat summer as closed.",,,,
 ES,Andalucía,Chiclana – Sancti Petri,sea,osm:w198773943,SW,"La Barrosa beach, south end at Sancti Petri. Poniente (W to NW) works once strong; levante from the SSE also. The Sancti Petri island shelters it from west swell. Kite Surf Chiclana has run lessons on the beach since 2006. A spot guide says kiting is banned June to September; no official text found, ask the school.",,,,
 # Andalucía — Huelva
-ES,Andalucía,El Portil,sea,osm:w1156218337,S,"Flat water behind the El Rompido sandspit (cross the Río Piedras); strong currents. Also: Punta Umbría (open beach, waves).",,,,
+ES,Andalucía,El Portil,sea,osm:w1156218337,S,"Beach at the mouth of the Río Piedras, facing the El Rompido sandspit: schools (Flecha Extreme, Nómadas del Kite) teach here in shallow, sheltered water; strong currents at the river mouth. Also: Punta Umbría (open beach, waves).",,,,
 # Galicia
 ES,Galicia,Doniños (Ferrol),sea,osm:w646340327,W,"Exposed Atlantic beach with waves; kite area is the left side of the bay (Punta Penencia). Best in N–NE cross-shore wind, S–SW gets rough fast; experienced riders. Local crowd is protective: ride respectfully. Alternative: San Xurxo.",,,,
 ES,Galicia,Razo (Carballo),sea,osm:w39473257,NW,"Open Atlantic beach with waves and strong currents, best in NE wind; winter SW is hard to control. Experienced riders. Inside the Razo–Baldaio nature reserve: the lagoon behind is flat at high tide but stay out of it as the tide drops (bird sanctuary, kite ban feared).",,,,
@@ -102,6 +102,20 @@ ES,Andalucía,Almería – El Zapillo,sea,osm:w1289258387,S,"City beach, ponient
 ES,Andalucía,Roquetas de Mar – Las Salinas,sea,osm:w186053977,E,"Quiet beach by the old salt pans, facing ESE: levante (E) is onshore, poniente (W) is offshore here. Buoyed bathing areas are off limits in summer (town beach ordinance, art. 12).",,,pro,
 # pro: local / secondary beach — local spot
 ES,Andalucía,Motril – Playa Granada,sea,osm:w96307227,S,Levante and poniente; shorebreak in strong poniente. School on the beach.,,,pro,
+# archived: Windy marker (WHE-124, 6 Nov), side of La Manga unclear: the guide says Mar Menor side but lists NNE-E winds (offshore there), OSM pin faces S and Apple Maps sees water to the E. Revive once a school or town page says where people launch. Sources: sources: kite-and-windsurfing-guide Mar Menor page, unplug Mar Menor spots
+ES,Murcia,La Manga – Playa del Pudrimel,lagoon,osm:w478799430,W,"Shallow flat water on the Mar Menor side of La Manga, medium-size launch area. Spot guides list NNE to E winds (check they are not offshore at your launch); schools work from Los Narejos and La Manga. Summer bathing areas and jellyfish nets: ask the local schools.",,,archived,
+# pro: Windy marker (WHE-124, 5 Nov) — sources: Kiteforum Torre Derribada page, Wild Open Water listing
+ES,Murcia,San Pedro del Pinatar – Torre Derribada,sea,osm:n1459233700,E,"Beach next to the San Pedro port, inside the Salinas y Arenales regional park. Kiteforum: mostly flat, shallow, some chop and small waves, all levels, parking. No school on site found; check local bathing rules in summer.",,,pro,
+# pro: Windy marker (WHE-124, 5 Nov) — sources: Wild Open Water listing (kiteboarding), Cabo de Palos is a marine reserve
+ES,Murcia,Cabo de Palos – Playa de Levante,sea,osm:r2115915,E,"Town beach on the Mediterranean side of Cabo de Palos. Only a swim-spot listing mentions kiteboarding and no school or guide describes it: limited information. The coast here is a marine reserve and the beach is small and busy in summer, so check local rules before launching.",,,pro,
+# pro: Windy marker (WHE-124, 5 Nov) — sources: Wannakitesurf Culoperro page, Barceló surf guide (Punta de Culo Perro by Los Baños de Guardias Viejas)
+ES,Andalucía,Guardias Viejas – Culoperro,sea,osm:w1474398096,SE,"Open coast near Los Baños de Guardias Viejas (El Ejido): waves, freestyle and freeride; levante (E) is onshore, 16 to 25 knots; rocky bottom. Season October to May; often empty on weekdays. Mixed with windsurfers.",,,pro,
+# pro: Windy marker (WHE-124, 5 Nov) — sources: kite-and-windsurfing-guide Punta Entinas page, Yumping school lessons at Punta Entinas beach
+ES,Andalucía,Punta Entinas,sea,osm:w895905424,S,"Quiet sandy beach in the Punta Entinas-Sabinar nature reserve, west of Faro Sabinar. Beach break: levante is cross-off and moderate, poniente cross-shore and bigger. Schools from Roquetas and Almerimar give lessons here. Nature reserve: stay on the beach, no kiting over dunes or birds.",,,pro,
+# pro: Windy marker (WHE-124, 5 Nov) — source: Unplug Retamar spot (beginner), no school on site; a swim-spot listing says sailing, SUP and windsurf
+ES,Andalucía,Almería – Retamar,sea,osm:w170338804,S,"Suburb beach east of Almería city, listed on Unplug as a beginner spot. Limited information: no school found on site (schools of Almería and Roquetas work elsewhere). Check summer bathing zones.",,,pro,
+# pro: Windy marker (WHE-124, 5 Nov) — sources: kite-and-windsurfing-guide Carchuna page (best Costa Tropical break in strong poniente), granadaspain.co.uk Carchuna page (popular with kitesurfers), AWA Watersports Carchuna courses
+ES,Andalucía,Carchuna,sea,osm:n13093975140,S,"Long dark-sand beach: the Costa Tropical's best break in strong poniente, waves over a rocky reef near the castle; more committed than Playa Granada. The nearest parking is a long walk. Intermediate and up.",,,pro,
 # pro: local / secondary beach — buoyed-channel local spot
 ES,Andalucía,Marbella – Los Monteros,sea,osm:r1714644,S,"Río Real / Los Monteros: flat water in levante, poniente waves in winter. Rocky entry at Río Real. The town hall agreed a 300 m kite zone on Playa Los Monteros with Marbella Kite Club (2019); in summer use the official zone and channels.",,,pro,
 # pro: local / secondary beach — weaker strong-levante fallback for Tarifa
@@ -129,11 +143,19 @@ ES,Andalucía,Cádiz – La Victoria,sea,osm:w162311083,W,"Cádiz city beach, no
 # pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "Conil" and Total Kitesurf (Conil)
 ES,Andalucía,Conil – Los Bateles,sea,osm:r11384131,W,"Poniente (W to NW) is best, stronger the more northerly it is; levante from the SSE works on its last day. Waves a bit smaller than El Palmar. A small marked kite zone on the beach, which is busy in July and August. Total Kitesurf has a school here.",,,pro,
 # pro: cluster duplicate — 7 km from El Portil
-ES,Andalucía,Punta Umbría,sea,osm:w889930861,S,Long open beach with waves; SW thermal; summer restrictions near bathers.,,,pro,
+ES,Andalucía,Punta Umbría,sea,osm:w889930861,S,"Open town beach with waves; schools teach here (Nalú, Nómadas del Kite). SW thermal in summer. No official kite zone found: keep clear of bathers in summer and check the local signs.",,,pro,
 # pro: local / secondary beach — local Huelva spot
-ES,Andalucía,Isla Cristina – La Casita Azul,sea,osm:w225560425,S,Designated kite zone; restricted from 15 Jun in summer.,,,pro,
-# pro: local / secondary beach — local Huelva spot
-ES,Andalucía,Ayamonte – Isla Canela,sea,osm:w123911782,S,"Shallow sandbars by the Guadiana mouth, beginner-friendly; SW thermal Apr–Sep.",,,pro,
+ES,Andalucía,Isla Cristina – La Casita Azul,sea,osm:w225560425,S,"Quiet beach among dunes and pines with a kite school (Waterproof Kite School); S and SW winds, best May–Sep. No official kite zone or summer dates found: keep clear of bathers and check the signs.",,,pro,
+# free: Windy 5 stars, 4 schools, Ben moved it from pro (WHE-101)
+ES,Andalucía,Ayamonte – Isla Canela,sea,osm:w123911782,S,"Shallow sandbars by the Guadiana mouth, beginner-friendly; several schools (Kanela Kites, Isla Canela Kite El Paradise, Nómadas del Kite); SW thermal in summer.",,,,
+# pro: Windy marker missing from our list (WHE-101), Windy 4 stars, beach with schools
+ES,Andalucía,La Antilla,sea,osm:w457219904,S,"Open Atlantic beach used mostly by locals and the Club Náutico; schools at Playa de Poniente (Nómadas del Kite) and Islantilla next door. SW thermal in summer. No official kite zone found: keep clear of bathers.",,,pro,
+# pro: Windy marker missing from our list (WHE-101), Windy 4 stars; schools meet at Playa Central
+ES,Andalucía,Isla Cristina – Playa Central,sea,osm:r16367334,S,"Town beach east of the harbour mouth, where schools run courses; S and SW winds. No official kite zone found: keep clear of bathers and the harbour channel.",,,pro,
+# pro: Windy marker missing from our list (WHE-101), Windy 4 stars; spot-guide source only
+ES,Andalucía,Mazagón – Playa de las Dunas,sea,osm:r3186062,SW,"Open beach south-east of Mazagón; works in winter westerlies, often just freeride and quiet; no kite school on the beach. No official kite zone found: keep clear of bathers in summer.",,,pro,
+# pro: Windy marker missing from our list (WHE-101), Windy 4 stars, schools in Matalascañas
+ES,Andalucía,Matalascañas,sea,osm:w177640571,SW,"Long open beach at the edge of Doñana National Park; kite school in town (Moskiters de Doñana); SW winds. No official kite zone found: keep clear of bathers in summer and out of the park.",,,pro,
 # pro: cluster duplicate — 5 km from A Lanzada
 ES,Galicia,O Grove – A Mexilloeira,sea,osm:w51842113,N,"Sheltered ría beach: flat water in N–NE wind; kite schools on the beach (Kite Galicia, Escuela Española KiteSurf). No official kite rule found.",,,pro,
 # pro: local / secondary beach — local ría spot

@@ -25,7 +25,10 @@ second pass with web research is worth doing.
 
 - Côte d'Opale north (WHE-119, 2026-11-05): Dunkerque summer kite zone (500 m west of Terminus post, 1 Jul–31 Aug) is from a local guide only, prefectoral text not found: kept in notes. Gravelines PFP rules come from the 2024 mayor's order (check 2026). Les Hemmes de Marck pin is still a hamlet node (Apple direction disagrees; OSM N kept). Dunkerque Digue du Braek (Windy 1 star, port sea wall) left out: no OSM element for the riding place. Calais – Blériot-Plage has thin kite sources.
 - Hillion – Bon Abri: limits of the Baie de Saint-Brieuc nature reserve for kites.
-- Hendaye, Anglet – La Madrague: summer windows.
+- Settled (WHE-108, worst case, see [report](../../docs/validation/fr-basque-landes.md#calls-made-under-the-2-nov-rule-look-it-up-else-assume-the-worst)):
+  Anglet – La Madrague no kiting during lifeguard hours 13 Jun–15 Sep (kite order 2023/592 not online);
+  Hendaye July–August ban kept (no town order found). Contis archived (one source).
+  Soustons lake not added (association says kiting too dangerous).
 - Lac du Der, Lac d'Orient, Lac de Madine: club rules (KDA, AWA / Flysurf10, AKL).
 - La Baule: settled 2026-11-05 (WHE-111): Plage Benoît stays (flat banks at low to mid tide, rideevolve guide); summer access is only the K13 channel at the Pornichet border (Pornichet order ARR2026-212), so the summer ban stays. The La Baule 2016 order was a 404: find the current one if possible.
 - Pays de la Loire / Vendée (WHE-111): 12 Windy markers left out, see docs/validation/fr-loire.md. Revive if a school page names the beach: Barbâtre (Noirmoutier), Les Générelles (La Tranche), Les Conches, Sauveterre. Archived: Notre-Dame-de-Monts. Summer rules for Fromentine, La Tranche, Pen Bron and Saint-Brevin come from guides only: no order found.
@@ -34,14 +37,14 @@ second pass with web research is worth doing.
 - La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
 - Weak pins (snapped from a village / street): Hemmes de Marck, Wimereux – Pointe aux Oies,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
-  Les Arbousiers (bus stop beside the beach), Navarrosse.
+  Les Arbousiers (bus stop beside the beach; Navarrosse fixed in WHE-108).
 
 - La Baule: main launch at Plage Benoît, or nearer the Le Pouliguen étier?
 - Weak pins (snapped from a village / street): Hemmes de Marck,
   Cayeux – La Mollière, Landéda – Sainte-Marguerite, Cherbourg – Collignon, Jullouville,
-  Les Arbousiers, Navarrosse.
+  Les Arbousiers.
 - Côte d'Opale south / Baie de Somme (WHE-118, 2026-11-05): summer kite zones at Berck, Le Touquet, Hardelot, Cayeux come from FFVL sheets and guides only, no arrêté found, so none is encoded in `banned` (docs/validation/fr-opale-s.md). Wimereux town beach, Ambleteuse, Audresselles, Baie de la Canche and Hourdel left out (same shores as spots we have, or no launch).
-- Ouistreham Riva-Bella: really a separate spot from Merville (3.5 km)?
+- Ouistreham Riva-Bella: separate spot from Merville. Settled 2026-11-06 (WHE-117): 5 km apart, other water, own school (La Clinique de la Planche), low tide only.
 - Left out as uncertain: Les Sables-d'Olonne, Jonville / Réville, Saint-Germain-sur-Ay,
   Locmariaquer, Le Rohu, Kerguelen, La Palue, Dunkerque Digue du Break, Cap-Ferret ocean
   beaches, Capbreton / Hossegor, Moisson-Lavacourt.
@@ -87,7 +90,11 @@ second pass with web research is worth doing.
 - Mar Menor: rules after the lagoon's environmental crisis.
 - Mallorca – Pollença: zone at Can Cullerassa? Settled 2026-11-03 (WHE-94): no kite-zone source for it (only a windsurf beach), pin stays on Sa Marina. Details in docs/validation/es-balears.md.
 - Embalse de La Loteta: launch (pinned at the marina, not the club's south spot).
-- Huelva summer zones.
+- Huelva summer zones. Settled 2026-11-05 (WHE-101): no source for any Huelva kite zone or summer dates (the old Casita Azul "restricted from 15 Jun" claim was unsourced and is removed); notes say keep clear of bathers, no `banned`. Details in docs/validation/es-huelva.md.
+- **Spain gap pass vs Windy (WHE-92, settled without Ben)**: El Cotillo stays out (retry 6 Nov: La Concha pin faces SW, so N/NE winds would be offshore; no safe pin for the kite area). Not added, unclear = no: Zahara de los Atunes,
+  Conil, Cullera, Zarautz / Basque coast, Formentera (Ses Illetes closed May-Oct per spain.info), Ibiza Cala Martina (Nov-May only),
+  Fornells (5 km from Cala Tirant), Mazarrón / Cabo de Palos / Águilas. Sources and reasons: docs/ES_COVERAGE_GAPS.md.
+- **Canaries second look (WHE-133, 6 Nov, settled without Ben)**: Ketchup, Güímar (Puerto de Güímar), La Santa and La Garita (Arrieta, Lanzarote) stay out: only one kite guide each (kite-and-windsurfing-guide.com), no school or town page naming them as kite spots; Güímar is a 35 km fallback with a tight launch, La Santa is a surf break with a lagoon for beginners, La Garita is an exposed beach with a surf point (best surf wind W). Maspalomas / Faro stays out: the same guide says police have stopped kiters inflating there and windsurf is the only officially allowed sport; no official text found. Unclear = no. El Cotillo: see WHE-92 above. Details in docs/validation/es-canarias.md.
 - Left out (Ibiza and Formentera re-checked 2026-11-03, WHE-94: kiting Nov–May only, no school, Ses Illetes banned May–Oct, stays out): Ibiza, Basque Country, Embalse del Ebro, Lo Pagán, El Saler, Patacona, Cullera,
   Fornells, El Cotillo.
 - Portugal pass (2026-10-22), still open:
