@@ -417,3 +417,7 @@ Ben asked for an outside audit (summary in chat). He picked: fix the clock bug (
 **Product, 12 Nov (WHE-161).** Today's search now only counts the hours you can still reach (now + drive, rounded up); hours before that score 0 as "too late", and when nothing is left the app says "This session is over" and offers tomorrow. On `atlas/t/whe-161` (d184ea8, ffddff7), before / after in [docs/TODAY_CLOCK.md](TODAY_CLOCK.md). Safety rule: merge only after Ben OKs it. Open choice: no rigging time is added after arrival.
 
 **Product, 12 Nov (WHE-162).** The forecast server now relays only what the app and CLI ask for (allow-listed variables, models and dates, 150 places max) and limits each IP to about 5,000 Open-Meteo places a minute, counting only cache misses. Built on atlas/t/whe-162 (f0821db), checked with the real CLI at 165 spots. Not deployed: waits for Ben's OK. From now on a new forecast variable or model in the app needs the Worker deployed first (`RULES` in `server/src/forecast.ts`).
+
+## Product: every spot free (16 Nov, WHE-215)
+
+Ben made every active spot free. `Entitlements.free.proSpots` is now true; the switch and the `tier` field stay so a later plan can bring the gate back. Worst case at 180 min is 95 spots in reach (Nantes), under the app's 100-per-request batch and the server's 150 cap, so nothing had to be split. The cost is Open-Meteo quota: about 3× more locations per uncached search, which makes WHE-12 and WHE-3 (shared cache) more pressing at launch. Store text says "more than 600 spots": recheck once the archiving cards land.
