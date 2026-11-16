@@ -237,6 +237,7 @@ Questions:
 - Ireland coverage check (2026-10-22): Windy's map shows no kite spots in Ireland, so no
   benchmark there. Independent sources agree with our list. To add when OSM is reachable:
   Ballynamona (East Cork, E winds; ballycotton.ie + unplug-kitesurf), probably as pro.
+- England south coast pass (WHE-187, 2026-11-16, settled without Ben, no official kite text beyond the notes in GB.csv): Seasalter tide: Kitesurf Centre / Unplug guides say low water is best (sandbanks shelter the flats), our row says mid to high; kept as is with the conflict in notes, not safe to flip without a local. Calshot: no source found this pass, row kept as before. Studland Knoll Beach stays archived (NT permit by email, £5; no kite-zone text found). West Wittering and Pevensey stay archived. Dymchurch: Windguru has an unnamed flagged point (TheFluffyCloud), one guide lists it; no school or town source, not added.
 - Pins from village / bay names: Walney Island, Kinmel Bay, Fraserburgh, Machrihanish,
   Balephuil, Ballyholme, Cranfield, Mulranny, Portnoo (Narin), Culdaff.
 
