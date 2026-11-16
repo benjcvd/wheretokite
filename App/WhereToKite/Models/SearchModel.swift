@@ -213,7 +213,7 @@ final class SearchModel {
     /// `lookaheadDays` 0 = no next-window search (a Pro feature).
     func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot], proSpots: Bool = true,
              lookaheadDays: Int = 7) async {
-        // Free plan: the famous spots only (Pro adds the secondary ones).
+        // `Entitlements.proSpots` off: famous spots only (tier "pro" = secondary ones). On for every plan today.
         let available = proSpots ? catalog : catalog.filter { $0.tier != "pro" }
         recommender.spots = UserSpotStore.merged(catalog: available, user: userSpots)
         if nextWindow.map({ $0.day <= (Self.testDay ?? options.day) }) ?? false { nextWindow = nil }
