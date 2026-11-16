@@ -417,3 +417,7 @@ Ben asked for an outside audit (summary in chat). He picked: fix the clock bug (
 **Product, 12 Nov (WHE-161).** Today's search now only counts the hours you can still reach (now + drive, rounded up); hours before that score 0 as "too late", and when nothing is left the app says "This session is over" and offers tomorrow. On `atlas/t/whe-161` (d184ea8, ffddff7), before / after in [docs/TODAY_CLOCK.md](TODAY_CLOCK.md). Safety rule: merge only after Ben OKs it. Open choice: no rigging time is added after arrival.
 
 **Product, 12 Nov (WHE-162).** The forecast server now relays only what the app and CLI ask for (allow-listed variables, models and dates, 150 places max) and limits each IP to about 5,000 Open-Meteo places a minute, counting only cache misses. Built on atlas/t/whe-162 (f0821db), checked with the real CLI at 165 spots. Not deployed: waits for Ben's OK. From now on a new forecast variable or model in the app needs the Worker deployed first (`RULES` in `server/src/forecast.ts`).
+
+## Product, 16 Nov: WHE-216 search trim (review)
+
+The app now offers four sessions (Evening left the app, the engine keeps it for the CLI; a saved Evening becomes My hours 17–20). The "How was it?" card is switched off, not deleted (`FeedbackStore.promptEnabled`). The offshore picture cards finally look different, and each level carries one line on what the rider can do: Ben still has to OK that wording. Installed on his iPhone.
