@@ -63,15 +63,21 @@ NL,Zuid-Holland,Rockanje,sea,osm:n11535255124,W,"Sportstrand (2nd slag): shallow
 # pro: cluster duplicate — 6 km from Oostvoorne, partly seasonal
 NL,Zuid-Holland,Maasvlakte – Slufter,sea,osm:w609718673,W,"Shallow, advanced riders. The Maasvlakte 2 P1–P3 section only October–April; P5/P6 is closed.",,,pro,
 # pro: local spot — secondary beach between Hoek van Holland and Zandmotor
-# archived: no kite school, club or kite guide found for this beach (only surf and beach pages; WHE-180, 14 Nov 2026); Kijkduin and Katwijk cover this coast
-NL,Zuid-Holland,'s-Gravenzande – Slag Beukel,sea,osm:w44386191,NW,Deep water close in; advanced riders.,,,archived,
+# pro: Dutch kite federation (NKV) spot, kite zone on the beach; revived 16 Nov 2026 (WHE-208), was archived by WHE-180 for lack of a source
+NL,Zuid-Holland,'s-Gravenzande – Slag Beukel,sea,osm:w44386191,NW,"Kite zone on the left of the beach, about 300 m from the groyne. Advanced riders: deep water close in, shore break, wave surfers, strong tidal currents (flood runs south to north from 2 h before to 3.5 h after high water). The Maasvlakte harbour head makes SW winds gusty. Safe in N to SW winds, all year.",,,pro,
 # pro: cluster duplicate — next to the Zandmotor
 NL,Zuid-Holland,Kijkduin,sea,osm:w96302900,NW,Surf and currents; submerged groynes. Best wind N.,,,pro,
 # pro: local spot — secondary beach between Scheveningen and Noordwijk
-# archived: no kite school, club or kite guide found for this beach (only surf and beach pages; WHE-180, 14 Nov 2026); Kijkduin and Katwijk cover this coast
+# archived: kiting only for members of Surfclub Wassenaar or the Kustzeilvereniging (NKV spot page, 35 Knots; WHE-208, 16 Nov 2026); no free access. Revive if the club opens it
 NL,Zuid-Holland,Wassenaarse Slag,sea,osm:n278826705,NW,Deep water close in; advanced riders.,,,archived,
 # pro: cluster duplicate — 4 km from Noordwijk
 NL,Zuid-Holland,Katwijk,sea,osm:w285679616,NW,"Kiting allowed in three areas only: by the surf club mid-boulevard, by the kitesurf club north of the boulevard (across the canal), and by the sailing club south. Waves, strong currents, shore break; crowded July–August; advanced riders.",,,pro,
+# pro: Windy 4 stars (Monster); school page and 35 Knots, tolerated only (WHE-208, 16 Nov 2026)
+NL,Zuid-Holland,Monster,sea,osm:w146269726,NW,"Beach just south of the Zandmotor. A kite school gives lessons here and the beach works in W to N winds, but kiting is tolerated rather than formally zoned and the Monster beach rules differ from Kijkduin and the Zandmotor: read the signs on the beach. Deep water, waves and tidal current.",,,pro,
+# pro: Dutch kite federation (NKV) spot, free kite zone (WHE-208, 16 Nov 2026)
+NL,Zuid-Holland,Noordwijk – Langevelderslag,sea,osm:w423650041,NW,"The one free kite zone of the Noordwijk municipality, open to anyone without club membership: beach poles 75.5 to 75.25, left of the beach entrance, about 500 m walk. No supervision. Advanced riders: deep water, waves, current. Safe in N to SW winds, all year. Paid parking, food and toilets.",,,pro,
+# pro: Dutch kite federation (NKV) spot and school on site (WHE-208, 16 Nov 2026)
+NL,Zuid-Holland,Oostvoornse Meer,lake,osm:r17980280,N,"Lake behind the dunes, deep and clear, with free parking at the water and a kite school at the Brunotti Beach Club. The wind is gusty because of the land around it. Entry is through narrow gaps between stone groynes that can hurt riders and gear; sharp mussels under the surface. Advanced riders only, all year.",,,pro,
 # pro: cluster duplicate — 3 km from Zandvoort
 NL,Noord-Holland,Bloemendaal aan Zee,sea,osm:r21115187,W,"Mifune Watersports is an IKO school on this beach. Strong currents along the whole coast; advanced riders.",,,pro,
 # pro: local spot — secondary North Holland beach
