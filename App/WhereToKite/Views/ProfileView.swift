@@ -387,9 +387,9 @@ struct ProfileFields: View {
     private var levelFooter: String {
         let limits = ScoringRules().limits(profile.level)
         return switch profile.level {
-        case .beginner: String(localized: "Only side-on or onshore wind, up to \(Int(limits.wind)) kn.")
-        case .intermediate: String(localized: "Up to \(Int(limits.wind)) kn, no offshore wind.")
-        case .advanced: String(localized: "Up to \(Int(limits.wind)) kn, side-offshore is acceptable.")
+        case .beginner: String(localized: "Up to \(Int(limits.wind)) kn. Wind: onshore or side-onshore only.")
+        case .intermediate: String(localized: "Up to \(Int(limits.wind)) kn. Wind: side-shore at most, never from the land.")
+        case .advanced: String(localized: "Up to \(Int(limits.wind)) kn. Wind: slightly side-offshore accepted, flagged \"advanced only\". Offshore never.")
         }
     }
 }

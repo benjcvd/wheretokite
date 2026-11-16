@@ -148,6 +148,92 @@ final class SmokeTests: XCTestCase {
         snapshot(app, "score-info-2")
     }
 
+    /// The spot page names the working kites and the wind chart switches between the
+    /// starter quiver's 9 and 12 m (today's forecast near Barcelona; any spot will do).
+    @MainActor
+    func testKiteSwitchOnWindChart() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchOrigin", "41.3874,2.1686"]
+        app.launch()
+        acceptTerms(app)
+        app.buttons["Start"].tap()
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allow = springboard.buttons["Allow While Using App"]
+        if allow.waitForExistence(timeout: 4) { allow.tap() }
+        app.buttons["optionsChip"].tap()
+        let slider = app.sliders["driveSlider"]
+        XCTAssertTrue(slider.waitForExistence(timeout: 3))
+        slider.adjust(toNormalizedSliderPosition: 1)
+        app.buttons["Done"].tap()
+
+        let topSpot = app.buttons["topSpot"], row = app.buttons["spotRow"].firstMatch
+        let deadline = Date().addingTimeInterval(60)
+        while !topSpot.exists && !row.exists && Date() < deadline { _ = row.waitForExistence(timeout: 1) }
+        if !topSpot.exists && !row.exists { app.swipeUp(); _ = row.waitForExistence(timeout: 5) }
+        (topSpot.exists ? topSpot : row).tap()
+        XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.descendants(matching: .any)["kiteFact"].exists)
+        app.swipeUp()
+        let picker = app.segmentedControls["chartKitePicker"]
+        XCTAssertTrue(picker.waitForExistence(timeout: 3))
+        sleep(1)
+        snapshot(app, "kite-chart-default")
+        let other = picker.buttons.allElementsBoundByIndex.first { !$0.isSelected }
+        XCTAssertNotNil(other)
+        other?.tap()
+        XCTAssertTrue(other?.isSelected ?? false)
+        sleep(1)
+        snapshot(app, "kite-chart-other")
+    }
+
+    /// WHE-156: the spot page's map shows the wind against the beach; a tap opens it full
+    /// screen with an hour slider that turns the arrow.
+    @MainActor
+    func testSpotMapFullScreen() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchDay", "2026-10-03",
+                                "-searchOrigin", "41.3874,2.1686"]
+        app.launch()
+        acceptTerms(app)
+        app.buttons["Start"].tap()
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allow = springboard.buttons["Allow While Using App"]
+        if allow.waitForExistence(timeout: 4) { allow.tap() }
+
+        let topSpot = app.buttons["topSpot"], row = app.buttons["spotRow"].firstMatch
+        let deadline = Date().addingTimeInterval(60)
+        while !topSpot.exists && !row.exists && Date() < deadline { _ = row.waitForExistence(timeout: 1) }
+        if !topSpot.exists && !row.exists { app.swipeUp(); _ = row.waitForExistence(timeout: 5) }
+        (topSpot.exists ? topSpot : row).tap()
+
+        let hero = app.descendants(matching: .any)["spotMapHero"]
+        XCTAssertTrue(hero.waitForExistence(timeout: 5))
+        sleep(2)
+        snapshot(app, "spot-map-hero")
+        hero.tap()
+
+        let close = app.buttons["spotMapClose"]
+        XCTAssertTrue(close.waitForExistence(timeout: 5))
+        let hour = app.descendants(matching: .any)["spotMapHour"]
+        XCTAssertTrue(hour.exists)
+        sleep(2)
+        snapshot(app, "spot-map-full")
+        let slider = app.sliders["spotMapHourSlider"]
+        if slider.exists {
+            let before = hour.label
+            slider.adjust(toNormalizedSliderPosition: 0)
+            slider.adjust(toNormalizedSliderPosition: 1)
+            XCTAssertNotEqual(hour.label, before, "moving the slider should change the hour")
+            sleep(1)
+            snapshot(app, "spot-map-full-last-hour")
+        }
+        app.buttons["Map"].tap()
+        sleep(2)
+        snapshot(app, "spot-map-standard")
+        close.tap()
+        XCTAssertTrue(hero.waitForExistence(timeout: 3))
+    }
+
     /// The WhereToKite server doesn't answer (seen in Spain on weekend afternoons): the
     /// forecasts come straight from Open-Meteo and the search still shows spots.
     @MainActor
@@ -217,6 +303,21 @@ final class SmokeTests: XCTestCase {
         // Five sessions, incl. evening and the rider's own hours.
         XCTAssertTrue(app.buttons["slot-evening"].exists)
         XCTAssertTrue(app.buttons["slot-custom"].exists)
+
+        // My hours: the first tap selects it, a second one opens the From / Until editor in place.
+        app.buttons["slot-evening"].tap()
+        app.buttons["slot-custom"].tap()
+        let editor = app.descendants(matching: .any)["customHoursEditor"].firstMatch
+        XCTAssertFalse(editor.waitForExistence(timeout: 1), "the first tap must only select My hours")
+        app.buttons["slot-custom"].tap()
+        XCTAssertTrue(editor.waitForExistence(timeout: 3), "My hours editor didn't open")
+        let from = app.steppers["customFrom"]
+        let before = app.buttons["slot-custom"].label
+        from.buttons.element(boundBy: 1).tap()   // increment
+        XCTAssertNotEqual(app.buttons["slot-custom"].label, before, "the session's hours didn't follow the editor")
+        snapshot(app, "my-hours-inline")
+        app.otherElements["PopoverDismissRegion"].firstMatch.tap()
+        XCTAssertFalse(editor.waitForExistence(timeout: 1))
 
         // The drive slider stops at 3 h, without a Pro hint.
         app.buttons["optionsChip"].tap()

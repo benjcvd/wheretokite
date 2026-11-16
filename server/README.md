@@ -91,6 +91,12 @@ the last good copy keeps being served, so a broken push can't break the app.
   [Rate Limiting binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/)
   (`[[ratelimits]]` in `wrangler.toml`). Requests over the limit get 429. The IP is used only
   as the counter key. To turn the limit off, delete that block.
+- **Reports** (`/v1/report`) have a second, stricter limit: 2 per minute per IP
+  (`REPORT_LIMITER`; 60 s is the shortest window Cloudflare offers). On top of that, at most
+  `REPORT_ISSUES_PER_DAY` (default 15) reports become GitHub issues per rolling 24 h, all users
+  together: before filing, the Worker counts today's `report` issues, and if the ceiling is
+  reached or GitHub can't answer, the report is only logged (`github_issue_skipped`). The app
+  still gets 204. The triage workflow has its own cap (20 runs a day, counting runs in progress).
 
 ## Deploying (owner)
 

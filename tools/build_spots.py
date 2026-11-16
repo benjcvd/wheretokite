@@ -39,7 +39,7 @@ Pipeline
      `access: "ferry"` and, when it lies on an OSM place=island, `island` plus
      the island's simplified outline in the catalogue's `islands` (the app only
      shows such spots to someone on the same island).
-  5. Checks: distance to shore, duplicate spots (< 2 km), OSM kite objects
+  5. Checks: distance to shore, duplicate spots (< 1 km, same water and facing), OSM kite objects
      nearby (corroboration), and reference orientations; the script exits 1 if
      a reference is off by more than 30 deg or a spot is unusable.
 """
@@ -51,10 +51,12 @@ import subprocess
 import csv
 import datetime
 import hashlib
+import io
 import json
 import math
 import os
 import re
+import ssl
 import sys
 import time
 import unicodedata
@@ -79,7 +81,8 @@ ORIENT_WINDOW = 400.0       # metres along the shore each side
 COAST_SEARCH = 3000.0       # max distance spot -> shore
 MAX_SHORE_DIST = 1500.0     # beyond this the spot is rejected
 HINT_SNAP_RADIUS = 1500.0   # how far we may move a spot to the hinted shore
-DUP_RADIUS = 2000.0
+DUP_RADIUS = 1000.0   # same water, same facing: closer than this = one spot (Ben, 5 Nov)
+DUP_FACING_DEG = 45.0  # beaches facing this much apart are different spots, even side by side
 SNAP_IF_FARTHER = 300.0    # move located points this far from the shore onto it
 MIN_WATER_EXTENT = 800.0    # ignore ponds smaller than this (bbox diagonal)
 
@@ -161,6 +164,49 @@ def service_slot(name, slots=1, min_interval=0.0):
         time.sleep(0.5)
 
 
+# Old system Pythons (macOS /usr/bin/python3: LibreSSL 2.8) fail the TLS handshake with
+# overpass-api.de. On the first TLS failure we switch to curl for the rest of the run.
+_USE_CURL = [os.environ.get("WTK_HTTP") == "curl"]
+
+
+class _CurlResp(io.BytesIO):
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        self.close()
+
+
+def _curl_open(req, timeout):
+    cmd = ["curl", "-sS", "-m", str(int(timeout) + 30), "-w", "\n%{http_code}"]
+    for k, v in req.header_items():
+        cmd += ["-H", "%s: %s" % (k, v)]
+    if req.data is not None:
+        cmd += ["--data-binary", "@-"]
+    cmd.append(req.full_url)
+    p = subprocess.run(cmd, input=req.data, capture_output=True)
+    if p.returncode != 0:
+        raise urllib.error.URLError("curl %d: %s" % (p.returncode, p.stderr.decode(errors="replace")[:200]))
+    body, _, code = p.stdout.rpartition(b"\n")
+    if not code.strip().isdigit() or int(code) >= 400:
+        raise urllib.error.URLError("HTTP %s" % code.decode(errors="replace"))
+    return _CurlResp(body)
+
+
+def http_open(req, timeout):
+    """urllib.request.urlopen, falling back to curl when this Python's TLS is too old."""
+    if not _USE_CURL[0]:
+        try:
+            return urllib.request.urlopen(req, timeout=timeout)
+        except (urllib.error.URLError, OSError) as e:
+            reason = getattr(e, "reason", e)
+            if not (isinstance(reason, ssl.SSLError) or "SSL" in str(e) or "TLS" in str(e)):
+                raise
+            log("  TLS failed in this Python (%s): using curl from now on" % (str(e)[:80],))
+            _USE_CURL[0] = True
+    return _curl_open(req, timeout)
+
+
 def overpass(query, label="", endpoints=None):
     """Run an Overpass QL query (JSON output), with caching, retries, mirrors."""
     path = _cache_path("overpass", query)
@@ -178,7 +224,7 @@ def overpass(query, label="", endpoints=None):
             })
             try:
                 with service_slot("overpass", slots=2, min_interval=1.0):
-                    with urllib.request.urlopen(req, timeout=60) as resp:
+                    with http_open(req, 60) as resp:
                         body = resp.read()
                 text = body.decode("utf-8", errors="replace")
                 if not text.lstrip().startswith("{"):
@@ -210,7 +256,7 @@ def _nominatim_get(endpoint, params):
     url = NOMINATIM + endpoint + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with service_slot("nominatim", slots=1, min_interval=1.1):   # policy: max 1 request/s
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        with http_open(req, 30) as resp:
             obj = json.loads(resp.read().decode("utf-8"))
     _cache_put(path, obj)
     return obj
@@ -656,12 +702,16 @@ def slugify(s):
 
 
 TIDE_RULES = ("", "high", "low", "mid", "not-low", "not-high")
-_BAN = re.compile(r"^(\d\d)-(\d\d)\.\.(\d\d)-(\d\d)(?:\s+(\d\d):(\d\d)-(\d\d):(\d\d))?$")
+_BAN = re.compile(r"^(\d\d)-(\d\d)\.\.(\d\d)-(\d\d)(?:\s+(\d\d):(\d\d)-(\d\d):(\d\d))?"
+                  r"(?:\s+([a-z]{3}(?:,[a-z]{3})*))?$")
+_WEEKDAYS = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
 
 
 def parse_bans(text):
-    """'06-15..09-15 11:00-19:00; 07-01..08-31' -> [{"from": "06-15", "to": "09-15",
-    "startHour": 11, "endHour": 19}, {"from": "07-01", "to": "08-31"}]. None if malformed.
+    """'06-15..09-15 11:00-19:00; 07-01..08-31; 06-01..09-30 sat,sun' -> [{"from": "06-15",
+    "to": "09-15", "startHour": 11, "endHour": 19}, {"from": "07-01", "to": "08-31"},
+    {"from": "06-01", "to": "09-30", "weekdays": [6, 7]}]. None if malformed.
+    Weekdays are ISO numbers (1 = Monday).
     Dates are inclusive month-day (a range may wrap over the new year); hours are the
     local hours covered, end exclusive (minutes round outwards)."""
     out = []
@@ -679,6 +729,11 @@ def parse_bans(text):
             if not (0 <= h1 < end <= 24):
                 return None
             ban["startHour"], ban["endHour"] = h1, end
+        if m.group(9):
+            names = m.group(9).split(",")
+            if any(n not in _WEEKDAYS for n in names):
+                return None
+            ban["weekdays"] = sorted({_WEEKDAYS.index(n) + 1 for n in names})
         out.append(ban)
     return out
 
@@ -719,7 +774,7 @@ def _read_csv(path):
             continue   # kept in the CSV for reference, never built
         r["bans"] = parse_bans(r.get("banned") or "")
         if r["bans"] is None:
-            raise SystemExit("%s: bad banned value %r (format: MM-DD..MM-DD [HH:MM-HH:MM]; ...)"
+            raise SystemExit("%s: bad banned value %r (format: MM-DD..MM-DD [HH:MM-HH:MM] [mon,...,sun]; ...)"
                              % (path, r.get("banned")))
         r["tide"] = r.get("tide") or ""
         if r["tide"] not in TIDE_RULES:
@@ -1066,12 +1121,9 @@ def main():
             problems.append("%s: no shore within %.0f m of %.5f,%.5f (%s)" % (
                 sid, MAX_SHORE_DIST, lat, lon, how))
             continue
-        notes = [r["notes"]] if r["notes"] else []
-        if o["R"] < 0.5:
-            notes.append("Irregular shoreline near the spot; orientation less certain.")
-        if o["wide"] is not None and angdiff(o["facing"], o["wide"]) > 25:
-            notes.append("Shoreline bends here (%.0f° locally vs %.0f° over ±1.5 km)." % (
-                o["facing"], o["wide"]))
+        # The CSV `notes` column is curation memory (sources, doubts, tips mixed together): it is
+        # not published. Riders saw remarks like "official source not found" (Ben, 11 Nov 2026).
+        # To show tips again, add a separate rider-facing column rather than exporting this one.
         nearby = sum(1 for k in kite_objs if haversine(o["lat"], o["lon"], k[0], k[1]) < 3000)
         spot = {
             "id": sid,
@@ -1082,7 +1134,6 @@ def main():
             "orientationSource": o["src"],
             "distanceToShoreM": round(o["dist"], 1),
             "source": "curated",
-            "notes": " ".join(notes) or None,
             "country": r["country"],
             "region": r["region"],
             "waterType": r["water"],
@@ -1242,7 +1293,18 @@ def main():
         ids.add(a["id"])
         for b in spots[i + 1:]:
             d = haversine(a["latitude"], a["longitude"], b["latitude"], b["longitude"])
-            if d < DUP_RADIUS:
+            if d >= DUP_RADIUS:
+                continue
+            # Sea and lagoon (or lake) launches a short walk apart are different spots:
+            # different water, different winds (e.g. Sète La Corniche vs Pont-Levis).
+            turn = abs((a["seaFacingDeg"] - b["seaFacingDeg"] + 180) % 360 - 180)
+            if a.get("waterType") != b.get("waterType"):
+                warnings.append("%s (%s) and %s (%s) are %.0f m apart: kept, different water"
+                                % (a["id"], a.get("waterType"), b["id"], b.get("waterType"), d))
+            elif turn >= DUP_FACING_DEG:
+                warnings.append("%s and %s are %.0f m apart: kept, beaches face %.0f° apart"
+                                % (a["id"], b["id"], d, turn))
+            else:
                 problems.append("%s and %s are only %.0f m apart" % (a["id"], b["id"], d))
 
     # report

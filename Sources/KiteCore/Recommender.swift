@@ -35,6 +35,13 @@ public struct SpotRecommendation: Sendable, Identifiable {
     public var scoreBeforeChance: Int? = nil
     /// Go / Worth a try / Long shot / No go, read off the final grade.
     public var kiteVerdict: KiteVerdict { KiteVerdict(grade: finalScore) }
+    /// Set when this spot would be a Go but the day is too far ahead to promise one: the grade
+    /// was a Go before the chance capped it. The app then says "Looks promising" (Ben, WHE-89).
+    public var goHeldBack: GoHeldBack? {
+        guard let why = chance?.goHeldBack, let before = scoreBeforeChance,
+              KiteVerdict(grade: before) == .go, kiteVerdict == .worthATry else { return nil }
+        return why
+    }
 
     /// For a "No go": the safety rule behind it, when there is one ("thunderstorm risk",
     /// "kiting banned", "dark", "offshore"), from the hours the score is made of.
@@ -43,6 +50,13 @@ public struct SpotRecommendation: Sendable, Identifiable {
         let slice = scoredHours.map { s in hours.filter { $0.wind.hour >= s.start && $0.wind.hour < s.end } } ?? hours
         let problem = Recommender.mainProblem(slice.isEmpty ? hours : slice)
         return ["thunderstorm risk", "kiting banned", "dark", "offshore"].contains(problem) ? problem : nil
+    }
+    /// True when an hour the score is made of (best window, else the scored hours) is
+    /// side-offshore and still scores: the app shows "Side-offshore: advanced only" (WHE-75).
+    public var hasSideOffshore: Bool {
+        let range = window ?? scoredHours
+        let slice = range.map { r in hours.filter { $0.wind.hour >= r.start && $0.wind.hour < r.end } } ?? hours
+        return slice.contains { $0.score > 0 && $0.flags.contains("side-offshore") }
     }
     /// Local hour (spot time) a thunderstorm is forecast to start, when it comes during the
     /// session or soon after it (`ScoringRules.stormAlertHoursAfter`): "Storm from 4 pm".
@@ -64,6 +78,23 @@ public struct SpotRecommendation: Sendable, Identifiable {
     public var suggestedKite: KiteRange? {
         guard let window else { return nil }
         return hours.first { $0.wind.hour >= window.start && $0.kite != nil }?.kite
+    }
+
+    /// Every kite of the quiver that works for the whole best window (the window's average wind
+    /// stays inside its range every hour), best first: the suggested kite, then the others by
+    /// how close the window's wind is to their sweet spot. Display only: scoring keeps using
+    /// the best kite per hour.
+    public func workingKites(in quiver: [KiteRange]) -> [KiteRange] {
+        guard let window else { return [] }
+        let winds = hours.filter { $0.wind.hour >= window.start && $0.wind.hour < window.end && $0.kite != nil }
+            .map(\.wind.speedKn)
+        guard !winds.isEmpty else { return [] }
+        let mean = winds.reduce(0, +) / Double(winds.count)
+        let suggested = suggestedKite
+        let others = quiver
+            .filter { k in k.size != suggested?.size && winds.allSatisfy { $0 >= k.minKn && $0 <= k.maxKn } }
+            .sorted { abs(mean - $0.optimalKn) / ($0.maxKn - $0.minKn) < abs(mean - $1.optimalKn) / ($1.maxKn - $1.minKn) }
+        return (suggested.map { [$0] } ?? []) + others
     }
 }
 
@@ -342,10 +373,12 @@ public struct Recommender: Sendable {
     }
 
     /// When nothing works on the searched day: the first of `days` with a spot scoring at least
-    /// `minimum` within the same drive and hours, from straight-line drive estimates. Uses the
-    /// forecasts the search already cached for the coming week, so it costs no extra calls.
+    /// `minimum` within the same drive and hours. A quick screen on the forecasts the search
+    /// already cached (straight-line drives, no model check) skips the flat days; a day that
+    /// passes is then confirmed with the full search (real drives, the models' chance cap), so
+    /// the card promises exactly what that day's search shows (WHE-136).
     public func nextGoodWindow(for request: SearchRequest, days: [String], profile: RiderProfile,
-                               minimum: Int) async -> (day: String, recommendation: SpotRecommendation)? {
+                               minimum: Int, today: String) async -> (day: String, recommendation: SpotRecommendation)? {
         let (reach, _) = reachable(from: request.origin, maxDriveMinutes: request.maxDriveMinutes,
                                    estimator: estimator, slack: 1)
         guard !reach.isEmpty, !days.isEmpty,
@@ -366,7 +399,12 @@ public struct Recommender: Sendable {
                 rec.stormFrom = Self.stormStart(rec, day: f.hours, searched: r.hours, rules: rules)
                 if best.map({ Self.ranks(rec, before: $0) }) ?? true { best = rec }
             }
-            if let best, best.finalScore >= minimum { return (day, best) }
+            guard let best, best.finalScore >= minimum else { continue }
+            if Task.isCancelled { return nil }
+            if let full = try? await search(r, profile: profile, today: today),
+               let top = full.recommendations.first, top.finalScore >= minimum {
+                return (day, top)
+            }
         }
         return nil
     }

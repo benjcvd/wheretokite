@@ -1,0 +1,741 @@
+{
+  "_doc": "Validation zones (France and Spain first, then Portugal, Italy and Morocco from 12 Nov, the rest of Europe against Windguru from 14 Nov). A spot belongs to the first zone whose regions list its CSV region and whose optional box [minLat, maxLat, minLon, maxLon] contains it. Owned by the Lead; status lives in status.csv. Method: README.md.",
+  "zones": [
+    {
+      "id": "es-catalunya",
+      "country": "ES",
+      "name": "Catalonia",
+      "regions": [
+        "Catalunya"
+      ]
+    },
+    {
+      "id": "es-valencia",
+      "country": "ES",
+      "name": "Valencia and Aragón",
+      "regions": [
+        "Comunitat Valenciana",
+        "Aragón"
+      ]
+    },
+    {
+      "id": "es-murcia-almeria",
+      "country": "ES",
+      "name": "Murcia, Almería and Granada",
+      "regions": [
+        "Murcia",
+        "Andalucía"
+      ],
+      "box": [
+        36.0,
+        38.5,
+        -3.9,
+        0.0
+      ]
+    },
+    {
+      "id": "es-strait",
+      "country": "ES",
+      "name": "Tarifa, the Strait and Málaga",
+      "regions": [
+        "Andalucía"
+      ],
+      "box": [
+        35.9,
+        36.8,
+        -5.8,
+        -3.9
+      ]
+    },
+    {
+      "id": "es-cadiz",
+      "country": "ES",
+      "name": "Cádiz coast (Rota to Caños de Meca)",
+      "regions": [
+        "Andalucía"
+      ],
+      "box": [
+        36.1,
+        36.8,
+        -6.6,
+        -5.8
+      ]
+    },
+    {
+      "id": "es-huelva",
+      "country": "ES",
+      "name": "Huelva",
+      "regions": [
+        "Andalucía"
+      ],
+      "box": [
+        36.8,
+        37.6,
+        -7.6,
+        -6.4
+      ]
+    },
+    {
+      "id": "es-balears",
+      "country": "ES",
+      "name": "Balearic Islands",
+      "regions": [
+        "Illes Balears"
+      ]
+    },
+    {
+      "id": "es-galicia",
+      "country": "ES",
+      "name": "Galicia",
+      "regions": [
+        "Galicia"
+      ]
+    },
+    {
+      "id": "es-north",
+      "country": "ES",
+      "name": "Asturias, Cantabria and the Basque Country",
+      "regions": [
+        "Asturias",
+        "Cantabria",
+        "País Vasco",
+        "Euskadi"
+      ]
+    },
+    {
+      "id": "es-canarias",
+      "country": "ES",
+      "name": "Canary Islands",
+      "regions": [
+        "Canarias"
+      ]
+    },
+    {
+      "id": "fr-roussillon",
+      "country": "FR",
+      "name": "Roussillon and Leucate",
+      "regions": [
+        "Roussillon",
+        "Languedoc"
+      ],
+      "box": [
+        42.4,
+        43.03,
+        2.9,
+        3.2
+      ]
+    },
+    {
+      "id": "fr-narbonne",
+      "country": "FR",
+      "name": "Narbonne, Gruissan to Agde, inland lakes",
+      "regions": [
+        "Languedoc"
+      ],
+      "box": [
+        43.03,
+        43.7,
+        1.5,
+        3.5
+      ]
+    },
+    {
+      "id": "fr-thau",
+      "country": "FR",
+      "name": "Étang de Thau and Sète",
+      "regions": [
+        "Languedoc"
+      ],
+      "box": [
+        43.3,
+        43.48,
+        3.5,
+        3.85
+      ]
+    },
+    {
+      "id": "fr-montpellier",
+      "country": "FR",
+      "name": "Montpellier coast to L'Espiguette",
+      "regions": [
+        "Languedoc"
+      ],
+      "box": [
+        43.45,
+        43.6,
+        3.85,
+        4.2
+      ]
+    },
+    {
+      "id": "fr-camargue",
+      "country": "FR",
+      "name": "Camargue and Provence",
+      "regions": [
+        "Camargue",
+        "Provence"
+      ]
+    },
+    {
+      "id": "fr-var",
+      "country": "FR",
+      "name": "Var and Côte d'Azur",
+      "regions": [
+        "Var",
+        "Côte d'Azur"
+      ]
+    },
+    {
+      "id": "fr-corse",
+      "country": "FR",
+      "name": "Corsica",
+      "regions": [
+        "Corse"
+      ]
+    },
+    {
+      "id": "fr-lakes",
+      "country": "FR",
+      "name": "Alpine and inland lakes",
+      "regions": [
+        "Alpes",
+        "Grand Est"
+      ]
+    },
+    {
+      "id": "fr-basque-landes",
+      "country": "FR",
+      "name": "Landes and Pays basque",
+      "regions": [
+        "Landes",
+        "Pays basque"
+      ]
+    },
+    {
+      "id": "fr-gironde",
+      "country": "FR",
+      "name": "Gironde and Arcachon",
+      "regions": [
+        "Gironde"
+      ]
+    },
+    {
+      "id": "fr-charente",
+      "country": "FR",
+      "name": "Charente-Maritime (Ré, Oléron, La Rochelle)",
+      "regions": [
+        "Charente-Maritime"
+      ]
+    },
+    {
+      "id": "fr-loire",
+      "country": "FR",
+      "name": "Pays de la Loire and Vendée",
+      "regions": [
+        "Pays de la Loire"
+      ]
+    },
+    {
+      "id": "fr-morbihan",
+      "country": "FR",
+      "name": "South Brittany (Lorient to Quiberon, Morbihan)",
+      "regions": [
+        "Bretagne"
+      ],
+      "box": [
+        47.0,
+        47.8,
+        -3.7,
+        -2.0
+      ]
+    },
+    {
+      "id": "fr-finistere-s",
+      "country": "FR",
+      "name": "South Finistère (Crozon to Bénodet)",
+      "regions": [
+        "Bretagne"
+      ],
+      "box": [
+        47.7,
+        48.3,
+        -4.7,
+        -3.7
+      ]
+    },
+    {
+      "id": "fr-finistere-n",
+      "country": "FR",
+      "name": "North Finistère and Brest",
+      "regions": [
+        "Bretagne"
+      ],
+      "box": [
+        48.3,
+        48.8,
+        -5.0,
+        -3.4
+      ]
+    },
+    {
+      "id": "fr-bretagne-ne",
+      "country": "FR",
+      "name": "North-east Brittany (Plérin to Saint-Malo)",
+      "regions": [
+        "Bretagne"
+      ],
+      "box": [
+        48.4,
+        48.8,
+        -3.4,
+        -1.5
+      ]
+    },
+    {
+      "id": "fr-cotentin",
+      "country": "FR",
+      "name": "Cotentin (Normandy west)",
+      "regions": [
+        "Normandie"
+      ],
+      "box": [
+        48.5,
+        50.0,
+        -2.0,
+        -1.0
+      ]
+    },
+    {
+      "id": "fr-normandie-e",
+      "country": "FR",
+      "name": "Calvados and Seine-Maritime (Normandy east)",
+      "regions": [
+        "Normandie"
+      ],
+      "box": [
+        49.0,
+        50.2,
+        -1.0,
+        1.6
+      ]
+    },
+    {
+      "id": "fr-opale-s",
+      "country": "FR",
+      "name": "Côte d'Opale south and Baie de Somme",
+      "regions": [
+        "Côte d'Opale",
+        "Baie de Somme"
+      ],
+      "box": [
+        50.0,
+        50.85,
+        1.0,
+        2.0
+      ]
+    },
+    {
+      "id": "fr-opale-n",
+      "country": "FR",
+      "name": "Côte d'Opale north (Wissant to Dunkirk)",
+      "regions": [
+        "Côte d'Opale"
+      ],
+      "box": [
+        50.85,
+        51.2,
+        1.5,
+        2.7
+      ]
+    },
+    {
+      "id": "pt-north-centro",
+      "country": "PT",
+      "name": "Portugal north and centre",
+      "regions": [
+        "Norte",
+        "Centro"
+      ]
+    },
+    {
+      "id": "pt-lisboa-madeira",
+      "country": "PT",
+      "name": "Lisbon area and Madeira",
+      "regions": [
+        "Lisboa",
+        "Madeira"
+      ]
+    },
+    {
+      "id": "pt-algarve",
+      "country": "PT",
+      "name": "Algarve",
+      "regions": [
+        "Algarve"
+      ]
+    },
+    {
+      "id": "it-sardegna",
+      "country": "IT",
+      "name": "Sardinia",
+      "regions": [
+        "Sardegna"
+      ]
+    },
+    {
+      "id": "it-south",
+      "country": "IT",
+      "name": "Southern Italy and Sicily",
+      "regions": [
+        "Puglia",
+        "Calabria",
+        "Sicilia",
+        "Campania",
+        "Basilicata",
+        "Lazio"
+      ]
+    },
+    {
+      "id": "it-north-centre",
+      "country": "IT",
+      "name": "Northern and central Italy, lakes",
+      "regions": [
+        "Lombardia",
+        "Trentino-Alto Adige",
+        "Veneto",
+        "Toscana",
+        "Liguria",
+        "Friuli-Venezia Giulia",
+        "Emilia-Romagna",
+        "Marche",
+        "Abruzzo"
+      ]
+    },
+    {
+      "id": "ma-all",
+      "country": "MA",
+      "name": "Morocco",
+      "regions": [
+        "Dakhla",
+        "Essaouira",
+        "Doukkala",
+        "Gharb",
+        "Souss-Massa",
+        "Tanger-Tétouan-Al Hoceïma"
+      ]
+    },
+    {
+      "id": "gr-islands",
+      "country": "GR",
+      "name": "Greek islands (Rhodes, Kos, Cyclades, Lemnos, Crete)",
+      "regions": [
+        "Rhodes",
+        "Kos",
+        "Karpathos",
+        "Naxos",
+        "Paros",
+        "Mykonos",
+        "Lemnos",
+        "Crete"
+      ]
+    },
+    {
+      "id": "gr-mainland",
+      "country": "GR",
+      "name": "Mainland Greece and Lefkada",
+      "regions": [
+        "Lefkada",
+        "Thessaloniki",
+        "Attica"
+      ]
+    },
+    {
+      "id": "de-north-sea-sh",
+      "country": "DE",
+      "name": "Germany: Sylt, St. Peter-Ording and the Schleswig-Holstein North Sea",
+      "regions": [
+        "Schleswig-Holstein"
+      ],
+      "box": [
+        53.8,
+        55.2,
+        7.5,
+        9.2
+      ]
+    },
+    {
+      "id": "de-baltic-sh",
+      "country": "DE",
+      "name": "Germany: Fehmarn, Kiel and the Schleswig-Holstein Baltic",
+      "regions": [
+        "Schleswig-Holstein"
+      ]
+    },
+    {
+      "id": "de-niedersachsen",
+      "country": "DE",
+      "name": "Germany: Lower Saxony coast and East Frisian islands",
+      "regions": [
+        "Niedersachsen"
+      ]
+    },
+    {
+      "id": "de-mv-bayern",
+      "country": "DE",
+      "name": "Germany: Rügen, Mecklenburg Baltic and Bavarian lakes",
+      "regions": [
+        "Mecklenburg-Vorpommern",
+        "Bayern"
+      ]
+    },
+    {
+      "id": "nl-zeeland",
+      "country": "NL",
+      "name": "Netherlands: Zeeland",
+      "regions": [
+        "Zeeland"
+      ]
+    },
+    {
+      "id": "nl-zuid-holland",
+      "country": "NL",
+      "name": "Netherlands: South Holland coast",
+      "regions": [
+        "Zuid-Holland"
+      ]
+    },
+    {
+      "id": "nl-noord-holland",
+      "country": "NL",
+      "name": "Netherlands: North Holland coast",
+      "regions": [
+        "Noord-Holland"
+      ]
+    },
+    {
+      "id": "nl-wadden",
+      "country": "NL",
+      "name": "Netherlands: Wadden Islands",
+      "regions": [
+        "Wadden Islands"
+      ]
+    },
+    {
+      "id": "nl-friesland-inland",
+      "country": "NL",
+      "name": "Netherlands: Friesland, Groningen, IJsselmeer and inland lakes",
+      "regions": [
+        "Friesland",
+        "Groningen",
+        "Flevoland",
+        "Gelderland"
+      ]
+    },
+    {
+      "id": "dk-all",
+      "country": "DK",
+      "name": "Denmark",
+      "regions": [
+        "Nordjylland",
+        "Thy",
+        "Vestjylland",
+        "Vadehavet",
+        "Østjylland",
+        "Sønderjylland",
+        "Sjælland"
+      ]
+    },
+    {
+      "id": "pl-all",
+      "country": "PL",
+      "name": "Poland (Hel peninsula and the Baltic)",
+      "regions": [
+        "Pomorskie"
+      ]
+    },
+    {
+      "id": "hr-me",
+      "country": "HR",
+      "name": "Croatia and Montenegro",
+      "regions": [
+        "Dubrovnik-Neretva",
+        "Zadar",
+        "Istria",
+        "Split-Dalmatia",
+        "Ulcinj"
+      ]
+    },
+    {
+      "id": "gb-south",
+      "country": "GB",
+      "name": "England: south coast (Kent to Dorset)",
+      "regions": [
+        "Kent",
+        "East Sussex",
+        "West Sussex",
+        "Hampshire",
+        "Isle of Wight",
+        "Dorset"
+      ]
+    },
+    {
+      "id": "gb-southwest",
+      "country": "GB",
+      "name": "England: Devon, Cornwall and Somerset",
+      "regions": [
+        "Devon",
+        "Cornwall",
+        "Somerset"
+      ]
+    },
+    {
+      "id": "gb-wales",
+      "country": "GB",
+      "name": "Wales",
+      "regions": [
+        "North Wales",
+        "Anglesey",
+        "Gwynedd",
+        "Ceredigion",
+        "Pembrokeshire",
+        "South Wales",
+        "Carmarthenshire",
+        "Gower"
+      ]
+    },
+    {
+      "id": "gb-east",
+      "country": "GB",
+      "name": "England: east coast (Essex to Lincolnshire)",
+      "regions": [
+        "Essex",
+        "Suffolk",
+        "Norfolk",
+        "Lincolnshire"
+      ]
+    },
+    {
+      "id": "gb-north-england",
+      "country": "GB",
+      "name": "England: the north (Yorkshire, Northumberland, Merseyside, Lancashire, Cumbria)",
+      "regions": [
+        "East Yorkshire",
+        "North Yorkshire",
+        "County Durham",
+        "Tyne and Wear",
+        "Northumberland",
+        "Merseyside",
+        "Lancashire",
+        "Cumbria"
+      ]
+    },
+    {
+      "id": "gb-scotland",
+      "country": "GB",
+      "name": "Scotland",
+      "regions": [
+        "East Lothian",
+        "Fife",
+        "Angus",
+        "Aberdeenshire",
+        "Moray",
+        "Caithness",
+        "Highland",
+        "Kintyre",
+        "Ayrshire",
+        "Tiree"
+      ]
+    },
+    {
+      "id": "ie-east-south",
+      "country": "IE",
+      "name": "Ireland: east and south coast, and Northern Ireland",
+      "regions": [
+        "Dublin",
+        "Meath",
+        "Wicklow",
+        "Wexford",
+        "Waterford",
+        "Cork",
+        "County Down",
+        "County Londonderry"
+      ]
+    },
+    {
+      "id": "ie-west",
+      "country": "IE",
+      "name": "Ireland: west coast (Kerry to Donegal)",
+      "regions": [
+        "Kerry",
+        "Clare",
+        "Galway",
+        "Mayo",
+        "Sligo",
+        "Donegal"
+      ]
+    },
+    {
+      "id": "be-all",
+      "country": "BE",
+      "name": "Belgium",
+      "regions": [
+        "Westkust",
+        "Oostkust"
+      ]
+    },
+    {
+      "id": "se-no",
+      "country": "SE",
+      "name": "Sweden and Norway",
+      "regions": [
+        "Halland",
+        "Skåne",
+        "Kalmar",
+        "Gotland",
+        "Rogaland",
+        "Agder"
+      ]
+    },
+    {
+      "id": "small-med-black-sea",
+      "country": "CY",
+      "name": "Cyprus, Malta, Bulgaria and Romania",
+      "regions": [
+        "Limassol",
+        "Larnaca",
+        "Malta",
+        "Varna",
+        "Dobrich",
+        "Constanța"
+      ]
+    },
+    {
+      "id": "baltic-finland",
+      "country": "LV",
+      "name": "Baltic states and Finland",
+      "regions": [
+        "Pärnumaa",
+        "Harjumaa",
+        "Klaipėda",
+        "Palanga",
+        "Rīga",
+        "Kurzeme",
+        "Satakunta",
+        "Pohjois-Pohjanmaa"
+      ]
+    },
+    {
+      "id": "central-lakes",
+      "country": "AT",
+      "name": "Austria, Switzerland, Hungary and Czech lakes",
+      "regions": [
+        "Burgenland",
+        "Graubünden",
+        "Uri",
+        "Vaud",
+        "Somogy",
+        "Jihomoravský"
+      ]
+    }
+  ]
+}

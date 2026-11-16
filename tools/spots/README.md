@@ -28,7 +28,7 @@ spots in the app.
   Spots kitable from several shores list one side per direction separated by `|`:
   `DIR:label[:water]`, e.g. `NW:North Sea side|SE:Grevelingen side:lake` (the first side's
   water must be the row's). Each hour is scored on the side where the wind works best.
-- `notes`: shown in the app. Tide dependence, seasonal bans / summer zones, level
+- `notes`: curation memory, **not published** since 11 Nov 2026 (internal remarks leaked into the app). Tide dependence, seasonal bans / summer zones, level
   (e.g. "waves, experienced riders"), access. Quote the field if it has a comma.
 - `sector` (optional, default 180): width in degrees of open water seen from the launch.
   180 = straight beach; < 180 = cove / narrow bay (side winds blow off the land);
@@ -38,7 +38,8 @@ spots in the app.
 - `banned` (optional): when kiting is NOT allowed (official bans, summer bathing zones), as
   `MM-DD..MM-DD [HH:MM-HH:MM]` rules separated by `;` — e.g. `06-15..09-15 11:00-19:00` (15 June
   to 15 September, 11 to 19 h) or `07-01..08-31` (all day in July–August). Ranges may wrap over
-  the new year (`11-01..02-28`). Those hours score 0 in the app. Keep the human explanation in
+  the new year (`11-01..02-28`). Add days of the week to limit a rule to them: `06-01..09-30 sat,sun`
+  (summer weekends, all day; quote the field, it has a comma); a public holiday is a one-day range (`08-15..08-15`). Those hours score 0 in the app. Keep the human explanation in
   `notes`. Only encode bans you are confident about.
 - `tide` (optional): when the spot works, for spots that genuinely depend on the tide
   (tidal flats, bays that dry out, shallow lagoons, sandbars that cover): `high` (around
@@ -68,8 +69,10 @@ What makes a spot "well known" (include it):
   describing a kite zone.
 - Kitesurfing allowed at least part of the year. Exclude spots banned all year. Mention
   seasonal bans / summer-only zones / permits in `notes`.
-- One row per launch that kiters treat as a separate spot. Launches less than 2 km apart
-  are one spot (the build rejects duplicates within 2 km); pick the main launch.
+- One row per launch that kiters treat as a separate spot. Launches less than 1 km apart,
+  on the same water and facing the same way, are one spot (the build rejects them); pick the
+  main launch. Launches on different water (sea and lagoon or lake), or whose beaches face
+  45° or more apart, are separate spots at any distance (the build keeps them with a warning).
 - Skip pure wave-surf beaches, harbours, and places only reachable by boat (downwinder
   destinations).
 

@@ -87,3 +87,5 @@ DE,Mecklenburg-Vorpommern,Usedom – Ückeritz (Achterwasser),sea,osm:w146732846
 DE,Bayern,Brombachsee,lake,osm:w171040640,,Großer Brombachsee: occasional afternoon thermals. Kiting April–June and September–November.,,,pro,07-01..08-31; 12-01..03-31
 # pro: cluster duplicate — Chiemsee, Übersee kept (one row is enough)
 DE,Bayern,Chiemsee – Chieming,lake,osm:n4236313681,W,"East shore, KBC kite club area: works in W–NW winds. Kiting only in the marked zone.",,,pro,
+# pro: 8 km from Zingst (kept) — Darß coast, kite school in Prerow (visit-mv.com Kiteschule Darss + Surfspot Prerow); Nordstrand inside the national park, check zoning
+DE,Mecklenburg-Vorpommern,Prerow,sea,osm:r11936863,N,"Baltic side of the Darß: moderate waves, good with E winds. Kite school in town; the park beach to the north has protected zones, ask locally.",,,pro,

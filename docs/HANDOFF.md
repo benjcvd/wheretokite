@@ -342,3 +342,112 @@ levels (this branch merges atlas/product). `GoPolicy` in `Sources/KiteCore/Chanc
 models-agree Go back to "Worth a try" beyond +3 days, with a reason in `KiteChance.goHeldBack` that
 the app doesn't show yet (needs a small Product card). Ben: all app logic must be global, no
 regional rules, so the Catalonia hold was removed.
+
+## Lead, 2 Nov evening: everything merged locally, TestFlight next
+
+All three workstreams are merged into local `main` (a2ba377). Ben's decisions today: WHE-80 ship nothing, WHE-86 dropped, WHE-81/88 models-agree with no Go beyond +3 days (global, no Catalonia rule), WHE-87 three-model mix, Palamós to Pro, WHE-59 approved. For spot facts Ben doesn't know: research online (Windy only as a visitor, to see which beach riders use; pins always from OSM, never copied from Windy, which Ben accepted), otherwise assume the worst. This is now in the Spot improvement role. Ben tested main on his iPhone ("looks clean"). Gotcha: Xcode kept building old copies of the project; they are renamed `*-OLD` and the only project is `atlas-dev/projects/wheretokite`. Install to the phone with `xcodebuild … -destination 'platform=iOS,name=Ben Iphone' -allowProvisioningUpdates` + `xcrun devicectl device install app`. Main has **not been pushed since 27 Oct**, so the bundled catalogue stays stale until the push and the CI rebuild. Next: WHE-75 (side-offshore, a safety rule, Product building it, Ben approves the angles), then push on Ben's word, then the TestFlight upload (WHE-70).
+
+**Lead, 2 Nov late.** Main pushed on Ben's word (128 commits); the catalogue CI rebuilt `Data/spots.json` (630 spots) and was pulled back. Ben approved the WHE-75 limits (0 from 100° unless the rider accepts side-offshore, advanced-only warning to 130°, 0 for all beyond); merged, 105/105 tests. The project now lives in `claude_projects/wheretokite`: if `swift test` complains about a module cache path from `atlas-dev`, delete `.build/arm64-apple-macosx/debug/ModuleCache`. The TestFlight archive is at `/tmp/wtk-whe70/WhereToKite.xcarchive`; the upload waits for Ben's OK (WHE-70). The WHE-75 merge is not pushed yet.
+
+**Lead, 3 Nov: France and Spain validation before launch.** Ben wants every French and Spanish spot checked by hand and compared with Windy before launch, slowly. Split into 30 zones of at most about 9 spots (`tools/spots/validation/zones.json`), one card each for Spot improvement. Method in `tools/spots/validation/README.md`; status per zone in `status.csv`; map from `python3 tools/validation_map.py` → `docs/validation_map.html`. Only Catalonia counted as validated (WHE-65/66/83/59/2). The old France audit of 8 Oct predates the sourced method, so it doesn't count. A zone becomes `validated` only when the Lead merges it; regenerate the map after each merge. WHE-68/69/92 were replaced; WHE-91 (Italy, Greece, Germany) is on hold.
+
+**Lead, where I stopped (3 Nov 17:30).** Main is ahead of GitHub by the WHE-75 merge and the docs/validation commits; push only on Ben's word. WHE-70: Ben uploads the TestFlight build himself from the Organizer archive "WhereToKite 03-11-2026 WHE-70" with `docs/TESTFLIGHT_UPLOAD.md`; close the card when he says it's live. Validation queue: WHE-67 (Roussillon) and Valencia and the Balearics zone cards are `ready` for Spot improvement; after merging each zone, set its `status.csv` line to `validated`, run `python3 tools/validation_map.py`, commit, and move the next 1–2 zone cards to `ready` (order: the rest of Spain and the Mediterranean, then the Atlantic going north, lakes last). Each ticket worktree starts from main at creation, so older ones need `git merge main` first.
+
+## France and Spain validation merged (5 Nov, Lead)
+- 22 zone cards merged into main locally (not pushed): Spain 164 spots, France 191 (Atlantic 133,
+  Med 58). Combined spot check clean. Held for Ben: WHE-79, WHE-92, WHE-108; still running:
+  WHE-101, WHE-117, WHE-124.
+- Rules settled this week: Windy-only markers go in as Pro unless a listed reason applies
+  (unrated ones need a local source, else archived); duplicates only under 1 km on the same
+  water and facing; the build falls back to curl when the system Python can't reach Overpass.
+- Merge gotcha: ticket branches overlap heavily (each starts from atlas/spot-improvement). On a
+  row conflict, keep the version from the zone that owns the row; union TO_CONFIRM sections.
+
+## Where the Lead stopped (6 Nov, 00:25)
+- Main has 137 commits not on GitHub (validation merge). My `git push` is blocked by the
+  permission guard: Ben runs it in Terminal (WHE-134). After the push, watch
+  `catalog-build.yml`, `git pull` its `Data/spots.json` commit, then propose the osm-cache refresh.
+- Ben's call (6 Nov): no TestFlight round. Ship v1.0 straight to the App Store; the Barcelona
+  riders test it informally. Order: WHE-77 (weekday bans, safety rule, Ben reviews) → fresh
+  archive → WHE-70 submit steps.
+- Still to merge: WHE-79 ticket branch (docs only, decision "ship nothing"), WHE-101 Huelva
+  (now on atlas/spot-improvement), WHE-117 Normandy east (review), WHE-124 when done.
+  Spot improvement was told to merge main into its branch first.
+- France Med spots is fully merged with no cards: Ben can archive it. France Atlantic spots
+  only holds WHE-108 (Tarnos question). Ben wants role classes instanced per ticket, not more
+  workstreams: new zone cards go to `spot-improvement`.
+- Check before marking a ticket merged: a ticket's commit can miss its CSV edits (WHE-115's
+  only had a stray file; Atlas later committed "remaining changes"). Compare the report and
+  the CSV, not just the branch.
+
+## Lead, 6 Nov: v1.0 archive ready, backlog tidied
+
+The validated France and Spain catalogue is on GitHub and live (751 spots). On 6 Nov, GitHub refused every git push for about half an hour ("fatal error in commit_refs", even for an empty branch) while its API worked. It cleared by itself, so if it happens again, just wait and retry. Bans can now name days of the week (WHE-77, `06-01..09-30 sat,sun`, the field must be quoted in the CSV): Castelldefels is closed on summer weekends and on 24 Jun, 15 Aug and 11 Sep. Its local holidays aren't known yet. Letty was fixed with an OSM pin on the UCPA (north shore) rather than a manual facing, which keeps the "positions from OSM only" rule intact. The catalogue build now cancels an older run when a newer push arrives, and it rebases before pushing. The osm-cache snapshot was refreshed the same day. The 1.0 archive (main 30498ab) is in Xcode's Organizer; Ben uploads and submits it (WHE-70), since Xcode can't use his Apple account from an agent session. The old docs/TODO.md is retired: its ideas are parked cards.
+
+## Lead, 9 Nov 00:25: 1.0 resubmitted, waiting for Apple
+
+On 6 Nov evening, "Next good window" was fixed (WHE-136): it now confirms a day with the full search, models' chance cap included. On 6 Nov the Product branch turned out to hold WHE-75 (tighter side-offshore rule) and WHE-89 ("Looks promising"), both marked done but never merged. They're merged now (bdfd577). Lesson: before any archive, run `git rev-list --count main..atlas/<id>` for every workstream and look at what isn't merged. Apple's 2.1 "Information Needed" on the 25 Oct submission was answered on 9 Nov with build 2 (bdfd577) and a screen recording. The reply text is in docs/APP_REVIEW_REPLY.md, and the version is now Waiting for Review, set to auto-release. Gotchas: uploading failed until Ben accepted Apple's new Program License Agreement; after edits, the resubmit button only turns on once "Update Review" has been clicked on the version page. The App Review Notes field is still empty (optional fix). Next: handle Apple's verdict; WHE-137 (message for start points outside coverage) is queued for 1.1 with Product.
+
+## Lead, 11 Nov: Ben's first-use feedback, an outside reviewer
+
+Ben used 1.0 and showed it to a kiter friend, whose verdict was "good, but almost too much information; focus more on the wind". That is now the standing direction for the spot page: one grade per spot, and the hour by hour shows wind (knots, gusts, direction, short warnings) with no grade per hour. Product has five cards queued from Ben's list (hour by hour, My hours editable on the home screen, every kite that works plus a kite switch on the chart, Google Maps directions, a full-screen spot map). They all touch the spot page, each in its own section, so expect small merge overlaps in `SpotDetailView.swift`. On "dynamic wind" on the map, the Lead's call is an arrow per hour and no animated flow: one forecast point per spot can't justify particles. The text at the bottom of a spot is the catalogue's curation note (`notes` in `Data/spots.json`, plus sentences the build appends such as "orientation less certain"); it leaks internal remarks, and 1.0 shows it. The app hides it from 1.1; whether to stop publishing it now for 1.0 riders waits on Ben (hazard tips would go with it). A new workstream, **App reviewer** (`.claude/agents/app-reviewer.md`), is an independent outside eye: read-only on product code, reports in `docs/review/`, and the Lead turns the findings Ben picks into cards. Its first report is the "wind first" review; a technical audit follows.
+
+**Lead, 11 Nov 22:40.** Ben picked "stop publishing the notes" (WHE-157): `build_spots.py` no longer exports the CSV `notes` column or its own "irregular shoreline" sentences; pushed on his pick and rebuilt by CI (751 spots, no notes, bans intact). The notes remain curation memory in the CSVs. If rider tips come back, they need their own rider-facing column. The 1.0 bundle still carries the old notes until a phone's first catalogue refresh.
+
+## Where the Lead stopped (11 Nov, 22:45)
+
+Main is on GitHub up to the catalogue rebuild without notes (1d94bc6); only handoff commits are local. Nothing from today's Product tickets is merged yet. Each sits on its own ticket branch (`atlas/t/whe-152` hour by hour, `whe-153` My hours, `whe-154` kite switch, `whe-155` Google Maps, `whe-156` full-screen map, `whe-160` offshore choice), all marked done, all touching the spot page in different sections: merge them one at a time, build after each, and expect small overlaps in `SpotDetailView.swift` and the string catalogues. Check what exists with `git branch -a --no-merged main` (remember the 6 Nov lesson: "done" doesn't mean merged). WHE-160 changes a safety rule and must not be merged until Ben approves the angles, the open one being 110° for intermediates who opt in ([proposal](OFFSHORE_SETTING.md)). WHE-155 added a line about Google to the privacy page, which only goes live with a Worker deploy, on Ben's word. Ben then tests the lot on his iPhone before anything is called 1.1.
+
+The App reviewer's technical audit ([report](review/2026-11-11-tech-audit.md), on `atlas/t/whe-159`, docs only) produced three cards Ben picked, now with the Lead: today's search ignores the clock (WHE-161, safety, first), the forecast server relays anything for anyone (WHE-162, before any paid Open-Meteo key), and report spam (WHE-163). They are meant for Product once the spot-page tickets are merged, to avoid more parallel edits. The "wind first" review (WHE-158) was still running: read its report when it lands and turn only the findings Ben picks into cards. Spot improvement still holds unmerged Huelva, Murcia and Normandy-east work on `atlas/spot-improvement`; Ben was offered zone cards for the UK and the Netherlands (the largest unvalidated countries) and hasn't answered. Apple's verdict on 1.0 is still pending.
+
+Gotchas: Atlas starts `ready` cards of one workstream in parallel on per-ticket branches, not one after the other, so don't queue cards that edit the same lines. `git push` worked for the Lead tonight. Ben's pick of an option whose text names the push counted as his word for that push only.
+
+## Lead, 11 Nov 23:00: audit follow-up, everything merged
+
+Ben asked for an outside audit (summary in chat). He picked: fix the clock bug (WHE-161), fix the server (domain WHE-3, Open-Meteo plan WHE-12, lockdown WHE-162), and stop work sitting unmerged (CI on every push, catalogue gate on phones). All workstream branches are merged into local main, including all 30 France/Spain zones now validated; Product's WHE-160 (offshore choice) is the one thing held back, waiting on Ben's angles: merge `atlas/product` only after he says yes. Main is not pushed: the push rebuilds the catalogue (new Basque, Landes, Huelva, Murcia, Normandy rows) and needs Ben's word. Product has four cards queued in parallel (clock, server lockdown, CI, catalogue gate) on separate files. On "done isn't merged": the Lead now runs `git rev-list --count main..<branch>` for every workstream at the end of each session, and CI will catch the rest. Open on Ben's side: willingness to pay (talk to riders first, then a trial), and storing "How was it?" answers so accuracy in Catalonia can be measured from real sessions.
+
+## Where the Lead stopped (12 Nov, 11:00)
+
+Main is pushed (catalogue rebuilt by CI to 772 spots, 60 with bans; osm-cache snapshot refreshed on Ben's OK). Ben's calls: Pro spots stay Pro (no "all spots free"); next spot priority Portugal → Italy → Morocco, now 7 zone cards (zones in `tools/spots/validation/zones.json`, map now covers PT/IT/MA). The two Portugal north/Lisbon cards were queued `ready`; feed the rest two at a time and merge each zone (set `validated` in status.csv, rerun `python3 tools/validation_map.py`). Product's branch `atlas/product` holds, unmerged on main: WHE-165 spot-list guard, WHE-161 clock fix, WHE-162 server lockdown, plus WHE-160 offshore choice (now redesigned as two beach-drawing cards, waiting on Ben's look). Merge the first three on their own (cherry-pick the ticket merge commits, or wait for Ben's yes on WHE-160 and merge the whole branch); WHE-162 needs a Worker deploy on Ben's word. Ben will buy the domain (WHE-3) and Open-Meteo plan (WHE-12) later. Open from the audit: willingness to pay (talk to riders, then a trial), storing "How was it?" answers as accuracy ground truth. An uncommitted Xcode-generated change sits in `App/WhereToKite/Localizable.xcstrings`: not ours, leave it or let Product commit it.
+
+## Lead, 14 Nov 15:05: report spam guard (WHE-163)
+
+Committed on main, not pushed or deployed. Cloudflare's rate limiter can't do "per hour" (60 s
+is the longest window), so the per-IP limit on reports is 2 a minute and the real guard is a
+global ceiling: the Worker counts today's `report` issues on GitHub before filing and stops at
+15 (fails closed if GitHub doesn't answer; the report is still in Workers Logs). The triage
+workflow now labels `triaging` before it counts, so a burst can't all slip under the cap.
+Goes live with a Worker deploy plus a push of main, both waiting on Ben's OK.
+
+## Lead, 15 Nov 22:45: spot push on hold, Windy passes queued
+
+Ben said **don't push yet**: wait until the spot work for the rest of Europe lands, then merge
+`atlas/spot-improvement` (35+ commits ahead), push, and deploy the report spam guard
+(WHE-163, commit 2cd278e) in one go. Before pushing, rerun spot-check on NL.csv and DE.csv
+(Overpass was down during WHE-180 and WHE-206).
+Benchmark: Windy is the standard. The 14 Nov Windguru zones found almost no kite-tagged
+spots, so Greece, Germany and the Netherlands got Windy follow-up cards (WHE-201 to 208 plus
+North Holland and Wadden); WHE-183 Friesland was switched to Windy. The remaining Windguru
+cards (Denmark onwards) should switch to Windy too: Ben was asked but hasn't answered.
+Turkey added (WHE-200, 4 spots); it still needs a zone in zones.json. Albania is the only
+real European gap (asked Ben; no answer).
+Gotcha: Ben moves cards to done himself; trust the board's column, not the "tell the Lead
+to merge" line in notes. PT/IT/MA cards (WHE-166 to 172) are done = approved (asked Ben to
+confirm): set their zones to `validated` in status.csv at merge.
+
+## Lead, 16 Nov 00:20: every spot free, doubtful ones archived
+Ben decided that spots are no longer a Pro feature: the free plan will show every active spot
+(316 basic + 456 pro today; free users saw only 41 %, 22 % in Spain). Pro will sell features
+(range, 7 days, next window, weights, alerts), not spots. The `tier` column stays in the data and
+the gate stays a switch. Doubtful pro rows (no source, club/permit, banned or tolerated, no launch,
+minor lake) move to `archived`, so they never ship. Sweeps run per area (FR Atlantic, FR Med, Spain,
+rest); Product flips the free plan and checks the 150-location server limit and Open-Meteo load.
+Trigger: Cayeux had been hidden as a "duplicate" of Le Crotoy although it works at the opposite tide.
+Also built the Product branch onto Ben's iPhone (15 Nov, not merged to main yet).
+
+**Forecast accuracy, 16 Nov (WHE-57).** Each spot now knows which models are behind its hours
+(`SpotRecommendation.forecastSource`, e.g. "AROME 1.3 km · ECMWF 9 km · GFS"); the app caption
+next to the confidence badge is still to do (App). Météo-France seamless hides which model it
+uses: measured, it's AROME HD up to now + ~43 h inside AROME's footprint, ARPEGE 11 km after that
+and outside it. The footprint is irregular, so `tools/backtest/arome_coverage.py` writes a
+per-spot list; re-run it when spots are added (new spots read "Météo-France" until then).

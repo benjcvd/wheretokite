@@ -6,7 +6,7 @@ import Foundation
 public enum KiteVerdict: String, Sendable, CaseIterable {
     /// Everything lines up: expect a good session.
     case go = "Go"
-    /// Looks promising, but the forecast can still shift.
+    /// Could work, but the forecast can still shift.
     case worthATry = "Worth a try"
     /// Probably not enough, but there's an outside chance.
     case longShot = "Long shot"
