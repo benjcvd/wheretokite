@@ -62,6 +62,8 @@ Our spots with no Windguru point I could see: Breskens – Oost, Baarland, Pauli
 
 Windy kite markers hovered at zoom 10 on `windy.com/?51.62,3.75,10,p:kitespots`, Cadzand to the Brouwersdam and east to Bergen op Zoom. 16 markers in or next to the zone: 13 in Zeeland proper, 3 on the South Holland side of the Grevelingen (Ouddorp, Vuurtoren, Herkingen: South Holland zone, WHE-208). Belgian coast markers ignored (not our zone).
 
+Build: spot-check on the 13 live Zeeland rows, exit 0, no PROBLEMS; the only disagreement is Vrouwenpolder (see top). Both new pins face SW (hint set to SW).
+
 Counts: Windy 13 in zone → matched to an existing row 9 (Brouwersdam, Neeltje Jans, Vrouwenpolder, Roompot, Domburg, Cadzand Bad, Borssele, Oesterdam, Grevelingendam), added as Pro 2, left out 2. Our rows: 15 → 17 (free 6, Pro 8, archived 3); live 12 → 14.
 
 | Windy marker (stars) | Ours |
