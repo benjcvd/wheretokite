@@ -4251,6 +4251,23 @@
         }
       }
     },
+    "Rides upwind, turns, first jumps" : {
+      "comment" : "Level description",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciñe, hace viradas, primeros saltos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remonte au vent, transitions, premiers sauts"
+          }
+        }
+      }
+    },
     "Ruled out" : {
       "comment" : "Chart legend: storm, dark, offshore, ban or tide",
       "localizations" : {
@@ -4956,6 +4973,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "plage droite"
+          }
+        }
+      }
+    },
+    "Strong gusty wind, jumps, waves" : {
+      "comment" : "Level description",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viento fuerte y racheado, saltos, olas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent fort et rafaleux, sauts, vagues"
           }
         }
       }
@@ -5806,6 +5840,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Affichage"
+          }
+        }
+      }
+    },
+    "Water-starts, short runs, not upwind yet" : {
+      "comment" : "Level description",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waterstart, bordos cortos, aún sin ceñir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waterstart, petits bords, pas encore de remontée au vent"
           }
         }
       }

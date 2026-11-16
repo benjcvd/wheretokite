@@ -76,7 +76,7 @@ struct ResultsSection: View {
                     .foregroundStyle(.orange)
             }
 
-            if let visit = feedback.due {
+            if FeedbackStore.promptEnabled, let visit = feedback.due {
                 FeedbackCard(visit: visit, answer: { feedback.answer($0) })
             }
 

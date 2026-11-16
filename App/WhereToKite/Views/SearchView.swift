@@ -214,7 +214,7 @@ private struct SlotPicker: View {
 
     var body: some View {
         HStack(spacing: 4) {
-            ForEach(SessionSlot.allCases, id: \.self) { slot in
+            ForEach(SessionSlot.appChoices, id: \.self) { slot in
                 let on = options.slot == slot
                 let editable = on && slot == .custom
                 Button {
@@ -222,7 +222,7 @@ private struct SlotPicker: View {
                 } label: {
                     let hours = slot == .custom ? options.customHours : slot.hours
                     VStack(spacing: 1) {
-                        // Five across: names only (the icons would push them to "Mor…").
+                        // Four across: names only (the icons would push them to "Mor…").
                         Text(slot.label)
                             .font(.subheadline.weight(.semibold))
                             .lineLimit(1)

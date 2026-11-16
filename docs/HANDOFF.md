@@ -421,3 +421,7 @@ Ben asked for an outside audit (summary in chat). He picked: fix the clock bug (
 ## Product: every spot free (16 Nov, WHE-215)
 
 Ben made every active spot free. `Entitlements.free.proSpots` is now true; the switch and the `tier` field stay so a later plan can bring the gate back. Worst case at 180 min is 95 spots in reach (Nantes), under the app's 100-per-request batch and the server's 150 cap, so nothing had to be split. The cost is Open-Meteo quota: about 3× more locations per uncached search, which makes WHE-12 and WHE-3 (shared cache) more pressing at launch. Store text says "more than 600 spots": recheck once the archiving cards land.
+
+## Product, 16 Nov: WHE-216 search trim (review)
+
+The app now offers four sessions (Evening left the app, the engine keeps it for the CLI; a saved Evening becomes My hours 17–20). The "How was it?" card is switched off, not deleted (`FeedbackStore.promptEnabled`). The offshore picture cards finally look different, and each level carries one line on what the rider can do: Ben still has to OK that wording. Installed on his iPhone.

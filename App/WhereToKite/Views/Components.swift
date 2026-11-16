@@ -274,6 +274,15 @@ extension Level {
         }
     }
 
+    /// What a rider at this level can do, shown under the level choice (WHE-216, wording: Ben).
+    var skills: String {
+        switch self {
+        case .beginner: String(localized: "Water-starts, short runs, not upwind yet", comment: "Level description")
+        case .intermediate: String(localized: "Rides upwind, turns, first jumps", comment: "Level description")
+        case .advanced: String(localized: "Strong gusty wind, jumps, waves", comment: "Level description")
+        }
+    }
+
     var symbol: String {
         switch self {
         case .beginner: "figure.walk"
