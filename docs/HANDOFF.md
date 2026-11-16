@@ -418,3 +418,29 @@ global ceiling: the Worker counts today's `report` issues on GitHub before filin
 15 (fails closed if GitHub doesn't answer; the report is still in Workers Logs). The triage
 workflow now labels `triaging` before it counts, so a burst can't all slip under the cap.
 Goes live with a Worker deploy plus a push of main, both waiting on Ben's OK.
+
+## Lead, 15 Nov 22:45: spot push on hold, Windy passes queued
+
+Ben said **don't push yet**: wait until the spot work for the rest of Europe lands, then merge
+`atlas/spot-improvement` (35+ commits ahead), push, and deploy the report spam guard
+(WHE-163, commit 2cd278e) in one go. Before pushing, rerun spot-check on NL.csv and DE.csv
+(Overpass was down during WHE-180 and WHE-206).
+Benchmark: Windy is the standard. The 14 Nov Windguru zones found almost no kite-tagged
+spots, so Greece, Germany and the Netherlands got Windy follow-up cards (WHE-201 to 208 plus
+North Holland and Wadden); WHE-183 Friesland was switched to Windy. The remaining Windguru
+cards (Denmark onwards) should switch to Windy too: Ben was asked but hasn't answered.
+Turkey added (WHE-200, 4 spots); it still needs a zone in zones.json. Albania is the only
+real European gap (asked Ben; no answer).
+Gotcha: Ben moves cards to done himself; trust the board's column, not the "tell the Lead
+to merge" line in notes. PT/IT/MA cards (WHE-166 to 172) are done = approved (asked Ben to
+confirm): set their zones to `validated` in status.csv at merge.
+
+## Lead, 16 Nov 00:20: every spot free, doubtful ones archived
+Ben decided that spots are no longer a Pro feature: the free plan will show every active spot
+(316 basic + 456 pro today; free users saw only 41 %, 22 % in Spain). Pro will sell features
+(range, 7 days, next window, weights, alerts), not spots. The `tier` column stays in the data and
+the gate stays a switch. Doubtful pro rows (no source, club/permit, banned or tolerated, no launch,
+minor lake) move to `archived`, so they never ship. Sweeps run per area (FR Atlantic, FR Med, Spain,
+rest); Product flips the free plan and checks the 150-location server limit and Open-Meteo load.
+Trigger: Cayeux had been hidden as a "duplicate" of Le Crotoy although it works at the opposite tide.
+Also built the Product branch onto Ben's iPhone (15 Nov, not merged to main yet).
