@@ -41,11 +41,14 @@ IT,Sardegna,Cagliari – Petrol Beach,sea,osm:w589672450,SE,"The summer kite spo
 IT,Sardegna,La Caletta (Siniscola),sea,osm:n648866767,E,"East coast: SE thermal late spring to late summer, plus east winds; kite zone with launch corridor and two schools (Kitesurf La Caletta and Active Kite).",,,pro,
 IT,Sardegna,Villasimius – Campulongu,sea,osm:w367206115,SSW,"Winter spot (Oct–May): W-SW wind at Campulongu, rocks here and there, narrow beach; Porto Giunco next door works with NE. In high season only with a lift service (Sardegna Turismo).",,,pro,
 IT,Sardegna,Capo Mannu,sea,osm:n5375888619,W,"Big wave spot on the Sinis cape: strong mistral (NW) after a few days of wind, shared with surfers, no sandy exit. Experts only. School: Capo Mannu Kite School.",,,pro,
-IT,Sardegna,Porto Pino,sea,osm:w137708402,SSE,"South-west dune beach: mistral side-off and libeccio, gusty near the dunes. Summer: no open kiting (swimmers); the school at Lido Oasi Azzurra has an authorised zone for its guests (1 Jun–30 Sep).",,,pro,
-IT,Sardegna,Chia,sea,osm:w137839773,S,"South coast sand beaches: SE and NW work, waves and chop. Crowded June–September, no kite zone, so a lift or boat is needed in summer; school on site.",,,pro,
+# archived: no open kiting in summer (swimmers); only the school's guests have an authorised zone (WHE-214, 16 Nov 2026)
+IT,Sardegna,Porto Pino,sea,osm:w137708402,SSE,"South-west dune beach: mistral side-off and libeccio, gusty near the dunes. Summer: no open kiting (swimmers); the school at Lido Oasi Azzurra has an authorised zone for its guests (1 Jun–30 Sep).",,,archived,
+# archived: no kite zone in summer, needs a lift or boat (WHE-214, 16 Nov 2026)
+IT,Sardegna,Chia,sea,osm:w137839773,S,"South coast sand beaches: SE and NW work, waves and chop. Crowded June–September, no kite zone, so a lift or boat is needed in summer; school on site.",,,archived,
 IT,Sardegna,Vignola Mare,sea,osm:w119142991,N,"Far north: the steadiest wind on the north shore (W or E–NE); small kite area, rocks both sides, crowded July–August (keep 100 m from swimmers). Vignola Sports school; Blue Zone courses suspended.",,,pro,
 IT,Sardegna,Valledoria – La Foce,sea,osm:w119752405,NW,"River mouth lagoon (flat) with chop and waves at sea; W best then NE, thermal 14–25 kn in summer. Safe entry and exit; school and shop on site.",,,pro,
-IT,Sardegna,Funtana Meiga,sea,osm:w72445524,W,"Sinis beach used when Capo Mannu is too big: mistral above about 25–30 kn. Wave spot, experienced riders; no school found.",,,pro,
+# archived: backup for Capo Mannu 10 km rule, no school found (WHE-214, 16 Nov 2026)
+IT,Sardegna,Funtana Meiga,sea,osm:w72445524,W,"Sinis beach used when Capo Mannu is too big: mistral above about 25–30 kn. Wave spot, experienced riders; no school found.",,,archived,
 # pro: Windy marker (5 stars), WHE-170 — several schools on the spit (NewKiteZone, Kiteloop, SeaWind, Sway), Visit Reggio Calabria guide (Oct 2026)
 IT,Calabria,Punta Pellaro,sea,osm:w448166364,NNW,"Sandy spit at the southern tip of Reggio Calabria on the Strait of Messina: north to NNW wind, steadier from spring to summer with the thermal (May to August strongest). Current of 1-2 knots, typical of the strait. Several schools on site.",,,pro,
 # pro: Windy marker (5 stars), WHE-170 — Gargano north coast; schools Gargano Kitesurf School and SurfConcept, Let's Kite guide
@@ -64,7 +67,8 @@ IT,Puglia,Gallipoli – Lido Pizzo,sea,osm:n7522558069,N,"Ionian coast near Gall
 IT,Puglia,Marina di Lesina – Acquarotta,sea,osm:n11775800619,N,"Adriatic beach at the mouth of Lake Lesina: sea side with waves in north wind, intermediate, April to September. The lake behind is flat, shallow and kite-school access only (beginners).",,,pro,
 # pro: Windy kite marker, local school or guide source, WHE-171 (14 Nov 2026)
 IT,Toscana,Marina di Grosseto,sea,osm:r11309857,SSW,"Long sandy beach by the Oasi San Felice, probably Tuscany's best-known kite spot: SW and NW winds, mostly April to September. Kitesurf Grosseto, Kite's Angels Beach and PSK schools on the coast. Pin is the Le Marze beach next to the oasis, not checked against the exact school launch.",,,pro,
-IT,Toscana,Lillatro (Rosignano Solvay),sea,osm:n877041130,WSW,"White beaches by the Circolo Nautico Lillatro at the north side of the bay; works from maestrale to south-east. KiteWell school at the Lillatro beach resort in summer.",,,pro,
+# archived: beach reached through the Circolo Nautico / beach resort, school only in summer (WHE-214, 16 Nov 2026)
+IT,Toscana,Lillatro (Rosignano Solvay),sea,osm:n877041130,WSW,"White beaches by the Circolo Nautico Lillatro at the north side of the bay; works from maestrale to south-east. KiteWell school at the Lillatro beach resort in summer.",,,archived,
 IT,Toscana,Puntone di Scarlino (Follonica),sea,osm:n4936530696,W,"Gulf of Follonica, Surf Relax kite school on the beach (OSM kitesurfing centre). Several guides list Puntone and Follonica among Tuscany's kite spots.",,,pro,
 IT,Veneto,Sottomarina (Chioggia),sea,osm:w618029043,E,"One of the most used spots in Veneto: bora gives waves, scirocco steadier wind, flatter water in the lee of the breakwater. Equipped beaches with kite courses (Scuola Kite Otto, Kitesurf Italia). Summer bathing rules apply: check locally.",,,pro,
 IT,Veneto,Caorle – Spiaggia di Levante,sea,osm:r18735335,SE,"East beach of Caorle, quiet early in the season. Scuola Kite Otto and VKC teach at Caorle; Wannakitesurf lists the eastern beach. Summer bathing rules apply: check locally.",,,pro,

@@ -10,7 +10,8 @@ PT,Lisboa,Alcochete,sea,osm:w255048764,W,"Flat, shallow water on the Tagus estua
 PT,Lisboa,Lagoa de Albufeira,lagoon,osm:w8136034,N,"Flat-water lagoon behind the sandbar; school on site (Meira Pro Center); too shallow at low tide and in dry summers, deeper on the east side. Watch for swimmers in summer.",,not-low,,
 PT,Algarve,Lagos – Meia Praia,sea,osm:w1245391449,SE,"Long sandy bay east of Lagos with kite schools on the beach. Works in thermal S, SE and E winds (waves build with swell from SW to SE). The usual summer N wind (Nortada) blows offshore: beginners only with school cover, otherwise very experienced riders.",,,,
 PT,Algarve,Alvor,lagoon,osm:w143915392,W,"Ria de Alvor: flat, mostly waist-deep lagoon; schools run a boat from Alvor to a sandbar in the lagoon, others walk a boardwalk from the beach car park. NW thermal, gusty near the edges; water from mid tide. Submerged hazards and currents in the channels.",,not-low,,
-PT,Algarve,Praia de Faro,sea,osm:r12567393,S:ocean side|N:Ria Formosa side:lagoon,"Ilha de Faro: waves on the ocean, flat water in the Ria Formosa (tide matters). No kite school found here (only surf schools). Kiting in the Ria Formosa park is zoned by the nature authority (ICNF), the navy once banned it, and some zones need the harbour master (Capitania de Faro) approval: ask before riding. Also: Fuseta, Cabanas de Tavira.",,,pro,
+# archived: no kite school; Ria Formosa zoned by the nature authority, navy ban in the past, harbour master approval needed (WHE-214, 16 Nov 2026)
+PT,Algarve,Praia de Faro,sea,osm:r12567393,S:ocean side|N:Ria Formosa side:lagoon,"Ilha de Faro: waves on the ocean, flat water in the Ria Formosa (tide matters). No kite school found here (only surf schools). Kiting in the Ria Formosa park is zoned by the nature authority (ICNF), the navy once banned it, and some zones need the harbour master (Capitania de Faro) approval: ask before riding. Also: Fuseta, Cabanas de Tavira.",,,archived,
 PT,Algarve,Manta Rota,sea,osm:w79504187,S,"Long sandy beach in the east Algarve: SW thermal or E Levante, mostly flat to small waves; school (AlturaKites). Also: Cacela Velha.",,,,
 PT,Madeira,Porto Santo,sea,osm:w142721877,S,"9 km beach; N wind is side-offshore and gusty in summer, no lifeguard: experienced riders only. Flat with chop in N wind, waves in E to S wind. Madeira tourism lists Porto Santo as a kite area; lessons are offered on the island.",,,,
 
@@ -26,7 +27,8 @@ PT,Algarve,Fuseta (Ria Formosa),lagoon,osm:w78427662,S,"Lagoon: flat water, work
 # pro: secondary Ria Formosa spot (13 km east of Fuseta) — school with a marked 300 m kite area on Ilha de Cabanas
 PT,Algarve,Cabanas de Tavira,sea,osm:w79509901,S,"Ilha de Cabanas (short boat ride from the village): school with a marked kite area. The lagoon side works only around high tide.",,,pro,
 # pro: Porto's city beach — 2 sources (wannakitesurf, kite-and-windsurfing-guide); summer ban reported by guides, no official source found
-PT,Norte,Matosinhos,sea,osm:w338635402,W,"Porto's city beach, south of the harbour wall: chop and small waves, best in S winds; water quality can be poor. Two guides report kiting banned in summer, no official text found, so no ban is encoded. Mid to low tide is best, shorebreak at high tide.",,,pro,
+# archived: two guides report kiting banned in summer (no official text), poor water quality (WHE-214, 16 Nov 2026)
+PT,Norte,Matosinhos,sea,osm:w338635402,W,"Porto's city beach, south of the harbour wall: chop and small waves, best in S winds; water quality can be poor. Two guides report kiting banned in summer, no official text found, so no ban is encoded. Mid to low tide is best, shorebreak at high tide.",,,archived,
 # pro: wave spot between Peniche and Ericeira — 2 sources (unplug-kitesurf, kiteforum); intermediate to expert
 PT,Lisboa,Santa Cruz,sea,osm:w25695668,W,"Long beach with waves in the N nortada (May–Sep); rocks in the water, especially to the south: intermediate to expert riders.",,,pro,
 # pro: Windy 5 stars; kiteforum (N–NW, flat water on the Douro bank, ships and the mole) — WHE-166
@@ -34,23 +36,30 @@ PT,Norte,Foz do Douro – Cabedelo,sea,osm:w1224542321,W,"Sand spit at the Douro
 # pro: Windy 4 stars; guide (S–SW only, launch left of the south breakwater) — WHE-166
 PT,Norte,Vila Praia de Âncora,sea,osm:r4830178,W,"Works in S to SW winds only (houses block the nortada); launch left of the south breakwater, a few rocks at the river mouth. Waves less clean than at Moledo.",,,pro,
 # pro: Windy 3 stars; one guide (works in both usual winds, not popular) — WHE-166
-PT,Centro,Furadouro,sea,osm:w440122681,W,"Between two breakwaters, kiteable in both usual winds but few riders. Heavy shorebreak and strong currents at high tide in winter storms.",,,pro,
+# archived: few riders, heavy shorebreak, no reputation (WHE-214, 16 Nov 2026)
+PT,Centro,Furadouro,sea,osm:w440122681,W,"Between two breakwaters, kiteable in both usual winds but few riders. Heavy shorebreak and strong currents at high tide in winter storms.",,,archived,
 # pro: Windy 3 stars; wannakitesurf and a guide, OSM kitesurfing pitches nearby — WHE-166
 PT,Centro,Aveiro – Estacas (Costa Nova ria),lagoon,osm:w355335635,E,"Shallow lagoon: nortada thermal (16–25 kn) builds through the afternoon, current 1–2 kn, deeper at high tide, sandy bottom; also works in S and W. Launch Estacas, or Biarritz by the bridge for easterlies; wear shoes (shells).",,,pro,
 # pro: Windy 2 stars; one guide (needs strong nortada and swell, few locals) — WHE-166
-PT,Centro,Praia da Vieira,sea,osm:r6196011,W,"Needs a strong nortada with swell: high jumps and short wave rides. Heavy shorebreak at high tide, only a few locals.",,,pro,
+# archived: only a few locals, heavy shorebreak (WHE-214, 16 Nov 2026)
+PT,Centro,Praia da Vieira,sea,osm:r6196011,W,"Needs a strong nortada with swell: high jumps and short wave rides. Heavy shorebreak at high tide, only a few locals.",,,archived,
 # pro: Windy kite marker (WHE-167) — official kite beach of Costa da Caparica (kite-and-windsurfing-guide, kiteforum, unplug); Boarder Club school
 PT,Lisboa,Costa da Caparica – Nova Vaga,sea,osm:w222678470,W,"The official kite beach of Costa da Caparica, with a kite school. Guides say the lifeguards send kiters off the other town beaches, so launch here. Nortada side-shore, waves. No official notice found: check with the school or the Lisbon port authority.",,,pro,
 # pro: Windy kite marker (WHE-167) — listed by unplug, kiteforum and kite-and-windsurfing-guide; dirty water and kite rules unclear
-PT,Lisboa,Costa da Caparica – Cova do Vapor,sea,osm:w222122955,W,"Northern end of the Costa da Caparica beaches, on the Tagus mouth: kite guides list it, but the sand and water are reported dirty and Nova Vaga is the official kite beach, so ask a school before riding here. Waves in winter swells.",,,pro,
+# archived: dirty water, Nova Vaga is the official kite beach, a school says ask first (WHE-214, 16 Nov 2026)
+PT,Lisboa,Costa da Caparica – Cova do Vapor,sea,osm:w222122955,W,"Northern end of the Costa da Caparica beaches, on the Tagus mouth: kite guides list it, but the sand and water are reported dirty and Nova Vaga is the official kite beach, so ask a school before riding here. Waves in winter swells.",,,archived,
 # pro: Windy kite marker (WHE-167) — visitportugal (official tourism) and wannakitesurf; kite-and-windsurfing-guide says it works mainly in winter
-PT,Lisboa,Carcavelos,sea,osm:w157464438,S,"Big city beach near Lisbon, a spot for kite and windsurf per Portugal tourism. One guide says the summer nortada is gusty and offshore here, so it works mostly in winter. Busy with surfers. No kite school on the beach.",,,pro,
+# archived: wind mostly offshore in summer, no school, one guide only (WHE-214, 16 Nov 2026)
+PT,Lisboa,Carcavelos,sea,osm:w157464438,S,"Big city beach near Lisbon, a spot for kite and windsurf per Portugal tourism. One guide says the summer nortada is gusty and offshore here, so it works mostly in winter. Busy with surfers. No kite school on the beach.",,,archived,
 # pro: Windy kite marker "Oeiras" (WHE-167) — Time Out Lisboa (room for kitesurf), kite guide listings
-PT,Lisboa,Oeiras – Santo Amaro,sea,osm:w180126358,S,"Oeiras's largest beach (about 700 m of sand), between Carcavelos and Paço de Arcos; Time Out Lisboa says there is room for kitesurf. Waves, busy with surfers and bathers in summer. No kite school found.",,,pro,
+# archived: no school found, one list mentions it (WHE-214, 16 Nov 2026)
+PT,Lisboa,Oeiras – Santo Amaro,sea,osm:w180126358,S,"Oeiras's largest beach (about 700 m of sand), between Carcavelos and Paço de Arcos; Time Out Lisboa says there is room for kitesurf. Waves, busy with surfers and bathers in summer. No kite school found.",,,archived,
 # pro: Windy kite marker (WHE-167) — kite-and-windsurfing-guide (Comporta page); one source
-PT,Lisboa,Comporta,sea,osm:w208100412,W,"Wide sandy beach south of Tróia: flat and light wind in summer, bigger waves with SW wind in winter. One kite guide only, no school found.",,,pro,
+# archived: one kite guide only, no school found (WHE-214, 16 Nov 2026)
+PT,Lisboa,Comporta,sea,osm:w208100412,W,"Wide sandy beach south of Tróia: flat and light wind in summer, bigger waves with SW wind in winter. One kite guide only, no school found.",,,archived,
 # pro: Windy kite marker "Praia Formosa" (WHE-167) — Visit Madeira / Visit Portugal list Funchal bay, Praia Formosa and Porto Santo as kite areas
-PT,Madeira,Funchal – Praia Formosa,sea,osm:w162445881,S,"Madeira's largest public beach, a pebble and black-sand stretch west of Funchal. Madeira tourism lists it as a kite area. A busy bathing beach: no school or local rules found, ask locally.",,,pro,
+# archived: busy bathing beach, no school or local rules found (WHE-214, 16 Nov 2026)
+PT,Madeira,Funchal – Praia Formosa,sea,osm:w162445881,S,"Madeira's largest public beach, a pebble and black-sand stretch west of Funchal. Madeira tourism lists it as a kite area. A busy bathing beach: no school or local rules found, ask locally.",,,archived,
 # pro: Windy marker (4 stars); Unplug + Kiteforum + a lessons page — far east Algarve, Levante and SW thermal
 PT,Algarve,Altura,sea,osm:w79503985,S,"Long sandy beach in the far east Algarve: SW thermal in summer (May to September, 12-20 knots) and Levante (E) in winter. Chop, no big waves; intermediate and up, lessons on the beach. In summer launch past the crowded bathing area (about 400 m east of the concession). Lifeguards on site.",,,pro,
 # pro: Windy marker (4 stars); one spot guide (kite-and-windsurfing-guide) — works in summer westerlies, no school found

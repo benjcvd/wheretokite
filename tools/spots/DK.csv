@@ -12,8 +12,10 @@ DK,Vestjylland,Bork Havn,lagoon,osm:w614716490,N,"South end of Ringkøbing Fjord
 DK,Vadehavet,Fanø – Rindby,sea,osm:n4408174136,W,"Very wide, flat sand beach; shallow sandbars and lagoons at lower tide. Reached by ferry from Esbjerg. The kite area starts about 2 km south of Rindby Strand, marked by wooden poles (Vadehavskysten guide); the east side of Fanø is a protected area where kiting is not allowed.",,,,
 DK,Vadehavet,Rømø – Lakolk,sea,osm:w1313657429,W,"Huge flat sand beach with car access; shallow water and lagoons, sandbars at low tide. Kite zone signposted; stay inside it, the main beach is crowded with visitors in summer. Also: Sønderstrand at the south end of Rømø (kite and landkite zone).",,not-low,,
 # East Jutland and Funen
-DK,Østjylland,Sønderby,sea,osm:n11932345500,SE,"Shallow flat water near Juelsminde, standing depth far out. Only one weak source for this exact beach; the Juelsminde guide says launch south of the marina, with groynes and rocks to watch.",,,pro,
-DK,Sønderjylland,Hejlsminde,sea,osm:w1149061384,E,"Lillebælt: shallow flat water inside the bay. Local tourism pages present it as a windsurf and SUP spot; kiters must stay outside the Blue Flag bathing area.",,,pro,
+# archived: only one weak source for this exact beach (WHE-214, 16 Nov 2026)
+DK,Østjylland,Sønderby,sea,osm:n11932345500,SE,"Shallow flat water near Juelsminde, standing depth far out. Only one weak source for this exact beach; the Juelsminde guide says launch south of the marina, with groynes and rocks to watch.",,,archived,
+# archived: presented by tourism pages as a windsurf and SUP spot; kiters kept outside the bathing area (WHE-214, 16 Nov 2026)
+DK,Sønderjylland,Hejlsminde,sea,osm:w1149061384,E,"Lillebælt: shallow flat water inside the bay. Local tourism pages present it as a windsurf and SUP spot; kiters must stay outside the Blue Flag bathing area.",,,archived,
 # Zealand
 DK,Sjælland,Copenhagen – Amager Strandpark,sea,osm:r12328102,E,"Artificial island beach with a shallow lagoon behind it. Kiting on the sea side outside the bathing zones; launch from the southern end of the beach (Ishøj is the alternative when busy). Works best in E to SE wind. City spot, crowded in summer.",,,,
 

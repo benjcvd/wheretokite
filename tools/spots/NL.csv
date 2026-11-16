@@ -52,7 +52,8 @@ NL,Zeeland,Terneuzen – Put van Terneuzen,sea,osm:w702126929,N,"Westerschelde, 
 # pro: local spot — Oosterschelde, Kamperland kept
 NL,Zeeland,Oesterdam (Tholen),lagoon,osm:w822498440,NW,"Oosterschelde side of the dam: wide shallow zone, good for beginners and freestyle; official kite location. Kiteboardschool and SALT teach there.",,,pro,
 # pro: seasonal/minor — Oosterschelde, winter-only, Kamperland kept
-NL,Zeeland,Ouwerkerk,lagoon,osm:w621302487,S,"Oosterschelde, shallow. Closed 1 May to 1 October for bathers (Rijkswaterstaat Oosterschelde folder, 2020): kiting October–April only.",,,pro,05-01..09-30
+# archived: kiting allowed October–April only (closed to bathers 1 May–1 Oct) (WHE-214, 16 Nov 2026)
+NL,Zeeland,Ouwerkerk,lagoon,osm:w621302487,S,"Oosterschelde, shallow. Closed 1 May to 1 October for bathers (Rijkswaterstaat Oosterschelde folder, 2020): kiting October–April only.",,,archived,05-01..09-30
 # archived: unrated on Windguru, legal status unclear (forum says probably not allowed; Rijkswaterstaat map marks a kite location near Plaat van Oude-Tonge but the side of the dam is not stated; one guide says the north side has seasonal limits); pin not checked (beach w141929167 is the only candidate)
 NL,Zeeland,Grevelingendam,sea,osm:w141929167,W,"Grevelingendam near Bruinisse: kiters must keep right of the windsurf zone; showers, toilets, restaurant, paid parking. Wind mostly W–NW, gusty from the south.",,,archived,
 # pro: local spot — Haringvliet, local
@@ -92,27 +93,33 @@ NL,Wadden Islands,Texel – Paal 28,sea,osm:n3140565781,NW,"Official kite beach 
 # pro: seasonal/minor — Wadden side, April–September, high tide only
 NL,Wadden Islands,Texel – Dijkmanshuizen,sea,osm:w109266468,E,"Wadden Sea side, shallow. April–September only; around high tide.",,high,pro,10-01..03-31
 # pro: cluster duplicate — IJmeer, Muiderberg kept
-NL,Flevoland,Almere – Muiderzand,lake,osm:w391436028,NW,"IJmeer, deep water; advanced riders.",,,pro,
+# archived: no source recorded, deep water, advanced riders only (WHE-214, 16 Nov 2026)
+NL,Flevoland,Almere – Muiderzand,lake,osm:w391436028,NW,"IJmeer, deep water; advanced riders.",,,archived,
 # pro: local spot — Markermeer, experts only, local
-NL,Noord-Holland,Edam – Galgenveld,lake,osm:w1387153948,E,"Markermeer, shallow, only good in easterly wind (N to E sailable). Stones, dike and barbed wire at the launch; experts only.",,,pro,
+# archived: experts only, stones, dike and barbed wire at the launch, easterly wind only (WHE-214, 16 Nov 2026)
+NL,Noord-Holland,Edam – Galgenveld,lake,osm:w1387153948,E,"Markermeer, shallow, only good in easterly wind (N to E sailable). Stones, dike and barbed wire at the launch; experts only.",,,archived,
 # pro: seasonal/minor — IJsselmeer, summer only, local
 NL,Noord-Holland,Medemblik,lake,osm:w692431086,NE,"IJsselmeer, shallow. April–September only.",,,pro,10-01..03-31
 # pro: minor lake — small lake, max 6 riders
 NL,Noord-Holland,Amstelmeer,lake,osm:w1128409330,W,"Lutjestrand: kite beach on the south side of the camping (windsurfers start on the north side). Flat water, no tide or current. Stones and jetties; a rider limit mentioned on an earlier pass was not found again.",,,pro,
 # pro: local spot — Markermeer, local
-NL,Flevoland,Lelystad – Bataviastrand,lake,osm:w555548028,,"Markermeer, deep water; advanced riders.",,,pro,
+# archived: no source recorded, deep water, advanced riders only (WHE-214, 16 Nov 2026)
+NL,Flevoland,Lelystad – Bataviastrand,lake,osm:w555548028,,"Markermeer, deep water; advanced riders.",,,archived,
 # pro: seasonal/minor — Houtribdijk, April–July only
-NL,Flevoland,Lelystad – Trintelhaven,lake,osm:w822636975,NE,"Houtribdijk, IJsselmeer side. April–July only.",,,pro,08-01..03-31
+# archived: April–July only on the Houtribdijk, minor seasonal spot (WHE-214, 16 Nov 2026)
+NL,Flevoland,Lelystad – Trintelhaven,lake,osm:w822636975,NE,"Houtribdijk, IJsselmeer side. April–July only.",,,archived,08-01..03-31
 # pro: cluster duplicate — Veluwemeer, Strand Horst kept
 NL,Gelderland,Elburg,lake,osm:w494868652,W,"Veluwemeer, shallow. April–September only.",,,pro,10-01..03-31
 # pro: cluster duplicate — 5 km from Workum
-NL,Friesland,Hindeloopen,lake,osm:n4299090272,W,Deep water close in.,,,pro,
+# archived: no source recorded, deep water close in (WHE-214, 16 Nov 2026)
+NL,Friesland,Hindeloopen,lake,osm:n4299090272,W,Deep water close in.,,,archived,
 # pro: seasonal/minor — Afsluitdijk, summer only
 NL,Friesland,Kornwerderzand,lake,osm:w740491009,S,"Afsluitdijk, IJsselmeer side. May–September only; advanced riders.",,,pro,10-01..04-30
 # pro: local spot — IJsselmeer, local
 NL,Friesland,Mirns,lake,osm:n4299090273,S,"Below the Mirnser Klif; shallow, beginner-friendly.",,,pro,
 # pro: seasonal/minor — IJsselmeer, winter-only, local
-NL,Friesland,Lemmer,lake,osm:w84485291,SW,Shallow. Kiting allowed October–April only.,,,pro,05-01..09-30
+# archived: kiting allowed October–April only (WHE-214, 16 Nov 2026)
+NL,Friesland,Lemmer,lake,osm:w84485291,SW,Shallow. Kiting allowed October–April only.,,,archived,05-01..09-30
 # pro: local spot — Wadden Sea, high tide only, local
 NL,Friesland,Harlingen,sea,osm:w522018972,W,"Wadden Sea, shallow; around high tide.",,high,pro,
 # pro: local spot — island beach, Terschelling/Ameland kept
@@ -126,6 +133,8 @@ NL,Wadden Islands,Schiermonnikoog,sea,osm:n503478243,N,"Official activity beach 
 # pro: local spot — Eems-Dollard, high tide only, local
 NL,Groningen,Delfzijl,sea,osm:w878065974,NE,"Eems-Dollard beach, shallow; around high tide.",,high,pro,
 # pro: minor lake — winter-only lake
-NL,Groningen,Oldambtmeer,lake,osm:w114468010,SE,Midwolda. Kiting allowed October–April only.,,,pro,05-01..09-30
+# archived: kiting allowed October–April only, minor lake (WHE-214, 16 Nov 2026)
+NL,Groningen,Oldambtmeer,lake,osm:w114468010,SE,Midwolda. Kiting allowed October–April only.,,,archived,05-01..09-30
 # pro: minor lake — local lake
-NL,Groningen,Zuidlaardermeer,lake,osm:w99150401,S,Strand Meerwijck; advanced riders.,,,pro,
+# archived: minor lake, no source recorded, advanced riders only (WHE-214, 16 Nov 2026)
+NL,Groningen,Zuidlaardermeer,lake,osm:w99150401,S,Strand Meerwijck; advanced riders.,,,archived,
