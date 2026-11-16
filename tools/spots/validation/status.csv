@@ -42,7 +42,7 @@ de-north-sea-sh,review,WHE-203,9,20,7,4,0,docs/validation/de-north-sea-sh.md,202
 de-baltic-sh,review,WHE-204,11,44,10,7,0,docs/validation/de-baltic-sh.md,2026-11-15
 de-niedersachsen,review,val-de-niedersachsen WHE-177 WHE-205,1,23,12,6,0,docs/validation/de-niedersachsen.md,2026-11-15
 de-mv-bayern,review,val-de-mv-bayern,16,47,12,8,0,docs/validation/de-mv-bayern.md,2026-11-15
-nl-zeeland,review,WHE-179,14,12,9,0,3,docs/validation/nl-zeeland.md,2026-11-14
+nl-zeeland,review,WHE-207,14,13,9,2,3,docs/validation/nl-zeeland.md,2026-11-16
 nl-zuid-holland,review,val-nl-zuid-holland,13,20,10,3,1,docs/validation/nl-zuid-holland.md,2026-11-16
 nl-noord-holland,review,WHE-181+WHE-209,19,21,16,2,2,docs/validation/nl-noord-holland.md,2026-11-16
 nl-wadden,review,WHE-182,9,6,6,0,0,docs/validation/nl-wadden.md,2026-11-16

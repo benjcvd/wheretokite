@@ -57,3 +57,30 @@ distinct places. Matched to ours: 9. Added: 1 (archived). Left out: 4 (table). G
 | Renesse – Kijkduin | left out: bathing beach, no kite source |
 
 Our spots with no Windguru point I could see: Breskens – Oost, Baarland, Paulinapolder, Ouwerkerk, Terneuzen, Vlamingpolder (I did not hover every point east of Breskens).
+
+## Windy, both ways (browsed as a visitor, 16 Nov, WHE-207)
+
+Windy kite markers hovered at zoom 10 on `windy.com/?51.62,3.75,10,p:kitespots`, Cadzand to the Brouwersdam and east to Bergen op Zoom. 16 markers in or next to the zone: 13 in Zeeland proper, 3 on the South Holland side of the Grevelingen (Ouddorp, Vuurtoren, Herkingen: South Holland zone, WHE-208). Belgian coast markers ignored (not our zone).
+
+Build: spot-check on the 13 live Zeeland rows, exit 0, no PROBLEMS; the only disagreement is Vrouwenpolder (see top). Both new pins face SW (hint set to SW).
+
+Counts: Windy 13 in zone → matched to an existing row 9 (Brouwersdam, Neeltje Jans, Vrouwenpolder, Roompot, Domburg, Cadzand Bad, Borssele, Oesterdam, Grevelingendam), added as Pro 2, left out 2. Our rows: 15 → 17 (free 6, Pro 8, archived 3); live 12 → 14.
+
+| Windy marker (stars) | Ours |
+|---|---|
+| Brouwersdam (5) | Brouwersdam |
+| Neeltje Jans (5) | Neeltje Jans |
+| Vrouwenpolder (5) | Vrouwenpolder |
+| Roompot Strand (4) | Kamperland – Roompot |
+| Domburg (5) | Domburg |
+| Cadzand Bad (4) | Cadzand-Bad – Zwin |
+| Borssele (4) | Borssele – De Kaloot |
+| Oesterdam (5) | Oesterdam (Tholen) |
+| Grevelingendam (5) | Grevelingendam (archived, Windguru pass) |
+| Westkapelle (5) | **added (Pro)**, `osm:w80328769`, the long beach south of the dike. Sources: [Unplug](https://www.unplug-kitesurf.com/spots/westkapelle-netherlands) and the [kite and windsurfing guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/westkapelle-zeeland-netherlands.html). Overrides the Windguru pass's "same wave coast as Domburg" (they are 6 km apart, so it is not the same beach). No official rule found: said in notes |
+| Vlissingen (4) | **added (Pro)** as Vlissingen – Nollenstrand, `osm:w78881969` (OSM beach named Nollestrand, by the Nollepad). Sources: [Kiteforum](https://se.kiteforum.com/kitesurf/spot/nollenstrand), [Unplug](https://www.unplug-kitesurf.com/spots/nollenstrand-netherlands), [kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/vlissingen-zeeland-netherlands.html). Summer rule (no kiting before the boulevard before 19:00) from guides only, in notes, not a ban. Boulevard Evertsen itself is a different stretch (kiting prohibited per a guide) and is not added |
+| Krabbendijke (3) | left out: not a designated kite location on the Rijkswaterstaat Oosterschelde map (official), so under that rule kiting is not allowed there; Kiteforum and Unplug list it, TenneT also built a work island there. Same call as the Windguru pass |
+| Rilland (2) | left out: no kite source found at all (one NOS article says surfers disturb nature there), so nothing to base a row on |
+| Ouddorp (5), Vuurtoren (5), Herkingen (5) | not Zeeland: South Holland zone (WHE-208) |
+
+Our spots with no Windy marker: Breskens – Oost, Baarland, Paulinapolder, Ouwerkerk, Vlamingpolder (archived), Terneuzen (archived). Windy shows no Westerschelde markers east of Cadzand except Borssele. Gap line: none, Windy shows fewer than we have after this pass.
