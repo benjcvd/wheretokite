@@ -444,3 +444,15 @@ minor lake) move to `archived`, so they never ship. Sweeps run per area (FR Atla
 rest); Product flips the free plan and checks the 150-location server limit and Open-Meteo load.
 Trigger: Cayeux had been hidden as a "duplicate" of Le Crotoy although it works at the opposite tide.
 Also built the Product branch onto Ben's iPhone (15 Nov, not merged to main yet).
+
+## Lead, 16 Nov 15:45: where I stopped
+Ben approved the level wording; WHE-216 (four sessions, no "yesterday" card, distinct wind cards,
+level lines) is done. The archive sweeps (WHE-211 to 214), every-spot-free (WHE-215) and the
+Croissant report (WHE-217) went through Ben's review and are done on the board. **None of the
+workstream branches are merged into main yet**: Product (atlas/product + atlas/t/whe-215, whe-216)
+and the spot streams. Next session: run merge-workstream on each, then push only with Ben's OK.
+Every-spot-free makes each search ~3× the Open-Meteo calls, so WHE-12 (paid plan) is more urgent.
+Open question to Ben: give WHE-218 (opposite wind directions averaged into a fake onshore wind,
+safety) to Forecast accuracy (my recommendation). WHE-164 should go to Product.
+Gotcha: `App/WhereToKite/Localizable.xcstrings` shows modified in main from an Xcode build; check
+the diff before committing it.
