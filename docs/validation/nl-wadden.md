@@ -38,3 +38,21 @@ Matched to ours: 6 (Dijkmanshuizen, Vlieland, West-Terschelling, Burensteiger, N
 | Lauwersoog Waddenzee | other zone (Groningen) |
 
 Our spots with no clear Windguru point: Texel – Paal 17/28 (only Paal 9 and 33 seen, which are not kite beaches), Schiermonnikoog (unnamed clusters not opened).
+
+## Windy, both ways (browsed as a visitor, 16 Nov, WHE-210)
+
+Windy kite markers (`p:kitespots`, zoom 10, hovered one by one for name and stars) on the Dutch Wadden Islands: 6. Matched to ours: 6. Added: 0. Left out: 0. Our spots 9 live → 9 live (free 3, Pro 6, archived 0): no change to the CSV.
+Gap line: none. Windy shows no more kite places on the islands than we have.
+Markers on the mainland coast, Wieringen and Lauwersmeer belong to other zones (Friesland, North Holland, Groningen) and were not counted here.
+
+| Windy marker (stars) | Ours |
+|---|---|
+| Texel (5), at De Koog | Texel – Paal 17 (same west beach; Paal 28 and Dijkmanshuizen are further south and east) |
+| Vlieland (4) | Vlieland |
+| West Terschelling (3) | Terschelling – Groene Strand |
+| Terschelling, West aan Zee (2) | Terschelling – Noordzee |
+| Ameland (4), at Nes | Ameland – Waddenzee (Nes), with Ameland – Noordzee on the same island |
+| Schiermonnikoog (2) | Schiermonnikoog |
+
+Our spots with no Windy marker of their own: Texel – Paal 28, Texel – Dijkmanshuizen (Windy has one Texel marker for the whole island), Ameland – Noordzee (shares the Ameland marker).
+Limits: marker positions were not used to place or confirm any pin (OSM and the island rules only). Nothing needed adding, so no pipeline build was needed.
