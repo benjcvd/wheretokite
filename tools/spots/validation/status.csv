@@ -45,7 +45,7 @@ de-mv-bayern,review,val-de-mv-bayern,16,47,12,8,0,docs/validation/de-mv-bayern.m
 nl-zeeland,review,WHE-179,14,12,9,0,3,docs/validation/nl-zeeland.md,2026-11-14
 nl-zuid-holland,review,val-nl-zuid-holland,13,20,10,3,1,docs/validation/nl-zuid-holland.md,2026-11-16
 nl-noord-holland,review,WHE-181+WHE-209,19,21,16,2,2,docs/validation/nl-noord-holland.md,2026-11-16
-nl-wadden,review,WHE-182,9,0,6,0,0,docs/validation/nl-wadden.md,2026-11-15
+nl-wadden,review,WHE-182,9,6,6,0,0,docs/validation/nl-wadden.md,2026-11-16
 nl-friesland-inland,todo,val-nl-friesland-inland,,,,,,,
 dk-all,review,WHE-184,14,0,0,1,0,docs/validation/dk-all.md,2026-11-15
 pl-all,todo,val-pl-all,,,,,,,
