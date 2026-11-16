@@ -50,7 +50,7 @@ nl-friesland-inland,review,val-nl-friesland-inland,17,19,11,2,5,docs/validation/
 dk-all,review,WHE-184,14,0,0,1,0,docs/validation/dk-all.md,2026-11-15
 pl-all,todo,val-pl-all,,,,,,,
 hr-me,review,val-hr-me,8,5,5,0,0,docs/validation/hr-me.md,2026-11-16
-gb-south,todo,val-gb-south,,,,,,,
+gb-south,review,WHE-187,17,5,5,0,3,docs/validation/gb-south.md,2026-11-16
 gb-southwest,todo,val-gb-southwest,,,,,,,
 gb-wales,todo,val-gb-wales,,,,,,,
 gb-east,todo,val-gb-east,,,,,,,
