@@ -142,14 +142,16 @@ final class SmokeTests: XCTestCase {
         XCTAssertTrue(sideOff.isSelected)
         XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'a little from the land'")).firstMatch.exists)
         snapshot(app, "offshore-intermediate")
+        // Each level says what the rider can do.
+        XCTAssertTrue(app.buttons["level-beginner"].label.contains("not upwind yet"))
 
-        app.buttons["Beginner"].tap()
+        app.buttons["level-beginner"].tap()
         XCTAssertFalse(sideOff.waitForExistence(timeout: 1), "beginners get no choice")
-        app.buttons["Advanced"].tap()
+        app.buttons["level-advanced"].tap()
         XCTAssertTrue(sideOff.waitForExistence(timeout: 3))
         XCTAssertTrue(sideOff.isSelected, "advanced default")
         snapshot(app, "offshore-advanced")
-        app.buttons["Intermediate"].tap()
+        app.buttons["level-intermediate"].tap()
         XCTAssertTrue(sideShore.isSelected, "level change resets to the level's default")
     }
 
@@ -339,12 +341,14 @@ final class SmokeTests: XCTestCase {
         // Four days, no locked days.
         XCTAssertTrue(app.buttons["day3"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["day4"].exists)
-        // Five sessions, incl. evening and the rider's own hours.
-        XCTAssertTrue(app.buttons["slot-evening"].exists)
-        XCTAssertTrue(app.buttons["slot-custom"].exists)
+        // Four sessions: no Evening any more (WHE-216), the rider's own hours instead.
+        for slot in ["morning", "afternoon", "fullDay", "custom"] {
+            XCTAssertTrue(app.buttons["slot-\(slot)"].exists, "missing session \(slot)")
+        }
+        XCTAssertFalse(app.buttons["slot-evening"].exists)
 
         // My hours: the first tap selects it, a second one opens the From / Until editor in place.
-        app.buttons["slot-evening"].tap()
+        app.buttons["slot-morning"].tap()
         app.buttons["slot-custom"].tap()
         let editor = app.descendants(matching: .any)["customHoursEditor"].firstMatch
         XCTAssertFalse(editor.waitForExistence(timeout: 1), "the first tap must only select My hours")

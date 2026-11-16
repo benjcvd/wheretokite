@@ -136,6 +136,9 @@ final class FeedbackStore {
         var score: Int
     }
 
+    /// The "How was <spot>?" card on the results. Off for now (Ben, WHE-216): flip back to show it.
+    static let promptEnabled = false
+
     private static let key = "pendingFeedback"
     private static let answeredKey = "answeredFeedback"
     private(set) var pending: Visit?

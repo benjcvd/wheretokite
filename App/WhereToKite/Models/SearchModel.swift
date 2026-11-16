@@ -46,7 +46,16 @@ struct SearchOptions: Codable, Equatable {
         guard let data = UserDefaults.standard.data(forKey: key),
               var options = try? JSONDecoder().decode(SearchOptions.self, from: data) else { return SearchOptions() }
         options.day = DayOption.today.id
+        options.migrateRetiredSlot()
         return options
+    }
+
+    /// The app dropped the Evening session (WHE-216): a saved one becomes My hours 17–20.
+    mutating func migrateRetiredSlot() {
+        guard !SessionSlot.appChoices.contains(slot) else { return }
+        customStart = 17
+        customEnd = 20
+        slot = .custom
     }
 
     func save() {
@@ -95,6 +104,9 @@ struct DayOption: Identifiable, Hashable {
 }
 
 extension SessionSlot {
+    /// The sessions offered in the app. Evening stays in the engine and the CLI only.
+    static let appChoices: [SessionSlot] = [.morning, .afternoon, .fullDay, .custom]
+
     var label: String {
         switch self {
         case .morning: String(localized: "Morning", comment: "Session slot, 9–13 h. Must differ from Tomorrow (Spanish: Temprano, not Mañana)")
