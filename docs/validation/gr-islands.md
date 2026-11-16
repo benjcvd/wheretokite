@@ -80,8 +80,25 @@ Chios and Ikaria have no Windy kite marker. Windy markers on the Turkish coast a
 | Faliraki, Rhodes (4) | No kite source found in the search (only nightlife and water-park pages) |
 | Air Riders / Kremasti (Windguru pass) | Still out: only an aggregator source and no OSM beach tied to Kremasti |
 
-### Where I stopped: 28 markers not yet researched
+### Second pass (WHE-201, 16 Nov): 12 markers researched
 
-Left for a second pass (name, stars): **Rhodes** Plimiri (1), Apolakkia (1). **Kos** Tingaki (3), Kefalos (4), Kohilari (3), Theologos Wave Beach (1, name suggests surf). **Crete** Platanias (3), Kalamion (4), Georgioupoli (3), Rethimno (4), Heraklion (4), Paleochora (4), Matala (4), Phalasarna listed above, Elounda (3), Istro West (3), Faneromeni (1). **Naxos** Agios Prokopis (3), Pyrgaki (1), Amiti (1). **Paros** Santa Maria (2), Tsoukalia (2). **Andros** (5), **Milos** (4), **Santorini** (5). **Lesbos** Sigri (3), Tsixlionta (1), Skala Kallonis (2). **Samos** Kokkari (4), Svallas (1), Psili Ammos (1).
-Guide pages already read that mention some of them: La Crète autrement lists Kalamion, Rethymno and Matala as intermediate spots without a school (one source is enough for Pro, pins still needed); unplug lists Tingaki and Kefalos as beginner spots; SantoriniKite operates at Monolithos (east coast; the Windy marker is elsewhere, check before adding).
-Windy was used only to learn which spots exist; positions come from OSM.
+**Added as Pro (1):** Santorini, Monolithos (`osm:w531504786`): [Manawa](https://www.manawa.com/en-GB/activity/greece/santorini/kitesurfing/kitesurfing-courses-on-monolithos-beach-santorini/4319), [Greeka](https://www.greeka.com/cyclades/santorini/sports/kitesurfing/), [unplug](https://www.unplug-kitesurf.com/spots/santorini-monolithos-greece): Santorini Kitesurfing school on the beach. The Windy marker is elsewhere; the beach is where the school rides. Beach faces east, so the N meltemi is side-shore (Apple Maps agrees).
+
+**Checked and not added:**
+
+| Windy marker (stars) | Why |
+|---|---|
+| Kohilari, Kos (3) | Real: a kite centre ([Jet2](https://www.jet2holidays.com/poi/kos/kohilari-kite-centre), [kos.gr](https://kos.gr/activities/wind-and-kite-surfing)). Not pinned: Overpass was down all day, so no OSM element could be tied to the beach. **First to add in a later pass** |
+| Kefalos / Paradise, Kos (4) | A 2018 windsurf blog says kiting is forbidden in Kefalos bay (no official text); the kite activity is at Kohilari. Worst case: not added |
+| Tingaki, Kos (3) | Only booking-site mentions and unplug "beginner"; no school on site |
+| Rethymno, Crete (4) | unplug and La Crete autrement call it an intermediate chop spot by the municipal beach, but no school and no OSM beach pinned (Overpass down) |
+| Kalamion, Crete (4) | Holidify and La Crete autrement only, no school, not pinned |
+| Paleochora, Crete (4) | Surf guide: no school or rental, winter low-pressure waves only |
+| Agios Prokopis, Pyrgaki, Naxos (3 / 1) | Guides only (unplug, Holidify); sources disagree on season; no school. Pyrgaki is near-offshore |
+| Milos (4) | No kite school found; official site points to Achivadolimni, no source on where people ride |
+| Andros (5) | Nothing found in the search |
+| Kokkari, Samos (4); Skala Kallonis, Lesbos (2) | Windsurf centres only |
+
+### Still not researched (16)
+Rhodes Plimiri (1), Apolakkia (1); Kos Theologos Wave Beach (1); Crete Platanias (3), Georgioupoli (3), Heraklion (4), Matala (4), Elounda (3), Istro West (3), Faneromeni (1); Naxos Amiti (1); Paros Santa Maria (2), Tsoukalia (2); Lesbos Sigri (3), Tsixlionta (1); Samos Svallas (1), Psili Ammos (1). Mostly unrated or one-to-two stars; they need a school source before Pro.
+Counts after: 19 spots on the islands (9 free / 10 Pro). Windy was used only to learn which spots exist; positions come from OSM.
