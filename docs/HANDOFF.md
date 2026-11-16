@@ -444,3 +444,10 @@ minor lake) move to `archived`, so they never ship. Sweeps run per area (FR Atla
 rest); Product flips the free plan and checks the 150-location server limit and Open-Meteo load.
 Trigger: Cayeux had been hidden as a "duplicate" of Le Crotoy although it works at the opposite tide.
 Also built the Product branch onto Ben's iPhone (15 Nov, not merged to main yet).
+
+**Forecast accuracy, 16 Nov (WHE-57).** Each spot now knows which models are behind its hours
+(`SpotRecommendation.forecastSource`, e.g. "AROME 1.3 km · ECMWF 9 km · GFS"); the app caption
+next to the confidence badge is still to do (App). Météo-France seamless hides which model it
+uses: measured, it's AROME HD up to now + ~43 h inside AROME's footprint, ARPEGE 11 km after that
+and outside it. The footprint is irregular, so `tools/backtest/arome_coverage.py` writes a
+per-spot list; re-run it when spots are added (new spots read "Météo-France" until then).
