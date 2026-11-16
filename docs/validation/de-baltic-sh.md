@@ -49,6 +49,8 @@ Adding every one as Pro needs an OSM pin and a local source each (no search tool
 of the best-supported ones and left the rest listed, undecided. Nothing here is judged from memory: "open" means not yet researched.
 Not browsed on Windy: the Flensburg Förde (Holnis, Schausende: "not checked on Windy"), and one unread marker west of Eckernförde bay.
 
+Third session (16 Nov): 3 rows added as Pro (Schönberger Strand incl. Kalifornien, Kellenhusen, Dahme); Pro 11 → 14; open markers 26 → 20 (one merged into Schönberger Strand). Overpass was down for a while; builds were slow.
+
 Counts (second session, 15 Nov): 44 markers read; 10 matched to 9 of our rows; 7 added as Pro (3 + 4 on Fehmarn); 1 left out (no OSM element); 26 open. Ours before → after: free 7 → 7, Pro 4 → 11, archived 0 → 0 (DE Baltic SH).
 
 | Windy marker (stars) | Ours / outcome |
@@ -65,8 +67,13 @@ Counts (second session, 15 Nov): 44 markers read; 10 matched to 9 of our rows; 7
 | Meeschendorf (3) | **added (Pro)**: [kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/meeschendorf-fehmarn-fehmarn-germany.html), Surf magazine (same page). Pin `w51000890`, faces 186°, agrees |
 | Westermarkelsdorf (4) | left out: no OSM beach element within 5 km of the village (the spot is a dike), so it can't be pinned. Sources exist ([Windfinder](https://en.windfinder.com/spotguide/westermarkelsdorf), [kiteforum](https://se.kiteforum.com/kitesurf/spot/fehmarn___westermakelsdorf), school Primesurf takes students there) |
 | Fehmarn: Teichhof (2), Niobe (2), Presen (1), 1 unnamed north-coast marker | open |
-| Mainland east: Grömitz (5), Kellenhusen (4), Dahme (4), Damshöved (3), Haffkrug (3), Dazendorf (2), Klostersee (1) | open (a search for Grömitz found no kite school or spot page: needs a local source) |
-| Kiel Bay: Schönberger Strand (3), Kalifornien (3), Falkenstein (3), Weissenhaus (3), Lippe (2), Behrensdorf (1), Hohenfelde (1) | open (kite guide pages exist for Schönberger Strand, Falkenstein and Kalifornien, not yet read) |
+| Kellenhusen (4) | **added (Pro)** (third session, 16 Nov): [kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/kellenhusen-luebecker-bucht-germany.html), [Unplug](https://www.unplug-kitesurf.com/spots/kellenhusen-germany). Pin: Badestrand `w245451559`; build result below |
+| Dahme (4) | **added (Pro)**: [Kiteforum](https://se.kiteforum.com/kitesurf/spot/dahme), [Hamburg tourism](https://www.hamburg-tourism.de/sehen-erleben/veranstaltungen/veranstaltungskalender/schnupperkurs-kitesurfen/) (Surfschule Dahme kite taster). Pin: beach `w233630237` |
+| Grömitz (5) | open: searched again, no kite school or spot page found, no local source |
+| Damshöved (3), Klostersee (1) | open: [Unplug Dahmeshöved](https://www.unplug-kitesurf.com/spots/dahmeshoeved-germany) and [Klostersee](https://www.unplug-kitesurf.com/spots/klostersee-germany) pages exist, not read; Damshöved is 2 km from Dahme |
+| Haffkrug (3), Dazendorf (2) | open |
+| Schönberger Strand (3) and Kalifornien (3) | **added (Pro)** as one row, Schönberger Strand (Kalifornien): same beach (Kalifornien and Brasilien are sections of the 6 km dyke beach per [kite guide](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/schoenberger-strand-kieler-bucht-germany.html)); [Unplug](https://www.unplug-kitesurf.com/spots/schoenberger-strand-germany), [Kitemana](https://www.kitemana.com/en-us/info/blog/kitespot-laboe-und-schoeneberg-1610). Pin `w37393111` |
+| Kiel Bay: Falkenstein (3), Weissenhaus (3), Lippe (2), Behrensdorf (1), Hohenfelde (1) | open (guide pages exist for [Falkenstein](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/falkensteiner-strand-kieler-bucht-germany.html) and [Weissenhaus](https://web.kite-and-windsurfing-guide.com/spots/kiteboarding-windsurfing-sup/weissenhaus-kieler-bucht-germany.html), not read; no OSM element found for Falkenstein by name) |
 | Eckernförde bay: Grönwold (4), Surendorf (3), Stohl (3), Langholz (2), Karlsminde (2), Aschau (1), Kiekut (1) + one unread | open (Eckernförde tourism has a surf and kite page) |
 
 Gap: yes, 26 Windy markers are still open (about half rated 3 or more). Many of the low-rated ones are probably tiny user-added points; each still needs a source before it goes in.
