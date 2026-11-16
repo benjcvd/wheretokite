@@ -324,3 +324,26 @@ final class ConfidenceTests: XCTestCase {
         XCTAssertNil(a.confidence)
     }
 }
+
+/// WHE-71: ECMWF on its sea cell, the others on the beach cell, merged per spot.
+final class ConfidenceCellTests: XCTestCase {
+    func testECMWFReadOnItsSeaCell() {
+        let groups = ConfidenceEstimator().requestGroups()
+        XCTAssertEqual(groups.map(\.cell), ["land", "sea"])
+        XCTAssertEqual(groups[0].models, ["best_match", "meteofrance_seamless", "icon_seamless"])
+        XCTAssertEqual(groups[1].models, ["ecmwf_ifs025"])
+    }
+
+    func testMergeSuffixesOneModelAnswers() {
+        let land: [[String: [Double?]]] = [["wind_speed_10m_a": [10], "wind_speed_10m_b": [12]],
+                                           ["wind_speed_10m_a": [20], "wind_speed_10m_b": [22]]]
+        let sea: [[String: [Double?]]] = [["wind_speed_10m": [14], "wind_direction_10m": [200]],
+                                          ["wind_speed_10m": [24], "wind_direction_10m": [210]]]
+        let out = ConfidenceEstimator.merge([land, sea], groups: [["a", "b"], ["ec"]])
+        XCTAssertEqual(out.count, 2)
+        XCTAssertEqual(out[1]["wind_speed_10m_ec"], [24])
+        XCTAssertEqual(out[1]["wind_direction_10m_ec"], [210])
+        XCTAssertEqual(out[0]["wind_speed_10m_b"], [12])
+        XCTAssertNil(out[0]["wind_speed_10m"])
+    }
+}
