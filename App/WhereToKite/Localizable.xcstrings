@@ -1139,6 +1139,23 @@
         }
       }
     },
+    "Banned" : {
+      "comment" : "Not-kiteable tag: kiting is banned at this spot then",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prohibido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interdit"
+          }
+        }
+      }
+    },
     "Bars: average wind (kn) · Dots: gusts" : {
       "localizations" : {
         "es" : {
@@ -1618,6 +1635,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "nuit"
+          }
+        }
+      }
+    },
+    "Dark" : {
+      "comment" : "Not-kiteable tag: before sunrise or after sunset",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De noche"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuit"
           }
         }
       }
@@ -3302,6 +3336,23 @@
         }
       }
     },
+    "No data" : {
+      "comment" : "Not-kiteable tag: no forecast for this spot",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin datos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de données"
+          }
+        }
+      }
+    },
     "no forecast" : {
       "localizations" : {
         "es" : {
@@ -3689,6 +3740,23 @@
         }
       }
     },
+    "Offshore" : {
+      "comment" : "Not-kiteable tag: the wind blows from the land",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offshore"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offshore"
+          }
+        }
+      }
+    },
     "Offshore wind: it would blow you out to sea." : {
       "localizations" : {
         "es" : {
@@ -3974,6 +4042,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pointe la flèche de la plage vers le large, puis indique quelle part de l'horizon est de l'eau : moins de 180° pour une crique, plus pour une pointe, 360° pour un petit lac navigable de partout. C'est ce qui distingue le vent onshore, side-shore et offshore."
+          }
+        }
+      }
+    },
+    "Poor" : {
+      "comment" : "Not-kiteable tag: conditions too poor, no single reason",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mediocre"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Médiocre"
           }
         }
       }
@@ -4927,6 +5012,23 @@
         }
       }
     },
+    "Storm" : {
+      "comment" : "Not-kiteable tag: thunderstorm risk",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tormenta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orage"
+          }
+        }
+      }
+    },
     "Storm from %@" : {
       "comment" : "A thunderstorm is forecast from that hour",
       "localizations" : {
@@ -5526,6 +5628,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "trop tard"
+          }
+        }
+      }
+    },
+    "Too late" : {
+      "comment" : "Not-kiteable tag: the session is over, or over before you get there",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muy tarde"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop tard"
           }
         }
       }

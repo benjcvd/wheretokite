@@ -176,15 +176,19 @@ struct ResultsSection: View {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text(rec.spot.name).font(.subheadline.weight(.medium))
-                                        Text(rec.verdict).font(.caption).foregroundStyle(.secondary)
+                                        if let wind = rec.sessionWind {
+                                            Text(wind).font(.caption).foregroundStyle(.secondary)
+                                        }
                                     }
                                     Spacer()
+                                    NoGoTag(reason: rec.noGoReason)
                                     Image(systemName: "chevron.right").font(.caption).foregroundStyle(.tertiary)
                                 }
                                 .padding(.vertical, 8)
                                 .contentShape(Rectangle())
                             }
                             .buttonStyle(.plain)
+                            .accessibilityIdentifier("noGoRow")
                             Divider()
                         }
                     }
@@ -562,14 +566,21 @@ extension SpotRecommendation {
     /// Why a spot isn't recommended, without the drive time (shown separately):
     /// "too light · 8–11 kn (gusts 14) NNE".
     var verdict: String {
+        guard let wind = sessionWind else { return Vocab.term("no forecast") }
+        let problem = window == nil ? Vocab.term(Recommender.mainProblem(hours)) + " · " : ""
+        return problem + wind
+    }
+
+    /// The session's wind alone: "8–11 kn (gusts 14) NNE", nil without a forecast. The
+    /// not-kiteable rows show it under the spot, the reason sits in its own tag (WHE-219).
+    var sessionWind: String? {
         let slice = scoredHours.map { s in hours.filter { $0.wind.hour >= s.0 && $0.wind.hour < s.1 } } ?? []
         guard let lo = slice.map(\.wind.speedKn).min(), let hi = slice.map(\.wind.speedKn).max(),
-              let gust = slice.map(\.wind.gustKn).max() else { return Vocab.term("no forecast") }
+              let gust = slice.map(\.wind.gustKn).max() else { return nil }
         let l = Int(lo.rounded()), h = Int(hi.rounded())
         let speed = l == h ? "\(h)" : "\(l)–\(h)"
         let dir = Vocab.compass(Geo.circularStats(slice.map(\.wind.directionDeg)).mean)
-        let problem = window == nil ? Vocab.term(Recommender.mainProblem(hours)) + " · " : ""
-        return problem + String(localized: "\(speed) kn (gusts \(Int(gust.rounded()))) \(dir)")
+        return String(localized: "\(speed) kn (gusts \(Int(gust.rounded()))) \(dir)")
     }
 
     /// The storm and side-offshore alerts have their own line, so their flags aren't repeated.
@@ -661,3 +672,19 @@ private struct FeedbackCard: View {
     }
 }
 
+
+/// One word on a not-kiteable row: red for a safety rule (the spot won't come back today),
+/// grey for wind or tide (worth checking again later). WHE-219.
+struct NoGoTag: View {
+    let reason: NoGoReason
+
+    var body: some View {
+        Text(Vocab.noGo(reason))
+            .font(.caption.weight(.semibold))
+            .lineLimit(1)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 3)
+            .foregroundStyle(reason.isSafety ? Color.red : Color.secondary)
+            .background((reason.isSafety ? Color.red : Color.secondary).opacity(0.12), in: Capsule())
+    }
+}

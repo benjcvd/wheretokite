@@ -425,3 +425,7 @@ Ben made every active spot free. `Entitlements.free.proSpots` is now true; the s
 ## Product, 16 Nov: WHE-216 search trim (review)
 
 The app now offers four sessions (Evening left the app, the engine keeps it for the CLI; a saved Evening becomes My hours 17–20). The "How was it?" card is switched off, not deleted (`FeedbackStore.promptEnabled`). The offshore picture cards finally look different, and each level carries one line on what the rider can do: Ben still has to OK that wording. Installed on his iPhone.
+
+## Product, 16 Nov: WHE-219 one-word reason on not-kiteable rows (review)
+
+Each row of "Not kiteable" now ends with a tag: red for safety rules (Storm, Banned, Offshore, Dark) and Too late, grey for wind or tide. The word comes from the scored hours with the same safety-first order as before, so nothing about scoring changed; the only engine tweak is that the fallback no longer picks a random flag. Ben has to OK the ES/FR words.
