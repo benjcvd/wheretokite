@@ -24,13 +24,13 @@ NL,Wadden Islands,Texel – Paal 17,sea,osm:n3140654634,W,"Official kite beach b
 NL,Noord-Holland,Muiderberg,lake,osm:w74727107,N,"IJmeer, shallow fresh water; beginner-friendly. One of the few legal kite launches on the IJmeer (local news); schools on site. Also: Almere – Muiderzand across the IJmeer (deep water, advanced).",,,,
 NL,Noord-Holland,Schellinkhout,lake,osm:n4508462925,S,"Markermeer, shallow and flat; beginner-friendly. Designated kite spot (Rijkswaterstaat per local news); KiteFEEL school on the dike.",,,,
 # Flevoland, Gelderland
-NL,Gelderland,Strand Horst,lake,osm:w139584425,NW,"Wolderwijd, shallow flat water; beginner-friendly. Also: Elburg on the Veluwemeer (April–September).",,,,
+NL,Gelderland,Strand Horst,lake,osm:w139584425,NW,"Wolderwijd, shallow flat water; beginner-friendly; IKO school and shop on site; NKV open all year. Also: Elburg on the Veluwemeer (April–September).",,,,
 # Friesland (IJsselmeer)
-NL,Friesland,Workum (IJsselmeer),lake,osm:w83859868,W,"Shallow fresh water, beginner-friendly. Also: Hindeloopen 5 km north (deep water close in).",,,,
-NL,Friesland,Makkum (IJsselmeer),lake,osm:w1062703366,W,Shallow. Kiting allowed October–April only.,,,,05-01..09-30
-NL,Friesland,Stavoren,lake,osm:w855779507,SW,"It Suderstrand, deep water; advanced riders.",,,,
+NL,Friesland,Workum (IJsselmeer),lake,osm:w83859868,W,"Shallow sandy IJsselmeer beach, beginner-friendly, open all year (NKV), NW–SW winds; KiteMobile lessons. Also: Hindeloopen 5 km north.",,,,
+NL,Friesland,Makkum (IJsselmeer),lake,osm:w1062703366,W,"Shallow flat bay, all levels. NKV: kiting allowed October–April only; launch only in the NW zone of the bay, N–S winds.",,,,05-01..09-30
+NL,Friesland,Stavoren,lake,osm:w855779507,SW,"It Suderstrand, advanced to expert, W–S winds, open all year (NKV); grass launch, swim buoys in bathing season (municipality wants to close the swim spot in 2026). Sources disagree on depth.",,,,
 # Wadden Sea coast and islands
-NL,Groningen,Lauwersoog,sea,osm:w48517917,N:Wadden Sea side|SE:Lauwersmeer side:lake,"Wadden side: shallow, around high tide, all year. Lauwersmeer side June–September only.",,,,
+NL,Groningen,Lauwersoog,sea,osm:w48517917,N:Wadden Sea side|SE:Lauwersmeer side:lake,"Wadden side: shallow, beginners, around high tide, all year (N–NW–W winds). Lauwersmeer side June–September only, yellow-buoy zone, SW–SE winds (NKV).",,,,
 NL,Wadden Islands,Terschelling – Noordzee,sea,osm:n48471300,N,"Whole North Sea coast is open to kiters, waves and current. 1 May–1 Oct: stay 200 m either side of every beach access and more than 100 m out from the waterline (municipal decision 2020). Winter has no limit. Also: Groene Strand (own marked zone).",,,,
 NL,Wadden Islands,Ameland – Noordzee,sea,osm:n7793664554,N,"1 Mar–1 Nov only between poles 8.2–11.3 (Nes/Ballum), 17.4–19 (Buren) and 3–4 (Hollum, strong current). Outside the zones kiting is allowed only 1 Nov–1 Mar (VVV Ameland, citing the municipality). Also: Wadden side west of the Nes ferry dam.",,,,
 
@@ -113,25 +113,25 @@ NL,Noord-Holland,Enkhuizen,lake,osm:w90172365,NE,"IJsselmeer, north of the old t
 # pro: Windy kite marker (3 stars), WHE-209 16 Nov 2026; one guide source (kite-and-windsurfing-guide Gouwsee), no school found
 NL,Noord-Holland,Gouwzee,lake,osm:w103802217,E,"Between Monnickendam and Marken: dykes keep the water calm, with smooth strips between seagrass patches. Usual launch at Hemmeland, another off the N518 on the south bank. No school or official rules found; check local signs.",,,pro,
 # pro: local spot — Markermeer, local
-# archived: no source recorded, deep water, advanced riders only (WHE-214, 16 Nov 2026)
-NL,Flevoland,Lelystad – Bataviastrand,lake,osm:w555548028,,"Markermeer, deep water; advanced riders.",,,archived,
+# archived: pin faces the wrong way (OSM beach 35°, riding side is west); sources OK (NKV, Visit Lelystad). Revive with a better OSM element (WHE-183, 16 Nov 2026)
+NL,Flevoland,Lelystad – Bataviastrand,lake,osm:w555548028,,"Markermeer sports beach, 400 m; NKV lists it open all year, advanced; swim zone April–October. Pin: OSM beach faces NE, not the Markermeer side, so it stays archived until a better element is found.",,,archived,
 # pro: seasonal/minor — Houtribdijk, April–July only
 # archived: April–July only on the Houtribdijk, minor seasonal spot (WHE-214, 16 Nov 2026)
 NL,Flevoland,Lelystad – Trintelhaven,lake,osm:w822636975,NE,"Houtribdijk, IJsselmeer side. April–July only.",,,archived,08-01..03-31
 # pro: cluster duplicate — Veluwemeer, Strand Horst kept
-NL,Gelderland,Elburg,lake,osm:w494868652,W,"Veluwemeer, shallow. April–September only.",,,pro,10-01..03-31
+NL,Gelderland,Elburg,lake,osm:w494868652,W,"Veluwemeer, shallow, advanced, gusty; NKV zone, launch from the water (small beach by a campsite, guest check-in), April–September only, max 10 kiters.",,,pro,10-01..03-31
 # pro: cluster duplicate — 5 km from Workum
-# archived: no source recorded, deep water close in (WHE-214, 16 Nov 2026)
-NL,Friesland,Hindeloopen,lake,osm:n4299090272,W,Deep water close in.,,,archived,
+# revived as pro: WHE-183, 16 Nov 2026, two sources (see docs/validation/nl-friesland-inland.md)
+NL,Friesland,Hindeloopen,lake,osm:n4299090272,W,"Kitezone behind the Westerdijk by the campsite (schools since 2000), yellow buoys, shallow about 300 m out; sources disagree on depth and beginners. Overflow for Workum 5 km south; SW–NW winds.",,,pro,
 # pro: seasonal/minor — Afsluitdijk, summer only
-NL,Friesland,Kornwerderzand,lake,osm:w740491009,S,"Afsluitdijk, IJsselmeer side. May–September only; advanced riders.",,,pro,10-01..04-30
+NL,Friesland,Kornwerderzand,lake,osm:w740491009,S,"Afsluitdijk, IJsselmeer side. Yellow-buoy zone, May–September only (NKV); advanced, a third shallow by the schools, rig on the grass, never launch on the dike.",,,pro,10-01..04-30
 # pro: local spot — IJsselmeer, local
-NL,Friesland,Mirns,lake,osm:n4299090273,S,"Below the Mirnser Klif; shallow, beginner-friendly.",,,pro,
+NL,Friesland,Mirns,lake,osm:n4299090273,S,"Below the Mirnser Klif; shallow, beginner-friendly, open all year (NKV), SE–SW winds; grass launch, KiteMobile lessons.",,,pro,
 # pro: seasonal/minor — IJsselmeer, winter-only, local
 # archived: kiting allowed October–April only (WHE-214, 16 Nov 2026)
 NL,Friesland,Lemmer,lake,osm:w84485291,SW,Shallow. Kiting allowed October–April only.,,,archived,05-01..09-30
 # pro: local spot — Wadden Sea, high tide only, local
-NL,Friesland,Harlingen,sea,osm:w522018972,W,"Wadden Sea, shallow; around high tide.",,high,pro,
+NL,Friesland,Harlingen,sea,osm:w522018972,W,"Wadden Sea beach at Westerzeedijk, advanced; best around high tide (mud at low water). Kiting inside yellow buoys 1 April–31 August; schools on site.",,high,pro,
 # pro: local spot — island beach, Terschelling/Ameland kept
 NL,Wadden Islands,Vlieland,sea,osm:n4586179268,NW,"North Sea beach west of the Badhuys only (vlieland.nl); the beach east of it up to the harbour and the Wadden Sea are closed to kiters.",,,pro,
 # pro: cluster duplicate — second Terschelling spot
@@ -141,10 +141,10 @@ NL,Wadden Islands,Ameland – Waddenzee,sea,osm:w655410097,S,"West of the Nes fe
 # pro: local spot — island beach, Lauwersoog/Ameland kept
 NL,Wadden Islands,Schiermonnikoog,sea,osm:n503478243,N,"Official activity beach between the Badweg access (east of pavilion Paal 3) and pole 5; kiting is not allowed elsewhere on the beach. Big lagoon at high tide. Wadden side closed.",,,pro,
 # pro: local spot — Eems-Dollard, high tide only, local
-NL,Groningen,Delfzijl,sea,osm:w878065974,NE,"Eems-Dollard beach, shallow; around high tide.",,high,pro,
+NL,Groningen,Delfzijl,sea,osm:w878065974,NE,"Eems-Dollard beach, shallow; rideable about 2 h either side of high water; NKV open all year, beginners to advanced.",,high,pro,
 # pro: minor lake — winter-only lake
 # archived: kiting allowed October–April only, minor lake (WHE-214, 16 Nov 2026)
 NL,Groningen,Oldambtmeer,lake,osm:w114468010,SE,Midwolda. Kiting allowed October–April only.,,,archived,05-01..09-30
 # pro: minor lake — local lake
-# archived: minor lake, no source recorded, advanced riders only (WHE-214, 16 Nov 2026)
-NL,Groningen,Zuidlaardermeer,lake,osm:w99150401,S,Strand Meerwijck; advanced riders.,,,archived,
+# revived as pro: WHE-183, 16 Nov 2026, two sources (see docs/validation/nl-friesland-inland.md)
+NL,Groningen,Zuidlaardermeer,lake,osm:w99150401,S,"Strand Meerwijck on the north shore; NKV lists it open all year for SW–SE winds, advanced; older forum says tolerated, poles in the swim area. Depth sources disagree.",,,pro,
