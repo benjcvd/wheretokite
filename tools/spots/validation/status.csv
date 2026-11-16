@@ -51,7 +51,7 @@ dk-all,review,WHE-184,14,0,0,1,0,docs/validation/dk-all.md,2026-11-15
 pl-all,todo,val-pl-all,,,,,,,
 hr-me,review,val-hr-me,8,5,5,0,0,docs/validation/hr-me.md,2026-11-16
 gb-south,todo,val-gb-south,,,,,,,
-gb-southwest,todo,val-gb-southwest,,,,,,,
+gb-southwest,review,WHE-188,11,9,7,1,1,docs/validation/gb-southwest.md,2026-11-16
 gb-wales,todo,val-gb-wales,,,,,,,
 gb-east,todo,val-gb-east,,,,,,,
 gb-north-england,todo,val-gb-north-england,,,,,,,

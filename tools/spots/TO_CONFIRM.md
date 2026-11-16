@@ -232,6 +232,7 @@ Questions:
 ## UK / Ireland (GB.csv, IE.csv)
 - Weymouth – Portland Harbour: pinned at Hamm Beach facing N into the harbour; right launch?
 - Exmouth: Duck Pond (estuary) side faces NW, seafront SW — correct?
+- South-west England (WHE-188, 2026-11-16): Gwithian keeps its mid-July to early-September 10:00-18:00 ban with no official page behind it (worst case; Kernow club only says stay out of summer swim and surf zones). Saunton ban removed, guides describe a marked summer kite area. Exmouth Duck Pond: wildlife refuge 15 Sep-31 Dec, no page says whether kiting is excluded, notes only. Brean archived (no kitesurf source).
 - Calshot: faces E across Southampton Water?
 - Achill – Keel Lough side; Lady's Island Lake direction (no hint).
 - Ireland coverage check (2026-10-22): Windy's map shows no kite spots in Ireland, so no

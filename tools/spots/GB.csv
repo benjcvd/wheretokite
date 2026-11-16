@@ -16,13 +16,14 @@ GB,Merseyside,West Kirby,sea,osm:w30822710,W,"Dee estuary: kite only around high
 GB,Lancashire,St Annes,sea,osm:w56313968,W,"Club spot by the Beachcomber café. Launch ~2 h before high tide; no beach on big springs, long walk at low.",,not-low,,
 GB,Cumbria,Walney Island – Earnse Bay,sea,q:Walney Island,W,"Gently shelving, exposed to the Irish Sea; kite school on the beach.",,,,
 # --- South West
-GB,Somerset,Brean,sea,osm:w682452846,W,Huge tidal range: very long walk over sand and mud at low water. Alternative: Weston-super-Mare – Uphill kite zone (±3 h around high tide).,,,,
-GB,Devon,Saunton Sands,sea,osm:r9452840,W,"Kite zone starts past the White Rock marker ~400 m down the beach. No kitesurfing in July and August. Alternative: Westward Ho! (sand-sports zone in summer, low tide).",,,,07-01..08-31
+# archived: no source says people kitesurf at Brean; Somerset Council limits sailing on Brean Beach to land-yacht and traction-kite club members at organised meetings; not on the Windguru map
+GB,Somerset,Brean,sea,osm:w682452846,W,Huge tidal range: very long walk over sand and mud at low water. Alternative: Weston-super-Mare – Uphill kite zone (±3 h around high tide).,,,archived,
+GB,Devon,Saunton Sands,sea,osm:r9452840,W,"Ride down the beach, away from the surf zone in front of the slipway. May to September the beach is lifeguarded and there is a marked kite area: follow the signs and flags. No kite lessons allowed here, independent riders only. Shorebreak; avoid N wind (sheltered, gusty). Alternative: Westward Ho! (low tide).",,,,
 GB,Cornwall,Watergate Bay,sea,q:Watergate Bay,WNW,Marked Kitesports Zone north of the rocks. No kiting 2 h either side of high tide; keep out of the lifeguard flags in season. Alternative: Perran Sands (north end only).,,not-high,,
-GB,Cornwall,Gwithian,sea,q:Gwithian,NW,St Ives Bay. Kites off limits 10:00–18:00 from mid-July to early September and between the lifeguard flags.,,,,07-15..09-07 10:00-18:00
-GB,Cornwall,Marazion – Long Rock,sea,"q:Long Rock, Cornwall",SE,"Mount's Bay, beginner friendly in the prevailing SW (cross-on).",,,,
-GB,Devon,Bantham,sea,q:Bantham Beach,SW,"Avon estuary mouth opposite Bigbury. Low tide to 1–2 h before high; stay right of the RNLI flags, 50 m from swimmers/surfers.",,not-high,,
-GB,Devon,Exmouth,lagoon,"q:Imperial Recreation Ground, Exmouth",NW:Duck Pond (estuary):lagoon|SW:Seafront:sea,"Duck Pond: flat estuary lagoon, launch from the Imperial Recreation Ground; stay west of the yellow buoys 15 Sept–31 Dec (Brent geese). Seafront: ±2 h around high tide.",,,,
+GB,Cornwall,Gwithian,sea,q:Gwithian,NW,"St Ives Bay. Summer: stay out of the lifeguarded swim and surf zones (lifeguards daily from mid-May to late September). The 10:00-18:00 mid-July to early September ban is not confirmed by an official page; kept to be safe. When the tide reaches the rocks at the car park end, move west towards St Ives.",,,,07-15..09-07 10:00-18:00
+GB,Cornwall,Marazion – Long Rock,sea,"q:Long Rock, Cornwall",SE,"Mount's Bay, flat water and beginner friendly; SW, S and SE all work. Schools on the beach (Ocean High, Hoxton). Shore dump and steep shingle at high tide: wait for the tide to drop. Long seaweed can tangle lines.",,,,
+GB,Devon,Bantham,sea,q:Bantham Beach,SW,"Avon estuary mouth opposite Bigbury. Best at low tide to 1-2 h before high; stay clear of the RNLI flags and 50 m from swimmers/surfers. Strong current in the river mouth, especially on the ebb. Sheltered and gusty in NW wind.",,not-high,,
+GB,Devon,Exmouth,lagoon,"q:Imperial Recreation Ground, Exmouth",NW:Duck Pond (estuary):lagoon|SW:Seafront:sea,"Duck Pond: flat, shallow estuary lagoon, launch from the Imperial Recreation Ground; best 2-3 h either side of high tide. Exe Estuary wildlife refuge (yellow WR buoys) is active 15 Sept-31 Dec: keep out of it and follow the signs. Seafront: ±2 h around high tide. Gusty in E wind.",,,,
 # --- Dorset / Hampshire / Sussex
 GB,Dorset,Weymouth – Portland Harbour,sea,q:Hamm Beach,N,"Flat water in most winds, any tide. Launch Ferrybridge / Hamm Beach; Portland Port permit and third-party insurance required. Fast ebb through Ferrybridge. Alternative: Overcombe in Weymouth Bay (bump and jump, waves in easterlies).",,,,
 GB,Dorset,Poole Harbour – Shore Road,lagoon,"q:Shore Road, Poole",W,"Whitley Lake, Sandbanks: flat shallow harbour water; Poole Harbour Commissioners kite permit required. Best mid to high tide; boat traffic. Alternative in easterlies: Studland – Knoll Beach NT kite zone (permit).",,not-low,,
@@ -79,13 +80,15 @@ GB,Merseyside,Ainsdale,sea,osm:w257439515,W,Only Sefton beach where kitesurfing 
 # pro: secondary local beach; Fylde covered by St Annes
 GB,Lancashire,Fleetwood – Marine Beach,sea,q:Fleetwood Beach,NW,,,,pro,
 # pro: within ~10 km of a better-known kept spot (Brean)
-GB,Somerset,Weston-super-Mare – Uphill,sea,osm:r16699239,W,Dedicated kite zone at the Uphill end. 10 m+ tides: ride ~3 h either side of high tide only.,,high,pro,
+GB,Somerset,Weston-super-Mare – Uphill,sea,osm:r16699239,W,"Council-run WindZone between Royal Sands and Uphill: launch and land south of the Royal Sands car park. BKSA, RYA or UKWA membership card required. No lifeguard, intermediate to advanced. 10 m+ tides: ride ~3 h either side of high tide only.",,high,pro,
 # pro: secondary to Saunton Sands
-GB,Devon,Westward Ho!,sea,osm:w151234392,W,1 Jun–30 Sep kites only in the designated sand-sports zone (right of the lifeguard hut). Best around low tide; no riding at high tide.,,low,pro,
+GB,Devon,Westward Ho!,sea,osm:w151234392,W,May to September the beach is lifeguarded and kites go in the marked zone north of the Sandymere lifeguard hut. Launch and land 50 m from the pebble ridge; no riding at high tide. Best on W wind around low tide; S wind is gusty. Schools on site.,,low,pro,
 # pro: secondary local beach; summer daytime ban
-GB,Cornwall,Daymer Bay,sea,q:Daymer Bay,W,"Camel estuary, sheltered from swell. Kites banned 10:00–18:00 in July–August. Ride on the flood or slack; strong ebb.",,,pro,07-01..08-31 10:00-18:00
+GB,Cornwall,Daymer Bay,sea,q:Daymer Bay,W,"Camel estuary, sheltered from swell. Kites banned 10:00-18:00 in July-August (club and guide sources). Ride on the flood or slack; the ebb runs up to 5 knots and can sweep you onto the Doom Bar.",,,pro,07-01..08-31 10:00-18:00
 # pro: secondary to Watergate Bay
-GB,Cornwall,Perranporth (Perran Sands),sea,q:Perran Sands,W,"Kiting banned at the Perranporth town end all year: use the Perran Sands (north) end. Exposed, rips in bigger swell.",,,pro,
+GB,Cornwall,Perranporth (Perran Sands),sea,q:Perran Sands,W,"Kite at the Perran Sands (north) end, not in front of Perranporth town beach (surfers and lifeguards). Little safe space on big high tides; dunes make lofted kites. Exposed, rips in bigger swell.",,,pro,
+# pro: added from the Windguru list (The Bluff); Kernow Kitesurf Club permit scheme
+GB,Cornwall,Hayle – The Bluff,sea,osm:w183752234,NW,"Hayle Towans beach at the river mouth. Open to kiting under a permit: carry third-party insurance and wear the Bluff pass (from Down the Line in Hayle, BKSA card needed); no pass risks a £1000 fine and a new ban. Stay 100 m from boats in the channel. Paid parking at the towans.",,,pro,
 # pro: within ~10 km of a better-known kept spot (Portland Harbour)
 GB,Dorset,Weymouth – Overcombe,sea,"q:Overcombe, Weymouth",S,"Weymouth Bay: bump and jump, waves in easterlies.",,,pro,
 # archived: within ~10 km of a better-known kept spot (Poole Harbour); NT permit
