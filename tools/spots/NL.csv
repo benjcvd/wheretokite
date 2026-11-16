@@ -138,3 +138,7 @@ NL,Groningen,Oldambtmeer,lake,osm:w114468010,SE,Midwolda. Kiting allowed October
 # pro: minor lake — local lake
 # archived: minor lake, no source recorded, advanced riders only (WHE-214, 16 Nov 2026)
 NL,Groningen,Zuidlaardermeer,lake,osm:w99150401,S,Strand Meerwijck; advanced riders.,,,archived,
+# pro: Windy 5 stars, listed by two kite guides (unplug, kite-and-windsurfing-guide); no official kite zone found (WHE-207)
+NL,Zeeland,Westkapelle,sea,osm:w80328769,W,"Wide sandy North Sea beach south of the Westkapelle dike; few kiters. No official kite zone found: ask the municipality of Veere or a local school before riding.",,,pro,
+# pro: Windy 4 stars, listed by Kiteforum, Unplug and a kite guide; summer rule from guides only, no official text (WHE-207)
+NL,Zeeland,Vlissingen – Nollenstrand,sea,osm:w78881969,W,"North Sea beach north of the Vlissingen boulevard, reached by the Nollepad: chop and small to medium waves, advanced riders. Guides say kiting in front of the boulevard is banned in summer before 19:00; check the municipality of Vlissingen.",,,pro,
