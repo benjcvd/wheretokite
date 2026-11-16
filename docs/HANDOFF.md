@@ -444,3 +444,5 @@ minor lake) move to `archived`, so they never ship. Sweeps run per area (FR Atla
 rest); Product flips the free plan and checks the 150-location server limit and Open-Meteo load.
 Trigger: Cayeux had been hidden as a "duplicate" of Le Crotoy although it works at the opposite tide.
 Also built the Product branch onto Ben's iPhone (15 Nov, not merged to main yet).
+
+**Forecast accuracy, 16 Nov (WHE-71).** The chance to kite reads ECMWF on its beach cell (15 km inland, 2.6 kn light) although its cut-offs were tuned with ECMWF on the sea cell: about 25 % fewer Go days than designed, each a bit more reliable. Built ECMWF-on-sea in `Confidence.swift` (31913a3, two requests merged per search); waiting for Ben's pick. Caveat: November alone (16 days) shows the sea-cell Go at 72–77 %, so re-check before trusting the 85 % promise.
