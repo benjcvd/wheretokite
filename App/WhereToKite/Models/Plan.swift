@@ -27,14 +27,16 @@ struct Entitlements: Equatable {
     /// Water sector, second side and tide rule on the rider's own spots.
     var advancedSpotSettings: Bool
     /// Catalogue spots with tier "pro" (secondary beaches, launches near a famous spot).
-    var proSpots: Bool = false
+    /// Free since 16 Nov 2026 (Ben: every active spot is free); kept as a switch, and the
+    /// tier stays in the data, in case a later plan wants it back.
+    var proSpots: Bool = true
     /// "Next good window": when the searched day is poor, the next day in the week that works.
     var nextWindow: Bool = false
 
     static let free = Entitlements(maxDriveMinutes: 180, forecastDays: 4, maxUserSpots: 1, maxResults: 5,
                                    scoreWeights: false, advancedSpotSettings: true)
     static let pro = Entitlements(maxDriveMinutes: nil, forecastDays: 7, maxUserSpots: nil, maxResults: nil,
-                                  scoreWeights: true, advancedSpotSettings: true, proSpots: true, nextWindow: true)
+                                  scoreWeights: true, advancedSpotSettings: true, nextWindow: true)
 }
 
 @MainActor @Observable
@@ -118,7 +120,7 @@ struct ProSheet: View {
         ("calendar", String(localized: "7-day planning"), String(localized: "The whole week, not just the next four days.")),
         ("calendar.badge.clock", String(localized: "Next good window"), String(localized: "When today is flat, the next day this week that works, and where.")),
         ("car.fill", String(localized: "Drives up to 10 h"), String(localized: "Weekend trips, not just the local spots (3\u{00A0}h free).")),
-        ("list.number", String(localized: "Every spot"), String(localized: "The full ranking and map (top 5 free), plus about 300 more local spots.")),
+        ("list.number", String(localized: "Every spot"), String(localized: "The full ranking and map (top 5 free).")),
         ("mappin.and.ellipse", String(localized: "Unlimited own spots"), String(localized: "Add all your secret spots (1 free).")),
         ("slider.horizontal.3", String(localized: "What matters to you"), String(localized: "Weigh wind strength, steadiness, direction and drive your way.")),
     ]

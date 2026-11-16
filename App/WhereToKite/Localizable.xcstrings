@@ -5104,18 +5104,18 @@
         }
       }
     },
-    "The full ranking and map (top 5 free), plus about 300 more local spots." : {
+    "The full ranking and map (top 5 free)." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La clasificación y el mapa completos (top 5 gratis), y unos 300 spots locales más."
+            "value" : "La clasificación y el mapa completos (top 5 gratis)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le classement et la carte complets (top 5 gratuit), et environ 300 spots locaux de plus."
+            "value" : "Le classement et la carte complets (top 5 gratuit)."
           }
         }
       }
