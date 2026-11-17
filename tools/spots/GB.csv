@@ -30,9 +30,9 @@ GB,Isle of Wight,Ryde – Appley,sea,q:Appley Beach,N,"Solent shore: shallow san
 GB,Hampshire,Hayling Island,sea,"q:Beachlands, Hayling Island",S,"Official kite beach just east of the Beachlands funfair (free, no safety cover); CBK club and school at the west end (the stretch in front of the golf club is CBK members only). Keep 2 line lengths off the shore in swim season. Alternative: West Wittering (2XS members only).",,,,
 GB,West Sussex,Lancing,sea,osm:w494402945,S,Designated kitesports zone (beginner and advanced sections); stay out of the swim zones 1 May–30 Sept. Best 3–4 h either side of high tide.,,not-low,,
 # --- Wales
-GB,North Wales,Kinmel Bay,sea,q:Kinmel Bay,N,Flat water in WSW through N to NE. Council kite permit required (day or annual).,,,,
+GB,North Wales,Kinmel Bay,sea,q:Kinmel Bay,N,Flat water in WSW through N to NE. North Wales Kitesurfing school on the beach. A Conwy harbour office permit is reported by local guides (no council page found): check before riding.,,,,
 GB,Anglesey,Rhosneigr,sea,osm:w367083960,SW,"Anglesey's main spot (Traeth Llydan / Crigyll): waves and big air. Rips near the river and the south end, yellow-buoyed lanes.",,,,
-GB,Gwynedd,Black Rock Sands,sea,q:Black Rock Sands,SW,"Kitesurfing allowed all year (land kiting banned Mar–Nov). Flat in light winds, small waves in strong ones.",,,,
+GB,Gwynedd,Black Rock Sands,sea,q:Black Rock Sands,SW,"Kitesurfing reported allowed all year; Gwynedd's beach guide bans power kites, land yachts and buggies Mar–Nov (land kiting). Check the council before riding. Flat in light winds, small waves in strong ones.",,,,
 GB,Ceredigion,Borth – Ynyslas,sea,q:Ynyslas,W,"Dyfi estuary mouth: kite at high tide; strong tidal currents, no swimming.",,high,,
 GB,Pembrokeshire,Newgale,sea,q:Newgale,W,"Pembrokeshire's most popular kite beach, school on site. No launching at high tide. Alternative: Freshwater West (big surf, reef, experienced only).",,not-high,,
 GB,South Wales,Rest Bay (Porthcawl),sea,osm:w204830972,SW,Any tide; Atlantic swell.,,,,
@@ -104,7 +104,7 @@ GB,West Sussex,Littlehampton,sea,"q:East Beach, Littlehampton",S,"East Beach (Se
 # archived: strict summer beach zoning with fines: kiting only tolerated (WHE-214, 16 Nov 2026)
 GB,East Sussex,Pevensey Bay,sea,q:Pevensey Bay,S,"Strict summer beach zoning (fines). Shingle at high tide, sand at low; bump and jump.",,not-low,archived,
 # pro: secondary to Kinmel Bay on the North Wales coast
-GB,North Wales,Llandudno – West Shore,sea,q:West Shore Llandudno,W,,,,pro,
+GB,North Wales,Llandudno – West Shore,sea,q:West Shore Llandudno,W,"Shallow, flat. Best W to NW; NE to E blocked by the Great Orme. Guides mention a Conwy harbour office permit.",,,pro,
 # pro: secondary Anglesey beach, Rhosneigr is the main spot
 GB,Anglesey,Llanddwyn (Newborough),sea,q:Llanddwyn Beach,SW,Kites set up on the left-hand side of the beach only (turn left through the dunes). Any tide; boulders in places.,,,pro,
 # pro: secondary Llŷn spot; experts-only, Black Rock Sands kept for the area
@@ -114,11 +114,11 @@ GB,Pembrokeshire,Freshwater West,sea,q:Freshwater West,W,Big surf beach with ree
 # pro: secondary local beach
 GB,Pembrokeshire,Tenby – South Beach,sea,"q:South Beach, Tenby",SE,"Sheltered, flat; works SW round to NE, any tide.",,,pro,
 # pro: secondary local beach
-GB,Carmarthenshire,Cefn Sidan (Pembrey),sea,osm:w309274969,SW,,,,pro,
+GB,Carmarthenshire,Cefn Sidan (Pembrey),sea,osm:w309274969,SW,Long beach; South Wales Kitesurfing teaches at Pembrey.,,,pro,
 # pro: surf-zoned beach, South Wales covered by Rest Bay
 GB,Gower,Llangennith (Rhossili Bay),sea,q:Llangennith,W,"Zoned surf beach, most swell on Gower; respect the surf zone.",,,pro,
 # pro: secondary local beach
-GB,South Wales,Aberavon,sea,q:Aberavon Beach,SW,,,,pro,
+GB,South Wales,Aberavon,sea,q:Aberavon Beach,SW,South Wales Kitesurfing teaches at Aberavon.,,,pro,
 # pro: secondary local beach; East Lothian covered by Longniddry
 GB,East Lothian,Belhaven Bay,sea,q:Belhaven Bay,NE,,,,pro,
 # pro: secondary local beach

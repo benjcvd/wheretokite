@@ -52,7 +52,7 @@ pl-all,review,val-pl-all WHE-185,8,0,0,0,0,docs/validation/pl-all.md,2026-11-16
 hr-me,review,val-hr-me,8,5,5,0,0,docs/validation/hr-me.md,2026-11-16
 gb-south,review,WHE-187,17,5,5,0,3,docs/validation/gb-south.md,2026-11-16
 gb-southwest,todo,val-gb-southwest,,,,,,,
-gb-wales,todo,val-gb-wales,,,,,,,
+gb-wales,review,WHE-189,14,0,0,0,0,docs/validation/gb-wales.md,2026-11-17
 gb-east,todo,val-gb-east,,,,,,,
 gb-north-england,todo,val-gb-north-england,,,,,,,
 gb-scotland,todo,val-gb-scotland,,,,,,,
