@@ -1,8 +1,8 @@
 country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # United Kingdom — format: tools/spots/README.md
 # --- Kent / Sussex / Hampshire / Isle of Wight
-GB,East Sussex,Camber Sands,sea,osm:n420415208,SSE,"Launch only in the year-round kite zone at the eastern (Jury's Gap / Broomhill) end. Best 3 h either side of low tide; groynes and shore break near high water. Alternative: Greatstone (Littlestone), 8 km E, works in N–NE.",,not-high,,
-GB,Kent,Seasalter (Whitstable),sea,osm:w93759721,N,"Shallow estuary flats; mid to high tide, long walk at low water.",,not-low,,
+GB,East Sussex,Camber Sands,sea,osm:n420415208,SSE,"Launch only in the council kite zone at the eastern (Broomhill car park / Jury's Gap) end, third-party insurance required. Rother council says no kiting within 3 h either side of high water (groynes, boulders, sea wall): ride around low tide. Alternative: Greatstone (Littlestone), 8 km E, works in N–NE.",,not-high,,
+GB,Kent,Seasalter (Whitstable),sea,osm:w93759721,N,"Shallow estuary flats; mid to high tide, long walk at low water (some guides prefer low water for the sandbanks: sources disagree, see TO_CONFIRM).",,not-low,,
 GB,Essex,Shoebury East Beach,sea,osm:w128291302,SE,"Designated kite area; shallow lagoons between sandbanks at low tide, flat water, beginner friendly.",,not-high,,
 GB,Suffolk,Felixstowe Ferry,sea,osm:w844058564,SE,Deben river mouth: mirror-flat lagoon on the ebb and at low tide; avoid the flood (current sets into the river).,,low,,
 GB,Norfolk,Sea Palling,sea,q:Sea Palling,NE,"Artificial offshore reefs: flat lagoons inside, punchy waves outside; strong rips at the reef gaps.",,,,
@@ -24,10 +24,10 @@ GB,Cornwall,Marazion – Long Rock,sea,"q:Long Rock, Cornwall",SE,"Mount's Bay, 
 GB,Devon,Bantham,sea,q:Bantham Beach,SW,"Avon estuary mouth opposite Bigbury. Low tide to 1–2 h before high; stay right of the RNLI flags, 50 m from swimmers/surfers.",,not-high,,
 GB,Devon,Exmouth,lagoon,"q:Imperial Recreation Ground, Exmouth",NW:Duck Pond (estuary):lagoon|SW:Seafront:sea,"Duck Pond: flat estuary lagoon, launch from the Imperial Recreation Ground; stay west of the yellow buoys 15 Sept–31 Dec (Brent geese). Seafront: ±2 h around high tide.",,,,
 # --- Dorset / Hampshire / Sussex
-GB,Dorset,Weymouth – Portland Harbour,sea,q:Hamm Beach,N,"Flat water in most winds, any tide. Launch Ferrybridge / Hamm Beach; Portland Port permit and third-party insurance required. Fast ebb through Ferrybridge. Alternative: Overcombe in Weymouth Bay (bump and jump, waves in easterlies).",,,,
-GB,Dorset,Poole Harbour – Shore Road,lagoon,"q:Shore Road, Poole",W,"Whitley Lake, Sandbanks: flat shallow harbour water; Poole Harbour Commissioners kite permit required. Best mid to high tide; boat traffic. Alternative in easterlies: Studland – Knoll Beach NT kite zone (permit).",,not-low,,
+GB,Dorset,Weymouth – Portland Harbour,sea,q:Hamm Beach,N,"Flat water in most winds, any tide. Launch Ferrybridge / Hamm Beach; Portland Port permit and third-party insurance required (riding without one can mean being sent off the water). Seasonal exclusion zone off Hamm Beach while the swim buoys are up (port direction 1 of 2024). Fast ebb through Ferrybridge. Alternative: Overcombe in Weymouth Bay (bump and jump, waves in easterlies).",,,,
+GB,Dorset,Poole Harbour – Shore Road,lagoon,"q:Shore Road, Poole",W,"Whitley Lake, Sandbanks: flat shallow harbour water; Poole Harbour Commissioners kite permit required (daylight only; no launching or landing between the shore and the 50 m buoyed zone, none within 50 m of the harbour wall). Best mid to high tide; boat traffic. Alternative in easterlies: Studland – Knoll Beach NT kite zone (permit).",,not-low,,
 GB,Isle of Wight,Ryde – Appley,sea,q:Appley Beach,N,"Solent shore: shallow sandbars and pools at low tide, waist deep at half tide.",,,,
-GB,Hampshire,Hayling Island,sea,"q:Beachlands, Hayling Island",S,"Official kite beach just east of the Beachlands funfair (free, no safety cover); CBK club at the west end. Keep 2 line lengths off the shore in swim season. Alternative: West Wittering (2XS members only).",,,,
+GB,Hampshire,Hayling Island,sea,"q:Beachlands, Hayling Island",S,"Official kite beach just east of the Beachlands funfair (free, no safety cover); CBK club and school at the west end (the stretch in front of the golf club is CBK members only). Keep 2 line lengths off the shore in swim season. Alternative: West Wittering (2XS members only).",,,,
 GB,West Sussex,Lancing,sea,osm:w494402945,S,Designated kitesports zone (beginner and advanced sections); stay out of the swim zones 1 May–30 Sept. Best 3–4 h either side of high tide.,,not-low,,
 # --- Wales
 GB,North Wales,Kinmel Bay,sea,q:Kinmel Bay,N,Flat water in WSW through N to NE. Council kite permit required (day or annual).,,,,
@@ -68,7 +68,8 @@ GB,County Durham,Seaton Carew,sea,q:Seaton Carew,E,"Shallow, flattish water in s
 # pro: busy surf beach, secondary to Blyth – Seaton Sluice
 GB,Tyne and Wear,Tynemouth – Longsands,sea,osm:w221550704,E,Busy surf beach: keep clear of surfers and the lifeguard zone. Kiting banned at neighbouring Whitley Bay / Cullercoats.,,,pro,
 # pro: secondary local beach; seasonal lagoon near Beadnell
-GB,Northumberland,Budle Bay,lagoon,osm:n8906542954,NE,"Tidal lagoon: rideable from ~2 h before to a few hours after high water, chop only. Watersports zone open 1 Apr–31 Oct only (closed Nov–Mar for birds).",,high,pro,11-01..03-31
+# archived: bird closure Nov–Mar, watersports zone open April–October only, chop only, no wider reputation (WHE-214, 16 Nov 2026)
+GB,Northumberland,Budle Bay,lagoon,osm:n8906542954,NE,"Tidal lagoon: rideable from ~2 h before to a few hours after high water, chop only. Watersports zone open 1 Apr–31 Oct only (closed Nov–Mar for birds).",,high,archived,11-01..03-31
 # pro: secondary Wirral spot, West Kirby is the famous one
 GB,Merseyside,Wallasey (New Brighton),sea,q:Wallasey Beach,NW,Low tide lagoon or mid tide; do not kite inside the summer swim flags. Launch by Wallasey Beach Club (Coastal Drive).,,not-high,pro,
 # pro: within ~10 km of a better-known kept spot (West Kirby)
@@ -86,7 +87,7 @@ GB,Cornwall,Daymer Bay,sea,q:Daymer Bay,W,"Camel estuary, sheltered from swell. 
 # pro: secondary to Watergate Bay
 GB,Cornwall,Perranporth (Perran Sands),sea,q:Perran Sands,W,"Kiting banned at the Perranporth town end all year: use the Perran Sands (north) end. Exposed, rips in bigger swell.",,,pro,
 # pro: within ~10 km of a better-known kept spot (Portland Harbour)
-GB,Dorset,Weymouth – Overcombe,sea,"q:Overcombe, Weymouth",S,"Weymouth Bay: bump and jump, waves in easterlies.",,,pro,
+GB,Dorset,Weymouth – Overcombe,sea,"q:Overcombe, Weymouth",S,"Weymouth Bay: bump and jump, waves in easterlies. Harbour-marked boardsailing / kitesurfing zone at Overcombe Corner (yellow buoys inshore); Weymouth Harbour permit.",,,pro,
 # archived: within ~10 km of a better-known kept spot (Poole Harbour); NT permit
 GB,Dorset,Studland – Knoll Beach,sea,q:Knoll Beach,E,National Trust kite zone at the north end of Knoll Beach (not Shell Bay); NT permit required. Easterly-wind spot.,,,archived,
 # pro: secondary local beach
@@ -100,7 +101,8 @@ GB,West Sussex,Bracklesham Bay,sea,q:Bracklesham Bay,S,"Long shallow beach, kite
 # pro: school beach near Lancing
 GB,West Sussex,Littlehampton,sea,"q:East Beach, Littlehampton",S,"East Beach (Sea Road), BKSA school; flat knee- to waist-deep water around low tide.",,low,pro,
 # pro: secondary local beach
-GB,East Sussex,Pevensey Bay,sea,q:Pevensey Bay,S,"Strict summer beach zoning (fines). Shingle at high tide, sand at low; bump and jump.",,not-low,pro,
+# archived: strict summer beach zoning with fines: kiting only tolerated (WHE-214, 16 Nov 2026)
+GB,East Sussex,Pevensey Bay,sea,q:Pevensey Bay,S,"Strict summer beach zoning (fines). Shingle at high tide, sand at low; bump and jump.",,not-low,archived,
 # pro: secondary to Kinmel Bay on the North Wales coast
 GB,North Wales,Llandudno – West Shore,sea,q:West Shore Llandudno,W,,,,pro,
 # pro: secondary Anglesey beach, Rhosneigr is the main spot
@@ -126,7 +128,8 @@ GB,Fife,Leven,sea,q:Leven Beach,SE,"One of the few east-coast spots for SW winds
 # pro: secondary local beach; Tay covered by St Andrews
 GB,Angus,Monifieth,sea,q:Monifieth Beach,S,"Tay estuary: SE–SW, wind accelerates in SW; flat, shallow, easy access.",,,pro,
 # pro: within ~10 km of a better-known kept spot (Balmedie)
-GB,Aberdeenshire,Aberdeen Beach,sea,osm:w949102150,E,"City beach for quick sessions: groynes, rip and onshore mess; Balmedie is usually better.",,,pro,
+# archived: messy city beach (groynes, rip, onshore); Balmedie is the usual choice (WHE-214, 16 Nov 2026)
+GB,Aberdeenshire,Aberdeen Beach,sea,osm:w949102150,E,"City beach for quick sessions: groynes, rip and onshore mess; Balmedie is usually better.",,,archived,
 # pro: within ~10 km of a better-known kept spot (Balmedie)
 GB,Aberdeenshire,Newburgh (Ythan),sea,osm:w314636606,E,"Ythan estuary flat water, 2–3 h either side of high tide.",,high,pro,
 # pro: secondary Moray Firth spot, Lossiemouth kept
