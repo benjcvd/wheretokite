@@ -494,3 +494,14 @@ and outside it. The footprint is irregular, so `tools/backtest/arome_coverage.py
 per-spot list; re-run it when spots are added (new spots read "Météo-France" until then).
 
 **Forecast accuracy, 16 Nov (WHE-71).** The chance to kite reads ECMWF on its beach cell (15 km inland, 2.6 kn light) although its cut-offs were tuned with ECMWF on the sea cell: about 25 % fewer Go days than designed, each a bit more reliable. Built ECMWF-on-sea in `Confidence.swift` (31913a3, two requests merged per search); waiting for Ben's pick. Caveat: November alone (16 days) shows the sea-cell Go at 72–77 %, so re-check before trusting the 85 % promise.
+
+## Lead, 17 Nov 13:15: everything merged and pushed for 1.1 testing
+1.0 has been live on the App Store since 9 Nov. On Ben's "push", every workstream branch was merged into main
+(Product with every-spot-free, wind-first page, clock fix, offshore choice, server lockdown; WHE-164; all spot
+streams; forecast-accuracy WHE-57/71; App reviewer) and pushed. WHE-188 (south-west England) stays unmerged on
+its ticket branch, still in review. Conflicts: the forecast rate limiter took namespace 1003 (1002 is the report
+limiter); in FR-mediterranean.csv and FR-atlantic.csv the validated row texts were kept and the WHE-211/212
+archiving applied on top. The Worker is NOT deployed: the new app works with the live one (it had no allowlist
+yet), and deploying the lockdown + spam guard still waits on Ben's word. Ben's calls: the Open-Meteo free tier is
+fine while non-commercial (roughly 50–100 cold searches a day); no domain needed for 1.1 (about €10 a year, needed
+before real traffic). WHE-218 went to Forecast accuracy. An Xcode-generated xcstrings change sits in `git stash`.
