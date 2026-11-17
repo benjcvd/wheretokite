@@ -16,8 +16,7 @@ final class MapsAppTests: XCTestCase {
         XCTAssertNil(items.first { $0.name == "origin" })
     }
 
-    func testStoredChoiceRoundTrips() {
-        for app in MapsApp.allCases { XCTAssertEqual(MapsApp(rawValue: app.rawValue), app) }
-        XCTAssertNil(MapsApp(rawValue: ""))  // nothing chosen yet → ask
+    func testMenuOffersAppleThenGoogle() {
+        XCTAssertEqual(MapsApp.allCases, [.apple, .google])
     }
 }
