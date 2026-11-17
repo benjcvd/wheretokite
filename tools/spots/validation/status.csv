@@ -55,7 +55,7 @@ gb-southwest,review,WHE-188,11,9,7,1,1,docs/validation/gb-southwest.md,2026-11-1
 gb-wales,review,WHE-189,14,0,0,0,0,docs/validation/gb-wales.md,2026-11-17
 gb-east,todo,val-gb-east,,,,,,,
 gb-north-england,todo,val-gb-north-england,,,,,,,
-gb-scotland,todo,val-gb-scotland,,,,,,,
+gb-scotland,review,WHE-192,23,0,0,0,0,docs/validation/gb-scotland.md,2026-11-18
 ie-east-south,todo,val-ie-east-south,,,,,,,
 ie-west,todo,val-ie-west,,,,,,,
 be-all,todo,val-be-all,,,,,,,
