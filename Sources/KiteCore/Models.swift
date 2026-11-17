@@ -272,6 +272,17 @@ public struct RiderProfile: Codable, Equatable, Sendable {
 
 // MARK: - Search
 
+/// The water a rider is after (WHE-221). Lagoons and lakes count as flat; at sea, the
+/// forecast wave height decides.
+public enum WaterPreference: String, Codable, CaseIterable, Sendable {
+    case flat, wavy, either
+}
+
+/// Whether the rider only wants good weather (WHE-221). Storms score 0 whatever this says.
+public enum WeatherPreference: String, Codable, CaseIterable, Sendable {
+    case fair, any
+}
+
 public enum SessionSlot: String, Codable, CaseIterable, Sendable {
     case morning, afternoon, evening, fullDay, custom
 
@@ -296,8 +307,12 @@ public struct SearchRequest: Sendable {
     public var slot: SessionSlot
     /// The rider's own hours when `slot` is `.custom` (start hours, h covers h:00–h+1:00).
     public var customHours: ClosedRange<Int>?
-    /// 0 = chill, 1 = intense, nil = "all types".
+    /// 0 = chill, 1 = intense, nil = "all types". The app no longer offers it (WHE-221): CLI only.
     public var intensity: Double?
+    /// Flat or wavy water (WHE-221). `.either` changes nothing.
+    public var water: WaterPreference = .either
+    /// Good weather only, or any weather (WHE-221). `.any` changes nothing.
+    public var weather: WeatherPreference = .any
     public var distanceMatters: Bool
     /// The moment of the search. When the searched day is today at a spot, only the hours the
     /// rider can reach (now + drive, rounded up to the hour) are scored; earlier ones score 0,
@@ -332,6 +347,9 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     /// Sea level incl. tide (m, relative to mean sea level). Only fetched for spots with a
     /// tide rule.
     public var seaLevelM: Double?
+    /// Significant wave height (m, Open-Meteo Marine). Only fetched for sea spots; nil when
+    /// unknown (lakes, lagoons, old caches, failed request).
+    public var waveHeightM: Double?
     /// WMO weather code (95, 96, 99 = thunderstorm). nil in old caches.
     public var weatherCode: Int?
     /// Convective available potential energy, J/kg: high values mean storm risk.
@@ -367,6 +385,7 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     public var isPlausible: Bool {
         Self.isPlausible(speedKn: speedKn, gustKn: gustKn, directionDeg: directionDeg)
             && (seaLevelM.map { (-30...30).contains($0) } ?? true)
+            && (waveHeightM.map { (0...30).contains($0) } ?? true)
     }
 
     public init(localTime: String, speedKn: Double, gustKn: Double, directionDeg: Double) {

@@ -296,6 +296,7 @@ public struct Recommender: Sendable {
             c.hours = Self.applySafety(c.spot, to: c.hours, day: request.day)
             c.hours = Self.applyStormBuffer(c.hours, day: day.hours, rules: rules)
             c.hours = Self.applyTide(c.spot.tide, to: c.hours, day: day.hours, rules: rules)
+            c.hours = Self.applyPreferences(c.spot, to: c.hours, request: request, rules: rules)
             c.estimate = estimates[c.spot.id] ?? c.estimate
             c.utcOffset = day.utcOffsetSeconds
             c.rec = recommend(c.spot, hours: c.hours, drive: c.estimate, request: request, driveIsEstimate: true,
@@ -423,6 +424,7 @@ public struct Recommender: Sendable {
                 hours = Self.applySafety(c.spot, to: hours, day: day)
                 hours = Self.applyStormBuffer(hours, day: f.hours, rules: rules)
                 hours = Self.applyTide(c.spot.tide, to: hours, day: f.hours, rules: rules)
+                hours = Self.applyPreferences(c.spot, to: hours, request: r, rules: rules)
                 var rec = recommend(c.spot, hours: hours, drive: c.estimate, request: r, driveIsEstimate: true,
                                     weights: profile.scoreWeights, utcOffset: f.utcOffsetSeconds)
                 rec.stormFrom = Self.stormStart(rec, day: f.hours, searched: r.hours, rules: rules)
@@ -587,6 +589,33 @@ public struct Recommender: Sendable {
                     h.flags.append("rain")
                 }
                 if h.wind.unstableAir { h.flags.append("unstable air") }
+            }
+            return h
+        }
+    }
+
+    /// The rider's flat / wavy and weather choices (WHE-221): each hour keeps its factor's
+    /// share of the score. Flags say why when it costs something: "waves", "no waves",
+    /// "grey weather", "rain" (unless the rain is already flagged).
+    static func applyPreferences(_ spot: Spot, to hours: [HourScore], request: SearchRequest,
+                                 rules: ScoringRules) -> [HourScore] {
+        guard request.water != .either || request.weather != .any else { return hours }
+        return hours.map { h in
+            var h = h
+            if request.water != .either {
+                let f = rules.waterFactor(request.water, waterType: spot.waterType, waveHeightM: h.wind.waveHeightM)
+                h.waterFactor = f
+                h.score *= f
+                if f < 0.9 { h.flags.append(request.water == .flat ? "waves" : "no waves") }
+            }
+            if request.weather != .any {
+                let f = rules.weatherFactor(request.weather, hour: h.wind)
+                h.weatherFactor = f
+                h.score *= f
+                let wet = f <= 0.5
+                if f < 1, !(wet && h.flags.contains { $0 == "rain" || $0 == "heavy rain" }) {
+                    h.flags.append(wet ? "rain" : "grey weather")
+                }
             }
             return h
         }

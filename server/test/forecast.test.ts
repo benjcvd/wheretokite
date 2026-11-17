@@ -194,6 +194,17 @@ describe("handleForecast", () => {
     expect(body.latitude).toBe(43.5);
   });
 
+  it("wave heights for an app batch of 100 sea spots: one upstream call (WHE-221)", async () => {
+    const up = fakeUpstream();
+    const deps = makeDeps(up.fetch);
+    const q = MARINE_PARAMS.replace("sea_level_height_msl", "wave_height");
+    const res = await handle(new Request(`${ORIGIN}/v1/marine?latitude=${lats(100)}&longitude=${lats(100)}&${q}`), {}, deps);
+    expect(res.status).toBe(200);
+    expect(up.calls).toHaveLength(1);
+    expect(up.calls[0].get("hourly")).toBe("wave_height");
+    expect(JSON.parse(await res.text())).toHaveLength(100);
+  });
+
   it("chunks 150 missing locations into 2 upstream calls of <= 100", async () => {
     const up = fakeUpstream();
     const deps = makeDeps(up.fetch);
@@ -310,6 +321,7 @@ describe("allow-list (only what the app and CLI send)", () => {
     expect(check(`${SWIFT_FORECAST}&models=ecmwf_ifs,gfs_seamless&cell_selection=sea`)).not.toThrow();
     expect(check(SWIFT_CONFIDENCE)).not.toThrow();
     expect(check(MARINE_PARAMS, "marine")).not.toThrow();
+    expect(check(MARINE_PARAMS.replace("sea_level_height_msl", "wave_height"), "marine")).not.toThrow();
     // CLI --day on a past day goes to the archive.
     expect(check(SWIFT_FORECAST.replace(/2026-10-19|2026-10-25/g, "2025-08-14"), "archive")).not.toThrow();
   });
@@ -324,7 +336,7 @@ describe("allow-list (only what the app and CLI send)", () => {
     expect(check(`${SWIFT_FORECAST}&elevation=0,0`)).toThrow(/'elevation'/);
     expect(check(SWIFT_FORECAST.replace("timezone=auto", "timezone=Europe/Paris"))).toThrow(/timezone/);
     expect(check(`${MARINE_PARAMS}&daily=sunrise`, "marine")).toThrow(/'daily'/);
-    expect(check(`${MARINE_PARAMS}&hourly=wave_height`, "marine")).toThrow(/'wave_height'/);
+    expect(check(MARINE_PARAMS.replace("sea_level_height_msl", "wave_period"), "marine")).toThrow(/'wave_period'/);
   });
 
   it("requires hourly and both dates, and bounds the date range", () => {

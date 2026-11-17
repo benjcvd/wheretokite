@@ -300,11 +300,18 @@ public struct OpenMeteoProvider: ForecastProvider {
         let responses = try await fetch(batch, from: from, to: to)
         // Tides only where a spot depends on them; a failed tide request just leaves them out.
         let tideSpots = batch.filter { $0.tide != nil }
-        let tides = tideSpots.isEmpty ? [:]
+        async let tideFetch = tideSpots.isEmpty ? [:]
             : ((try? await fetchSeaLevels(tideSpots, from: from, to: to)) ?? [:])
+        // Waves for the flat / wavy choice (WHE-221): a request of their own, so a server that
+        // doesn't know `wave_height` yet can't cost the tides.
+        let waveSpots = batch.filter(Self.wantsWaves)
+        async let waveFetch = waveSpots.isEmpty ? [:]
+            : ((try? await fetchWaveHeights(waveSpots, from: from, to: to)) ?? [:])
+        let (tides, waves) = await (tideFetch, waveFetch)
         return zip(batch, responses).map { spot, response in
             let h = response.hourly
             let levels = tides[spot.id] ?? [:]
+            let waveHeights = waves[spot.id] ?? [:]
             let offset = response.utc_offset_seconds.flatMap { abs($0) <= 14 * 3600 ? $0 : nil }
             // Sunrise / sunset per day ("yyyy-MM-ddTHH:mm" local) -> minutes of the day.
             var light: [String: (Int, Int)] = [:]
@@ -328,6 +335,7 @@ public struct OpenMeteoProvider: ForecastProvider {
                     ForecastSource.resolve($0, spotId: spot.id, localTime: time, utcOffsetSeconds: offset ?? 0, now: now())
                 }
                 w.seaLevelM = levels[time]
+                w.waveHeightM = waveHeights[time]
                 let date = String(time.prefix(10))
                 if let (rise, set) = light[date] {
                     // Rideable light: the middle of the hour between sunrise and sunset.
@@ -371,7 +379,17 @@ public struct OpenMeteoProvider: ForecastProvider {
     private struct MarineResponse: Decodable {
         struct Hourly: Decodable {
             var time: [String]
-            var sea_level_height_msl: [Double?]
+            var series: [String: [Double?]]
+
+            init(from decoder: Decoder) throws {
+                let c = try decoder.container(keyedBy: BlendKey.self)
+                time = try c.decode([String].self, forKey: BlendKey("time"))
+                var out: [String: [Double?]] = [:]
+                for key in c.allKeys where key.stringValue != "time" {
+                    out[key.stringValue] = try? c.decode([Double?].self, forKey: key)
+                }
+                series = out
+            }
         }
         var hourly: Hourly
     }
@@ -379,11 +397,27 @@ public struct OpenMeteoProvider: ForecastProvider {
     /// Hourly sea level incl. tide (Open-Meteo Marine, ~8 km grid: good for the timing of high
     /// and low water, approximate for heights) -> spot id -> local time -> metres.
     func fetchSeaLevels(_ spots: [Spot], from: String, to: String) async throws -> [String: [String: Double]] {
+        try await fetchMarine(spots, variable: "sea_level_height_msl", range: -30...30, from: from, to: to)
+    }
+
+    /// Hourly significant wave height (Open-Meteo Marine, same grid) -> spot id -> local time
+    /// -> metres. Coarse near the coast: tells a wavy day from a flat one, not the shorebreak.
+    func fetchWaveHeights(_ spots: [Spot], from: String, to: String) async throws -> [String: [String: Double]] {
+        try await fetchMarine(spots, variable: "wave_height", range: 0...30, from: from, to: to)
+    }
+
+    /// Spots whose wave height is worth asking for: the sea (and user spots of unknown water).
+    static func wantsWaves(_ spot: Spot) -> Bool {
+        spot.waterType != "lake" && spot.waterType != "lagoon"
+    }
+
+    private func fetchMarine(_ spots: [Spot], variable: String, range: ClosedRange<Double>,
+                             from: String, to: String) async throws -> [String: [String: Double]] {
         var c = URLComponents(url: server.marine, resolvingAgainstBaseURL: false)!
         c.queryItems = [
             .init(name: "latitude", value: spots.map { String(format: "%.4f", $0.latitude) }.joined(separator: ",")),
             .init(name: "longitude", value: spots.map { String(format: "%.4f", $0.longitude) }.joined(separator: ",")),
-            .init(name: "hourly", value: "sea_level_height_msl"),
+            .init(name: "hourly", value: variable),
             .init(name: "timezone", value: "auto"),
             .init(name: "start_date", value: from),
             .init(name: "end_date", value: to),
@@ -398,8 +432,8 @@ public struct OpenMeteoProvider: ForecastProvider {
         var out: [String: [String: Double]] = [:]
         for (spot, r) in zip(spots, decoded) {
             var levels: [String: Double] = [:]
-            for (t, v) in zip(r.hourly.time, r.hourly.sea_level_height_msl) {
-                if let v, (-30...30).contains(v) { levels[t] = v }
+            for (t, v) in zip(r.hourly.time, r.hourly.series[variable] ?? []) {
+                if let v, range.contains(v) { levels[t] = v }
             }
             out[spot.id] = levels
         }

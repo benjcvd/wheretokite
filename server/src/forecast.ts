@@ -160,7 +160,8 @@ const FORECAST_RULES: Record<string, Rule> = {
 const RULES: Record<Endpoint, Record<string, Rule>> = {
   forecast: FORECAST_RULES,
   archive: FORECAST_RULES,
-  marine: { hourly: { oneOf: ["sea_level_height_msl"], list: true }, start_date: "date", end_date: "date" },
+  // Tides, and wave height for the flat / wavy choice (WHE-221): two separate app requests.
+  marine: { hourly: { oneOf: ["sea_level_height_msl", "wave_height"], list: true }, start_date: "date", end_date: "date" },
 };
 
 /** Days a request may span (end - start), and how far ahead it may reach: Open-Meteo's 16. */

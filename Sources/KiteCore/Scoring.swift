@@ -68,6 +68,50 @@ public struct ScoringRules: Sendable {
         }
     }
 
+    // MARK: Flat or wavy, good weather only (WHE-221, proposal for Ben)
+
+    /// Waves (m, significant height) up to which the sea still counts as flat.
+    public var flatSeaUpToM = 0.5
+    /// From this height on the sea counts as wavy.
+    public var wavySeaFromM = 1.0
+
+    /// Score factor for the rider's water choice at one hour. Lagoons and lakes are flat; at sea
+    /// the forecast wave height decides, with a mild cut when it's unknown. Never above 1, so it
+    /// only reorders spots that already work: safety zeros stay 0.
+    public func waterFactor(_ choice: WaterPreference, waterType: String?, waveHeightM: Double?) -> Double {
+        let sheltered = waterType == "lake" || waterType == "lagoon"
+        switch choice {
+        case .either:
+            return 1
+        case .flat:
+            if sheltered { return 1 }
+            guard let h = waveHeightM else { return 0.9 }
+            // 1 up to 0.5 m, down to 0.6 at 1.5 m and beyond.
+            return interpolate([(flatSeaUpToM, 1), (flatSeaUpToM + 1, 0.6)], h)
+        case .wavy:
+            if sheltered { return 0.6 }
+            guard let h = waveHeightM else { return 0.85 }
+            // 0.65 for a flat sea (up to 0.3 m), full marks from 1 m.
+            return interpolate([(0.3, 0.65), (wavySeaFromM, 1)], h)
+        }
+    }
+
+    /// Score factor for "good weather only" at one hour, from the forecast's weather code (the
+    /// gloomiest of the blended models) and rain. Sun and some cloud: 1; overcast 0.85; fog or
+    /// drizzle 0.7; rain, showers or snow 0.5. Storms are already 0 (safety). Any weather: 1.
+    public func weatherFactor(_ choice: WeatherPreference, hour w: HourlyWind) -> Double {
+        guard choice == .fair else { return 1 }
+        var f = 1.0
+        switch w.weatherCode ?? 0 {
+        case 3: f = 0.85
+        case 45, 48, 51...57: f = 0.7
+        case 61...67, 71...77, 80...86: f = 0.5
+        default: break
+        }
+        if (w.precipitationMm ?? 0) >= 1 { f = min(f, 0.5) }
+        return f
+    }
+
     /// Hard safety limits: (max mean wind, max gust) in knots. The mean-wind limit is fixed
     /// per level. The gust limit is fixed for beginners and rises with session intensity for
     /// intermediate and advanced riders (Ben, 31 Oct 2026): forecast gusts run at 1.6–1.9×
@@ -187,6 +231,9 @@ public struct HourScore: Sendable {
     public var directionFactor: Double?
     /// Tide window factor (nil = no tide rule / no tide data).
     public var tideFactor: Double?
+    /// Flat / wavy and good-weather factors (nil = the rider didn't ask; WHE-221).
+    public var waterFactor: Double?
+    public var weatherFactor: Double?
 }
 
 public struct Scorer: Sendable {
