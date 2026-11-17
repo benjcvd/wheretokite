@@ -128,6 +128,13 @@ public struct SearchResult: Sendable {
     /// Spots within straight-line reach that were dropped, with why.
     public var excluded: [(Spot, String)]
     public var stats = SearchStats()
+    /// Straight-line distance from the start point to the nearest spot in the catalogue
+    /// (user spots included), nil when there is no spot at all.
+    public var nearestSpotKm: Double?
+    /// No result because the start point is far from every spot, e.g. in the US where App
+    /// Review tests: the app says WhereToKite covers Europe and Morocco (WHE-151), instead of
+    /// "allow a longer drive". Set from `Recommender.coverageKm`.
+    public var outsideCoverage = false
     /// Today, and no spot has an hour left that the rider can reach in time: the session is
     /// over (WHE-161). The app says so and points to tomorrow.
     public var sessionOver: Bool {
@@ -187,6 +194,10 @@ public struct Recommender: Sendable {
     public var chanceRounds = 3
     /// How far ahead the chance may say Go (no Go beyond +3 days, same everywhere).
     public var goPolicy = GoPolicy()
+    /// A start point with no spot within this distance is outside the coverage (WHE-151).
+    /// 500 km: every big city of the EU, Norway and Morocco has a spot nearer (Warsaw 317,
+    /// Belgrade 303, Ouarzazate 277); Kyiv (674), Moscow, Iceland and America don't.
+    public var coverageKm = 500.0
 
     public init(spots: [Spot], forecast: ForecastProvider, driveTime: DriveTimeProvider,
                 confidence: ConfidenceProvider? = ConfidenceEstimator()) {
@@ -343,7 +354,10 @@ public struct Recommender: Sendable {
             recs = await checkChance(recs, confidence: confidence, scorer: scorer, request: request, today: today)
         }
 
-        return SearchResult(request: request, recommendations: recs, excluded: excluded, stats: stats)
+        var result = SearchResult(request: request, recommendations: recs, excluded: excluded, stats: stats)
+        result.nearestSpotKm = spots.lazy.map { Geo.distanceKm(request.origin, $0.coordinate) }.min()
+        result.outsideCoverage = recs.isEmpty && (result.nearestSpotKm ?? .infinity) > coverageKm
+        return result
     }
 
     /// Step 6: compare the models at the top spots that score, turn their agreement into a

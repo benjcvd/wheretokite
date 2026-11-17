@@ -105,6 +105,9 @@ struct ResultsSection: View {
                     .buttonStyle(.bordered)
                     .accessibilityIdentifier("seeTomorrow")
                 }
+            } else if result.outsideCoverage {
+                NoSpotCard(title: String(localized: "Outside the area we cover"),
+                           message: String(localized: "WhereToKite covers kite spots in Europe and Morocco. Pick a start point there to see where to ride."))
             } else if result.recommendations.isEmpty {
                 NoSpotCard(title: String(localized: "No spot in reach"),
                            message: options.start.isCurrentLocation
