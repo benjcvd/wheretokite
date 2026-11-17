@@ -2448,19 +2448,19 @@
         }
       }
     },
-    "gusts %lld" : {
-      "comment" : "Hourly gusts in knots",
+    "Gusts" : {
+      "comment" : "Column title: gusts, in the wind hour by hour",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "rachas %lld"
+            "value" : "Rachas"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "rafales %lld"
+            "value" : "Rafales"
           }
         }
       }
@@ -2526,22 +2526,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heure"
-          }
-        }
-      }
-    },
-    "Hour by hour" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hora a hora"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heure par heure"
           }
         }
       }
@@ -2671,6 +2655,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ignorer"
+          }
+        }
+      }
+    },
+    "in knots" : {
+      "comment" : "Unit note beside the 'Wind hour by hour' title",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en nudos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en nœuds"
           }
         }
       }
@@ -2879,23 +2880,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le kite est interdit ici à ces heures-là."
-          }
-        }
-      }
-    },
-    "kn" : {
-      "comment" : "Knots, after the hourly wind speed",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "kn"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "kn"
           }
         }
       }
@@ -6627,6 +6611,23 @@
         }
       }
     },
+    "wind %lld knots, gusts %lld" : {
+      "comment" : "VoiceOver, one hour of wind: average then gusts in knots",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "viento %lld nudos, rachas %lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vent %lld nœuds, rafales %lld"
+          }
+        }
+      }
+    },
     "Wind direction" : {
       "localizations" : {
         "es" : {
@@ -6655,6 +6656,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vent de %@"
+          }
+        }
+      }
+    },
+    "Wind hour by hour" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viento hora a hora"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent heure par heure"
           }
         }
       }

@@ -514,6 +514,7 @@ A start point with no spot within 500 km (US, Iceland, Russia, also Kyiv) now ge
 
 The chill-to-intense style is gone from the app; Search options open on Water (Flat / Wavy / Either) and Weather (Good weather only / Any weather). Each hour keeps a share of its score, like the tide rule, never above 100 %, so safety zeros stay 0. Water uses the catalogue's water type plus Open-Meteo Marine wave height (its own request, so tides can't suffer); weather uses the existing weather code and rain. The rule and before / after are in docs/WATER_WEATHER_SETTING.md and wait on Ben's OK. The Worker's future allow-list must carry `wave_height` (added on this branch).
 
+
 **17 Nov 14:35.** Main (74710fe) installed on Ben's iPhone as a Debug build over the App Store 1.0. The
 catalogue build failed on an Overpass 504 (island lookup near Corfu) after an hour; rerun once. If it fails
 again, warm `tools/.osm_cache` locally and refresh the osm-cache snapshot (needs Ben's OK, it's public).
@@ -529,3 +530,11 @@ cards are queued one at a time to avoid merge clashes. Catalogue build: local wa
 ## Product, 17 Nov: WHE-222 Score label (review)
 
 Result cards, the top card, the spot page and the score sheet now show a small "SCORE" caption above the number (ES "Nota", FR "Score"); map pins stay bare. One shared `ScoreCaption` view in `Components.swift`. Screenshot test needs `TEST_RUNNER_SHOTS_DAY=1` late in the day.
+
+## Product, 17 Nov: WHE-151 message outside Europe and Morocco (review)
+
+A start point with no spot within 500 km (US, Iceland, Russia, also Kyiv) now gets "Outside the area we cover" instead of "allow a longer drive". The rule is a distance to the nearest spot rather than a drawn outline, so it follows the catalogue on its own (Canaries, Dakhla) and counts the rider's own spots. Threshold is `Recommender.coverageKm`; the card only appears when the list is empty.
+
+## Product, 17 Nov: WHE-225 "Wind hour by hour" (review)
+
+The spot page's hourly section is renamed and redrawn as a small table: one line per hour with the wind in a coloured pill (same colours as the chart), gusts, direction and kite aligned in columns; warnings get a second line only when there is one. The per-row bar went because the chart just above already shows it. Screenshots in `docs/review/whe225-*`.
