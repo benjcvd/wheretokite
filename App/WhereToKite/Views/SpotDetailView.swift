@@ -516,6 +516,13 @@ struct ScoreInfoSheet: View {
                             FactorRow(title: String(localized: "Tide"), value: tide, weight: nil,
                                       detail: String(localized: "Rides \(SpotDetailView.tideRuleLabel(rec.spot.tide))"))
                         }
+                        if let water = mean(\.waterFactor) {
+                            FactorRow(title: String(localized: "Water"), value: water, weight: nil, detail: waterDetail)
+                        }
+                        if let weather = mean(\.weatherFactor) {
+                            FactorRow(title: String(localized: "Weather"), value: weather, weight: nil,
+                                      detail: String(localized: "You asked for good weather only"))
+                        }
                         if let before = rec.scoreBeforeChance, before > 0, let outlook = rec.chance?.outlook {
                             FactorRow(title: String(localized: "Weather models"), value: Double(rec.finalScore) / Double(before),
                                       weight: nil,
@@ -538,10 +545,11 @@ struct ScoreInfoSheet: View {
                 Section("How the score works") {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Every hour of your session gets three marks from 0 to 100 %:")
-                        Text("**Wind strength**: how well the wind fits the best kite in your quiver, and your style (chill or intense).")
+                        Text("**Wind strength**: how well the wind fits the best kite in your quiver.")
                         Text("**Steady wind**: gusts compared with the mean wind.")
                         Text("**Direction**: side-onshore is best, straight onshore is fine, cross-shore is harder, offshore is 0.")
                         Text("They are multiplied, using your weights. A spot's score is its best two hours in a row. Spots that need a certain tide lose the hours outside it, and with **Distance matters** far spots lose up to \(maxDistanceLoss) %.")
+                        Text("If you choose flat or wavy water, or good weather only, the hours that don't match score lower.")
                         Text("The grade gives the label, from **Go** (\(Vocab.verdictBand(.go))) down to **No go** (\(Vocab.verdictBand(.noGo))). Four weather models check the wind: when they aren't sure, the grade stops at \(ScoringRules().uncertainWindMaxScore); when they see too little wind, at \(ScoringRules().unlikelyWindMaxScore).")
                         Text("Some limits never bend: wind or gusts over your level's limit, and offshore wind, always score 0.")
                             .foregroundStyle(.secondary)
@@ -577,6 +585,16 @@ struct ScoreInfoSheet: View {
                 ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
             }
         }
+    }
+
+    /// "Lagoon", "Waves up to 1.2 m", or "Wave forecast not available".
+    private var waterDetail: String {
+        if rec.spot.waterType == "lagoon" { return String(localized: "Lagoon: flat water") }
+        if rec.spot.waterType == "lake" { return String(localized: "Lake: flat water") }
+        guard let h = windowHours.compactMap(\.wind.waveHeightM).max() else {
+            return String(localized: "Wave forecast not available")
+        }
+        return String(localized: "Waves up to \(h.formatted(.number.precision(.fractionLength(1)))) m")
     }
 
     private var gustDetail: String? {

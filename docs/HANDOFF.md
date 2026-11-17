@@ -509,3 +509,7 @@ before real traffic). WHE-218 went to Forecast accuracy. An Xcode-generated xcst
 ## Product, 17 Nov: WHE-151 message outside Europe and Morocco (review)
 
 A start point with no spot within 500 km (US, Iceland, Russia, also Kyiv) now gets "Outside the area we cover" instead of "allow a longer drive". The rule is a distance to the nearest spot rather than a drawn outline, so it follows the catalogue on its own (Canaries, Dakhla) and counts the rider's own spots. Threshold is `Recommender.coverageKm`; the card only appears when the list is empty.
+
+## Product, 17 Nov: WHE-221 flat or wavy water, good or any weather (review)
+
+The chill-to-intense style is gone from the app; Search options open on Water (Flat / Wavy / Either) and Weather (Good weather only / Any weather). Each hour keeps a share of its score, like the tide rule, never above 100 %, so safety zeros stay 0. Water uses the catalogue's water type plus Open-Meteo Marine wave height (its own request, so tides can't suffer); weather uses the existing weather code and rain. The rule and before / after are in docs/WATER_WEATHER_SETTING.md and wait on Ben's OK. The Worker's future allow-list must carry `wave_height` (added on this branch).

@@ -95,6 +95,18 @@ final class SmokeTests: XCTestCase {
         slider.adjust(toNormalizedSliderPosition: 1)
         XCTAssertEqual(slider.value as? String, "10 h")
         snapshot(app, "6-options")
+        // Flat water, good weather only (WHE-221): the chip says so.
+        let water = app.segmentedControls["waterPicker"]
+        if !water.isHittable { app.swipeUp() }
+        XCTAssertTrue(water.waitForExistence(timeout: 3))
+        water.buttons["Flat"].tap()
+        app.segmentedControls["weatherPicker"].buttons["Good weather only"].tap()
+        app.buttons["Done"].tap()
+        XCTAssertTrue(app.buttons["optionsChip"].label.contains("Flat · Good weather"))
+        app.buttons["optionsChip"].tap()
+        if !water.isHittable { app.swipeUp() }
+        water.buttons["Either"].tap()
+        app.segmentedControls["weatherPicker"].buttons["Any weather"].tap()
         app.buttons["Done"].tap()
 
         // Profile is editable from the search screen…

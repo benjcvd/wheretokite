@@ -115,7 +115,7 @@ struct SearchView: View {
                     chip("≤ \(DriveSteps.label(options.maxDriveMinutes))", systemImage: "car.fill", sheet: .options)
                         .accessibilityLabel("Max drive \(DriveSteps.label(options.maxDriveMinutes))")
                     chip(styleLabel, systemImage: "slider.horizontal.3", sheet: .options)
-                        .accessibilityLabel("Style \(styleLabel). More options")
+                        .accessibilityLabel("Water and weather: \(styleLabel). More options")
                         .accessibilityIdentifier("optionsChip")
                 }
                 .padding(.vertical, 2)
@@ -134,9 +134,16 @@ struct SearchView: View {
         .buttonStyle(.plain)
     }
 
+    /// "Flat · Good weather", "Wavy", "Good weather", or "Any conditions" when nothing is chosen.
     private var styleLabel: String {
-        guard let i = options.intensity else { return String(localized: "Any style") }
-        return i < 0.35 ? String(localized: "Chill") : i > 0.65 ? String(localized: "Intense") : String(localized: "Balanced")
+        var parts: [String] = []
+        switch options.water ?? .either {
+        case .flat: parts.append(String(localized: "Flat", comment: "Water choice: flat water"))
+        case .wavy: parts.append(String(localized: "Wavy", comment: "Water choice: waves"))
+        case .either: break
+        }
+        if options.weather == .fair { parts.append(String(localized: "Good weather")) }
+        return parts.isEmpty ? String(localized: "Any conditions") : parts.joined(separator: " · ")
     }
 }
 
@@ -326,6 +333,34 @@ struct SearchOptionsSheet: View {
         NavigationStack {
             Form {
                 Section {
+                    Picker("Water", selection: waterBinding) {
+                        Text("Flat", comment: "Water choice: flat water").tag(WaterPreference.flat)
+                        Text("Wavy", comment: "Water choice: waves").tag(WaterPreference.wavy)
+                        Text("Either", comment: "Water choice: flat or wavy").tag(WaterPreference.either)
+                    }
+                    .pickerStyle(.segmented)
+                    .accessibilityIdentifier("waterPicker")
+                } header: {
+                    Text("Water")
+                } footer: {
+                    Text(waterFooter)
+                }
+
+                Section {
+                    Picker("Weather", selection: weatherBinding) {
+                        Text("Good weather only").tag(WeatherPreference.fair)
+                        Text("Any weather").tag(WeatherPreference.any)
+                    }
+                    .pickerStyle(.segmented)
+                    .accessibilityIdentifier("weatherPicker")
+                } header: {
+                    Text("Weather")
+                } footer: {
+                    Text(options.weather == .fair
+                         ? "Spots and hours under cloud or rain rank lower. Storms always score 0."
+                         : "Clouds and light rain don't change the ranking. Storms always score 0.")
+                }
+                Section {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack(alignment: .firstTextBaseline) {
                             Text("Max drive")
@@ -355,7 +390,7 @@ struct SearchOptionsSheet: View {
                 } footer: {
                     Text(options.distanceMatters
                          ? "Nearer spots rank higher when the wind is similar."
-                         : "Spots are ranked on wind only.")
+                         : "Spots are ranked on conditions only.")
                 }
 
                 Section {
@@ -366,27 +401,6 @@ struct SearchOptionsSheet: View {
                     Text("Used by the \u{201C}My hours\u{201D} session. Hours after sunset never count.")
                 }
 
-                Section {
-                    Toggle("Any style", isOn: anyStyle.animation(.snappy))
-                    if let intensity = options.intensity {
-                        VStack {
-                            Slider(value: Binding(get: { intensity }, set: { options.intensity = $0 }), in: 0...1) {
-                                Text("Style")
-                            }
-                            HStack {
-                                Label("Chill", systemImage: "leaf.fill")
-                                Spacer()
-                                Label("Intense", systemImage: "bolt.fill")
-                            }
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                        }
-                    }
-                } header: {
-                    Text("Session style")
-                } footer: {
-                    Text(styleFooter)
-                }
             }
             .navigationTitle("Search options")
             .navigationBarTitleDisplayMode(.inline)
@@ -402,16 +416,20 @@ struct SearchOptionsSheet: View {
                 set: { options.maxDriveMinutes = DriveSteps.minutes[Int($0.rounded())] })
     }
 
-    private var anyStyle: Binding<Bool> {
-        Binding(get: { options.intensity == nil },
-                set: { options.intensity = $0 ? nil : 0.5 })
+    private var waterBinding: Binding<WaterPreference> {
+        Binding(get: { options.water ?? .either }, set: { options.water = $0 == .either ? nil : $0 })
     }
 
-    private var styleFooter: String {
-        guard let i = options.intensity else { return String(localized: "Any wind that's comfortable for your kites.") }
-        return i < 0.35 ? String(localized: "Steady wind in the middle of your kite's range.")
-            : i > 0.65 ? String(localized: "Powered up, near the top of your kite's range. Gusts are OK.")
-            : String(localized: "A bit of everything.")
+    private var weatherBinding: Binding<WeatherPreference> {
+        Binding(get: { options.weather ?? .any }, set: { options.weather = $0 == .any ? nil : $0 })
+    }
+
+    private var waterFooter: String {
+        switch options.water ?? .either {
+        case .flat: String(localized: "Lagoons, lakes and calm sea rank higher.")
+        case .wavy: String(localized: "Spots with waves forecast rank higher.")
+        case .either: String(localized: "Flat or wavy, the wind decides.")
+        }
     }
 }
 

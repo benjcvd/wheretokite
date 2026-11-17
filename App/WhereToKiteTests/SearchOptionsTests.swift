@@ -26,4 +26,28 @@ final class SearchOptionsTests: XCTestCase {
         XCTAssertEqual(options.slot, .custom)
         XCTAssertEqual(options.customHours, 7...9)
     }
+
+    /// WHE-221: options saved with the old chill-to-intense style still load, with no water or
+    /// weather choice.
+    func testOldStyleOptionsStillDecode() throws {
+        // Today's encoding minus the new keys, plus the retired one.
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(SearchOptions())) as? [String: Any])
+        json["water"] = nil
+        json["weather"] = nil
+        json["intensity"] = 0.8
+        json["maxDriveMinutes"] = 90
+        let options = try JSONDecoder().decode(SearchOptions.self, from: JSONSerialization.data(withJSONObject: json))
+        XCTAssertNil(options.water)
+        XCTAssertNil(options.weather)
+        XCTAssertEqual(options.maxDriveMinutes, 90)
+    }
+
+    func testChoicesRoundTrip() throws {
+        var options = SearchOptions()
+        options.water = .flat
+        options.weather = .fair
+        let back = try JSONDecoder().decode(SearchOptions.self, from: JSONEncoder().encode(options))
+        XCTAssertEqual(back.water, .flat)
+        XCTAssertEqual(back.weather, .fair)
+    }
 }

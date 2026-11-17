@@ -36,8 +36,10 @@ struct SearchOptions: Codable, Equatable {
         if (customStart ?? 17) >= e { customStart = e - 1 }
         slot = .custom
     }
-    /// nil = all types.
-    var intensity: Double? = nil
+    /// Flat or wavy water, good weather only (WHE-221). Optional so options saved before still
+    /// decode; nil = either / any. The old chill-to-intense `intensity` key is ignored.
+    var water: WaterPreference?
+    var weather: WeatherPreference?
     var distanceMatters = true
 
     private static let key = "searchOptions"
@@ -253,8 +255,10 @@ final class SearchModel {
             let request = SearchRequest(
                 origin: origin, maxDriveMinutes: options.maxDriveMinutes,
                 day: Self.testDay ?? options.day,
-                slot: options.slot, intensity: options.intensity, distanceMatters: options.distanceMatters)
+                slot: options.slot, intensity: nil, distanceMatters: options.distanceMatters)
             var req = request
+            req.water = options.water ?? .either
+            req.weather = options.weather ?? .any
             req.customHours = options.customHours
             // Today: only the hours still reachable count (WHE-161).
             if req.day == DayOption.today.id { req.now = Date() }
