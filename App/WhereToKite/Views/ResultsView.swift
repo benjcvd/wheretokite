@@ -467,7 +467,7 @@ private struct SpotsMap: View {
                 Annotation(rec.spot.name,
                            coordinate: CLLocationCoordinate2D(latitude: rec.spot.latitude, longitude: rec.spot.longitude)) {
                     Button { open(rec.id) } label: {
-                        ScoreBadge(score: rec.finalScore, size: 34)
+                        ScoreBadge(score: rec.finalScore, size: 34, showsCaption: false)
                             .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(.white, lineWidth: 2))
                             .shadow(radius: 3, y: 2)
                     }

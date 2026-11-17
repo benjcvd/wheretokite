@@ -513,3 +513,19 @@ A start point with no spot within 500 km (US, Iceland, Russia, also Kyiv) now ge
 ## Product, 17 Nov: WHE-221 flat or wavy water, good or any weather (review)
 
 The chill-to-intense style is gone from the app; Search options open on Water (Flat / Wavy / Either) and Weather (Good weather only / Any weather). Each hour keeps a share of its score, like the tide rule, never above 100 %, so safety zeros stay 0. Water uses the catalogue's water type plus Open-Meteo Marine wave height (its own request, so tides can't suffer); weather uses the existing weather code and rain. The rule and before / after are in docs/WATER_WEATHER_SETTING.md and wait on Ben's OK. The Worker's future allow-list must carry `wave_height` (added on this branch).
+
+**17 Nov 14:35.** Main (74710fe) installed on Ben's iPhone as a Debug build over the App Store 1.0. The
+catalogue build failed on an Overpass 504 (island lookup near Corfu) after an hour; rerun once. If it fails
+again, warm `tools/.osm_cache` locally and refresh the osm-cache snapshot (needs Ben's OK, it's public).
+WHE-151 (out-of-area message) and WHE-189 (Wales) wait on Ben's review before merging.
+**17 Nov 16:20.** Worker deployed on Ben's OK (lockdown WHE-162 + spam guard WHE-163, version 3ba01a14;
+forecast limiter namespace 1003). 1.0 phones' params pass the allowlist. `wrangler dev` dies in the agent
+shell (IPC closed), so real-size checks ran against live. Paris "few spots" = the free 3 h cap (Channel coast is
+3h00–3h25 by road), not tiers. Ben's last round before 1.1 became high cards for Product (flat/wavy + weather
+preferences replacing "any style" — scoring rule to Ben first; Score label; Kite tab options; Directions picker
+each time; Wind hour by hour; drop Sides/face/kites; quota alert; Paris drive hint). Kite tab and spot page
+cards are queued one at a time to avoid merge clashes. Catalogue build: local warm-up running.
+
+## Product, 17 Nov: WHE-222 Score label (review)
+
+Result cards, the top card, the spot page and the score sheet now show a small "SCORE" caption above the number (ES "Nota", FR "Score"); map pins stay bare. One shared `ScoreCaption` view in `Components.swift`. Screenshot test needs `TEST_RUNNER_SHOTS_DAY=1` late in the day.
