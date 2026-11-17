@@ -3,11 +3,11 @@ country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # --- Kent / Sussex / Hampshire / Isle of Wight
 GB,East Sussex,Camber Sands,sea,osm:n420415208,SSE,"Launch only in the council kite zone at the eastern (Broomhill car park / Jury's Gap) end, third-party insurance required. Rother council says no kiting within 3 h either side of high water (groynes, boulders, sea wall): ride around low tide. Alternative: Greatstone (Littlestone), 8 km E, works in N–NE.",,not-high,,
 GB,Kent,Seasalter (Whitstable),sea,osm:w93759721,N,"Shallow estuary flats; mid to high tide, long walk at low water (some guides prefer low water for the sandbanks: sources disagree, see TO_CONFIRM).",,not-low,,
-GB,Essex,Shoebury East Beach,sea,osm:w128291302,SE,"Designated kite area; shallow lagoons between sandbanks at low tide, flat water, beginner friendly.",,not-high,,
-GB,Suffolk,Felixstowe Ferry,sea,osm:w844058564,SE,Deben river mouth: mirror-flat lagoon on the ebb and at low tide; avoid the flood (current sets into the river).,,low,,
-GB,Norfolk,Sea Palling,sea,q:Sea Palling,NE,"Artificial offshore reefs: flat lagoons inside, punchy waves outside; strong rips at the reef gaps.",,,,
-GB,Norfolk,Hunstanton,sea,osm:r9742449,W,"Flat shallow water over the sandbar at low tide; do not launch between the groynes. Rare west-facing east-coast beach. Alternative: Brancaster (12 km E, NT kite zone, strong tides, experienced only).",,not-high,,
-GB,Lincolnshire,Cleethorpes (Humberston),sea,q:Humberston Fitties,E,"Kites zoned south of the leisure centre (Thorpe Park / Humberston Fitties end). Lagoon around mid tide, beginner friendly.",,mid,,
+GB,Essex,Shoebury East Beach,sea,osm:w128291302,SE,"Designated kite area (guides; no council map found): shallow lagoons between sandbanks from mid to low tide, flat water, beginner friendly. Essex Kitesurf Club / school on site regulate access. The foreshore belongs to the MOD (public access only): the tide comes in fast, so walk out with care.",,not-high,,
+GB,Suffolk,Felixstowe Ferry,sea,osm:w844058564,SE,"Deben river mouth, sandbanks south of the entrance: mirror-flat lagoon on the ebb and at low tide; avoid the flood (current sets into the river). Mainly SW winds. Space is limited and a local school teaches here: keep clear of it and of the groynes further up the beach.",,low,,
+GB,Norfolk,Sea Palling,sea,q:Sea Palling,NE,"Artificial offshore reefs: flat lagoons inside, punchy waves outside; strong rips at the reef gaps. Only the reefs are confirmed by a tourist-board page: no kite school or council kite rule found, check locally.",,,,
+GB,Norfolk,Hunstanton,sea,osm:r9742449,W,"Flat shallow water over the sandbar at low tide; do not launch between the groynes. Rare west-facing east-coast beach, best in SW winds, up to 30 kites on a busy day. High tide at New Hunstanton washes against the sea wall: ride Old Hunstanton then (little beach on spring tides). No official kite zone found. Alternative: Brancaster (12 km E, NT kite zone, strong tides, experienced only).",,not-high,,
+GB,Lincolnshire,Cleethorpes (Humberston),sea,q:Humberston Fitties,E,"Kite riders use the Humberston Fitties end, south of the leisure centre (reported; no council kite-zone page found, the council's habitat plan may limit recreation to protect birds). A local kite school (Eastcoast Kiteboarding) is at the Fitties end. Lagoon around mid tide, beginner friendly.",,mid,,
 GB,East Yorkshire,Fraisthorpe,sea,osm:w1442992116,E,,,,,
 GB,North Yorkshire,Redcar – Majuba,sea,osm:w107881763,N,"Main Teesside spot, WNW through N to E. Rock reefs to the east uncover at low tide. Alternative: Seaton Carew across the Tees, flattish in southerlies.",,,,
 GB,Northumberland,Blyth – Seaton Sluice,sea,osm:w185846026,E,Kiters use the Seaton Sluice (south) end of the bay. Groynes and shore dump at high tide. Alternative: Tynemouth Longsands (busy surf beach).,,,,
@@ -59,11 +59,11 @@ GB,Kent,Greatstone (Littlestone),sea,osm:w894569692,E,"Huge shallow bay, works i
 # pro: secondary local beach; north Kent covered by Seasalter
 GB,Kent,Minnis Bay,sea,osm:n343219774,N,"Thanet designated kite site, flat water in northerlies. Beach closed to kites ±2 h around high tide (sea wall).",,not-high,pro,
 # pro: secondary local beach; Essex covered by Shoebury
-GB,Essex,Frinton-on-Sea,sea,osm:w64902834,SE,Rig on the greensward. Ride mid to low tide: at high tide the sea reaches the sea wall.,,not-high,pro,
+GB,Essex,Frinton-on-Sea,sea,osm:w64902834,SE,"Rig on the greensward. Ride mid to low tide: at high tide the sea reaches the sea wall. Works in NE, S and SW; the usual fallback when Clacton is too offshore. Push Kiting (BKSA school) is nearby. Light wind is a real risk: a kiter needed rescue here in May 2026.",,not-high,pro,
 # pro: secondary local beach
-GB,Suffolk,Kessingland,sea,q:Kessingland Beach Holiday Park,E,"Council-approved kite zone, no groynes; large shallow pool at low tide. (Lowestoft main beach: kites Sept–May only.)",,,pro,
+GB,Suffolk,Kessingland,sea,q:Kessingland Beach Holiday Park,E,"Kite zone approved by the former Waveney council (kiteforum; no current East Suffolk page found), no groynes; large shallow pool at low tide. Protected beach with nesting birds. (Lowestoft main beach: kites Sept–May only.)",,,pro,
 # pro: within ~10 km of a better-known kept spot (Hunstanton); NT zone, strong tides
-GB,Norfolk,Brancaster,sea,osm:w704673222,N,"National Trust beach: use the marked kite launch zone at the beach entrance. Strong tidal streams, experienced riders only.",,,pro,
+GB,Norfolk,Brancaster,sea,osm:w704673222,N,"National Trust beach: use the marked kite launch and landing zone at the beach entrance (NT kite-sports page). Strong tidal streams, experienced riders only. Keep clear of the channel buoys and the tern colonies.",,,pro,
 # pro: within ~10 km of a better-known kept spot (Redcar)
 GB,County Durham,Seaton Carew,sea,q:Seaton Carew,E,"Shallow, flattish water in southerlies (Tees estuary side).",,,pro,
 # pro: busy surf beach, secondary to Blyth – Seaton Sluice
