@@ -509,3 +509,7 @@ before real traffic). WHE-218 went to Forecast accuracy. An Xcode-generated xcst
 ## Product, 17 Nov: WHE-151 message outside Europe and Morocco (review)
 
 A start point with no spot within 500 km (US, Iceland, Russia, also Kyiv) now gets "Outside the area we cover" instead of "allow a longer drive". The rule is a distance to the nearest spot rather than a drawn outline, so it follows the catalogue on its own (Canaries, Dakhla) and counts the rider's own spots. Threshold is `Recommender.coverageKm`; the card only appears when the list is empty.
+
+## Product: forecast quota alert (17 Nov, WHE-227)
+
+An Open-Meteo 429 now makes the Worker file one "Forecast quota hit: <day>" GitHub issue per UTC day, and log `upstream_quota`. Because the issue is filed with Ben's token, GitHub won't email him about it, so `.github/workflows/quota-alert.yml` comments on it to trigger the email. Waiting on Ben's OK to deploy the Worker. Details in `server/README.md`, "Forecast quota alert".
