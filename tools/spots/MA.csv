@@ -14,3 +14,11 @@ MA,Dakhla,Dakhla – Lassarga,lagoon,osm:w1338100127,SE,Lagoon shore by the fish
 MA,Gharb,Moulay Bousselham,lagoon,osm:w141084128,S,"Large shallow lagoon (Merja Zerga) by the village, flat water at low tide in strong N wind. Strong current towards the mouth on the falling tide; no rescue or school on site.",,,pro,
 # pro: secondary — lagoon spot between El Jadida and Safi, known mainly from spot guides, rentals only
 MA,Doukkala,Oualidia,lagoon,osm:w323598009,NW,"Shallow lagoon sheltered from the swell by sandbanks, flat water in strong N wind. Rocks and strong current near the lagoon mouths.",,,pro,
+# pro: Windy 5 stars (Tangier); Say Say Surf Shop (Cap Spartel beach, IKO lessons) + spot directories; north / north-west / west wind; no ban found
+MA,Tangier,Tangier – Achakar (Cap Spartel),sea,osm:w229119412,W,"Open-ocean beach under Cap Spartel, about 15 km west of Tangier, with a kite school on site: waves and freestyle, N to W wind, intermediate level. Season April to October.",,,pro,
+# pro: Windy 3 stars (Agadir Bay); Unplug spot page + Windy-independent wind statistics; thermal NW breeze in the afternoon, no school found
+# archived: no marked kite area, crowded city beach, less reliable wind than Essaouira or Dakhla (WHE-214, 16 Nov 2026)
+MA,Agadir,Agadir – Bay,sea,osm:w386830407,W,"Six km city beach: afternoon thermal NW wind, less reliable than Essaouira or Dakhla. Busy in July and August with no marked kite area: kite outside bathing hours and away from swimmers.",,,archived,
+# pro: Windy 4 stars (Taghazout); Unplug spot page + kite-and-windsurfing-guide; surf break first, kiters share the water with surfers
+# archived: surf break with surfers in the water, no kite source recorded (WHE-214, 16 Nov 2026)
+MA,Agadir,Taghazout,sea,osm:w190928219,W,"Sandy beach with waves north of Agadir, trade wind strongest in summer; surfers in the water, so keep clear of the break.",,,archived,

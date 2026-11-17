@@ -12,5 +12,5 @@ PL,Pomorskie,Łeba,sea,q:Plaża Łeba,N,"Open Baltic beach: waves in onshore win
 PL,Pomorskie,Puck,sea,q:Plaża Puck,NE,"Puck Bay, shallow flat water; kite schools by the town beach.",,,pro,
 # pro: near a kept spot — between Chałupy and Jastarnia (kept), mentioned in Chałupy notes
 PL,Pomorskie,Kuźnica (Hel Peninsula),sea,q:Kuźnica Jastarnia,SW,"Puck Bay side: shallow flat water, kite schools.",,,pro,
-# archived: uncertain reputation — minor lagoon spot, reputation uncertain
-PL,Zachodniopomorskie,Czarnocin (Szczecin Lagoon),lagoon,osm:w26809438,W,"Szczecin Lagoon: shallow flat water, beginner-friendly.",,,archived,
+# pro: two sources (Frajda kite and windsurf school in the village; kite-and-windsurfing-guide Czarnocin page), minor lagoon spot
+PL,Zachodniopomorskie,Czarnocin (Szczecin Lagoon),lagoon,osm:w26809438,W,"Szczecin Lagoon: shallow flat water, beginner-friendly. A kite and windsurf school runs in the village; some riders launch at nearby Jarszewko instead (3 km on foot).",,,pro,

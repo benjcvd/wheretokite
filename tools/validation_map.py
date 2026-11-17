@@ -60,7 +60,8 @@ def main():
         for c in json.loads(board.read_text()).get("cards", []):
             codes[c["id"]] = c.get("code", c["id"])
 
-    fr_es = [s for s in spots if s.get("country") in ("FR", "ES")]
+    zoned = {z["country"] for z in zones}
+    fr_es = [s for s in spots if s.get("country") in zoned]
     unassigned = []
     by_zone = {z["id"]: [] for z in zones}
     for s in fr_es:
@@ -150,7 +151,7 @@ for(const z of D.zones){
   g.addTo(map);layers[z.id]=g;
 }
 let html='';
-for(const [cc,label] of [['ES','Spain'],['FR','France']]){
+for(const [cc,label] of [['ES','Spain'],['FR','France'],['PT','Portugal'],['IT','Italy'],['MA','Morocco']]){
   const zs=D.zones.filter(z=>z.country===cc);
   html+=`<h2>${label} · ${zs.filter(z=>z.status==='validated').length}/${zs.length}</h2>`;
   for(const z of zs) html+=`<div class="z" data-id="${z.id}"><div class="n">${z.name}</div><div class="m">${info(z)}</div></div>`;

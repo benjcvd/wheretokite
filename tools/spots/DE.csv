@@ -4,25 +4,25 @@ country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # window. Sources: kitesurftheworld.com, kitemagazin.de (Befahrensverordnung 2023 zones),
 # kite-and-windsurfing-guide.com, lifetravellerz.com, auf-nach-mv.de, kite schools.
 # Nordfriesland / Dithmarschen
-DE,Schleswig-Holstein,Sylt – Westerland,sea,osm:w73822988,W,"Brandenburger Strand: Germany's main wave spot, strong current between the groynes. Experienced riders. Also: K4 by Hörnum (flat channels at low tide, waves at high tide); Hörnum Möwennest on the Wadden side for E winds (around low tide).",,,,
-DE,Schleswig-Holstein,Sylt – List (Königshafen),sea,osm:w740019465,N,"Wadden Sea, shallow flat water. Nature reserve: launch only from the kite beach, ride inside the buoys, about 2–3 h either side of high tide.",,high,,
-DE,Schleswig-Holstein,Sankt Peter-Ording,sea,osm:n9886501949,W,"Ording beach (kite world cup venue): huge beach, flat to small waves, tide-dependent; strong current at times. Also: Büsum – Perlebucht further south (tidal lagoon, around high tide).",,,,
+DE,Schleswig-Holstein,Sylt – Westerland,sea,osm:w73822988,W,"Buhne 16 / Brandenburger Strand (lifeguarded beach): Germany's main wave spot, strong current between the groynes. Intermediate to expert riders. Also: K4 by Hörnum (flat channels at low tide, waves at high tide); Hörnum Möwennest on the Wadden side for E winds (around low tide).",,,,
+DE,Schleswig-Holstein,Sylt – List (Königshafen),sea,osm:w740019465,N,"Wadden Sea, shallow flat water inside a national-park protection zone. Official rules (national park flyer 2021): set up, launch and land only on the kite beach, ride only inside the buoy chain, kite about 3 h either side of high tide.",,high,,
+DE,Schleswig-Holstein,Sankt Peter-Ording,sea,osm:n9886501949,W,"Ording beach (kite world cup venue): huge beach, flat to small waves, tide-dependent (about 2 h either side of high tide); strong current at times. Kite zones lie north and south of the marked bathing area in front of the main beach car park (pile rows and buoys), which is closed to kites; the middle of the sandbank is a bird area. Böhl, to the south, is the usual beginner side. Also: Büsum – Perlebucht further south (tidal lagoon, around high tide).",,,,
 # Niedersachsen
 DE,Niedersachsen,Cuxhaven – Kugelbake,sea,osm:n605290780,NE,"Elbe mouth: current and shipping lane. National park zone, about 3 h either side of high tide. Also: Sahlenburg west of town (large standing area, about 4 h either side of high tide).",,high,,
 DE,Niedersachsen,Schillig,sea,osm:n6641317345,NE,"Wadden Sea, shallow; ride around high tide. Kite school on site. Also: Hooksiel on the Jade further south (around high tide).",,high,,
 DE,Niedersachsen,Norddeich,sea,osm:w305445041,NW,"Wadden Sea, kite area by the surf school; ride around high tide.",,high,,
 DE,Niedersachsen,Norderney – Nordstrand,sea,osm:w29347670,N,Marked kite zone on the north beach; island rules limit the hours (not early morning). Also: Borkum and Langeoog north beaches (marked kite zones).,,,,
 # Baltic Sea — Schleswig-Holstein
-DE,Schleswig-Holstein,Flensburger Förde – Holnis,sea,osm:w141637023,,"Fjord spot, shallow near shore; marked kite zone in summer. Also: Schausende further out on the fjord.",,,,
-DE,Schleswig-Holstein,Laboe,sea,osm:w125149287,N,"Kiel Fjord mouth, shallow and flat near shore. Also: Stein 3 km east (about 200 m of standing area).",,,,
-DE,Schleswig-Holstein,Heiligenhafen,sea,osm:w1065266459,N,"Steinwarder, east of the pier: wind waves, beginner zone in the shallows. Also: Großenbrode just east (flat water, small waves).",,,,
-DE,Schleswig-Holstein,Fehmarn – Gold,sea,osm:w221422670,W,"Huge shallow standing area, busy with schools; stones in the north part. Also: Lemkenhafen (Orther Reede) 3 km east, flat shallow water for S winds.",,,,
-DE,Schleswig-Holstein,Fehmarn – Wulfener Hals,sea,osm:w50165851,S,"Flat shallow water in the bay, small waves outside; best in E winds.",,,,
-DE,Schleswig-Holstein,Fehmarn – Grüner Brink,sea,osm:w35337519,N,North coast: works in E winds when other spots are offshore; shared with a dog beach.,,,,
-DE,Schleswig-Holstein,Pelzerhaken,sea,osm:w1053164197,SE,"Long sandy beach, shallow; flat to small waves.",,,,
+DE,Schleswig-Holstein,Flensburger Förde – Holnis,sea,osm:w141637023,,"Fjord beach, shallow for 80–100 m with sandbanks. Kiting is allowed left of the mole (facing the water); south of it is for swimmers only. Best in E–NE; SW–NW is the usual wind. Crowded with tourists in summer. Very low water after a strong E wind followed by W.",,,,
+DE,Schleswig-Holstein,Laboe,sea,osm:w125149287,N,"Kiel Fjord mouth; one of the few Kiel spots that works in SW. First 200–400 m is standing depth, mussel beds and ship waves over a sandbank at the channel edge. Kite only between the stone breakwater and the nature reserve to the east, outside the white swimming buoys. In the bathing season the beach in front of the harbour is closed to launching and landing (municipality, reported by Surf magazine; no official text found).",,,,
+DE,Schleswig-Holstein,Heiligenhafen,sea,osm:w1065266459,N,"Experienced riders only. Best in W–NW (side-onshore, small steep waves over the bar), flat in E; S–SW is offshore. Sources conflict on where: a shop guide says kiting is only allowed at the Graswarder beach east of the pier, behind the marina, and banned at Steinwarder and on the Binnensee; another guide shows a marked kite zone at east Steinwarder. No official text found: ride only where kite signs are posted, never in the swimmer zone. Wooden groynes, old jetty posts, nature reserve rules.",,,,
+DE,Schleswig-Holstein,Fehmarn – Gold,sea,osm:w221422670,W,"The beginner spot of the Baltic: huge standing-depth area, best in W–SW, nearly as good in E. Busy with schools; stones in the north part.",,,,
+DE,Schleswig-Holstein,Fehmarn – Wulfener Hals,sea,osm:w50165851,S,"Bay side: flat water, standing depth across the whole bay, best in E, gusty in W (buildings on the shore). Open sea side: choppy, not for beginners. A camping site runs the bay: one guide reports kiting only 18:00 to 10:00, daytime for courses only (no official text, check on site). Stones on the beach.",,,,
+DE,Schleswig-Holstein,Fehmarn – Grüner Brink,sea,osm:w35337519,N,"North coast: works from E through N to W, not in S. The nature reserve next to it is closed to kiters; outside the marked summer swimming areas only. Shared with a dog beach.",,,,
+DE,Schleswig-Holstein,Pelzerhaken,sea,osm:w1053164197,SE,"Designated kite zone on a guarded sandy beach, standing depth, flat to small waves. Prevailing wind SW–NW; busy in summer.",,,,
 # Baltic Sea — Mecklenburg-Vorpommern
-DE,Mecklenburg-Vorpommern,Salzhaff – Pepelow,lagoon,osm:n11047825855,N,"Salzhaff: shallow flat-water lagoon, ideal for learning.",,,,
-DE,Mecklenburg-Vorpommern,Warnemünde,sea,osm:w775199496,N,"Kite access at beach access 13, west of the pier; rough waves in strong N–NW wind.",,,,
+DE,Mecklenburg-Vorpommern,Salzhaff – Pepelow,lagoon,osm:n11047825855,N,"Salzhaff: shallow flat-water lagoon, huge standing area, ideal for learning. Kite school on the Pepelow campsite; works in SW–N winds; free access; season mid-April to October.",,,,
+DE,Mecklenburg-Vorpommern,Warnemünde,sea,osm:w775199496,N,"Kite access at beach access 13, west of the pier (ostsee.de lists beach blocks 12–13 for wind and kite sports); rough waves in strong N–NW wind. Summer: swim zone marked by buoys and a crowded beach in July–August, so little room to launch. For advanced riders.",,,,
 DE,Mecklenburg-Vorpommern,Wustrow,sea,osm:w1343007831,NW:Baltic side|SE:Saaler Bodden side:lagoon,"Baltic side: waves (German Kitesurf Open venue). Bodden side: flat shallow water. Also: Saal on the Saaler Bodden (flat shallow water, kite school).",,,,
 DE,Mecklenburg-Vorpommern,Zingst,sea,osm:n1577732852,N,"Sportstrand at the edge of town; choppy, deep enough for foiling.",,,,
 DE,Mecklenburg-Vorpommern,Rügen – Suhrendorf (Ummanz),lagoon,osm:n11961257106,W,"Bodden: shallow flat water, beginner-friendly.",,,,
@@ -36,9 +36,9 @@ DE,Bayern,Chiemsee – Übersee (Feldwies),lake,osm:n2019998067,W,"Kite zone at 
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — south Sylt west beach, Westerland kept
-DE,Schleswig-Holstein,Sylt – K4 (Hörnum),sea,osm:n1898635794,W,"West beach 4 km north of Hörnum: flat channels at low tide, waves at high tide; strong coastal current.",,,pro,
+DE,Schleswig-Holstein,Sylt – K4 (Hörnum),sea,osm:n1898635794,W,"West beach at crossing 74 (big car park), 4 km north of Hörnum: named an official surf and kite beach by the national park. Flat channels at low tide, waves at high tide; strong coastal current. Ask a local school which tide suits you.",,,pro,
 # pro: seasonal/minor — Wadden side, low tide window only
-DE,Schleswig-Holstein,Sylt – Hörnum Möwennest,sea,osm:w159636121,E,Wadden side behind the Möwennest hostel: flat shallow water for E winds. National park: only about 2–3 h either side of low tide.,,low,pro,
+DE,Schleswig-Holstein,Sylt – Hörnum Möwennest,sea,osm:w159636121,E,Wadden side behind the Möwennest hostel: flat shallow water for E winds. National park rules (flyer 2021): kite only about 3 h either side of low tide and keep 300 m (kites included) from the Hörnum Nehrung bird area.,,low,pro,
 # pro: local spot — Wadden Sea, high tide only
 DE,Schleswig-Holstein,Dagebüll,sea,osm:w1185945037,W,"Wadden Sea, by the ferry pier; around high tide only.",,high,pro,
 # pro: local spot — Wadden Sea, high tide only
@@ -46,11 +46,17 @@ DE,Schleswig-Holstein,Nordstrand – Holmer Siel,sea,osm:w612388781,NW,Wadden Se
 # pro: local spot — Wadden Sea, high tide only
 DE,Schleswig-Holstein,Husum – Dockkoog,sea,osm:n5004487464,W,"Wadden Sea, around high tide. Busy in summer; no-go channel south of the point.",,high,pro,
 # pro: local spot — tidal lagoon, Sankt Peter-Ording kept
-DE,Schleswig-Holstein,Büsum – Perlebucht,sea,osm:w731307804,SW,"Northern part of the Perlebucht lagoon only; tidal, ride around high tide.",,high,pro,
+DE,Schleswig-Holstein,Büsum – Perlebucht,sea,osm:w731307804,SW,"Northern part of the Perlebucht only. The lagoon itself is cut off from the sea (flat in any wind) and advanced riders only (VDWS 5 / IKO 3); the shallows in front of it follow the tide, so ride around high tide. Sign in at the kite school; not for E winds (Büsumer Deichhausen then).",,high,pro,
+DE,Schleswig-Holstein,Sylt – Wenningstedt,sea,osm:w830760032,W,"West beach at Wenningstedt, with a kite school based in the village (Südkap Surfing, Hörnum and Wenningstedt). Waves, groynes, current and many marked bathing zones to ride around: experienced riders, mind the bathers in summer. Local rules not checked.",,,pro,
+DE,Schleswig-Holstein,Föhr – Nieblum,sea,osm:w221516977,S,"Wadden Sea beach on the south coast with a local school (Nieblumer Wassersport Schule). Kite beach to the right of the catamarans on the beach, windsurf area to the left up to the stone groyne (hidden at high water); about 2-3 h either side of high tide; avoid the ferry fairway.",,high,pro,
+DE,Schleswig-Holstein,Amrum – Wittdün Badebucht,sea,osm:w90585466,SE,"Shallow bay at the ferry village, kite school on the spot (Surfclub Amrum). Kiting allowed on the Wittdün bay side per the island news (July 2025); closed in spring and early summer for bird protection (guides say May-June or 15 May-15 July), follow the signs. Shared with bathers in summer.",,,pro,
+DE,Schleswig-Holstein,Sankt Peter-Böhl,sea,osm:w174287224,W,"Southern beach of Sankt Peter-Ording, quieter than Ording and the usual beginner side (flat water, no waves) but a long walk over the sand at low tide; tidal currents, take care 1.5 h either side of low water. No official kite zone found here, kiting only tolerated: follow the national park flyer and the local signs.",,,pro,
 # pro: cluster duplicate — Cuxhaven, Kugelbake kept
 DE,Niedersachsen,Cuxhaven – Sahlenburg,sea,osm:w323037326,W,Large standing area; about 4 h either side of high tide.,,high,pro,
+DE,Niedersachsen,Cuxhaven – Grimmershörn,sea,osm:w41751775,,"Grimmershörn bay on the Elbe: kiting allowed per the national park kite flyer and the Cuxkiters club, for experienced riders only. Strong current and the shipping lane, buoys off the beach, no real beach (stone wall and soft mud). Sources disagree on the tide window (3 to 5 h before high tide to 3 h after).",,,pro,
 # pro: local spot — Elbe estuary, high tide only
-DE,Niedersachsen,Otterndorf,sea,osm:w28802403,N,Elbe estuary: strong tidal current and shipping lane nearby; ride around high tide.,,high,pro,
+# archived: no kite source recorded; Elbe shipping lane and strong current (WHE-214, 16 Nov 2026)
+DE,Niedersachsen,Otterndorf,sea,osm:w28802403,N,Elbe estuary: strong tidal current and shipping lane nearby; ride around high tide.,,high,archived,
 # pro: local spot — Wadden Sea, high tide only
 DE,Niedersachsen,Dorum-Neufeld,sea,osm:w35573602,W,"Wadden Sea, shallow: about 3 h either side of high tide. Channels are shipping lanes.",,high,pro,
 # pro: local spot — Wadden Sea, high tide only
@@ -58,34 +64,75 @@ DE,Niedersachsen,Wremen,sea,osm:n12818896948,W,"Wadden Sea, large standing area:
 # pro: local spot — Wadden Sea, high tide only
 DE,Niedersachsen,Butjadingen – Tossens,sea,osm:w224484806,W,"Wadden Sea, shallow; about 3 h either side of high tide.",,high,pro,
 # pro: cluster duplicate — Jade, 13 km from Schillig
-DE,Niedersachsen,Hooksiel,sea,osm:n13261647068,E,"Jade, shallow; ride around high tide.",,high,pro,
+# archived: no kite source recorded (WHE-214, 16 Nov 2026)
+DE,Niedersachsen,Hooksiel,sea,osm:n13261647068,E,"Jade, shallow; ride around high tide.",,high,archived,
 # pro: local spot — Wadden Sea, high tide only
 DE,Niedersachsen,Neuharlingersiel,sea,osm:w179808917,N,Wadden Sea; about 3.5 h either side of high tide.,,high,pro,
+DE,Niedersachsen,Dornumersiel,sea,osm:w263031767,N,"Wadden Sea, shallow; marked 80 ha kite zone in the national park, kiting 3 h either side of high tide, open 1 May–15 Sep per the Lower Saxony tourism page (Unplug says from 1 June: the earlier date is kept as the official one). Kite school Vertigo on the beach. Intermediate level.",,high,pro,09-16..04-30
 # pro: local spot — island beach, Norderney kept
 DE,Niedersachsen,Borkum – Nordstrand,sea,osm:w159750055,W,Marked kite zone on the north beach; island rules limit the hours (not early morning).,,,pro,
 # pro: local spot — island beach, Norderney kept
 DE,Niedersachsen,Langeoog – Nordstrand,sea,osm:w503592289,NW,"Sportstrand on the north beach: waves at high tide, shallow at low tide; island rules limit the hours.",,,pro,
+DE,Niedersachsen,Wangerooge – Nordstrand,sea,osm:w29241398,N,"North beach, open sea: kite zone of the 2023 North Sea navigation order (Nordstrand, from 3 h after sunrise). Keep out of the bathing zone and the nature reserves; the school zone in the west is for lessons only (1 May–15 Sep, 6 kites). Kite school Surfcafé on the island.",,,pro,
+DE,Niedersachsen,Juist – Nordstrand,sea,osm:n5666288076,N,"North beach, open sea: kite zone of the 2023 North Sea navigation order (Nordstrand, from 3 h after sunrise, beyond the bathing zone). Kite schools Ju(i)st Kite and Kitesurf Island on the island. A second zone on the south side (3 h either side of high tide, 1 Apr–31 Oct) is often dangerous with offshore wind.",,,pro,
+DE,Niedersachsen,Baltrum – Nordstrand,sea,osm:w537180418,N,"North beach near the Westdorf kite school: kite zone of the 2023 North Sea navigation order (Nordstrand, from 3 h after sunrise). Never ride in the bathing zone; the nature reserve to the east is closed to kiters.",,,pro,
+DE,Niedersachsen,Spiekeroog – Nordstrand,sea,osm:w218656990,N,"North beach, open sea: the island's marked kite zone starts beside the main bathing beach and does not enter the recreation zone; kiting from 3 h after sunrise (official island page and 2023 North Sea navigation order). The zone crosses part of the main bathing beach: keep clear of it.",,,pro,
 # pro: cluster duplicate — second Flensburg Fjord spot
-DE,Schleswig-Holstein,Flensburger Förde – Schausende,sea,osm:w85471971,N,Fjord spot with a small standing area; boat traffic and occasional nets.,,,pro,
+# archived: weaker twin of Holnis 1 km away (10 km rule) (WHE-214, 16 Nov 2026)
+DE,Schleswig-Holstein,Flensburger Förde – Schausende,sea,osm:w85471971,N,"Fjord spot next to Holnis (about 1 km): shallow standing area, boat traffic and occasional nets. Best in NE–E, less pretty than Holnis.",,,archived,
 # pro: cluster duplicate — 3 km from Laboe
-DE,Schleswig-Holstein,Stein,sea,osm:w1018549156,N,"About 200 m of standing area, flat to wavy.",,,pro,
+DE,Schleswig-Holstein,Stein,sea,osm:w1018549156,N,"Small beach on the east side of the outer Kiel Fjord: shallow flat water, standing area of about 200 m, little chop. Best in W–NW, gusty in E. Launch from the cliff side west of the loungers in summer. A surf school on the beach teaches kite.",,,pro,
 # pro: cluster duplicate — next to Heiligenhafen and Fehmarn
-DE,Schleswig-Holstein,Großenbrode,sea,osm:w42734527,S,Flat water and small waves.,,,pro,
+DE,Schleswig-Holstein,Großenbrode,sea,osm:w42734527,S,"West beach: flat, standing depth in SW to N, stones west of the entry point (wear booties). South beach: NE to SE, small waves, standing area.",,,pro,
 # pro: cluster duplicate — 3 km from Gold
-DE,Schleswig-Holstein,Fehmarn – Lemkenhafen (Orther Reede),sea,osm:n261744611,S,Flat shallow water in the Orther Reede.,,,pro,
+DE,Schleswig-Holstein,Fehmarn – Lemkenhafen (Orther Reede),sea,osm:n261744611,S,"Flat, glassy shallow water in the Orther Reede for W–SW and S winds; kite school on site, wide dike for rigging.",,,pro,
 # pro: cluster duplicate — Saaler Bodden, Wustrow Bodden side kept
-DE,Mecklenburg-Vorpommern,Saal (Saaler Bodden),lagoon,osm:w124255475,W,Shallow flat water almost everywhere; kite school on site.,,,pro,
+DE,Mecklenburg-Vorpommern,Saal (Saaler Bodden),lagoon,osm:w124255475,W,"Shallow flat water almost everywhere; kite school (Kitesportschule Simon, water sports centre) on site; free access; SW and NW are the best side-shore winds.",,,pro,
 # pro: cluster duplicate — Wieker Bodden, Dranske kept
-DE,Mecklenburg-Vorpommern,Rügen – Wiek,lagoon,osm:n9045420052,W,Wieker Bodden: flat shallow water.,,,pro,
+# archived: no kite source recorded, only "flat shallow water"; minor Bodden shore (WHE-214, 16 Nov 2026)
+DE,Mecklenburg-Vorpommern,Rügen – Wiek,lagoon,osm:n9045420052,W,Wieker Bodden: flat shallow water.,,,archived,
 # pro: local spot — Greifswalder Bodden, choppy and gusty
-DE,Mecklenburg-Vorpommern,Gahlkow,sea,osm:w436196705,N,"Greifswalder Bodden: narrow beach, choppy and gusty.",,,pro,
+# archived: no school or source at the beach itself; riders go 1 km west to Loissin (WHE-214, 16 Nov 2026)
+DE,Mecklenburg-Vorpommern,Gahlkow,sea,osm:w436196705,N,"Greifswalder Bodden: narrow beach, choppy and gusty; shallow up to about 800 m out; works from W through N to E. WSW wind is gusty: riders move 1 km west to Loissin (kitesafe school there). No school at Gahlkow itself.",,,archived,
 # pro: cluster duplicate — 5 km from Karlshagen
-DE,Mecklenburg-Vorpommern,Usedom – Peenemünde,sea,osm:w1422270438,N,"Choppy, deepens quickly; few facilities.",,,pro,
+# archived: no kite source found, choppy and deepens quickly, few facilities (WHE-214, 16 Nov 2026)
+DE,Mecklenburg-Vorpommern,Usedom – Peenemünde,sea,osm:w1422270438,N,"Choppy, deepens quickly; few facilities.",,,archived,
 # pro: local spot — Achterwasser, local
-DE,Mecklenburg-Vorpommern,Usedom – Ückeritz (Achterwasser),sea,osm:w1467328466,W,"Achterwasser by the harbour: standing area, choppy; best W–S.",,,pro,
+# archived: no kite source found; minor Achterwasser shore (WHE-214, 16 Nov 2026)
+DE,Mecklenburg-Vorpommern,Usedom – Ückeritz (Achterwasser),sea,osm:w1467328466,W,"Achterwasser by the harbour: standing area, choppy; best W–S.",,,archived,
 # pro: minor lake — thermal lake, seasonal
-DE,Bayern,Brombachsee,lake,osm:w171040640,,Großer Brombachsee: occasional afternoon thermals. Kiting April–June and September–November.,,,pro,07-01..08-31; 12-01..03-31
+# archived: minor reservoir lake, kiting only April–June and Sept–Nov, no real reputation (WHE-214, 16 Nov 2026)
+DE,Bayern,Brombachsee,lake,osm:w171040640,,Großer Brombachsee: occasional afternoon thermals. Kiting April–June and September–November.,,,archived,07-01..08-31; 12-01..03-31
 # pro: cluster duplicate — Chiemsee, Übersee kept (one row is enough)
-DE,Bayern,Chiemsee – Chieming,lake,osm:n4236313681,W,"East shore, KBC kite club area: works in W–NW winds. Kiting only in the marked zone.",,,pro,
+# archived: access through the KBC kite club area, marked zone only (WHE-214, 16 Nov 2026)
+DE,Bayern,Chiemsee – Chieming,lake,osm:n4236313681,W,"East shore, KBC kite club area: works in W–NW winds. Kiting only in the marked zone.",,,archived,
 # pro: 8 km from Zingst (kept) — Darß coast, kite school in Prerow (visit-mv.com Kiteschule Darss + Surfspot Prerow); Nordstrand inside the national park, check zoning
 DE,Mecklenburg-Vorpommern,Prerow,sea,osm:r11936863,N,"Baltic side of the Darß: moderate waves, good with E winds. Kite school in town; the park beach to the north has protected zones, ask locally.",,,pro,
+# pro: added from the Windy pass WHE-206 (15 Nov 2026) — Windy marker "Schaprode" 4 stars; visit-mv.com Schaprode surf spot (free access, flat water, keep clear of the Hiddensee ferry channel)
+DE,Mecklenburg-Vorpommern,Rügen – Schaprode,lagoon,osm:w40089864,NE,"Bodden beach at the Hiddensee ferry port: very flat water, huge standing area. Stay well away from the ferry channel. Free access.",,,pro,
+# pro: Windy marker "Thiessow" 5 stars; ProBoarding Rügen kite school at the Weststrand (visit-mv.com, checkyeti listing, school mapped in OSM)
+DE,Mecklenburg-Vorpommern,Rügen – Thiessow (Weststrand),lagoon,osm:w25681717,W,"Mönchgut: west beach on the Greifswalder Bodden side, shallow water; the ProBoarding kite school meets here. The rugged coast usually gives one workable direction. Free access.",,,pro,
+# pro: Windy marker "Lubmin" 5 stars; visit-mv.com Surfspot Lubmin (free access, SW–NE); Ostsee Kiteschule mapped in OSM at the east end of town
+DE,Mecklenburg-Vorpommern,Lubmin,sea,osm:w1423866550,N,"Wide sandy beach on the Greifswalder Bodden with lots of room on the water; works from SW to NE. Free access. Ostsee Kiteschule at the east end of town. Dog and nudist beaches lie along the same shore: keep to the main beach.",,,pro,
+# pro: Windy marker "Born" 5 stars; Kitesurf & Kanu Born school since 2001 (visit-mv.com, VDWS listing, mapped in OSM); 6 km from Saal across the Bodden
+DE,Mecklenburg-Vorpommern,Born (Saaler Bodden),lagoon,osm:w712040162,S,"Classic Bodden spot: shallow, flat water with some chop, lots of standing room. SW best, S–W works. Small launch area at the campsite: launch from the water. School open April to October.",,,pro,
+# pro: Windy marker "Juliusruh" 3 stars; visit-mv.com Schaabe/Juliusruh (free access, side-shore NE and SE); Kitesurf-Factory school mapped in OSM
+DE,Mecklenburg-Vorpommern,Rügen – Juliusruh (Schaabe),sea,osm:w930073360,E,"Long sandy beach on the Schaabe: shore break, side-shore in NE and SE winds. Free access. Kitesurf-Factory school in Juliusruh (May to October). Stay out of the bathing area.",,,pro,
+# pro: Windy marker "Kühlungsborn" 5 stars; visit-mv.com kite spot Kühlungsborn (free access, W to NE winds give strong waves)
+DE,Mecklenburg-Vorpommern,Kühlungsborn,sea,osm:w1206551977,N,"Baltic waves in strong W to NE wind. Free access per visit-mv. Busy bathing beach in summer: check the local zones and go off season or at quiet hours.",,,pro,
+# pro: Windy marker "Kägsdorf" 3 stars; visit-mv.com Kägsdorf (best in SW wind, large car park behind the dunes); 5 km from Kühlungsborn
+# archived: no kite source recorded; quiet beach next to Kühlungsborn (WHE-214, 16 Nov 2026)
+DE,Mecklenburg-Vorpommern,Kägsdorf,sea,osm:w244094195,N,"Quiet beach west of Kühlungsborn: waves, best in SW wind. Large car park right behind the dunes.",,,archived,
+# pro: Windy marker "Ammersee" 5 stars; unplug-kitesurf Ammersee Mühlfeld (shallow, flat with chop, small launch, trees); Kite Factory school listed. Pin at Herrsching east shore
+# archived: kiting limited by the lake boating rules and nature zones, no confirmed legal zone (WHE-214, 16 Nov 2026)
+DE,Bayern,Ammersee – Herrsching (Mühlfeld),lake,osm:w71890612,W,"East shore at Mühlfeld: shallow, flat water with some chop. Small launch area with trees: launch from the water. Check the lake's boating rules; kiting is limited in nature zones.",,,archived,
+DE,Schleswig-Holstein,Strande,sea,osm:w553002928,E,"Town beach on the west shore of the outer Kiel Fjord, easy from Kiel. One of the few Kiel spots that also works in S wind (guides). Ship traffic on the fjord: keep clear of the channel. Surf club beside it teaches windsurf; no kite school confirmed.",,,pro,
+DE,Schleswig-Holstein,Heidkate,sea,osm:w35094502,N,"Probstei coast: a surf school (VDWS centre) teaches kite on the beach; a guide calls it the hotspot of the area, with a sandbank about 200 m offshore. Wetsuit nearly all year. Not tide-dependent in practice (Baltic).",,,pro,
+DE,Schleswig-Holstein,Hohwacht,sea,osm:w34035919,NE,"Bay of Hohwacht, beach by the harbour: chop and small waves, intermediate and up (guides); wind best from N to NE. Breakwaters in the water at the north end. No kite school confirmed on site.",,,pro,
+DE,Schleswig-Holstein,Fehmarn – Orth (Orther Bucht),sea,osm:w24943928,W,"East shore of the Orther Bucht: big flat shallow areas either side of Orth village, a training arena for W winds (guides). Parking only at the small beach by the campsite. Same bay as Lemkenhafen but about 1.5 km away on the other shore: pick by wind and parking.",,,pro,
+DE,Schleswig-Holstein,Fehmarn – Bojendorf (Wallnau),sea,osm:n2491080542,W,"West coast: smaller, more forgiving waves than Westermarkelsdorf, a beginner-friendly spot in W to SW (kite guide); strong N wind is harder. Wallnau, reached through Bojendorf, is listed for N and SW wind, intermediate and up. The beach at Wallnau is a naturist beach: be discreet.",,,pro,
+DE,Schleswig-Holstein,Fehmarn – Miramar (Fehmarnsund),sea,osm:w464928948,S,"On the Fehmarnsund strait by the Miramar campsite: W and E winds are accelerated along the strait. Tricky access between groynes and slipways. Wulfener Hals is the better choice when wind is enough (guides).",,,pro,
+DE,Schleswig-Holstein,Fehmarn – Meeschendorf,sea,osm:w51000890,S,"South coast east of Miramar: one of the few Fehmarn spots with side-onshore wind in E; waves stay moderate even above 25 kn (guide). Groynes on the Südstrand side.",,,pro,
+DE,Schleswig-Holstein,Schönberger Strand (Kalifornien),sea,osm:w37393111,N,"Six km of sandy beach along the dyke with groynes every 150 m; the sections locals call Kalifornien and Brasilien are the same beach. Flat to small waves, intermediate and up (guides). NE to E winds are the best; with SE wind Laboe is offshore but this beach is side-shore. Busy in summer: keep out of the bathing areas. No kite school confirmed on site.",,,pro,
+DE,Schleswig-Holstein,Kellenhusen,sea,osm:w245451559,N,"Lübeck Bay: flat water with chop and small waves, small launch area (guides). Packed with tourists in summer: both guides advise leaving the main bathing zone and going further south. No kite school confirmed on site.",,,pro,
+DE,Schleswig-Holstein,Dahme,sea,osm:w233630237,E,"Lübeck Bay beach town: a surf school on the beach offers kite taster courses (Hamburg tourism listing). The guide asks kiters to avoid the beach in summer because it is very crowded; paid parking. Dahmeshöved lighthouse is 2 km south and is a separate access.",,,pro,

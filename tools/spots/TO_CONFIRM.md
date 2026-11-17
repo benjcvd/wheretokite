@@ -97,6 +97,7 @@ second pass with web research is worth doing.
 - **Canaries second look (WHE-133, 6 Nov, settled without Ben)**: Ketchup, Güímar (Puerto de Güímar), La Santa and La Garita (Arrieta, Lanzarote) stay out: only one kite guide each (kite-and-windsurfing-guide.com), no school or town page naming them as kite spots; Güímar is a 35 km fallback with a tight launch, La Santa is a surf break with a lagoon for beginners, La Garita is an exposed beach with a surf point (best surf wind W). Maspalomas / Faro stays out: the same guide says police have stopped kiters inflating there and windsurf is the only officially allowed sport; no official text found. Unclear = no. El Cotillo: see WHE-92 above. Details in docs/validation/es-canarias.md.
 - Left out (Ibiza and Formentera re-checked 2026-11-03, WHE-94: kiting Nov–May only, no school, Ses Illetes banned May–Oct, stays out): Ibiza, Basque Country, Embalse del Ebro, Lo Pagán, El Saler, Patacona, Cullera,
   Fornells, El Cotillo.
+- **Algarve validation (WHE-168, 14 Nov, settled without Ben)**: Alvor pin stays on the lagoon (schools use a boat to a lagoon sandbar or a boardwalk from the car park; no source for the "sandspit by the dunes"). Ria Formosa: no `banned` (ICNF zoning table unreadable, old navy ban undated): notes tell riders to ask the Capitania de Faro / ICNF. Praia de Faro moved to Pro (no kite school, one lagoon-side source). Added Pro: Altura, Monte Gordo, Sagres Tonel and Martinhal, Carrapateira Bordeira and Amado. Left out (no kite source, unclear = no): Cordoama, Luz, Praia da Rocha, Praia de Alvor, Salgados, Albufeira, Vila Real de Santo António, Vale Figueiras, Ferragudo (sheltered, poor water, no safe pin), Culatra, Armona, Santa Luzia. Details in docs/validation/pt-algarve.md.
 - Portugal pass (2026-10-22), still open:
   - Porto Santo: really famous for kiting? Pinned on Praia da Fontinha (middle of the 9 km
     beach); no source says where people launch.
@@ -112,6 +113,12 @@ second pass with web research is worth doing.
     Cruz (pro). Alcochete: is `not-low` right on the Tagus flats? Matosinhos: official summer
     ban dates? Santa Cruz: launch pinned at Praia do Mirante, right? Windy also lists Figueira
     da Foz, Carcavelos, Sesimbra, Tróia, Vila Nova de Milfontes (mostly surf; left out).
+
+- **Portugal north and centre validation (WHE-166, 12 Nov, settled without Ben)**: details in docs/validation/pt-north-centro.md.
+  Aveiro – Praia da Barra archived (no kite source). Matosinhos and Óbidos summer bans stay in notes only: two guides each, no
+  Capitania or câmara text found. Baleal: guides' "Baleal Bay" is the south bay, our pin is the north side; kept, no source says it
+  fails. Left out: Espinho and Figueira da Foz (cannot pin one beach), Afife, Maceda, Pedrógão, Nazaré Norte (surf).
+  Added as Pro: Foz do Douro, Âncora, Furadouro, Estacas (Costa Nova ria), Praia da Vieira.
 
 ## Catalunya (Catalan rows of ES.csv)
 
@@ -230,13 +237,20 @@ Questions:
 - Ireland coverage check (2026-10-22): Windy's map shows no kite spots in Ireland, so no
   benchmark there. Independent sources agree with our list. To add when OSM is reachable:
   Ballynamona (East Cork, E winds; ballycotton.ie + unplug-kitesurf), probably as pro.
+- England south coast pass (WHE-187, 2026-11-16, settled without Ben, no official kite text beyond the notes in GB.csv): Seasalter tide: Kitesurf Centre / Unplug guides say low water is best (sandbanks shelter the flats), our row says mid to high; kept as is with the conflict in notes, not safe to flip without a local. Calshot: no source found this pass, row kept as before. Studland Knoll Beach stays archived (NT permit by email, £5; no kite-zone text found). West Wittering and Pevensey stay archived. Dymchurch: Windguru has an unnamed flagged point (TheFluffyCloud), one guide lists it; no school or town source, not added.
 - Pins from village / bay names: Walney Island, Kinmel Bay, Fraserburgh, Machrihanish,
   Balephuil, Ballyholme, Cranfield, Mulranny, Portnoo (Narin), Culdaff.
 
 ## Netherlands / Belgium / Germany (NL.csv, BE.csv, DE.csv)
+- Vrouwenpolder: pin is a node on the Veerse Gatdam (water both sides); Apple Maps check disagrees with hint NW. Kept: guides ride both sides (WHE-179).
 - Lelystad – Bataviastrand: maps say it faces NE, NKV safe winds suggest W (hint empty).
 - Dümmer, Brombachsee: exact launch; Brombachsee season.
 - Holnis: which side the zone faces. Pelzerhaken: launch (pinned east side).
+- Baltic SH pass (WHE-176, 2026-11-14, settled without Ben): no official kite text found for any spot, so no `banned`.
+  Heiligenhafen: shop guide says Steinwarder is banned and only Graswarder (east of the pier) is allowed, another guide shows a
+  marked zone at east Steinwarder; kept free with the conflict in notes ("experienced only", replaces the old "beginner zone").
+  Wulfener Hals: one guide says kiting only 18:00–10:00 (camping runs the bay), kept with a note. Laboe: harbour-front beach closed
+  in the bathing season per Surf magazine, kept with a note. Fehmarn Strandsatzung 2026 (fehmarn.de PDF) not read: worth a look.
 - Salzhaff – Pepelow: computed NNW, check against the launch shore. Wustrow Bodden side (SSE).
 
 ## Italy / Adriatic / Malta (IT.csv, HR.csv, ME.csv, MT.csv)
@@ -259,6 +273,14 @@ Questions:
   basic? Pakoštane stays archived (no source found). Malta: Golden Bay is called the top spot by some guides and
   Mellieħa by others; summer swimming-zone closure of all beaches is only in guides, no Transport Malta page found,
   so no ban encoded. Golden Bay added as pro (you said yes; Bol stays pro).
+- Southern Italy validation (WHE-170, 2026-11-14, report docs/validation/it-south.md): settled without Ben. Stagnone stays
+  free with a note: kiting inside the reserve is contested (Legambiente, tp24.it 7 Nov 2026, reading the Natura 2000
+  measures for ITA010001 and the 2000 reserve decree; school summaries of harbour-office ordinance 1/2019 limit sailing to
+  about 200 m), but I found no official text banning it, so no `banned`. If the Marsala harbour office or the Region
+  publishes a ban, archive or ban it. The unsourced "kite corridors only" wording at Porto Cesareo and Torre Canne was
+  replaced by "check the local rules". Added 8 Pro spots from Windy (Pellaro, Vieste Spiaggia Lunga, San Foca, Alimini,
+  Apani, Capo Peloro, Gallipoli Lido Pizzo, Marina di Lesina Acquarotta). Open for a second pass: Steccato di Cutro (no OSM
+  element found), Marina di Lizzano / Chiatona, Gabella, Capo Rizzuto, Capo Peloro launch pin, San Foca corridor pin.
 - Left out: Slovenia, Albania, Campania, Lazio, Liguria, Friuli, Chia, Trasimeno, Follonica,
   Bol (now added as pro, see below).
 
@@ -280,6 +302,7 @@ Questions:
   - Marmari: the permitted kite zone moved downwind to a narrow beach with trees; our pin is on
     the long beach. OK?
 - Left out: Lesvos, Naxos Laguna, Drepano, other Crete spots.
+- Greek islands validation against Windguru (WHE-173, 2026-11-14, [report](../../docs/validation/gr-islands.md)): notes of Theologos, Golden Beach, Keros and Kouremenos rewritten from schools and guides. Air Riders (Windguru marker, Ialysos, Rhodes; trains at Kremasti beach) not added: only a booking-site source and no OSM beach tied to Kremasti (Overpass was down). Revisit with a school page. Kouremenos is now described by guides as a top Greek kite beach with two kite schools; kept basic.
 
 ## Nordics (DK.csv, NO.csv, SE.csv, FI.csv)
 - Sjællands Odde: launch on the Sejerø Bugt (south) side, or the north side?
@@ -308,6 +331,17 @@ Questions:
   Valdevaqueros 214° from OSM coastline (agrees). Not changed: no official or first-hand source to widen them.
 - Faking it with a wide `sector` would make levante look safe for everyone; refused (worst case = offshore stays 0).
 - Real fix would be a scoring decision (e.g. an expert-only offshore allowance), not a catalogue one: card for the Lead.
+
+## Northern and central Italy, lakes (WHE-171, settled without Ben, 2026-11-14, rule of 2 Nov)
+- Rosolina Mare moved from basic to Pro: the only sources say the kite corridor belongs to the school and free-riders outside it risk
+  fines (one current school page, one 2008 page). If a town or port-authority page shows an open kite beach, move it back to basic.
+- Garda: only Campione and Navene (our Malcesine) are regulated kite beaches; Torbole / Riva (Trentino) are restricted, Toscolano not
+  added. No official text found, so no `banned` rule encoded.
+- Marina di Grosseto is pinned on the Le Marze beach next to the Oasi San Felice, not on the exact school launch: worth a look on satellite.
+- Left out for lack of a local source (second pass, one card per coast): Liguria (Voltri, Sestri, Loano, Andora...), Romagna (Cervia,
+  Cesenatico, Marina di Ravenna, Riccione), Marche (Porto Sant'Elpidio has no OSM beach, Numana, Portonovo is windsurf), Tuscany south
+  (Castiglione, Baratti, Donoratico, Punta Ala banned on some beaches per one guide), Veneto (Punta Sabbioni, Cortellazzo, Bibione),
+  Friuli (Marina Julia / Monfalcone, Barcola). Windy markers and reasons in docs/validation/it-north-centre.md.
 
 ## Gap pass Italy / Greece / Germany (WHE-91, settled without Ben, 2026-11-03)
 - Added: Kos – Psalidi (GR, basic; sportif.travel Kos Kitesurf Centre + greeka/Kos guides), Prerow (DE, pro; visit-mv.com
@@ -364,3 +398,20 @@ Questions:
 - Landéda – Sainte-Marguerite: sources disagree on the tide (flat at low tide vs. navigable only about 2 h either side of high water). No tide window set; both views in the notes. Local check welcome.
 - Summer swimming zones at Dossen (1 Jun–15 Sep), Sainte-Marguerite south (1 Jul–30 Aug) and Blancs Sablons west (1 Jul–31 Aug) come from one blog (vvanat.fr), no town text found. In notes only, not in `banned`.
 - Left out of the catalogue, no local kite source or nothing to pin: Les Amiets, Boutrouilles, Île de Vierge, Trez Hir, Saint-Jean-du-Doigt, Trezmeur, Grève Rose, Kernisi (no launch place), Térénez and Île Grande (no beach in OSM).
+
+## Sardinia validation (WHE-169, 14 Nov 2026, settled without Ben)
+- Windy 29 markers vs ours: 9 added as Pro (Petrol Beach, La Caletta, Villasimius – Campulongu, Capo Mannu, Porto Pino,
+  Chia, Vignola Mare, Valledoria – La Foce, Funtana Meiga). Table in `docs/validation/it-sardegna.md`.
+- No ban encoded anywhere: Porto Pollo order 38/2016 covers the bay, not the Porto Liscia pin; Poetto 15 Jun–15 Sep
+  and Porto Pino summer rules come from school pages only (worst case kept in notes).
+- Second look later: Alghero, Mari Ermi, Geremeas, Isola Rossa; Platamona pin on a beach way.
+
+## Morocco validation pass (WHE-172, 2026-11-14), settled with the rule of 2 Nov
+- Added as pro: Tangier – Achakar (Cap Spartel), Agadir – Bay, Taghazout (Windy 5/3/4 stars; sources are a school page and directories, no local club).
+- Left out, 19 Windy markers (surf breaks, 1-star markers, Rabat–Casablanca–El Jadida beaches): no kite school or club found. Worst case assumed. Revisit Salé, Bouznika, El Jadida/Azemmour (Haouzia) with a local source.
+- Agadir Bay: no marked kite zone and crowded in July–August; no ban encoded (no official text found).
+
+## Rügen, Mecklenburg, Bavarian lakes (WHE-178), settled 14 Nov 2026
+- No official kite-zone text found for any of the 16 spots, so no `banned` rule encoded; summer swim zones (Warnemünde) in notes only.
+- Chiemsee – Chieming: no new source; kept Pro (old KBC source). Kreptitz not added (kiting prohibited per one listing).
+- Not added, no Windguru marker: Born, Dierhagen, Loissin, Boiensdorf (school on site each). Add if wanted.

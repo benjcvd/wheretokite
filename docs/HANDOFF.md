@@ -414,6 +414,56 @@ Gotchas: Atlas starts `ready` cards of one workstream in parallel on per-ticket 
 
 Ben asked for an outside audit (summary in chat). He picked: fix the clock bug (WHE-161), fix the server (domain WHE-3, Open-Meteo plan WHE-12, lockdown WHE-162), and stop work sitting unmerged (CI on every push, catalogue gate on phones). All workstream branches are merged into local main, including all 30 France/Spain zones now validated; Product's WHE-160 (offshore choice) is the one thing held back, waiting on Ben's angles: merge `atlas/product` only after he says yes. Main is not pushed: the push rebuilds the catalogue (new Basque, Landes, Huelva, Murcia, Normandy rows) and needs Ben's word. Product has four cards queued in parallel (clock, server lockdown, CI, catalogue gate) on separate files. On "done isn't merged": the Lead now runs `git rev-list --count main..<branch>` for every workstream at the end of each session, and CI will catch the rest. Open on Ben's side: willingness to pay (talk to riders first, then a trial), and storing "How was it?" answers so accuracy in Catalonia can be measured from real sessions.
 
+## Where the Lead stopped (12 Nov, 11:00)
+
+Main is pushed (catalogue rebuilt by CI to 772 spots, 60 with bans; osm-cache snapshot refreshed on Ben's OK). Ben's calls: Pro spots stay Pro (no "all spots free"); next spot priority Portugal → Italy → Morocco, now 7 zone cards (zones in `tools/spots/validation/zones.json`, map now covers PT/IT/MA). The two Portugal north/Lisbon cards were queued `ready`; feed the rest two at a time and merge each zone (set `validated` in status.csv, rerun `python3 tools/validation_map.py`). Product's branch `atlas/product` holds, unmerged on main: WHE-165 spot-list guard, WHE-161 clock fix, WHE-162 server lockdown, plus WHE-160 offshore choice (now redesigned as two beach-drawing cards, waiting on Ben's look). Merge the first three on their own (cherry-pick the ticket merge commits, or wait for Ben's yes on WHE-160 and merge the whole branch); WHE-162 needs a Worker deploy on Ben's word. Ben will buy the domain (WHE-3) and Open-Meteo plan (WHE-12) later. Open from the audit: willingness to pay (talk to riders, then a trial), storing "How was it?" answers as accuracy ground truth. An uncommitted Xcode-generated change sits in `App/WhereToKite/Localizable.xcstrings`: not ours, leave it or let Product commit it.
+
+## Lead, 14 Nov 15:05: report spam guard (WHE-163)
+
+Committed on main, not pushed or deployed. Cloudflare's rate limiter can't do "per hour" (60 s
+is the longest window), so the per-IP limit on reports is 2 a minute and the real guard is a
+global ceiling: the Worker counts today's `report` issues on GitHub before filing and stops at
+15 (fails closed if GitHub doesn't answer; the report is still in Workers Logs). The triage
+workflow now labels `triaging` before it counts, so a burst can't all slip under the cap.
+Goes live with a Worker deploy plus a push of main, both waiting on Ben's OK.
+
+## Lead, 15 Nov 22:45: spot push on hold, Windy passes queued
+
+Ben said **don't push yet**: wait until the spot work for the rest of Europe lands, then merge
+`atlas/spot-improvement` (35+ commits ahead), push, and deploy the report spam guard
+(WHE-163, commit 2cd278e) in one go. Before pushing, rerun spot-check on NL.csv and DE.csv
+(Overpass was down during WHE-180 and WHE-206).
+Benchmark: Windy is the standard. The 14 Nov Windguru zones found almost no kite-tagged
+spots, so Greece, Germany and the Netherlands got Windy follow-up cards (WHE-201 to 208 plus
+North Holland and Wadden); WHE-183 Friesland was switched to Windy. The remaining Windguru
+cards (Denmark onwards) should switch to Windy too: Ben was asked but hasn't answered.
+Turkey added (WHE-200, 4 spots); it still needs a zone in zones.json. Albania is the only
+real European gap (asked Ben; no answer).
+Gotcha: Ben moves cards to done himself; trust the board's column, not the "tell the Lead
+to merge" line in notes. PT/IT/MA cards (WHE-166 to 172) are done = approved (asked Ben to
+confirm): set their zones to `validated` in status.csv at merge.
+
+## Lead, 16 Nov 00:20: every spot free, doubtful ones archived
+Ben decided that spots are no longer a Pro feature: the free plan will show every active spot
+(316 basic + 456 pro today; free users saw only 41 %, 22 % in Spain). Pro will sell features
+(range, 7 days, next window, weights, alerts), not spots. The `tier` column stays in the data and
+the gate stays a switch. Doubtful pro rows (no source, club/permit, banned or tolerated, no launch,
+minor lake) move to `archived`, so they never ship. Sweeps run per area (FR Atlantic, FR Med, Spain,
+rest); Product flips the free plan and checks the 150-location server limit and Open-Meteo load.
+Trigger: Cayeux had been hidden as a "duplicate" of Le Crotoy although it works at the opposite tide.
+Also built the Product branch onto Ben's iPhone (15 Nov, not merged to main yet).
+
+## Lead, 16 Nov 15:45: where I stopped
+Ben approved the level wording; WHE-216 (four sessions, no "yesterday" card, distinct wind cards,
+level lines) is done. The archive sweeps (WHE-211 to 214), every-spot-free (WHE-215) and the
+Croissant report (WHE-217) went through Ben's review and are done on the board. **None of the
+workstream branches are merged into main yet**: Product (atlas/product + atlas/t/whe-215, whe-216)
+and the spot streams. Next session: run merge-workstream on each, then push only with Ben's OK.
+Every-spot-free makes each search ~3× the Open-Meteo calls, so WHE-12 (paid plan) is more urgent.
+Open question to Ben: give WHE-218 (opposite wind directions averaged into a fake onshore wind,
+safety) to Forecast accuracy (my recommendation). WHE-164 should go to Product.
+Gotcha: `App/WhereToKite/Localizable.xcstrings` shows modified in main from an Xcode build; check
+the diff before committing it.
 **Product, 12 Nov (WHE-161).** Today's search now only counts the hours you can still reach (now + drive, rounded up); hours before that score 0 as "too late", and when nothing is left the app says "This session is over" and offers tomorrow. On `atlas/t/whe-161` (d184ea8, ffddff7), before / after in [docs/TODAY_CLOCK.md](TODAY_CLOCK.md). Safety rule: merge only after Ben OKs it. Open choice: no rigging time is added after arrival.
 
 **Product, 12 Nov (WHE-162).** The forecast server now relays only what the app and CLI ask for (allow-listed variables, models and dates, 150 places max) and limits each IP to about 5,000 Open-Meteo places a minute, counting only cache misses. Built on atlas/t/whe-162 (f0821db), checked with the real CLI at 165 spots. Not deployed: waits for Ben's OK. From now on a new forecast variable or model in the app needs the Worker deployed first (`RULES` in `server/src/forecast.ts`).
@@ -436,3 +486,22 @@ A failed search used to leave the previous result under the new day or drive (th
 safety finding 1). The error branch of `SearchModel.run` now drops the result, so only the
 "Search failed" card shows. We chose clearing over greying: nothing to misread, at the cost of
 losing the old list on a flaky connection. `SearchModelTests` covers it via a new test init.
+**Forecast accuracy, 16 Nov (WHE-57).** Each spot now knows which models are behind its hours
+(`SpotRecommendation.forecastSource`, e.g. "AROME 1.3 km · ECMWF 9 km · GFS"); the app caption
+next to the confidence badge is still to do (App). Météo-France seamless hides which model it
+uses: measured, it's AROME HD up to now + ~43 h inside AROME's footprint, ARPEGE 11 km after that
+and outside it. The footprint is irregular, so `tools/backtest/arome_coverage.py` writes a
+per-spot list; re-run it when spots are added (new spots read "Météo-France" until then).
+
+**Forecast accuracy, 16 Nov (WHE-71).** The chance to kite reads ECMWF on its beach cell (15 km inland, 2.6 kn light) although its cut-offs were tuned with ECMWF on the sea cell: about 25 % fewer Go days than designed, each a bit more reliable. Built ECMWF-on-sea in `Confidence.swift` (31913a3, two requests merged per search); waiting for Ben's pick. Caveat: November alone (16 days) shows the sea-cell Go at 72–77 %, so re-check before trusting the 85 % promise.
+
+## Lead, 17 Nov 13:15: everything merged and pushed for 1.1 testing
+1.0 has been live on the App Store since 9 Nov. On Ben's "push", every workstream branch was merged into main
+(Product with every-spot-free, wind-first page, clock fix, offshore choice, server lockdown; WHE-164; all spot
+streams; forecast-accuracy WHE-57/71; App reviewer) and pushed. WHE-188 (south-west England) stays unmerged on
+its ticket branch, still in review. Conflicts: the forecast rate limiter took namespace 1003 (1002 is the report
+limiter); in FR-mediterranean.csv and FR-atlantic.csv the validated row texts were kept and the WHE-211/212
+archiving applied on top. The Worker is NOT deployed: the new app works with the live one (it had no allowlist
+yet), and deploying the lockdown + spam guard still waits on Ben's word. Ben's calls: the Open-Meteo free tier is
+fine while non-commercial (roughly 50–100 cold searches a day); no domain needed for 1.1 (about €10 a year, needed
+before real traffic). WHE-218 went to Forecast accuracy. An Xcode-generated xcstrings change sits in `git stash`.

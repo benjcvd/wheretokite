@@ -58,7 +58,8 @@ ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,"
 # archived: no kite source (no school, club, zone or Windy kite marker; WHE-2, 2026-11-02); 3–4 km from Creixell and Altafulla, same beach and winds
 ES,Catalunya,Torredembarra,sea,osm:r12040184,SE,Off-season spot: kiting banned 1 Jun–30 Sep. Keep off the protected Muntanyans dunes east of town.,,,archived,06-01..09-30
 # pro: local / secondary beach — off-season local spot
-ES,Catalunya,La Pineda,sea,q:Platja de la Pineda Vila-seca,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).,,,pro,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,La Pineda,sea,q:Platja de la Pineda Vila-seca,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).,,,archived,06-01..09-30
 # pro: added from the Windy comparison (WHE-93, 2026-11-04) — regional spot, sources thinner than a basic spot
 ES,Comunitat Valenciana,Gandía – Playa Norte,sea,osm:w29141808,E,"Authorised kite channel in front of the town beach (a hotel guide and Kiteforum list it); crowded in summer, side-shore NNW and SSE. Another channel at L'Ahuir (Xeraco) run by a local association.",,,pro,
 # pro: added from the Windy comparison (WHE-93, 2026-11-04)
@@ -66,24 +67,37 @@ ES,Comunitat Valenciana,Cullera – Platja del Racó,sea,osm:w487511742,E,"Kite 
 # pro: added from the Windy comparison (WHE-93, 2026-11-04)
 ES,Comunitat Valenciana,El Campello – Muchavista,sea,osm:w26586601,SE,"Tobago spot on Muchavista beach, one of the main spots of the Alicante coast per a regional guide; Aloha Sport school on the beach. NW and E winds.",,,pro,
 # pro: added from the Windy comparison (WHE-93, 4 Nov)
-ES,Comunitat Valenciana,Peñíscola – Playa Norte,sea,osm:r2169000,E,"Long sandy beach north of the old town; summer Garbí thermal makes it one of the few kiteable stretches of this coast. No school or kite zone found: check with the town.",,,pro,
-ES,Comunitat Valenciana,Benicàssim – Voramar,sea,osm:r2169044,SE,"Works mainly in winter low-pressure systems (waves); the summer Garbí fades here. Beach with groynes: check the town for summer kite rules.",,,pro,
-ES,Comunitat Valenciana,Sagunto – Platja del Port de Sagunt,sea,osm:w77661728,E,"Long beach at the port of Sagunt; kite guide lists it, few details. No kite zone found: ask locally.",,,pro,
-ES,Comunitat Valenciana,Pobla de Farnals – Platja Nord,sea,osm:w156305142,E,"Winter wave spot 15 min from Valencia (levante). No kite zone found: check town rules in summer.",,,pro,
+# archived: no school, kite zone or solid guide found
+ES,Comunitat Valenciana,Peñíscola – Playa Norte,sea,osm:r2169000,E,"Long sandy beach north of the old town; summer Garbí thermal makes it one of the few kiteable stretches of this coast. No school or kite zone found: check with the town.",,,archived,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Comunitat Valenciana,Benicàssim – Voramar,sea,osm:r2169044,SE,"Works mainly in winter low-pressure systems (waves); the summer Garbí fades here. Beach with groynes: check the town for summer kite rules.",,,archived,
+# archived: no school, kite zone or solid guide found
+ES,Comunitat Valenciana,Sagunto – Platja del Port de Sagunt,sea,osm:w77661728,E,"Long beach at the port of Sagunt; kite guide lists it, few details. No kite zone found: ask locally.",,,archived,
+# archived: no school, kite zone or solid guide found
+ES,Comunitat Valenciana,Pobla de Farnals – Platja Nord,sea,osm:w156305142,E,"Winter wave spot 15 min from Valencia (levante). No kite zone found: check town rules in summer.",,,archived,
 ES,Comunitat Valenciana,Valencia – La Patacona,sea,osm:r5813033,E,"Called the most popular kite beach of Valencia by a kite guide; levante too light for windsurf, choppy with NE winter wind. No official kite zone found: summer rules to check.",,,pro,
 ES,Comunitat Valenciana,Valencia – El Saler,sea,osm:w187152775,E,"Flat to choppy, lifeguards, NE to E thermal, June–September best; IKO school Kiteboarding Valencia in the El Saler area. Inside the Albufera park: in summer kite only in marked zones.",,,pro,
-ES,Comunitat Valenciana,Xeraco – Platja de Xeraco,sea,osm:r2071554,E,"Long beach from the Xeraco river mouth towards Gandía; kite guide spot. An association-run kite channel exists at l'Ahuir (south).",,,pro,
-ES,Comunitat Valenciana,Dénia – L'Almadrava (El Paquebote),sea,osm:w779926489,N,"El Paquebote is a wave spot at the Girona river mouth; Prokite Center is nearby at Els Poblets. Check with the school whether kiting is allowed on this beach.",,,pro,
-ES,Comunitat Valenciana,Xàbia – Platja de l'Arenal,sea,osm:w172858335,E,"Only sand beach of Xàbia: shallow, calm, mostly families; no kite zone found. Check town rules.",,,pro,
+# archived: single guide; the real kite channel is at L'Ahuir, not on this pin
+ES,Comunitat Valenciana,Xeraco – Platja de Xeraco,sea,osm:r2071554,E,"Long beach from the Xeraco river mouth towards Gandía; kite guide spot. An association-run kite channel exists at l'Ahuir (south).",,,archived,
+# archived: kiting on this beach unconfirmed, school says ask
+ES,Comunitat Valenciana,Dénia – L'Almadrava (El Paquebote),sea,osm:w779926489,N,"El Paquebote is a wave spot at the Girona river mouth; Prokite Center is nearby at Els Poblets. Check with the school whether kiting is allowed on this beach.",,,archived,
+# archived: calm family beach, no kite zone, no kite use confirmed
+ES,Comunitat Valenciana,Xàbia – Platja de l'Arenal,sea,osm:w172858335,E,"Only sand beach of Xàbia: shallow, calm, mostly families; no kite zone found. Check town rules.",,,archived,
 ES,Comunitat Valenciana,Calp – Platja de l'Arenal,sea,osm:r2172143,S,"Poniente beach, faces south: one of the few places in the region for S–SW winds, but the wind is irregular. School Activacostablanca Kitesurfing listed.",,,pro,
-ES,Comunitat Valenciana,Altea – Albir (Algar mouth),sea,osm:r2172147,E,"The Algar river mouth is described as one of the best levante (east) spots of the coast in spring and summer. Pinned on the Albir beach beside it.",,,pro,
-ES,Comunitat Valenciana,La Vila Joiosa – Platja Centre,sea,osm:r11142220,SE,"Mostly a surf beach with a rocky bottom; listed among winter kite spots. Moderate S–SW winds.",,,pro,
-ES,Comunitat Valenciana,Alicante – La Albufereta,sea,osm:w21620928,S,"Small sandy beach 3 km from Alicante centre, old windsurf spot; kite details are dated. Check locally.",,,pro,
-ES,Comunitat Valenciana,Torrevieja – La Mata,sea,osm:r14404210,E,"Long beach; good in light breezes and a stronger easterly (windsurf guide). No kite school found in Torrevieja: nearest is Centro Náutico Zoak in Guardamar.",,,pro,
+# archived: single source and no rules found
+ES,Comunitat Valenciana,Altea – Albir (Algar mouth),sea,osm:r2172147,E,"The Algar river mouth is described as one of the best levante (east) spots of the coast in spring and summer. Pinned on the Albir beach beside it.",,,archived,
+# archived: surf beach with rocky bottom, kite use unconfirmed
+ES,Comunitat Valenciana,La Vila Joiosa – Platja Centre,sea,osm:r11142220,SE,"Mostly a surf beach with a rocky bottom; listed among winter kite spots. Moderate S–SW winds.",,,archived,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Comunitat Valenciana,Alicante – La Albufereta,sea,osm:w21620928,S,"Small sandy beach 3 km from Alicante centre, old windsurf spot; kite details are dated. Check locally.",,,archived,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Comunitat Valenciana,Torrevieja – La Mata,sea,osm:r14404210,E,"Long beach; good in light breezes and a stronger easterly (windsurf guide). No kite school found in Torrevieja: nearest is Centro Náutico Zoak in Guardamar.",,,archived,
 # pro: Windy marker, one guide as source — kept as Pro by the 4 Nov rule (WHE-93)
-ES,Comunitat Valenciana,Burriana – El Arenal,sea,osm:r2155770,SE,"Arenal beach, S–SW winds and flat sea per the regional kite guide; no school or kite zone found, ask locally.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Comunitat Valenciana,Burriana – El Arenal,sea,osm:r2155770,SE,"Arenal beach, S–SW winds and flat sea per the regional kite guide; no school or kite zone found, ask locally.",,,archived,
 # pro: Windy marker; summer channel is for club members (no official source for the restriction), free off-season (WHE-93, 4 Nov)
-ES,Comunitat Valenciana,Sueca – Mareny de Barraquetes,sea,osm:r14908251,E,Summer channel (Jun–Aug) for Barraquetes Vent club members only; free off-season. Summer garbí thermal.,,,pro,
+# archived: summer channel for club members only
+ES,Comunitat Valenciana,Sueca – Mareny de Barraquetes,sea,osm:r14908251,E,Summer channel (Jun–Aug) for Barraquetes Vent club members only; free off-season. Summer garbí thermal.,,,archived,
 # pro: cluster duplicate — next to Oliva
 ES,Comunitat Valenciana,Dénia – Les Deveses,sea,osm:r2172009,ENE,Marked kite zone at the north end of Dénia (Les Deveses); summer thermal and winter tramuntana.,,,pro,
 # pro: cluster duplicate — near Santa Pola Tamarit
@@ -91,11 +105,13 @@ ES,Comunitat Valenciana,Elche – Arenales del Sol,sea,osm:w177395067,E,Beach wi
 # archived: kites not allowed — Santa Pola council says the authorities refuse La Gola each year; the channel is at Tamarit (WHE-93, 2026-11-03)
 ES,Comunitat Valenciana,Santa Pola – La Gola,sea,q:Playa de La Gola Santa Pola,SE,"Not open to kites: the town asks every year, the competent authorities refuse; the kite channel is at Tamarit.",,,archived,
 # pro: Windy marker, one guide as source — kept as Pro by the 4 Nov rule (WHE-93)
-ES,Comunitat Valenciana,Guardamar – Els Tossals,sea,osm:w54057854,E,"Beach by the dunes (protected area); Centro Náutico Zoak runs kite lessons in Guardamar. No official kite zone found: ask the school.",,,pro,
+# archived: single source and no rules found
+ES,Comunitat Valenciana,Guardamar – Els Tossals,sea,osm:w54057854,E,"Beach by the dunes (protected area); Centro Náutico Zoak runs kite lessons in Guardamar. No official kite zone found: ask the school.",,,archived,
 # pro: cluster duplicate — Mar Menor, Los Narejos kept
 ES,Murcia,Mar Menor – Los Nietos,lagoon,osm:w294026685,N,"Shallow flat water on the lagoon's south shore, onshore in N–NE–E; beginner-friendly. In summer the buoyed bathing areas are off limits: ask the local schools where to launch.",,,pro,
 # pro: cluster duplicate — Mar Menor, Los Narejos kept
-ES,Murcia,La Manga – Isla del Ciervo,lagoon,osm:r3974793,SW,Mar Menor side at km 3; summer jellyfish nets close the bathing areas (no riding inside).,,,pro,
+# archived: secondary Mar Menor launch, summer jellyfish nets and bathing zones, covered by Los Nietos
+ES,Murcia,La Manga – Isla del Ciervo,lagoon,osm:r3974793,SW,Mar Menor side at km 3; summer jellyfish nets close the bathing areas (no riding inside).,,,archived,
 # pro: local / secondary beach — city beach, summer ban
 ES,Andalucía,Almería – El Zapillo,sea,osm:w1289258387,S,"City beach, poniente (W) side-shore, thermally boosted on summer afternoons; no kiting 15 Jun–15 Sep (ban kept as the safe assumption: no official text found).",,,pro,06-15..09-15
 # pro: cluster duplicate — Almería poniente coast, Almerimar kept
@@ -105,15 +121,19 @@ ES,Andalucía,Motril – Playa Granada,sea,osm:w96307227,S,Levante and poniente;
 # archived: Windy marker (WHE-124, 6 Nov), side of La Manga unclear: the guide says Mar Menor side but lists NNE-E winds (offshore there), OSM pin faces S and Apple Maps sees water to the E. Revive once a school or town page says where people launch. Sources: sources: kite-and-windsurfing-guide Mar Menor page, unplug Mar Menor spots
 ES,Murcia,La Manga – Playa del Pudrimel,lagoon,osm:w478799430,W,"Shallow flat water on the Mar Menor side of La Manga, medium-size launch area. Spot guides list NNE to E winds (check they are not offshore at your launch); schools work from Los Narejos and La Manga. Summer bathing areas and jellyfish nets: ask the local schools.",,,archived,
 # pro: Windy marker (WHE-124, 5 Nov) — sources: Kiteforum Torre Derribada page, Wild Open Water listing
-ES,Murcia,San Pedro del Pinatar – Torre Derribada,sea,osm:n1459233700,E,"Beach next to the San Pedro port, inside the Salinas y Arenales regional park. Kiteforum: mostly flat, shallow, some chop and small waves, all levels, parking. No school on site found; check local bathing rules in summer.",,,pro,
+# archived: single source (Kiteforum), no school, in a regional park
+ES,Murcia,San Pedro del Pinatar – Torre Derribada,sea,osm:n1459233700,E,"Beach next to the San Pedro port, inside the Salinas y Arenales regional park. Kiteforum: mostly flat, shallow, some chop and small waves, all levels, parking. No school on site found; check local bathing rules in summer.",,,archived,
 # pro: Windy marker (WHE-124, 5 Nov) — sources: Wild Open Water listing (kiteboarding), Cabo de Palos is a marine reserve
-ES,Murcia,Cabo de Palos – Playa de Levante,sea,osm:r2115915,E,"Town beach on the Mediterranean side of Cabo de Palos. Only a swim-spot listing mentions kiteboarding and no school or guide describes it: limited information. The coast here is a marine reserve and the beach is small and busy in summer, so check local rules before launching.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Murcia,Cabo de Palos – Playa de Levante,sea,osm:r2115915,E,"Town beach on the Mediterranean side of Cabo de Palos. Only a swim-spot listing mentions kiteboarding and no school or guide describes it: limited information. The coast here is a marine reserve and the beach is small and busy in summer, so check local rules before launching.",,,archived,
 # pro: Windy marker (WHE-124, 5 Nov) — sources: Wannakitesurf Culoperro page, Barceló surf guide (Punta de Culo Perro by Los Baños de Guardias Viejas)
-ES,Andalucía,Guardias Viejas – Culoperro,sea,osm:w1474398096,SE,"Open coast near Los Baños de Guardias Viejas (El Ejido): waves, freestyle and freeride; levante (E) is onshore, 16 to 25 knots; rocky bottom. Season October to May; often empty on weekdays. Mixed with windsurfers.",,,pro,
+# archived: single source, rocky bottom, seasonal Oct-May
+ES,Andalucía,Guardias Viejas – Culoperro,sea,osm:w1474398096,SE,"Open coast near Los Baños de Guardias Viejas (El Ejido): waves, freestyle and freeride; levante (E) is onshore, 16 to 25 knots; rocky bottom. Season October to May; often empty on weekdays. Mixed with windsurfers.",,,archived,
 # pro: Windy marker (WHE-124, 5 Nov) — sources: kite-and-windsurfing-guide Punta Entinas page, Yumping school lessons at Punta Entinas beach
 ES,Andalucía,Punta Entinas,sea,osm:w895905424,S,"Quiet sandy beach in the Punta Entinas-Sabinar nature reserve, west of Faro Sabinar. Beach break: levante is cross-off and moderate, poniente cross-shore and bigger. Schools from Roquetas and Almerimar give lessons here. Nature reserve: stay on the beach, no kiting over dunes or birds.",,,pro,
 # pro: Windy marker (WHE-124, 5 Nov) — source: Unplug Retamar spot (beginner), no school on site; a swim-spot listing says sailing, SUP and windsurf
-ES,Andalucía,Almería – Retamar,sea,osm:w170338804,S,"Suburb beach east of Almería city, listed on Unplug as a beginner spot. Limited information: no school found on site (schools of Almería and Roquetas work elsewhere). Check summer bathing zones.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Andalucía,Almería – Retamar,sea,osm:w170338804,S,"Suburb beach east of Almería city, listed on Unplug as a beginner spot. Limited information: no school found on site (schools of Almería and Roquetas work elsewhere). Check summer bathing zones.",,,archived,
 # pro: Windy marker (WHE-124, 5 Nov) — sources: kite-and-windsurfing-guide Carchuna page (best Costa Tropical break in strong poniente), granadaspain.co.uk Carchuna page (popular with kitesurfers), AWA Watersports Carchuna courses
 ES,Andalucía,Carchuna,sea,osm:n13093975140,S,"Long dark-sand beach: the Costa Tropical's best break in strong poniente, waves over a rocky reef near the castle; more committed than Playa Granada. The nearest parking is a long walk. Intermediate and up.",,,pro,
 # pro: local / secondary beach — buoyed-channel local spot
@@ -123,23 +143,28 @@ ES,Andalucía,Algeciras – Palmones,sea,osm:w236560364,S,"Levante only: the fal
 # pro: cluster duplicate — Tarifa town, experts only; Los Lances kept
 ES,Andalucía,Tarifa – Balneario,sea,osm:w672119807,SW,"Experts only: strong levante is straight offshore, rocks and currents. Used mostly outside summer. No kiting 15 Jun–15 Sep (dates from earlier passes, official source not found; kept as the safe choice).",,,pro,06-15..09-15
 # pro: cluster duplicate — near Valdevaqueros, no kiting in summer
-ES,Andalucía,Bolonia,sea,q:Playa de Bolonia,S,"Tolerated in winter only, east side of the bay from the village outskirts; waves in winter. No kiting in summer (dates not confirmed by an official source, kept as the safe choice).",,,pro,06-15..09-15
+# archived: kiting only tolerated in winter, banned in summer
+ES,Andalucía,Bolonia,sea,q:Playa de Bolonia,S,"Tolerated in winter only, east side of the bay from the village outskirts; waves in winter. No kiting in summer (dates not confirmed by an official source, kept as the safe choice).",,,archived,06-15..09-15
 # pro: cluster duplicate — Cádiz–Chiclana coast, Sancti Petri kept
-ES,Andalucía,San Fernando – Camposoto,sea,osm:r16174862,SW,"Strong poniente (W) with messy waves and a powerful shorebreak at high tide. Former military zone: old shell casings can turn up on the beach. No kite club or summer rule found: ask locally.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Andalucía,San Fernando – Camposoto,sea,osm:r16174862,SW,"Strong poniente (W) with messy waves and a powerful shorebreak at high tide. Former military zone: old shell casings can turn up on the beach. No kite club or summer rule found: ask locally.",,,archived,
 # pro: cluster duplicate — Cádiz–Chiclana coast, Sancti Petri kept
 ES,Andalucía,Cádiz – Cortadura,sea,osm:w91048435,W,"Long city beach south of Cádiz. Poniente (cross-on) or levante (cross-off); best in winter and spring. Buoyed bathing areas in summer. An earlier note advised high tide (not re-confirmed).",,not-low,pro,
 # pro: local / secondary beach — Bay of Cádiz local spot
 ES,Andalucía,El Puerto – Valdelagrana,sea,osm:w23911521,SW,"Two kite schools on the beach (Cadiz Kite, Foreño). Long beach; the west-facing part is further south. Summer: stay out of bathing areas and ask the schools about the water-sports channel.",,,pro,
 # pro: local / secondary beach — local winter spot
-ES,Andalucía,Rota – El Rompidillo,sea,osm:w194605149,SE,"City beach on the levante side, used outside the bathing season. The other Rota launch, 850 m west (kiters start at the west end of Playa de la Costilla, in front of Hotel Playa de la Luz), has gusty cross-offshore levante, so people move here for it; it narrows at high tide. A spot guide says kiting is banned in Rota in summer; no official text found, so treat summer as closed.",,,pro,
+# archived: duplicate of Playa de la Luz 850 m away
+ES,Andalucía,Rota – El Rompidillo,sea,osm:w194605149,SE,"City beach on the levante side, used outside the bathing season. The other Rota launch, 850 m west (kiters start at the west end of Playa de la Costilla, in front of Hotel Playa de la Luz), has gusty cross-offshore levante, so people move here for it; it narrows at high tide. A spot guide says kiting is banned in Rota in summer; no official text found, so treat summer as closed.",,,archived,
 # pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "La Ballena"
-ES,Andalucía,Rota – La Ballena,sea,osm:r19621021,W,"Costa Ballena beach north of Rota. Thermal west wind in summer, per a spot guide and the Kiteforum spot page. Check the Rota beach rules for summer.",,,pro,
+# archived: no confirmed kite zone, city rules unchecked, secondary
+ES,Andalucía,Rota – La Ballena,sea,osm:r19621021,W,"Costa Ballena beach north of Rota. Thermal west wind in summer, per a spot guide and the Kiteforum spot page. Check the Rota beach rules for summer.",,,archived,
 # pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "Punta Candor"
 ES,Andalucía,Rota – Punta Candor,sea,osm:w194942516,W,"Small headland with a rocky bottom and open swell: waves above mast height on big days, best at low to mid tide. South wind is cross-off, north to north-west cross-on. Experienced riders; low-pressure southerlies often drop by afternoon, so go early.",,,pro,
 # pro: Windy marker the 2 km rule had folded away (WHE-129): different facing from Rompidillo, so kept; kite-and-windsurfing-guide page "Rota, Playa Luz"
 ES,Andalucía,Rota – Playa de la Luz,sea,osm:w439452759,SW,"Kiters start at the west end of Playa de la Costilla, in front of Hotel Playa de la Luz; bump-and-jump spot further south. Levante is gusty and cross-offshore: solid kite skills needed. Narrow at high tide, a few rocks at low tide, small reef. A spot guide says kiting is banned in Rota in summer; no official text found.",,,pro,
 # pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "La Victoria"
-ES,Andalucía,Cádiz – La Victoria,sea,osm:w162311083,W,"Cádiz city beach, north of Cortadura. Beach break near shore and a reef break further out, best with south-west low-pressure winds. Busy in summer: check the city's beach rules.",,,pro,
+# archived: no confirmed kite zone, city rules unchecked, secondary
+ES,Andalucía,Cádiz – La Victoria,sea,osm:w162311083,W,"Cádiz city beach, north of Cortadura. Beach break near shore and a reef break further out, best with south-west low-pressure winds. Busy in summer: check the city's beach rules.",,,archived,
 # pro: Windy marker we lacked (WHE-100), kite-and-windsurfing-guide page "Conil" and Total Kitesurf (Conil)
 ES,Andalucía,Conil – Los Bateles,sea,osm:r11384131,W,"Poniente (W to NW) is best, stronger the more northerly it is; levante from the SSE works on its last day. Waves a bit smaller than El Palmar. A small marked kite zone on the beach, which is busy in July and August. Total Kitesurf has a school here.",,,pro,
 # pro: cluster duplicate — 7 km from El Portil
@@ -151,9 +176,11 @@ ES,Andalucía,Ayamonte – Isla Canela,sea,osm:w123911782,S,"Shallow sandbars by
 # pro: Windy marker missing from our list (WHE-101), Windy 4 stars, beach with schools
 ES,Andalucía,La Antilla,sea,osm:w457219904,S,"Open Atlantic beach used mostly by locals and the Club Náutico; schools at Playa de Poniente (Nómadas del Kite) and Islantilla next door. SW thermal in summer. No official kite zone found: keep clear of bathers.",,,pro,
 # pro: Windy marker missing from our list (WHE-101), Windy 4 stars; schools meet at Playa Central
-ES,Andalucía,Isla Cristina – Playa Central,sea,osm:r16367334,S,"Town beach east of the harbour mouth, where schools run courses; S and SW winds. No official kite zone found: keep clear of bathers and the harbour channel.",,,pro,
+# archived: duplicate of La Casita Azul in the same town
+ES,Andalucía,Isla Cristina – Playa Central,sea,osm:r16367334,S,"Town beach east of the harbour mouth, where schools run courses; S and SW winds. No official kite zone found: keep clear of bathers and the harbour channel.",,,archived,
 # pro: Windy marker missing from our list (WHE-101), Windy 4 stars; spot-guide source only
-ES,Andalucía,Mazagón – Playa de las Dunas,sea,osm:r3186062,SW,"Open beach south-east of Mazagón; works in winter westerlies, often just freeride and quiet; no kite school on the beach. No official kite zone found: keep clear of bathers in summer.",,,pro,
+# archived: no school, kite zone or solid guide found
+ES,Andalucía,Mazagón – Playa de las Dunas,sea,osm:r3186062,SW,"Open beach south-east of Mazagón; works in winter westerlies, often just freeride and quiet; no kite school on the beach. No official kite zone found: keep clear of bathers in summer.",,,archived,
 # pro: Windy marker missing from our list (WHE-101), Windy 4 stars, schools in Matalascañas
 ES,Andalucía,Matalascañas,sea,osm:w177640571,SW,"Long open beach at the edge of Doñana National Park; kite school in town (Moskiters de Doñana); SW winds. No official kite zone found: keep clear of bathers in summer and out of the park.",,,pro,
 # pro: cluster duplicate — 5 km from A Lanzada
@@ -161,39 +188,51 @@ ES,Galicia,O Grove – A Mexilloeira,sea,osm:w51842113,N,"Sheltered ría beach: 
 # pro: local / secondary beach — local ría spot
 ES,Galicia,A Illa de Arousa – O Bao,sea,osm:r3019704,S:South side|N:North side,"Flat to choppy water in the ría, on both sides of the bridge: south side in S winds, north side in the summer northerlies (N–NE is the main wind). Kite schools on the island (Kiteboarding Galicia, Papaventos club). Watch the bridge and the road.",,,pro,
 # pro: cluster duplicate — Vigo ría, Cesantes kept
-ES,Galicia,Vigo – O Vao,sea,osm:r5294013,NW,"Flat water behind the Toralla island in W–NW wind. Named as a place where kiting is practised in the ría (one source, no school found; no official rule found): ask locally.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Galicia,Vigo – O Vao,sea,osm:r5294013,NW,"Flat water behind the Toralla island in W–NW wind. Named as a place where kiting is practised in the ría (one source, no school found; no official rule found): ask locally.",,,archived,
 # pro: added from the Windy kite markers (WHE-105); one kite source each, see docs/validation/es-galicia.md
 ES,Galicia,Patos (Nigrán),sea,osm:w37909121,W,"Surf-first beach south of Vigo: strong N wind straight onto the beach with swell gives a good session; the headland blocks S winds; summer is often flat or light. Kite schools run lessons at Patos and Playa América. Busy, buoyed beach; no official kite rule found.",,,pro,
-ES,Galicia,San Xurxo (Ferrol),sea,osm:w646340311,NNE,"Horseshoe bay near Ferrol: summer NE thermal, side-offshore and very gusty (16–25 kn), onshore at the south end; 1–2 kn current, so not for beginners. No school. Rougher option: Doniños.",,,pro,
-ES,Galicia,Boiro – Carragueiros,sea,osm:w108818579,SW,"Sheltered Ría de Arousa beach: SW wind blows in with chop and shorebreak, NE is gusty; big standing area at high tide, long walk at low tide. Only a few locals ride here.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Galicia,San Xurxo (Ferrol),sea,osm:w646340311,NNE,"Horseshoe bay near Ferrol: summer NE thermal, side-offshore and very gusty (16–25 kn), onshore at the south end; 1–2 kn current, so not for beginners. No school. Rougher option: Doniños.",,,archived,
+# archived: only a few locals ride here
+ES,Galicia,Boiro – Carragueiros,sea,osm:w108818579,SW,"Sheltered Ría de Arousa beach: SW wind blows in with chop and shorebreak, NE is gusty; big standing area at high tide, long walk at low tide. Only a few locals ride here.",,,archived,
 # pro: cluster duplicate — Gijón area, Salinas kept
 ES,Asturias,Gijón – El Arbeyal,sea,osm:r2324779,NE,"Shell-shaped beach sheltered by the Musel breakwater; works in NE and NW. Rocky bottom at low tide, offshore winds are gusty. In bathing season enter near El Musel and ride upwind outside the buoys; not for beginners.",,,pro,
 # pro: cluster duplicate — Gijón area, Salinas kept
 ES,Asturias,Gijón – San Lorenzo,sea,osm:w517332406,N,"NE and E winds; the beach is small at high tide. In bathing season lifeguards allow one small channel (around stairs 8–10) and you ride outside the yellow buoys; ask on site.",,not-high,pro,
 # pro: local / secondary beach — local spot
-ES,Asturias,Luanco – Santa Marina,sea,osm:w1106005817,E,"Small bay beach protected by jetties; E and SE winds come in less gusty, N and NW also work. Watch the shorebreak when launching. Spot guides say the municipal rules ban kitesurfing in summer (no ordinance text found): ask the town hall or lifeguards.",,,pro,
+# archived: municipal rules reportedly ban kiting in summer, no ordinance found
+ES,Asturias,Luanco – Santa Marina,sea,osm:w1106005817,E,"Small bay beach protected by jetties; E and SE winds come in less gusty, N and NW also work. Watch the shorebreak when launching. Spot guides say the municipal rules ban kitesurfing in summer (no ordinance text found): ask the town hall or lifeguards.",,,archived,
 # pro: local / secondary beach — bay beach near Somo, summer ban
 ES,Cantabria,Santander – Los Peligros,sea,osm:w28423268,SE,"Urban bay beach, SW wind only (gusty, choppy), any tide. The Northwind school says navigation is prohibited 1 Jun–30 Sep (no official text found, so the ban is kept).",,,pro,06-01..09-30
 # pro: local / secondary beach — local Cantabria spot
 ES,Cantabria,Laredo – Salvé,sea,osm:w159113808,NE,"E is onshore (spring–summer, any tide); NE, W and NW also work near the Regatón at the end of the beach. In summer ride parallel to the beach and stay upwind of bathers; good upwind skills needed.",,,pro,
 # Windy-only additions, Asturias / Cantabria / Basque Country (WHE-106)
-ES,Asturias,Ría de Rodiles,sea,osm:w319610737,N,"U-shaped bay by the Villaviciosa estuary, open to the north: only NNW, N and NNE winds work (a headland blocks NE). Ask locally about the tide.",120,,pro,
-ES,Asturias,Playón de Bayas,sea,osm:w36867848,N,"Long exposed beach west of Avilés with chop and waves; spot guides list it for kiting but give little detail. Check conditions on site.",,,pro,
+# archived: kite use unconfirmed, ask locally
+ES,Asturias,Ría de Rodiles,sea,osm:w319610737,N,"U-shaped bay by the Villaviciosa estuary, open to the north: only NNW, N and NNE winds work (a headland blocks NE). Ask locally about the tide.",120,,archived,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Asturias,Playón de Bayas,sea,osm:w36867848,N,"Long exposed beach west of Avilés with chop and waves; spot guides list it for kiting but give little detail. Check conditions on site.",,,archived,
 ES,Asturias,La Espasa (Caravia),sea,osm:w144635801,N,"NE wind. In bathing season a marked zone lets kiters launch and ride without entering the swimming area; there is a surf school on the beach.",,,pro,
-ES,Asturias,Peñarronda (Castropol),sea,osm:w42731080,N,"Exposed beach on the Galician border, listed in kite spot directories with few details; expect waves. Check conditions on site.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Asturias,Peñarronda (Castropol),sea,osm:w42731080,N,"Exposed beach on the Galician border, listed in kite spot directories with few details; expect waves. Check conditions on site.",,,archived,
 ES,Cantabria,Oyambre,sea,osm:w61326060,N,"Large exposed Atlantic beach in the Oyambre natural park, with waves; listed by several spot guides, but none gives wind directions. Experienced riders.",,,pro,
 ES,Cantabria,Liencres (Valdearenas),sea,osm:w201943677,NW,"E wind is the stable one (side-shore, best at low to mid tide); NE, W and NW also work. Waves and currents: not for beginners. Parking is difficult in summer.",,,pro,
-ES,Cantabria,Oriñón,sea,osm:w83639992,N,"Beach near Castro-Urdiales listed by spot guides for kiting, with few details on wind. Check conditions on site.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Cantabria,Oriñón,sea,osm:w83639992,N,"Beach near Castro-Urdiales listed by spot guides for kiting, with few details on wind. Check conditions on site.",,,archived,
 ES,Euskadi,Ereaga (Getxo),sea,osm:w18892941,NW,"Bilbao estuary beach: NW and SW winds work best, pure W is gusty. Freeride conditions unless there is a big swell. Water quality is poor (port and industry).",,,pro,
-ES,Euskadi,La Arena (Muskiz),sea,osm:w159040670,NW,"Onshore NW wind in winter; freeride works without swell, moderate waves at low tide. Strong shorebreak at high tide; not for beginners.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Euskadi,La Arena (Muskiz),sea,osm:w159040670,NW,"Onshore NW wind in winter; freeride works without swell, moderate waves at low tide. Strong shorebreak at high tide; not for beginners.",,,archived,
 ES,Euskadi,Gorliz,sea,osm:w30091262,N,"Sheltered bay with cleaner water than the Bilbao beaches; slightly gusty WNW wind, a wave breaks by the mole in swell. Onshore wind and the road behind: experienced riders.",,,pro,
 ES,Euskadi,Laida (Mundaka),sea,osm:w22812090,NW,"Urdaibai estuary mouth with strong tidal currents; best in S to SW wind, flat water in the river at high tide. Experts only.",,,pro,
-ES,Euskadi,Zarautz,sea,osm:w723169573,N,"Mainly a surf beach: kiting needs a strong WNW wind, the beach narrows at high tide and the left side is gusty when the wind goes more westerly. Crowded in summer.",,,pro,
-ES,Euskadi,Zurriola (Donostia),sea,osm:w649475151,NW,"Strong W wind for waves, NW onshore for kiting only. Bathers and surfers share the beach (marked surf zones in summer) and shorebreak is strong at high tide; no kite article found in the beach rules, so ask the lifeguards.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Euskadi,Zarautz,sea,osm:w723169573,N,"Mainly a surf beach: kiting needs a strong WNW wind, the beach narrows at high tide and the left side is gusty when the wind goes more westerly. Crowded in summer.",,,archived,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Euskadi,Zurriola (Donostia),sea,osm:w649475151,NW,"Strong W wind for waves, NW onshore for kiting only. Bathers and surfers share the beach (marked surf zones in summer) and shorebreak is strong at high tide; no kite article found in the beach rules, so ask the lifeguards.",,,archived,
 # pro: cluster duplicate — between Son Serra and Pollença
 ES,Illes Balears,Mallorca – Platja de Muro,sea,osm:w100010935,NE,"Small authorised channel; crowded in summer, best off-season.",,,pro,
 # pro: local / secondary beach — Menorca, Cala Tirant kept
-ES,Illes Balears,Menorca – Son Bou,sea,osm:r1592814,S,Waves in westerlies; summer: designated launch area only.,,,pro,
+# archived: designated launch only in summer, sparse sourcing
+ES,Illes Balears,Menorca – Son Bou,sea,osm:r1592814,S,Waves in westerlies; summer: designated launch area only.,,,archived,
 # pro: cluster duplicate — 5 km from Sotavento
 ES,Canarias,Fuerteventura – Costa Calma,sea,osm:r1543928,SE,"Playa de la Barca, the northern half of the Sotavento beach: flat lagoon at high tide, open water otherwise; schools on site. Check the tide table.",,,pro,
 # pro: local / secondary beach — local easterly option
@@ -204,8 +243,10 @@ ES,Canarias,Gran Canaria – Vargas,sea,osm:w473890331,E,Strong trade wind Apr�
 ES,Canarias,Gran Canaria – Bahía Feliz,sea,osm:w133266290,SE,Smaller waves than Pozo / Vargas; school (Club Mistral).,,,pro,
 # pro: from the Windy-only list (WHE-107); kite-and-windsurfing-guide, unplug-kitesurf
 ES,Canarias,Fuerteventura – Majanicho,sea,osm:w188309585,N,"Small north-coast bay, waves; one of the most used wave-kite spots of the north. Experienced riders.",,,pro,
-ES,Canarias,Gran Canaria – Playa del Hombre,sea,osm:w124154837,NE,"Cliff-backed beach north of Arinaga; downwind exit is difficult, so strong upwind riders only. Waves with swell.",,,pro,
-ES,Canarias,Gran Canaria – Playa del Águila,sea,osm:w204938457,S,"Next to Bahía Feliz with similar wind but more swell, especially in easterlies; intermediate riders.",,,pro,
+# archived: secondary Gran Canaria launch near Bahia Feliz / Arinaga, hard exit or duplicate
+ES,Canarias,Gran Canaria – Playa del Hombre,sea,osm:w124154837,NE,"Cliff-backed beach north of Arinaga; downwind exit is difficult, so strong upwind riders only. Waves with swell.",,,archived,
+# archived: secondary Gran Canaria launch near Bahia Feliz / Arinaga, hard exit or duplicate
+ES,Canarias,Gran Canaria – Playa del Águila,sea,osm:w204938457,S,"Next to Bahía Feliz with similar wind but more swell, especially in easterlies; intermediate riders.",,,archived,
 ES,Canarias,Gran Canaria – Arinaga,sea,osm:w289064914,E,"Flat to choppy water, steady trade wind, long pebbly beach; intermediate riders. Best May–September.",,,pro,
 
 # Added 2026-10-22 (Barcelona-area benchmark). Positions from OSM; summer ban = Catalan coast
@@ -215,52 +256,81 @@ ES,Catalunya,Pals,sea,osm:r8266439,E,"Long open beach south of the Ter mouth; ea
 ES,Catalunya,Segur de Calafell,sea,osm:r10255772,SSE,Wide sandy beach; garbí (SW) summer thermal and levante.,,,,06-01..09-30
 ES,Catalunya,Cambrils (Platja del Regueral),sea,osm:r1747893,SE,Shallow sandy bay west of the port; garbí and levante; mestral offshore.,,,,06-01..09-30
 # pro: no kite school or zone found on site; Ben's call (2026-11-02), Pals and Platja d'Aro nearby
-ES,Catalunya,Palamós (La Fosca),sea,osm:r8268914,SE,Sheltered bay north of Palamós; easterlies and summer thermal; N/NW winds blow offshore.,,,pro,06-01..09-30
-ES,Catalunya,Calafell,sea,osm:r12075608,SSE,Town beach next to Segur de Calafell; garbí and levante.,,,pro,06-01..09-30
-ES,Catalunya,Salou (Platja de Llevant),sea,osm:r5208459,S,Town beach; levante and garbí.,,,pro,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,Palamós (La Fosca),sea,osm:r8268914,SE,Sheltered bay north of Palamós; easterlies and summer thermal; N/NW winds blow offshore.,,,archived,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,Calafell,sea,osm:r12075608,SSE,Town beach next to Segur de Calafell; garbí and levante.,,,archived,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,Salou (Platja de Llevant),sea,osm:r5208459,S,Town beach; levante and garbí.,,,archived,06-01..09-30
 ES,Catalunya,L'Hospitalet de l'Infant,sea,osm:r2173868,SE,"Long beach south of the village; garbí and levante. The council has opened a marked kite zone on Platja de l'Arenal (before Camping Cala d'Oques); if it runs this summer, kiting is allowed there.",,,pro,06-01..09-30
-ES,Catalunya,L'Almadrava (Vandellòs),sea,osm:r2862387,SE,Quiet beach south of L'Hospitalet; garbí and levante.,,,pro,06-01..09-30
-ES,Catalunya,L'Ampolla (Platja de l'Arenal),sea,osm:r14507565,E,Shallow beach facing the Badia del Fangar; good for learning.,,,pro,06-01..09-30
-ES,Catalunya,Punta del Fangar (Ebro delta),sea,osm:n1241794242,NE:sea side|SW:Fangar bay,Remote sandspit at the north of the delta; access on foot; flat water in the bay. No school or marked kite zone here: ride only if you know the spot.,,,pro,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,L'Almadrava (Vandellòs),sea,osm:r2862387,SE,Quiet beach south of L'Hospitalet; garbí and levante.,,,archived,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,L'Ampolla (Platja de l'Arenal),sea,osm:r14507565,E,Shallow beach facing the Badia del Fangar; good for learning.,,,archived,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,Punta del Fangar (Ebro delta),sea,osm:n1241794242,NE:sea side|SW:Fangar bay,Remote sandspit at the north of the delta; access on foot; flat water in the bay. No school or marked kite zone here: ride only if you know the spot.,,,archived,06-01..09-30
 ES,Catalunya,Badalona,sea,osm:r2154291,SE,City beach north of Barcelona; levante and gregal days.,,,pro,06-01..09-30
 ES,Catalunya,Montgat,sea,osm:w1101490505,SE,Small beach north of Badalona; levante.,,,pro,06-01..09-30
 ES,Catalunya,Vilassar de Mar,sea,osm:r2154205,SE,Maresme beach; levante and summer garbí.,,,pro,06-01..09-30
-ES,Catalunya,Vilanova i la Geltrú (La Farola),sea,osm:r10224714,S,Town beach by the lighthouse; garbí and levante.,,,pro,06-01..09-30
-ES,Catalunya,Creixell,sea,osm:r12040635,SSE,Beach west of Torredembarra; garbí and levante.,,,pro,06-01..09-30
-ES,Catalunya,Altafulla,sea,osm:r2172793,SSE,Beach east of Tarragona; garbí and levante.,,,pro,06-01..09-30
-ES,Catalunya,Barcelona – Barceloneta,sea,osm:r7333373,SE,"City beach; the city bans kiting 1 Jun–30 Sep. Off-season levante / gregal days only, away from the boat channels.",,,pro,06-01..09-30
-ES,Catalunya,Sant Martí d'Empúries,sea,osm:r4018289,E,Beach in the Gulf of Roses south of Sant Pere Pescador; easterlies; tramuntana side-off.,,,pro,06-01..09-30
-ES,Catalunya,L'Escala (Platja dels Riells),sea,osm:r1669340,NE,Town beach at the south end of the Gulf of Roses; tramuntana and easterlies. Packed with swimmers in summer.,,,pro,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,Vilanova i la Geltrú (La Farola),sea,osm:r10224714,S,Town beach by the lighthouse; garbí and levante.,,,archived,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,Creixell,sea,osm:r12040635,SSE,Beach west of Torredembarra; garbí and levante.,,,archived,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,Altafulla,sea,osm:r2172793,SSE,Beach east of Tarragona; garbí and levante.,,,archived,06-01..09-30
+# archived: duplicate of Nova Mar Bella 2 km away, city ban in summer, boat channels
+ES,Catalunya,Barcelona – Barceloneta,sea,osm:r7333373,SE,"City beach; the city bans kiting 1 Jun–30 Sep. Off-season levante / gregal days only, away from the boat channels.",,,archived,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,Sant Martí d'Empúries,sea,osm:r4018289,E,Beach in the Gulf of Roses south of Sant Pere Pescador; easterlies; tramuntana side-off.,,,archived,06-01..09-30
+# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
+ES,Catalunya,L'Escala (Platja dels Riells),sea,osm:r1669340,NE,Town beach at the south end of the Gulf of Roses; tramuntana and easterlies. Packed with swimmers in summer.,,,archived,06-01..09-30
 ES,Catalunya,Platja d'Aro,sea,osm:r8280402,SE,"Town beach; garbí (SW summer thermal) cross-shore. Gregal and levante bring shorebreak and chop, not for beginners. Quieter by the Ridaura mouth; the wind drops south of the harbour wall.",,,pro,06-01..09-30
-ES,Illes Balears,Mallorca – Es Barcarès (Alcúdia),sea,osm:w214618872,N,Bay of Pollença side of Alcúdia; northerlies; summer restrictions.,,,pro,
-ES,Illes Balears,Mallorca – Platja d'Alcúdia,sea,osm:r2175690,E,North end of the Bay of Alcúdia; easterlies and summer thermal; summer restrictions.,,,pro,
+# archived: secondary Mallorca bay beach, summer restrictions, generic entry
+ES,Illes Balears,Mallorca – Es Barcarès (Alcúdia),sea,osm:w214618872,N,Bay of Pollença side of Alcúdia; northerlies; summer restrictions.,,,archived,
+# archived: secondary Mallorca bay beach, summer restrictions, generic entry
+ES,Illes Balears,Mallorca – Platja d'Alcúdia,sea,osm:r2175690,E,North end of the Bay of Alcúdia; easterlies and summer thermal; summer restrictions.,,,archived,
 # Windy-only markers added as Pro, Balearics (WHE-123, 2026-11-04). Summer rules are in notes only: no official text found.
-ES,Illes Balears,Mallorca – Ciudad Jardín (Playa de Palma),sea,osm:r2174956,S,"Bay of Palma, south and south-west winds; best in winter. Crowded with bathers in summer, light thermal only; summer restrictions apply. Experienced riders.",,,pro,
+# archived: secondary Mallorca bay beach, summer restrictions, generic entry
+ES,Illes Balears,Mallorca – Ciudad Jardín (Playa de Palma),sea,osm:r2174956,S,"Bay of Palma, south and south-west winds; best in winter. Crowded with bathers in summer, light thermal only; summer restrictions apply. Experienced riders.",,,archived,
 ES,Illes Balears,Mallorca – S'Arenal (Playa de Palma),sea,osm:n13825691265,S,"Bay of Palma, east end of Playa de Palma; best outside the main season, kitable much of the year. Club Náutico S'Arenal; summer restrictions apply.",,,pro,
-ES,Illes Balears,Mallorca – Santa Ponça,sea,osm:w5257679,SW,"Bay on the south-west coast; a winter spot, in summer almost no room on the water. Summer restrictions apply.",,,pro,
+# archived: secondary Mallorca bay beach, summer restrictions, generic entry
+ES,Illes Balears,Mallorca – Santa Ponça,sea,osm:w5257679,SW,"Bay on the south-west coast; a winter spot, in summer almost no room on the water. Summer restrictions apply.",,,archived,
 ES,Illes Balears,Mallorca – Sa Ràpita,sea,osm:w57737438,S,"Long sandy beach of Es Trenc on the south coast; shallow flat water, thermal and frontal winds; kite school on site (Cuatro Vientos). Summer restrictions apply.",,,pro,
 ES,Illes Balears,Menorca – Punta Prima,sea,osm:r1581445,E,"South-east corner of Menorca; a good spot in north-easterly winds after a tramuntana or mistral. Kite station on the beach; practicable only in the low season (Nov–May).",,,pro,
-ES,Illes Balears,Ibiza – Platja d'en Bossa,sea,osm:w119370890,SE,"South coast of Ibiza, NE, E and SE winds. Kiting is only allowed in the low season (Nov–May); unavailable in summer. Chop and small waves. Built-up beach, check the signs.",,,pro,
-ES,Illes Balears,Ibiza – Cala Martina,sea,osm:w132655686,SW,"Small beach on the north-east coast, south and south-west winds (very onshore), mostly Oct–May. Little room on land: one guide says launch from a boat. Kiting only Nov–May on Ibiza, check the signs.",,,pro,
-ES,Illes Balears,Formentera – Ses Illetes,sea,osm:w737053149,W,"Park beach at Ses Salines with flat turquoise water; a known Balearic spot outside the tourist season. Kiting banned May–Oct inside the Ses Salines park per tourist-board sources. Rentals and courses on the beach.",,,pro,
-ES,Illes Balears,Formentera – Platja de Migjorn (Ca Marí),sea,osm:w1381403167,S,"Long south-coast beach; works in light easterlies for freeride, shorebreak when the wind is strong. Summer restrictions apply near bathers.",,,pro,
+# archived: Ibiza kiting allowed only Nov-May and tolerated, sparse sourcing
+ES,Illes Balears,Ibiza – Platja d'en Bossa,sea,osm:w119370890,SE,"South coast of Ibiza, NE, E and SE winds. Kiting is only allowed in the low season (Nov–May); unavailable in summer. Chop and small waves. Built-up beach, check the signs.",,,archived,
+# archived: Ibiza kiting allowed only Nov-May and tolerated, sparse sourcing
+ES,Illes Balears,Ibiza – Cala Martina,sea,osm:w132655686,SW,"Small beach on the north-east coast, south and south-west winds (very onshore), mostly Oct–May. Little room on land: one guide says launch from a boat. Kiting only Nov–May on Ibiza, check the signs.",,,archived,
+# archived: kiting banned May-Oct in the Ses Salines park
+ES,Illes Balears,Formentera – Ses Illetes,sea,osm:w737053149,W,"Park beach at Ses Salines with flat turquoise water; a known Balearic spot outside the tourist season. Kiting banned May–Oct inside the Ses Salines park per tourist-board sources. Rentals and courses on the beach.",,,archived,
+# archived: summer restrictions near bathers, sparse sourcing
+ES,Illes Balears,Formentera – Platja de Migjorn (Ca Marí),sea,osm:w1381403167,S,"Long south-coast beach; works in light easterlies for freeride, shorebreak when the wind is strong. Summer restrictions apply near bathers.",,,archived,
 # pro: Windy-only marker (WHE-99); Costa del Sol thermal beaches, one guide / school source each
 ES,Andalucía,Estepona – Guadalmansa (Heaven),sea,osm:w576972096,S,"Heaven Kite School is based on this beach. Light thermal levante or poniente; crowded in summer and bathing zones apply, so ask the school where to launch.",,,pro,
-ES,Andalucía,Marbella – Cabopino,sea,osm:w230611183,S,"Listed by the Costa del Sol spot guide. Light thermal levante or poniente; crowded in summer and bathing zones apply, so check the local rules before launching.",,,pro,
-ES,Andalucía,San Pedro de Alcántara,sea,osm:w322423323,S,"Listed by the Costa del Sol spot guide. Light thermal levante or poniente; crowded in summer and bathing zones apply, so check the local rules before launching.",,,pro,
-ES,Andalucía,Mijas – El Chaparral,sea,osm:w544536226,S,"Listed by the Costa del Sol spot guide. Light thermal levante or poniente; crowded in summer and bathing zones apply, so check the local rules before launching.",,,pro,
-ES,Andalucía,Algeciras – Getares,sea,osm:w178722711,E,"Levante spot, a calmer fallback when Tarifa is above about 30 knots; onshore wind, intermediate and advanced riders. A travel site reports no kiting 15 Jun–15 Sep; official source not found, so not encoded.",,,pro,
+# archived: single spot guide, bathing zones, no school or kite zone
+ES,Andalucía,Marbella – Cabopino,sea,osm:w230611183,S,"Listed by the Costa del Sol spot guide. Light thermal levante or poniente; crowded in summer and bathing zones apply, so check the local rules before launching.",,,archived,
+# archived: single spot guide, bathing zones, no school or kite zone
+ES,Andalucía,San Pedro de Alcántara,sea,osm:w322423323,S,"Listed by the Costa del Sol spot guide. Light thermal levante or poniente; crowded in summer and bathing zones apply, so check the local rules before launching.",,,archived,
+# archived: single spot guide, bathing zones, no school or kite zone
+ES,Andalucía,Mijas – El Chaparral,sea,osm:w544536226,S,"Listed by the Costa del Sol spot guide. Light thermal levante or poniente; crowded in summer and bathing zones apply, so check the local rules before launching.",,,archived,
+# archived: unofficial summer ban reported, kiting only tolerated
+ES,Andalucía,Algeciras – Getares,sea,osm:w178722711,E,"Levante spot, a calmer fallback when Tarifa is above about 30 knots; onshore wind, intermediate and advanced riders. A travel site reports no kiting 15 Jun–15 Sep; official source not found, so not encoded.",,,archived,
 # pro: added from the remaining Windy kite markers in Galicia (WHE-128); one kite source each, see docs/validation/es-galicia.md
 ES,Galicia,Valdoviño – A Frouxeira,sea,osm:w652244114,N,"Long sandy beach with big, disorganised waves that break close in at high tide and a strong rip: experts only, a jumping spot rather than a long-ride one. Works in the usual high-pressure NE and in low-pressure westerlies. Crowded with sunbathers in summer. Easier option nearby: San Xurxo.",,,pro,
-ES,Galicia,Ares (Ría de Ares),sea,osm:w168803798,SE,"Sheltered sickle-shaped bay on the Ría de Ares: works fairly regularly in low-pressure cross-onshore SW wind, with chop in open water. Rocks on the sand and in the water, shorebreak in bigger swell, power cables along the road behind the beach. Flat lagoon at Razo–Baldaio is the winter flat-water option.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Galicia,Ares (Ría de Ares),sea,osm:w168803798,SE,"Sheltered sickle-shaped bay on the Ría de Ares: works fairly regularly in low-pressure cross-onshore SW wind, with chop in open water. Rocks on the sand and in the water, shorebreak in bigger swell, power cables along the road behind the beach. Flat lagoon at Razo–Baldaio is the winter flat-water option.",,,archived,
 ES,Galicia,Santa Cristina (Oleiros),sea,osm:w89682701,NNE,"A Coruña's city kite spot, 1.5 km beach in the Canaval cove with calm, deep water; popular with freeriders and beginners. Kite school on site (Kiteskull). No official kite rule found.",,,pro,
-ES,Galicia,Fornos (Ortigueira),sea,osm:w383452004,N,"Launch from Playa de Morouzos in the Ría de Santa María estuary. Gusty S wind for freeride; strong NE brings waves but only around high tide. Strong currents at the river mouth.",,,pro,
-ES,Galicia,Laxe,sea,osm:w651998067,NE,"Very sheltered bay: water stays flat behind the harbour walls even in strong NE wind. Hardly anyone kites here.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Galicia,Fornos (Ortigueira),sea,osm:w383452004,N,"Launch from Playa de Morouzos in the Ría de Santa María estuary. Gusty S wind for freeride; strong NE brings waves but only around high tide. Strong currents at the river mouth.",,,archived,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Galicia,Laxe,sea,osm:w651998067,NE,"Very sheltered bay: water stays flat behind the harbour walls even in strong NE wind. Hardly anyone kites here.",,,archived,
 ES,Galicia,Carnota,sea,osm:w976147496,W,"Long beach on the Costa da Morte: sunny summer days strengthen N–NE wind, giving easy chop sessions or a clean beach break depending on swell. Kite schools from Santiago run lessons here.",,,pro,
-ES,Galicia,Ancoradoiro (Monte Louro),sea,osm:w205501862,W,"Beach and lagoon at the foot of Monte Louro: summer thermal wind, clean mid-size waves. Shorebreak at high tide; winter SW swell is too big.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Galicia,Ancoradoiro (Monte Louro),sea,osm:w205501862,W,"Beach and lagoon at the foot of Monte Louro: summer thermal wind, clean mid-size waves. Shorebreak at high tide; winter SW swell is too big.",,,archived,
 ES,Galicia,Corrubedo – A Ladeira,sea,osm:w1135421647,NW,"Dune beach where N–NW wind is thermally strengthened to force 5–7 from June to September (local funnel between dunes and headland). Usually flat, clean waves with swell. Very gusty in onshore S–SW; surf too big. The dunes and river mouth are a nature reserve: landing there can bring a fine of several hundred euros.",,,pro,
 ES,Galicia,Aguieira (Ría de Muros),sea,osm:w294809917,NNE,"Wide, sheltered sandy beach with flat water; cross-onshore N–NE wind from spring to summer, often dropping around noon and picking up in the evening. Popular kite scene, more kiters than windsurfers.",,,pro,
 ES,Galicia,Agrelo (Sanxenxo),sea,osm:w62073655,NNW,"Beach for all levels; kite guides give N, NW and NNW as the wind. Parking, showers and toilets. No official kite rule found.",,,pro,
 # pro: Windy markers the 2 km rule had left out (WHE-129)
 ES,Andalucía,Tarifa – Punta Paloma,sea,osm:w236380310,SW,"Dune beach just north of Valdevaqueros, a different entrance (pine forest and military-base side), about 3 km from the Valdevaqueros pin. Levante and poniente both work; shelter at the foot of the dune in westerlies. Crowded in high season, quieter off season. Guides disagree on level (any level vs experienced): treat as intermediate and above. Summer kite zone rules as for Valdevaqueros: ask a school.",,,pro,
-ES,Andalucía,Torremolinos – Playamar,sea,osm:r21356057,SE,"Torremolinos beach south of Los Álamos, same summer poniente thermal. A spot guide calls it mainly for a first try or an occasional session; Torremolinos schools run courses on these beaches. Check the Málaga and Torremolinos beach rules in summer.",,,pro,
+# archived: no independent source confirms regular kiting (single guide or none)
+ES,Andalucía,Torremolinos – Playamar,sea,osm:r21356057,SE,"Torremolinos beach south of Los Álamos, same summer poniente thermal. A spot guide calls it mainly for a first try or an occasional session; Torremolinos schools run courses on these beaches. Check the Málaga and Torremolinos beach rules in summer.",,,archived,

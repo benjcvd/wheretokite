@@ -78,3 +78,21 @@ report link:
 Open questions go to `TO_CONFIRM.md` under the country, settled with the rule of 2 Nov (look it
 up, else assume the worst). Ask Ben (card → `waiting`) only when the worst case would remove a
 spot people rely on.
+
+## Windguru instead of Windy (from 14 Nov)
+
+For the zones added on 14 Nov (Greece, Germany, the Netherlands and the rest of Europe; ranked
+on the board by where kiters actually go), Ben asked for **Windguru** as the benchmark. Same
+method as above, with step 2 done on Windguru:
+
+- Browse as a visitor in Claude in Chrome (the Windguru map and its spot search). Never scrape,
+  never call its API, never copy a position: pins still come from OSM through the pipeline.
+- Windguru spots are forecast points, not rated kite spots: count only those named or tagged as
+  a kite (or kite/windsurf) beach or lake. Ignore towns, ports, weather stations, surf points.
+- Windguru has no star rating, so **every** missing spot follows the unrated rule above: Pro only
+  with a local source (school, club or town page) and nothing odd; otherwise `archived` with
+  `# archived: unrated on Windguru, <why>`.
+- In `status.csv` the `windy_*` columns hold the Windguru counts; say "Windguru" in the report
+  and in your reply to Ben (counts, table of missing spots, gap line), exactly as for Windy.
+- Some zones are larger than 8 spots (Scotland 23, Ireland east 19): if a zone won't fit one
+  session, close what you checked, say where you stopped, and leave the card in `doing`.
