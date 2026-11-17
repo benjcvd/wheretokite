@@ -157,7 +157,8 @@ enum DriveSteps {
 
 @MainActor @Observable
 final class SearchModel {
-    /// Last successful result; stays on screen while a newer search runs.
+    /// Last successful result; stays on screen while a newer search runs, and is dropped when
+    /// that search fails, so it can't be read as the answer for the new day or drive (WHE-164).
     private(set) var result: SearchResult?
     /// Non-nil while a search is running.
     private(set) var progress: String?
@@ -189,6 +190,13 @@ final class SearchModel {
             driveTime: MapKitDriveTime(),
             confidence: ConfidenceEstimator(failover: failover))
         recommender.islands = loaded?.islands ?? []
+    }
+
+    /// Tests: a recommender with stub providers instead of the network.
+    init(recommender: Recommender, catalog: [Spot]) {
+        self.catalog = catalog
+        catalogDate = nil
+        self.recommender = recommender
     }
 
     /// A fresh cache when testing the fallback, so cached forecasts can't hide it.
@@ -275,7 +283,11 @@ final class SearchModel {
             if Task.isCancelled { return }   // e.g. URLError.cancelled from a superseded search
             appLog.error("search failed: \(String(describing: error), privacy: .public)")
             self.error = Vocab.error(error)
+            // The old answer was for other settings (day, drive, session): leaving it under the
+            // new ones would show, say, Saturday's Go as Sunday's. The error card stands alone.
+            self.result = nil
             self.nextWindow = nil
+            finishedAt = nil
             errorIsLocation = error is LocationError || error is CLError
             progress = nil
         }

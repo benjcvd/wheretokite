@@ -35,6 +35,7 @@
 		A9BFA4D8B51A20B57616E486 /* SearchOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A114E78467ACC8F7715B2A /* SearchOptionsTests.swift */; };
 		B067B2B1D8A42AC08748E2D2 /* MySpotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F2B2E178B9BA8888EBD62 /* MySpotsTests.swift */; };
 		C12A6C6C21DF970702885B74 /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E954B245B031BA663E8CDCD2 /* LocalizationTests.swift */; };
+		C33CFF9FE4F75EE2B827DB06 /* SearchModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66484E74D379FF3397D4C6E /* SearchModelTests.swift */; };
 		C21C7AD71B7201BBCFAFAA54 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */; };
 		C694F79125A59EC8A6268398 /* MapsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D35348AD7B31AFA19D67E0F /* MapsAppTests.swift */; };
 		C8A02A7815AAA5B7F3D18D83 /* WindFitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420BEB43C9A76CCC59E6D63D /* WindFitTests.swift */; };
@@ -89,6 +90,7 @@
 		929F2B2E178B9BA8888EBD62 /* MySpotsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpotsTests.swift; sourceTree = "<group>"; };
 		9F4A01B4CE0810383D176FFA /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		A12A04CF4CA2668485850630 /* spots.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = spots.json; sourceTree = "<group>"; };
+		A66484E74D379FF3397D4C6E /* SearchModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModelTests.swift; sourceTree = "<group>"; };
 		A974B81F34D32683F552F3E6 /* SpotMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotMapView.swift; sourceTree = "<group>"; };
 		B7F8CEE36F18BFF49D48A748 /* UserSpotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSpotStore.swift; sourceTree = "<group>"; };
 		BBDB922F46EA3D20BBEA2101 /* LanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTests.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				E954B245B031BA663E8CDCD2 /* LocalizationTests.swift */,
 				7D35348AD7B31AFA19D67E0F /* MapsAppTests.swift */,
 				6FD0BDF7CE2468BE34E3D470 /* PlanTests.swift */,
+				A66484E74D379FF3397D4C6E /* SearchModelTests.swift */,
 				41A114E78467ACC8F7715B2A /* SearchOptionsTests.swift */,
 				9277E1AB34764B92F4C025FD /* UserSpotStoreTests.swift */,
 				420BEB43C9A76CCC59E6D63D /* WindFitTests.swift */,
@@ -359,6 +362,7 @@
 				C12A6C6C21DF970702885B74 /* LocalizationTests.swift in Sources */,
 				C694F79125A59EC8A6268398 /* MapsAppTests.swift in Sources */,
 				6A9C7718E9F815B142F1F4F4 /* PlanTests.swift in Sources */,
+				C33CFF9FE4F75EE2B827DB06 /* SearchModelTests.swift in Sources */,
 				A9BFA4D8B51A20B57616E486 /* SearchOptionsTests.swift in Sources */,
 				5C8142654A0B9DBA7BF0CF94 /* UserSpotStoreTests.swift in Sources */,
 				C8A02A7815AAA5B7F3D18D83 /* WindFitTests.swift in Sources */,
