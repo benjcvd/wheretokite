@@ -505,3 +505,7 @@ archiving applied on top. The Worker is NOT deployed: the new app works with the
 yet), and deploying the lockdown + spam guard still waits on Ben's word. Ben's calls: the Open-Meteo free tier is
 fine while non-commercial (roughly 50–100 cold searches a day); no domain needed for 1.1 (about €10 a year, needed
 before real traffic). WHE-218 went to Forecast accuracy. An Xcode-generated xcstrings change sits in `git stash`.
+**17 Nov 14:35.** Main (74710fe) installed on Ben's iPhone as a Debug build over the App Store 1.0. The
+catalogue build failed on an Overpass 504 (island lookup near Corfu) after an hour; rerun once. If it fails
+again, warm `tools/.osm_cache` locally and refresh the osm-cache snapshot (needs Ben's OK, it's public).
+WHE-151 (out-of-area message) and WHE-189 (Wales) wait on Ben's review before merging.
