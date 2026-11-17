@@ -1,0 +1,27 @@
+# Forecast quota alert → email the owner.
+#
+# When Open-Meteo answers 429, the server files a "Forecast quota hit: <day>" issue (at most
+# once a day, server/src/github.ts). It files it with the owner's token, and GitHub never
+# notifies you about your own issues: this comment, from github-actions, is what sends the email.
+
+name: Quota alert
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  notify:
+    if: >-
+      github.event.sender.login == github.repository_owner &&
+      startsWith(github.event.issue.title, 'Forecast quota hit')
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE" --repo "$GITHUB_REPOSITORY" --body "Open-Meteo refused the server's forecast requests today (quota or rate limit). Phones still work: they ask Open-Meteo directly. If this happens again, it's time to move to a paid Open-Meteo plan. Close this issue once you've read it."

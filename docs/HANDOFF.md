@@ -534,3 +534,7 @@ Result cards, the top card, the spot page and the score sheet now show a small "
 ## Product, 17 Nov: WHE-225 "Wind hour by hour" (review)
 
 The spot page's hourly section is renamed and redrawn as a small table: one line per hour with the wind in a coloured pill (same colours as the chart), gusts, direction and kite aligned in columns; warnings get a second line only when there is one. The per-row bar went because the chart just above already shows it. Screenshots in `docs/review/whe225-*`.
+
+## Product: forecast quota alert (17 Nov, WHE-227)
+
+An Open-Meteo 429 now makes the Worker file one "Forecast quota hit: <day>" GitHub issue per UTC day, and log `upstream_quota`. Because the issue is filed with Ben's token, GitHub won't email him about it, so `.github/workflows/quota-alert.yml` comments on it to trigger the email. Waiting on Ben's OK to deploy the Worker. Details in `server/README.md`, "Forecast quota alert".

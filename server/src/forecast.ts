@@ -297,6 +297,8 @@ export interface ForecastDeps {
    * limit. Called once per LIMIT_UNIT_LOCATIONS missed locations (cache hits are free).
    */
   limit?: () => Promise<boolean>;
+  /** Called when Open-Meteo answers 429 (quota or rate limit hit), with its error text. */
+  onQuota?: (reason: string) => void;
 }
 
 /** Reads GET query or POST form body (query string parameters are merged in). */
@@ -379,6 +381,17 @@ export async function handleForecast(
   });
 }
 
+/** Open-Meteo's `reason` from an error body, or the start of the raw text. */
+export function upstreamReason(text: string): string {
+  try {
+    const reason = (JSON.parse(text) as { reason?: unknown }).reason;
+    if (typeof reason === "string") return reason.slice(0, 300);
+  } catch {
+    // not JSON
+  }
+  return text.slice(0, 300);
+}
+
 /** One upstream request: the per-location JSON strings, or an error Response to pass through. */
 async function fetchUpstream(
   config: EndpointConfig,
@@ -401,6 +414,7 @@ async function fetchUpstream(
   }
   const text = await res.text();
   if (!res.ok) {
+    if (res.status === 429) deps.onQuota?.(upstreamReason(text));
     // Open-Meteo errors are {"error":true,"reason":...}: pass them through as they are.
     return new Response(text, {
       status: res.status,
