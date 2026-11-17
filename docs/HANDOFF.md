@@ -429,3 +429,7 @@ The app now offers four sessions (Evening left the app, the engine keeps it for 
 ## Product, 16 Nov: WHE-219 one-word reason on not-kiteable rows (review)
 
 Each row of "Not kiteable" now ends with a tag: red for safety rules (Storm, Banned, Offshore, Dark) and Too late, grey for wind or tide. The word comes from the scored hours with the same safety-first order as before, so nothing about scoring changed; the only engine tweak is that the fallback no longer picks a random flag. Ben has to OK the ES/FR words.
+
+## Product, 17 Nov: WHE-151 message outside Europe and Morocco (review)
+
+A start point with no spot within 500 km (US, Iceland, Russia, also Kyiv) now gets "Outside the area we cover" instead of "allow a longer drive". The rule is a distance to the nearest spot rather than a drawn outline, so it follows the catalogue on its own (Canaries, Dakhla) and counts the rider's own spots. Threshold is `Recommender.coverageKm`; the card only appears when the list is empty.
