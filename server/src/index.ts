@@ -18,13 +18,17 @@ export interface Env extends PageEnv {
   REPORT_LIMITER?: RateLimiter;
   /** Ceiling on report issues filed per rolling 24 h, all users together (default 15). */
   REPORT_ISSUES_PER_DAY?: string;
+  /** Optional Rate Limiting binding for the forecast routes (counts upstream locations). */
+  FORECAST_LIMITER?: RateLimiter;
   /** Fine-grained GitHub token (Issues: read & write) to file reports as issues (secret). */
   GITHUB_TOKEN?: string;
   /** "owner/repo" for report issues (default benjcvd/wheretokite). */
   GITHUB_REPO?: string;
 }
 
-type RateLimiter = { limit(options: { key: string }): Promise<{ success: boolean }> };
+export interface RateLimiter {
+  limit(options: { key: string }): Promise<{ success: boolean }>;
+}
 
 export interface Deps {
   cache: Cache;
@@ -57,7 +61,15 @@ export async function handle(request: Request, env: Env, deps: Deps): Promise<Re
     const endpoint = FORECAST_ROUTES[path];
     if (endpoint) {
       if (request.method !== "GET" && request.method !== "POST") return methodNotAllowed("GET, POST");
-      return await handleForecast(request, endpoint, { ...deps, apiKey: env.OPEN_METEO_API_KEY || undefined });
+      const limiter = env.FORECAST_LIMITER;
+      // The IP is only the rate-limit key: it is never logged or stored. One key for the three
+      // routes: a search uses forecast, marine and archive together.
+      const key = `forecast:${request.headers.get("cf-connecting-ip") ?? "unknown"}`;
+      return await handleForecast(request, endpoint, {
+        ...deps,
+        apiKey: env.OPEN_METEO_API_KEY || undefined,
+        limit: limiter ? async () => (await limiter.limit({ key })).success : undefined,
+      });
     }
     const kind = INGEST_ROUTES[path];
     if (kind) {
@@ -102,7 +114,8 @@ export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     cache ??= new TieredCache(caches.default);
     // The Cache API does nothing on *.workers.dev, and each call costs one of the request's
-    // subrequests (50 on the free plan): keep room for the upstream fetches (<= 4).
+    // subrequests (50 on the free plan): keep room for the upstream fetches (<= 2) and the
+    // forecast rate limit (<= 3 calls).
     const onWorkersDev = new URL(request.url).hostname.endsWith(".workers.dev");
     return handle(request, env, {
       cache: cache.forRequest(onWorkersDev ? 0 : EDGE_OPS_PER_REQUEST),

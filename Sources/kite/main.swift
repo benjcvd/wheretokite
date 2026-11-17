@@ -14,10 +14,16 @@ import KiteCore
 //   --style X             chill | intense | all | 0…1 (default all)
 //   --distance-matters    penalise far spots (default off)
 //   --weight KG --kites 9,12 --level L   update the saved rider profile
+//   --offshore side-shore|side-offshore  rider's offshore choice, capped by level (a new
+//                         --level without it resets to the level's default)
 //   --spots FILE          spot catalogue (default Data/spots.json)
 //   --straight-line       skip Apple Maps, estimate all drive times (shown as ~)
+//   --now HH:MM           clock time of the search on --day (default: the real clock, for
+//                         today only): hours you can't reach by then + drive score 0
 //   --hourly N            print the hourly breakdown for the top N spots
 //   --all                 also list spots scoring 0, and every excluded spot
+//   --check-catalog NEW --against OLD   CI gate: exit 1 if NEW drops over 10% of OLD's spots, a
+//                         banned spot or a country (the same rule as the app's download check)
 //   --replay FILE         past forecasts instead of Open-Meteo: {"yyyy-MM-dd": {spot id: DayForecast}}
 //                         (tools/backtest/replay.py writes it). Ranks every day in the file, or
 //                         --day; no model-agreement check; prints one JSON line per day.
@@ -42,15 +48,35 @@ while let a = it.next() {
     args[key] = v
 }
 
+// MARK: Catalogue gate (CI, before committing a rebuilt Data/spots.json)
+
+if let new = args["check-catalog"] {
+    guard let old = args["against"] else { fail("--check-catalog needs --against OLD") }
+    let candidate = (try? SpotCatalog.load(from: URL(fileURLWithPath: new))) ?? fail("can't read \(new)")
+    let reference = (try? SpotCatalog.load(from: URL(fileURLWithPath: old))) ?? fail("can't read \(old)")
+    let problems = CatalogGate.problems(candidate, reference: reference)
+    print("catalogue: \(reference.spots.count) -> \(candidate.spots.count) spots")
+    if problems.isEmpty { print("catalogue gate: OK"); exit(0) }
+    problems.forEach { print("catalogue gate: \($0)") }
+    exit(1)
+}
+
 // MARK: Profile (persisted like the app's saved user info)
 
 let profileURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".wheretokite/profile.json")
 var profile = (try? JSONDecoder().decode(RiderProfile.self, from: Data(contentsOf: profileURL)))
-if args["weight"] != nil || args["kites"] != nil || args["level"] != nil {
+if args["weight"] != nil || args["kites"] != nil || args["level"] != nil || args["offshore"] != nil {
     var p = profile ?? RiderProfile(weightKg: 75, kites: [9, 12], level: .intermediate)
     if let w = args["weight"] { p.weightKg = Double(w) ?? fail("bad --weight") }
     if let k = args["kites"] { p.kites = k.split(separator: ",").map { Double($0) ?? fail("bad --kites") } }
-    if let l = args["level"] { p.level = Level(rawValue: l) ?? fail("level: beginner|intermediate|advanced") }
+    if let l = args["level"] {
+        p.level = Level(rawValue: l) ?? fail("level: beginner|intermediate|advanced")
+        p.offshoreChoice = nil
+    }
+    if let o = args["offshore"] {
+        p.offshoreTolerance = o == "side-shore" ? .sideShoreOnly : o == "side-offshore" ? .sideOffshore
+            : fail("offshore: side-shore|side-offshore")
+    }
     try? FileManager.default.createDirectory(at: profileURL.deletingLastPathComponent(), withIntermediateDirectories: true)
     try JSONEncoder().encode(p).write(to: profileURL)
     profile = p
@@ -108,6 +134,15 @@ if let h = args["hours"] {
     guard p.count == 2, (0...23).contains(p[0]), p[0] < p[1], p[1] <= 24 else { fail("--hours: e.g. 17-20") }
     request.customHours = p[0]...(p[1] - 1)
 }
+// Today's search only scores the hours the rider can still reach (WHE-161).
+if let t = args["now"] {
+    let p = t.split(separator: ":").compactMap { Int($0) }
+    guard p.count == 2, (0...23).contains(p[0]), (0...59).contains(p[1]),
+          let midnight = dayFormatter.date(from: request.day) else { fail("--now: e.g. 17:52") }
+    request.now = midnight.addingTimeInterval(Double(p[0] * 3600 + p[1] * 60))
+} else if request.day == today {
+    request.now = Date()
+}
 
 let spotsURL = URL(fileURLWithPath: args["spots"] ?? "Data/spots.json")
 let catalog: SpotCatalog
@@ -137,6 +172,7 @@ if let path = args["replay"] {
     for day in days {
         var r = request
         r.day = day
+        r.now = nil   // past days: no clock
         let res = try await replay.search(r, profile: profile, today: day)
         let ranked: [[String: Any]] = res.recommendations.map { rec in
             var o: [String: Any] = ["id": rec.spot.id, "score": rec.finalScore, "wind": rec.windScore,
@@ -168,7 +204,7 @@ let kitesText = profile.kites.map { String(format: "%g", $0) }.joined(separator:
 print("""
 
 WhereToKite · \(request.day) \(slot.rawValue) · ≤\(Int(request.maxDriveMinutes)) min drive\(request.distanceMatters ? " (distance matters)" : "")
-Rider: \(Int(profile.weightKg)) kg · kites \(kitesText) m · \(profile.level.rawValue) · \(styleText)
+Rider: \(Int(profile.weightKg)) kg · kites \(kitesText) m · \(profile.level.rawValue) (\(profile.offshoreTolerance == .sideOffshore ? "side-offshore to \(Int(ScoringRules().sideOffshoreLimitDeg(profile.level) ?? 0))°" : "side-shore only")) · \(styleText)
 Kite ranges: \(Scorer(profile: profile, intensity: intensity).kiteRanges.map { String(format: "%g m %.0f–%.0f kn", $0.size, $0.minKn, $0.maxKn) }.joined(separator: " · "))
 """)
 if let c = result.confidence { print("Forecast at \(result.recommendations[0].spot.name): \(c.summary)") }
@@ -177,7 +213,8 @@ print(String(format: "(%d spots ranked in %.1fs · %d in reach · %d forecast ·
              result.recommendations.count, elapsed, s.inReach, s.forecastSpots, s.etaReceived, s.etaRequested))
 
 let shown = result.recommendations.filter { flags.contains("all") || $0.finalScore > 0 }
-if shown.isEmpty { print("No kiteable spot found. Use --all to see why each spot fails.") }
+if result.sessionOver { print("This session is over: no spot can be reached before it ends. Try tomorrow.") }
+else if shown.isEmpty { print("No kiteable spot found. Use --all to see why each spot fails.") }
 for (i, r) in shown.enumerated() {
     let name = r.spot.name.count > 32 ? String(r.spot.name.prefix(31)) + "…" : r.spot.name
     let models = r.chance.map { c in

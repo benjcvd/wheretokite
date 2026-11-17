@@ -46,7 +46,16 @@ struct SearchOptions: Codable, Equatable {
         guard let data = UserDefaults.standard.data(forKey: key),
               var options = try? JSONDecoder().decode(SearchOptions.self, from: data) else { return SearchOptions() }
         options.day = DayOption.today.id
+        options.migrateRetiredSlot()
         return options
+    }
+
+    /// The app dropped the Evening session (WHE-216): a saved one becomes My hours 17–20.
+    mutating func migrateRetiredSlot() {
+        guard !SessionSlot.appChoices.contains(slot) else { return }
+        customStart = 17
+        customEnd = 20
+        slot = .custom
     }
 
     func save() {
@@ -95,6 +104,9 @@ struct DayOption: Identifiable, Hashable {
 }
 
 extension SessionSlot {
+    /// The sessions offered in the app. Evening stays in the engine and the CLI only.
+    static let appChoices: [SessionSlot] = [.morning, .afternoon, .fullDay, .custom]
+
     var label: String {
         switch self {
         case .morning: String(localized: "Morning", comment: "Session slot, 9–13 h. Must differ from Tomorrow (Spanish: Temprano, not Mañana)")
@@ -213,7 +225,7 @@ final class SearchModel {
     /// `lookaheadDays` 0 = no next-window search (a Pro feature).
     func run(_ options: SearchOptions, profile: RiderProfile, userSpots: [Spot], proSpots: Bool = true,
              lookaheadDays: Int = 7) async {
-        // Free plan: the famous spots only (Pro adds the secondary ones).
+        // `Entitlements.proSpots` off: famous spots only (tier "pro" = secondary ones). On for every plan today.
         let available = proSpots ? catalog : catalog.filter { $0.tier != "pro" }
         recommender.spots = UserSpotStore.merged(catalog: available, user: userSpots)
         if nextWindow.map({ $0.day <= (Self.testDay ?? options.day) }) ?? false { nextWindow = nil }
@@ -236,6 +248,8 @@ final class SearchModel {
                 slot: options.slot, intensity: options.intensity, distanceMatters: options.distanceMatters)
             var req = request
             req.customHours = options.customHours
+            // Today: only the hours still reachable count (WHE-161).
+            if req.day == DayOption.today.id { req.now = Date() }
             let result = try await recommender.search(req, profile: profile, today: DayOption.today.id)
             try Task.checkCancellation()
             if result.stats.forecastMissing > 0 {

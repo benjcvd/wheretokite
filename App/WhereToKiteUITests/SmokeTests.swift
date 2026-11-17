@@ -114,6 +114,47 @@ final class SmokeTests: XCTestCase {
         snapshot(app, "8b-me-weights")
     }
 
+    /// WHE-160: the offshore choice sits under the level; beginners get none, and a level
+    /// change puts the new level's default back.
+    @MainActor
+    func testOffshoreChoiceFollowsLevel() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchOrigin", "41.3874,2.1686"]
+        app.launch()
+        let start = app.buttons["Start"]
+        XCTAssertTrue(start.waitForExistence(timeout: 5))
+        acceptTerms(app)
+        start.tap()
+        XCTAssertTrue(app.buttons["riderChip"].waitForExistence(timeout: 5))
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allow = springboard.buttons["Allow While Using App"]
+        if allow.waitForExistence(timeout: 4) { allow.tap() }
+        app.buttons["riderChip"].tap()
+        XCTAssertTrue(app.navigationBars["Rider profile"].waitForExistence(timeout: 3))
+        app.swipeUp()
+
+        let sideShore = app.buttons["offshore-sideShoreOnly"]
+        let sideOff = app.buttons["offshore-sideOffshore"]
+        // Starter profile: intermediate, side-shore only.
+        XCTAssertTrue(sideShore.waitForExistence(timeout: 3))
+        XCTAssertTrue(sideShore.isSelected)
+        sideOff.tap()
+        XCTAssertTrue(sideOff.isSelected)
+        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'a little from the land'")).firstMatch.exists)
+        snapshot(app, "offshore-intermediate")
+        // Each level says what the rider can do.
+        XCTAssertTrue(app.buttons["level-beginner"].label.contains("not upwind yet"))
+
+        app.buttons["level-beginner"].tap()
+        XCTAssertFalse(sideOff.waitForExistence(timeout: 1), "beginners get no choice")
+        app.buttons["level-advanced"].tap()
+        XCTAssertTrue(sideOff.waitForExistence(timeout: 3))
+        XCTAssertTrue(sideOff.isSelected, "advanced default")
+        snapshot(app, "offshore-advanced")
+        app.buttons["level-intermediate"].tap()
+        XCTAssertTrue(sideShore.isSelected, "level change resets to the level's default")
+    }
+
     /// The "How is this scored?" sheet, opened from any spot (calm days have no top spot).
     @MainActor
     func testScoreInfo() throws {
@@ -234,6 +275,39 @@ final class SmokeTests: XCTestCase {
         XCTAssertTrue(hero.waitForExistence(timeout: 3))
     }
 
+    /// Each not-kiteable row ends with a one-word reason (WHE-219). 24 Aug 2026 had storms
+    /// near Barcelona in the afternoon, so the list holds safety reasons too.
+    @MainActor
+    func testNoGoRowsSayWhy() throws {
+        func plist(_ json: String) -> String { "<" + json.utf8.map { String(format: "%02x", $0) }.joined() + ">" }
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "-disclaimerAccepted", "YES",
+            "-riderProfile", plist(#"{"weightKg":75,"kites":[9,12],"level":"intermediate"}"#),
+            "-searchOptions", plist(#"{"start":{"name":"Barcelona","coordinate":{"latitude":41.3874,"longitude":2.1686}},"maxDriveMinutes":180,"day":"2026-08-24","slot":"afternoon","distanceMatters":false}"#),
+            "-searchDay", "2026-08-24", "-searchOrigin", "41.3874,2.1686",
+        ]
+        app.launch()
+        let list = app.buttons.containing(NSPredicate(format: "label BEGINSWITH 'Not kiteable'")).firstMatch
+        let deadline = Date().addingTimeInterval(60)
+        while !list.exists && Date() < deadline {
+            app.swipeUp()
+            _ = list.waitForExistence(timeout: 2)
+        }
+        XCTAssertTrue(list.exists, "no Not kiteable list")
+        list.tap()
+        let row = app.buttons["noGoRow"].firstMatch
+        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        let words = ["Too late", "Storm", "Banned", "Offshore", "Dark", "Too light", "Too strong", "Tide", "No data", "Poor"]
+        let rows = app.buttons.matching(identifier: "noGoRow").allElementsBoundByIndex
+        for r in rows where r.isHittable {
+            XCTAssertTrue(words.contains { r.label.contains($0) }, "row without a reason: \(r.label)")
+        }
+        app.swipeUp()
+        sleep(1)
+        snapshot(app, "nogo-reasons")
+    }
+
     /// The WhereToKite server doesn't answer (seen in Spain on weekend afternoons): the
     /// forecasts come straight from Open-Meteo and the search still shows spots.
     @MainActor
@@ -300,12 +374,14 @@ final class SmokeTests: XCTestCase {
         // Four days, no locked days.
         XCTAssertTrue(app.buttons["day3"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["day4"].exists)
-        // Five sessions, incl. evening and the rider's own hours.
-        XCTAssertTrue(app.buttons["slot-evening"].exists)
-        XCTAssertTrue(app.buttons["slot-custom"].exists)
+        // Four sessions: no Evening any more (WHE-216), the rider's own hours instead.
+        for slot in ["morning", "afternoon", "fullDay", "custom"] {
+            XCTAssertTrue(app.buttons["slot-\(slot)"].exists, "missing session \(slot)")
+        }
+        XCTAssertFalse(app.buttons["slot-evening"].exists)
 
         // My hours: the first tap selects it, a second one opens the From / Until editor in place.
-        app.buttons["slot-evening"].tap()
+        app.buttons["slot-morning"].tap()
         app.buttons["slot-custom"].tap()
         let editor = app.descendants(matching: .any)["customHoursEditor"].firstMatch
         XCTAssertFalse(editor.waitForExistence(timeout: 1), "the first tap must only select My hours")

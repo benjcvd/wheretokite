@@ -656,7 +656,7 @@ enum WindFit: Hashable, CaseIterable {
 
 extension HourScore {
     var windFit: WindFit {
-        let safety: Set<String> = ["thunderstorm risk", "kiting banned", "dark", "offshore component"]
+        let safety: Set<String> = ["too late", "thunderstorm risk", "kiting banned", "dark", "offshore component"]
         if flags.contains(where: safety.contains) { return .noGo }
         if score > 0 { return .rideable }
         if flags.contains("too light") { return .tooLight }
