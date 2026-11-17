@@ -144,7 +144,7 @@ final class StoreScreenshotsTests: XCTestCase {
         }
         XCTAssertTrue(topSpot.exists, "no spot to open this week")
         topSpot.tap()
-        _ = app.buttons["mapsAppMenu"].waitForExistence(timeout: 5)   // language-proof
+        _ = app.buttons["directions"].waitForExistence(timeout: 5)   // language-proof
         sleep(2)
         app.swipeUp()
         sleep(1)
