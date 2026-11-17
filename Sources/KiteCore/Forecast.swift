@@ -324,6 +324,9 @@ public struct OpenMeteoProvider: ForecastProvider {
                 let ahead = Self.daysBetween(today, String(time.prefix(10))) ?? 0
                 let skip = Set(lastDayByModel.filter { models.count > 1 && ahead > $0.value }.keys)
                 guard var w = Blend.hour(h.series, index: i, models: models, localTime: time, skip: skip) else { continue }
+                w.models = w.models.map {
+                    ForecastSource.resolve($0, spotId: spot.id, localTime: time, utcOffsetSeconds: offset ?? 0, now: now())
+                }
                 w.seaLevelM = levels[time]
                 let date = String(time.prefix(10))
                 if let (rise, set) = light[date] {
@@ -514,13 +517,15 @@ enum Blend {
             suffixes.compactMap { series[variable + $0]?[safe: i] ?? nil }
         }
         var winds: [(speed: Double, gust: Double, dir: Double)] = []
-        for suffix in suffixes {
+        var used: [String] = []
+        for (suffix, id) in zip(suffixes, models.count > 1 ? (kept.isEmpty ? models : kept) : models) {
             guard let s = series["wind_speed_10m" + suffix]?[safe: i] ?? nil,
                   let d = series["wind_direction_10m" + suffix]?[safe: i] ?? nil else { continue }
             // A model without gusts (some regional runs) counts its mean wind as the gust.
             let g = max(s, (series["wind_gusts_10m" + suffix]?[safe: i] ?? nil) ?? s)
             guard HourlyWind.isPlausible(speedKn: s, gustKn: g, directionDeg: d) else { continue }
             winds.append((s, g, d))
+            used.append(id)
         }
         guard !winds.isEmpty else { return nil }
         let n = Double(winds.count)
@@ -531,6 +536,7 @@ enum Blend {
         let dir = (u == 0 && v == 0) ? winds[0].dir
             : (atan2(u, v) * 180 / .pi + 360).truncatingRemainder(dividingBy: 360)
         var w = HourlyWind(localTime: localTime, speedKn: speed, gustKn: max(gust, speed), directionDeg: dir)
+        w.models = used
         w.weatherCode = values("weather_code").filter { (0...99).contains($0) }.max().map { Int($0) }
         w.capeJkg = values("cape").filter { (0...10000).contains($0) }.max()
         let rain = values("precipitation").filter { (0...500).contains($0) }

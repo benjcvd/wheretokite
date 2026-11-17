@@ -1139,6 +1139,23 @@
         }
       }
     },
+    "Banned" : {
+      "comment" : "Not-kiteable tag: kiting is banned at this spot then",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prohibido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interdit"
+          }
+        }
+      }
+    },
     "Bars: average wind (kn) · Dots: gusts" : {
       "localizations" : {
         "es" : {
@@ -1618,6 +1635,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "nuit"
+          }
+        }
+      }
+    },
+    "Dark" : {
+      "comment" : "Not-kiteable tag: before sunrise or after sunset",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De noche"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuit"
           }
         }
       }
@@ -3302,6 +3336,23 @@
         }
       }
     },
+    "No data" : {
+      "comment" : "Not-kiteable tag: no forecast for this spot",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin datos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de données"
+          }
+        }
+      }
+    },
     "no forecast" : {
       "localizations" : {
         "es" : {
@@ -3395,6 +3446,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun spot connu à moins de %@ de toi. Accepte un trajet plus long ou choisis un autre point de départ."
+          }
+        }
+      }
+    },
+    "No spot can be reached before the end of this session. Try a later session or tomorrow." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No llegas a ningún spot antes de que acabe esta sesión. Prueba una sesión más tarde o mañana."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun spot n'est atteignable avant la fin de cette session. Essaie une session plus tard ou demain."
           }
         }
       }
@@ -3669,6 +3736,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "offshore"
+          }
+        }
+      }
+    },
+    "Offshore" : {
+      "comment" : "Not-kiteable tag: the wind blows from the land",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offshore"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offshore"
           }
         }
       }
@@ -3962,6 +4046,23 @@
         }
       }
     },
+    "Poor" : {
+      "comment" : "Not-kiteable tag: conditions too poor, no single reason",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mediocre"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Médiocre"
+          }
+        }
+      }
+    },
     "poor conditions" : {
       "localizations" : {
         "es" : {
@@ -4235,6 +4336,23 @@
         }
       }
     },
+    "Rides upwind, turns, first jumps" : {
+      "comment" : "Level description",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciñe, hace viradas, primeros saltos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remonte au vent, transitions, premiers sauts"
+          }
+        }
+      }
+    },
     "Ruled out" : {
       "comment" : "Chart legend: storm, dark, offshore, ban or tide",
       "localizations" : {
@@ -4412,6 +4530,22 @@
         }
       }
     },
+    "See tomorrow" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver mañana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir demain"
+          }
+        }
+      }
+    },
     "Send" : {
       "localizations" : {
         "es" : {
@@ -4537,23 +4671,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "side-off"
-          }
-        }
-      }
-    },
-    "Side-offshore: advanced only" : {
-      "comment" : "Warning: the wind blows slightly from the land; for advanced riders only",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Side-offshore: solo nivel avanzado"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Side-off : confirmés uniquement"
           }
         }
       }
@@ -4895,6 +5012,23 @@
         }
       }
     },
+    "Storm" : {
+      "comment" : "Not-kiteable tag: thunderstorm risk",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tormenta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orage"
+          }
+        }
+      }
+    },
     "Storm from %@" : {
       "comment" : "A thunderstorm is forecast from that hour",
       "localizations" : {
@@ -4941,6 +5075,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "plage droite"
+          }
+        }
+      }
+    },
+    "Strong gusty wind, jumps, waves" : {
+      "comment" : "Level description",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viento fuerte y racheado, saltos, olas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent fort et rafaleux, sauts, vagues"
           }
         }
       }
@@ -5089,18 +5240,18 @@
         }
       }
     },
-    "The full ranking and map (top 5 free), plus about 300 more local spots." : {
+    "The full ranking and map (top 5 free)." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La clasificación y el mapa completos (top 5 gratis), y unos 300 spots locales más."
+            "value" : "La clasificación y el mapa completos (top 5 gratis)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le classement et la carte complets (top 5 gratuit), et environ 300 spots locaux de plus."
+            "value" : "Le classement et la carte complets (top 5 gratuit)."
           }
         }
       }
@@ -5267,6 +5418,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elles sont multipliées selon tes poids. La note d'un spot est celle de ses deux meilleures heures d'affilée. Les spots qui demandent une certaine marée perdent les heures en dehors et, avec **Au plus près**, les spots lointains perdent jusqu'à %lld %%."
+          }
+        }
+      }
+    },
+    "This session is over" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta sesión ha terminado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette session est finie"
           }
         }
       }
@@ -5444,6 +5611,56 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Demain"
+          }
+        }
+      }
+    },
+    "too late" : {
+      "comment" : "This hour is over, or over before you can get there",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "demasiado tarde"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "trop tard"
+          }
+        }
+      }
+    },
+    "Too late" : {
+      "comment" : "Not-kiteable tag: the session is over, or over before you get there",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muy tarde"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop tard"
+          }
+        }
+      }
+    },
+    "Too late: you can't get there before these hours are over." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demasiado tarde: no llegas antes de que acaben estas horas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop tard : tu n'arrives pas avant la fin de ces heures."
           }
         }
       }
@@ -5666,38 +5883,6 @@
         }
       }
     },
-    "Up to %lld kn. Wind: side-shore at most, never from the land." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hasta %lld kn. Viento: side-shore como máximo, nunca desde tierra."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jusqu'à %lld kn. Vent : side-shore au maximum, jamais de terre."
-          }
-        }
-      }
-    },
-    "Up to %lld kn. Wind: slightly side-offshore accepted, flagged \"advanced only\". Offshore never." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hasta %lld kn. Viento: un poco side-offshore aceptado, con el aviso «solo nivel avanzado». Offshore nunca."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jusqu'à %lld kn. Vent : légèrement side-offshore accepté, signalé « confirmés uniquement ». Offshore jamais."
-          }
-        }
-      }
-    },
     "Updating" : {
       "localizations" : {
         "es" : {
@@ -5774,6 +5959,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Affichage"
+          }
+        }
+      }
+    },
+    "Water-starts, short runs, not upwind yet" : {
+      "comment" : "Level description",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waterstart, bordos cortos, aún sin ceñir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waterstart, petits bords, pas encore de remontée au vent"
           }
         }
       }
@@ -6469,6 +6671,120 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zoome sur la plage pour placer l'épingle."
+          }
+        }
+      }
+    },
+    "Side-offshore: stay upwind" : {
+      "comment" : "Warning: the wind blows slightly from the land and drifts you out",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side-offshore: mantente a barlovento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side-off : reste au vent"
+          }
+        }
+      }
+    },
+    "Up to %lld kn." : {
+      "comment" : "Level limit: maximum mean wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasta %lld kn."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jusqu'à %lld kn."
+          }
+        }
+      }
+    },
+    "Where the wind may come from" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De dónde puede venir el viento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D'où le vent peut venir"
+          }
+        }
+      }
+    },
+    "From the sea only" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo desde el mar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De la mer seulement"
+          }
+        }
+      }
+    },
+    "A little from the land too" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También un poco desde tierra"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un peu de la terre aussi"
+          }
+        }
+      }
+    },
+    "Spots count only when the wind blows onto the beach or along it." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los spots solo cuentan cuando el viento sopla hacia la playa o a lo largo de ella."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les spots ne comptent que quand le vent souffle vers la plage ou le long de celle-ci."
+          }
+        }
+      }
+    },
+    "Spots also count when the wind comes a little from the land. That wind is gustier and pushes you out, so they get a warning. Wind straight from the land never counts." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los spots también cuentan cuando el viento viene un poco desde tierra. Ese viento es más racheado y te aleja de la orilla, así que llevan un aviso. El viento que viene directamente de tierra nunca cuenta."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les spots comptent aussi quand le vent vient un peu de la terre. Ce vent est plus rafaleux et te pousse vers le large, donc ils sont signalés. Le vent qui vient droit de la terre ne compte jamais."
           }
         }
       }

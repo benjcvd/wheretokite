@@ -157,7 +157,7 @@ final class StoreScreenshotsTests: XCTestCase {
     }
 
     /// WHE-75: an advanced rider on 14 May 2026 (Ponent): Segur de Calafell gets W at ~110°,
-    /// side-offshore, and shows the "advanced only" warning. SIDE_OFFSHORE_SHOTS=1.
+    /// side-offshore, and shows the side-offshore warning. SIDE_OFFSHORE_SHOTS=1.
     @MainActor
     func testSideOffshoreWarning() throws {
         try XCTSkipUnless(ProcessInfo.processInfo.environment["SIDE_OFFSHORE_SHOTS"] == "1", "on demand")
@@ -170,7 +170,7 @@ final class StoreScreenshotsTests: XCTestCase {
         ]
         app.launch()
         XCTAssertTrue(app.buttons["topSpot"].waitForExistence(timeout: 90), "results never loaded")
-        let warned = app.buttons.containing(NSPredicate(format: "label CONTAINS 'Side-offshore: advanced only'")).firstMatch
+        let warned = app.buttons.containing(NSPredicate(format: "label CONTAINS 'Side-offshore: stay upwind'")).firstMatch
         for _ in 0..<6 where !warned.isHittable { app.swipeUp() }
         XCTAssertTrue(warned.exists, "no side-offshore warning in the list")
         sleep(1)

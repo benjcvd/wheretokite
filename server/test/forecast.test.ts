@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import {
   cacheKey,
+  checkAllowed,
   chunk,
   MAX_LOCATIONS,
   parseParams,
@@ -15,6 +16,9 @@ const ORIGIN = "https://api.test";
 const APP_PARAMS =
   "hourly=wind_speed_10m,wind_gusts_10m,wind_direction_10m&wind_speed_unit=kn&timezone=auto" +
   "&start_date=2026-10-19&end_date=2026-10-19&models=best_match&cell_selection=sea";
+const MARINE_PARAMS = "hourly=sea_level_height_msl&timezone=auto&start_date=2026-10-19&end_date=2026-10-25";
+/** "Today" in these tests: 19 Oct 2026, noon UTC. */
+const NOW = Date.UTC(2026, 9, 19, 12);
 
 describe("parseParams / cacheKey", () => {
   it("rounds coordinates to 4 decimals and splits locations", () => {
@@ -76,7 +80,7 @@ describe("validation", () => {
   it("rejects too many locations, mismatched elevation, non-JSON formats", () => {
     const n = MAX_LOCATIONS + 1;
     const many = Array.from({ length: n }, () => "1").join(",");
-    expect(bad(`latitude=${many}&longitude=${many}`)).toThrow(/At most 400/);
+    expect(bad(`latitude=${many}&longitude=${many}`)).toThrow(/At most 150/);
     expect(bad("latitude=1,2&longitude=3,4&elevation=5")).toThrow(/elevation/);
     expect(bad("latitude=1&longitude=3&format=csv")).toThrow(/format=json/);
   });
@@ -138,7 +142,7 @@ function fakeUpstream() {
   return { fetch, calls };
 }
 
-function makeDeps(fetchImpl: Deps["fetch"], now = () => 1_000_000_000_000): Deps & { pending: Promise<unknown>[] } {
+function makeDeps(fetchImpl: Deps["fetch"], now = () => NOW): Deps & { pending: Promise<unknown>[] } {
   const pending: Promise<unknown>[] = [];
   return { cache: new MemoryCache(10_000, now), fetch: fetchImpl, now, waitUntil: (p) => pending.push(p), pending };
 }
@@ -164,12 +168,12 @@ describe("handleForecast", () => {
   it("PARTIAL: fetches only missing locations and reassembles in the caller's order", async () => {
     const up = fakeUpstream();
     const deps = makeDeps(up.fetch);
-    await handle(new Request(`${ORIGIN}/v1/forecast?latitude=10,30&longitude=0,0&hourly=x`), {}, deps);
+    await handle(new Request(`${ORIGIN}/v1/forecast?latitude=10,30&longitude=0,0&${APP_PARAMS}`), {}, deps);
     const res = await handle(
       new Request(`${ORIGIN}/v1/forecast`, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: "latitude=30,20,10,40&longitude=0,0,0,0&hourly=x",
+        body: `latitude=30,20,10,40&longitude=0,0,0,0&${APP_PARAMS}`,
       }),
       {},
       deps,
@@ -184,39 +188,39 @@ describe("handleForecast", () => {
 
   it("single location returns an object", async () => {
     const deps = makeDeps(fakeUpstream().fetch);
-    const res = await handle(new Request(`${ORIGIN}/v1/marine?latitude=43.5&longitude=-1.6&hourly=sea_level_height_msl`), {}, deps);
+    const res = await handle(new Request(`${ORIGIN}/v1/marine?latitude=43.5&longitude=-1.6&${MARINE_PARAMS}`), {}, deps);
     const body = JSON.parse(await res.text());
     expect(Array.isArray(body)).toBe(false);
     expect(body.latitude).toBe(43.5);
   });
 
-  it("chunks 250 missing locations into 3 upstream calls of <= 100", async () => {
+  it("chunks 150 missing locations into 2 upstream calls of <= 100", async () => {
     const up = fakeUpstream();
     const deps = makeDeps(up.fetch);
-    const res = await handle(new Request(`${ORIGIN}/v1/forecast?latitude=${lats(250)}&longitude=${lats(250)}&hourly=x`), {}, deps);
+    const res = await handle(new Request(`${ORIGIN}/v1/forecast?latitude=${lats(150)}&longitude=${lats(150)}&${APP_PARAMS}`), {}, deps);
     expect(res.status).toBe(200);
-    expect(up.calls.map((c) => c.get("latitude")!.split(",").length)).toEqual([100, 100, 50]);
+    expect(up.calls.map((c) => c.get("latitude")!.split(",").length)).toEqual([100, 50]);
     const body = JSON.parse(await res.text());
-    expect(body).toHaveLength(250);
-    expect(body[249].latitude).toBeCloseTo(2.49);
+    expect(body).toHaveLength(150);
+    expect(body[149].latitude).toBeCloseTo(1.49);
   });
 
   it("uses customer endpoints and apikey when OPEN_METEO_API_KEY is set", async () => {
     const up = fakeUpstream();
     const deps = makeDeps(up.fetch);
-    await handle(new Request(`${ORIGIN}/v1/archive?latitude=1&longitude=2&hourly=x`), { OPEN_METEO_API_KEY: "K" }, deps);
-    await handle(new Request(`${ORIGIN}/v1/archive?latitude=1&longitude=3&hourly=x`), {}, deps);
+    await handle(new Request(`${ORIGIN}/v1/archive?latitude=1&longitude=2&${APP_PARAMS}`), { OPEN_METEO_API_KEY: "K" }, deps);
+    await handle(new Request(`${ORIGIN}/v1/archive?latitude=1&longitude=3&${APP_PARAMS}`), {}, deps);
     expect(up.fetch.mock.calls[0][0]).toBe("https://customer-historical-forecast-api.open-meteo.com/v1/forecast");
     expect(up.calls[0].get("apikey")).toBe("K");
     expect(up.fetch.mock.calls[1][0]).toBe("https://historical-forecast-api.open-meteo.com/v1/forecast");
   });
 
   it("expires entries after the TTL (1 h forecast, 24 h archive)", async () => {
-    let t = 1_000_000_000_000;
+    let t = NOW;
     const up = fakeUpstream();
     const deps = makeDeps(up.fetch, () => t);
-    const f = new Request(`${ORIGIN}/v1/forecast?latitude=1&longitude=2&hourly=x`);
-    const a = new Request(`${ORIGIN}/v1/archive?latitude=1&longitude=2&hourly=x`);
+    const f = new Request(`${ORIGIN}/v1/forecast?latitude=1&longitude=2&${APP_PARAMS}`);
+    const a = new Request(`${ORIGIN}/v1/archive?latitude=1&longitude=2&${APP_PARAMS}`);
     await handle(f.clone(), {}, deps);
     await handle(a.clone(), {}, deps);
     t += 3599_000;
@@ -232,7 +236,7 @@ describe("handleForecast", () => {
     const err = '{"reason":"Invalid value","error":true}';
     const fetchImpl = vi.fn(async () => new Response(err, { status: 400, headers: { "Content-Type": "application/json" } }));
     const deps = makeDeps(fetchImpl);
-    const url = `${ORIGIN}/v1/forecast?latitude=1&longitude=2&hourly=foo`;
+    const url = `${ORIGIN}/v1/forecast?latitude=1&longitude=2&${APP_PARAMS}`;
     const res = await handle(new Request(url), {}, deps);
     expect(res.status).toBe(400);
     expect(await res.text()).toBe(err);
@@ -260,7 +264,7 @@ describe("handleForecast", () => {
 
   it("maps a network failure to 502", async () => {
     const deps = makeDeps(vi.fn(async () => { throw new TypeError("network"); }));
-    const res = await handle(new Request(`${ORIGIN}/v1/forecast?latitude=1&longitude=2`), {}, deps);
+    const res = await handle(new Request(`${ORIGIN}/v1/forecast?latitude=1&longitude=2&${APP_PARAMS}`), {}, deps);
     expect(res.status).toBe(502);
   });
 
@@ -286,5 +290,143 @@ describe("edge cache budget", () => {
     expect(calls).toBe(3);                                  // over budget: memory only
     expect((await shared.forRequest(0).get("https://x/k0"))?.body).toBe("x");   // shared memory tier
     expect(calls).toBe(3);
+  });
+});
+
+// Exactly what KiteCore sends (Forecast.swift formBody / fetchSeaLevels, Confidence.swift).
+const SWIFT_FORECAST =
+  "hourly=wind_speed_10m,wind_gusts_10m,wind_direction_10m,weather_code,cape,precipitation&daily=sunrise,sunset" +
+  "&wind_speed_unit=kn&timezone=auto&start_date=2026-10-19&end_date=2026-10-25";
+const SWIFT_CONFIDENCE =
+  "hourly=wind_speed_10m,wind_direction_10m&wind_speed_unit=kn&timezone=auto&start_date=2026-10-21&end_date=2026-10-21" +
+  "&models=best_match,meteofrance_seamless,icon_seamless,ecmwf_ifs025&cell_selection=land";
+
+describe("allow-list (only what the app and CLI send)", () => {
+  const check = (q: string, endpoint: "forecast" | "archive" | "marine" = "forecast") => () =>
+    checkAllowed(parseParams(new URLSearchParams(`latitude=1,2&longitude=3,4&${q}`), endpoint), NOW);
+
+  it("accepts every request KiteCore makes", () => {
+    expect(check(`${SWIFT_FORECAST}&models=meteofrance_seamless&cell_selection=land`)).not.toThrow();
+    expect(check(`${SWIFT_FORECAST}&models=ecmwf_ifs,gfs_seamless&cell_selection=sea`)).not.toThrow();
+    expect(check(SWIFT_CONFIDENCE)).not.toThrow();
+    expect(check(MARINE_PARAMS, "marine")).not.toThrow();
+    // CLI --day on a past day goes to the archive.
+    expect(check(SWIFT_FORECAST.replace(/2026-10-19|2026-10-25/g, "2025-08-14"), "archive")).not.toThrow();
+  });
+
+  it("refuses other variables, parameters and models (the audit's probe)", () => {
+    expect(check(`${SWIFT_FORECAST}&forecast_days=16`)).toThrow(/'forecast_days' is not supported/);
+    expect(check(`${SWIFT_FORECAST}&past_days=92`)).toThrow(/not supported/);
+    expect(check(SWIFT_FORECAST.replace("cape", "temperature_2m"))).toThrow(/'temperature_2m'/);
+    expect(check(`${SWIFT_FORECAST}&hourly=soil_moisture_0_to_1cm`)).toThrow(/soil_moisture/);
+    expect(check(`${SWIFT_FORECAST}&models=ukmo_seamless`)).toThrow(/'ukmo_seamless'/);
+    expect(check(SWIFT_FORECAST.replace("unit=kn", "unit=ms"))).toThrow(/'ms'/);
+    expect(check(`${SWIFT_FORECAST}&elevation=0,0`)).toThrow(/'elevation'/);
+    expect(check(SWIFT_FORECAST.replace("timezone=auto", "timezone=Europe/Paris"))).toThrow(/timezone/);
+    expect(check(`${MARINE_PARAMS}&daily=sunrise`, "marine")).toThrow(/'daily'/);
+    expect(check(`${MARINE_PARAMS}&hourly=wave_height`, "marine")).toThrow(/'wave_height'/);
+  });
+
+  it("requires hourly and both dates, and bounds the date range", () => {
+    expect(check("hourly=cape&start_date=2026-10-19")).toThrow(/'end_date' is required/);
+    expect(check("start_date=2026-10-19&end_date=2026-10-19")).toThrow(/'hourly' is required/);
+    const range = (a: string, b: string, e: "forecast" | "archive" | "marine" = "forecast") =>
+      check(`hourly=cape&start_date=${a}&end_date=${b}`, e);
+    expect(range("2026-10-19", "2026-11-04")).not.toThrow();          // 16 days ahead
+    expect(range("2026-10-19", "2026-11-05")).toThrow(/16 days/);
+    expect(range("2026-10-20", "2026-10-19")).toThrow(/before/);
+    expect(range("2026-10-16", "2026-10-16")).not.toThrow();          // west of UTC, a day behind
+    expect(range("2026-10-15", "2026-10-15")).toThrow(/range/);
+    expect(range("2020-12-31", "2021-01-01", "archive")).toThrow(/range/);
+    expect(range("2021-01-01", "2021-01-17", "archive")).not.toThrow();
+    expect(range("2021-01-01", "2021-12-31", "archive")).toThrow(/16 days/);
+    expect(range("2026-02-30", "2026-03-01")).toThrow(/date/);
+    expect(range("26-10-19", "2026-10-19")).toThrow(/date/);
+  });
+
+  it("caps locations at 150", () => {
+    const q = (n: number) => `${ORIGIN}/v1/forecast?latitude=${lats(n)}&longitude=${lats(n)}&${APP_PARAMS}`;
+    expect(MAX_LOCATIONS).toBe(150);
+    return Promise.all([
+      handle(new Request(q(150)), {}, makeDeps(fakeUpstream().fetch)).then((r) => expect(r.status).toBe(200)),
+      handle(new Request(q(151)), {}, makeDeps(fakeUpstream().fetch)).then((r) => expect(r.status).toBe(400)),
+    ]);
+  });
+
+  it("refuses before anything goes upstream", async () => {
+    const up = fakeUpstream();
+    const res = await handle(new Request(`${ORIGIN}/v1/forecast?latitude=1&longitude=2&${APP_PARAMS}&hourly=temperature_2m`), {}, makeDeps(up.fetch));
+    expect(res.status).toBe(400);
+    expect(await res.json()).toMatchObject({ error: true, reason: expect.stringMatching(/temperature_2m/) });
+    expect(up.calls).toHaveLength(0);
+  });
+});
+
+describe("per-IP limit on the forecast routes", () => {
+  function limiter(allowed: number) {
+    const keys: string[] = [];
+    return { keys, limit: async ({ key }: { key: string }) => ({ success: keys.push(key) <= allowed }) };
+  }
+  const SEA = `${SWIFT_FORECAST}&models=ecmwf_ifs,gfs_seamless&cell_selection=sea`;
+  const LAND = `${SWIFT_FORECAST}&models=meteofrance_seamless&cell_selection=land`;
+  const post = (n: number, from = 0, ip = "203.0.113.7", path = "/v1/forecast", params = SEA) =>
+    new Request(`${ORIGIN}${path}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded", "cf-connecting-ip": ip },
+      body: `latitude=${lats(n, from)}&longitude=${lats(n, from)}&${params}`,
+    });
+
+  it("an app batch of 100 spots: one upstream call, 2 units; the same batch again is free", async () => {
+    const up = fakeUpstream();
+    const deps = makeDeps(up.fetch);
+    const l = limiter(100);
+    const r1 = await handle(post(100), { FORECAST_LIMITER: l }, deps);
+    expect(r1.status).toBe(200);
+    expect(JSON.parse(await r1.text())).toHaveLength(100);
+    expect(up.calls).toHaveLength(1);
+    expect(l.keys).toEqual(["forecast:203.0.113.7", "forecast:203.0.113.7"]);
+    const r2 = await handle(post(100), { FORECAST_LIMITER: l }, deps);
+    expect(r2.headers.get("x-cache")).toBe("HIT");
+    expect(l.keys).toHaveLength(2);
+  });
+
+  it("over the limit: 429 with Retry-After, nothing sent upstream", async () => {
+    const up = fakeUpstream();
+    const deps = makeDeps(up.fetch);
+    const l = limiter(3);
+    expect((await handle(post(100, 0), { FORECAST_LIMITER: l }, deps)).status).toBe(200);
+    const res = await handle(post(100, 10), { FORECAST_LIMITER: l }, deps);
+    expect(res.status).toBe(429);
+    expect(res.headers.get("retry-after")).toBe("60");
+    expect(await res.json()).toMatchObject({ error: true });
+    expect(up.calls).toHaveLength(1);
+    // Cached spots still come back for that IP.
+    expect((await handle(post(100, 0), { FORECAST_LIMITER: l }, deps)).status).toBe(200);
+  });
+
+  it("one counter per IP, shared by forecast, marine and archive", async () => {
+    const deps = makeDeps(fakeUpstream().fetch);
+    const l = limiter(100);
+    await handle(post(10, 0, "198.51.100.1"), { FORECAST_LIMITER: l }, deps);
+    await handle(
+      new Request(`${ORIGIN}/v1/marine?latitude=1&longitude=2&${MARINE_PARAMS}`, { headers: { "cf-connecting-ip": "198.51.100.2" } }),
+      { FORECAST_LIMITER: l },
+      deps,
+    );
+    expect(l.keys).toEqual(["forecast:198.51.100.1", "forecast:198.51.100.2"]);
+  });
+
+  it("a full cold search (400 spots in 4 batches, two cell groups, tides, model check) fits the limit", async () => {
+    const deps = makeDeps(fakeUpstream().fetch);
+    const l = limiter(100);
+    const statuses: number[] = [];
+    for (let b = 0; b < 4; b++) {
+      statuses.push((await handle(post(100, b), { FORECAST_LIMITER: l }, deps)).status);
+      statuses.push((await handle(post(100, b, "203.0.113.7", "/v1/forecast", LAND), { FORECAST_LIMITER: l }, deps)).status);
+      statuses.push((await handle(post(100, b, "203.0.113.7", "/v1/marine", MARINE_PARAMS), { FORECAST_LIMITER: l }, deps)).status);
+    }
+    statuses.push((await handle(post(5, 10, "203.0.113.7", "/v1/forecast", SWIFT_CONFIDENCE), { FORECAST_LIMITER: l }, deps)).status);
+    expect(new Set(statuses)).toEqual(new Set([200]));
+    expect(l.keys.length).toBeLessThanOrEqual(40);
   });
 });

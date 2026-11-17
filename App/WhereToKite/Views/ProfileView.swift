@@ -319,13 +319,23 @@ struct ProfileFields: View {
                     ForEach(Level.allCases, id: \.self) { level in
                         let on = profile.level == level
                         Button {
-                            withAnimation(.snappy) { profile.level = level }
+                            withAnimation(.snappy) {
+                                profile.level = level
+                                profile.offshoreChoice = nil   // back to the new level's default
+                            }
                         } label: {
                             VStack(spacing: 6) {
                                 Image(systemName: level.symbol).font(.title3)
                                 Text(level.label).font(.footnote.weight(.semibold)).lineLimit(1).minimumScaleFactor(0.8)
+                                Text(level.skills)
+                                    .font(.caption2)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundStyle(on ? Color.white.opacity(0.85) : Color.secondary)
+                                    .fixedSize(horizontal: false, vertical: true)
                             }
-                            .frame(maxWidth: .infinity, minHeight: 68)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 10)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                             .foregroundStyle(on ? Color.white : Color.primary)
                             .background {
                                 RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -333,8 +343,19 @@ struct ProfileFields: View {
                             }
                         }
                         .buttonStyle(.plain)
+                        .accessibilityIdentifier("level-\(level.rawValue)")
                         .accessibilityAddTraits(on ? .isSelected : [])
                         .sensoryFeedback(.selection, trigger: on)
+                    }
+                }
+                .fixedSize(horizontal: false, vertical: true)
+            }
+
+            if OffshoreTolerance.choices(for: profile.level).count > 1 {
+                section(String(localized: "Where the wind may come from"), footer: offshoreFooter) {
+                    HStack(spacing: 10) {
+                        offshoreCard(.sideShoreOnly, title: String(localized: "From the sea only"))
+                        offshoreCard(.sideOffshore, title: String(localized: "A little from the land too"))
                     }
                 }
             }
@@ -388,8 +409,100 @@ struct ProfileFields: View {
         let limits = ScoringRules().limits(profile.level)
         return switch profile.level {
         case .beginner: String(localized: "Up to \(Int(limits.wind)) kn. Wind: onshore or side-onshore only.")
-        case .intermediate: String(localized: "Up to \(Int(limits.wind)) kn. Wind: side-shore at most, never from the land.")
-        case .advanced: String(localized: "Up to \(Int(limits.wind)) kn. Wind: slightly side-offshore accepted, flagged \"advanced only\". Offshore never.")
+        case .intermediate, .advanced: String(localized: "Up to \(Int(limits.wind)) kn.", comment: "Level limit: maximum mean wind")
+        }
+    }
+
+    private var offshoreFooter: String {
+        profile.offshoreTolerance == .sideShoreOnly
+            ? String(localized: "Spots count only when the wind blows onto the beach or along it.")
+            : String(localized: "Spots also count when the wind comes a little from the land. That wind is gustier and pushes you out, so they get a warning. Wind straight from the land never counts.")
+    }
+
+    /// One choice, drawn: sea on top, beach below, the fan shows where the wind may come from.
+    private func offshoreCard(_ choice: OffshoreTolerance, title: String) -> some View {
+        let on = profile.offshoreTolerance == choice
+        return Button {
+            withAnimation(.snappy) { profile.offshoreTolerance = choice }
+        } label: {
+            VStack(spacing: 8) {
+                WindFanDrawing(fromLand: choice == .sideOffshore)
+                    .frame(height: 78)
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    .accessibilityHidden(true)
+                Text(title)
+                    .font(.footnote.weight(.semibold))
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+                    .frame(maxWidth: .infinity, minHeight: 34)
+            }
+            .padding(8)
+            .foregroundStyle(Color.primary)
+            .background {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color(.secondarySystemGroupedBackground))
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .strokeBorder(on ? Color.accentColor : Color.clear, lineWidth: 2.5)
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(title)
+        .accessibilityIdentifier("offshore-\(choice.rawValue)")
+        .accessibilityAddTraits(on ? .isSelected : [])
+        .sensoryFeedback(.selection, trigger: on)
+    }
+}
+
+/// Top-down beach: sea above, sand below, rider on the shoreline. Each card draws its own wind:
+/// "from the sea" = arrows blowing from the sea onto the beach; "from the land too" = one of
+/// those plus an orange arrow starting on the land and blowing out to sea (WHE-216: the two
+/// cards must not look alike). Illustrative, not to scale: Ben wants no angles on screen.
+private struct WindFanDrawing: View {
+    let fromLand: Bool
+
+    var body: some View {
+        Canvas { ctx, size in
+            let w = size.width, h = size.height
+            let shoreY = h * 0.55
+            ctx.fill(Path(CGRect(origin: .zero, size: size)), with: .color(Color(red: 0.93, green: 0.84, blue: 0.62)))
+            var sea = Path()
+            sea.move(to: .zero)
+            sea.addLine(to: CGPoint(x: w, y: 0))
+            sea.addLine(to: CGPoint(x: w, y: shoreY))
+            sea.addCurve(to: CGPoint(x: 0, y: shoreY),
+                         control1: CGPoint(x: w * 0.66, y: shoreY - 4), control2: CGPoint(x: w * 0.33, y: shoreY + 4))
+            sea.closeSubpath()
+            ctx.fill(sea, with: .color(Color(red: 0.36, green: 0.66, blue: 0.86)))
+
+            func arrow(_ tail: CGPoint, _ head: CGPoint, _ color: Color, _ width: CGFloat) {
+                var a = Path()
+                a.move(to: tail)
+                a.addLine(to: head)
+                let dir = atan2(head.y - tail.y, head.x - tail.x)
+                let barb = width * 3.5
+                for s in [-1.0, 1.0] {
+                    a.move(to: head)
+                    a.addLine(to: CGPoint(x: head.x - barb * cos(dir + s * 0.55), y: head.y - barb * sin(dir + s * 0.55)))
+                }
+                ctx.stroke(a, with: .color(color), style: StrokeStyle(lineWidth: width, lineCap: .round, lineJoin: .round))
+            }
+
+            if fromLand {
+                // One sea breeze, faded, and the land wind crossing the beach out to sea.
+                arrow(CGPoint(x: w * 0.25, y: h * 0.08), CGPoint(x: w * 0.25, y: shoreY - 8), .white.opacity(0.7), 2)
+                arrow(CGPoint(x: w * 0.42, y: h * 0.94), CGPoint(x: w * 0.9, y: h * 0.14), .orange, 3.5)
+            } else {
+                // Wind from the sea onto the beach: straight in and slightly from each side.
+                arrow(CGPoint(x: w * 0.12, y: h * 0.1), CGPoint(x: w * 0.3, y: shoreY - 8), .white, 2.5)
+                arrow(CGPoint(x: w * 0.5, y: h * 0.06), CGPoint(x: w * 0.5, y: shoreY - 8), .white, 2.5)
+                arrow(CGPoint(x: w * 0.88, y: h * 0.1), CGPoint(x: w * 0.7, y: shoreY - 8), .white, 2.5)
+            }
+            // The rider on the beach.
+            let c = CGPoint(x: w * 0.5, y: shoreY + (fromLand ? 0 : 6))
+            ctx.fill(Path(ellipseIn: CGRect(x: c.x - 4, y: c.y - 4, width: 8, height: 8)), with: .color(.black.opacity(0.75)))
         }
     }
 }
