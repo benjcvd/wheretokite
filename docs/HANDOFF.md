@@ -486,3 +486,11 @@ A failed search used to leave the previous result under the new day or drive (th
 safety finding 1). The error branch of `SearchModel.run` now drops the result, so only the
 "Search failed" card shows. We chose clearing over greying: nothing to misread, at the cost of
 losing the old list on a flaky connection. `SearchModelTests` covers it via a new test init.
+**Forecast accuracy, 16 Nov (WHE-57).** Each spot now knows which models are behind its hours
+(`SpotRecommendation.forecastSource`, e.g. "AROME 1.3 km · ECMWF 9 km · GFS"); the app caption
+next to the confidence badge is still to do (App). Météo-France seamless hides which model it
+uses: measured, it's AROME HD up to now + ~43 h inside AROME's footprint, ARPEGE 11 km after that
+and outside it. The footprint is irregular, so `tools/backtest/arome_coverage.py` writes a
+per-spot list; re-run it when spots are added (new spots read "Météo-France" until then).
+
+**Forecast accuracy, 16 Nov (WHE-71).** The chance to kite reads ECMWF on its beach cell (15 km inland, 2.6 kn light) although its cut-offs were tuned with ECMWF on the sea cell: about 25 % fewer Go days than designed, each a bit more reliable. Built ECMWF-on-sea in `Confidence.swift` (31913a3, two requests merged per search); waiting for Ben's pick. Caveat: November alone (16 days) shows the sea-cell Go at 72–77 %, so re-check before trusting the 85 % promise.

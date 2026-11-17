@@ -72,6 +72,12 @@ public struct ConfidenceEstimator: ConfidenceProvider {
     /// The four models the chance to kite was tuned on (WHE-81/84): best match, Météo-France
     /// (AROME 1.3 km for the first two days, then ARPEGE), ICON and ECMWF.
     public var models = ["best_match", "meteofrance_seamless", "icon_seamless", "ecmwf_ifs025"]
+    /// Grid cell read for every model not in `cellByModel` (the beach cell, as the forecasts).
+    public var cellSelection = "land"
+    /// ECMWF's beach cell falls ~15 km inland (median, up to 29 km) and reads ~2.6 kn light, so it
+    /// is read on its sea cell, as when the chance was tuned (WHE-71). Open-Meteo takes one
+    /// `cell_selection` per request: one request per cell, merged per spot.
+    public var cellByModel: [String: String] = ["ecmwf_ifs025": "sea"]
     public var session: URLSession = .shared
     public var server: ForecastServer
     /// When set, `server` is ignored: the failover picks the server for each request.
@@ -125,22 +131,10 @@ public struct ConfidenceEstimator: ConfidenceProvider {
             }
         }
         guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) }
-        var c = URLComponents(url: server.endpoint(for: day), resolvingAgainstBaseURL: false)!
-        c.queryItems = [
-            // The origin is usually the rider's own position: send only the area (0.1° ≈ 11 km,
-            // finer than the compared models' grids), not where they are.
-            .init(name: "latitude", value: String(format: "%.1f", origin.latitude)),
-            .init(name: "longitude", value: String(format: "%.1f", origin.longitude)),
-            .init(name: "hourly", value: "wind_speed_10m,wind_direction_10m"),
-            .init(name: "wind_speed_unit", value: "kn"),
-            .init(name: "timezone", value: "auto"),
-            .init(name: "start_date", value: day),
-            .init(name: "end_date", value: day),
-            .init(name: "models", value: models.joined(separator: ",")),
-            .init(name: "cell_selection", value: "land"),   // as the forecasts
-        ]
-        let (data, _) = try await session.data(from: c.url!)
-        let hourly = try JSONDecoder().decode(Response.self, from: data).hourly
+        // The origin is usually the rider's own position: send only the area (0.1° ≈ 11 km,
+        // finer than the compared models' grids), not where they are.
+        let area = Coordinate(latitude: (origin.latitude * 10).rounded() / 10, longitude: (origin.longitude * 10).rounded() / 10)
+        let hourly = try await series(at: [area], day: day)[0]
         return Self.confidence(hourly: hourly, models: models, hours: hours, leadDays: Self.daysBetween(today, day))
     }
 
@@ -156,17 +150,49 @@ public struct ConfidenceEstimator: ConfidenceProvider {
         }
         guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) }
         // Spot positions are public: sent as they are (the server caches per position).
+        let hourly = try await series(at: queries.map(\.coordinate), day: day)
+        let lead = Self.daysBetween(today, day)
+        return zip(hourly, queries).map { Self.confidence(hourly: $0, models: models, hours: $1.hours, leadDays: lead) }
+    }
+
+    /// The models grouped by the cell they're read on, in the order of `models`: one request per group.
+    func requestGroups() -> [(cell: String, models: [String])] {
+        var groups: [(cell: String, models: [String])] = []
+        for m in models {
+            let cell = cellByModel[m] ?? cellSelection
+            if let i = groups.firstIndex(where: { $0.cell == cell }) { groups[i].models.append(m) }
+            else { groups.append((cell, [m])) }
+        }
+        return groups
+    }
+
+    /// Hourly series per place, every model's series suffixed with its name, all groups merged.
+    /// Every group must answer: a chance missing a model would silently change its level.
+    private func series(at coords: [Coordinate], day: String) async throws -> [[String: [Double?]]] {
+        let groups = requestGroups()
+        let parts = try await withThrowingTaskGroup(of: (Int, [[String: [Double?]]]).self) { group in
+            for (i, g) in groups.enumerated() {
+                group.addTask { (i, try await self.request(coords, day: day, models: g.models, cell: g.cell)) }
+            }
+            var out = [[[String: [Double?]]]](repeating: [], count: groups.count)
+            for try await (i, r) in group { out[i] = r }
+            return out
+        }
+        return Self.merge(parts, groups: groups.map(\.models))
+    }
+
+    private func request(_ coords: [Coordinate], day: String, models: [String], cell: String) async throws -> [[String: [Double?]]] {
         var form = URLComponents()
         form.queryItems = [
-            .init(name: "latitude", value: queries.map { String(format: "%.4f", $0.coordinate.latitude) }.joined(separator: ",")),
-            .init(name: "longitude", value: queries.map { String(format: "%.4f", $0.coordinate.longitude) }.joined(separator: ",")),
+            .init(name: "latitude", value: coords.map { String(format: "%.4f", $0.latitude) }.joined(separator: ",")),
+            .init(name: "longitude", value: coords.map { String(format: "%.4f", $0.longitude) }.joined(separator: ",")),
             .init(name: "hourly", value: "wind_speed_10m,wind_direction_10m"),
             .init(name: "wind_speed_unit", value: "kn"),
             .init(name: "timezone", value: "auto"),
             .init(name: "start_date", value: day),
             .init(name: "end_date", value: day),
             .init(name: "models", value: models.joined(separator: ",")),
-            .init(name: "cell_selection", value: "land"),   // as the forecasts
+            .init(name: "cell_selection", value: cell),
         ]
         var req = URLRequest(url: server.endpoint(for: day))
         req.httpMethod = "POST"
@@ -177,11 +203,26 @@ public struct ConfidenceEstimator: ConfidenceProvider {
             throw ForecastError.badResponse("HTTP \(http.statusCode) " + String(decoding: data.prefix(300), as: UTF8.self))
         }
         let items = try JSONDecoder().decode(Many.self, from: data).items
-        guard items.count == queries.count else {
-            throw ForecastError.badResponse("\(items.count) locations for \(queries.count)")
+        guard items.count == coords.count else {
+            throw ForecastError.badResponse("\(items.count) locations for \(coords.count)")
         }
-        let lead = Self.daysBetween(today, day)
-        return zip(items, queries).map { Self.confidence(hourly: $0.hourly, models: models, hours: $1.hours, leadDays: lead) }
+        return items.map(\.hourly)
+    }
+
+    /// Merges per-group answers into one dictionary per place. A one-model request comes back
+    /// without the model suffix (Open-Meteo's naming): it gets it here.
+    static func merge(_ parts: [[[String: [Double?]]]], groups: [[String]]) -> [[String: [Double?]]] {
+        guard let first = parts.first else { return [] }
+        return first.indices.map { place in
+            var out: [String: [Double?]] = [:]
+            for (part, models) in zip(parts, groups) {
+                guard let series = part[safe: place] else { continue }
+                for (k, v) in series {
+                    out[models.count == 1 && !k.hasSuffix("_" + models[0]) ? k + "_" + models[0] : k] = v
+                }
+            }
+            return out
+        }
     }
 
     /// Spread between the models over `hours`, turned into a 0–100 score. `modelsCompared` is

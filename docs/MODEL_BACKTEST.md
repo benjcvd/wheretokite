@@ -1235,3 +1235,47 @@ python3 tools/backtest/check_day.py tools/backtest/snapshot_2026-10-28.json   # 
 Station pairs are in `tools/backtest/pairs.json`. `tools/backtest/match_stations.py` finds the
 nearest Meteocat station for each Catalan spot. Observations come from official open data
 only (Meteocat XEMA, Météo-France), never from competitors.
+
+## WHE-71: ECMWF's inland cell and the chance to kite (16 Nov 2026)
+
+**Plain words.** The app's "chance you'll kite" (it decides whether a spot can show Go) compares
+4 models. Its numbers were tuned with ECMWF read on its sea cell, but the app reads ECMWF on its
+beach cell, which sits 15 km inland on average (up to 29 km) and reads 2.6 kn lighter. The card
+assumed that made the models *disagree* more. It doesn't: the spread is the same (1.7–1.8 kn). It
+makes the models' average about 0.7 kn **lower**, so the app shows Go on about a quarter fewer
+spot-days than it was tuned to. Those Go days come true more often (89–90 % vs 83–86 %), but the
+app misses 12–15 points more of the days with real wind (about 7 in 10 of the lost Go days had
+wind). Moving ECMWF alone back to its sea cell gives back the tuned behaviour.
+
+**Method.** `tools/backtest/whe71.py`, results `tools/backtest/results/whe71.md`. Truth: 23
+trusted masts (France, southern Spain; Catalan masts and Canaries out, WHE-84) + POEM buoy, wind
+brought to 10 m. Event: two hours in a row at 12–28 kn, usable direction, 07–17 UTC. Forecasts:
+Open-Meteo Previous Runs, days ahead 0–5, 8 Aug – 15 Nov (100 days; 31 Oct – 15 Nov never seen
+by the tuning). Each setup goes through the shipped formula and `chanceTuning`, unchanged.
+Intervals: whole days resampled (1,000 draws).
+
+| Day ahead | Setup | Go shown | Go came true | Kite days caught by Go |
+|---|---|---|---|---|
+| 0 | tuned (BM + ECMWF sea) | 432 | 84 % | 60 % |
+| 0 | **app today (all beach)** | 314 | 89 % | 47 % |
+| 0 | ECMWF sea only | 426 | 84 % | 60 % |
+| 1 | tuned / app / ECMWF sea | 380 / 275 / 359 | 83 / 89 / 83 % | 53 / 41 / 50 % |
+| 2 | tuned / app / ECMWF sea | 380 / 259 / 337 | 82 / 90 / 85 % | 52 / 39 / 48 % |
+| 3 | tuned / app / ECMWF sea | 272 / 163 / 223 | 86 / 90 / 88 % | 39 / 25 / 33 % |
+
+App minus tuned: Go came true +4…+8 pts (intervals clear of 0 except day 3), kite days caught
+−12…−15 pts (intervals −9…−18). Masts only (POEM dropped): same picture.
+
+**What could make this wrong.**
+- November (16 days, unseen): the sea-cell setups' Go came true only 72–77 % (interval 64–87 %),
+  the app's 88 %. One day (12 Nov) holds a third of the wrong Go. Too few days to conclude, but it
+  is the one result against the change: re-check after a month of data.
+- The tuning period result for "tuned" is close to in-sample (the cut-offs were set on it).
+- Truth is masts on land; the change only moves ECMWF, which the forecast itself already reads on
+  its sea cell (WHE-87).
+
+**Recommendation.** 1) Read ECMWF on its sea cell in the chance (recommended): built on
+`atlas/t/whe-71`; 2) keep today's beach cell (more reliable Go, ~25 % fewer Go days, by accident
+of a bias rather than by design); 3) re-tune the cut-offs on the beach-cell setup (Scoring change).
+Server: the chance now makes two Open-Meteo requests per search instead of one (new cache key for
+the ECMWF sea-cell request; no Worker code change).
