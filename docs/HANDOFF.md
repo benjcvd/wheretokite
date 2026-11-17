@@ -520,3 +520,7 @@ shell (IPC closed), so real-size checks ran against live. Paris "few spots" = th
 preferences replacing "any style" — scoring rule to Ben first; Score label; Kite tab options; Directions picker
 each time; Wind hour by hour; drop Sides/face/kites; quota alert; Paris drive hint). Kite tab and spot page
 cards are queued one at a time to avoid merge clashes. Catalogue build: local warm-up running.
+
+## Product, 17 Nov: WHE-222 Score label (review)
+
+Result cards, the top card, the spot page and the score sheet now show a small "SCORE" caption above the number (ES "Nota", FR "Score"); map pins stay bare. One shared `ScoreCaption` view in `Components.swift`. Screenshot test needs `TEST_RUNNER_SHOTS_DAY=1` late in the day.
