@@ -38,15 +38,17 @@ GB,Ceredigion,Borth – Ynyslas,sea,q:Ynyslas,W,"Dyfi estuary mouth: kite at hig
 GB,Pembrokeshire,Newgale,sea,q:Newgale,W,"Pembrokeshire's most popular kite beach, school on site. No launching at high tide. Alternative: Freshwater West (big surf, reef, experienced only).",,not-high,,
 GB,South Wales,Rest Bay (Porthcawl),sea,osm:w204830972,SW,Any tide; Atlantic swell.,,,,
 # --- Scotland
-GB,East Lothian,Longniddry Bents,sea,osm:w238195404,NW,Edinburgh's main kite beach; best around low tide.,,not-high,,
-GB,Fife,St Andrews – West Sands,sea,osm:w26998937,NE,,,,,
+GB,East Lothian,Longniddry Bents,sea,osm:w238195404,NW,"Edinburgh's main kite beach, Skymonster school. Guides say best on a deep tide in WSW–W; big flats next door at Gosford Bay.",,not-high,,
+GB,Fife,St Andrews – West Sands,sea,osm:w26998937,NE,"Best NE–SE (onshore to side-on). Kite zone at the far north end only; very shallow, long walk at low tide.",,,,
 GB,Aberdeenshire,Balmedie,sea,q:Balmedie Beach,E,"Flat lagoons at low tide; rip strongest at mid tide, submerged posts at high tide. Alternative: Newburgh – Ythan estuary flat water 2–3 h around high tide.",,,,
 GB,Aberdeenshire,Fraserburgh,sea,q:Fraserburgh Bay,N,"Large bay, best on the incoming tide; waves in W wind with NW swell.",,,,
-GB,Moray,Lossiemouth – East Beach,sea,osm:r1523260,NE,Alternative: Findhorn (flat bay inside around high tide).,,,,
-GB,Caithness,Dunnet Bay,sea,q:Dunnet Beach,W,,,,,
-GB,Kintyre,Machrihanish,sea,q:Machrihanish,W,"Kintyre's big Atlantic beach: launch near the village in SW, at Westport in S–SE. Shore break in W–NW.",,,,
+# pro: only a visitor review mentions kiting here, no kite school or club (WHE-192, 18 Nov 2026)
+GB,Moray,Lossiemouth – East Beach,sea,osm:r1523260,NE,"Kiting reported in a visitor review only; busy with a surf school. Check the footbridge to the beach is open. Alternative: Findhorn (flat bay inside around high tide).",,,pro,
+# pro: one kite guide only, surf lessons but no kite school found (WHE-192, 18 Nov 2026)
+GB,Caithness,Dunnet Bay,sea,q:Dunnet Beach,W,"Big Atlantic beach, a guide rates it very good in SW with waves. No kite school; surf lessons run from the main car park.",,,pro,
+GB,Kintyre,Machrihanish,sea,q:Machrihanish,W,"Kintyre's big Atlantic beach: launch near the village in SW, at Westport in S–SE. Shore break in W–NW. No lifeguard cover, rips; no kite school found (surf school at Westport).",,,,
 GB,Ayrshire,Troon – South Beach,sea,osm:n12259453543,SW,"Alternative: Barassie, Troon's north bay: long, wide and flat, popular teaching spot.",,,,
-GB,Tiree,Tiree – Gott Bay,sea,q:Gott Bay,SE,"Long shallow bay: beginner, freestyle and freeride; flat water in SW. Other Tiree spots: Balephetrish (N, reef-protected flat water), Crossapol (S, large easy beach).",,,,
+GB,Tiree,Tiree – Gott Bay,sea,q:Gott Bay,SE,"Long shallow bay: beginner, freestyle and freeride; flat water in SW. Wild Diamond teaches here. Other Tiree spots: Balephetrish (N, reef-protected flat water), Crossapol (S, large easy beach).",,,,
 GB,Tiree,Tiree – The Maze,sea,q:Traigh Thodhrasdail,W,"Open to all Atlantic swell; Tiree Wave Classic venue. Other Tiree wave spots: Balevullin (NW, best waves, limited space), Balephuil (SW, down-the-line in W).",,,,
 # --- Northern Ireland
 GB,County Londonderry,Portstewart Strand,sea,osm:w305364153,NW,"3 km beach break, best W–SW with small swell; strong rips. Alternative: Benone Strand (N-facing, 10 km W).",,,,
@@ -123,13 +125,13 @@ GB,Gower,Llangennith (Rhossili Bay),sea,q:Llangennith,W,"Zoned surf beach, most 
 # pro: secondary local beach
 GB,South Wales,Aberavon,sea,q:Aberavon Beach,SW,South Wales Kitesurfing teaches at Aberavon.,,,pro,
 # pro: secondary local beach; East Lothian covered by Longniddry
-GB,East Lothian,Belhaven Bay,sea,q:Belhaven Bay,NE,,,,pro,
+GB,East Lothian,Belhaven Bay,sea,q:Belhaven Bay,NE,"Backup when Longniddry does not work, including southerlies. Skymonster teaches here depending on wind.",,,pro,
 # pro: secondary local beach
 GB,Fife,Pettycur Bay (Kinghorn),sea,q:Pettycur Bay,S,"Best in SW; tide comes in fast, beginners at low tide only.",,,pro,
 # pro: secondary local beach
-GB,Fife,Leven,sea,q:Leven Beach,SE,"One of the few east-coast spots for SW winds; shallow, beach parking.",,,pro,
+GB,Fife,Leven,sea,q:Leven Beach,SE,"One of the few east-coast spots for SW winds; shallow, beach parking. SW and W are offshore here: a rider died in a westerly at Largo Bay in 2019, so ride with care.",,,pro,
 # pro: secondary local beach; Tay covered by St Andrews
-GB,Angus,Monifieth,sea,q:Monifieth Beach,S,"Tay estuary: SE–SW, wind accelerates in SW; flat, shallow, easy access.",,,pro,
+GB,Angus,Monifieth,sea,q:Monifieth Beach,S,"Tay estuary: SE–SW, wind accelerates in SW; flat, shallow, easy access. Military range to the east: follow the flag rules.",,,pro,
 # pro: within ~10 km of a better-known kept spot (Balmedie)
 # archived: messy city beach (groynes, rip, onshore); Balmedie is the usual choice (WHE-214, 16 Nov 2026)
 GB,Aberdeenshire,Aberdeen Beach,sea,osm:w949102150,E,"City beach for quick sessions: groynes, rip and onshore mess; Balmedie is usually better.",,,archived,
@@ -138,13 +140,13 @@ GB,Aberdeenshire,Newburgh (Ythan),sea,osm:w314636606,E,"Ythan estuary flat water
 # pro: secondary Moray Firth spot, Lossiemouth kept
 GB,Moray,Findhorn,sea,q:Findhorn Beach,N,Seaward beach; Findhorn Bay inside is flat around high tide.,,,pro,
 # pro: secondary local beach; Moray Firth covered by Lossiemouth
-GB,Highland,Nairn,sea,q:Nairn East Beach,N,"Shallow, beginner friendly; kite school.",,,pro,
+GB,Highland,Nairn,sea,q:Nairn East Beach,N,"Shallow, beginner friendly. Mobile schools (Moray Firth Wind Sports, Skymonster) teach in the Moray Firth.",,,pro,
 # pro: within ~10 km of a better-known kept spot (Troon, same town)
 GB,Ayrshire,Barassie,sea,q:Barassie Beach,W,"Troon's north bay; long, wide and flat, popular teaching spot.",,,pro,
 # pro: Tiree: keep two spots, others noted
 GB,Tiree,Tiree – Balephetrish,sea,q:Balephetrish Bay,N,"Reef-protected bay, flat water in most winds; big waves in N swell (experts).",,,pro,
 # pro: Tiree: keep two spots, others noted
-GB,Tiree,Tiree – Balevullin,sea,q:Balevullin,NW,"Tiree's best waves; limited kite space, rips at high tide, rocks.",,,pro,
+GB,Tiree,Tiree – Balevullin,sea,q:Balevullin,NW,"Tiree's best waves; limited kite space, rips at high tide, rocks. Blackhouse Watersports (surf and kite) is on the beach.",,,pro,
 # pro: Tiree: keep two spots, others noted
 GB,Tiree,Tiree – Balephuil,sea,q:Balephuil,SW,Down-the-line waves in W; wind shadow at high tide.,,,pro,
 # pro: Tiree: keep two spots, others noted
