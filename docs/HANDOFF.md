@@ -520,3 +520,7 @@ cards are queued one at a time to avoid merge clashes. Catalogue build: local wa
 ## Product, 17 Nov: WHE-151 message outside Europe and Morocco (review)
 
 A start point with no spot within 500 km (US, Iceland, Russia, also Kyiv) now gets "Outside the area we cover" instead of "allow a longer drive". The rule is a distance to the nearest spot rather than a drawn outline, so it follows the catalogue on its own (Canaries, Dakhla) and counts the rider's own spots. Threshold is `Recommender.coverageKm`; the card only appears when the list is empty.
+
+## Product, 17 Nov: WHE-225 "Wind hour by hour" (review)
+
+The spot page's hourly section is renamed and redrawn as a small table: one line per hour with the wind in a coloured pill (same colours as the chart), gusts, direction and kite aligned in columns; warnings get a second line only when there is one. The per-row bar went because the chart just above already shows it. Screenshots in `docs/review/whe225-*`.
