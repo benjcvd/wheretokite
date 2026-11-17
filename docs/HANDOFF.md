@@ -505,6 +505,17 @@ archiving applied on top. The Worker is NOT deployed: the new app works with the
 yet), and deploying the lockdown + spam guard still waits on Ben's word. Ben's calls: the Open-Meteo free tier is
 fine while non-commercial (roughly 50–100 cold searches a day); no domain needed for 1.1 (about €10 a year, needed
 before real traffic). WHE-218 went to Forecast accuracy. An Xcode-generated xcstrings change sits in `git stash`.
+**17 Nov 14:35.** Main (74710fe) installed on Ben's iPhone as a Debug build over the App Store 1.0. The
+catalogue build failed on an Overpass 504 (island lookup near Corfu) after an hour; rerun once. If it fails
+again, warm `tools/.osm_cache` locally and refresh the osm-cache snapshot (needs Ben's OK, it's public).
+WHE-151 (out-of-area message) and WHE-189 (Wales) wait on Ben's review before merging.
+**17 Nov 16:20.** Worker deployed on Ben's OK (lockdown WHE-162 + spam guard WHE-163, version 3ba01a14;
+forecast limiter namespace 1003). 1.0 phones' params pass the allowlist. `wrangler dev` dies in the agent
+shell (IPC closed), so real-size checks ran against live. Paris "few spots" = the free 3 h cap (Channel coast is
+3h00–3h25 by road), not tiers. Ben's last round before 1.1 became high cards for Product (flat/wavy + weather
+preferences replacing "any style" — scoring rule to Ben first; Score label; Kite tab options; Directions picker
+each time; Wind hour by hour; drop Sides/face/kites; quota alert; Paris drive hint). Kite tab and spot page
+cards are queued one at a time to avoid merge clashes. Catalogue build: local warm-up running.
 
 ## Product, 17 Nov: WHE-151 message outside Europe and Morocco (review)
 
