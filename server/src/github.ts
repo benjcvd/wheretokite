@@ -132,3 +132,57 @@ export async function fileIssue(
     return undefined;
   }
 }
+
+// ---- Forecast quota alert ----
+
+export const QUOTA_TITLE = "Forecast quota hit";
+
+/** Start of the UTC day containing `now`, as an ISO string. */
+const dayStart = (now: number): string => new Date(Math.floor(now / 86_400_000) * 86_400_000).toISOString();
+
+/**
+ * Files one "Forecast quota hit" issue per UTC day when Open-Meteo answers 429, so the owner
+ * hears about it (phones fall back to Open-Meteo directly, silently). Checks today's issues
+ * by title first (the label may not exist on the repo); fails closed if GitHub can't say.
+ * Returns the new issue's URL, or undefined (already filed today, not configured, or failed).
+ */
+export async function fileQuotaAlert(
+  reason: string,
+  env: { GITHUB_TOKEN?: string; GITHUB_REPO?: string },
+  doFetch: typeof fetch,
+  now: number,
+): Promise<string | undefined> {
+  if (!env.GITHUB_TOKEN) return undefined;
+  const repo = env.GITHUB_REPO || "benjcvd/wheretokite";
+  const since = dayStart(now);
+  try {
+    const res = await doFetch(`https://api.github.com/repos/${repo}/issues?state=all&since=${since}&per_page=100`, {
+      headers: ghHeaders(env.GITHUB_TOKEN),
+    });
+    if (!res.ok) return undefined;
+    const items = (await res.json()) as { title?: string; created_at?: string }[];
+    if (items.some((i) => i.title?.startsWith(QUOTA_TITLE) && i.created_at && i.created_at >= since)) return undefined;
+  } catch {
+    return undefined;
+  }
+  const day = since.slice(0, 10);
+  return fileIssue(
+    {
+      title: `${QUOTA_TITLE}: ${day}`,
+      body: [
+        `Open-Meteo refused a forecast request from the server on ${day} (UTC) with HTTP 429:`,
+        "",
+        `> ${sanitize(reason) || "_no reason given_"}`,
+        "",
+        "Phones keep working: after a server error they ask Open-Meteo directly for 10 minutes.",
+        "If this repeats, the free tier (10,000 calls a day, non-commercial) is too small: see",
+        "the Open-Meteo plan card on the board. Workers Logs show each hit as `upstream_quota`.",
+        "",
+        "<sub>Filed by the server, at most once a day.</sub>",
+      ].join("\n"),
+      labels: ["quota"],
+    },
+    env,
+    doFetch,
+  );
+}

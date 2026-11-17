@@ -184,6 +184,15 @@ edit. Mentions and links in the text are neutralised. Without the token, reports
    "Only select repositories" → `wheretokite`; permissions → Repository → Issues: Read and write.
 2. `npx wrangler secret put GITHUB_TOKEN` and paste it.
 
+### Forecast quota alert
+
+When Open-Meteo answers 429 (daily, hourly or per-minute quota hit), the Worker passes the
+error on (phones then ask Open-Meteo directly for 10 minutes), logs `upstream_quota` and files
+one `Forecast quota hit: <day>` issue per UTC day (label `quota`) with the same `GITHUB_TOKEN`.
+Before filing it checks today's issues by title, so only one is filed per day; each isolate checks
+at most once a day. Because the issue is filed as you, `.github/workflows/quota-alert.yml` adds a
+github-actions comment: that is what makes GitHub email you.
+
 ### From report to fix, automatically
 
 1. The issue triggers `.github/workflows/report-triage.yml`. Claude checks the claim against
