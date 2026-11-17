@@ -505,3 +505,7 @@ archiving applied on top. The Worker is NOT deployed: the new app works with the
 yet), and deploying the lockdown + spam guard still waits on Ben's word. Ben's calls: the Open-Meteo free tier is
 fine while non-commercial (roughly 50–100 cold searches a day); no domain needed for 1.1 (about €10 a year, needed
 before real traffic). WHE-218 went to Forecast accuracy. An Xcode-generated xcstrings change sits in `git stash`.
+
+## Product, 17 Nov: WHE-151 message outside Europe and Morocco (review)
+
+A start point with no spot within 500 km (US, Iceland, Russia, also Kyiv) now gets "Outside the area we cover" instead of "allow a longer drive". The rule is a distance to the nearest spot rather than a drawn outline, so it follows the catalogue on its own (Canaries, Dakhla) and counts the rider's own spots. Threshold is `Recommender.coverageKm`; the card only appears when the list is empty.

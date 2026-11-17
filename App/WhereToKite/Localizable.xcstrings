@@ -3950,6 +3950,22 @@
         }
       }
     },
+    "Outside the area we cover" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuera de la zona cubierta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hors de la zone couverte"
+          }
+        }
+      }
+    },
     "overpowered in gusts" : {
       "localizations" : {
         "es" : {
@@ -6280,6 +6296,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "On ride où ?"
+          }
+        }
+      }
+    },
+    "WhereToKite covers kite spots in Europe and Morocco. Pick a start point there to see where to ride." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WhereToKite cubre los spots de kite de Europa y Marruecos. Elige un punto de salida allí para ver dónde navegar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WhereToKite couvre les spots de kite d'Europe et du Maroc. Choisis un point de départ dans cette zone pour voir où rider."
           }
         }
       }
