@@ -65,5 +65,5 @@ Wavy gives the same list as Either that day: there were waves everywhere.
 
 - Bays on sea spots (Fangar bay, the sea side vs lagoon side of a sandbar) read the open sea's waves: Fangar was flagged "waves" on 12 Nov although the bay is flatter. A per-side water type in the catalogue would fix it (Spot improvement card).
 - "Gloomiest of the models" makes grey weather fairly common: Pals was flagged on 3 Nov. A milder reading (the middle model) is an option.
-- Wave heights need the Worker deployed with `wave_height` allowed. Until then the app falls back to "no wave forecast" (90 % / 85 %) and nothing else breaks: the waves have their own request, tides are untouched.
+- The live Worker has no allow-list yet, so wave heights flow today. The pending lockdown deploy must include this change (`wave_height` allowed), or the app falls back to "no wave forecast" (90 % / 85 %); nothing else breaks: waves have their own request, tides are untouched.
 - Cost: one more marine request per search (one call per sea spot on Open-Meteo's count), shared through the Worker cache.
