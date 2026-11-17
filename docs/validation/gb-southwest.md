@@ -2,6 +2,7 @@
 
 Date: 2026-11-16. Method: [validation method](../../tools/spots/validation/README.md#windguru-instead-of-windy-from-14-nov) (Windguru benchmark).
 Counts for the zone: 11 rows → 12 rows (free 7 → 6, Pro 4 → 5, archived 0 → 1), 11 live spots.
+Build: `spot-check` on `GB.csv`, no PROBLEMS. Direction check: all zone spots agree with Apple Maps (the one `uncertain`, Weymouth – Portland Harbour, belongs to the south-coast zone).
 Past work: `git log` on `GB.csv` shows only the UK trim to famous spots and the tiers/bans commits. `TO_CONFIRM.md` only asks about Exmouth's directions (kept, see below). No earlier sourced check redone.
 
 Limits of this pass (said plainly): about 22 searches and page reads. Pins come from OSM elements and were not re-checked on satellite. Directions and `sector` were not changed: no source contradicts them. Several club pages (Kernow Kitesurf Club, kite-and-windsurfing guide) are undated. The East Devon and Torridge council pages returned 403, so Exmouth and Westward Ho! rules rest on guides and search summaries. There is no official UK kite-ban source for any row, so no `banned` rule was added.
