@@ -429,3 +429,10 @@ The app now offers four sessions (Evening left the app, the engine keeps it for 
 ## Product, 16 Nov: WHE-219 one-word reason on not-kiteable rows (review)
 
 Each row of "Not kiteable" now ends with a tag: red for safety rules (Storm, Banned, Offshore, Dark) and Too late, grey for wind or tide. The word comes from the scored hours with the same safety-first order as before, so nothing about scoring changed; the only engine tweak is that the fallback no longer picks a random flag. Ben has to OK the ES/FR words.
+
+## Product, 17 Nov: WHE-164 failed search no longer shows the old answer (review)
+
+A failed search used to leave the previous result under the new day or drive (the reviewer's
+safety finding 1). The error branch of `SearchModel.run` now drops the result, so only the
+"Search failed" card shows. We chose clearing over greying: nothing to misread, at the cost of
+losing the old list on a flaky connection. `SearchModelTests` covers it via a new test init.
