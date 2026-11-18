@@ -352,6 +352,10 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     public var waveHeightM: Double?
     /// WMO weather code (95, 96, 99 = thunderstorm). nil in old caches.
     public var weatherCode: Int?
+    /// The middle model's WMO code (WHE-221, Ben 18 Nov: "middle, not gloomiest"), for the
+    /// "good weather only" choice only. Storm safety keeps reading `weatherCode` (gloomiest).
+    /// nil for a single model and in old caches: falls back to `weatherCode`.
+    public var skyCode: Int?
     /// Convective available potential energy, J/kg: high values mean storm risk.
     public var capeJkg: Double?
     public var precipitationMm: Double?

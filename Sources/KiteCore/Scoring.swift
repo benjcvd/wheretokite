@@ -96,13 +96,13 @@ public struct ScoringRules: Sendable {
         }
     }
 
-    /// Score factor for "good weather only" at one hour, from the forecast's weather code (the
-    /// gloomiest of the blended models) and rain. Sun and some cloud: 1; overcast 0.85; fog or
+    /// Score factor for "good weather only" at one hour, from the middle blended model's sky
+    /// (`skyCode`, Ben 18 Nov) and rain. Sun and some cloud: 1; overcast 0.85; fog or
     /// drizzle 0.7; rain, showers or snow 0.5. Storms are already 0 (safety). Any weather: 1.
     public func weatherFactor(_ choice: WeatherPreference, hour w: HourlyWind) -> Double {
         guard choice == .fair else { return 1 }
         var f = 1.0
-        switch w.weatherCode ?? 0 {
+        switch w.skyCode ?? w.weatherCode ?? 0 {
         case 3: f = 0.85
         case 45, 48, 51...57: f = 0.7
         case 61...67, 71...77, 80...86: f = 0.5

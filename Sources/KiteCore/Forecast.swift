@@ -574,7 +574,9 @@ enum Blend {
         if winds.count > 1 {
             w.modelDirectionsDeg = winds.filter { $0.speed >= HourlyWind.directionMinKn }.map(\.dir)
         }
-        w.weatherCode = values("weather_code").filter { (0...99).contains($0) }.max().map { Int($0) }
+        let codes = values("weather_code").filter { (0...99).contains($0) }.sorted()
+        w.weatherCode = codes.last.map { Int($0) }
+        if codes.count > 1 { w.skyCode = Int(codes[codes.count / 2]) }   // middle of 3; gloomier of 2
         w.capeJkg = values("cape").filter { (0...10000).contains($0) }.max()
         let rain = values("precipitation").filter { (0...500).contains($0) }
         w.precipitationMm = rain.isEmpty ? nil : rain.reduce(0, +) / Double(rain.count)

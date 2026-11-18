@@ -33,7 +33,7 @@ Wave height comes from Open-Meteo Marine (about an 8 km grid): it tells a wavy d
 | Rain, showers, snow, or 1 mm/h of rain or more | 50 % |
 | Thunderstorm | 0 (safety, whatever the choice) |
 
-The sky is the gloomiest of the three blended models, as for storms today. The rain cut that applies to everyone (from 2 mm/h) stays as it is.
+The sky is the middle of the three blended models (your call, 18 Nov); storm safety still reads the gloomiest. The rain cut that applies to everyone (from 2 mm/h) stays as it is.
 
 Hours that lose something are flagged on the spot: "waves", "no waves", "grey weather", "rain". The score sheet shows a Water and a Weather line.
 

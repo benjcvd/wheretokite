@@ -4,6 +4,14 @@ import XCTest
 /// Flat / wavy water and good-weather-only choices (WHE-221).
 final class PreferenceTests: XCTestCase {
     let rules = ScoringRules()
+
+    func testGoodWeatherReadsTheMiddleModelButStormsStayOnTheGloomiest() {
+        var w = hour(code: 3)          // gloomiest model: overcast
+        w.skyCode = 1                  // middle model: some cloud
+        XCTAssertEqual(rules.weatherFactor(.fair, hour: w), 1)
+        w.weatherCode = 95; w.skyCode = 2   // one model forecasts a storm
+        XCTAssertTrue(w.stormRisk)
+    }
     let rider = RiderProfile(weightKg: 75, kites: [9, 12], level: .intermediate)
 
     func hour(_ h: Int = 14, waves: Double? = nil, code: Int? = nil, rain: Double? = nil) -> HourlyWind {
