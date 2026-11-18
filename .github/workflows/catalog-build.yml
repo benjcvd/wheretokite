@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 120    # a cold OSM cache takes a while (Nominatim is 1 request/s)
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/cache@v4
+      - uses: actions/cache/restore@v4
         with:
           path: tools/.osm_cache
           key: osm-${{ github.run_id }}
@@ -67,5 +67,13 @@ jobs:
           git add Data/spots.json tools/review.md
           git commit -qm "Rebuild the spot catalogue"
           # Other commits (docs, app) may have landed on main during the build.
-          git pull -q --rebase origin main
+          # --autostash: the build leaves other tracked files touched, which blocked the pull (18 Nov).
+          git pull -q --rebase --autostash origin main
           git push
+      # Save the map cache even when the build or the gate fails, so the next run starts warm
+      # (a failed run used to throw away an hour of lookups).
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: tools/.osm_cache
+          key: osm-${{ github.run_id }}
