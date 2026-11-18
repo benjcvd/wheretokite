@@ -543,7 +543,10 @@ An Open-Meteo 429 now makes the Worker file one "Forecast quota hit: <day>" GitH
 
 The Kite tab's top options are now a 2×2 grid of labelled tiles (Rider, From, Max drive, Water & weather), each with its own sheet; the old single "options" sheet is gone and My hours lives only on the session strip. In review with before/after shots in docs/review/. Two UI tests (language relaunch, spot map slider) already fail on the base branch: new card.
 
-## Lead, 18 Nov 19:20: where I stopped
+## Lead, 18 Nov 21:30: where I stopped
+Catalogue published on Ben's option 1 (allow_drop): f2fa1e0, 741 spots, bans 60 → 39 (21 archived spots + Saunton Sands, whose unsourced summer ban WHE-188 removed). 1.0 phones refuse it (their gate) and keep the bundled list; 1.1 bundles it. The workflow now pulls with `--autostash` and saves the map cache even on failure (a failed run used to waste an hour). Product has a card to stop the gate counting archived spots. The latest main is not yet on Ben's iPhone (phone unreachable at 21:30); next step: install, then archive 1.1.
+
+### 18 Nov 19:20
 Worker deployed by Ben from his Terminal (version 6e0f6d1f; the agent guard blocks `wrangler deploy`, so hand him the command). Live check passed: 100-spot forecast MISS then HIT, wave heights flow. The note below is otherwise current.
 
 ### 18 Nov 09:15
