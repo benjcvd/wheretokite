@@ -559,3 +559,6 @@ running on 2d9374e. Next: deploy + live 100-spot check, then archive 1.1 for Ben
 `wrangler dev` dies in the agent shell (test live, rollback ready); `tools/.osm_cache` is a symlink to
 /Users/ben/Documents/wheretokite/tools/.osm_cache (tar with -h); `gh run watch` drops on network blips, poll
 `gh run view --json status` instead; an Xcode-generated xcstrings change is in `git stash`.
+
+## Lead, 18 Nov 23:45: 1.1 archived
+Ben tested main on his iPhone and asked to release. Last fix before the archive (WHE-236): when only the gusts are over the rider's limit, the gust number (hour list) and gust dot (chart) go red instead of the wind, and the chart colours follow the kite picked. The gust limit itself is unchanged; the knife-edge case (11:00 passing at exactly 37.0 kn between two failing hours) was left as is on Ben's word. Version 1.1 build 3 (92783fc, pushed) is in Xcode's Organizer; `xcodebuild -exportArchive` upload still fails with "Failed to Use Accounts", so Ben uploads and submits with docs/store/RELEASE_1.1.md (What's New in three languages). Store screenshots still show the 1.0 layout.
