@@ -538,3 +538,7 @@ The spot page's hourly section is renamed and redrawn as a small table: one line
 ## Product: forecast quota alert (17 Nov, WHE-227)
 
 An Open-Meteo 429 now makes the Worker file one "Forecast quota hit: <day>" GitHub issue per UTC day, and log `upstream_quota`. Because the issue is filed with Ben's token, GitHub won't email him about it, so `.github/workflows/quota-alert.yml` comments on it to trigger the email. Waiting on Ben's OK to deploy the Worker. Details in `server/README.md`, "Forecast quota alert".
+
+## WHE-223 (2026-11-18)
+
+The Kite tab's top options are now a 2×2 grid of labelled tiles (Rider, From, Max drive, Water & weather), each with its own sheet; the old single "options" sheet is gone and My hours lives only on the session strip. In review with before/after shots in docs/review/. Two UI tests (language relaunch, spot map slider) already fail on the base branch: new card.
