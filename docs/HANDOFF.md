@@ -539,14 +539,13 @@ The spot page's hourly section is renamed and redrawn as a small table: one line
 
 An Open-Meteo 429 now makes the Worker file one "Forecast quota hit: <day>" GitHub issue per UTC day, and log `upstream_quota`. Because the issue is filed with Ben's token, GitHub won't email him about it, so `.github/workflows/quota-alert.yml` comments on it to trigger the email. Waiting on Ben's OK to deploy the Worker. Details in `server/README.md`, "Forecast quota alert".
 
-## Lead, 18 Nov 03:50: where I stopped
-1.0 live since 9 Nov. Main (74710fe, pushed) holds every workstream as of 17 Nov; Worker deployed 17 Nov (lockdown +
-spam guard). Ben's last round for 1.1 is on the board as WHE-221 to 228 (Product; scoring rule changes go to Ben
-first). Product and Spot improvement have since done more tickets on their branches (WHE-151 out-of-area message,
-WHE-188 to 192 UK and Wales validation, WHE-221/222/225/227): **not merged into main yet**. Run merge-workstream on
-each, then archive 1.1 for Ben to upload (he uploads from Xcode; agents can't use his Apple account). WHE-227 (quota
-alert) needs a Worker deploy on Ben's word. The catalogue build on GitHub still fails (WHE-229), even after the
-osm-cache refresh (Ben OK'd it 18 Nov); see the card. Ben's calls: Open-Meteo free tier OK while non-commercial; no
-domain for 1.1. Gotchas: `wrangler dev` dies in the agent shell (test live, rollback ready); `tools/.osm_cache` is a
-symlink to /Users/ben/Documents/wheretokite/tools/.osm_cache (tar with -h); `gh run watch` drops on network blips,
-poll `gh run view --json status` instead; an Xcode-generated xcstrings change is in `git stash`.
+## Lead, 18 Nov 09:00: where I stopped
+1.0 live since 9 Nov. On Ben's word, main (2d9374e) now holds every workstream (Spot improvement UK/Wales/Belgium,
+Forecast accuracy WHE-218 engine flag, Product WHE-151/221/222/224/225/227) and is pushed; the same build is on his
+iPhone (Debug). Engine 162 tests, server 51 tests + typecheck, catalogue GB/BE/ES/FR-atlantic all green. The Worker is
+NOT redeployed: the live allow-list blocks `wave_height`, so Flat / Wavy scoring runs without waves until the deploy
+(Ben's word). WHE-221's rule still waits on Ben's OK (sky: gloomiest vs middle model; wave cuts). WHE-223/226 are on
+Product ticket branches, not merged. The catalogue build (WHE-229) reran on this push. Gotchas: `wrangler dev` dies
+in the agent shell (test live, rollback ready); `tools/.osm_cache` is a symlink to
+/Users/ben/Documents/wheretokite/tools/.osm_cache (tar with -h); `gh run watch` drops on network blips, poll
+`gh run view --json status` instead; an Xcode-generated xcstrings change is in `git stash`.
