@@ -2,13 +2,11 @@ import Foundation
 import MapKit
 import UIKit
 
-/// The navigation app the Directions button opens. The rider's last choice is remembered
-/// (`MapsApp.storageKey`); nothing is sent anywhere until they tap.
+/// The navigation apps the Directions menu offers. The rider picks one on every tap;
+/// nothing is stored and nothing is sent anywhere until they tap.
 enum MapsApp: String, CaseIterable, Identifiable {
     case apple
     case google
-
-    static let storageKey = "directionsApp"
 
     var id: String { rawValue }
 

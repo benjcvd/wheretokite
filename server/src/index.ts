@@ -3,7 +3,7 @@
 import { handleCatalog } from "./catalog";
 import { type Endpoint, handleForecast } from "./forecast";
 import { handleIngest, type IngestKind } from "./ingest";
-import { buildIssue, fileReportIssue } from "./github";
+import { buildIssue, fileQuotaAlert, fileReportIssue } from "./github";
 import { type PageEnv, privacyPage, supportPage } from "./pages";
 import { ApiError, apiError, type Cache, json, TieredCache } from "./util";
 
@@ -49,6 +49,27 @@ const INGEST_ROUTES: Record<string, IngestKind> = {
   "/v1/report": "report",
 };
 
+// UTC day (days since epoch) this isolate last tried a quota alert: one GitHub check per
+// isolate per day at most, however many 429s come in. Other isolates find today's issue.
+let quotaAlertDay = -1;
+
+/** Tests only: forget that a quota alert was tried today. */
+export function resetQuotaAlert(): void {
+  quotaAlertDay = -1;
+}
+
+function onUpstreamQuota(reason: string, env: Env, deps: Deps): void {
+  console.warn(JSON.stringify({ kind: "upstream_quota", reason }));
+  const day = Math.floor(deps.now() / 86_400_000);
+  if (day === quotaAlertDay) return;
+  quotaAlertDay = day;
+  deps.waitUntil(
+    fileQuotaAlert(reason, env, deps.fetch, deps.now()).then((url) => {
+      if (url) console.log(JSON.stringify({ kind: "github_issue", url }));
+    }),
+  );
+}
+
 function methodNotAllowed(allow: string): Response {
   const res = apiError(405, "Method not allowed");
   res.headers.set("Allow", allow);
@@ -69,6 +90,7 @@ export async function handle(request: Request, env: Env, deps: Deps): Promise<Re
         ...deps,
         apiKey: env.OPEN_METEO_API_KEY || undefined,
         limit: limiter ? async () => (await limiter.limit({ key })).success : undefined,
+        onQuota: (reason) => onUpstreamQuota(reason, env, deps),
       });
     }
     const kind = INGEST_ROUTES[path];

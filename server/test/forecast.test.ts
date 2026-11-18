@@ -194,6 +194,17 @@ describe("handleForecast", () => {
     expect(body.latitude).toBe(43.5);
   });
 
+  it("wave heights for an app batch of 100 sea spots: one upstream call (WHE-221)", async () => {
+    const up = fakeUpstream();
+    const deps = makeDeps(up.fetch);
+    const q = MARINE_PARAMS.replace("sea_level_height_msl", "wave_height");
+    const res = await handle(new Request(`${ORIGIN}/v1/marine?latitude=${lats(100)}&longitude=${lats(100)}&${q}`), {}, deps);
+    expect(res.status).toBe(200);
+    expect(up.calls).toHaveLength(1);
+    expect(up.calls[0].get("hourly")).toBe("wave_height");
+    expect(JSON.parse(await res.text())).toHaveLength(100);
+  });
+
   it("chunks 150 missing locations into 2 upstream calls of <= 100", async () => {
     const up = fakeUpstream();
     const deps = makeDeps(up.fetch);
@@ -310,6 +321,7 @@ describe("allow-list (only what the app and CLI send)", () => {
     expect(check(`${SWIFT_FORECAST}&models=ecmwf_ifs,gfs_seamless&cell_selection=sea`)).not.toThrow();
     expect(check(SWIFT_CONFIDENCE)).not.toThrow();
     expect(check(MARINE_PARAMS, "marine")).not.toThrow();
+    expect(check(MARINE_PARAMS.replace("sea_level_height_msl", "wave_height"), "marine")).not.toThrow();
     // CLI --day on a past day goes to the archive.
     expect(check(SWIFT_FORECAST.replace(/2026-10-19|2026-10-25/g, "2025-08-14"), "archive")).not.toThrow();
   });
@@ -324,7 +336,7 @@ describe("allow-list (only what the app and CLI send)", () => {
     expect(check(`${SWIFT_FORECAST}&elevation=0,0`)).toThrow(/'elevation'/);
     expect(check(SWIFT_FORECAST.replace("timezone=auto", "timezone=Europe/Paris"))).toThrow(/timezone/);
     expect(check(`${MARINE_PARAMS}&daily=sunrise`, "marine")).toThrow(/'daily'/);
-    expect(check(`${MARINE_PARAMS}&hourly=wave_height`, "marine")).toThrow(/'wave_height'/);
+    expect(check(MARINE_PARAMS.replace("sea_level_height_msl", "wave_period"), "marine")).toThrow(/'wave_period'/);
   });
 
   it("requires hourly and both dates, and bounds the date range", () => {
@@ -428,5 +440,91 @@ describe("per-IP limit on the forecast routes", () => {
     statuses.push((await handle(post(5, 10, "203.0.113.7", "/v1/forecast", SWIFT_CONFIDENCE), { FORECAST_LIMITER: l }, deps)).status);
     expect(new Set(statuses)).toEqual(new Set([200]));
     expect(l.keys.length).toBeLessThanOrEqual(40);
+  });
+});
+
+describe("Open-Meteo quota alert", () => {
+  const QUOTA = '{"error":true,"reason":"Daily API request limit exceeded. Please try again tomorrow."}';
+  const ENV = { GITHUB_TOKEN: "t" };
+
+  /** Open-Meteo answering 429, GitHub listing `existing` issues and accepting new ones. */
+  function world(existing: { title: string; created_at: string }[] = []) {
+    const created: { title: string; body: string; labels: string[] }[] = [];
+    const fetchImpl = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+      const url = String(input);
+      if (!url.startsWith("https://api.github.com/")) {
+        return new Response(QUOTA, { status: 429, headers: { "Content-Type": "application/json" } });
+      }
+      if (init?.method === "POST") {
+        created.push(JSON.parse(String(init.body)));
+        return new Response(JSON.stringify({ html_url: "https://github.com/x/y/issues/9" }), { status: 201 });
+      }
+      return new Response(JSON.stringify(existing));
+    });
+    return { fetchImpl, created };
+  }
+
+  const ghCalls = (f: ReturnType<typeof vi.fn>) => f.mock.calls.filter((c) => String(c[0]).startsWith("https://api.github.com/"));
+
+  it("a 100-spot search hitting the quota: 429 passed through, one issue for the day", async () => {
+    const { resetQuotaAlert } = await import("../src/index");
+    resetQuotaAlert();
+    const { fetchImpl, created } = world();
+    const deps = makeDeps(fetchImpl);
+    // 150 locations = 2 upstream chunks, both refused.
+    const url = `${ORIGIN}/v1/forecast?latitude=${lats(150)}&longitude=${lats(150)}&${APP_PARAMS}`;
+    const res = await handle(new Request(url), ENV, deps);
+    expect(res.status).toBe(429);
+    expect(await res.text()).toBe(QUOTA);
+    await Promise.all(deps.pending);
+    expect(created).toHaveLength(1);
+    expect(created[0].title).toBe("Forecast quota hit: 2026-10-19");
+    expect(created[0].body).toContain("Daily API request limit exceeded");
+    expect(created[0].labels).toEqual(["quota"]);
+    // Upstream 2 + GitHub list 1 + create 1: well under the 50 subrequests.
+    expect(fetchImpl).toHaveBeenCalledTimes(4);
+
+    // More 429s the same day in this isolate: no more GitHub calls.
+    await handle(new Request(url), ENV, deps);
+    await Promise.all(deps.pending);
+    expect(ghCalls(fetchImpl)).toHaveLength(2);
+  });
+
+  it("does not file twice when another isolate already filed today", async () => {
+    const { resetQuotaAlert } = await import("../src/index");
+    resetQuotaAlert();
+    const { fetchImpl, created } = world([{ title: "Forecast quota hit: 2026-10-19", created_at: "2026-10-19T08:00:00Z" }]);
+    const deps = makeDeps(fetchImpl);
+    await handle(new Request(`${ORIGIN}/v1/forecast?latitude=1&longitude=2&${APP_PARAMS}`), ENV, deps);
+    await Promise.all(deps.pending);
+    expect(created).toHaveLength(0);
+  });
+
+  it("files again the next day, and never for other upstream errors", async () => {
+    const { resetQuotaAlert } = await import("../src/index");
+    resetQuotaAlert();
+    const { fetchImpl, created } = world([{ title: "Forecast quota hit: 2026-10-19", created_at: "2026-10-19T08:00:00Z" }]);
+    const tomorrow = makeDeps(fetchImpl, () => NOW + 86_400_000);
+    const r = await handle(new Request(`${ORIGIN}/v1/forecast?latitude=1&longitude=2&${APP_PARAMS}`), ENV, tomorrow);
+    expect(await r.text()).toBe(QUOTA);
+    await Promise.all(tomorrow.pending);
+    expect(created.map((c) => c.title)).toEqual(["Forecast quota hit: 2026-10-20"]);
+
+    resetQuotaAlert();
+    const bad = vi.fn(async () => new Response('{"error":true,"reason":"Invalid value"}', { status: 400 }));
+    const deps = makeDeps(bad);
+    await handle(new Request(`${ORIGIN}/v1/forecast?latitude=1&longitude=2&${APP_PARAMS}`), ENV, deps);
+    await Promise.all(deps.pending);
+    expect(bad).toHaveBeenCalledTimes(1);
+  });
+
+  it("without a token or when GitHub can't list, only logs", async () => {
+    const { fileQuotaAlert } = await import("../src/github");
+    const { fetchImpl } = world();
+    expect(await fileQuotaAlert("x", {}, fetchImpl, NOW)).toBeUndefined();
+    expect(fetchImpl).not.toHaveBeenCalled();
+    const down = vi.fn(async () => new Response("no", { status: 500 }));
+    expect(await fileQuotaAlert("x", ENV, down, NOW)).toBeUndefined();
+    expect(down).toHaveBeenCalledTimes(1);
   });
 });

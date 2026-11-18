@@ -128,6 +128,13 @@ public struct SearchResult: Sendable {
     /// Spots within straight-line reach that were dropped, with why.
     public var excluded: [(Spot, String)]
     public var stats = SearchStats()
+    /// Straight-line distance from the start point to the nearest spot in the catalogue
+    /// (user spots included), nil when there is no spot at all.
+    public var nearestSpotKm: Double?
+    /// No result because the start point is far from every spot, e.g. in the US where App
+    /// Review tests: the app says WhereToKite covers Europe and Morocco (WHE-151), instead of
+    /// "allow a longer drive". Set from `Recommender.coverageKm`.
+    public var outsideCoverage = false
     /// Today, and no spot has an hour left that the rider can reach in time: the session is
     /// over (WHE-161). The app says so and points to tomorrow.
     public var sessionOver: Bool {
@@ -187,6 +194,10 @@ public struct Recommender: Sendable {
     public var chanceRounds = 3
     /// How far ahead the chance may say Go (no Go beyond +3 days, same everywhere).
     public var goPolicy = GoPolicy()
+    /// A start point with no spot within this distance is outside the coverage (WHE-151).
+    /// 500 km: every big city of the EU, Norway and Morocco has a spot nearer (Warsaw 317,
+    /// Belgrade 303, Ouarzazate 277); Kyiv (674), Moscow, Iceland and America don't.
+    public var coverageKm = 500.0
 
     public init(spots: [Spot], forecast: ForecastProvider, driveTime: DriveTimeProvider,
                 confidence: ConfidenceProvider? = ConfidenceEstimator()) {
@@ -285,6 +296,7 @@ public struct Recommender: Sendable {
             c.hours = Self.applySafety(c.spot, to: c.hours, day: request.day)
             c.hours = Self.applyStormBuffer(c.hours, day: day.hours, rules: rules)
             c.hours = Self.applyTide(c.spot.tide, to: c.hours, day: day.hours, rules: rules)
+            c.hours = Self.applyPreferences(c.spot, to: c.hours, request: request, rules: rules)
             c.estimate = estimates[c.spot.id] ?? c.estimate
             c.utcOffset = day.utcOffsetSeconds
             c.rec = recommend(c.spot, hours: c.hours, drive: c.estimate, request: request, driveIsEstimate: true,
@@ -343,7 +355,10 @@ public struct Recommender: Sendable {
             recs = await checkChance(recs, confidence: confidence, scorer: scorer, request: request, today: today)
         }
 
-        return SearchResult(request: request, recommendations: recs, excluded: excluded, stats: stats)
+        var result = SearchResult(request: request, recommendations: recs, excluded: excluded, stats: stats)
+        result.nearestSpotKm = spots.lazy.map { Geo.distanceKm(request.origin, $0.coordinate) }.min()
+        result.outsideCoverage = recs.isEmpty && (result.nearestSpotKm ?? .infinity) > coverageKm
+        return result
     }
 
     /// Step 6: compare the models at the top spots that score, turn their agreement into a
@@ -409,6 +424,7 @@ public struct Recommender: Sendable {
                 hours = Self.applySafety(c.spot, to: hours, day: day)
                 hours = Self.applyStormBuffer(hours, day: f.hours, rules: rules)
                 hours = Self.applyTide(c.spot.tide, to: hours, day: f.hours, rules: rules)
+                hours = Self.applyPreferences(c.spot, to: hours, request: r, rules: rules)
                 var rec = recommend(c.spot, hours: hours, drive: c.estimate, request: r, driveIsEstimate: true,
                                     weights: profile.scoreWeights, utcOffset: f.utcOffsetSeconds)
                 rec.stormFrom = Self.stormStart(rec, day: f.hours, searched: r.hours, rules: rules)
@@ -573,6 +589,33 @@ public struct Recommender: Sendable {
                     h.flags.append("rain")
                 }
                 if h.wind.unstableAir { h.flags.append("unstable air") }
+            }
+            return h
+        }
+    }
+
+    /// The rider's flat / wavy and weather choices (WHE-221): each hour keeps its factor's
+    /// share of the score. Flags say why when it costs something: "waves", "no waves",
+    /// "grey weather", "rain" (unless the rain is already flagged).
+    static func applyPreferences(_ spot: Spot, to hours: [HourScore], request: SearchRequest,
+                                 rules: ScoringRules) -> [HourScore] {
+        guard request.water != .either || request.weather != .any else { return hours }
+        return hours.map { h in
+            var h = h
+            if request.water != .either {
+                let f = rules.waterFactor(request.water, waterType: spot.waterType, waveHeightM: h.wind.waveHeightM)
+                h.waterFactor = f
+                h.score *= f
+                if f < 0.9 { h.flags.append(request.water == .flat ? "waves" : "no waves") }
+            }
+            if request.weather != .any {
+                let f = rules.weatherFactor(request.weather, hour: h.wind)
+                h.weatherFactor = f
+                h.score *= f
+                let wet = f <= 0.5
+                if f < 1, !(wet && h.flags.contains { $0 == "rain" || $0 == "heavy rain" }) {
+                    h.flags.append(wet ? "rain" : "grey weather")
+                }
             }
             return h
         }

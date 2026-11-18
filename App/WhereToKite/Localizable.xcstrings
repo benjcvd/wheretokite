@@ -52,6 +52,23 @@
         }
       }
     },
+    "%lld kn · gusts %lld" : {
+      "comment" : "Hourly wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld kn · rachas %2$lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld kn · rafales %2$lld"
+          }
+        }
+      }
+    },
     "**%@** (%@): %@" : {
       "localizations" : {
         "en" : {
@@ -118,22 +135,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "**Vent régulier** : les rafales comparées au vent moyen."
-          }
-        }
-      }
-    },
-    "**Wind strength**: how well the wind fits the best kite in your quiver, and your style (chill or intense)." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**Fuerza del viento**: cuánto encaja el viento con la mejor cometa de tu equipo y con tu estilo (tranquilo o intenso)."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**Force du vent** : à quel point le vent convient à la meilleure aile de ton quiver, et à ton style (tranquille ou engagé)."
           }
         }
       }
@@ -518,6 +519,22 @@
         }
       }
     },
+    "**Wind strength**: how well the wind fits the best kite in your quiver." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Fuerza del viento**: cuánto encaja el viento con la mejor cometa de tu equipo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Force du vent** : à quel point le vent convient à la meilleure aile de ton quiver."
+          }
+        }
+      }
+    },
     "+%lld more kiteable spots" : {
       "localizations" : {
         "en" : {
@@ -636,22 +653,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "360°"
-          }
-        }
-      }
-    },
-    "A bit of everything." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Un poco de todo."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Un peu de tout."
           }
         }
       }
@@ -915,34 +916,34 @@
         }
       }
     },
-    "Any style" : {
+    "Any conditions" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cualquier estilo"
+            "value" : "Cualquier condición"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tous styles"
+            "value" : "Toutes conditions"
           }
         }
       }
     },
-    "Any wind that's comfortable for your kites." : {
+    "Any weather" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cualquier viento cómodo para tus cometas."
+            "value" : "Cualquier tiempo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tout vent confortable pour tes ailes."
+            "value" : "Tous temps"
           }
         }
       }
@@ -1119,22 +1120,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Moyennes sur les heures du créneau. La note les multiplie, élevées à tes poids."
-          }
-        }
-      }
-    },
-    "Balanced" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Equilibrado"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Équilibré"
           }
         }
       }
@@ -1461,22 +1446,6 @@
         }
       }
     },
-    "Chill" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tranquilo"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tranquille"
-          }
-        }
-      }
-    },
     "Close" : {
       "localizations" : {
         "es" : {
@@ -1505,6 +1474,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Au plus près"
+          }
+        }
+      }
+    },
+    "Clouds and light rain don't change the ranking. Storms always score 0." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las nubes y la lluvia ligera no cambian la lista. Las tormentas siempre puntúan 0."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les nuages et la petite pluie ne changent pas le classement. Les orages valent toujours 0."
           }
         }
       }
@@ -1976,6 +1961,23 @@
         }
       }
     },
+    "Either" : {
+      "comment" : "Water choice: flat or wavy",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ambas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peu importe"
+          }
+        }
+      }
+    },
     "Evening" : {
       "comment" : "Session slot",
       "localizations" : {
@@ -2169,6 +2171,39 @@
         }
       }
     },
+    "Flat" : {
+      "comment" : "Water choice: flat water",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plat"
+          }
+        }
+      }
+    },
+    "Flat or wavy, the wind decides." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plana o con olas, decide el viento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plat ou vagues, c'est le vent qui décide."
+          }
+        }
+      }
+    },
     "For a sandbar, an isthmus or a beach with a lagoon behind it. Each hour is scored on the side where the wind works best." : {
       "localizations" : {
         "es" : {
@@ -2316,6 +2351,38 @@
         }
       }
     },
+    "Good weather" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buen tiempo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beau temps"
+          }
+        }
+      }
+    },
+    "Good weather only" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo buen tiempo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beau temps seulement"
+          }
+        }
+      }
+    },
     "Google Maps" : {
       "localizations" : {
         "es" : {
@@ -2348,6 +2415,23 @@
         }
       }
     },
+    "grey weather" : {
+      "comment" : "Flag: overcast, fog or drizzle when the rider wants good weather",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tiempo gris"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "temps gris"
+          }
+        }
+      }
+    },
     "Gust" : {
       "localizations" : {
         "es" : {
@@ -2364,19 +2448,19 @@
         }
       }
     },
-    "gusts %lld" : {
-      "comment" : "Hourly gusts in knots",
+    "Gusts" : {
+      "comment" : "Column title: gusts, in the wind hour by hour",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "rachas %lld"
+            "value" : "Rachas"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "rafales %lld"
+            "value" : "Rafales"
           }
         }
       }
@@ -2442,22 +2526,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heure"
-          }
-        }
-      }
-    },
-    "Hour by hour" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hora a hora"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heure par heure"
           }
         }
       }
@@ -2558,6 +2626,22 @@
         }
       }
     },
+    "If you choose flat or wavy water, or good weather only, the hours that don't match score lower." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si eliges agua plana u olas, o solo buen tiempo, las horas que no encajan puntúan menos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si tu choisis plat ou vagues, ou beau temps seulement, les heures qui ne correspondent pas valent moins."
+          }
+        }
+      }
+    },
     "Ignore" : {
       "comment" : "Score weight",
       "localizations" : {
@@ -2575,18 +2659,19 @@
         }
       }
     },
-    "Intense" : {
+    "in knots" : {
+      "comment" : "Unit note beside the 'Wind hour by hour' title",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Intenso"
+            "value" : "en nudos"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Engagé"
+            "value" : "en nœuds"
           }
         }
       }
@@ -2799,19 +2884,50 @@
         }
       }
     },
-    "kn" : {
-      "comment" : "Knots, after the hourly wind speed",
+    "Lagoon: flat water" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "kn"
+            "value" : "Laguna: agua plana"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "kn"
+            "value" : "Lagune : plan d'eau plat"
+          }
+        }
+      }
+    },
+    "Lagoons, lakes and calm sea rank higher." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagunas, lagos y mar en calma suben en la lista."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagunes, lacs et mer calme passent devant."
+          }
+        }
+      }
+    },
+    "Lake: flat water" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lago: agua plana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lac : plan d'eau plat"
           }
         }
       }
@@ -3482,6 +3598,23 @@
         }
       }
     },
+    "no waves" : {
+      "comment" : "Flag: flat water when the rider wants waves",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sin olas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pas de vagues"
+          }
+        }
+      }
+    },
     "Normal" : {
       "comment" : "Score weight",
       "localizations" : {
@@ -3950,6 +4083,22 @@
         }
       }
     },
+    "Outside the area we cover" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuera de la zona cubierta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hors de la zone couverte"
+          }
+        }
+      }
+    },
     "overpowered in gusts" : {
       "localizations" : {
         "es" : {
@@ -4075,22 +4224,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "mauvaises conditions"
-          }
-        }
-      }
-    },
-    "Powered up, near the top of your kite's range. Gusts are OK." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Con potencia, cerca del máximo de tu cometa. Las rachas no molestan."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toilé, vers le haut de la plage de ton aile. Les rafales ne gênent pas."
           }
         }
       }
@@ -4434,6 +4567,22 @@
         }
       }
     },
+    "Score" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Score"
+          }
+        }
+      }
+    },
     "Score %lld out of 100, %@" : {
       "localizations" : {
         "es" : {
@@ -4574,22 +4723,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Envoyé sans ton nom ni ta position, et publié comme ticket public sur GitHub pour que les corrections soient traçables. N'y mets pas d'informations personnelles."
-          }
-        }
-      }
-    },
-    "Session style" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estilo de sesión"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Style de session"
           }
         }
       }
@@ -4868,6 +5001,22 @@
         }
       }
     },
+    "Spots and hours under cloud or rain rank lower. Storms always score 0." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los spots y horas con nubes o lluvia bajan en la lista. Las tormentas siempre puntúan 0."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les spots et les heures sous les nuages ou la pluie descendent dans la liste. Les orages valent toujours 0."
+          }
+        }
+      }
+    },
     "Spots and shorelines: © OpenStreetMap contributors (ODbL)" : {
       "localizations" : {
         "es" : {
@@ -4884,18 +5033,18 @@
         }
       }
     },
-    "Spots are ranked on wind only." : {
+    "Spots are ranked on conditions only." : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los spots se ordenan solo por el viento."
+            "value" : "Los spots se ordenan solo por las condiciones."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les spots sont classés sur le vent seulement."
+            "value" : "Les spots sont classés sur les conditions seulement."
           }
         }
       }
@@ -4912,6 +5061,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Spots à portée"
+          }
+        }
+      }
+    },
+    "Spots with waves forecast rank higher." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los spots con olas previstas suben en la lista."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les spots où des vagues sont prévues passent devant."
           }
         }
       }
@@ -4996,22 +5161,6 @@
         }
       }
     },
-    "Steady wind in the middle of your kite's range." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Viento estable en el centro del rango de tu cometa."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vent régulier au milieu de la plage de ton aile."
-          }
-        }
-      }
-    },
     "Storm" : {
       "comment" : "Not-kiteable tag: thunderstorm risk",
       "localizations" : {
@@ -5092,38 +5241,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vent fort et rafaleux, sauts, vagues"
-          }
-        }
-      }
-    },
-    "Style" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estilo"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Style"
-          }
-        }
-      }
-    },
-    "Style %@. More options" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estilo %@. Más opciones"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Style %@. Plus d'options"
           }
         }
       }
@@ -5963,6 +6080,38 @@
         }
       }
     },
+    "Water" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agua"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eau"
+          }
+        }
+      }
+    },
+    "Water and weather: %@. More options" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agua y tiempo: %@. Más opciones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eau et météo : %@. Plus d'options"
+          }
+        }
+      }
+    },
     "Water-starts, short runs, not upwind yet" : {
       "comment" : "Level description",
       "localizations" : {
@@ -5980,6 +6129,72 @@
         }
       }
     },
+    "Wave forecast not available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previsión de olas no disponible"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévision de vagues indisponible"
+          }
+        }
+      }
+    },
+    "waves" : {
+      "comment" : "Flag: waves forecast when the rider wants flat water",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "olas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vagues"
+          }
+        }
+      }
+    },
+    "Waves up to %@ m" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olas de hasta %@ m"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vagues jusqu'à %@ m"
+          }
+        }
+      }
+    },
+    "Wavy" : {
+      "comment" : "Water choice: waves",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Con olas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vagues"
+          }
+        }
+      }
+    },
     "We list the well-known spots. Know a quieter one? Add it and it will be ranked in every search, just like the others." : {
       "localizations" : {
         "es" : {
@@ -5992,6 +6207,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "On liste les spots connus. Tu en connais un plus tranquille ? Ajoute-le : il sera classé à chaque recherche, comme les autres."
+          }
+        }
+      }
+    },
+    "Weather" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Météo"
           }
         }
       }
@@ -6284,6 +6515,22 @@
         }
       }
     },
+    "WhereToKite covers kite spots in Europe and Morocco. Pick a start point there to see where to ride." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WhereToKite cubre los spots de kite de Europa y Marruecos. Elige un punto de salida allí para ver dónde navegar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WhereToKite couvre les spots de kite d'Europe et du Maroc. Choisis un point de départ dans cette zone pour voir où rider."
+          }
+        }
+      }
+    },
     "WhereToKite gives estimates from weather forecasts, not safety advice. Conditions on the water can differ: check the wind, the weather and the local rules on site. You decide whether to ride, at your own risk." : {
       "localizations" : {
         "es" : {
@@ -6364,6 +6611,23 @@
         }
       }
     },
+    "wind %lld knots, gusts %lld" : {
+      "comment" : "VoiceOver, one hour of wind: average then gusts in knots",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "viento %lld nudos, rachas %lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vent %lld nœuds, rafales %lld"
+          }
+        }
+      }
+    },
     "Wind direction" : {
       "localizations" : {
         "es" : {
@@ -6392,6 +6656,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vent de %@"
+          }
+        }
+      }
+    },
+    "Wind hour by hour" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viento hora a hora"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent heure par heure"
           }
         }
       }
@@ -6543,6 +6823,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mauvaise position"
+          }
+        }
+      }
+    },
+    "You asked for good weather only" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pediste solo buen tiempo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu as demandé beau temps seulement"
           }
         }
       }

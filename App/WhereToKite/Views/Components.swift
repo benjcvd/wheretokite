@@ -36,14 +36,37 @@ enum WindStyle {
     }
 }
 
+/// Small "Score" caption above the number, so a new rider knows what 76 is.
+struct ScoreCaption: View {
+    var size: CGFloat
+
+    var body: some View {
+        Text("Score")
+            .font(.system(size: size, weight: .semibold, design: .rounded))
+            .textCase(.uppercase)
+            .lineLimit(1)
+            .minimumScaleFactor(0.7)
+            .opacity(0.85)
+            .accessibilityHidden(true)
+    }
+}
+
 struct ScoreBadge: View {
     let score: Int
     var size: CGFloat = 44
+    /// Off for map pins, too small to carry a caption.
+    var showsCaption = true
 
     var body: some View {
-        Text("\(score)")
-            .font(.system(size: size * 0.4, weight: .bold, design: .rounded))
-            .monospacedDigit()
+        VStack(spacing: 0) {
+            if showsCaption {
+                ScoreCaption(size: max(7, size * 0.18))
+                    .padding(.horizontal, 3)
+            }
+            Text("\(score)")
+                .font(.system(size: size * (showsCaption ? 0.38 : 0.4), weight: .bold, design: .rounded))
+                .monospacedDigit()
+        }
             .foregroundStyle(.white)
             .frame(width: size, height: size)
             .background(ScoreStyle.gradient(score), in: RoundedRectangle(cornerRadius: size * 0.3, style: .continuous))
@@ -64,10 +87,14 @@ struct ScoreRing: View {
                 .trim(from: 0, to: CGFloat(score) / 100)
                 .stroke(.white, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                 .rotationEffect(.degrees(-90))
-            Text("\(score)")
-                .font(.system(.title2, design: .rounded, weight: .bold))
-                .monospacedDigit()
-                .contentTransition(.numericText(value: Double(score)))
+            VStack(spacing: 0) {
+                ScoreCaption(size: 9)
+                Text("\(score)")
+                    .font(.system(.title2, design: .rounded, weight: .bold))
+                    .monospacedDigit()
+                    .contentTransition(.numericText(value: Double(score)))
+            }
+            .padding(.horizontal, lineWidth + 2)
         }
         .foregroundStyle(.white)
         .accessibilityElement()

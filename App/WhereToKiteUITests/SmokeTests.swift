@@ -95,6 +95,18 @@ final class SmokeTests: XCTestCase {
         slider.adjust(toNormalizedSliderPosition: 1)
         XCTAssertEqual(slider.value as? String, "10 h")
         snapshot(app, "6-options")
+        // Flat water, good weather only (WHE-221): the chip says so.
+        let water = app.segmentedControls["waterPicker"]
+        if !water.isHittable { app.swipeUp() }
+        XCTAssertTrue(water.waitForExistence(timeout: 3))
+        water.buttons["Flat"].tap()
+        app.segmentedControls["weatherPicker"].buttons["Good weather only"].tap()
+        app.buttons["Done"].tap()
+        XCTAssertTrue(app.buttons["optionsChip"].label.contains("Flat · Good weather"))
+        app.buttons["optionsChip"].tap()
+        if !water.isHittable { app.swipeUp() }
+        water.buttons["Either"].tap()
+        app.segmentedControls["weatherPicker"].buttons["Any weather"].tap()
         app.buttons["Done"].tap()
 
         // Profile is editable from the search screen…
@@ -187,6 +199,24 @@ final class SmokeTests: XCTestCase {
         snapshot(app, "score-info")
         app.swipeUp()
         snapshot(app, "score-info-2")
+    }
+
+    /// WHE-151: a start point in the US (where App Review tests) says what the app covers
+    /// instead of "allow a longer drive".
+    @MainActor
+    func testOutsideCoverageExplains() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-resetProfile", "-unlockPro", "-searchOrigin", "37.3349,-122.0090"]   // Cupertino
+        app.launch()
+        acceptTerms(app)
+        app.buttons["Start"].tap()
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let allow = springboard.buttons["Allow While Using App"]
+        if allow.waitForExistence(timeout: 4) { allow.tap() }
+        let noSpot = app.descendants(matching: .any)["noSpot"]
+        XCTAssertTrue(noSpot.waitForExistence(timeout: 30), "no empty-state card")
+        XCTAssertTrue(noSpot.label.contains("Europe and Morocco"), noSpot.label)
+        snapshot(app, "outside-coverage")
     }
 
     /// The spot page names the working kites and the wind chart switches between the

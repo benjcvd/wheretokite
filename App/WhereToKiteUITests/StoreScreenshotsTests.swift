@@ -113,18 +113,20 @@ final class StoreScreenshotsTests: XCTestCase {
         snapshot(app.screenshot(), "storm-spot")
     }
 
-    /// WHE-152: the spot page's wind chart and hour by hour, without per-hour grades, on this
-    /// week's live forecast (the first day with a spot to open). HOURLY_SHOTS=1.
+    /// WHE-152 / WHE-225: the spot page's wind chart and "Wind hour by hour", without per-hour
+    /// grades, on this week's live forecast (the first day with a spot to open), or on a fixed
+    /// past day with HOURLY_DAY=yyyy-MM-dd. HOURLY_LANG=es|fr for a translation. HOURLY_SHOTS=1.
     @MainActor
     func testSpotHourByHour() throws {
-        try XCTSkipUnless(ProcessInfo.processInfo.environment["HOURLY_SHOTS"] == "1", "on demand")
+        let env = ProcessInfo.processInfo.environment
+        try XCTSkipUnless(env["HOURLY_SHOTS"] == "1", "on demand")
         func plist(_ json: String) -> String { "<" + json.utf8.map { String(format: "%02x", $0) }.joined() + ">" }
         let app = XCUIApplication()
         app.launchArguments = [
-            "-AppleLanguages", "(en)", "-disclaimerAccepted", "YES",
+            "-AppleLanguages", "(\(env["HOURLY_LANG"] ?? "en"))", "-disclaimerAccepted", "YES",
             "-riderProfile", plist(#"{"weightKg":75,"kites":[9,12],"level":"intermediate"}"#),
             "-searchOrigin", "41.3874,2.1686",
-        ]
+        ] + (env["HOURLY_DAY"].map { ["-searchDay", $0] } ?? [])
         app.launch()
         let topSpot = app.buttons["topSpot"]
         let noSpot = app.descendants(matching: .any)["noSpot"]
@@ -142,7 +144,8 @@ final class StoreScreenshotsTests: XCTestCase {
         }
         XCTAssertTrue(topSpot.exists, "no spot to open this week")
         topSpot.tap()
-        XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
+        _ = app.buttons["directions"].waitForExistence(timeout: 5)   // language-proof
+        sleep(2)
         app.swipeUp()
         sleep(1)
         snapshot(app.screenshot(), "hourly-chart")

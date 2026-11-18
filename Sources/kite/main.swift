@@ -12,6 +12,8 @@ import KiteCore
 //   --day D               today | tomorrow | +N | yyyy-MM-dd (default today)
 //   --slot S              morning | afternoon | full (default full)
 //   --style X             chill | intense | all | 0…1 (default all)
+//   --water W             flat | wavy | either (default either)
+//   --weather W           fair | any (default any)
 //   --distance-matters    penalise far spots (default off)
 //   --weight KG --kites 9,12 --level L   update the saved rider profile
 //   --offshore side-shore|side-offshore  rider's offshore choice, capped by level (a new
@@ -129,6 +131,8 @@ var request = SearchRequest(
     slot: slot,
     intensity: intensity,
     distanceMatters: flags.contains("distance-matters"))
+request.water = WaterPreference(rawValue: args["water"] ?? "either") ?? fail("water: flat|wavy|either")
+request.weather = WeatherPreference(rawValue: args["weather"] ?? "any") ?? fail("weather: fair|any")
 if let h = args["hours"] {
     let p = h.split(separator: "-").compactMap { Int($0) }
     guard p.count == 2, (0...23).contains(p[0]), p[0] < p[1], p[1] <= 24 else { fail("--hours: e.g. 17-20") }
@@ -199,7 +203,8 @@ let started = Date()
 let result = try await recommender.search(request, profile: profile, today: today)
 let elapsed = Date().timeIntervalSince(started)
 
-let styleText = intensity.map { $0 == 0 ? "chill" : $0 == 1 ? "intense" : String(format: "%.1f", $0) } ?? "all types"
+let styleText = (intensity.map { $0 == 0 ? "chill" : $0 == 1 ? "intense" : String(format: "%.1f", $0) } ?? "all types")
+    + " · water \(request.water.rawValue) · weather \(request.weather.rawValue)"
 let kitesText = profile.kites.map { String(format: "%g", $0) }.joined(separator: "/")
 print("""
 
@@ -239,7 +244,9 @@ for r in shown.prefix(hourlyCount) {
         print(String(format: "  %02d:00  %4.1f kn  g%4.1f  from %3.0f° %-3@  rel %@  %@  %3.0f  %@",
                      h.wind.hour, h.wind.speedKn, h.wind.gustKn, h.wind.directionDeg,
                      Geo.compassName(h.wind.directionDeg), angle, kite, h.score * 100,
-                     ((h.side.map { [$0] } ?? []) + h.flags).joined(separator: ", ")))
+                     ((h.side.map { [$0] } ?? []) + h.flags).joined(separator: ", "))
+              + (h.wind.waveHeightM.map { String(format: "  waves %.1f m", $0) } ?? "")
+              + (h.wind.weatherCode.map { "  wmo \($0)" } ?? ""))
     }
 }
 
