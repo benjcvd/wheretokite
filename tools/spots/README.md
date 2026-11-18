@@ -27,7 +27,9 @@ spots in the app.
   tie-breaker when OSM and Apple Maps disagree. The published direction comes from map data.
   Spots kitable from several shores list one side per direction separated by `|`:
   `DIR:label[:water]`, e.g. `NW:North Sea side|SE:Grevelingen side:lake` (the first side's
-  water must be the row's). Each hour is scored on the side where the wind works best.
+  water must be the row's). Water `bay` marks a sheltered, flat side of a sea spot (oriented
+  from the coastline like `sea`, published as the side's `waterType: bay`; use `lagoon` / `lake`
+  for those). The app counts bay, lagoon and lake sides as flat water. Each hour is scored on the side where the wind works best.
 - `notes`: curation memory, **not published** since 11 Nov 2026 (internal remarks leaked into the app). Tide dependence, seasonal bans / summer zones, level
   (e.g. "waves, experienced riders"), access. Quote the field if it has a comma.
 - `sector` (optional, default 180): width in degrees of open water seen from the launch.

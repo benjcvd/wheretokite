@@ -51,14 +51,14 @@ dk-all,review,WHE-184,14,0,0,1,0,docs/validation/dk-all.md,2026-11-15
 pl-all,review,val-pl-all WHE-185,8,0,0,0,0,docs/validation/pl-all.md,2026-11-16
 hr-me,review,val-hr-me,8,5,5,0,0,docs/validation/hr-me.md,2026-11-16
 gb-south,review,WHE-187,17,5,5,0,3,docs/validation/gb-south.md,2026-11-16
-gb-southwest,todo,val-gb-southwest,,,,,,,
-gb-wales,todo,val-gb-wales,,,,,,,
-gb-east,todo,val-gb-east,,,,,,,
-gb-north-england,todo,val-gb-north-england,,,,,,,
-gb-scotland,todo,val-gb-scotland,,,,,,,
+gb-southwest,review,WHE-188,11,9,7,1,1,docs/validation/gb-southwest.md,2026-11-16
+gb-wales,review,WHE-189,14,0,0,0,0,docs/validation/gb-wales.md,2026-11-17
+gb-east,review,WHE-190,8,0,0,0,0,docs/validation/gb-east.md,2026-11-17
+gb-north-england,review,WHE-191,14,0,0,0,0,docs/validation/gb-north-england.md,2026-11-17
+gb-scotland,review,WHE-192,23,0,0,0,0,docs/validation/gb-scotland.md,2026-11-18
 ie-east-south,todo,val-ie-east-south,,,,,,,
 ie-west,todo,val-ie-west,,,,,,,
-be-all,todo,val-be-all,,,,,,,
+be-all,review,WHE-195,4,0,0,0,7,docs/validation/be-all.md,2026-11-18
 se-no,todo,val-se-no,,,,,,,
 small-med-black-sea,todo,val-small-med-black-sea,,,,,,,
 baltic-finland,todo,val-baltic-finland,,,,,,,

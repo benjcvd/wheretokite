@@ -2,10 +2,10 @@ country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Belgium — format: tools/spots/README.md
 # Kiting on the Belgian coast is only allowed in the zone of a beach club (day membership
 # with insurance and a wristband). Sources: 35knots.com, bindy.world, club sites.
-BE,Westkust,De Panne,sea,osm:w173184566,NW,"Very wide beach at low tide. Kite zone of the beach club, day membership required. Also: Oostduinkerke – Groenendijk (Surfclub Windekind, Sycod) 6 km east.",,,,
-BE,Oostkust,Oostende,sea,osm:n14084411301,NW,"Mariakerke side, Surfclub Inside Outside. Club day membership required; often crowded. Also: Bredene (Twins Club) next door; De Haan, Wenduine, Blankenberge club beaches further east.",,,,
-BE,Oostkust,Zeebrugge,sea,osm:w501178705,NW,"Surfclub Icarus, west of the port: flatter water. Club day membership required.",,,,
-BE,Oostkust,Knokke-Heist,sea,osm:w462299478,NW,"Duinbergen (Beachclub Anemos). Wide beach at low tide; club day membership required. Also: Het Zoute (Surfers Paradise, advanced) 4 km east.",,,,
+BE,Westkust,De Panne,sea,osm:w173184566,NW,"Very wide beach, best at high tide per guides; IKO school Stevo Kitesurf on the beach. Kiting goes through the beach clubs and schools (day membership reported, check on site). Also: Oostduinkerke – Groenendijk (Surfclub Windekind, Sycod) 6 km east.",,,,
+BE,Oostkust,Oostende,sea,osm:n14084411301,NW,"Mariakerke side, near Surfclub Inside Outside (its lessons are surf and windsurf; kite lessons not confirmed). Guides list Oostende as a kite spot; club or school access reported as required, check on site. Often crowded. Also: Bredene (Twins Club) next door; De Haan, Wenduine, Blankenberge club beaches further east.",,,,
+BE,Oostkust,Zeebrugge,sea,osm:w501178705,NW,"Surfclub Icarus (kite lessons) on the beach between Zeebrugge and Blankenberge: flatter water, no breakwaters. Kite leash compulsory, keep out of swim and surf zones (lifeguards enforce in summer). Club access reported as required, check on site.",,,,
+BE,Oostkust,Knokke-Heist,sea,osm:w462299478,NW,"Duinbergen (Beachclub Anemos has a kite and windsurf desk). Wide beach at low tide; club access reported as required, check on site. Also: Het Zoute (Surfers Paradise, advanced) 4 km east.",,,,
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — 6 km from De Panne
