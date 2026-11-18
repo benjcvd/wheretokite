@@ -2268,6 +2268,23 @@
         }
       }
     },
+    "From" : {
+      "comment" : "Search tile caption over the start point",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desde"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Départ"
+          }
+        }
+      }
+    },
     "From %lld:00" : {
       "localizations" : {
         "es" : {
@@ -3176,18 +3193,18 @@
         }
       }
     },
-    "Max drive %@" : {
+    "Max drive %@. Edit" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trayecto máximo %@"
+            "value" : "Trayecto máximo %@. Editar"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trajet max %@"
+            "value" : "Trajet max %@. Modifier"
           }
         }
       }
@@ -4421,6 +4438,23 @@
         }
       }
     },
+    "Rider" : {
+      "comment" : "Search tile caption over the rider's weight and kites",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rider"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rider"
+          }
+        }
+      }
+    },
     "Rider profile" : {
       "localizations" : {
         "es" : {
@@ -4659,22 +4693,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La recherche a échoué"
-          }
-        }
-      }
-    },
-    "Search options" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opciones de búsqueda"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Options de recherche"
           }
         }
       }
@@ -6096,18 +6114,34 @@
         }
       }
     },
-    "Water and weather: %@. More options" : {
+    "Water & weather" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agua y tiempo: %@. Más opciones"
+            "value" : "Agua y tiempo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eau et météo : %@. Plus d'options"
+            "value" : "Eau et météo"
+          }
+        }
+      }
+    },
+    "Water and weather: %@. Edit" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agua y tiempo: %@. Editar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eau et météo : %@. Modifier"
           }
         }
       }
