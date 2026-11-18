@@ -537,6 +537,9 @@ enum Blend {
             : (atan2(u, v) * 180 / .pi + 360).truncatingRemainder(dividingBy: 360)
         var w = HourlyWind(localTime: localTime, speedKn: speed, gustKn: max(gust, speed), directionDeg: dir)
         w.models = used
+        if winds.count > 1 {
+            w.modelDirectionsDeg = winds.filter { $0.speed >= HourlyWind.directionMinKn }.map(\.dir)
+        }
         w.weatherCode = values("weather_code").filter { (0...99).contains($0) }.max().map { Int($0) }
         w.capeJkg = values("cape").filter { (0...10000).contains($0) }.max()
         let rain = values("precipitation").filter { (0...500).contains($0) }

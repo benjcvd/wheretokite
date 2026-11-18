@@ -342,6 +342,27 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     /// Open-Meteo models this hour's wind comes from, in blend order, Météo-France seamless
     /// resolved to the model behind it (`ForecastSource`). nil in old caches.
     public var models: [String]?
+    /// Directions (FROM, compass degrees) of each blended model that forecasts at least
+    /// `HourlyWind.directionMinKn` this hour, in blend order (WHE-218). The blended
+    /// `directionDeg` is the mean wind vector: when models blow opposite ways it is a direction
+    /// none of them forecasts. nil for a single model and in old caches.
+    public var modelDirectionsDeg: [Double]?
+
+    /// Below this a model's direction is noise and doesn't count as disagreement.
+    public static let directionMinKn = 8.0
+    /// Models further apart than this disagree on direction.
+    public static let directionDisagreementDeg = 90.0
+
+    /// Largest angle between two models' directions (`modelDirectionsDeg`), 0…180.
+    public var directionSpreadDeg: Double {
+        guard let d = modelDirectionsDeg, d.count > 1 else { return 0 }
+        var best = 0.0
+        for i in d.indices { for j in d.indices where j > i { best = max(best, Geo.angleDiff(d[i], d[j])) } }
+        return best
+    }
+
+    /// The models blow more than 90° apart: the blended direction can't be trusted.
+    public var modelsDisagreeOnDirection: Bool { directionSpreadDeg > Self.directionDisagreementDeg }
 
     /// Thunderstorm forecast, or unstable air (high CAPE) with showers / rain in the same hour:
     /// never a kite hour. High CAPE alone is common on calm summer afternoons and doesn't

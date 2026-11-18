@@ -1,7 +1,87 @@
-# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80, WHE-88, WHE-87, WHE-79)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80, WHE-88, WHE-87, WHE-79, WHE-218)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
+
+## When the models blow opposite ways (WHE-218, 17 Nov): score the worse direction
+
+**In plain words.** The app mixes three models (Météo-France, ECMWF, GFS) by averaging their
+wind arrows. When one says onshore and another offshore, the average points somewhere neither
+forecasts, and the offshore safety rule runs on that made-up direction (Berck, 22 Nov: 15 kn
+ESE offshore + 21 kn WNW became "18 kn W onshore"). Measured against stations, those hours are
+risky: the made-up "kiteable" hour was really offshore **1 time in 5** (19 %), five times the
+usual rate (3.5 %), and really kiteable only 1 time in 4. It's rare (0.1–0.2 % of hours), so
+fixing it costs riders almost nothing: go-day scores don't move (a tie at every day ahead).
+
+**Recommendation (needs your OK, it's a safety rule):** when two models that each forecast
+8 kn or more are over 90° apart, score the hour on each model's direction and keep the worse,
+and say "models disagree on direction". Engine side is built (commit d844494); the scoring
+change is a few lines in `Scoring.swift`, waiting for you.
+
+**Method.** `tools/backtest/whe218.py`, results `tools/backtest/results/whe218.md`.
+8 Aug – 15 Nov 2026 (100 dates, summer thermals and autumn fronts), 27 trusted sites (WHE-72
+masts in France and southern Spain + the POEM buoy; Catalan Meteocat masts left out, WHE-84),
+07–17 UTC, day ahead 0–5 from Previous Runs, the app's mix exactly (MF beach cell to day 3,
+ECMWF 9 km and GFS sea cells). Kiteable hour = 12–28 kn, under 120° off the sea-facing side.
+Go day = two kiteable hours in a row. Intervals: 95 %, bootstrap over whole dates.
+
+| Day ahead | Hours flagged (> 90° apart) | Mix says kiteable, a model says offshore | Of those, measured offshore | Measured kiteable |
+|---|---|---|---|---|
+| 0 | 0.5 % | 27 h | 41 % | 7 % |
+| 1 | 0.7 % | 31 h | 23 % | 19 % |
+| 2 | 0.9 % | 32 h | 13 % | 34 % |
+| 3 | 1.3 % | 62 h | 16 % | 39 % |
+| 4 | 1.0 % | 30 h | 23 % | 17 % |
+| 5 | 1.4 % | 49 h | 10 % | 18 % |
+| all | | 231 h | **19 %** (44 h) | 25 % (57 h) |
+
+Rules tried on flagged hours: **worse direction** (any strong model offshore → offshore),
+**vector speed** (opposite winds cancel), **drop** (never kiteable). Over all 175k site-hours,
+worse direction removes 174 false "kiteable" hours (44 of them measured offshore, −3.4 %) and
+loses 57 good ones (−0.3 %). Go days, CSI change vs today:
+
+| Day ahead | Today CSI | Worse direction | Vector speed | Drop |
+|---|---|---|---|---|
+| 0 | 65.8 | +0.2 [+0.0, +0.5] | +0.2 [+0.0, +0.4] | +0.3 [+0.1, +0.6] |
+| 1 | 63.0 | +0.2 [−0.2, +0.6] | +0.1 [−0.2, +0.5] | +0.1 [−0.3, +0.6] |
+| 2 | 58.3 | +0.0 [−0.4, +0.4] | +0.0 [−0.3, +0.4] | −0.1 [−0.5, +0.3] |
+| 3 | 54.1 | −0.0 [−0.5, +0.4] | −0.1 [−0.7, +0.5] | −0.1 [−0.7, +0.6] |
+| 4 | 50.0 | +0.2 [+0.0, +0.4] | +0.3 [+0.0, +0.6] | +0.2 [−0.1, +0.5] |
+| 5 | 48.7 | −0.1 [−0.7, +0.3] | −0.0 [−0.8, +0.7] | −0.0 [−0.8, +0.7] |
+
+All three are ties on go days. I pick "worse direction": it only touches hours where a model
+really says offshore, keeps flagged hours where every model is onshore-ish, and matches the
+app's rule that one model's storm counts as a storm.
+
+**Concrete days.**
+- Carnon, 4 Nov, today's forecast: MF 18 kn N, ECMWF 13 kn NNE (both offshore on a
+  south-facing beach), GFS 31 kn SE. Mix = kiteable. Measured: 14 kn N, offshore. Worse
+  direction scores it 0: right.
+- Tarifa, 11 Nov, days 0–2: GFS 20–30 kn SSW, MF/ECMWF 8–14 kn E/ESE (levante, offshore at
+  Balneario). Mix = kiteable. Measured: 10–14 kn E/ESE. Worse direction: right.
+- The cost: Gouville, 10 and 16 Aug, day 3: two models said 11–14 kn NW (onshore), the third
+  12–15 kn NE (offshore). Measured 11–16 kn NW: kiteable, and worse direction blanks it. That's
+  the kind of hour in the 57 lost.
+- Hyères L'Almanarre, 5 Sep, days 0–1: MF 12–14 kn E (offshore), ECMWF/GFS 11–20 kn W. Measured
+  14–15 kn E: the lone model was right. Worse direction: right.
+
+**What could make this wrong.**
+- Small numbers: 231 risky hours, 44 measured offshore, clustered on few days (Carnon, Tarifa,
+  Almería, Grau-du-Roi, the Channel on 21–23 Oct). It shows the direction of the effect, not a
+  precise rate. Most flagged hours are light, changing winds (sea-breeze onset, fronts passing).
+- Stations sit on land: a land mast can read "offshore" in a light land breeze while the water
+  is calmer. That inflates the "measured offshore" share a bit; it doesn't create the tie.
+- From day 4 only ECMWF and GFS remain, so a disagreement is a coin flip between two models.
+  Worse direction is then the only safe reading.
+- The Berck case itself (22 Nov) is in the future and not in the sample.
+- GFS is the outlier in most examples. If GFS were dropped from the mix this would happen less,
+  but that's a different question (WHE-87 found the three-model mix best).
+
+**Proposed scoring change (not made: `Scoring.swift` is yours to approve).** In
+`score(_ w: HourlyWind, side: SpotSide)`: if `w.modelsDisagreeOnDirection`, score a copy of the
+hour with each of `w.modelDirectionsDeg` as its direction, plus the blended one, keep the lowest
+score, and add the flag "models disagree on direction". The app would then show that reason on
+the hour instead of a clean onshore wind.
 
 ## Easterlies on the Tarragona coast (WHE-79, 5 Nov): today's app already fixes most of it, ship nothing
 
