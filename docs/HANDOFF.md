@@ -516,3 +516,15 @@ shell (IPC closed), so real-size checks ran against live. Paris "few spots" = th
 preferences replacing "any style" — scoring rule to Ben first; Score label; Kite tab options; Directions picker
 each time; Wind hour by hour; drop Sides/face/kites; quota alert; Paris drive hint). Kite tab and spot page
 cards are queued one at a time to avoid merge clashes. Catalogue build: local warm-up running.
+
+## Lead, 18 Nov 03:50: where I stopped
+1.0 live since 9 Nov. Main (74710fe, pushed) holds every workstream as of 17 Nov; Worker deployed 17 Nov (lockdown +
+spam guard). Ben's last round for 1.1 is on the board as WHE-221 to 228 (Product; scoring rule changes go to Ben
+first). Product and Spot improvement have since done more tickets on their branches (WHE-151 out-of-area message,
+WHE-188 to 192 UK and Wales validation, WHE-221/222/225/227): **not merged into main yet**. Run merge-workstream on
+each, then archive 1.1 for Ben to upload (he uploads from Xcode; agents can't use his Apple account). WHE-227 (quota
+alert) needs a Worker deploy on Ben's word. The catalogue build on GitHub still fails (WHE-229), even after the
+osm-cache refresh (Ben OK'd it 18 Nov); see the card. Ben's calls: Open-Meteo free tier OK while non-commercial; no
+domain for 1.1. Gotchas: `wrangler dev` dies in the agent shell (test live, rollback ready); `tools/.osm_cache` is a
+symlink to /Users/ben/Documents/wheretokite/tools/.osm_cache (tar with -h); `gh run watch` drops on network blips,
+poll `gh run view --json status` instead; an Xcode-generated xcstrings change is in `git stash`.
