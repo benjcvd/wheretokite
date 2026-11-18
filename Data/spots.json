@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T08:27:28Z",
+  "generatedAt": "2026-11-18T20:29:44Z",
   "region": "europe",
   "attribution": "Spot locations and shoreline geometry © OpenStreetMap contributors (ODbL); spot selection curated by WhereToKite",
   "spots": [
@@ -61,36 +61,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "be-oostduinkerke-groenendijk",
-      "name": "Oostduinkerke – Groenendijk",
-      "latitude": 51.14159,
-      "longitude": 2.69691,
-      "seaFacingDeg": 332.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 140.6,
-      "source": "curated",
-      "country": "BE",
-      "region": "Westkust",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "disagrees"
-    },
-    {
-      "id": "be-westende",
-      "name": "Westende",
-      "latitude": 51.16784,
-      "longitude": 2.76621,
-      "seaFacingDeg": 327.7,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 93.9,
-      "source": "curated",
-      "country": "BE",
-      "region": "Westkust",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "be-oostende",
       "name": "Oostende",
       "latitude": 51.2254,
@@ -102,66 +72,6 @@
       "country": "BE",
       "region": "Oostkust",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "be-bredene",
-      "name": "Bredene",
-      "latitude": 51.24687,
-      "longitude": 2.95282,
-      "seaFacingDeg": 326.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 77.5,
-      "source": "curated",
-      "country": "BE",
-      "region": "Oostkust",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "be-de-haan",
-      "name": "De Haan",
-      "latitude": 51.28051,
-      "longitude": 3.03393,
-      "seaFacingDeg": 324.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "BE",
-      "region": "Oostkust",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "be-wenduine",
-      "name": "Wenduine",
-      "latitude": 51.30452,
-      "longitude": 3.08613,
-      "seaFacingDeg": 333.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 65.8,
-      "source": "curated",
-      "country": "BE",
-      "region": "Oostkust",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "be-blankenberge",
-      "name": "Blankenberge",
-      "latitude": 51.32,
-      "longitude": 3.14088,
-      "seaFacingDeg": 338.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 73.9,
-      "source": "curated",
-      "country": "BE",
-      "region": "Oostkust",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -190,21 +100,6 @@
       "country": "BE",
       "region": "Oostkust",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "be-knokke-het-zoute",
-      "name": "Knokke – Het Zoute",
-      "latitude": 51.36124,
-      "longitude": 3.32722,
-      "seaFacingDeg": 343.9,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 76.2,
-      "source": "curated",
-      "country": "BE",
-      "region": "Oostkust",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -338,46 +233,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "de-chiemsee-chieming",
-      "name": "Chiemsee – Chieming",
-      "latitude": 47.89612,
-      "longitude": 12.52783,
-      "seaFacingDeg": 241.5,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "DE",
-      "region": "Bayern",
-      "waterType": "lake",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "de-brombachsee",
-      "name": "Brombachsee",
-      "latitude": 49.12024,
-      "longitude": 10.95711,
-      "seaFacingDeg": 360.0,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 41.6,
-      "source": "curated",
-      "country": "DE",
-      "region": "Bayern",
-      "waterType": "lake",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "07-01",
-          "to": "08-31"
-        },
-        {
-          "from": "12-01",
-          "to": "03-31"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "de-steinhuder-meer",
       "name": "Steinhuder Meer",
       "latitude": 52.49488,
@@ -460,22 +315,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "de-hooksiel",
-      "name": "Hooksiel",
-      "latitude": 53.64218,
-      "longitude": 8.08089,
-      "seaFacingDeg": 50.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "DE",
-      "region": "Niedersachsen",
-      "waterType": "sea",
-      "tide": "high",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "de-wremen",
       "name": "Wremen",
       "latitude": 53.64557,
@@ -489,6 +328,45 @@
       "waterType": "sea",
       "tide": "high",
       "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-juist-nordstrand",
+      "name": "Juist – Nordstrand",
+      "latitude": 53.68265,
+      "longitude": 7.00816,
+      "seaFacingDeg": 351.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 195.6,
+      "source": "curated",
+      "country": "DE",
+      "region": "Niedersachsen",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r3355571"
+    },
+    {
+      "id": "de-dornumersiel",
+      "name": "Dornumersiel",
+      "latitude": 53.68293,
+      "longitude": 7.48047,
+      "seaFacingDeg": 6.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 5.2,
+      "source": "curated",
+      "country": "DE",
+      "region": "Niedersachsen",
+      "waterType": "sea",
+      "tide": "high",
+      "tier": "pro",
+      "bans": [
+        {
+          "from": "09-16",
+          "to": "04-30"
+        }
+      ],
       "directionCheck": "agrees"
     },
     {
@@ -539,6 +417,21 @@
       "island": "r3789017"
     },
     {
+      "id": "de-baltrum-nordstrand",
+      "name": "Baltrum – Nordstrand",
+      "latitude": 53.73153,
+      "longitude": 7.37631,
+      "seaFacingDeg": 329.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 47.7,
+      "source": "curated",
+      "country": "DE",
+      "region": "Niedersachsen",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "de-dorum-neufeld",
       "name": "Dorum-Neufeld",
       "latitude": 53.73743,
@@ -572,20 +465,38 @@
       "island": "r3789069"
     },
     {
-      "id": "de-otterndorf",
-      "name": "Otterndorf",
-      "latitude": 53.82891,
-      "longitude": 8.88228,
-      "seaFacingDeg": 3.5,
+      "id": "de-spiekeroog-nordstrand",
+      "name": "Spiekeroog – Nordstrand",
+      "latitude": 53.78062,
+      "longitude": 7.76797,
+      "seaFacingDeg": 2.9,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
       "source": "curated",
       "country": "DE",
       "region": "Niedersachsen",
       "waterType": "sea",
-      "tide": "high",
       "tier": "pro",
-      "directionCheck": "agrees"
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r3789070"
+    },
+    {
+      "id": "de-wangerooge-nordstrand",
+      "name": "Wangerooge – Nordstrand",
+      "latitude": 53.79366,
+      "longitude": 7.89117,
+      "seaFacingDeg": 357.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 74.9,
+      "source": "curated",
+      "country": "DE",
+      "region": "Niedersachsen",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r3789071"
     },
     {
       "id": "de-cuxhaven-sahlenburg",
@@ -604,6 +515,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "de-cuxhaven-grimmershorn",
+      "name": "Cuxhaven – Grimmershörn",
+      "latitude": 53.88258,
+      "longitude": 8.68417,
+      "seaFacingDeg": 68.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "DE",
+      "region": "Niedersachsen",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "de-cuxhaven-kugelbake",
       "name": "Cuxhaven – Kugelbake",
       "latitude": 53.89183,
@@ -616,21 +542,6 @@
       "region": "Niedersachsen",
       "waterType": "sea",
       "tide": "high",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "de-usedom-uckeritz-achterwasser",
-      "name": "Usedom – Ückeritz (Achterwasser)",
-      "latitude": 54.01081,
-      "longitude": 14.03979,
-      "seaFacingDeg": 248.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 58.8,
-      "source": "curated",
-      "country": "DE",
-      "region": "Mecklenburg-Vorpommern",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -676,21 +587,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "de-gahlkow",
-      "name": "Gahlkow",
-      "latitude": 54.13039,
-      "longitude": 13.54464,
-      "seaFacingDeg": 4.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 28.8,
-      "source": "curated",
-      "country": "DE",
-      "region": "Mecklenburg-Vorpommern",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "de-busum-perlebucht",
       "name": "Büsum – Perlebucht",
       "latitude": 54.13783,
@@ -707,13 +603,28 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "de-usedom-peenemunde",
-      "name": "Usedom – Peenemünde",
-      "latitude": 54.13941,
-      "longitude": 13.74922,
-      "seaFacingDeg": 28.4,
+      "id": "de-lubmin",
+      "name": "Lubmin",
+      "latitude": 54.13897,
+      "longitude": 13.61745,
+      "seaFacingDeg": 342.6,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 27.2,
+      "distanceToShoreM": 24.7,
+      "source": "curated",
+      "country": "DE",
+      "region": "Mecklenburg-Vorpommern",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-kuhlungsborn",
+      "name": "Kühlungsborn",
+      "latitude": 54.15365,
+      "longitude": 11.75643,
+      "seaFacingDeg": 358.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 95.6,
       "source": "curated",
       "country": "DE",
       "region": "Mecklenburg-Vorpommern",
@@ -736,6 +647,66 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "de-kellenhusen",
+      "name": "Kellenhusen",
+      "latitude": 54.18588,
+      "longitude": 11.06069,
+      "seaFacingDeg": 125.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 40.9,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-dahme",
+      "name": "Dahme",
+      "latitude": 54.21659,
+      "longitude": 11.09035,
+      "seaFacingDeg": 91.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 14.6,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-sankt-peter-bohl",
+      "name": "Sankt Peter-Böhl",
+      "latitude": 54.27398,
+      "longitude": 8.64462,
+      "seaFacingDeg": 242.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-rugen-thiessow-weststrand",
+      "name": "Rügen – Thiessow (Weststrand)",
+      "latitude": 54.27596,
+      "longitude": 13.70001,
+      "seaFacingDeg": 236.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 121.9,
+      "source": "curated",
+      "country": "DE",
+      "region": "Mecklenburg-Vorpommern",
+      "waterType": "lagoon",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "de-saal-saaler-bodden",
       "name": "Saal (Saaler Bodden)",
       "latitude": 54.30938,
@@ -747,6 +718,21 @@
       "country": "DE",
       "region": "Mecklenburg-Vorpommern",
       "waterType": "lagoon",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-hohwacht",
+      "name": "Hohwacht",
+      "latitude": 54.32132,
+      "longitude": 10.67622,
+      "seaFacingDeg": 39.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 53.4,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
       "tier": "pro",
       "directionCheck": "agrees"
     },
@@ -779,11 +765,13 @@
       "sides": [
         {
           "name": "Baltic side",
-          "seaFacingDeg": 295.9
+          "seaFacingDeg": 295.9,
+          "waterType": "sea"
         },
         {
           "name": "Saaler Bodden side",
-          "seaFacingDeg": 151.9
+          "seaFacingDeg": 151.9,
+          "waterType": "lagoon"
         }
       ],
       "directionCheck": "agrees"
@@ -818,6 +806,36 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "de-born-saaler-bodden",
+      "name": "Born (Saaler Bodden)",
+      "latitude": 54.38372,
+      "longitude": 12.49235,
+      "seaFacingDeg": 179.2,
+      "orientationSource": "apple-maps",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "DE",
+      "region": "Mecklenburg-Vorpommern",
+      "waterType": "lagoon",
+      "tier": "pro",
+      "directionCheck": "corrected"
+    },
+    {
+      "id": "de-fehmarn-miramar-fehmarnsund",
+      "name": "Fehmarn – Miramar (Fehmarnsund)",
+      "latitude": 54.4027,
+      "longitude": 11.13414,
+      "seaFacingDeg": 182.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 49.4,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "de-fehmarn-wulfener-hals",
       "name": "Fehmarn – Wulfener Hals",
       "latitude": 54.40382,
@@ -832,6 +850,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "de-fehmarn-meeschendorf",
+      "name": "Fehmarn – Meeschendorf",
+      "latitude": 54.41087,
+      "longitude": 11.25088,
+      "seaFacingDeg": 185.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 72.8,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "de-laboe",
       "name": "Laboe",
       "latitude": 54.41381,
@@ -843,6 +876,21 @@
       "country": "DE",
       "region": "Schleswig-Holstein",
       "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-schonberger-strand-kalifornien",
+      "name": "Schönberger Strand (Kalifornien)",
+      "latitude": 54.4176,
+      "longitude": 10.40949,
+      "seaFacingDeg": 41.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 18.2,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -872,6 +920,51 @@
       "country": "DE",
       "region": "Schleswig-Holstein",
       "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-heidkate",
+      "name": "Heidkate",
+      "latitude": 54.43381,
+      "longitude": 10.33829,
+      "seaFacingDeg": 11.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 92.8,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-strande",
+      "name": "Strande",
+      "latitude": 54.43762,
+      "longitude": 10.17571,
+      "seaFacingDeg": 121.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 36.3,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-fehmarn-orth-orther-bucht",
+      "name": "Fehmarn – Orth (Orther Bucht)",
+      "latitude": 54.43878,
+      "longitude": 11.08234,
+      "seaFacingDeg": 323.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 22.0,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -949,6 +1042,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "de-fehmarn-bojendorf-wallnau",
+      "name": "Fehmarn – Bojendorf (Wallnau)",
+      "latitude": 54.48893,
+      "longitude": 11.01425,
+      "seaFacingDeg": 289.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 8.9,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "de-fehmarn-gruner-brink",
       "name": "Fehmarn – Grüner Brink",
       "latitude": 54.50893,
@@ -961,6 +1069,23 @@
       "region": "Schleswig-Holstein",
       "waterType": "sea",
       "directionCheck": "agrees"
+    },
+    {
+      "id": "de-rugen-schaprode",
+      "name": "Rügen – Schaprode",
+      "latitude": 54.51244,
+      "longitude": 13.16249,
+      "seaFacingDeg": 9.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "DE",
+      "region": "Mecklenburg-Vorpommern",
+      "waterType": "lagoon",
+      "tier": "pro",
+      "directionCheck": "uncertain",
+      "access": "ferry",
+      "island": "r1434381"
     },
     {
       "id": "de-nordstrand-holmer-siel",
@@ -979,19 +1104,36 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "de-rugen-wiek",
-      "name": "Rügen – Wiek",
-      "latitude": 54.62047,
-      "longitude": 13.28313,
-      "seaFacingDeg": 285.6,
+      "id": "de-rugen-juliusruh-schaabe",
+      "name": "Rügen – Juliusruh (Schaabe)",
+      "latitude": 54.62235,
+      "longitude": 13.38177,
+      "seaFacingDeg": 77.6,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 2.2,
+      "distanceToShoreM": 194.9,
       "source": "curated",
       "country": "DE",
       "region": "Mecklenburg-Vorpommern",
-      "waterType": "lagoon",
+      "waterType": "sea",
       "tier": "pro",
       "directionCheck": "agrees"
+    },
+    {
+      "id": "de-amrum-wittdun-badebucht",
+      "name": "Amrum – Wittdün Badebucht",
+      "latitude": 54.62489,
+      "longitude": 8.39072,
+      "seaFacingDeg": 120.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "uncertain",
+      "access": "ferry",
+      "island": "r3787117"
     },
     {
       "id": "de-rugen-dranske",
@@ -1006,6 +1148,24 @@
       "region": "Mecklenburg-Vorpommern",
       "waterType": "lagoon",
       "directionCheck": "agrees"
+    },
+    {
+      "id": "de-fohr-nieblum",
+      "name": "Föhr – Nieblum",
+      "latitude": 54.68047,
+      "longitude": 8.4807,
+      "seaFacingDeg": 192.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 39.0,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tide": "high",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r3352541"
     },
     {
       "id": "de-dagebull",
@@ -1055,21 +1215,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "de-flensburger-forde-schausende",
-      "name": "Flensburger Förde – Schausende",
-      "latitude": 54.85435,
-      "longitude": 9.5586,
-      "seaFacingDeg": 338.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 108.5,
-      "source": "curated",
-      "country": "DE",
-      "region": "Schleswig-Holstein",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "de-flensburger-forde-holnis",
       "name": "Flensburger Förde – Holnis",
       "latitude": 54.86537,
@@ -1095,6 +1240,21 @@
       "country": "DE",
       "region": "Schleswig-Holstein",
       "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "de-sylt-wenningstedt",
+      "name": "Sylt – Wenningstedt",
+      "latitude": 54.94417,
+      "longitude": 8.31897,
+      "seaFacingDeg": 291.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 57.3,
+      "source": "curated",
+      "country": "DE",
+      "region": "Schleswig-Holstein",
+      "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -1144,20 +1304,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "dk-hejlsminde",
-      "name": "Hejlsminde",
-      "latitude": 55.36261,
-      "longitude": 9.60204,
-      "seaFacingDeg": 110.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 7.3,
-      "source": "curated",
-      "country": "DK",
-      "region": "Sønderjylland",
-      "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "dk-fan-rindby",
       "name": "Fanø – Rindby",
       "latitude": 55.41838,
@@ -1174,6 +1320,21 @@
       "island": "r6125571"
     },
     {
+      "id": "dk-bjert-strand",
+      "name": "Bjert Strand",
+      "latitude": 55.43061,
+      "longitude": 9.61595,
+      "seaFacingDeg": 175.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 0.0,
+      "source": "curated",
+      "country": "DK",
+      "region": "Sønderjylland",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "dk-copenhagen-amager-strandpark",
       "name": "Copenhagen – Amager Strandpark",
       "latitude": 55.65642,
@@ -1184,20 +1345,6 @@
       "source": "curated",
       "country": "DK",
       "region": "Sjælland",
-      "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "dk-snderby",
-      "name": "Sønderby",
-      "latitude": 55.78106,
-      "longitude": 10.01718,
-      "seaFacingDeg": 127.9,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 159.8,
-      "source": "curated",
-      "country": "DK",
-      "region": "Østjylland",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
@@ -1230,11 +1377,13 @@
       "sides": [
         {
           "name": "North Sea side",
-          "seaFacingDeg": 260.9
+          "seaFacingDeg": 260.9,
+          "waterType": "sea"
         },
         {
           "name": "Ringkøbing Fjord side",
-          "seaFacingDeg": 99.8
+          "seaFacingDeg": 99.8,
+          "waterType": "lagoon"
         }
       ],
       "directionCheck": "agrees"
@@ -1355,23 +1504,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-gran-canaria-playa-del-aguila",
-      "name": "Gran Canaria – Playa del Águila",
-      "latitude": 27.77631,
-      "longitude": -15.52776,
-      "seaFacingDeg": 141.7,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 3.5,
-      "source": "curated",
-      "country": "ES",
-      "region": "Canarias",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r2214683"
-    },
-    {
       "id": "es-gran-canaria-bahia-feliz",
       "name": "Gran Canaria – Bahía Feliz",
       "latitude": 27.78169,
@@ -1429,23 +1561,6 @@
       "seaFacingDeg": 101.0,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 9.1,
-      "source": "curated",
-      "country": "ES",
-      "region": "Canarias",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r2214683"
-    },
-    {
-      "id": "es-gran-canaria-playa-del-hombre",
-      "name": "Gran Canaria – Playa del Hombre",
-      "latitude": 27.99677,
-      "longitude": -15.37449,
-      "seaFacingDeg": 41.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 9.7,
       "source": "curated",
       "country": "ES",
       "region": "Canarias",
@@ -1651,42 +1766,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-bolonia",
-      "name": "Bolonia",
-      "latitude": 36.08223,
-      "longitude": -5.76402,
-      "seaFacingDeg": 223.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 49.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-15",
-          "to": "09-15"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-algeciras-getares",
-      "name": "Algeciras – Getares",
-      "latitude": 36.09791,
-      "longitude": -5.44218,
-      "seaFacingDeg": 104.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 21.8,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-algeciras-palmones",
       "name": "Algeciras – Palmones",
       "latitude": 36.17485,
@@ -1759,21 +1838,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-san-fernando-camposoto",
-      "name": "San Fernando – Camposoto",
-      "latitude": 36.41129,
-      "longitude": -6.22206,
-      "seaFacingDeg": 248.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 13.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-estepona-guadalmansa-heaven",
       "name": "Estepona – Guadalmansa (Heaven)",
       "latitude": 36.45273,
@@ -1781,36 +1845,6 @@
       "seaFacingDeg": 157.9,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 33.9,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-san-pedro-de-alcantara",
-      "name": "San Pedro de Alcántara",
-      "latitude": 36.47404,
-      "longitude": -4.98179,
-      "seaFacingDeg": 140.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 86.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-marbella-cabopino",
-      "name": "Marbella – Cabopino",
-      "latitude": 36.48422,
-      "longitude": -4.74221,
-      "seaFacingDeg": 193.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 5.0,
       "source": "curated",
       "country": "ES",
       "region": "Andalucía",
@@ -1850,36 +1884,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-mijas-el-chaparral",
-      "name": "Mijas – El Chaparral",
-      "latitude": 36.50609,
-      "longitude": -4.66035,
-      "seaFacingDeg": 175.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 58.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-cadiz-la-victoria",
-      "name": "Cádiz – La Victoria",
-      "latitude": 36.50623,
-      "longitude": -6.2791,
-      "seaFacingDeg": 241.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 54.3,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-el-puerto-valdelagrana",
       "name": "El Puerto – Valdelagrana",
       "latitude": 36.57386,
@@ -1902,36 +1906,6 @@
       "seaFacingDeg": 212.7,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 65.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-rota-el-rompidillo",
-      "name": "Rota – El Rompidillo",
-      "latitude": 36.62086,
-      "longitude": -6.35533,
-      "seaFacingDeg": 105.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 58.1,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-torremolinos-playamar",
-      "name": "Torremolinos – Playamar",
-      "latitude": 36.63244,
-      "longitude": -4.48691,
-      "seaFacingDeg": 121.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 5.3,
       "source": "curated",
       "country": "ES",
       "region": "Andalucía",
@@ -1969,21 +1943,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-rota-la-ballena",
-      "name": "Rota – La Ballena",
-      "latitude": 36.68117,
-      "longitude": -6.41594,
-      "seaFacingDeg": 246.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 56.9,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-punta-entinas",
       "name": "Punta Entinas",
       "latitude": 36.6846,
@@ -2006,21 +1965,6 @@
       "seaFacingDeg": 168.2,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 21.3,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-guardias-viejas-culoperro",
-      "name": "Guardias Viejas – Culoperro",
-      "latitude": 36.69905,
-      "longitude": -2.8411,
-      "seaFacingDeg": 137.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 27.1,
       "source": "curated",
       "country": "ES",
       "region": "Andalucía",
@@ -2094,21 +2038,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-almeria-retamar",
-      "name": "Almería – Retamar",
-      "latitude": 36.83311,
-      "longitude": -2.3197,
-      "seaFacingDeg": 200.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 78.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-matalascanas",
       "name": "Matalascañas",
       "latitude": 36.99133,
@@ -2116,21 +2045,6 @@
       "seaFacingDeg": 219.1,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 81.6,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-mazagon-playa-de-las-dunas",
-      "name": "Mazagón – Playa de las Dunas",
-      "latitude": 37.12435,
-      "longitude": -6.81085,
-      "seaFacingDeg": 196.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 183.0,
       "source": "curated",
       "country": "ES",
       "region": "Andalucía",
@@ -2150,21 +2064,6 @@
       "country": "ES",
       "region": "Andalucía",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-isla-cristina-playa-central",
-      "name": "Isla Cristina – Playa Central",
-      "latitude": 37.18957,
-      "longitude": -7.32605,
-      "seaFacingDeg": 149.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Andalucía",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -2227,21 +2126,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-cabo-de-palos-playa-de-levante",
-      "name": "Cabo de Palos – Playa de Levante",
-      "latitude": 37.63495,
-      "longitude": -0.70117,
-      "seaFacingDeg": 38.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 86.3,
-      "source": "curated",
-      "country": "ES",
-      "region": "Murcia",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-mar-menor-los-nietos",
       "name": "Mar Menor – Los Nietos",
       "latitude": 37.65184,
@@ -2249,21 +2133,6 @@
       "seaFacingDeg": 23.2,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 99.3,
-      "source": "curated",
-      "country": "ES",
-      "region": "Murcia",
-      "waterType": "lagoon",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-la-manga-isla-del-ciervo",
-      "name": "La Manga – Isla del Ciervo",
-      "latitude": 37.66219,
-      "longitude": -0.73049,
-      "seaFacingDeg": 223.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 38.6,
       "source": "curated",
       "country": "ES",
       "region": "Murcia",
@@ -2283,51 +2152,6 @@
       "country": "ES",
       "region": "Murcia",
       "waterType": "lagoon",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-san-pedro-del-pinatar-torre-derribada",
-      "name": "San Pedro del Pinatar – Torre Derribada",
-      "latitude": 37.82375,
-      "longitude": -0.75779,
-      "seaFacingDeg": 48.9,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 23.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Murcia",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-torrevieja-la-mata",
-      "name": "Torrevieja – La Mata",
-      "latitude": 38.01668,
-      "longitude": -0.65225,
-      "seaFacingDeg": 88.7,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 43.9,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-guardamar-els-tossals",
-      "name": "Guardamar – Els Tossals",
-      "latitude": 38.12063,
-      "longitude": -0.64039,
-      "seaFacingDeg": 97.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 8.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -2374,21 +2198,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-alicante-la-albufereta",
-      "name": "Alicante – La Albufereta",
-      "latitude": 38.36283,
-      "longitude": -0.44402,
-      "seaFacingDeg": 177.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 11.7,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-el-campello-muchavista",
       "name": "El Campello – Muchavista",
       "latitude": 38.39849,
@@ -2396,36 +2205,6 @@
       "seaFacingDeg": 101.0,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 148.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-la-vila-joiosa-platja-centre",
-      "name": "La Vila Joiosa – Platja Centre",
-      "latitude": 38.50541,
-      "longitude": -0.22679,
-      "seaFacingDeg": 143.7,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 104.6,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-altea-albir-algar-mouth",
-      "name": "Altea – Albir (Algar mouth)",
-      "latitude": 38.5745,
-      "longitude": -0.06436,
-      "seaFacingDeg": 90.9,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 25.5,
       "source": "curated",
       "country": "ES",
       "region": "Comunitat Valenciana",
@@ -2449,70 +2228,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-formentera-platja-de-migjorn-ca-mari",
-      "name": "Formentera – Platja de Migjorn (Ca Marí)",
-      "latitude": 38.68501,
-      "longitude": 1.45532,
-      "seaFacingDeg": 176.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 31.7,
-      "source": "curated",
-      "country": "ES",
-      "region": "Illes Balears",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6076062"
-    },
-    {
-      "id": "es-formentera-ses-illetes",
-      "name": "Formentera – Ses Illetes",
-      "latitude": 38.76021,
-      "longitude": 1.4356,
-      "seaFacingDeg": 271.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 24.5,
-      "source": "curated",
-      "country": "ES",
-      "region": "Illes Balears",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6076062"
-    },
-    {
-      "id": "es-xabia-platja-de-l-arenal",
-      "name": "Xàbia – Platja de l'Arenal",
-      "latitude": 38.7732,
-      "longitude": 0.19081,
-      "seaFacingDeg": 48.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 34.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-denia-l-almadrava-el-paquebote",
-      "name": "Dénia – L'Almadrava (El Paquebote)",
-      "latitude": 38.8682,
-      "longitude": 0.00059,
-      "seaFacingDeg": 5.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 44.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-denia-les-deveses",
       "name": "Dénia – Les Deveses",
       "latitude": 38.87796,
@@ -2528,23 +2243,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-ibiza-platja-d-en-bossa",
-      "name": "Ibiza – Platja d'en Bossa",
-      "latitude": 38.88549,
-      "longitude": 1.409,
-      "seaFacingDeg": 111.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 145.6,
-      "source": "curated",
-      "country": "ES",
-      "region": "Illes Balears",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6076060"
-    },
-    {
       "id": "es-oliva",
       "name": "Oliva",
       "latitude": 38.90782,
@@ -2557,23 +2255,6 @@
       "region": "Comunitat Valenciana",
       "waterType": "sea",
       "directionCheck": "agrees"
-    },
-    {
-      "id": "es-ibiza-cala-martina",
-      "name": "Ibiza – Cala Martina",
-      "latitude": 38.99129,
-      "longitude": 1.57319,
-      "seaFacingDeg": 178.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 0.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Illes Balears",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6076060"
     },
     {
       "id": "es-gandia-playa-norte",
@@ -2591,21 +2272,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-xeraco-platja-de-xeraco",
-      "name": "Xeraco – Platja de Xeraco",
-      "latitude": 39.04838,
-      "longitude": -0.19343,
-      "seaFacingDeg": 62.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 40.5,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-cullera-platja-del-raco",
       "name": "Cullera – Platja del Racó",
       "latitude": 39.17864,
@@ -2613,21 +2279,6 @@
       "seaFacingDeg": 134.7,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-sueca-mareny-de-barraquetes",
-      "name": "Sueca – Mareny de Barraquetes",
-      "latitude": 39.2446,
-      "longitude": -0.25619,
-      "seaFacingDeg": 67.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 45.2,
       "source": "curated",
       "country": "ES",
       "region": "Comunitat Valenciana",
@@ -2714,70 +2365,6 @@
       "island": "r6803636"
     },
     {
-      "id": "es-mallorca-santa-ponca",
-      "name": "Mallorca – Santa Ponça",
-      "latitude": 39.51619,
-      "longitude": 2.48013,
-      "seaFacingDeg": 276.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 47.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Illes Balears",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6803636"
-    },
-    {
-      "id": "es-mallorca-ciudad-jardin-playa-de-palma",
-      "name": "Mallorca – Ciudad Jardín (Playa de Palma)",
-      "latitude": 39.55168,
-      "longitude": 2.68911,
-      "seaFacingDeg": 219.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 54.2,
-      "source": "curated",
-      "country": "ES",
-      "region": "Illes Balears",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6803636"
-    },
-    {
-      "id": "es-pobla-de-farnals-platja-nord",
-      "name": "Pobla de Farnals – Platja Nord",
-      "latitude": 39.56527,
-      "longitude": -0.28155,
-      "seaFacingDeg": 113.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 23.8,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-sagunto-platja-del-port-de-sagunt",
-      "name": "Sagunto – Platja del Port de Sagunt",
-      "latitude": 39.66006,
-      "longitude": -0.20907,
-      "seaFacingDeg": 94.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 40.2,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-mallorca-son-serra-de-marina",
       "name": "Mallorca – Son Serra de Marina",
       "latitude": 39.73221,
@@ -2828,55 +2415,6 @@
       "island": "r6076061"
     },
     {
-      "id": "es-mallorca-platja-d-alcudia",
-      "name": "Mallorca – Platja d'Alcúdia",
-      "latitude": 39.83537,
-      "longitude": 3.12573,
-      "seaFacingDeg": 127.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 179.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Illes Balears",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6803636"
-    },
-    {
-      "id": "es-mallorca-es-barcares-alcudia",
-      "name": "Mallorca – Es Barcarès (Alcúdia)",
-      "latitude": 39.86282,
-      "longitude": 3.12075,
-      "seaFacingDeg": 2.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 7.8,
-      "source": "curated",
-      "country": "ES",
-      "region": "Illes Balears",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6803636"
-    },
-    {
-      "id": "es-burriana-el-arenal",
-      "name": "Burriana – El Arenal",
-      "latitude": 39.86989,
-      "longitude": -0.05958,
-      "seaFacingDeg": 139.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 28.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-mallorca-pollenca-sa-marina",
       "name": "Mallorca – Pollença (Sa Marina)",
       "latitude": 39.87299,
@@ -2891,23 +2429,6 @@
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r6803636"
-    },
-    {
-      "id": "es-menorca-son-bou",
-      "name": "Menorca – Son Bou",
-      "latitude": 39.90176,
-      "longitude": 4.06611,
-      "seaFacingDeg": 216.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 52.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Illes Balears",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r6076061"
     },
     {
       "id": "es-menorca-cala-tirant",
@@ -2926,36 +2447,6 @@
       "island": "r6076061"
     },
     {
-      "id": "es-benicassim-voramar",
-      "name": "Benicàssim – Voramar",
-      "latitude": 40.05579,
-      "longitude": 0.08357,
-      "seaFacingDeg": 153.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 31.7,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-peniscola-playa-norte",
-      "name": "Peñíscola – Playa Norte",
-      "latitude": 40.38104,
-      "longitude": 0.41171,
-      "seaFacingDeg": 105.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 180.9,
-      "source": "curated",
-      "country": "ES",
-      "region": "Comunitat Valenciana",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-el-trabucador-ebro-delta",
       "name": "El Trabucador (Ebro delta)",
       "latitude": 40.60919,
@@ -2970,11 +2461,13 @@
       "sides": [
         {
           "name": "bay side",
-          "seaFacingDeg": 305.5
+          "seaFacingDeg": 305.5,
+          "waterType": "bay"
         },
         {
           "name": "sea side",
-          "seaFacingDeg": 125.6
+          "seaFacingDeg": 125.6,
+          "waterType": "sea"
         }
       ],
       "directionCheck": "agrees"
@@ -3028,79 +2521,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-punta-del-fangar-ebro-delta",
-      "name": "Punta del Fangar (Ebro delta)",
-      "latitude": 40.79289,
-      "longitude": 0.76252,
-      "seaFacingDeg": 14.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "sides": [
-        {
-          "name": "sea side",
-          "seaFacingDeg": 14.1
-        },
-        {
-          "name": "Fangar bay",
-          "seaFacingDeg": 201.6
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-l-ampolla-platja-de-l-arenal",
-      "name": "L'Ampolla (Platja de l'Arenal)",
-      "latitude": 40.79345,
-      "longitude": 0.70454,
-      "seaFacingDeg": 63.7,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 71.7,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-l-almadrava-vandellos",
-      "name": "L'Almadrava (Vandellòs)",
-      "latitude": 40.93946,
-      "longitude": 0.85825,
-      "seaFacingDeg": 102.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 12.1,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-l-hospitalet-de-l-infant",
       "name": "L'Hospitalet de l'Infant",
       "latitude": 40.98322,
@@ -3142,111 +2562,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-salou-platja-de-llevant",
-      "name": "Salou (Platja de Llevant)",
-      "latitude": 41.07246,
-      "longitude": 1.13871,
-      "seaFacingDeg": 191.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 61.6,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-la-pineda",
-      "name": "La Pineda",
-      "latitude": 41.08905,
-      "longitude": 1.19327,
-      "seaFacingDeg": 135.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 21.7,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-altafulla",
-      "name": "Altafulla",
-      "latitude": 41.13301,
-      "longitude": 1.37674,
-      "seaFacingDeg": 164.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 51.2,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-creixell",
-      "name": "Creixell",
-      "latitude": 41.16064,
-      "longitude": 1.45317,
-      "seaFacingDeg": 150.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 72.9,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-calafell",
-      "name": "Calafell",
-      "latitude": 41.18688,
-      "longitude": 1.57405,
-      "seaFacingDeg": 171.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 8.8,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-segur-de-calafell",
       "name": "Segur de Calafell",
       "latitude": 41.18968,
@@ -3258,27 +2573,6 @@
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-vilanova-i-la-geltru-la-farola",
-      "name": "Vilanova i la Geltrú (La Farola)",
-      "latitude": 41.21629,
-      "longitude": 1.73998,
-      "seaFacingDeg": 135.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 8.5,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
       "bans": [
         {
           "from": "06-01",
@@ -3331,27 +2625,6 @@
         {
           "from": "09-11",
           "to": "09-11"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-barcelona-barceloneta",
-      "name": "Barcelona – Barceloneta",
-      "latitude": 41.37938,
-      "longitude": 2.1934,
-      "seaFacingDeg": 133.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 12.6,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
         }
       ],
       "directionCheck": "agrees"
@@ -3492,27 +2765,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-palamos-la-fosca",
-      "name": "Palamós (La Fosca)",
-      "latitude": 41.85691,
-      "longitude": 3.14326,
-      "seaFacingDeg": 118.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 24.8,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-pals",
       "name": "Pals",
       "latitude": 41.99257,
@@ -3547,48 +2799,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-l-escala-platja-dels-riells",
-      "name": "L'Escala (Platja dels Riells)",
-      "latitude": 42.11566,
-      "longitude": 3.13984,
-      "seaFacingDeg": 46.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 42.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-sant-marti-d-empuries",
-      "name": "Sant Martí d'Empúries",
-      "latitude": 42.1343,
-      "longitude": 3.12247,
-      "seaFacingDeg": 69.9,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 58.5,
-      "source": "curated",
-      "country": "ES",
-      "region": "Catalunya",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-patos-nigran",
       "name": "Patos (Nigrán)",
       "latitude": 42.15537,
@@ -3615,21 +2825,6 @@
       "country": "ES",
       "region": "Catalunya",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-vigo-o-vao",
-      "name": "Vigo – O Vao",
-      "latitude": 42.19806,
-      "longitude": -8.79311,
-      "seaFacingDeg": 343.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 8.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Galicia",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -3721,11 +2916,13 @@
       "sides": [
         {
           "name": "South side",
-          "seaFacingDeg": 172.3
+          "seaFacingDeg": 172.3,
+          "waterType": "sea"
         },
         {
           "name": "North side",
-          "seaFacingDeg": 38.7
+          "seaFacingDeg": 38.7,
+          "waterType": "sea"
         }
       ],
       "directionCheck": "agrees"
@@ -3738,21 +2935,6 @@
       "seaFacingDeg": 304.0,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "ES",
-      "region": "Galicia",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-boiro-carragueiros",
-      "name": "Boiro – Carragueiros",
-      "latitude": 42.6116,
-      "longitude": -8.87294,
-      "seaFacingDeg": 217.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 39.6,
       "source": "curated",
       "country": "ES",
       "region": "Galicia",
@@ -3776,21 +2958,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-ancoradoiro-monte-louro",
-      "name": "Ancoradoiro (Monte Louro)",
-      "latitude": 42.7551,
-      "longitude": -9.11485,
-      "seaFacingDeg": 261.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 21.3,
-      "source": "curated",
-      "country": "ES",
-      "region": "Galicia",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-carnota",
       "name": "Carnota",
       "latitude": 42.82453,
@@ -3801,36 +2968,6 @@
       "source": "curated",
       "country": "ES",
       "region": "Galicia",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-laxe",
-      "name": "Laxe",
-      "latitude": 43.2189,
-      "longitude": -8.99859,
-      "seaFacingDeg": 33.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 188.5,
-      "source": "curated",
-      "country": "ES",
-      "region": "Galicia",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-zarautz",
-      "name": "Zarautz",
-      "latitude": 43.28994,
-      "longitude": -2.16599,
-      "seaFacingDeg": 346.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 176.9,
-      "source": "curated",
-      "country": "ES",
-      "region": "Euskadi",
       "waterType": "sea",
       "tier": "pro",
       "directionCheck": "agrees"
@@ -3847,21 +2984,6 @@
       "country": "ES",
       "region": "Galicia",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-zurriola-donostia",
-      "name": "Zurriola (Donostia)",
-      "latitude": 43.32672,
-      "longitude": -1.97614,
-      "seaFacingDeg": 346.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 71.1,
-      "source": "curated",
-      "country": "ES",
-      "region": "Euskadi",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -3887,21 +3009,6 @@
       "seaFacingDeg": 282.9,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 23.1,
-      "source": "curated",
-      "country": "ES",
-      "region": "Euskadi",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-la-arena-muskiz",
-      "name": "La Arena (Muskiz)",
-      "latitude": 43.34851,
-      "longitude": -3.11727,
-      "seaFacingDeg": 339.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 22.6,
       "source": "curated",
       "country": "ES",
       "region": "Euskadi",
@@ -3940,21 +3047,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-orinon",
-      "name": "Oriñón",
-      "latitude": 43.4009,
-      "longitude": -3.32166,
-      "seaFacingDeg": 37.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 50.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Cantabria",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-gorliz",
       "name": "Gorliz",
       "latitude": 43.412,
@@ -3980,21 +3072,6 @@
       "source": "curated",
       "country": "ES",
       "region": "Cantabria",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-ares-ria-de-ares",
-      "name": "Ares (Ría de Ares)",
-      "latitude": 43.42618,
-      "longitude": -8.24092,
-      "seaFacingDeg": 126.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 87.1,
-      "source": "curated",
-      "country": "ES",
-      "region": "Galicia",
       "waterType": "sea",
       "tier": "pro",
       "directionCheck": "agrees"
@@ -4079,37 +3156,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-san-xurxo-ferrol",
-      "name": "San Xurxo (Ferrol)",
-      "latitude": 43.52789,
-      "longitude": -8.30301,
-      "seaFacingDeg": 312.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 150.8,
-      "source": "curated",
-      "country": "ES",
-      "region": "Galicia",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-ria-de-rodiles",
-      "name": "Ría de Rodiles",
-      "latitude": 43.53393,
-      "longitude": -5.38021,
-      "seaFacingDeg": 352.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 28.9,
-      "source": "curated",
-      "country": "ES",
-      "region": "Asturias",
-      "waterType": "sea",
-      "waterSectorDeg": 120.0,
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-gijon-san-lorenzo",
       "name": "Gijón – San Lorenzo",
       "latitude": 43.54277,
@@ -4141,36 +3187,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "es-penarronda-castropol",
-      "name": "Peñarronda (Castropol)",
-      "latitude": 43.55328,
-      "longitude": -6.99682,
-      "seaFacingDeg": 357.7,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 11.5,
-      "source": "curated",
-      "country": "ES",
-      "region": "Asturias",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-playon-de-bayas",
-      "name": "Playón de Bayas",
-      "latitude": 43.57287,
-      "longitude": -6.04959,
-      "seaFacingDeg": 326.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 52.8,
-      "source": "curated",
-      "country": "ES",
-      "region": "Asturias",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "es-salinas-san-juan-de-nieva",
       "name": "Salinas – San Juan de Nieva",
       "latitude": 43.58084,
@@ -4192,36 +3208,6 @@
       "seaFacingDeg": 351.4,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 82.8,
-      "source": "curated",
-      "country": "ES",
-      "region": "Galicia",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-luanco-santa-marina",
-      "name": "Luanco – Santa Marina",
-      "latitude": 43.61833,
-      "longitude": -5.7877,
-      "seaFacingDeg": 128.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 39.4,
-      "source": "curated",
-      "country": "ES",
-      "region": "Asturias",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "es-fornos-ortigueira",
-      "name": "Fornos (Ortigueira)",
-      "latitude": 43.70328,
-      "longitude": -7.8443,
-      "seaFacingDeg": 0.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 23.6,
       "source": "curated",
       "country": "ES",
       "region": "Galicia",
@@ -4299,23 +3285,6 @@
       "country": "FR",
       "region": "Corse",
       "waterType": "sea",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r7112309"
-    },
-    {
-      "id": "fr-bonifacio-balistra",
-      "name": "Bonifacio – Balistra",
-      "latitude": 41.43891,
-      "longitude": 9.22276,
-      "seaFacingDeg": 92.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 13.7,
-      "source": "curated",
-      "country": "FR",
-      "region": "Corse",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r7112309"
@@ -4686,20 +3655,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "fr-narbonne-la-nautique",
-      "name": "Narbonne – La Nautique",
-      "latitude": 43.14326,
-      "longitude": 3.00631,
-      "seaFacingDeg": 194.9,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 28.8,
-      "source": "curated",
-      "country": "FR",
-      "region": "Languedoc",
-      "waterType": "lagoon",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "fr-narbonne-plage-creneau-naturel",
       "name": "Narbonne-Plage – Créneau Naturel",
       "latitude": 43.14545,
@@ -4987,27 +3942,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "fr-fos-sur-mer-le-cavaou",
-      "name": "Fos-sur-Mer – Le Cavaou",
-      "latitude": 43.41928,
-      "longitude": 4.90355,
-      "seaFacingDeg": 148.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "FR",
-      "region": "Provence",
-      "waterType": "sea",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "06-15",
-          "to": "09-15"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "fr-meze-la-pinede",
       "name": "Mèze – La Pinède",
       "latitude": 43.41964,
@@ -5119,22 +4053,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "fr-cannes-palm-beach",
-      "name": "Cannes – Palm Beach",
-      "latitude": 43.53518,
-      "longitude": 7.03829,
-      "seaFacingDeg": 136.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 6.2,
-      "source": "curated",
-      "country": "FR",
-      "region": "Côte d'Azur",
-      "waterType": "sea",
-      "waterSectorDeg": 220.0,
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "fr-le-grau-du-roi-le-boucanet",
       "name": "Le Grau-du-Roi – Le Boucanet",
       "latitude": 43.54574,
@@ -5207,21 +4125,6 @@
       "waterType": "sea",
       "tier": "pro",
       "directionCheck": "agrees"
-    },
-    {
-      "id": "fr-lac-du-salagou",
-      "name": "Lac du Salagou",
-      "latitude": 43.64754,
-      "longitude": 3.3878,
-      "seaFacingDeg": 315.7,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "FR",
-      "region": "Languedoc",
-      "waterType": "lake",
-      "tier": "pro",
-      "directionCheck": "uncertain"
     },
     {
       "id": "fr-hossegor-plage-sud",
@@ -5486,22 +4389,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "fr-le-verdon-la-chambrette",
-      "name": "Le Verdon – La Chambrette",
-      "latitude": 45.55085,
-      "longitude": -1.05796,
-      "seaFacingDeg": 65.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 91.6,
-      "source": "curated",
-      "country": "FR",
-      "region": "Gironde",
-      "waterType": "sea",
-      "tide": "high",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "fr-la-palmyre-bonne-anse",
       "name": "La Palmyre – Bonne Anse",
       "latitude": 45.68694,
@@ -5529,21 +4416,6 @@
       "region": "Charente-Maritime",
       "waterType": "sea",
       "tide": "not-low",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "fr-oleron-la-perroche",
-      "name": "Oléron – La Perroche",
-      "latitude": 45.89919,
-      "longitude": -1.29467,
-      "seaFacingDeg": 207.9,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 127.9,
-      "source": "curated",
-      "country": "FR",
-      "region": "Charente-Maritime",
-      "waterType": "sea",
       "tier": "pro",
       "directionCheck": "agrees"
     },
@@ -5963,11 +4835,13 @@
       "sides": [
         {
           "name": "bay side",
-          "seaFacingDeg": 79.8
+          "seaFacingDeg": 79.8,
+          "waterType": "bay"
         },
         {
           "name": "ocean side",
-          "seaFacingDeg": 291.0
+          "seaFacingDeg": 291.0,
+          "waterType": "sea"
         }
       ],
       "directionCheck": "agrees"
@@ -6109,11 +4983,13 @@
       "sides": [
         {
           "name": "ocean side",
-          "seaFacingDeg": 258.5
+          "seaFacingDeg": 258.5,
+          "waterType": "sea"
         },
         {
           "name": "Petite Mer",
-          "seaFacingDeg": 34.0
+          "seaFacingDeg": 34.0,
+          "waterType": "lagoon"
         }
       ],
       "directionCheck": "uncertain"
@@ -6141,21 +5017,6 @@
       "seaFacingDeg": 139.3,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 37.5,
-      "source": "curated",
-      "country": "FR",
-      "region": "Bretagne",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "fr-fort-bloque",
-      "name": "Fort-Bloqué",
-      "latitude": 47.74092,
-      "longitude": -3.50407,
-      "seaFacingDeg": 252.7,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 35.4,
       "source": "curated",
       "country": "FR",
       "region": "Bretagne",
@@ -6357,21 +5218,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "fr-le-conquet-blancs-sablons",
-      "name": "Le Conquet – Blancs Sablons",
-      "latitude": 48.3673,
-      "longitude": -4.76628,
-      "seaFacingDeg": 313.9,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 14.6,
-      "source": "curated",
-      "country": "FR",
-      "region": "Bretagne",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "fr-brest-moulin-blanc",
       "name": "Brest – Moulin Blanc",
       "latitude": 48.39664,
@@ -6422,21 +5268,6 @@
       "region": "Grand Est",
       "waterType": "lake",
       "directionCheck": "corrected"
-    },
-    {
-      "id": "fr-plerin-les-rosaires",
-      "name": "Plérin – Les Rosaires",
-      "latitude": 48.56417,
-      "longitude": -2.7519,
-      "seaFacingDeg": 21.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 132.6,
-      "source": "curated",
-      "country": "FR",
-      "region": "Bretagne",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
     },
     {
       "id": "fr-lampaul-ploudalmezeau-trois-moutons",
@@ -6559,21 +5390,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "fr-guisseny-le-vougot",
-      "name": "Guissény – Le Vougot",
-      "latitude": 48.631,
-      "longitude": -4.45893,
-      "seaFacingDeg": 308.9,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 99.6,
-      "source": "curated",
-      "country": "FR",
-      "region": "Bretagne",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "fr-saint-lunaire-longchamp",
       "name": "Saint-Lunaire – Longchamp",
       "latitude": 48.6368,
@@ -6594,21 +5410,6 @@
           "endHour": 20
         }
       ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "fr-sables-d-or-les-pins",
-      "name": "Sables-d'Or-les-Pins",
-      "latitude": 48.64098,
-      "longitude": -2.40679,
-      "seaFacingDeg": 358.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 29.9,
-      "source": "curated",
-      "country": "FR",
-      "region": "Bretagne",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -6700,22 +5501,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "fr-jullouville",
-      "name": "Jullouville",
-      "latitude": 48.76114,
-      "longitude": -1.56904,
-      "seaFacingDeg": 275.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 290.8,
-      "source": "curated",
-      "country": "FR",
-      "region": "Normandie",
-      "waterType": "sea",
-      "tide": "not-high",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "fr-agon-coutainville",
       "name": "Agon-Coutainville",
       "latitude": 49.03649,
@@ -6727,21 +5512,6 @@
       "country": "FR",
       "region": "Normandie",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "fr-gouville-sur-mer",
-      "name": "Gouville-sur-Mer",
-      "latitude": 49.09908,
-      "longitude": -1.60774,
-      "seaFacingDeg": 279.2,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 185.7,
-      "source": "curated",
-      "country": "FR",
-      "region": "Normandie",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -6805,21 +5575,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "fr-houlgate",
-      "name": "Houlgate",
-      "latitude": 49.30243,
-      "longitude": -0.07613,
-      "seaFacingDeg": 332.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 288.8,
-      "source": "curated",
-      "country": "FR",
-      "region": "Normandie",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "fr-langrune-sur-mer",
       "name": "Langrune-sur-Mer",
       "latitude": 49.3262,
@@ -6842,21 +5597,6 @@
       "seaFacingDeg": 4.7,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 26.3,
-      "source": "curated",
-      "country": "FR",
-      "region": "Normandie",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "fr-asnelles",
-      "name": "Asnelles",
-      "latitude": 49.34196,
-      "longitude": -0.58231,
-      "seaFacingDeg": 351.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 9.8,
       "source": "curated",
       "country": "FR",
       "region": "Normandie",
@@ -7029,21 +5769,6 @@
       "region": "Normandie",
       "waterType": "sea",
       "tide": "high",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "fr-urville-nacqueville",
-      "name": "Urville-Nacqueville",
-      "latitude": 49.67167,
-      "longitude": -1.70284,
-      "seaFacingDeg": 20.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 74.6,
-      "source": "curated",
-      "country": "FR",
-      "region": "Normandie",
-      "waterType": "sea",
       "tier": "pro",
       "directionCheck": "agrees"
     },
@@ -7432,6 +6157,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "gb-hayle-the-bluff",
+      "name": "Hayle – The Bluff",
+      "latitude": 50.20867,
+      "longitude": -5.40969,
+      "seaFacingDeg": 311.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "GB",
+      "region": "Cornwall",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "gb-gwithian",
       "name": "Gwithian",
       "latitude": 50.22526,
@@ -7550,11 +6290,13 @@
       "sides": [
         {
           "name": "Duck Pond (estuary)",
-          "seaFacingDeg": 307.4
+          "seaFacingDeg": 307.4,
+          "waterType": "lagoon"
         },
         {
           "name": "Seafront",
-          "seaFacingDeg": 225.6
+          "seaFacingDeg": 225.6,
+          "waterType": "sea"
         }
       ],
       "directionCheck": "agrees"
@@ -7666,22 +6408,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "gb-pevensey-bay",
-      "name": "Pevensey Bay",
-      "latitude": 50.81244,
-      "longitude": 0.35101,
-      "seaFacingDeg": 140.8,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 174.5,
-      "source": "curated",
-      "country": "GB",
-      "region": "East Sussex",
-      "waterType": "sea",
-      "tide": "not-low",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "gb-calshot",
       "name": "Calshot",
       "latitude": 50.81433,
@@ -7769,26 +6495,6 @@
       "source": "curated",
       "country": "GB",
       "region": "Devon",
-      "waterType": "sea",
-      "bans": [
-        {
-          "from": "07-01",
-          "to": "08-31"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "gb-brean",
-      "name": "Brean",
-      "latitude": 51.28172,
-      "longitude": -3.01513,
-      "seaFacingDeg": 280.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 200.7,
-      "source": "curated",
-      "country": "GB",
-      "region": "Somerset",
       "waterType": "sea",
       "directionCheck": "agrees"
     },
@@ -8502,28 +7208,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "gb-budle-bay",
-      "name": "Budle Bay",
-      "latitude": 55.612,
-      "longitude": -1.7758,
-      "seaFacingDeg": 60.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 29.3,
-      "source": "curated",
-      "country": "GB",
-      "region": "Northumberland",
-      "waterType": "lagoon",
-      "tide": "high",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "11-01",
-          "to": "03-31"
-        }
-      ],
-      "directionCheck": "disagrees"
-    },
-    {
       "id": "gb-longniddry-bents",
       "name": "Longniddry Bents",
       "latitude": 55.98363,
@@ -8713,21 +7397,6 @@
       "island": "r5420246"
     },
     {
-      "id": "gb-aberdeen-beach",
-      "name": "Aberdeen Beach",
-      "latitude": 57.15843,
-      "longitude": -2.07937,
-      "seaFacingDeg": 86.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 29.5,
-      "source": "curated",
-      "country": "GB",
-      "region": "Aberdeenshire",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "gb-balmedie",
       "name": "Balmedie",
       "latitude": 57.25155,
@@ -8813,6 +7482,7 @@
       "country": "GB",
       "region": "Moray",
       "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -8827,6 +7497,7 @@
       "country": "GB",
       "region": "Caithness",
       "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -8841,6 +7512,40 @@
       "country": "GR",
       "region": "Crete",
       "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r453129"
+    },
+    {
+      "id": "gr-elafonisi",
+      "name": "Elafonisi",
+      "latitude": 35.27157,
+      "longitude": 23.54192,
+      "seaFacingDeg": 218.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 59.0,
+      "source": "curated",
+      "country": "GR",
+      "region": "Crete",
+      "waterType": "lagoon",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r453129"
+    },
+    {
+      "id": "gr-amoudara-heraklion",
+      "name": "Amoudara (Heraklion)",
+      "latitude": 35.33748,
+      "longitude": 25.0891,
+      "seaFacingDeg": 359.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 31.2,
+      "source": "curated",
+      "country": "GR",
+      "region": "Crete",
+      "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r453129"
@@ -8876,15 +7581,34 @@
       "sides": [
         {
           "name": "west side (waves)",
-          "seaFacingDeg": 229.1
+          "seaFacingDeg": 229.1,
+          "waterType": "sea"
         },
         {
           "name": "east side (flat)",
-          "seaFacingDeg": 173.9
+          "seaFacingDeg": 173.9,
+          "waterType": "sea"
         }
       ],
       "directionCheck": "agrees",
       "access": "ferry"
+    },
+    {
+      "id": "gr-fanes",
+      "name": "Fanes",
+      "latitude": 36.36183,
+      "longitude": 27.97351,
+      "seaFacingDeg": 309.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 10.7,
+      "source": "curated",
+      "country": "GR",
+      "region": "Rhodes",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r452614"
     },
     {
       "id": "gr-theologos",
@@ -8902,6 +7626,55 @@
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r452614"
+    },
+    {
+      "id": "gr-monolithos",
+      "name": "Monolithos",
+      "latitude": 36.3961,
+      "longitude": 25.48681,
+      "seaFacingDeg": 91.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 33.8,
+      "source": "curated",
+      "country": "GR",
+      "region": "Santorini",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r453964"
+    },
+    {
+      "id": "gr-mavrovouni-gythio",
+      "name": "Mavrovouni (Gythio)",
+      "latitude": 36.72688,
+      "longitude": 22.55321,
+      "seaFacingDeg": 156.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 143.7,
+      "source": "curated",
+      "country": "GR",
+      "region": "Peloponnese",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-mastichari",
+      "name": "Mastichari",
+      "latitude": 36.85039,
+      "longitude": 27.08051,
+      "seaFacingDeg": 348.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 13.4,
+      "source": "curated",
+      "country": "GR",
+      "region": "Kos",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r536480"
     },
     {
       "id": "gr-marmari",
@@ -8934,6 +7707,23 @@
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r536480"
+    },
+    {
+      "id": "gr-glyfada",
+      "name": "Glyfada",
+      "latitude": 36.99326,
+      "longitude": 25.39065,
+      "seaFacingDeg": 260.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 70.2,
+      "source": "curated",
+      "country": "GR",
+      "region": "Naxos",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r453091"
     },
     {
       "id": "gr-golden-beach-chrysi-akti",
@@ -8983,6 +7773,21 @@
       "access": "ferry"
     },
     {
+      "id": "gr-astros",
+      "name": "Astros",
+      "latitude": 37.41185,
+      "longitude": 22.76158,
+      "seaFacingDeg": 126.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 12.3,
+      "source": "curated",
+      "country": "GR",
+      "region": "Peloponnese",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "gr-korfos",
       "name": "Korfos",
       "latitude": 37.42241,
@@ -8999,6 +7804,100 @@
       "island": "r531115"
     },
     {
+      "id": "gr-kalafati",
+      "name": "Kalafati",
+      "latitude": 37.43408,
+      "longitude": 25.41884,
+      "seaFacingDeg": 145.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 14.2,
+      "source": "curated",
+      "country": "GR",
+      "region": "Mykonos",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r531115"
+    },
+    {
+      "id": "gr-ftelia",
+      "name": "Ftelia",
+      "latitude": 37.46182,
+      "longitude": 25.37575,
+      "seaFacingDeg": 20.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 37.4,
+      "source": "curated",
+      "country": "GR",
+      "region": "Mykonos",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r531115"
+    },
+    {
+      "id": "gr-nafplio-karathona",
+      "name": "Nafplio (Karathona)",
+      "latitude": 37.5377,
+      "longitude": 22.81622,
+      "seaFacingDeg": 97.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 13.3,
+      "source": "curated",
+      "country": "GR",
+      "region": "Peloponnese",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-anavyssos",
+      "name": "Anavyssos",
+      "latitude": 37.71906,
+      "longitude": 23.92464,
+      "seaFacingDeg": 142.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 16.7,
+      "source": "curated",
+      "country": "GR",
+      "region": "Attica",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-lavrio",
+      "name": "Lavrio",
+      "latitude": 37.71963,
+      "longitude": 24.06223,
+      "seaFacingDeg": 80.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 6.5,
+      "source": "curated",
+      "country": "GR",
+      "region": "Attica",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-vouliagmeni",
+      "name": "Vouliagmeni",
+      "latitude": 37.80579,
+      "longitude": 23.77948,
+      "seaFacingDeg": 84.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 239.7,
+      "source": "curated",
+      "country": "GR",
+      "region": "Attica",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "gr-loutsa-artemida",
       "name": "Loutsa (Artemida)",
       "latitude": 37.98151,
@@ -9010,6 +7909,21 @@
       "country": "GR",
       "region": "Attica",
       "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-alepoxori-gulf-of-alkyonides",
+      "name": "Alepoxori (Gulf of Alkyonides)",
+      "latitude": 38.06008,
+      "longitude": 23.09864,
+      "seaFacingDeg": 341.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 11.6,
+      "source": "curated",
+      "country": "GR",
+      "region": "Attica",
+      "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -9027,6 +7941,51 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "gr-oropos-skala-oropou",
+      "name": "Oropos (Skala Oropou)",
+      "latitude": 38.33189,
+      "longitude": 23.77794,
+      "seaFacingDeg": 73.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 16.7,
+      "source": "curated",
+      "country": "GR",
+      "region": "Attica",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-drepano-rio-patras",
+      "name": "Drepano (Rio – Patras)",
+      "latitude": 38.33996,
+      "longitude": 21.84862,
+      "seaFacingDeg": 27.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 1.0,
+      "source": "curated",
+      "country": "GR",
+      "region": "Achaia",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-lefkandi",
+      "name": "Lefkandi",
+      "latitude": 38.40725,
+      "longitude": 23.67392,
+      "seaFacingDeg": 118.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 257.9,
+      "source": "curated",
+      "country": "GR",
+      "region": "Evia",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "gr-lefkada-agios-ioannis",
       "name": "Lefkada – Agios Ioannis",
       "latitude": 38.84192,
@@ -9039,6 +7998,38 @@
       "region": "Lefkada",
       "waterType": "sea",
       "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-raches",
+      "name": "Raches",
+      "latitude": 38.87739,
+      "longitude": 22.78243,
+      "seaFacingDeg": 210.5,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 10.2,
+      "source": "curated",
+      "country": "GR",
+      "region": "Fthiotida",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "gr-chalikounas",
+      "name": "Chalikounas",
+      "latitude": 39.4475,
+      "longitude": 19.88671,
+      "seaFacingDeg": 206.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 33.7,
+      "source": "curated",
+      "country": "GR",
+      "region": "Corfu",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r966358"
     },
     {
       "id": "gr-keros",
@@ -9537,11 +8528,13 @@
       "sides": [
         {
           "name": "Keel Strand",
-          "seaFacingDeg": 218.4
+          "seaFacingDeg": 218.4,
+          "waterType": "sea"
         },
         {
           "name": "Keel Lough",
-          "seaFacingDeg": 348.3
+          "seaFacingDeg": 348.3,
+          "waterType": "lake"
         }
       ],
       "directionCheck": "agrees",
@@ -9733,23 +8726,6 @@
       "island": "r7681896"
     },
     {
-      "id": "ie-culdaff",
-      "name": "Culdaff",
-      "latitude": 55.30221,
-      "longitude": -7.15273,
-      "seaFacingDeg": 86.3,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 2.7,
-      "source": "curated",
-      "country": "IE",
-      "region": "Donegal",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r7681896"
-    },
-    {
       "id": "it-santa-maria-del-focallo",
       "name": "Santa Maria del Focallo",
       "latitude": 36.71686,
@@ -9793,6 +8769,38 @@
       "country": "IT",
       "region": "Sicilia",
       "waterType": "lagoon",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6197225"
+    },
+    {
+      "id": "it-punta-pellaro",
+      "name": "Punta Pellaro",
+      "latitude": 38.01988,
+      "longitude": 15.63816,
+      "seaFacingDeg": 329.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 84.0,
+      "source": "curated",
+      "country": "IT",
+      "region": "Calabria",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-capo-peloro-torre-faro",
+      "name": "Capo Peloro (Torre Faro)",
+      "latitude": 38.26785,
+      "longitude": 15.65308,
+      "seaFacingDeg": 79.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 0.0,
+      "source": "curated",
+      "country": "IT",
+      "region": "Sicilia",
+      "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r6197225"
@@ -9844,6 +8852,40 @@
       "island": "r6847723"
     },
     {
+      "id": "it-villasimius-campulongu",
+      "name": "Villasimius – Campulongu",
+      "latitude": 39.12748,
+      "longitude": 9.50665,
+      "seaFacingDeg": 233.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 51.9,
+      "source": "curated",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
+    },
+    {
+      "id": "it-cagliari-petrol-beach",
+      "name": "Cagliari – Petrol Beach",
+      "latitude": 39.15118,
+      "longitude": 9.02164,
+      "seaFacingDeg": 123.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 55.7,
+      "source": "curated",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
+    },
+    {
       "id": "it-cagliari-poetto",
       "name": "Cagliari – Poetto",
       "latitude": 39.21141,
@@ -9877,6 +8919,21 @@
       "island": "r6847723"
     },
     {
+      "id": "it-gallipoli-lido-pizzo",
+      "name": "Gallipoli – Lido Pizzo",
+      "latitude": 39.99563,
+      "longitude": 18.00621,
+      "seaFacingDeg": 349.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 6.1,
+      "source": "curated",
+      "country": "IT",
+      "region": "Puglia",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "it-putzu-idu",
       "name": "Putzu Idu",
       "latitude": 40.02897,
@@ -9893,6 +8950,38 @@
       "island": "r6847723"
     },
     {
+      "id": "it-capo-mannu",
+      "name": "Capo Mannu",
+      "latitude": 40.03578,
+      "longitude": 8.37907,
+      "seaFacingDeg": 289.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
+    },
+    {
+      "id": "it-alimini",
+      "name": "Alimini",
+      "latitude": 40.20117,
+      "longitude": 18.4592,
+      "seaFacingDeg": 73.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 35.8,
+      "source": "curated",
+      "country": "IT",
+      "region": "Puglia",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "it-porto-cesareo-torre-lapillo",
       "name": "Porto Cesareo – Torre Lapillo",
       "latitude": 40.285,
@@ -9904,6 +8993,53 @@
       "country": "IT",
       "region": "Puglia",
       "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-san-foca",
+      "name": "San Foca",
+      "latitude": 40.29821,
+      "longitude": 18.41015,
+      "seaFacingDeg": 38.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 10.4,
+      "source": "curated",
+      "country": "IT",
+      "region": "Puglia",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-la-caletta-siniscola",
+      "name": "La Caletta (Siniscola)",
+      "latitude": 40.59812,
+      "longitude": 9.75252,
+      "seaFacingDeg": 65.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 60.5,
+      "source": "curated",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
+    },
+    {
+      "id": "it-apani",
+      "name": "Apani",
+      "latitude": 40.70193,
+      "longitude": 17.81395,
+      "seaFacingDeg": 32.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.7,
+      "source": "curated",
+      "country": "IT",
+      "region": "Puglia",
+      "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -9952,6 +9088,40 @@
       "region": "Puglia",
       "waterType": "sea",
       "directionCheck": "agrees"
+    },
+    {
+      "id": "it-valledoria-la-foce",
+      "name": "Valledoria – La Foce",
+      "latitude": 40.93534,
+      "longitude": 8.80938,
+      "seaFacingDeg": 318.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 13.6,
+      "source": "curated",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
+    },
+    {
+      "id": "it-vignola-mare",
+      "name": "Vignola Mare",
+      "latitude": 41.12813,
+      "longitude": 9.06661,
+      "seaFacingDeg": 350.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 55.2,
+      "source": "curated",
+      "country": "IT",
+      "region": "Sardegna",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r6847723"
     },
     {
       "id": "it-rena-majore",
@@ -10016,6 +9186,66 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "it-marina-di-lesina-acquarotta",
+      "name": "Marina di Lesina – Acquarotta",
+      "latitude": 41.90821,
+      "longitude": 15.35031,
+      "seaFacingDeg": 42.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 17.3,
+      "source": "curated",
+      "country": "IT",
+      "region": "Puglia",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-vieste-spiaggia-lunga-scialmarino",
+      "name": "Vieste – Spiaggia Lunga (Scialmarino)",
+      "latitude": 41.91563,
+      "longitude": 16.11999,
+      "seaFacingDeg": 33.9,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "IT",
+      "region": "Puglia",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-fossacesia-marina",
+      "name": "Fossacesia Marina",
+      "latitude": 42.24934,
+      "longitude": 14.51899,
+      "seaFacingDeg": 34.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 271.7,
+      "source": "curated",
+      "country": "IT",
+      "region": "Abruzzo",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-pescara-portanuova",
+      "name": "Pescara – Portanuova",
+      "latitude": 42.47402,
+      "longitude": 14.21196,
+      "seaFacingDeg": 40.1,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 78.1,
+      "source": "curated",
+      "country": "IT",
+      "region": "Abruzzo",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "it-talamone",
       "name": "Talamone",
       "latitude": 42.55355,
@@ -10030,6 +9260,96 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "it-marina-di-grosseto",
+      "name": "Marina di Grosseto",
+      "latitude": 42.7493,
+      "longitude": 10.92416,
+      "seaFacingDeg": 206.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "IT",
+      "region": "Toscana",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-puntone-di-scarlino-follonica",
+      "name": "Puntone di Scarlino (Follonica)",
+      "latitude": 42.89615,
+      "longitude": 10.78358,
+      "seaFacingDeg": 246.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 13.6,
+      "source": "curated",
+      "country": "IT",
+      "region": "Toscana",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-civitanova-marche",
+      "name": "Civitanova Marche",
+      "latitude": 43.30283,
+      "longitude": 13.73803,
+      "seaFacingDeg": 68.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 22.5,
+      "source": "curated",
+      "country": "IT",
+      "region": "Marche",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-calambrone-tirrenia",
+      "name": "Calambrone (Tirrenia)",
+      "latitude": 43.61067,
+      "longitude": 10.28914,
+      "seaFacingDeg": 264.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 29.3,
+      "source": "curated",
+      "country": "IT",
+      "region": "Toscana",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-albenga",
+      "name": "Albenga",
+      "latitude": 44.0471,
+      "longitude": 8.22655,
+      "seaFacingDeg": 96.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 20.1,
+      "source": "curated",
+      "country": "IT",
+      "region": "Liguria",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-lido-di-spina",
+      "name": "Lido di Spina",
+      "latitude": 44.64791,
+      "longitude": 12.25693,
+      "seaFacingDeg": 72.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 13.2,
+      "source": "curated",
+      "country": "IT",
+      "region": "Emilia-Romagna",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "it-rosolina-mare",
       "name": "Rosolina Mare",
       "latitude": 45.13551,
@@ -10041,6 +9361,52 @@
       "country": "IT",
       "region": "Veneto",
       "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-sottomarina-chioggia",
+      "name": "Sottomarina (Chioggia)",
+      "latitude": 45.22074,
+      "longitude": 12.29902,
+      "seaFacingDeg": 100.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 121.1,
+      "source": "curated",
+      "country": "IT",
+      "region": "Veneto",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-caorle-spiaggia-di-levante",
+      "name": "Caorle – Spiaggia di Levante",
+      "latitude": 45.60828,
+      "longitude": 12.90068,
+      "seaFacingDeg": 134.8,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 85.2,
+      "source": "curated",
+      "country": "IT",
+      "region": "Veneto",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-grado-pineta",
+      "name": "Grado – Pineta",
+      "latitude": 45.67689,
+      "longitude": 13.42794,
+      "seaFacingDeg": 181.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 76.1,
+      "source": "curated",
+      "country": "IT",
+      "region": "Friuli-Venezia Giulia",
+      "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -10085,6 +9451,21 @@
       "region": "Veneto",
       "waterType": "lake",
       "waterSectorDeg": 360.0,
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "it-lago-di-como-colico",
+      "name": "Lago di Como – Colico",
+      "latitude": 46.14231,
+      "longitude": 9.37385,
+      "seaFacingDeg": 297.4,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "IT",
+      "region": "Lombardia",
+      "waterType": "lake",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -10333,6 +9714,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "ma-tangier-achakar-cap-spartel",
+      "name": "Tangier – Achakar (Cap Spartel)",
+      "latitude": 35.77698,
+      "longitude": -5.93034,
+      "seaFacingDeg": 290.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 96.9,
+      "source": "curated",
+      "country": "MA",
+      "region": "Tangier",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "me-ada-bojana",
       "name": "Ada Bojana",
       "latitude": 41.85609,
@@ -10362,23 +9758,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "mt-golden-bay",
-      "name": "Golden Bay",
-      "latitude": 35.93373,
-      "longitude": 14.34444,
-      "seaFacingDeg": 232.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 17.1,
-      "source": "curated",
-      "country": "MT",
-      "region": "Malta",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees",
-      "access": "ferry",
-      "island": "r7118334"
-    },
-    {
       "id": "mt-melliea-bay-gadira",
       "name": "Mellieħa Bay (Għadira)",
       "latitude": 35.97077,
@@ -10393,21 +9772,6 @@
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r7118334"
-    },
-    {
-      "id": "nl-terneuzen-put-van-terneuzen",
-      "name": "Terneuzen – Put van Terneuzen",
-      "latitude": 51.33724,
-      "longitude": 3.84628,
-      "seaFacingDeg": 4.7,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 110.8,
-      "source": "curated",
-      "country": "NL",
-      "region": "Zeeland",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
     },
     {
       "id": "nl-paulinapolder",
@@ -10437,21 +9801,6 @@
       "country": "NL",
       "region": "Zeeland",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "nl-cadzand-bad-vlamingpolder",
-      "name": "Cadzand-Bad – Vlamingpolder",
-      "latitude": 51.38734,
-      "longitude": 3.41003,
-      "seaFacingDeg": 330.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 148.2,
-      "source": "curated",
-      "country": "NL",
-      "region": "Zeeland",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -10500,6 +9849,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "nl-vlissingen-nollenstrand",
+      "name": "Vlissingen – Nollenstrand",
+      "latitude": 51.45079,
+      "longitude": 3.55117,
+      "seaFacingDeg": 205.6,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 37.0,
+      "source": "curated",
+      "country": "NL",
+      "region": "Zeeland",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "nl-oesterdam-tholen",
       "name": "Oesterdam (Tholen)",
       "latitude": 51.46973,
@@ -10511,6 +9875,21 @@
       "country": "NL",
       "region": "Zeeland",
       "waterType": "lagoon",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "nl-westkapelle",
+      "name": "Westkapelle",
+      "latitude": 51.51511,
+      "longitude": 3.4522,
+      "seaFacingDeg": 235.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 68.5,
+      "source": "curated",
+      "country": "NL",
+      "region": "Zeeland",
+      "waterType": "sea",
       "tier": "pro",
       "directionCheck": "agrees"
     },
@@ -10558,27 +9937,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "nl-ouwerkerk",
-      "name": "Ouwerkerk",
-      "latitude": 51.61812,
-      "longitude": 3.96119,
-      "seaFacingDeg": 216.9,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "NL",
-      "region": "Zeeland",
-      "waterType": "lagoon",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "05-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "nl-neeltje-jans",
       "name": "Neeltje Jans",
       "latitude": 51.62685,
@@ -10607,11 +9965,13 @@
       "sides": [
         {
           "name": "North Sea side",
-          "seaFacingDeg": 317.3
+          "seaFacingDeg": 317.3,
+          "waterType": "sea"
         },
         {
           "name": "Grevelingen side",
-          "seaFacingDeg": 108.1
+          "seaFacingDeg": 108.1,
+          "waterType": "lake"
         }
       ],
       "directionCheck": "agrees"
@@ -10691,6 +10051,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "nl-oostvoornse-meer",
+      "name": "Oostvoornse Meer",
+      "latitude": 51.9393,
+      "longitude": 4.07965,
+      "seaFacingDeg": 6.1,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "NL",
+      "region": "Zuid-Holland",
+      "waterType": "lake",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "nl-hoek-van-holland",
       "name": "Hoek van Holland",
       "latitude": 51.99098,
@@ -10712,6 +10087,21 @@
       "seaFacingDeg": 311.1,
       "orientationSource": "osm-coastline",
       "distanceToShoreM": 62.1,
+      "source": "curated",
+      "country": "NL",
+      "region": "Zuid-Holland",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "nl-monster",
+      "name": "Monster",
+      "latitude": 52.03587,
+      "longitude": 4.17124,
+      "seaFacingDeg": 303.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 163.2,
       "source": "curated",
       "country": "NL",
       "region": "Zuid-Holland",
@@ -10763,21 +10153,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "nl-wassenaarse-slag",
-      "name": "Wassenaarse Slag",
-      "latitude": 52.16278,
-      "longitude": 4.34855,
-      "seaFacingDeg": 307.5,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 106.9,
-      "source": "curated",
-      "country": "NL",
-      "region": "Zuid-Holland",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
       "id": "nl-katwijk",
       "name": "Katwijk",
       "latitude": 52.1995,
@@ -10807,6 +10182,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "nl-noordwijk-langevelderslag",
+      "name": "Noordwijk – Langevelderslag",
+      "latitude": 52.31,
+      "longitude": 4.4808,
+      "seaFacingDeg": 294.0,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 33.6,
+      "source": "curated",
+      "country": "NL",
+      "region": "Zuid-Holland",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "nl-strand-horst",
       "name": "Strand Horst",
       "latitude": 52.31805,
@@ -10832,21 +10222,6 @@
       "country": "NL",
       "region": "Noord-Holland",
       "waterType": "lake",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "nl-almere-muiderzand",
-      "name": "Almere – Muiderzand",
-      "latitude": 52.34532,
-      "longitude": 5.13394,
-      "seaFacingDeg": 270.3,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "NL",
-      "region": "Flevoland",
-      "waterType": "lake",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -10900,6 +10275,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "nl-gouwzee",
+      "name": "Gouwzee",
+      "latitude": 52.45681,
+      "longitude": 5.05061,
+      "seaFacingDeg": 119.4,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 20.6,
+      "source": "curated",
+      "country": "NL",
+      "region": "Noord-Holland",
+      "waterType": "lake",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "nl-ijmuiden",
       "name": "IJmuiden",
       "latitude": 52.45767,
@@ -10925,36 +10315,6 @@
       "country": "NL",
       "region": "Noord-Holland",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "nl-edam-galgenveld",
-      "name": "Edam – Galgenveld",
-      "latitude": 52.52145,
-      "longitude": 5.06818,
-      "seaFacingDeg": 57.3,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "NL",
-      "region": "Noord-Holland",
-      "waterType": "lake",
-      "tier": "pro",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "nl-lelystad-bataviastrand",
-      "name": "Lelystad – Bataviastrand",
-      "latitude": 52.53107,
-      "longitude": 5.42598,
-      "seaFacingDeg": 43.3,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "NL",
-      "region": "Flevoland",
-      "waterType": "lake",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -11002,27 +10362,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "nl-lelystad-trintelhaven",
-      "name": "Lelystad – Trintelhaven",
-      "latitude": 52.63763,
-      "longitude": 5.41244,
-      "seaFacingDeg": 60.8,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "NL",
-      "region": "Flevoland",
-      "waterType": "lake",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "08-01",
-          "to": "03-31"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "nl-bergen-aan-zee",
       "name": "Bergen aan Zee",
       "latitude": 52.66262,
@@ -11034,6 +10373,21 @@
       "country": "NL",
       "region": "Noord-Holland",
       "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "nl-enkhuizen",
+      "name": "Enkhuizen",
+      "latitude": 52.71185,
+      "longitude": 5.29278,
+      "seaFacingDeg": 41.7,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 3.5,
+      "source": "curated",
+      "country": "NL",
+      "region": "Noord-Holland",
+      "waterType": "lake",
       "tier": "pro",
       "directionCheck": "agrees"
     },
@@ -11103,27 +10457,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "nl-lemmer",
-      "name": "Lemmer",
-      "latitude": 52.8443,
-      "longitude": 5.69771,
-      "seaFacingDeg": 203.6,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "NL",
-      "region": "Friesland",
-      "waterType": "lake",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "05-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "nl-mirns",
       "name": "Mirns",
       "latitude": 52.85063,
@@ -11166,21 +10499,6 @@
       "waterType": "lake",
       "tier": "pro",
       "directionCheck": "corrected"
-    },
-    {
-      "id": "nl-julianadorp",
-      "name": "Julianadorp",
-      "latitude": 52.8958,
-      "longitude": 4.71209,
-      "seaFacingDeg": 274.0,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 21.2,
-      "source": "curated",
-      "country": "NL",
-      "region": "Noord-Holland",
-      "waterType": "sea",
-      "tier": "pro",
-      "directionCheck": "agrees"
     },
     {
       "id": "nl-hindeloopen",
@@ -11356,27 +10674,6 @@
       "directionCheck": "agrees"
     },
     {
-      "id": "nl-oldambtmeer",
-      "name": "Oldambtmeer",
-      "latitude": 53.19473,
-      "longitude": 7.02365,
-      "seaFacingDeg": 106.1,
-      "orientationSource": "osm-water",
-      "distanceToShoreM": 30.0,
-      "source": "curated",
-      "country": "NL",
-      "region": "Groningen",
-      "waterType": "lake",
-      "tier": "pro",
-      "bans": [
-        {
-          "from": "05-01",
-          "to": "09-30"
-        }
-      ],
-      "directionCheck": "agrees"
-    },
-    {
       "id": "nl-vlieland",
       "name": "Vlieland",
       "latitude": 53.30339,
@@ -11421,6 +10718,7 @@
       "country": "NL",
       "region": "Wadden Islands",
       "waterType": "sea",
+      "tide": "high",
       "tier": "pro",
       "directionCheck": "agrees",
       "access": "ferry",
@@ -11441,11 +10739,13 @@
       "sides": [
         {
           "name": "Wadden Sea side",
-          "seaFacingDeg": 334.1
+          "seaFacingDeg": 334.1,
+          "waterType": "sea"
         },
         {
           "name": "Lauwersmeer side",
-          "seaFacingDeg": 121.2
+          "seaFacingDeg": 121.2,
+          "waterType": "lake"
         }
       ],
       "directionCheck": "agrees"
@@ -11604,6 +10904,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "pl-czarnocin-szczecin-lagoon",
+      "name": "Czarnocin (Szczecin Lagoon)",
+      "latitude": 53.71991,
+      "longitude": 14.54901,
+      "seaFacingDeg": 280.2,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 30.0,
+      "source": "curated",
+      "country": "PL",
+      "region": "Zachodniopomorskie",
+      "waterType": "lagoon",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "pl-rewa",
       "name": "Rewa",
       "latitude": 54.63356,
@@ -11720,28 +11035,34 @@
       "island": "r1715039"
     },
     {
-      "id": "pt-praia-de-faro",
-      "name": "Praia de Faro",
-      "latitude": 37.00384,
-      "longitude": -7.99081,
-      "seaFacingDeg": 219.5,
+      "id": "pt-sagres-tonel",
+      "name": "Sagres – Tonel",
+      "latitude": 37.00571,
+      "longitude": -8.9479,
+      "seaFacingDeg": 264.9,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 70.8,
+      "distanceToShoreM": 0.7,
       "source": "curated",
       "country": "PT",
       "region": "Algarve",
       "waterType": "sea",
-      "sides": [
-        {
-          "name": "ocean side",
-          "seaFacingDeg": 219.5
-        },
-        {
-          "name": "Ria Formosa side",
-          "seaFacingDeg": 40.9
-        }
-      ],
-      "directionCheck": "uncertain"
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "pt-sagres-martinhal",
+      "name": "Sagres – Martinhal",
+      "latitude": 37.01852,
+      "longitude": -8.92562,
+      "seaFacingDeg": 127.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 49.1,
+      "source": "curated",
+      "country": "PT",
+      "region": "Algarve",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
     },
     {
       "id": "pt-fuseta-ria-formosa",
@@ -11818,6 +11139,66 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "pt-carrapateira-amado",
+      "name": "Carrapateira – Amado",
+      "latitude": 37.16434,
+      "longitude": -8.90339,
+      "seaFacingDeg": 294.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 40.1,
+      "source": "curated",
+      "country": "PT",
+      "region": "Algarve",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "pt-altura",
+      "name": "Altura",
+      "latitude": 37.16948,
+      "longitude": -7.49808,
+      "seaFacingDeg": 162.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 25.2,
+      "source": "curated",
+      "country": "PT",
+      "region": "Algarve",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "pt-monte-gordo",
+      "name": "Monte Gordo",
+      "latitude": 37.17668,
+      "longitude": -7.44735,
+      "seaFacingDeg": 182.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 1.6,
+      "source": "curated",
+      "country": "PT",
+      "region": "Algarve",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "pt-carrapateira-bordeira",
+      "name": "Carrapateira – Bordeira",
+      "latitude": 37.1995,
+      "longitude": -8.90091,
+      "seaFacingDeg": 319.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 130.6,
+      "source": "curated",
+      "country": "PT",
+      "region": "Algarve",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "pt-lagoa-de-albufeira",
       "name": "Lagoa de Albufeira",
       "latitude": 38.50879,
@@ -11844,6 +11225,21 @@
       "country": "PT",
       "region": "Lisboa",
       "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "pt-costa-da-caparica-nova-vaga",
+      "name": "Costa da Caparica – Nova Vaga",
+      "latitude": 38.59844,
+      "longitude": -9.20855,
+      "seaFacingDeg": 253.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 61.6,
+      "source": "curated",
+      "country": "PT",
+      "region": "Lisboa",
+      "waterType": "sea",
+      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -11921,19 +11317,19 @@
       "directionCheck": "corrected"
     },
     {
-      "id": "pt-aveiro-praia-da-barra",
-      "name": "Aveiro – Praia da Barra",
-      "latitude": 40.63609,
-      "longitude": -8.74889,
-      "seaFacingDeg": 270.4,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 43.7,
+      "id": "pt-aveiro-estacas-costa-nova-ria",
+      "name": "Aveiro – Estacas (Costa Nova ria)",
+      "latitude": 40.62978,
+      "longitude": -8.74479,
+      "seaFacingDeg": 87.8,
+      "orientationSource": "osm-water",
+      "distanceToShoreM": 19.2,
       "source": "curated",
       "country": "PT",
       "region": "Centro",
-      "waterType": "sea",
+      "waterType": "lagoon",
       "tier": "pro",
-      "directionCheck": "agrees"
+      "directionCheck": "uncertain"
     },
     {
       "id": "pt-murtosa-ria-de-aveiro",
@@ -11951,13 +11347,13 @@
       "directionCheck": "uncertain"
     },
     {
-      "id": "pt-matosinhos",
-      "name": "Matosinhos",
-      "latitude": 41.17649,
-      "longitude": -8.69389,
-      "seaFacingDeg": 221.6,
+      "id": "pt-foz-do-douro-cabedelo",
+      "name": "Foz do Douro – Cabedelo",
+      "latitude": 41.14003,
+      "longitude": -8.66949,
+      "seaFacingDeg": 256.7,
       "orientationSource": "osm-coastline",
-      "distanceToShoreM": 32.2,
+      "distanceToShoreM": 117.3,
       "source": "curated",
       "country": "PT",
       "region": "Norte",
@@ -11994,6 +11390,21 @@
       "directionCheck": "agrees"
     },
     {
+      "id": "pt-vila-praia-de-ancora",
+      "name": "Vila Praia de Âncora",
+      "latitude": 41.81325,
+      "longitude": -8.86451,
+      "seaFacingDeg": 254.7,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 76.4,
+      "source": "curated",
+      "country": "PT",
+      "region": "Norte",
+      "waterType": "sea",
+      "tier": "pro",
+      "directionCheck": "agrees"
+    },
+    {
       "id": "pt-caminha-moledo",
       "name": "Caminha – Moledo",
       "latitude": 41.85093,
@@ -12020,21 +11431,6 @@
       "country": "RO",
       "region": "Constanța",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "ro-corbu",
-      "name": "Corbu",
-      "latitude": 44.37451,
-      "longitude": 28.70879,
-      "seaFacingDeg": 119.1,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 70.3,
-      "source": "curated",
-      "country": "RO",
-      "region": "Constanța",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -12077,21 +11473,6 @@
       "country": "SE",
       "region": "Skåne",
       "waterType": "sea",
-      "directionCheck": "agrees"
-    },
-    {
-      "id": "se-malmo-ribersborg",
-      "name": "Malmö – Ribersborg",
-      "latitude": 55.6024,
-      "longitude": 12.96045,
-      "seaFacingDeg": 329.6,
-      "orientationSource": "osm-coastline",
-      "distanceToShoreM": 88.2,
-      "source": "curated",
-      "country": "SE",
-      "region": "Skåne",
-      "waterType": "sea",
-      "tier": "pro",
       "directionCheck": "agrees"
     },
     {
@@ -12165,9 +11546,803 @@
       "directionCheck": "agrees",
       "access": "ferry",
       "island": "r5176205"
+    },
+    {
+      "id": "tr-akyaka-gokova",
+      "name": "Akyaka (Gökova)",
+      "latitude": 37.0373,
+      "longitude": 28.32914,
+      "seaFacingDeg": 274.4,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 15.5,
+      "source": "curated",
+      "country": "TR",
+      "region": "Aegean coast",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "tr-alacat",
+      "name": "Alaçatı",
+      "latitude": 38.25118,
+      "longitude": 26.38431,
+      "seaFacingDeg": 78.3,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 23.9,
+      "source": "curated",
+      "country": "TR",
+      "region": "Aegean coast",
+      "waterType": "sea",
+      "directionCheck": "agrees"
+    },
+    {
+      "id": "tr-gokceada-aydnck",
+      "name": "Gökçeada Aydıncık",
+      "latitude": 40.12683,
+      "longitude": 25.94909,
+      "seaFacingDeg": 197.2,
+      "orientationSource": "osm-coastline",
+      "distanceToShoreM": 28.9,
+      "source": "curated",
+      "country": "TR",
+      "region": "Aegean coast",
+      "waterType": "sea",
+      "directionCheck": "agrees",
+      "access": "ferry",
+      "island": "r1815263"
     }
   ],
   "islands": [
+    {
+      "id": "r1434381",
+      "name": "Rügen",
+      "outline": [
+        [
+          54.3341,
+          13.114
+        ],
+        [
+          54.3245,
+          13.1351
+        ],
+        [
+          54.3186,
+          13.1331
+        ],
+        [
+          54.3001,
+          13.1855
+        ],
+        [
+          54.3046,
+          13.1542
+        ],
+        [
+          54.3019,
+          13.1599
+        ],
+        [
+          54.2965,
+          13.1398
+        ],
+        [
+          54.2812,
+          13.1413
+        ],
+        [
+          54.2878,
+          13.1818
+        ],
+        [
+          54.2972,
+          13.1922
+        ],
+        [
+          54.2905,
+          13.2035
+        ],
+        [
+          54.284,
+          13.1961
+        ],
+        [
+          54.27,
+          13.1997
+        ],
+        [
+          54.2711,
+          13.2158
+        ],
+        [
+          54.2795,
+          13.2175
+        ],
+        [
+          54.2729,
+          13.2169
+        ],
+        [
+          54.2537,
+          13.2703
+        ],
+        [
+          54.2578,
+          13.3209
+        ],
+        [
+          54.2663,
+          13.3093
+        ],
+        [
+          54.2706,
+          13.3246
+        ],
+        [
+          54.2784,
+          13.3328
+        ],
+        [
+          54.2786,
+          13.3369
+        ],
+        [
+          54.2661,
+          13.3235
+        ],
+        [
+          54.2552,
+          13.3275
+        ],
+        [
+          54.2449,
+          13.3207
+        ],
+        [
+          54.2556,
+          13.2956
+        ],
+        [
+          54.2516,
+          13.2909
+        ],
+        [
+          54.2377,
+          13.3231
+        ],
+        [
+          54.2293,
+          13.3836
+        ],
+        [
+          54.2207,
+          13.3932
+        ],
+        [
+          54.2381,
+          13.4237
+        ],
+        [
+          54.2555,
+          13.4173
+        ],
+        [
+          54.2657,
+          13.4011
+        ],
+        [
+          54.2534,
+          13.379
+        ],
+        [
+          54.2642,
+          13.3647
+        ],
+        [
+          54.2575,
+          13.3588
+        ],
+        [
+          54.2538,
+          13.3692
+        ],
+        [
+          54.2467,
+          13.3582
+        ],
+        [
+          54.2697,
+          13.3505
+        ],
+        [
+          54.2795,
+          13.3866
+        ],
+        [
+          54.2784,
+          13.3916
+        ],
+        [
+          54.2663,
+          13.3845
+        ],
+        [
+          54.2697,
+          13.3919
+        ],
+        [
+          54.3029,
+          13.42
+        ],
+        [
+          54.3213,
+          13.4657
+        ],
+        [
+          54.3292,
+          13.463
+        ],
+        [
+          54.326,
+          13.4525
+        ],
+        [
+          54.336,
+          13.4542
+        ],
+        [
+          54.3291,
+          13.4645
+        ],
+        [
+          54.3441,
+          13.5071
+        ],
+        [
+          54.3397,
+          13.5512
+        ],
+        [
+          54.3529,
+          13.5779
+        ],
+        [
+          54.3468,
+          13.6002
+        ],
+        [
+          54.3307,
+          13.6148
+        ],
+        [
+          54.3319,
+          13.6286
+        ],
+        [
+          54.3346,
+          13.6229
+        ],
+        [
+          54.3401,
+          13.6401
+        ],
+        [
+          54.3437,
+          13.6355
+        ],
+        [
+          54.3497,
+          13.6517
+        ],
+        [
+          54.3558,
+          13.6505
+        ],
+        [
+          54.3471,
+          13.6536
+        ],
+        [
+          54.3509,
+          13.6846
+        ],
+        [
+          54.3376,
+          13.6759
+        ],
+        [
+          54.3166,
+          13.6106
+        ],
+        [
+          54.3304,
+          13.6722
+        ],
+        [
+          54.3262,
+          13.7041
+        ],
+        [
+          54.3156,
+          13.6983
+        ],
+        [
+          54.2977,
+          13.6465
+        ],
+        [
+          54.2881,
+          13.6618
+        ],
+        [
+          54.2956,
+          13.7021
+        ],
+        [
+          54.28,
+          13.7094
+        ],
+        [
+          54.2836,
+          13.6848
+        ],
+        [
+          54.2688,
+          13.7102
+        ],
+        [
+          54.2741,
+          13.7242
+        ],
+        [
+          54.2951,
+          13.715
+        ],
+        [
+          54.3143,
+          13.7207
+        ],
+        [
+          54.3352,
+          13.7396
+        ],
+        [
+          54.3412,
+          13.7665
+        ],
+        [
+          54.3548,
+          13.7277
+        ],
+        [
+          54.4011,
+          13.6724
+        ],
+        [
+          54.4028,
+          13.6144
+        ],
+        [
+          54.4497,
+          13.573
+        ],
+        [
+          54.4656,
+          13.5697
+        ],
+        [
+          54.4791,
+          13.5771
+        ],
+        [
+          54.4859,
+          13.5891
+        ],
+        [
+          54.4764,
+          13.5977
+        ],
+        [
+          54.4984,
+          13.6082
+        ],
+        [
+          54.5208,
+          13.6685
+        ],
+        [
+          54.5418,
+          13.681
+        ],
+        [
+          54.5632,
+          13.679
+        ],
+        [
+          54.5854,
+          13.6353
+        ],
+        [
+          54.5701,
+          13.4622
+        ],
+        [
+          54.5808,
+          13.4175
+        ],
+        [
+          54.6029,
+          13.3894
+        ],
+        [
+          54.6345,
+          13.3766
+        ],
+        [
+          54.651,
+          13.3897
+        ],
+        [
+          54.6628,
+          13.4308
+        ],
+        [
+          54.6768,
+          13.4378
+        ],
+        [
+          54.6851,
+          13.4285
+        ],
+        [
+          54.6733,
+          13.2882
+        ],
+        [
+          54.6599,
+          13.251
+        ],
+        [
+          54.6406,
+          13.2204
+        ],
+        [
+          54.6129,
+          13.2269
+        ],
+        [
+          54.5988,
+          13.2185
+        ],
+        [
+          54.5731,
+          13.1661
+        ],
+        [
+          54.559,
+          13.1606
+        ],
+        [
+          54.5875,
+          13.2283
+        ],
+        [
+          54.596,
+          13.2299
+        ],
+        [
+          54.5963,
+          13.2376
+        ],
+        [
+          54.625,
+          13.2265
+        ],
+        [
+          54.6469,
+          13.2819
+        ],
+        [
+          54.6253,
+          13.2876
+        ],
+        [
+          54.5899,
+          13.2568
+        ],
+        [
+          54.559,
+          13.2441
+        ],
+        [
+          54.5819,
+          13.3325
+        ],
+        [
+          54.5935,
+          13.3276
+        ],
+        [
+          54.6005,
+          13.3482
+        ],
+        [
+          54.6129,
+          13.3559
+        ],
+        [
+          54.6145,
+          13.3712
+        ],
+        [
+          54.5958,
+          13.384
+        ],
+        [
+          54.5816,
+          13.3841
+        ],
+        [
+          54.5729,
+          13.3959
+        ],
+        [
+          54.5687,
+          13.4258
+        ],
+        [
+          54.5515,
+          13.4462
+        ],
+        [
+          54.5485,
+          13.5024
+        ],
+        [
+          54.5282,
+          13.5133
+        ],
+        [
+          54.5245,
+          13.5049
+        ],
+        [
+          54.514,
+          13.5148
+        ],
+        [
+          54.4924,
+          13.5006
+        ],
+        [
+          54.4817,
+          13.5055
+        ],
+        [
+          54.4836,
+          13.4814
+        ],
+        [
+          54.4718,
+          13.4513
+        ],
+        [
+          54.4875,
+          13.4417
+        ],
+        [
+          54.4939,
+          13.4132
+        ],
+        [
+          54.5073,
+          13.4065
+        ],
+        [
+          54.5189,
+          13.4146
+        ],
+        [
+          54.5474,
+          13.3791
+        ],
+        [
+          54.5599,
+          13.3764
+        ],
+        [
+          54.547,
+          13.3543
+        ],
+        [
+          54.5445,
+          13.3784
+        ],
+        [
+          54.539,
+          13.3891
+        ],
+        [
+          54.5316,
+          13.3877
+        ],
+        [
+          54.5203,
+          13.3742
+        ],
+        [
+          54.5177,
+          13.3493
+        ],
+        [
+          54.5242,
+          13.3439
+        ],
+        [
+          54.5448,
+          13.3612
+        ],
+        [
+          54.5488,
+          13.3357
+        ],
+        [
+          54.5515,
+          13.354
+        ],
+        [
+          54.577,
+          13.3706
+        ],
+        [
+          54.5808,
+          13.3596
+        ],
+        [
+          54.5521,
+          13.2973
+        ],
+        [
+          54.5394,
+          13.3077
+        ],
+        [
+          54.5278,
+          13.3029
+        ],
+        [
+          54.5247,
+          13.3123
+        ],
+        [
+          54.5138,
+          13.3052
+        ],
+        [
+          54.5225,
+          13.2871
+        ],
+        [
+          54.5372,
+          13.2953
+        ],
+        [
+          54.5433,
+          13.2865
+        ],
+        [
+          54.5553,
+          13.2446
+        ],
+        [
+          54.5467,
+          13.1441
+        ],
+        [
+          54.5406,
+          13.1399
+        ],
+        [
+          54.5394,
+          13.1572
+        ],
+        [
+          54.514,
+          13.1622
+        ],
+        [
+          54.5077,
+          13.171
+        ],
+        [
+          54.5036,
+          13.2006
+        ],
+        [
+          54.5111,
+          13.2315
+        ],
+        [
+          54.4857,
+          13.2282
+        ],
+        [
+          54.4801,
+          13.2697
+        ],
+        [
+          54.4677,
+          13.231
+        ],
+        [
+          54.4678,
+          13.2461
+        ],
+        [
+          54.4639,
+          13.252
+        ],
+        [
+          54.4601,
+          13.2057
+        ],
+        [
+          54.4472,
+          13.1992
+        ],
+        [
+          54.4551,
+          13.1924
+        ],
+        [
+          54.4538,
+          13.1709
+        ],
+        [
+          54.4231,
+          13.1505
+        ],
+        [
+          54.4305,
+          13.2114
+        ],
+        [
+          54.414,
+          13.2205
+        ],
+        [
+          54.4094,
+          13.238
+        ],
+        [
+          54.3992,
+          13.23
+        ],
+        [
+          54.3872,
+          13.2378
+        ],
+        [
+          54.3825,
+          13.2629
+        ],
+        [
+          54.3675,
+          13.2208
+        ],
+        [
+          54.3759,
+          13.1966
+        ],
+        [
+          54.3721,
+          13.1294
+        ],
+        [
+          54.3341,
+          13.114
+        ]
+      ]
+    },
     {
       "id": "r1518492",
       "name": "Ameland",
@@ -13555,6 +13730,140 @@
         [
           53.2171,
           4.8492
+        ]
+      ]
+    },
+    {
+      "id": "r1815263",
+      "name": "İmbros",
+      "outline": [
+        [
+          40.125,
+          25.6654
+        ],
+        [
+          40.1164,
+          25.7057
+        ],
+        [
+          40.0914,
+          25.7385
+        ],
+        [
+          40.1003,
+          25.7642
+        ],
+        [
+          40.0964,
+          25.7926
+        ],
+        [
+          40.1047,
+          25.7995
+        ],
+        [
+          40.1,
+          25.8382
+        ],
+        [
+          40.1275,
+          25.9348
+        ],
+        [
+          40.1254,
+          25.973
+        ],
+        [
+          40.1332,
+          25.9953
+        ],
+        [
+          40.1557,
+          26.0145
+        ],
+        [
+          40.1629,
+          26.0114
+        ],
+        [
+          40.1438,
+          25.9874
+        ],
+        [
+          40.1481,
+          25.9676
+        ],
+        [
+          40.1643,
+          25.9644
+        ],
+        [
+          40.1725,
+          25.9735
+        ],
+        [
+          40.1809,
+          25.968
+        ],
+        [
+          40.1884,
+          25.975
+        ],
+        [
+          40.2164,
+          25.9763
+        ],
+        [
+          40.2262,
+          25.9483
+        ],
+        [
+          40.2339,
+          25.9458
+        ],
+        [
+          40.2343,
+          25.9476
+        ],
+        [
+          40.2317,
+          25.949
+        ],
+        [
+          40.2288,
+          25.9554
+        ],
+        [
+          40.2404,
+          25.9456
+        ],
+        [
+          40.2402,
+          25.9242
+        ],
+        [
+          40.2281,
+          25.8735
+        ],
+        [
+          40.2107,
+          25.8426
+        ],
+        [
+          40.2128,
+          25.7929
+        ],
+        [
+          40.1833,
+          25.7254
+        ],
+        [
+          40.1533,
+          25.6711
+        ],
+        [
+          40.125,
+          25.6654
         ]
       ]
     },
@@ -15721,6 +16030,196 @@
       ]
     },
     {
+      "id": "r3352541",
+      "name": "Föhr",
+      "outline": [
+        [
+          54.7096,
+          8.395
+        ],
+        [
+          54.7009,
+          8.4021
+        ],
+        [
+          54.68,
+          8.4846
+        ],
+        [
+          54.6792,
+          8.5607
+        ],
+        [
+          54.6925,
+          8.5782
+        ],
+        [
+          54.6915,
+          8.5713
+        ],
+        [
+          54.6943,
+          8.5787
+        ],
+        [
+          54.7016,
+          8.575
+        ],
+        [
+          54.711,
+          8.5824
+        ],
+        [
+          54.7187,
+          8.5968
+        ],
+        [
+          54.7281,
+          8.5816
+        ],
+        [
+          54.7447,
+          8.5831
+        ],
+        [
+          54.7554,
+          8.5219
+        ],
+        [
+          54.7459,
+          8.4275
+        ],
+        [
+          54.7339,
+          8.4084
+        ],
+        [
+          54.7096,
+          8.395
+        ]
+      ]
+    },
+    {
+      "id": "r3355571",
+      "name": "Juist",
+      "outline": [
+        [
+          53.6618,
+          6.8548
+        ],
+        [
+          53.6752,
+          6.9732
+        ],
+        [
+          53.669,
+          6.9752
+        ],
+        [
+          53.6754,
+          6.9857
+        ],
+        [
+          53.6704,
+          6.996
+        ],
+        [
+          53.6783,
+          7.1005
+        ],
+        [
+          53.683,
+          7.1051
+        ],
+        [
+          53.6887,
+          7.0825
+        ],
+        [
+          53.6849,
+          7.0123
+        ],
+        [
+          53.6618,
+          6.8548
+        ]
+      ]
+    },
+    {
+      "id": "r3787117",
+      "name": "Amrum",
+      "outline": [
+        [
+          54.6675,
+          8.2971
+        ],
+        [
+          54.6093,
+          8.3694
+        ],
+        [
+          54.6094,
+          8.3837
+        ],
+        [
+          54.6214,
+          8.4033
+        ],
+        [
+          54.6185,
+          8.3935
+        ],
+        [
+          54.6243,
+          8.3898
+        ],
+        [
+          54.6288,
+          8.4003
+        ],
+        [
+          54.6285,
+          8.3851
+        ],
+        [
+          54.6332,
+          8.3791
+        ],
+        [
+          54.6391,
+          8.3831
+        ],
+        [
+          54.6495,
+          8.3609
+        ],
+        [
+          54.6761,
+          8.3506
+        ],
+        [
+          54.6847,
+          8.3383
+        ],
+        [
+          54.6994,
+          8.3423
+        ],
+        [
+          54.7115,
+          8.3606
+        ],
+        [
+          54.6822,
+          8.3063
+        ],
+        [
+          54.6675,
+          8.2971
+        ]
+      ]
+    },
+    {
       "id": "r3788971",
       "name": "Borkum",
       "outline": [
@@ -15903,6 +16402,74 @@
         [
           53.7297,
           7.4634
+        ]
+      ]
+    },
+    {
+      "id": "r3789070",
+      "name": "Spiekeroog",
+      "outline": [
+        [
+          53.7604,
+          7.666
+        ],
+        [
+          53.7512,
+          7.6833
+        ],
+        [
+          53.7657,
+          7.696
+        ],
+        [
+          53.7608,
+          7.7408
+        ],
+        [
+          53.7787,
+          7.8203
+        ],
+        [
+          53.7804,
+          7.696
+        ],
+        [
+          53.7604,
+          7.666
+        ]
+      ]
+    },
+    {
+      "id": "r3789071",
+      "name": "Wangerooge",
+      "outline": [
+        [
+          53.7878,
+          7.8466
+        ],
+        [
+          53.7723,
+          7.8656
+        ],
+        [
+          53.7884,
+          7.877
+        ],
+        [
+          53.7743,
+          7.9732
+        ],
+        [
+          53.78,
+          7.9784
+        ],
+        [
+          53.7946,
+          7.8985
+        ],
+        [
+          53.7878,
+          7.8466
         ]
       ]
     },
@@ -18161,6 +18728,96 @@
       ]
     },
     {
+      "id": "r453964",
+      "name": "Santorini",
+      "outline": [
+        [
+          36.3579,
+          25.3539
+        ],
+        [
+          36.3466,
+          25.3854
+        ],
+        [
+          36.3466,
+          25.4206
+        ],
+        [
+          36.3324,
+          25.4437
+        ],
+        [
+          36.3607,
+          25.4865
+        ],
+        [
+          36.3692,
+          25.4812
+        ],
+        [
+          36.4094,
+          25.4876
+        ],
+        [
+          36.4282,
+          25.4598
+        ],
+        [
+          36.4738,
+          25.4217
+        ],
+        [
+          36.4804,
+          25.3809
+        ],
+        [
+          36.4709,
+          25.3686
+        ],
+        [
+          36.4581,
+          25.3709
+        ],
+        [
+          36.4584,
+          25.4153
+        ],
+        [
+          36.4451,
+          25.424
+        ],
+        [
+          36.4297,
+          25.4136
+        ],
+        [
+          36.4259,
+          25.425
+        ],
+        [
+          36.4029,
+          25.4259
+        ],
+        [
+          36.3926,
+          25.4345
+        ],
+        [
+          36.3622,
+          25.4147
+        ],
+        [
+          36.3664,
+          25.3656
+        ],
+        [
+          36.3579,
+          25.3539
+        ]
+      ]
+    },
+    {
       "id": "r5176205",
       "name": "Gotland",
       "outline": [
@@ -20169,372 +20826,6 @@
       ]
     },
     {
-      "id": "r6076060",
-      "name": "Ibiza",
-      "outline": [
-        [
-          38.902,
-          1.2133
-        ],
-        [
-          38.888,
-          1.2256
-        ],
-        [
-          38.8709,
-          1.2241
-        ],
-        [
-          38.8727,
-          1.2358
-        ],
-        [
-          38.8558,
-          1.248
-        ],
-        [
-          38.8794,
-          1.2717
-        ],
-        [
-          38.8765,
-          1.2975
-        ],
-        [
-          38.8679,
-          1.3052
-        ],
-        [
-          38.8655,
-          1.2995
-        ],
-        [
-          38.8621,
-          1.2976
-        ],
-        [
-          38.8678,
-          1.3161
-        ],
-        [
-          38.8558,
-          1.3205
-        ],
-        [
-          38.8711,
-          1.3431
-        ],
-        [
-          38.8607,
-          1.3612
-        ],
-        [
-          38.8304,
-          1.3711
-        ],
-        [
-          38.8423,
-          1.3841
-        ],
-        [
-          38.8315,
-          1.4061
-        ],
-        [
-          38.8774,
-          1.4037
-        ],
-        [
-          38.9035,
-          1.4211
-        ],
-        [
-          38.9026,
-          1.4387
-        ],
-        [
-          38.9167,
-          1.4396
-        ],
-        [
-          38.909,
-          1.453
-        ],
-        [
-          38.9032,
-          1.4474
-        ],
-        [
-          38.9042,
-          1.4582
-        ],
-        [
-          38.9136,
-          1.4519
-        ],
-        [
-          38.9181,
-          1.4576
-        ],
-        [
-          38.9129,
-          1.4769
-        ],
-        [
-          38.928,
-          1.4888
-        ],
-        [
-          38.9332,
-          1.5054
-        ],
-        [
-          38.9467,
-          1.5101
-        ],
-        [
-          38.9462,
-          1.529
-        ],
-        [
-          38.953,
-          1.52
-        ],
-        [
-          38.9561,
-          1.531
-        ],
-        [
-          38.983,
-          1.5342
-        ],
-        [
-          38.983,
-          1.5461
-        ],
-        [
-          38.9926,
-          1.5526
-        ],
-        [
-          38.9893,
-          1.5812
-        ],
-        [
-          39.0012,
-          1.5779
-        ],
-        [
-          39.0158,
-          1.5851
-        ],
-        [
-          39.0155,
-          1.5946
-        ],
-        [
-          39.0247,
-          1.5954
-        ],
-        [
-          39.0295,
-          1.6059
-        ],
-        [
-          39.0242,
-          1.6151
-        ],
-        [
-          39.0277,
-          1.6216
-        ],
-        [
-          39.0367,
-          1.6202
-        ],
-        [
-          39.0347,
-          1.6087
-        ],
-        [
-          39.0438,
-          1.6101
-        ],
-        [
-          39.0633,
-          1.588
-        ],
-        [
-          39.0752,
-          1.5917
-        ],
-        [
-          39.0736,
-          1.5996
-        ],
-        [
-          39.0798,
-          1.6099
-        ],
-        [
-          39.0793,
-          1.6013
-        ],
-        [
-          39.0902,
-          1.605
-        ],
-        [
-          39.0979,
-          1.5923
-        ],
-        [
-          39.0935,
-          1.5569
-        ],
-        [
-          39.1066,
-          1.5373
-        ],
-        [
-          39.1161,
-          1.5422
-        ],
-        [
-          39.1184,
-          1.533
-        ],
-        [
-          39.1089,
-          1.5156
-        ],
-        [
-          39.1138,
-          1.5072
-        ],
-        [
-          39.1028,
-          1.5092
-        ],
-        [
-          39.0985,
-          1.4974
-        ],
-        [
-          39.1105,
-          1.4885
-        ],
-        [
-          39.101,
-          1.4844
-        ],
-        [
-          39.1017,
-          1.464
-        ],
-        [
-          39.0805,
-          1.4404
-        ],
-        [
-          39.0925,
-          1.4263
-        ],
-        [
-          39.0775,
-          1.417
-        ],
-        [
-          39.0782,
-          1.3866
-        ],
-        [
-          39.0622,
-          1.3755
-        ],
-        [
-          39.0743,
-          1.3595
-        ],
-        [
-          39.0637,
-          1.3501
-        ],
-        [
-          39.0668,
-          1.3446
-        ],
-        [
-          39.053,
-          1.3417
-        ],
-        [
-          39.0529,
-          1.3264
-        ],
-        [
-          39.0283,
-          1.29
-        ],
-        [
-          39.0096,
-          1.299
-        ],
-        [
-          38.9939,
-          1.2845
-        ],
-        [
-          38.9854,
-          1.2965
-        ],
-        [
-          38.9755,
-          1.297
-        ],
-        [
-          38.9785,
-          1.3066
-        ],
-        [
-          38.9697,
-          1.3033
-        ],
-        [
-          38.9742,
-          1.2839
-        ],
-        [
-          38.9659,
-          1.2449
-        ],
-        [
-          38.9729,
-          1.243
-        ],
-        [
-          38.9687,
-          1.2323
-        ],
-        [
-          38.9746,
-          1.2297
-        ],
-        [
-          38.9586,
-          1.2151
-        ],
-        [
-          38.9389,
-          1.2365
-        ],
-        [
-          38.902,
-          1.2133
-        ]
-      ]
-    },
-    {
       "id": "r6076061",
       "name": "Minorca",
       "outline": [
@@ -20997,116 +21288,6 @@
         [
           40.0162,
           3.7909
-        ]
-      ]
-    },
-    {
-      "id": "r6076062",
-      "name": "Formentera",
-      "outline": [
-        [
-          38.7181,
-          1.3801
-        ],
-        [
-          38.6994,
-          1.3905
-        ],
-        [
-          38.6925,
-          1.3806
-        ],
-        [
-          38.6404,
-          1.3886
-        ],
-        [
-          38.6655,
-          1.4302
-        ],
-        [
-          38.6849,
-          1.4468
-        ],
-        [
-          38.6797,
-          1.4824
-        ],
-        [
-          38.6531,
-          1.5242
-        ],
-        [
-          38.6506,
-          1.5708
-        ],
-        [
-          38.663,
-          1.5847
-        ],
-        [
-          38.6916,
-          1.5691
-        ],
-        [
-          38.6725,
-          1.5302
-        ],
-        [
-          38.69,
-          1.494
-        ],
-        [
-          38.7025,
-          1.4778
-        ],
-        [
-          38.7281,
-          1.4727
-        ],
-        [
-          38.7225,
-          1.4638
-        ],
-        [
-          38.7326,
-          1.4469
-        ],
-        [
-          38.772,
-          1.4339
-        ],
-        [
-          38.7412,
-          1.4302
-        ],
-        [
-          38.7317,
-          1.412
-        ],
-        [
-          38.7224,
-          1.4192
-        ],
-        [
-          38.722,
-          1.4071
-        ],
-        [
-          38.731,
-          1.4122
-        ],
-        [
-          38.7278,
-          1.4018
-        ],
-        [
-          38.7354,
-          1.3967
-        ],
-        [
-          38.7181,
-          1.3801
         ]
       ]
     },
@@ -39989,6 +40170,404 @@
         [
           53.9746,
           -10.2588
+        ]
+      ]
+    },
+    {
+      "id": "r966358",
+      "name": "Corfu",
+      "outline": [
+        [
+          39.7524,
+          19.6285
+        ],
+        [
+          39.75,
+          19.6412
+        ],
+        [
+          39.7342,
+          19.6553
+        ],
+        [
+          39.7107,
+          19.6534
+        ],
+        [
+          39.7222,
+          19.6643
+        ],
+        [
+          39.7137,
+          19.6824
+        ],
+        [
+          39.6803,
+          19.673
+        ],
+        [
+          39.6732,
+          19.7007
+        ],
+        [
+          39.6684,
+          19.7003
+        ],
+        [
+          39.6757,
+          19.7097
+        ],
+        [
+          39.6703,
+          19.7125
+        ],
+        [
+          39.6738,
+          19.7188
+        ],
+        [
+          39.6741,
+          19.7292
+        ],
+        [
+          39.6735,
+          19.7295
+        ],
+        [
+          39.6719,
+          19.7289
+        ],
+        [
+          39.67,
+          19.7263
+        ],
+        [
+          39.6671,
+          19.7259
+        ],
+        [
+          39.6659,
+          19.7219
+        ],
+        [
+          39.6654,
+          19.7241
+        ],
+        [
+          39.6585,
+          19.7263
+        ],
+        [
+          39.6537,
+          19.7206
+        ],
+        [
+          39.6453,
+          19.7354
+        ],
+        [
+          39.6355,
+          19.7405
+        ],
+        [
+          39.6286,
+          19.7418
+        ],
+        [
+          39.6274,
+          19.7401
+        ],
+        [
+          39.6233,
+          19.7423
+        ],
+        [
+          39.6211,
+          19.756
+        ],
+        [
+          39.6125,
+          19.7667
+        ],
+        [
+          39.6118,
+          19.7767
+        ],
+        [
+          39.6015,
+          19.7745
+        ],
+        [
+          39.5975,
+          19.7827
+        ],
+        [
+          39.5991,
+          19.786
+        ],
+        [
+          39.5965,
+          19.79
+        ],
+        [
+          39.5967,
+          19.7958
+        ],
+        [
+          39.5938,
+          19.8043
+        ],
+        [
+          39.5844,
+          19.8193
+        ],
+        [
+          39.5747,
+          19.8268
+        ],
+        [
+          39.5742,
+          19.8304
+        ],
+        [
+          39.5451,
+          19.8501
+        ],
+        [
+          39.529,
+          19.8422
+        ],
+        [
+          39.519,
+          19.8503
+        ],
+        [
+          39.493,
+          19.8513
+        ],
+        [
+          39.4727,
+          19.8652
+        ],
+        [
+          39.465,
+          19.8652
+        ],
+        [
+          39.4599,
+          19.8691
+        ],
+        [
+          39.4564,
+          19.8687
+        ],
+        [
+          39.4432,
+          19.8972
+        ],
+        [
+          39.4365,
+          19.9062
+        ],
+        [
+          39.4307,
+          19.9109
+        ],
+        [
+          39.4193,
+          19.9726
+        ],
+        [
+          39.3987,
+          19.9993
+        ],
+        [
+          39.3655,
+          20.0837
+        ],
+        [
+          39.3636,
+          20.1157
+        ],
+        [
+          39.38,
+          20.1221
+        ],
+        [
+          39.4035,
+          20.0995
+        ],
+        [
+          39.4606,
+          20.0708
+        ],
+        [
+          39.4442,
+          20.0571
+        ],
+        [
+          39.4335,
+          20.0187
+        ],
+        [
+          39.4574,
+          20.0005
+        ],
+        [
+          39.4723,
+          19.9372
+        ],
+        [
+          39.5491,
+          19.9123
+        ],
+        [
+          39.5867,
+          19.9153
+        ],
+        [
+          39.599,
+          19.901
+        ],
+        [
+          39.6069,
+          19.9068
+        ],
+        [
+          39.5912,
+          19.9143
+        ],
+        [
+          39.5937,
+          19.9248
+        ],
+        [
+          39.5962,
+          19.9275
+        ],
+        [
+          39.6083,
+          19.9266
+        ],
+        [
+          39.61,
+          19.9283
+        ],
+        [
+          39.6118,
+          19.9283
+        ],
+        [
+          39.6161,
+          19.9209
+        ],
+        [
+          39.6244,
+          19.933
+        ],
+        [
+          39.6374,
+          19.8713
+        ],
+        [
+          39.6545,
+          19.86
+        ],
+        [
+          39.646,
+          19.8526
+        ],
+        [
+          39.6591,
+          19.8392
+        ],
+        [
+          39.6646,
+          19.8626
+        ],
+        [
+          39.6767,
+          19.8412
+        ],
+        [
+          39.6871,
+          19.8481
+        ],
+        [
+          39.6943,
+          19.8381
+        ],
+        [
+          39.706,
+          19.8438
+        ],
+        [
+          39.7346,
+          19.931
+        ],
+        [
+          39.7669,
+          19.948
+        ],
+        [
+          39.7662,
+          19.9552
+        ],
+        [
+          39.7858,
+          19.9481
+        ],
+        [
+          39.7888,
+          19.9408
+        ],
+        [
+          39.7792,
+          19.9377
+        ],
+        [
+          39.7954,
+          19.9192
+        ],
+        [
+          39.7882,
+          19.9106
+        ],
+        [
+          39.8007,
+          19.8815
+        ],
+        [
+          39.8156,
+          19.8744
+        ],
+        [
+          39.8222,
+          19.8472
+        ],
+        [
+          39.7902,
+          19.7954
+        ],
+        [
+          39.7986,
+          19.7772
+        ],
+        [
+          39.7894,
+          19.7153
+        ],
+        [
+          39.7992,
+          19.6739
+        ],
+        [
+          39.7552,
+          19.642
+        ],
+        [
+          39.7524,
+          19.6285
         ]
       ]
     }
