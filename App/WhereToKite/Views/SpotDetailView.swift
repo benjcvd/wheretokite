@@ -175,11 +175,7 @@ struct SpotDetailView: View {
                          "\(w.start)–\(w.end)h" + (rec.windowInMyTime.map { String(localized: " · \($0) yours", comment: "The window in the phone's time zone") } ?? "")
                      } ?? "–",
                      icon: "clock.fill", tint: .blue)
-                Fact(title: workingKites.count > 1 ? String(localized: "Kites") : String(localized: "Kite"),
-                     value: workingKites.isEmpty ? "–"
-                        : workingKites.map { "\($0.size.formatted()) m" }.formatted(.list(type: .or)),
-                     icon: "wind", tint: .teal, lines: 2)
-                    .accessibilityIdentifier("kiteFact")
+                Fact(title: String(localized: "Drive"), value: rec.driveLabel, icon: "car.fill", tint: .indigo)
             }
             if let tide = rec.tideSummary {
                 GridRow {
@@ -187,13 +183,6 @@ struct SpotDetailView: View {
                          icon: "water.waves.and.arrow.up", tint: .blue)
                         .gridCellColumns(2)
                 }
-            }
-            GridRow {
-                Fact(title: String(localized: "Drive"), value: rec.driveLabel, icon: "car.fill", tint: .indigo)
-                Fact(title: rec.spot.allSides.count > 1 ? String(localized: "Sides face") : String(localized: "Beach faces"),
-                     value: (Vocab.facing(rec.spot) ?? String(localized: "Unknown"))
-                        + (rec.spot.waterSectorDeg.map { $0 < 360 ? " · \(Int($0))°" : "" } ?? ""),
-                     icon: "water.waves", tint: .cyan)
             }
         }
     }

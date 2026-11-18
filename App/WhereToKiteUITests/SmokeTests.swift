@@ -243,7 +243,6 @@ final class SmokeTests: XCTestCase {
         if !topSpot.exists && !row.exists { app.swipeUp(); _ = row.waitForExistence(timeout: 5) }
         (topSpot.exists ? topSpot : row).tap()
         XCTAssertTrue(app.buttons["Directions"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.descendants(matching: .any)["kiteFact"].exists)
         app.swipeUp()
         let picker = app.segmentedControls["chartKitePicker"]
         XCTAssertTrue(picker.waitForExistence(timeout: 3))
