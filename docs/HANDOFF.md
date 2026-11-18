@@ -543,13 +543,13 @@ An Open-Meteo 429 now makes the Worker file one "Forecast quota hit: <day>" GitH
 
 The Kite tab's top options are now a 2×2 grid of labelled tiles (Rider, From, Max drive, Water & weather), each with its own sheet; the old single "options" sheet is gone and My hours lives only on the session strip. In review with before/after shots in docs/review/. Two UI tests (language relaunch, spot map slider) already fail on the base branch: new card.
 
-## Lead, 18 Nov 09:00: where I stopped
-1.0 live since 9 Nov. On Ben's word, main (2d9374e) now holds every workstream (Spot improvement UK/Wales/Belgium,
-Forecast accuracy WHE-218 engine flag, Product WHE-151/221/222/224/225/227) and is pushed; the same build is on his
-iPhone (Debug). Engine 162 tests, server 51 tests + typecheck, catalogue GB/BE/ES/FR-atlantic all green. The Worker is
-NOT redeployed: the live allow-list blocks `wave_height`, so Flat / Wavy scoring runs without waves until the deploy
-(Ben's word). WHE-221's rule still waits on Ben's OK (sky: gloomiest vs middle model; wave cuts). WHE-223/226 are on
-Product ticket branches, not merged. The catalogue build (WHE-229) reran on this push. Gotchas: `wrangler dev` dies
-in the agent shell (test live, rollback ready); `tools/.osm_cache` is a symlink to
+## Lead, 18 Nov 09:15: where I stopped
+1.0 live since 9 Nov. Main (638f162, pushed) holds every workstream, including Product's WHE-223 option tiles and
+WHE-226 spot-page cleanup; the same build is on Ben's iPhone (Debug). Ben's WHE-221 calls: sky = middle model for
+"good weather only" (storm safety still reads the gloomiest model, `skyCode` vs `weatherCode`), wave cuts as proposed.
+Ben OK'd the Worker deploy (WHE-232: wave heights in the allow-list + quota alert) but the agent permission guard
+denied `wrangler deploy`; until it runs, Flat / Wavy scores without waves. The catalogue build (WHE-229) was still
+running on 2d9374e. Next: deploy + live 100-spot check, then archive 1.1 for Ben to upload from Xcode. Gotchas:
+`wrangler dev` dies in the agent shell (test live, rollback ready); `tools/.osm_cache` is a symlink to
 /Users/ben/Documents/wheretokite/tools/.osm_cache (tar with -h); `gh run watch` drops on network blips, poll
 `gh run view --json status` instead; an Xcode-generated xcstrings change is in `git stash`.
