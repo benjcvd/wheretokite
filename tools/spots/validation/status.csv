@@ -58,7 +58,7 @@ gb-north-england,todo,val-gb-north-england,,,,,,,
 gb-scotland,todo,val-gb-scotland,,,,,,,
 ie-east-south,todo,val-ie-east-south,,,,,,,
 ie-west,todo,val-ie-west,,,,,,,
-be-all,todo,val-be-all,,,,,,,
+be-all,review,WHE-195,4,0,0,0,7,docs/validation/be-all.md,2026-11-18
 se-no,todo,val-se-no,,,,,,,
 small-med-black-sea,todo,val-small-med-black-sea,,,,,,,
 baltic-finland,todo,val-baltic-finland,,,,,,,
