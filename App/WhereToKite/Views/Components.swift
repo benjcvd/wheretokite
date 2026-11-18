@@ -113,23 +113,6 @@ struct WindArrow: View {
     }
 }
 
-/// Small rounded "pill" used for facts and filters.
-struct Pill: View {
-    let text: String
-    let systemImage: String
-    var tint: Color = .accentColor
-
-    var body: some View {
-        Label(text, systemImage: systemImage)
-            .font(.subheadline.weight(.medium))
-            .lineLimit(1)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .foregroundStyle(tint)
-            .background(tint.opacity(0.13), in: Capsule())
-    }
-}
-
 extension KiteVerdict {
     /// Green (Go) to grey (No go).
     var color: Color {

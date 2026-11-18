@@ -89,21 +89,23 @@ final class SmokeTests: XCTestCase {
         }
 
         // Search options: max drive goes up to 10 h.
-        app.buttons["optionsChip"].tap()
+        app.buttons["driveChip"].tap()
         let slider = app.sliders["driveSlider"]
         XCTAssertTrue(slider.waitForExistence(timeout: 3))
         slider.adjust(toNormalizedSliderPosition: 1)
         XCTAssertEqual(slider.value as? String, "10 h")
         snapshot(app, "6-options")
-        // Flat water, good weather only (WHE-221): the chip says so.
+        app.buttons["Done"].tap()
+        // Flat water, good weather only (WHE-221): its own tile says so.
+        app.buttons["conditionsChip"].tap()
         let water = app.segmentedControls["waterPicker"]
         if !water.isHittable { app.swipeUp() }
         XCTAssertTrue(water.waitForExistence(timeout: 3))
         water.buttons["Flat"].tap()
         app.segmentedControls["weatherPicker"].buttons["Good weather only"].tap()
         app.buttons["Done"].tap()
-        XCTAssertTrue(app.buttons["optionsChip"].label.contains("Flat · Good weather"))
-        app.buttons["optionsChip"].tap()
+        XCTAssertTrue(app.buttons["conditionsChip"].label.contains("Flat · Good weather"))
+        app.buttons["conditionsChip"].tap()
         if !water.isHittable { app.swipeUp() }
         water.buttons["Either"].tap()
         app.segmentedControls["weatherPicker"].buttons["Any weather"].tap()
@@ -181,7 +183,7 @@ final class SmokeTests: XCTestCase {
         if allow.waitForExistence(timeout: 4) { allow.tap() }
 
         // The windy spots that day are ~2 h away.
-        app.buttons["optionsChip"].tap()
+        app.buttons["driveChip"].tap()
         let slider = app.sliders["driveSlider"]
         XCTAssertTrue(slider.waitForExistence(timeout: 3))
         slider.adjust(toNormalizedSliderPosition: 1)
@@ -231,7 +233,7 @@ final class SmokeTests: XCTestCase {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         let allow = springboard.buttons["Allow While Using App"]
         if allow.waitForExistence(timeout: 4) { allow.tap() }
-        app.buttons["optionsChip"].tap()
+        app.buttons["driveChip"].tap()
         let slider = app.sliders["driveSlider"]
         XCTAssertTrue(slider.waitForExistence(timeout: 3))
         slider.adjust(toNormalizedSliderPosition: 1)
@@ -426,7 +428,7 @@ final class SmokeTests: XCTestCase {
         XCTAssertFalse(editor.waitForExistence(timeout: 1))
 
         // The drive slider stops at 3 h, without a Pro hint.
-        app.buttons["optionsChip"].tap()
+        app.buttons["driveChip"].tap()
         let slider = app.sliders["driveSlider"]
         XCTAssertTrue(slider.waitForExistence(timeout: 3))
         slider.adjust(toNormalizedSliderPosition: 1)

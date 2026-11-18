@@ -46,8 +46,7 @@ final class ReviewWalkthroughTests: XCTestCase {
         sleep(1)
 
         if env["REVIEW_DRIVE_MAX"] == "1" {
-            app.scrollViews.firstMatch.swipeLeft()
-            app.buttons["optionsChip"].tap()
+            app.buttons["driveChip"].tap()
             let slider = app.sliders["driveSlider"]
             if slider.waitForExistence(timeout: 3) { slider.adjust(toNormalizedSliderPosition: 1) }
             sleep(1); shot(app, "02b-options-max")
@@ -92,7 +91,7 @@ final class ReviewWalkthroughTests: XCTestCase {
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.09, dy: 0.095)).tap()
         sleep(1)
         shot(app, "06z-back-home")
-        app.buttons["optionsChip"].tap(); sleep(1); shot(app, "07-options")
+        app.buttons["conditionsChip"].tap(); sleep(1); shot(app, "07-options")
         app.swipeUp(); sleep(1); shot(app, "07-options-2")
         app.swipeDown(velocity: .fast); app.swipeDown(velocity: .fast); sleep(1)
         if app.buttons["riderChip"].exists { app.buttons["riderChip"].tap(); sleep(1); shot(app, "08-rider") }
