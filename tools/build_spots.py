@@ -801,12 +801,12 @@ def parse_sides(hint, water):
         if bits[0] not in COMPASS16 or len(bits) > 3:
             return None
         w = bits[2] if len(bits) == 3 else water
-        if w not in ("sea", "lagoon", "lake"):
+        if w not in ("sea", "lagoon", "lake", "bay"):   # bay = sheltered sea water, oriented as sea
             return None
         sides.append((bits[0], (bits[1] or None) if len(bits) > 1 else None, w))
     if len(sides) > 1 and any(name is None for _, name, _ in sides):
         return None
-    if sides[0][2] != water:   # the row's water type is the first side's
+    if ("sea" if sides[0][2] == "bay" else sides[0][2]) != water:   # the row's water type is the first side's
         return None
     return sides
 
@@ -1167,14 +1167,15 @@ def main():
         if len(r["sides"]) > 1:
             sides = []
             for h, name, w in r["sides"]:
-                so = o if (h, w) == (r["sides"][0][0], r["sides"][0][2]) else orient(lat, lon, w, hint_deg(h))
+                ow = "sea" if w == "bay" else w   # a bay is oriented from the coastline
+                so = o if (h, w) == (r["sides"][0][0], r["sides"][0][2]) else orient(lat, lon, ow, hint_deg(h))
                 if so is None or so["dist"] > MAX_SHORE_DIST + HINT_SNAP_RADIUS:
                     problems.append("%s: no %s shore for side '%s'" % (sid, h, name))
                     continue
                 if angdiff(so["facing"], hint_deg(h)) > 45:
                     problems.append("%s: side '%s' faces %.0f° (%s) but hint %s" % (
                         sid, name, so["facing"], compass(so["facing"]), h))
-                sides.append({"name": name, "seaFacingDeg": round(so["facing"], 1)})
+                sides.append({"name": name, "seaFacingDeg": round(so["facing"], 1), "waterType": w})
                 if r["sector"] != 180:
                     sides[-1]["waterSectorDeg"] = r["sector"]
                 spot.setdefault("_side_pts", []).append((so["lat"], so["lon"], so["facing"]))
