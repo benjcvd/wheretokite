@@ -543,7 +543,10 @@ An Open-Meteo 429 now makes the Worker file one "Forecast quota hit: <day>" GitH
 
 The Kite tab's top options are now a 2×2 grid of labelled tiles (Rider, From, Max drive, Water & weather), each with its own sheet; the old single "options" sheet is gone and My hours lives only on the session strip. In review with before/after shots in docs/review/. Two UI tests (language relaunch, spot map slider) already fail on the base branch: new card.
 
-## Lead, 18 Nov 09:15: where I stopped
+## Lead, 18 Nov 19:20: where I stopped
+Worker deployed by Ben from his Terminal (version 6e0f6d1f; the agent guard blocks `wrangler deploy`, so hand him the command). Live check passed: 100-spot forecast MISS then HIT, wave heights flow. The note below is otherwise current.
+
+### 18 Nov 09:15
 1.0 live since 9 Nov. Main (638f162, pushed) holds every workstream, including Product's WHE-223 option tiles and
 WHE-226 spot-page cleanup; the same build is on Ben's iPhone (Debug). Ben's WHE-221 calls: sky = middle model for
 "good weather only" (storm safety still reads the gloomiest model, `skyCode` vs `weatherCode`), wave cuts as proposed.
