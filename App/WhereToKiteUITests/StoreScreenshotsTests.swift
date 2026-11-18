@@ -22,7 +22,7 @@ final class StoreScreenshotsTests: XCTestCase {
         }
 
         // Windy spots are often ~2 h away: the free plan's 3 h covers them.
-        app.buttons["optionsChip"].tap()
+        app.buttons["driveChip"].tap()
         let slider = app.sliders["driveSlider"]
         XCTAssertTrue(slider.waitForExistence(timeout: 3))
         slider.adjust(toNormalizedSliderPosition: 1)

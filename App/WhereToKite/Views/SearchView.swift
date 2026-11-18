@@ -17,7 +17,7 @@ struct SearchView: View {
     @Namespace private var zoom
 
     enum Sheet: String, Identifiable {
-        case profile, start, options
+        case profile, start, drive, conditions
         var id: String { rawValue }
     }
 
@@ -78,8 +78,11 @@ struct SearchView: View {
                     ProfileSheet()
                 case .start:
                     NavigationStack { StartPointPicker(selection: $options.start) }
-                case .options:
-                    SearchOptionsSheet(options: $options)
+                case .drive:
+                    DriveOptionsSheet(options: $options)
+                        .presentationDetents([.medium])
+                case .conditions:
+                    ConditionsSheet(options: $options)
                         .presentationDetents([.medium, .large])
                 }
             }
@@ -98,38 +101,44 @@ struct SearchView: View {
 
     // MARK: Controls
 
+    /// Four labelled tiles, two by two, so every choice is visible at once (WHE-223): who rides,
+    /// from where, how far, which water and weather. Each opens its own small sheet.
     private var controls: some View {
         VStack(alignment: .leading, spacing: 12) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8) {
+            Grid(horizontalSpacing: 8, verticalSpacing: 8) {
+                GridRow {
                     if let p = profiles.profile {
-                        chip(p.shortSummary, systemImage: "figure.surfing", sheet: .profile)
+                        tile(String(localized: "Rider"), p.shortSummary, systemImage: "figure.surfing", sheet: .profile)
                             .accessibilityLabel("Rider profile: \(p.shortSummary). Edit")
                             .accessibilityIdentifier("riderChip")
                     }
-                    chip(options.start.isCurrentLocation ? String(localized: "Near me") : options.start.name,
+                    tile(String(localized: "From"),
+                         options.start.isCurrentLocation ? String(localized: "Near me") : options.start.name,
                          systemImage: options.start.isCurrentLocation ? "location.fill" : "mappin", sheet: .start)
                         .accessibilityLabel(options.start.isCurrentLocation
                                             ? String(localized: "Start from your current location")
                                             : String(localized: "Start from \(options.start.name)"))
-                    chip("≤ \(DriveSteps.label(options.maxDriveMinutes))", systemImage: "car.fill", sheet: .options)
-                        .accessibilityLabel("Max drive \(DriveSteps.label(options.maxDriveMinutes))")
-                    chip(styleLabel, systemImage: "slider.horizontal.3", sheet: .options)
-                        .accessibilityLabel("Water and weather: \(styleLabel). More options")
-                        .accessibilityIdentifier("optionsChip")
+                        .accessibilityIdentifier("startChip")
                 }
-                .padding(.vertical, 2)
+                GridRow {
+                    tile(String(localized: "Max drive"), DriveSteps.label(options.maxDriveMinutes),
+                         systemImage: "car.fill", sheet: .drive)
+                        .accessibilityLabel("Max drive \(DriveSteps.label(options.maxDriveMinutes)). Edit")
+                        .accessibilityIdentifier("driveChip")
+                    tile(String(localized: "Water & weather"), styleLabel, systemImage: "water.waves", sheet: .conditions)
+                        .accessibilityLabel("Water and weather: \(styleLabel). Edit")
+                        .accessibilityIdentifier("conditionsChip")
+                }
             }
-            .scrollClipDisabled()
 
             DayStrip(selection: $options.day)
             SlotPicker(options: $options)
         }
     }
 
-    private func chip(_ text: String, systemImage: String, sheet: Sheet) -> some View {
+    private func tile(_ caption: String, _ value: String, systemImage: String, sheet: Sheet) -> some View {
         Button { self.sheet = sheet } label: {
-            Pill(text: text, systemImage: systemImage)
+            OptionTile(caption: caption, value: value, systemImage: systemImage)
         }
         .buttonStyle(.plain)
     }
@@ -144,6 +153,42 @@ struct SearchView: View {
         }
         if options.weather == .fair { parts.append(String(localized: "Good weather")) }
         return parts.isEmpty ? String(localized: "Any conditions") : parts.joined(separator: " · ")
+    }
+}
+
+/// One search choice on the Kite tab: a small caption over the current value, with a tinted icon
+/// and a chevron so it reads as tappable. Same card look as the day strip.
+private struct OptionTile: View {
+    let caption: String
+    let value: String
+    let systemImage: String
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: systemImage)
+                .font(.body.weight(.semibold))
+                .foregroundStyle(.tint)
+                .frame(width: 22)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(caption)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                Text(value)
+                    .font(.subheadline.weight(.semibold))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+            }
+            Spacer(minLength: 0)
+            Image(systemName: "chevron.down")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(.tertiary)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 9)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 }
 
@@ -281,7 +326,7 @@ private struct SlotPicker: View {
     }
 }
 
-/// From / Until steppers for "My hours". Shown on the home screen and in Search options.
+/// From / Until steppers for "My hours", in the editor opened from that session.
 private struct CustomHoursSteppers: View {
     @Binding var options: SearchOptions
 
@@ -317,16 +362,73 @@ private struct CustomHoursEditor: View {
     }
 }
 
-// MARK: - More options
+// MARK: - Drive
 
-struct SearchOptionsSheet: View {
+/// Max drive and "closer is better", opened from the drive tile.
+struct DriveOptionsSheet: View {
     @Binding var options: SearchOptions
     @Environment(PlanStore.self) private var plan
+    @Environment(\.dismiss) private var dismiss
 
     /// Last selectable drive step under the plan.
     private var maxDriveIndex: Int {
         plan.entitlements.maxDriveMinutes.map { DriveSteps.index(of: $0) } ?? DriveSteps.minutes.count - 1
     }
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text("Max drive")
+                            Spacer()
+                            Text(DriveSteps.label(options.maxDriveMinutes))
+                                .font(.title3.weight(.bold))
+                                .monospacedDigit()
+                                .foregroundStyle(.tint)
+                                .contentTransition(.numericText(value: options.maxDriveMinutes))
+                        }
+                        Slider(value: driveIndex, in: 0...Double(maxDriveIndex), step: 1) {
+                            Text("Max drive")
+                        } minimumValueLabel: {
+                            Text("15 min").font(.caption2)
+                        } maximumValueLabel: {
+                            Text(DriveSteps.label(DriveSteps.minutes[maxDriveIndex])).font(.caption2)
+                        }
+                        .accessibilityValue(DriveSteps.label(options.maxDriveMinutes))
+                        .accessibilityIdentifier("driveSlider")
+                    }
+                    if plan.entitlements.maxDriveMinutes != nil {
+                        ProLockRow(title: String(localized: "Drives up to 10 h"), detail: String(localized: "Weekend trips with Pro"))
+                    }
+                    Toggle("Closer is better", isOn: $options.distanceMatters)
+                } footer: {
+                    Text(options.distanceMatters
+                         ? "Nearer spots rank higher when the wind is similar."
+                         : "Spots are ranked on conditions only.")
+                }
+            }
+            .navigationTitle("Drive")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
+            }
+        }
+        .sensoryFeedback(.selection, trigger: options.maxDriveMinutes)
+    }
+
+    private var driveIndex: Binding<Double> {
+        Binding(get: { Double(DriveSteps.index(of: options.maxDriveMinutes)) },
+                set: { options.maxDriveMinutes = DriveSteps.minutes[Int($0.rounded())] })
+    }
+}
+
+// MARK: - Water and weather
+
+/// Flat or wavy water, good weather only (WHE-221), opened from the water & weather tile.
+struct ConditionsSheet: View {
+    @Binding var options: SearchOptions
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -360,60 +462,13 @@ struct SearchOptionsSheet: View {
                          ? "Spots and hours under cloud or rain rank lower. Storms always score 0."
                          : "Clouds and light rain don't change the ranking. Storms always score 0.")
                 }
-                Section {
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text("Max drive")
-                            Spacer()
-                            Text(DriveSteps.label(options.maxDriveMinutes))
-                                .font(.title3.weight(.bold))
-                                .monospacedDigit()
-                                .foregroundStyle(.tint)
-                                .contentTransition(.numericText(value: options.maxDriveMinutes))
-                        }
-                        Slider(value: driveIndex, in: 0...Double(maxDriveIndex), step: 1) {
-                            Text("Max drive")
-                        } minimumValueLabel: {
-                            Text("15 min").font(.caption2)
-                        } maximumValueLabel: {
-                            Text(DriveSteps.label(DriveSteps.minutes[maxDriveIndex])).font(.caption2)
-                        }
-                        .accessibilityValue(DriveSteps.label(options.maxDriveMinutes))
-                        .accessibilityIdentifier("driveSlider")
-                    }
-                    if plan.entitlements.maxDriveMinutes != nil {
-                        ProLockRow(title: String(localized: "Drives up to 10 h"), detail: String(localized: "Weekend trips with Pro"))
-                    }
-                    Toggle("Closer is better", isOn: $options.distanceMatters)
-                } header: {
-                    Text("Drive")
-                } footer: {
-                    Text(options.distanceMatters
-                         ? "Nearer spots rank higher when the wind is similar."
-                         : "Spots are ranked on conditions only.")
-                }
-
-                Section {
-                    CustomHoursSteppers(options: $options)
-                } header: {
-                    Text("My hours")
-                } footer: {
-                    Text("Used by the \u{201C}My hours\u{201D} session. Hours after sunset never count.")
-                }
-
             }
-            .navigationTitle("Search options")
+            .navigationTitle("Water & weather")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
             }
         }
-        .sensoryFeedback(.selection, trigger: options.maxDriveMinutes)
-    }
-
-    private var driveIndex: Binding<Double> {
-        Binding(get: { Double(DriveSteps.index(of: options.maxDriveMinutes)) },
-                set: { options.maxDriveMinutes = DriveSteps.minutes[Int($0.rounded())] })
     }
 
     private var waterBinding: Binding<WaterPreference> {

@@ -550,3 +550,7 @@ osm-cache refresh (Ben OK'd it 18 Nov); see the card. Ben's calls: Open-Meteo fr
 domain for 1.1. Gotchas: `wrangler dev` dies in the agent shell (test live, rollback ready); `tools/.osm_cache` is a
 symlink to /Users/ben/Documents/wheretokite/tools/.osm_cache (tar with -h); `gh run watch` drops on network blips,
 poll `gh run view --json status` instead; an Xcode-generated xcstrings change is in `git stash`.
+
+## WHE-223 (2026-11-18)
+
+The Kite tab's top options are now a 2×2 grid of labelled tiles (Rider, From, Max drive, Water & weather), each with its own sheet; the old single "options" sheet is gone and My hours lives only on the session strip. In review with before/after shots in docs/review/. Two UI tests (language relaunch, spot map slider) already fail on the base branch: new card.
