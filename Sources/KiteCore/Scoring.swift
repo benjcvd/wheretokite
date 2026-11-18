@@ -234,6 +234,9 @@ public struct HourScore: Sendable {
     /// Flat / wavy and good-weather factors (nil = the rider didn't ask; WHE-221).
     public var waterFactor: Double?
     public var weatherFactor: Double?
+    /// "too strong for level" came from the gusts alone (mean wind within the limit), so the
+    /// app can point at the gust number rather than the wind.
+    public var gustOverLimit = false
 }
 
 public struct Scorer: Sendable {
@@ -299,7 +302,9 @@ public struct Scorer: Sendable {
         var flags: [String] = []
         let limits = rules.limits(profile.level, intensity: intensity)
         if w.speedKn > limits.wind || w.gustKn > limits.gust {
-            return HourScore(wind: w, score: 0, kite: nil, relativeAngle: angle, flags: ["too strong for level"])
+            var h = HourScore(wind: w, score: 0, kite: nil, relativeAngle: angle, flags: ["too strong for level"])
+            h.gustOverLimit = w.speedKn <= limits.wind
+            return h
         }
 
         // 1. Strength: pick the kite in the quiver that fits this wind best.

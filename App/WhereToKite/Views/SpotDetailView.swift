@@ -343,6 +343,9 @@ struct SpotDetailView: View {
     private func hourRow(_ h: HourScore) -> some View {
         let fit = h.windFit
         let speed = Int(h.wind.speedKn.rounded()), gust = Int(h.wind.gustKn.rounded())
+        // Gusts alone over the rider's limit: the gust number takes the red, the wind stays plain.
+        let gustRuled = fit == .tooStrong && h.gustOverLimit
+        let windColor = gustRuled ? Color.primary : fit.color
         return VStack(alignment: .leading, spacing: 3) {
             HStack(spacing: 8) {
                 Text(String(format: "%02d:00", h.wind.hour))
@@ -350,13 +353,13 @@ struct SpotDetailView: View {
                     .frame(width: timeColumn, alignment: .leading)
                 Text(verbatim: "\(speed)")
                     .font(.headline)
-                    .foregroundStyle(fit.color)
+                    .foregroundStyle(windColor)
                     .frame(width: windColumn)
                     .padding(.vertical, 3)
-                    .background(fit.color.opacity(0.14), in: Capsule())
+                    .background(gustRuled ? Color.secondary.opacity(0.12) : fit.color.opacity(0.14), in: Capsule())
                 Text(verbatim: "\(gust)")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .font(gustRuled ? .subheadline.weight(.bold) : .subheadline)
+                    .foregroundStyle(gustRuled ? fit.color : .secondary)
                     .frame(width: gustColumn)
                 HStack(spacing: 6) {
                     WindArrow(directionDeg: h.wind.directionDeg)
@@ -403,7 +406,11 @@ struct SpotDetailView: View {
 
     /// Warnings (safety first, as applySafety orders them) and the side of a multi-side spot.
     private func hourNote(_ h: HourScore) -> String? {
-        var parts = h.flags.map(Vocab.term)
+        var parts = h.flags.map { flag in
+            flag == "too strong for level" && h.gustOverLimit
+                ? String(localized: "gusts too strong for your level", comment: "Hour ruled out: the gusts, not the mean wind, are over the rider's limit")
+                : Vocab.term(flag)
+        }
         if let side = h.side, h.score > 0 { parts.append(side) }
         return parts.isEmpty ? nil : parts.joined(separator: " · ")
     }

@@ -2482,6 +2482,23 @@
         }
       }
     },
+    "gusts too strong for your level" : {
+      "comment" : "Hour ruled out: the gusts, not the mean wind, are over the rider's limit",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rachas demasiado fuertes para tu nivel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rafales trop fortes pour ton niveau"
+          }
+        }
+      }
+    },
     "gusty" : {
       "localizations" : {
         "es" : {
