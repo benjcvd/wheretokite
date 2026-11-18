@@ -27,6 +27,38 @@ final class BlendTests: XCTestCase {
         XCTAssertEqual(min(w.directionDeg, 360 - w.directionDeg), 0, accuracy: 1e-6)
     }
 
+    /// WHE-218, Berck 22 Nov: ECMWF 15 kn ESE + GFS 21 kn WNW blend to a westerly neither forecasts.
+    func testOppositeModelsAreFlagged() throws {
+        let w = try XCTUnwrap(Blend.hour(series([
+            "wind_speed_10m_a": 15, "wind_speed_10m_b": 21,
+            "wind_direction_10m_a": 112, "wind_direction_10m_b": 292,
+        ]), index: 0, models: models, localTime: "2026-11-22T14:00"))
+        XCTAssertEqual(w.modelDirectionsDeg, [112, 292])
+        XCTAssertEqual(w.directionSpreadDeg, 180, accuracy: 1e-9)
+        XCTAssertTrue(w.modelsDisagreeOnDirection)
+    }
+
+    func testCloseModelsAndLightWindAreNotFlagged() throws {
+        let close = try XCTUnwrap(Blend.hour(series([
+            "wind_speed_10m_a": 15, "wind_speed_10m_b": 18,
+            "wind_direction_10m_a": 350, "wind_direction_10m_b": 60,
+        ]), index: 0, models: models, localTime: "2026-11-22T14:00"))
+        XCTAssertEqual(close.directionSpreadDeg, 70, accuracy: 1e-9)
+        XCTAssertFalse(close.modelsDisagreeOnDirection)
+        // A 4 kn model's direction is noise: it doesn't count.
+        let light = try XCTUnwrap(Blend.hour(series([
+            "wind_speed_10m_a": 4, "wind_speed_10m_b": 18,
+            "wind_direction_10m_a": 120, "wind_direction_10m_b": 300,
+        ]), index: 0, models: models, localTime: "2026-11-22T14:00"))
+        XCTAssertEqual(light.modelDirectionsDeg, [300])
+        XCTAssertFalse(light.modelsDisagreeOnDirection)
+        // One model: nothing to disagree with.
+        let one = try XCTUnwrap(Blend.hour(["wind_speed_10m": [15], "wind_direction_10m": [90]],
+                                           index: 0, models: ["a"], localTime: "2026-11-22T14:00"))
+        XCTAssertNil(one.modelDirectionsDeg)
+        XCTAssertFalse(one.modelsDisagreeOnDirection)
+    }
+
     func testStormFromAnyModelCounts() throws {
         let w = try XCTUnwrap(Blend.hour(series([
             "wind_speed_10m_a": 15, "wind_speed_10m_b": 15,
