@@ -237,13 +237,17 @@ struct SpotDetailView: View {
                         }
                 }
                 ForEach(rec.hours, id: \.wind.localTime) { h in
+                    let fit = h.windFit(for: chartKite)
+                    // Gusts alone over the rider's limit: the dot takes the red, the bar shows the
+                    // mean wind against the kite, faded because the hour still can't be ridden.
+                    let gustRuled = fit == .tooStrong && h.gustOverLimit
                     BarMark(x: .value("Hour", h.wind.hour), y: .value("Wind", h.wind.speedKn), width: 18)
-                        .foregroundStyle(h.windFit.color)
+                        .foregroundStyle(gustRuled ? h.meanFit(for: chartKite).color.opacity(0.35) : fit.color)
                         .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
                     PointMark(x: .value("Hour", h.wind.hour), y: .value("Gust", h.wind.gustKn))
                         .symbol(.circle)
-                        .symbolSize(30)
-                        .foregroundStyle(.secondary)
+                        .symbolSize(gustRuled ? 60 : 30)
+                        .foregroundStyle(gustRuled ? AnyShapeStyle(WindFit.tooStrong.color) : AnyShapeStyle(.secondary))
                 }
             }
             .chartXScale(domain: (rec.hours.first?.wind.hour ?? 9) - 1 ... (rec.hours.last?.wind.hour ?? 17) + 1)
@@ -254,7 +258,7 @@ struct SpotDetailView: View {
                 }
             }
             .frame(height: 190)
-            WindFitLegend(fits: Set(rec.hours.map(\.windFit)))
+            WindFitLegend(fits: Set(rec.hours.map { $0.windFit(for: chartKite) }))
             Text("Bars: average wind (kn) · Dots: gusts")
                 .font(.caption2)
                 .foregroundStyle(.secondary)
@@ -707,6 +711,20 @@ extension HourScore {
         if flags.contains("too light") { return .tooLight }
         if flags.contains("too strong for level") || flags.contains("too strong for quiver") { return .tooStrong }
         return .noGo
+    }
+
+    /// The fit against one kite of the quiver (the chart's kite picker): safety and the level's
+    /// hard limits stay as the engine decided; otherwise the mean wind against that kite's range.
+    func windFit(for kite: KiteRange?) -> WindFit {
+        let engine = windFit
+        guard let kite, engine != .noGo, !flags.contains("too strong for level") else { return engine }
+        return meanFit(for: kite)
+    }
+
+    /// The mean wind alone against the kite's range, ignoring gusts and level limits.
+    func meanFit(for kite: KiteRange?) -> WindFit {
+        guard let kite else { return windFit }
+        return wind.speedKn < kite.minKn ? .tooLight : wind.speedKn > kite.maxKn ? .tooStrong : .rideable
     }
 }
 
