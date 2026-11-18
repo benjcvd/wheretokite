@@ -8,13 +8,13 @@ GB,Suffolk,Felixstowe Ferry,sea,osm:w844058564,SE,"Deben river mouth, sandbanks 
 GB,Norfolk,Sea Palling,sea,q:Sea Palling,NE,"Artificial offshore reefs: flat lagoons inside, punchy waves outside; strong rips at the reef gaps. Only the reefs are confirmed by a tourist-board page: no kite school or council kite rule found, check locally.",,,,
 GB,Norfolk,Hunstanton,sea,osm:r9742449,W,"Flat shallow water over the sandbar at low tide; do not launch between the groynes. Rare west-facing east-coast beach, best in SW winds, up to 30 kites on a busy day. High tide at New Hunstanton washes against the sea wall: ride Old Hunstanton then (little beach on spring tides). No official kite zone found. Alternative: Brancaster (12 km E, NT kite zone, strong tides, experienced only).",,not-high,,
 GB,Lincolnshire,Cleethorpes (Humberston),sea,q:Humberston Fitties,E,"Kite riders use the Humberston Fitties end, south of the leisure centre (reported; no council kite-zone page found, the council's habitat plan may limit recreation to protect birds). A local kite school (Eastcoast Kiteboarding) is at the Fitties end. Lagoon around mid tide, beginner friendly.",,mid,,
-GB,East Yorkshire,Fraisthorpe,sea,osm:w1442992116,E,,,,,
-GB,North Yorkshire,Redcar – Majuba,sea,osm:w107881763,N,"Main Teesside spot, WNW through N to E. Rock reefs to the east uncover at low tide. Alternative: Seaton Carew across the Tees, flattish in southerlies.",,,,
-GB,Northumberland,Blyth – Seaton Sluice,sea,osm:w185846026,E,Kiters use the Seaton Sluice (south) end of the bay. Groynes and shore dump at high tide. Alternative: Tynemouth Longsands (busy surf beach).,,,,
+GB,East Yorkshire,Fraisthorpe,sea,osm:w1442992116,E,"Quieter than Bridlington, shallow far out, low dunes make it windier. Best low to mid tide in N to WNW; avoid high tide (old wartime structures). No school on site.",,,,
+GB,North Yorkshire,Redcar – Majuba,sea,osm:w107881763,N,"Main Teesside spot, WNW through N to E. Rock reefs to the east uncover at low tide. SW wind gives a strong shore dump. Alternative: Seaton Carew across the Tees, flattish in southerlies.",,,,
+GB,Northumberland,Blyth – Seaton Sluice,sea,osm:w185846026,E,"Kiters use the Seaton Sluice (south) end of the bay; the council guide suggests launching behind The Ranch car park, away from bathers. No kite school found. Groynes and shore dump at high tide. Alternative: Tynemouth Longsands (busy surf beach).",,,,
 GB,Northumberland,Beadnell Bay,sea,osm:n393322860,E,"Reef break plus lagoon, best mid to high tide; local BKSA school. Alternative: Budle Bay tidal lagoon around high water (1 Apr–31 Oct only).",,,,
-GB,Merseyside,West Kirby,sea,osm:w30822710,W,"Dee estuary: kite only around high tide (no kitesurfing within 100 m of the tide line otherwise). Alternatives: Hoylake – Red Rocks (mid to high tide), Wallasey / New Brighton (NW, low tide lagoon).",,high,,
-GB,Lancashire,St Annes,sea,osm:w56313968,W,"Club spot by the Beachcomber café. Launch ~2 h before high tide; no beach on big springs, long walk at low.",,not-low,,
-GB,Cumbria,Walney Island – Earnse Bay,sea,q:Walney Island,W,"Gently shelving, exposed to the Irish Sea; kite school on the beach.",,,,
+GB,Merseyside,West Kirby,sea,osm:w30822710,W,"Dee estuary: kite only around high tide; stay out of the marsh protection marks north of the marine lake (Dee Conservancy notice) (no kitesurfing within 100 m of the tide line otherwise). Alternatives: Hoylake – Red Rocks (mid to high tide), Wallasey / New Brighton (NW, low tide lagoon).",,high,,
+GB,Lancashire,St Annes,sea,osm:w56313968,W,"Club spot by the Beachcomber café (St Anne's Kitesurfing Club, North Beach Wind Sports Centre). Launch ~2 h before high tide; no beach on big springs, long walk at low.",,not-low,,
+GB,Cumbria,Walney Island – Earnse Bay,sea,q:Walney Island,W,"Gently shelving, exposed to the Irish Sea; BKSA/IKO school on the beach (Earnse Bay Kitesurfing).",,,,
 # --- South West
 # archived: no source says people kitesurf at Brean; Somerset Council limits sailing on Brean Beach to land-yacht and traction-kite club members at organised meetings; not on the Windguru map
 GB,Somerset,Brean,sea,osm:w682452846,W,Huge tidal range: very long walk over sand and mud at low water. Alternative: Weston-super-Mare – Uphill kite zone (±3 h around high tide).,,,archived,
@@ -78,7 +78,7 @@ GB,Merseyside,Hoylake – Red Rocks,sea,osm:w362327471,NW,"Nature reserve, exper
 # archived: permit-only local beach
 GB,Merseyside,Ainsdale,sea,osm:w257439515,W,Only Sefton beach where kitesurfing is allowed: free council permit plus BKSA insurance required.,,,archived,
 # pro: secondary local beach; Fylde covered by St Annes
-GB,Lancashire,Fleetwood – Marine Beach,sea,q:Fleetwood Beach,NW,,,,pro,
+GB,Lancashire,Fleetwood – Marine Beach,sea,q:Fleetwood Beach,NW,"Most popular Fylde coast kite and windsurf beach, best SW to NW; depends on the tide. No kite school on site.",,,pro,
 # pro: within ~10 km of a better-known kept spot (Brean)
 GB,Somerset,Weston-super-Mare – Uphill,sea,osm:r16699239,W,"Council-run WindZone between Royal Sands and Uphill: launch and land south of the Royal Sands car park. BKSA, RYA or UKWA membership card required. No lifeguard, intermediate to advanced. 10 m+ tides: ride ~3 h either side of high tide only.",,high,pro,
 # pro: secondary to Saunton Sands
