@@ -1,5 +1,22 @@
 # WHE-242: the models' range on the spot page, explained
 
+## Round 2 (20 Nov): arrows instead of "ENE–SE"
+
+You found the "ENE–SE" text unreadable on the phone. Now, on hours where the models are 45° or more apart, the single arrow becomes **one small arrow per model**, each pointing the way its wind blows, side by side. A model whose wind is **offshore for that beach is red** (same rule the scoring uses). Hours where the models agree keep the single arrow, and the words after it are back to the usual "NW side-onshore". The arrow slot has the same width on every row, so the words stay lined up.
+
+| Case | Before (text) | After (arrows) |
+|---|---|---|
+| 2 models, one offshore (Le Barcarès – Dosses, 25 Nov, 13:00) | ![](whe242-v2-before-offshore.png) | ![](whe242-v2-after-offshore.png) |
+| 2 models, neither offshore (El Trabucador, 25 Nov) | ![](whe242-v2-before-two.png) | ![](whe242-v2-after-two.png) |
+| 3 models (Malgrat de Mar, 22 Nov: ARPEGE, ECMWF, GFS) | (not shot) | ![](whe242-v2-after-three.png) |
+
+Notes:
+- A model under 8 kn has no meaningful direction and gets no arrow (e.g. Malgrat 16:00 shows 2 of 3).
+- **Map fan kept**: it stays clean (one light wedge, labelled "Fan: models ENE–SE"). See round 1 below.
+- Scoring untouched: the WHE-231 rule (worse vs average direction) still waits on your pick.
+
+## Round 1
+
 Real forecasts, Barcelona, 12 m / 9 m, intermediate, afternoon. No scoring change.
 
 ### Spot map (top of the page)

@@ -390,6 +390,12 @@ struct SpotDetailView: View {
     @ScaledMetric(relativeTo: .headline) private var windColumn: CGFloat = 46
     @ScaledMetric(relativeTo: .subheadline) private var gustColumn: CGFloat = 46
     @ScaledMetric(relativeTo: .footnote) private var kiteColumn: CGFloat = 44
+    @ScaledMetric(relativeTo: .footnote) private var arrowSlot: CGFloat = 17
+
+    /// Most arrows any hour shows: one, or one per model where they're 45°+ apart (WHE-242).
+    private var arrowSlots: Int {
+        rec.hours.map { h in h.wind.modelDirectionArcDeg == nil ? 1 : max(1, h.wind.modelDirectionsDeg?.count ?? 1) }.max() ?? 1
+    }
 
     /// WHE-225: one aligned line per hour (time, wind, gusts, direction, kite), the wind tinted by
     /// what it means for your kites; a second line only when something needs saying.
@@ -457,8 +463,17 @@ struct SpotDetailView: View {
                     .foregroundStyle(gustRuled ? fit.color : .secondary)
                     .frame(width: gustColumn)
                 HStack(spacing: 6) {
-                    WindArrow(directionDeg: h.wind.directionDeg)
-                        .font(.footnote)
+                    Group {
+                        // WHE-242: models 45°+ apart → one arrow per model, red when offshore.
+                        if h.wind.modelDirectionArcDeg != nil, let dirs = h.wind.modelDirectionsDeg {
+                            ModelArrows(directions: dirs, offshore: modelOffshore(h, dirs))
+                        } else {
+                            WindArrow(directionDeg: h.wind.directionDeg)
+                        }
+                    }
+                    .font(.footnote)
+                    // Same width on every row, so the words line up whatever the arrow count.
+                    .frame(width: arrowSlot * CGFloat(arrowSlots), alignment: .leading)
                     Text(hourDirection(h))
                         .font(.footnote)
                         .lineLimit(1)
@@ -492,13 +507,19 @@ struct SpotDetailView: View {
         .accessibilityIdentifier("hourRow")
     }
 
-    /// "SE side-onshore": where the wind comes from and how it meets the beach. When the
-    /// models differ by two compass points or more, their range instead: "ENE–SE side-onshore".
+    /// Whether each model's direction is offshore on the side this hour was scored on.
+    private func modelOffshore(_ h: HourScore, _ dirs: [Double]) -> [Bool] {
+        let sides = rec.spot.allSides
+        guard let side = sides.first(where: { $0.name != nil && $0.name == h.side }) ?? sides.first else {
+            return dirs.map { _ in false }
+        }
+        let scorer = Scorer(profile: profile, intensity: nil)
+        return dirs.map { scorer.isOffshore(directionDeg: $0, side: side) }
+    }
+
+    /// "SE side-onshore": where the wind comes from and how it meets the beach.
     private func hourDirection(_ h: HourScore) -> String {
-        var text = h.wind.modelDirectionArcDeg.map { arc in
-            let from = Vocab.compass(arc.from), to = Vocab.compass(arc.to)
-            return from == to ? from : "\(from)–\(to)"
-        } ?? Vocab.compass(h.wind.directionDeg)
+        var text = Vocab.compass(h.wind.directionDeg)
         if let a = h.relativeAngle { text += " " + Vocab.angle(a) }
         return text
     }

@@ -299,6 +299,25 @@ public struct Scorer: Sendable {
         return h
     }
 
+    /// Whether a wind from `directionDeg` counts as offshore on this side, by the same angle
+    /// and rule `scoreOneDirection` flags "offshore component" with (display only, WHE-242:
+    /// the spot page reddens each model arrow that is offshore). A shore that curves (sector
+    /// over 180°) uses its best-placed part, as the scorer does.
+    public func isOffshore(directionDeg: Double, side: SpotSide) -> Bool {
+        let sector = min(360, max(0, side.waterSectorDeg ?? 180))
+        let off = Geo.angleDiff(directionDeg, side.seaFacingDeg)
+        let angle: Double
+        if sector <= 180 {
+            angle = min(180, max(0, off - sector / 2 + 90))
+        } else {
+            let span = min(360, 2 * (sector - 180))
+            let steps = max(1, Int((span / 5).rounded(.up)))
+            angle = (0...steps).map { Geo.angleDiff(directionDeg, side.seaFacingDeg - span / 2 + span * Double($0) / Double(steps)) }.min()!
+        }
+        return angle >= 90 && rules.directionScore(relativeAngle: angle, level: profile.level,
+                                                   offshore: profile.offshoreTolerance) == 0
+    }
+
     /// Flag on an hour scored on the worse of the models' directions.
     public static let directionDisagreementFlag = "models disagree on direction"
 

@@ -7474,6 +7474,40 @@
           }
         }
       }
+    },
+    "%@ offshore" : {
+      "comment" : "VoiceOver: one model's wind direction, offshore, e.g. 'ESE offshore'",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ offshore"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ offshore"
+          }
+        }
+      }
+    },
+    "Models: %@" : {
+      "comment" : "VoiceOver: each weather model's wind direction this hour",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modelos: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modèles : %@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

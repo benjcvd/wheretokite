@@ -209,6 +209,11 @@ final class StoreScreenshotsTests: XCTestCase {
             // A named spot further down the list (WHE-242).
             let row = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", spot)).firstMatch
             for _ in 0..<8 where !(row.exists && row.isHittable) { app.swipeUp() }
+            if !row.exists {
+                // Not kiteable spots sit in a folded list at the bottom.
+                app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Not kiteable")).firstMatch.tap()
+                for _ in 0..<8 where !(row.exists && row.isHittable) { app.swipeUp() }
+            }
             row.tap()
         } else {
             topSpot.tap()
