@@ -20,6 +20,8 @@ Something I didn't expect: in France "best match" *is* Météo-France's AROME (i
 so the old check counted Météo-France twice and called it agreement. The new set has three
 really independent models.
 
+**Decision: Ben said go (19 Nov), option 1 built on atlas/t/whe-239.**
+
 **Recommendation.**
 1. **Switch the check to the forecast's three models, with the new cut-offs (recommended).** It's
    one story on screen (the model band Product is building can't contradict the badge). It ties
