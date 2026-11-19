@@ -7321,6 +7321,56 @@
           }
         }
       }
+    },
+    "models disagree on direction" : {
+      "comment" : "Flag: the weather models forecast very different wind directions, so the worse one is scored",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "los modelos no coinciden en la dirección"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "les modèles divergent sur la direction"
+          }
+        }
+      }
+    },
+    "Unsure direction" : {
+      "comment" : "Not-kiteable tag: the weather models disagree on the wind direction, one of them offshore",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección dudosa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction incertaine"
+          }
+        }
+      }
+    },
+    "The weather models disagree on the wind direction, and one says offshore." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos no coinciden en la dirección del viento, y uno dice offshore."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles ne sont pas d'accord sur la direction du vent, et l'un d'eux annonce de l'offshore."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

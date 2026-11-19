@@ -44,12 +44,12 @@ public struct SpotRecommendation: Sendable, Identifiable {
     }
 
     /// For a "No go": the safety rule behind it, when there is one ("thunderstorm risk",
-    /// "kiting banned", "dark", "offshore"), from the hours the score is made of.
+    /// "kiting banned", "dark", "offshore", "models disagree on direction"), from the hours the score is made of.
     public var safetyReason: String? {
         guard kiteVerdict == .noGo else { return nil }
         let slice = scoredHours.map { s in hours.filter { $0.wind.hour >= s.start && $0.wind.hour < s.end } } ?? hours
         let problem = Recommender.mainProblem(slice.isEmpty ? hours : slice)
-        return ["too late", "thunderstorm risk", "kiting banned", "dark", "offshore"].contains(problem) ? problem : nil
+        return ["too late", "thunderstorm risk", "kiting banned", "dark", "offshore", Scorer.directionDisagreementFlag].contains(problem) ? problem : nil
     }
     /// For a not-kiteable row: the one-word reason, from the hours the score is made of
     /// (WHE-219). Same priority as `Recommender.mainProblem`: safety first.
@@ -525,7 +525,7 @@ public struct Recommender: Sendable {
         let flags = Set(reachable.flatMap(\.flags))
         return flags.contains("thunderstorm risk") ? "thunderstorm risk"
             : flags.contains("kiting banned") ? "kiting banned"
-            : flags.contains("offshore component") ? "offshore"
+            : flags.contains("offshore component") ? (onlyDisagreementOffshore(reachable) ? Scorer.directionDisagreementFlag : "offshore")
             : flags.contains("dark") && !flags.contains("too light") ? "dark"
             : flags.contains("too light") ? "too light"
             : flags.contains("too strong for level") ? "too strong for level"
@@ -533,6 +533,13 @@ public struct Recommender: Sendable {
             : flags.contains("tide too low") ? "tide too low"
             : flags.contains("tide too high") ? "tide too high"
             : reachable.flatMap(\.flags).first ?? "poor conditions"
+    }
+
+    /// Every offshore hour is offshore only on one model's direction (WHE-231): the row says
+    /// the direction is unclear rather than "offshore" under a wind arrow that points onshore.
+    static func onlyDisagreementOffshore(_ hours: [HourScore]) -> Bool {
+        hours.filter { $0.flags.contains("offshore component") }
+            .allSatisfy { $0.flags.contains(Scorer.directionDisagreementFlag) }
     }
 
     /// Today only: the first local hour (spot time) the rider can be on the water, now + drive
@@ -720,7 +727,7 @@ public struct Recommender: Sendable {
 /// The one word a not-kiteable row shows, so a rider can tell at a glance whether to wait
 /// (wind, tide) or give up (storm, ban, offshore, dark, too late). WHE-219.
 public enum NoGoReason: String, Sendable, CaseIterable {
-    case tooLate, storm, banned, offshore, dark, tooLight, tooStrong, tide, noForecast, poor
+    case tooLate, storm, banned, offshore, directionUnclear, dark, tooLight, tooStrong, tide, noForecast, poor
 
     /// From `Recommender.mainProblem`'s answer.
     public init(problem: String) {
@@ -729,6 +736,7 @@ public enum NoGoReason: String, Sendable, CaseIterable {
         case "thunderstorm risk", "storm nearby": self = .storm
         case "kiting banned": self = .banned
         case "offshore", "offshore component": self = .offshore
+        case "models disagree on direction": self = .directionUnclear
         case "dark": self = .dark
         case "too light": self = .tooLight
         case "too strong for level", "too strong for quiver", "overpowered in gusts": self = .tooStrong
@@ -739,5 +747,5 @@ public enum NoGoReason: String, Sendable, CaseIterable {
     }
 
     /// A safety rule, not the wind: the spot won't come back later in the day.
-    public var isSafety: Bool { [.storm, .banned, .offshore, .dark].contains(self) }
+    public var isSafety: Bool { [.storm, .banned, .offshore, .directionUnclear, .dark].contains(self) }
 }

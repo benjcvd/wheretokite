@@ -577,3 +577,7 @@ Ben said go; merged into main on 19 Nov.
 
 ## Product, 19 Nov: WHE-238 models disagree on the spot page (review)
 When the model check caps a grade, the spot page now opens with a one-line note ("Models disagree: 11–19 kn" / "Only 1 of 4 models sees enough wind") naming each checked model's best 2 h. The wind chart has a grey low–high band from the blend's own models, and a line naming them. Merged after WHE-239, so the note and the band now read the same three models. No scoring change. Screens in `docs/review/whe238-*`; waiting on Ben's OK of the look.
+
+## Product, 19 Nov: WHE-231 worse direction when models disagree (review)
+
+`Scorer.score(_:side:)` now scores a disagreeing hour (`modelsDisagreeOnDirection`, >90°) with each model's direction plus the blend and keeps the worst, flagged `models disagree on direction`; `wind` stays the blended hour, so the arrow and the reason can differ. `mainProblem` returns that flag instead of "offshore" when every offshore hour is offshore only because of it → `NoGoReason.directionUnclear` ("Unsure direction", red, counted as safety). In live forecasts it only ever lowers grades, mostly Worth a try → No go when one model says offshore. Before/after in docs/review/whe231-before-after.md. Waits on Ben's OK of the rule.
