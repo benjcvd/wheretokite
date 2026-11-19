@@ -35,7 +35,7 @@ final class NoGoReasonTests: XCTestCase {
     }
 
     func testSafetyFlag() {
-        XCTAssertEqual(NoGoReason.allCases.filter(\.isSafety), [.storm, .banned, .offshore, .dark])
+        XCTAssertEqual(NoGoReason.allCases.filter(\.isSafety), [.storm, .banned, .offshore, .directionUnclear, .dark])
     }
 
     func testRecommendationWithoutHours() {

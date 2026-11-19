@@ -276,7 +276,33 @@ public struct Scorer: Sendable {
     ///   cross-shore and winds beyond them as increasingly offshore.
     /// - > 180 (point, headland, small lake): the shore curves, so its normals span
     ///   2 × (sector − 180) (360° at 360); the best-placed part of the shore is used.
+    ///
+    /// When the models blow more than 90° apart (`HourlyWind.modelsDisagreeOnDirection`), the
+    /// blended direction is one none of them forecasts: the hour is scored with each model's
+    /// direction and the blend, and the worst one is kept, flagged "models disagree on
+    /// direction" (WHE-218 / WHE-231, Ben's option 1). `wind` stays the blended hour.
     public func score(_ w: HourlyWind, side: SpotSide) -> HourScore {
+        guard w.modelsDisagreeOnDirection, let dirs = w.modelDirectionsDeg else {
+            return scoreOneDirection(w, side: side)
+        }
+        let worst = ([w.directionDeg] + dirs).map { d -> HourScore in
+            var copy = w
+            copy.directionDeg = d
+            return scoreOneDirection(copy, side: side)
+        }.min { a, b in
+            // Ties (e.g. too light whichever way) go to the most offshore angle.
+            a.score != b.score ? a.score < b.score : (a.relativeAngle ?? 0) > (b.relativeAngle ?? 0)
+        }!
+        var h = worst
+        h.wind = w
+        h.flags.append(Self.directionDisagreementFlag)
+        return h
+    }
+
+    /// Flag on an hour scored on the worse of the models' directions.
+    public static let directionDisagreementFlag = "models disagree on direction"
+
+    func scoreOneDirection(_ w: HourlyWind, side: SpotSide) -> HourScore {
         let sector = min(360, max(0, side.waterSectorDeg ?? 180))
         let off = Geo.angleDiff(w.directionDeg, side.seaFacingDeg)
         if sector <= 180 {

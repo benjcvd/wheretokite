@@ -35,6 +35,7 @@ enum Vocab {
         case "overpowered in gusts": String(localized: "overpowered in gusts")
         case "offshore component", "offshore": String(localized: "offshore", comment: "Wind angle to the beach")
         case "side-offshore": String(localized: "side-offshore", comment: "Wind angle to the beach")
+        case "models disagree on direction": String(localized: "models disagree on direction", comment: "Flag: the weather models forecast very different wind directions, so the worse one is scored")
         case "beach orientation unknown": String(localized: "beach direction unknown")
         case "thunderstorm risk": String(localized: "thunderstorm risk")
         case "kiting banned": String(localized: "kiting banned")
@@ -62,6 +63,7 @@ enum Vocab {
         case .storm: String(localized: "Storm", comment: "Not-kiteable tag: thunderstorm risk")
         case .banned: String(localized: "Banned", comment: "Not-kiteable tag: kiting is banned at this spot then")
         case .offshore: String(localized: "Offshore", comment: "Not-kiteable tag: the wind blows from the land")
+        case .directionUnclear: String(localized: "Unsure direction", comment: "Not-kiteable tag: the weather models disagree on the wind direction, one of them offshore")
         case .dark: String(localized: "Dark", comment: "Not-kiteable tag: before sunrise or after sunset")
         case .tooLight: String(localized: "Too light", comment: "Chart legend: not enough wind")
         case .tooStrong: String(localized: "Too strong", comment: "Chart legend: too much wind")
@@ -176,6 +178,7 @@ enum Vocab {
         case "dark": String(localized: "It's dark at these hours.")
         case "too late": String(localized: "Too late: you can't get there before these hours are over.")
         case "offshore": String(localized: "Offshore wind: it would blow you out to sea.")
+        case "models disagree on direction": String(localized: "The weather models disagree on the wind direction, and one says offshore.")
         default: verdictMeaning(.noGo)
         }
     }
