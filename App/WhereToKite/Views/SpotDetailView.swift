@@ -135,22 +135,32 @@ struct SpotDetailView: View {
 
     /// Not draggable inside the scrolling page: a tap opens the full-screen map (WHE-156).
     private var heroMap: some View {
-        let wind = MapWind.summary(MapWind.highlightedHours(rec))
+        let hours = MapWind.highlightedHours(rec)
+        let wind = MapWind.summary(hours)
         return Map(initialPosition: .region(MKCoordinateRegion(
             center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)), interactionModes: []) {
             Marker(rec.spot.name, systemImage: "wind", coordinate: coordinate)
                 .tint(ScoreStyle.color(rec.finalScore))
-            if let wind { SpotWindOverlay(spot: rec.spot, wind: wind) }
+            if let wind { SpotWindOverlay(spot: rec.spot, wind: wind, modelArc: MapWind.modelArc(hours)) }
         }
         .mapStyle(.hybrid(elevation: .realistic))
         .frame(height: 210)
         .overlay(alignment: .topLeading) {
             if let wind {
-                Label(ShoreAngleStyle.label(wind), systemImage: "wind")
+                VStack(alignment: .leading, spacing: 1) {
+                    Label(ShoreAngleStyle.label(wind), systemImage: "wind")
+                    // WHE-242: the fan says what it is, beside the arrow's own label.
+                    if let arc = MapWind.modelArc(hours) {
+                        Text("Fan: models \(Vocab.compass(arc.from))–\(Vocab.compass(arc.to))",
+                             comment: "Spot map: the light fan behind the wind arrow spans the weather models' directions, e.g. 'Fan: models ENE–SE'")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
                     .font(.caption.weight(.semibold))
                     .padding(.horizontal, 9)
                     .padding(.vertical, 5)
-                    .background(.ultraThinMaterial, in: Capsule())
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
                     .padding(10)
                     .accessibilityIdentifier("spotMapWind")
             }
@@ -447,7 +457,7 @@ struct SpotDetailView: View {
                     .foregroundStyle(gustRuled ? fit.color : .secondary)
                     .frame(width: gustColumn)
                 HStack(spacing: 6) {
-                    WindArrow(directionDeg: h.wind.directionDeg, modelArc: h.wind.modelDirectionArcDeg)
+                    WindArrow(directionDeg: h.wind.directionDeg)
                         .font(.footnote)
                     Text(hourDirection(h))
                         .font(.footnote)

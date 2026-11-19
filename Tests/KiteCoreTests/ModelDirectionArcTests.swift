@@ -39,3 +39,25 @@ final class ModelDirectionArcTests: XCTestCase {
         XCTAssertEqual((b.to - b.from + 360).truncatingRemainder(dividingBy: 360), 240)
     }
 }
+
+/// WHE-242: the map's fan covers every model of every hour in the window.
+final class MapModelFanTests: XCTestCase {
+    private func hour(_ dirs: [Double]) -> HourScore {
+        var w = HourlyWind(localTime: "2026-11-20T14:00", speedKn: 15, gustKn: 20, directionDeg: dirs[0])
+        w.modelDirectionsDeg = dirs
+        return HourScore(wind: w, score: 1, kite: nil, relativeAngle: nil, flags: [])
+    }
+
+    func testFanSpansAllHoursAcrossNorth() throws {
+        let arc = try XCTUnwrap(MapWind.modelArc([hour([330, 355]), hour([10, 20])]))
+        XCTAssertEqual(arc.from, 330)
+        XCTAssertEqual(arc.to, 20)
+        let pts = MapWind.fan(at: Coordinate(latitude: 41, longitude: 2), arc: arc, lengthM: 1000)
+        XCTAssertEqual(pts.first?.latitude, 41)
+        XCTAssertGreaterThan(pts.count, 3)
+    }
+
+    func testNoFanWhenModelsAgree() {
+        XCTAssertNil(MapWind.modelArc([hour([90, 100]), hour([95, 110])]))
+    }
+}

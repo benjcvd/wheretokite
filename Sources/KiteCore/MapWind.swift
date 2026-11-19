@@ -59,6 +59,21 @@ public enum MapWind {
         return ([tail, spot], [left, spot, right])
     }
 
+    /// The models' direction range over these hours (every model, every hour), for a fan on
+    /// the map (WHE-242). nil when they stay within `HourlyWind.directionRangeShownDeg`.
+    public static func modelArc(_ hours: [HourScore]) -> (from: Double, to: Double)? {
+        HourlyWind.directionArc(hours.flatMap { $0.wind.modelDirectionsDeg ?? [] })
+    }
+
+    /// A pie slice from the spot reaching `lengthM` upwind, clockwise over the arc, as a polygon.
+    public static func fan(at spot: Coordinate, arc: (from: Double, to: Double), lengthM: Double) -> [Coordinate] {
+        let sweep = (arc.to - arc.from + 360).truncatingRemainder(dividingBy: 360)
+        let steps = max(2, Int(sweep / 5))
+        return [spot] + (0...steps).map {
+            Geo.destination(spot, bearingDeg: arc.from + sweep * Double($0) / Double(steps), distanceM: lengthM)
+        }
+    }
+
     /// The beach line through the spot: perpendicular to the way it faces, `halfLengthM` each side.
     public static func shoreLine(at spot: Coordinate, seaFacingDeg: Double, halfLengthM: Double) -> [Coordinate] {
         [Geo.destination(spot, bearingDeg: seaFacingDeg - 90, distanceM: halfLengthM),

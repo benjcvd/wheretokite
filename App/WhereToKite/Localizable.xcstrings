@@ -7457,6 +7457,23 @@
           }
         }
       }
+    },
+    "Fan: models %@–%@" : {
+      "comment" : "Spot map: the light fan behind the wind arrow spans the weather models' directions, e.g. 'Fan: models ENE–SE'",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abanico: modelos %1$@–%2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Éventail : modèles %1$@–%2$@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

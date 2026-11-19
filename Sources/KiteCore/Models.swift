@@ -405,12 +405,17 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     /// degrees, across north when needed), or nil when the models are within
     /// `directionRangeShownDeg` of each other (display only, WHE-242).
     public var modelDirectionArcDeg: (from: Double, to: Double)? {
-        guard let raw = modelDirectionsDeg, raw.count > 1 else { return nil }
+        Self.directionArc(modelDirectionsDeg ?? [])
+    }
+
+    /// The smallest clockwise arc holding these directions, nil under `directionRangeShownDeg`.
+    public static func directionArc(_ raw: [Double]) -> (from: Double, to: Double)? {
+        guard raw.count > 1 else { return nil }
         let d = raw.map { ($0.truncatingRemainder(dividingBy: 360) + 360).truncatingRemainder(dividingBy: 360) }.sorted()
         // The arc is everything but the largest gap between neighbours (the wrap gap included).
         var gapAfter = d.count - 1, widest = d[0] + 360 - d[d.count - 1]
         for i in 0..<(d.count - 1) where d[i + 1] - d[i] > widest { widest = d[i + 1] - d[i]; gapAfter = i }
-        guard 360 - widest >= Self.directionRangeShownDeg else { return nil }
+        guard 360 - widest >= directionRangeShownDeg else { return nil }
         return (d[(gapAfter + 1) % d.count], d[gapAfter])
     }
 
