@@ -20,21 +20,23 @@ public struct ScoringRules: Sendable {
 
     public init() {}
 
-    // MARK: Chance to kite (WHE-81 method, WHE-84 tuning: docs/MODEL_BACKTEST.md)
+    // MARK: Chance to kite (WHE-81 method, WHE-239 tuning: docs/MODEL_BACKTEST.md)
 
-    /// chance = Φ((models' mean best 2 h − rider's min wind + bias) / √(spread² + error²)).
-    /// Fitted per day ahead on France, southern Spain and the buoys (Catalan masts left out),
-    /// Go cut-off tuned so a Go came true ≥ 85 % on the tuning weeks. Each lead had two fits
-    /// (even / odd weeks): bias and error are their mean, the cut-off the stricter of the two.
-    /// Days 5+ were never tested: day 4's numbers with a stricter cut-off.
+    /// chance = Φ((models' mean best 2 h − rider's min wind + bias) / √(spread² + error²)), on the
+    /// forecast's own models (`ConfidenceEstimator.models`: MF + ECMWF + GFS to day 3, ECMWF + GFS after).
+    /// Fitted per day ahead on France, southern Spain and the POEM buoy (Catalan masts left out),
+    /// 8 Aug – 16 Nov 2026, all weeks together; Go cut-off = lowest chance at which a Go came true
+    /// ≥ 85 %. Scored on unseen weeks (even/odd halves) a Go came true 84–85 % at days 0–3.
+    /// Days 4–5: no cut-off reaches 85 % (two models) and Go is held back anyway (`GoPolicy`);
+    /// 0.80 only decides when the "too far ahead" note shows. Day 5's numbers serve every later day.
     public func chanceTuning(leadDays: Int) -> ChanceTuning {
         switch max(0, leadDays) {
-        case 0: ChanceTuning(biasKn: -0.25, errorKn: 2.0, goFrom: 0.68)
-        case 1: ChanceTuning(biasKn: -0.25, errorKn: 2.25, goFrom: 0.73)
-        case 2: ChanceTuning(biasKn: 0, errorKn: 2.5, goFrom: 0.70)
-        case 3: ChanceTuning(biasKn: 0, errorKn: 2.75, goFrom: 0.79)
-        case 4: ChanceTuning(biasKn: -1, errorKn: 4.5, goFrom: 0.71)
-        default: ChanceTuning(biasKn: -1, errorKn: 5, goFrom: 0.80)
+        case 0: ChanceTuning(biasKn: -1.25, errorKn: 2.25, goFrom: 0.69)
+        case 1: ChanceTuning(biasKn: -1.5, errorKn: 2.75, goFrom: 0.77)
+        case 2: ChanceTuning(biasKn: -1.0, errorKn: 2.75, goFrom: 0.68)
+        case 3: ChanceTuning(biasKn: -1.25, errorKn: 3.25, goFrom: 0.80)
+        case 4: ChanceTuning(biasKn: -2.25, errorKn: 5.0, goFrom: 0.80)
+        default: ChanceTuning(biasKn: -2.75, errorKn: 5.75, goFrom: 0.80)
         }
     }
 

@@ -188,7 +188,7 @@ final class ConfidenceTests: XCTestCase {
         let all = spots(3)
         let shaky = all[1].longitude, light = all[2].longitude
         let conf = FakeConfidence { _ in 1 }
-        conf.modelSpeeds = { $0.longitude == shaky ? [10, 11, 12, 13] : [18, 18, 18, 18] }
+        conf.modelSpeeds = { $0.longitude == shaky ? [11, 12, 13, 14] : [18, 18, 18, 18] }
         // s0000 12 kn: good, s0001 16 kn: best in the blend, s0002 11.1 kn: barely powered.
         let r = Recommender(spots: all, forecast: FakeForecast { $0.longitude == shaky ? 16 : $0.longitude == light ? 11.1 : 12 },
                             driveTime: StraightLineDriveTime(), confidence: conf)
@@ -229,7 +229,9 @@ final class ConfidenceTests: XCTestCase {
         }
         let minWind = scorer.kiteRanges.map(\.minKn).min()!    // 11 kn for 75 kg on a 12
         XCTAssertEqual(chance([18, 18, 18, 18])?.outlook, .likely)
-        XCTAssertEqual(chance([minWind, minWind, minWind, minWind])?.outlook, .uncertain)   // just under 50 %
+        // Models right at the minimum: under a 1-in-3 chance (they read ~1.5 kn high on kite days, WHE-239).
+        XCTAssertEqual(chance([minWind, minWind, minWind, minWind])?.outlook, .unlikely)
+        XCTAssertEqual(chance([minWind + 1, minWind + 1, minWind + 1, minWind + 1])?.outlook, .uncertain)
         XCTAssertEqual(chance([8, 8, 8, 8])?.outlook, .unlikely)
         // Same mean, models far apart: less sure.
         XCTAssertLessThan(chance([8, 22, 10, 20])!.chance, chance([15, 15, 15, 15])!.chance)
@@ -325,13 +327,29 @@ final class ConfidenceTests: XCTestCase {
     }
 }
 
-/// WHE-71: ECMWF on its sea cell, the others on the beach cell, merged per spot.
+/// WHE-239: the check compares the forecast's own models, on the same cells (WHE-71/87).
 final class ConfidenceCellTests: XCTestCase {
-    func testECMWFReadOnItsSeaCell() {
-        let groups = ConfidenceEstimator().requestGroups()
+    func testSameModelsAndCellsAsTheForecast() {
+        let e = ConfidenceEstimator()
+        XCTAssertEqual(e.models.joined(separator: ","), OpenMeteoProvider.defaultModel)
+        let groups = e.requestGroups()
         XCTAssertEqual(groups.map(\.cell), ["land", "sea"])
-        XCTAssertEqual(groups[0].models, ["best_match", "meteofrance_seamless", "icon_seamless"])
-        XCTAssertEqual(groups[1].models, ["ecmwf_ifs025"])
+        XCTAssertEqual(groups[0].models, ["meteofrance_seamless"])
+        XCTAssertEqual(groups[1].models, ["ecmwf_ifs", "gfs_seamless"])
+        let p = OpenMeteoProvider()
+        for m in e.models { XCTAssertEqual(e.cellByModel[m] ?? e.cellSelection, p.cellByModel[m] ?? p.cellSelection, m) }
+        XCTAssertEqual(e.lastDayByModel, p.lastDayByModel)
+    }
+
+    func testMeteoFranceDropsOutFromDayFour() {
+        let e = ConfidenceEstimator()
+        XCTAssertEqual(e.models(leadDays: 3), ["meteofrance_seamless", "ecmwf_ifs", "gfs_seamless"])
+        XCTAssertEqual(e.models(leadDays: 4), ["ecmwf_ifs", "gfs_seamless"])
+        XCTAssertEqual(e.requestGroups(leadDays: 4).map(\.cell), ["sea"])
+        // Never fewer than two models: a lone model has no spread to compare.
+        var two = e
+        two.models = ["meteofrance_seamless", "ecmwf_ifs"]
+        XCTAssertEqual(two.models(leadDays: 5), ["meteofrance_seamless", "ecmwf_ifs"])
     }
 
     func testMergeSuffixesOneModelAnswers() {

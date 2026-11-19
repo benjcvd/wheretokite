@@ -152,9 +152,10 @@ def abroad_sites():
 
 
 def models_at(setup, lead):
-    if setup.startswith("new"):
-        return [k for k in NEW if not (k[0] == MF and lead > MF_LAST)]
-    return OLD
+    """Models compared at a day ahead. MF seamless is in the archive to day 3 only: from day 4 the old
+    set is tested on its 3 other models (the app read ARPEGE there, which can't be replayed)."""
+    keys = NEW if setup.startswith("new") else OLD
+    return [k for k in keys if not (k[0] == MF and lead > MF_LAST)]
 
 
 def collect(sites):
@@ -179,7 +180,7 @@ def collect(sites):
                 r = {"pair": s["pair"], "kind": s["kind"], "day": ds, "lead": lead, "obs": ride(o, spot),
                      "obs_b2": best2(o, spot) if len(o) == len(HOURS) else None, "b2": b2, "series": series,
                      "spot": spot}
-                if all(k in b2 for k in OLD) and all(k in b2 for k in models_at("new", lead)):
+                if all(k in b2 for k in models_at("old", lead)) and all(k in b2 for k in models_at("new", lead)):
                     rows.append(r)
     return rows
 
@@ -367,6 +368,12 @@ def fitted_table(fitted):
             print(f"| {st} | {lead} | {a[0]:+.2f} / {c[0]:+.2f} | {a[1]:.2f} / {c[1]:.2f} | {pc(a[2])} / {pc(c[2])} |")
 
 
+def corr(xs, ys):
+    mx, my = statistics.mean(xs), statistics.mean(ys)
+    sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    return sxy / math.sqrt(sum((x - mx) ** 2 for x in xs) * sum((y - my) ** 2 for y in ys))
+
+
 def spread_skill(rows):
     print("\n### Does the models' spread say anything? (error of the models' mean vs measured best 2 h)\n")
     print("Spot-days split in thirds by spread. If the spread means something, the error grows with it.\n")
@@ -385,7 +392,7 @@ def spread_skill(rows):
             thirds = [pts[: n // 3], pts[n // 3: 2 * n // 3], pts[2 * n // 3:]]
             err = " / ".join(f"{statistics.mean(e for _, e in t):.1f}" for t in thirds)
             edges = f"< {pts[n // 3][0]:.1f}, < {pts[2 * n // 3][0]:.1f}"
-            c = statistics.correlation([p for p, _ in pts], [e for _, e in pts])
+            c = corr([p for p, _ in pts], [e for _, e in pts])
             print(f"| {lead} | {st} | {len(models_at(st, lead))} | {edges} | {err} | {c:+.2f} |")
 
 
@@ -506,7 +513,7 @@ def abroad_report(sites, rows, app_tuning):
     for country in ("NL", "GR", "MA"):
         for lead in (0, 1, 2, 3):
             rl = [r for r in rows if r["country"] == country and r["lead"] == lead
-                  and all(k in r["b2"] for k in OLD) and all(k in r["b2"] for k in models_at("new", lead))]
+                  and all(k in r["b2"] for k in models_at("old", lead)) and all(k in r["b2"] for k in models_at("new", lead))]
             if not rl:
                 continue
             for st, (b, s, go) in (("old-shipped", SHIPPED[lead]), ("new", app_tuning[lead])):

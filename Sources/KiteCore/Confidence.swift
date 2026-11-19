@@ -69,15 +69,19 @@ public protocol ConfidenceProvider: Sendable {
 /// independent models disagree the forecast is uncertain. Checked per spot (the models can
 /// agree at home and disagree two hours up the coast), all spots in one multi-location request.
 public struct ConfidenceEstimator: ConfidenceProvider {
-    /// The four models the chance to kite was tuned on (WHE-81/84): best match, Météo-France
-    /// (AROME 1.3 km for the first two days, then ARPEGE), ICON and ECMWF.
-    public var models = ["best_match", "meteofrance_seamless", "icon_seamless", "ecmwf_ifs025"]
+    /// The forecast's own models (WHE-239, Ben 19 Nov: one model set everywhere), so the check and
+    /// the wind shown can't tell two stories: Météo-France seamless (AROME 1.3 km, then ARPEGE),
+    /// ECMWF 9 km and GFS, as `OpenMeteoProvider.defaultModel`. `Scoring.chanceTuning` is tuned on them.
+    public var models = ["meteofrance_seamless", "ecmwf_ifs", "gfs_seamless"]
     /// Grid cell read for every model not in `cellByModel` (the beach cell, as the forecasts).
     public var cellSelection = "land"
-    /// ECMWF's beach cell falls ~15 km inland (median, up to 29 km) and reads ~2.6 kn light, so it
-    /// is read on its sea cell, as when the chance was tuned (WHE-71). Open-Meteo takes one
+    /// ECMWF's and GFS's beach cells fall inland and read light: they're read on their sea cell, as
+    /// in the forecast (`OpenMeteoProvider.cellByModel`, WHE-71/87). Open-Meteo takes one
     /// `cell_selection` per request: one request per cell, merged per spot.
-    public var cellByModel: [String: String] = ["ecmwf_ifs025": "sea"]
+    public var cellByModel: [String: String] = ["ecmwf_ifs": "sea", "ecmwf_ifs025": "sea", "gfs_seamless": "sea"]
+    /// Last day ahead (0 = today) a model is compared, as `OpenMeteoProvider.lastDayByModel`: from
+    /// day 4 the check compares ECMWF and GFS only, like the wind shown.
+    public var lastDayByModel: [String: Int] = ["meteofrance_seamless": 3]
     public var session: URLSession = .shared
     public var server: ForecastServer
     /// When set, `server` is ignored: the failover picks the server for each request.
@@ -134,8 +138,9 @@ public struct ConfidenceEstimator: ConfidenceProvider {
         // The origin is usually the rider's own position: send only the area (0.1° ≈ 11 km,
         // finer than the compared models' grids), not where they are.
         let area = Coordinate(latitude: (origin.latitude * 10).rounded() / 10, longitude: (origin.longitude * 10).rounded() / 10)
-        let hourly = try await series(at: [area], day: day)[0]
-        return Self.confidence(hourly: hourly, models: models, hours: hours, leadDays: Self.daysBetween(today, day))
+        let lead = Self.daysBetween(today, day)
+        let hourly = try await series(at: [area], day: day, leadDays: lead)[0]
+        return Self.confidence(hourly: hourly, models: models(leadDays: lead), hours: hours, leadDays: lead)
     }
 
     public func estimates(for queries: [ConfidenceQuery], day: String, today: String) async throws -> [ForecastConfidence] {
@@ -150,15 +155,23 @@ public struct ConfidenceEstimator: ConfidenceProvider {
         }
         guard DayForecast.isValidDay(day) else { throw ForecastError.invalidDay(day) }
         // Spot positions are public: sent as they are (the server caches per position).
-        let hourly = try await series(at: queries.map(\.coordinate), day: day)
         let lead = Self.daysBetween(today, day)
-        return zip(hourly, queries).map { Self.confidence(hourly: $0, models: models, hours: $1.hours, leadDays: lead) }
+        let hourly = try await series(at: queries.map(\.coordinate), day: day, leadDays: lead)
+        let compared = models(leadDays: lead)
+        return zip(hourly, queries).map { Self.confidence(hourly: $0, models: compared, hours: $1.hours, leadDays: lead) }
+    }
+
+    /// The models compared `leadDays` ahead (`lastDayByModel` drops the ones past their range),
+    /// never fewer than two.
+    public func models(leadDays: Int) -> [String] {
+        let kept = models.filter { m in lastDayByModel[m].map { leadDays <= $0 } ?? true }
+        return kept.count >= 2 ? kept : models
     }
 
     /// The models grouped by the cell they're read on, in the order of `models`: one request per group.
-    func requestGroups() -> [(cell: String, models: [String])] {
+    func requestGroups(leadDays: Int = 0) -> [(cell: String, models: [String])] {
         var groups: [(cell: String, models: [String])] = []
-        for m in models {
+        for m in models(leadDays: leadDays) {
             let cell = cellByModel[m] ?? cellSelection
             if let i = groups.firstIndex(where: { $0.cell == cell }) { groups[i].models.append(m) }
             else { groups.append((cell, [m])) }
@@ -168,8 +181,8 @@ public struct ConfidenceEstimator: ConfidenceProvider {
 
     /// Hourly series per place, every model's series suffixed with its name, all groups merged.
     /// Every group must answer: a chance missing a model would silently change its level.
-    private func series(at coords: [Coordinate], day: String) async throws -> [[String: [Double?]]] {
-        let groups = requestGroups()
+    private func series(at coords: [Coordinate], day: String, leadDays: Int) async throws -> [[String: [Double?]]] {
+        let groups = requestGroups(leadDays: leadDays)
         let parts = try await withThrowingTaskGroup(of: (Int, [[String: [Double?]]]).self) { group in
             for (i, g) in groups.enumerated() {
                 group.addTask { (i, try await self.request(coords, day: day, models: g.models, cell: g.cell)) }

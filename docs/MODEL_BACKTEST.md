@@ -1,7 +1,120 @@
-# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80, WHE-88, WHE-87, WHE-79, WHE-218)
+# Which forecast model predicts the real wind best? (WHE-58, WHE-61, WHE-72, WHE-78, WHE-81, WHE-84, WHE-86, WHE-80, WHE-88, WHE-87, WHE-79, WHE-218, WHE-239)
 
 27 Oct 2026. The question: should the app keep Open-Meteo's "best match" model on the offshore
 grid cell, or use another model, a mix, or the beach cell?
+
+## One model set for the wind shown and the wind check (WHE-239, 19 Nov): switch, it's a tie
+
+**In plain words.** The wind on a spot card is the average of Météo-France, ECMWF and GFS
+(WHE-87). The check that decides whether wind is "likely" (and so whether a Go is possible) still
+compared four other readings: best match, Météo-France, ICON and ECMWF 25 km. I re-tuned the
+check on the forecast's own three models and scored it on weeks the tuning never saw.
+**Result: a tie with today's check.** A Go still comes true 84–85 % of the time from today to
++3 days, and it catches as many kite days, within the noise (−3 to +2 points). From +4 days
+fewer real kite days end up capped at Long shot (40 % instead of 45 %). Outside Spain and France
+the check stays as reliable in the Netherlands and Greece, but it catches about 10 points fewer
+kite days on day 1. In Morocco both the old and the new check fail: a Go comes true only 65–74 %
+of the time there.
+
+Something I didn't expect: in France "best match" *is* Météo-France's AROME (identical numbers),
+so the old check counted Météo-France twice and called it agreement. The new set has three
+really independent models.
+
+**Recommendation.**
+1. **Switch the check to the forecast's three models, with the new cut-offs (recommended).** It's
+   one story on screen (the model band Product is building can't contradict the badge). It ties
+   at home and costs about 10 points of day-1 kite days abroad, while Go reliability holds.
+2. Keep today's check. It catches a bit more abroad on day 1, but the badge and the chart then
+   come from different models, and the band will show it.
+
+What changes for riders with option 1: the same share of Gos come true. About 1 spot-day in 10 (242 of 2,474)
+changes outlook at +1 day. More "Long shot" calls become "Worth a try" when GFS or ECMWF is
+windier than the old models, and fewer Gos come from AROME counted twice.
+
+### Day 4 and later: two models left
+
+From +4 the forecast and the check use only ECMWF and GFS. Their spread still means something:
+the error of their mean grows from 2.5 to 4.0 kn between the third of days where they agree
+most and the third where they agree least (correlation +0.23, against +0.33 with three models
+at +3). That's weaker but real. Using the spread as it is, ignoring it, or widening it (sample
+spread) all leave the same 40 % of kite days under "unlikely" at +4 (43 % at +5), so the
+**proposed rule is no special rule**: same formula, numbers fitted for +4 and +5. No cut-off
+reaches 85 % at +4 with two models, which backs Ben's "no Go beyond +3" (`GoPolicy`). The
+Go cut-off there (0.80) only decides when the "too far ahead to promise" note appears.
+
+### Evidence
+
+`tools/backtest/whe239.py`, results [`tools/backtest/results/whe239.md`](../tools/backtest/results/whe239.md).
+8 Aug – 16 Nov 2026 (101 dates: summer sea breezes and autumn fronts). Truth: WHE-84's trusted
+set (France and southern Spain shore masts brought to 10 m, POEM near-shore buoy; 25
+station-spot pairs). Catalan Meteocat masts are left out (they read about half, WHE-84). Event = two hours in a row at 12–28 kn
+from a usable direction, 07–17 UTC. Forecasts from Previous Runs (day N = the run N days before).
+Each setup is re-tuned per day ahead with the WHE-84 method: bias and error fitted on the Brier score, Go cut-off =
+lowest chance at which ≥ 85 % came true. Scores are on unseen weeks: odd ISO weeks use numbers
+fitted on even weeks, and the other way round. Intervals: 95 %, bootstrap over whole dates.
+
+| Day ahead | Setup | Go shown | Go came true | Kite days caught by Go | Kite days left in "unlikely" | Brier skill |
+|---|---|---|---|---|---|---|
+| 0 | today's check | 441 | 84 % (80–88) | 60 % | 19 % | +0.56 |
+| 0 | new | 428 | 85 % (82–88) | 59 % | 22 % | +0.53 |
+| 1 | today's check | 372 | 83 % (79–87) | 50 % | 23 % | +0.49 |
+| 1 | new | 347 | 84 % (80–88) | 47 % | 24 % | +0.48 |
+| 2 | today's check | 350 | 84 % (78–90) | 48 % | 30 % | +0.47 |
+| 2 | new | 357 | 85 % (79–90) | 50 % | 28 % | +0.46 |
+| 3 | today's check | 233 | 88 % (84–91) | 34 % | 31 % | +0.42 |
+| 3 | new | 260 | 84 % (78–89) | 36 % | 34 % | +0.41 |
+| 4 | today's check | (held back) | | | 45 % | +0.34 |
+| 4 | new | (held back) | | | 40 % | +0.32 |
+| 5 | today's check | (held back) | | | 47 % | +0.27 |
+| 5 | new | (held back) | | | 43 % | +0.28 |
+
+New minus today's check, 95 % interval: kite days caught by Go −1 (−4…+1), −3 (−6…0), +1 (−1…+4),
++2 (−2…+6) points at days 0–3, all inside the noise. Brier skill is −0.025 (−0.041…−0.008) at
+day 0: a real but small loss in how well the percentages are calibrated. At days 1–3 the Brier
+difference is inside the noise. At +4/+5, kite days left in "unlikely" go −6 (−9…−3) and −4 (−7…−2) points. Against the old models
+re-tuned the same way (the fair method comparison), the new set catches +2/+5/+3 points more
+kite days at days 0–2 and −6 (−9…−2) at day 3. Today's day-3 cut-off is shy (88 %).
+
+Level of the models' mean on the best 2 h, days 0–3: new **+0.0 kn** bias, old −0.8 kn, mean abs
+error 2.5 kn for both. GFS on its sea cell reads +0.8 kn and ICON's beach cell −1.8 kn.
+
+**Abroad (not used for tuning).** Stations: KNMI coast and lake masts (8, 10 m, 0.6–5 km from
+the spot) in the Netherlands, airport METARs at Paros, Karpathos, Rhodes and Naxos in Greece, and Dakhla and Essaouira in Morocco.
+
+| Country | Forecast mix: bias, MAE (kn) | Mix CSI on go days (d1–3) | Best match sea CSI (before WHE-87) | Check, Go came true (old → new, d0–3) | Day-1 kite days caught (old → new) |
+|---|---|---|---|---|---|
+| Netherlands (2,400 spot-days) | −0.4, 2.7 | 0.68 | 0.68 | 85–90 % → 84–90 % | 80 → 68 % (−18…−7) |
+| Greece (900) | −0.4, 2.2 | **0.76** | 0.63 | 93–95 % → 92–94 % | 58 → 49 % (−15…−5) |
+| Morocco (543) | +1.9, 4.5 | 0.56 | 0.57 | 69–74 % → 65–70 % | 64 → 52 % (−19…−4) |
+
+The forecast mix itself holds up abroad: a tie in the Netherlands, clearly better in Greece.
+Morocco is poor for every model, but the truth there is weak: both airports are inland of the kite
+beaches, and Dakhla's lagoon wind isn't the city's. On days 0, 2 and 3 the abroad differences are inside
+the noise, except Morocco at +3 (−19…−5).
+
+### Three days, by hand (day-ahead forecast)
+
+- **Hyères, 1 Sep:** today's check said Go (87 %): best match and Météo-France both said 21.9 kn,
+  one model counted twice. The new check said 68 % (Worth a try). Measured best 2 h: 12.0 kn, not
+  a kite day. New right.
+- **Almería, 27 Aug:** old 59 % (Worth a try), new 87 % (Go): ECMWF and GFS both 19–28 kn.
+  Measured 14.6 kn, kite day. New right.
+- **Rota, 10 Nov:** old Go (89 %), new 45 %: GFS's sea cell had the wind offshore at the beach
+  (counts 0). Measured 16.5 kn, kite day. New wrong: the WHE-218 direction problem, now in the check too.
+- Day 1 overall: 73 old Gos became Worth a try or Long shot (50 had wind), and 28 new Gos appeared (20 had wind).
+
+### What could make this wrong
+
+- **One autumn, two countries.** The tuning saw 101 dates in France and southern Spain only. The
+  abroad check is small (14 stations, ~100 dates) and partly airports. Re-check in spring.
+- **The day-1 loss abroad is real** (intervals exclude 0 in all three countries), but home data
+  says day 1 is a tie. I didn't re-tune on abroad data: that would be fitting the test.
+- **GFS's sea cell direction** sometimes reads offshore when the beach is onshore (Rota). Rare,
+  but it removes a model from the check on that day. It's the same issue as WHE-218.
+- **Day 4+:** the old check couldn't be replayed as shipped (no Météo-France archive past day 3),
+  so "today's check" there is its three other models.
+- **Cut-offs zigzag** by day (0.69, 0.77, 0.68, 0.80): that's noise in the fit (even/odd halves
+  differ by up to 14 points). Pooling days 1–2 into one cut-off (0.74) changes nothing that matters.
 
 ## When the models blow opposite ways (WHE-218, 17 Nov): score the worse direction
 
