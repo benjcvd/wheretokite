@@ -572,6 +572,7 @@ enum Blend {
         var w = HourlyWind(localTime: localTime, speedKn: speed, gustKn: max(gust, speed), directionDeg: dir)
         w.models = used
         if winds.count > 1 {
+            w.modelSpeedsKn = winds.map(\.speed)
             w.modelDirectionsDeg = winds.filter { $0.speed >= HourlyWind.directionMinKn }.map(\.dir)
         }
         let codes = values("weather_code").filter { (0...99).contains($0) }.sorted()

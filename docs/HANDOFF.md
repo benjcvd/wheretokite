@@ -574,3 +574,6 @@ weeks it's a tie at days 0–3, and from +4 fewer kite days get capped. Abroad, 
 Netherlands and Greece, but day 1 catches ~10 points fewer kite days; Morocco fails with both checks (weak
 airport truth). The old check counted Météo-France twice in France (best match = AROME). KiteChance API is unchanged.
 Ben said go; merged into main on 19 Nov.
+
+## Product, 19 Nov: WHE-238 models disagree on the spot page (review)
+When the model check caps a grade, the spot page now opens with a one-line note ("Models disagree: 11–19 kn" / "Only 1 of 4 models sees enough wind") naming each checked model's best 2 h. The wind chart has a grey low–high band from the blend's own models, and a line naming them. Merged after WHE-239, so the note and the band now read the same three models. No scoring change. Screens in `docs/review/whe238-*`; waiting on Ben's OK of the look.

@@ -369,6 +369,17 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     /// `directionDeg` is the mean wind vector: when models blow opposite ways it is a direction
     /// none of them forecasts. nil for a single model and in old caches.
     public var modelDirectionsDeg: [Double]?
+    /// Each blended model's mean wind this hour, kn, in the same order as `models` (WHE-238:
+    /// the spot page's low–high band). nil for a single model and in old caches.
+    public var modelSpeedsKn: [Double]?
+
+    /// Lowest to highest blended model wind this hour, kn. nil without at least two models.
+    public var modelSpeedRangeKn: ClosedRange<Double>? {
+        // Cache files are read back: implausible values are dropped, not drawn.
+        guard let s = modelSpeedsKn?.filter({ (0...250).contains($0) }), s.count > 1,
+              let lo = s.min(), let hi = s.max() else { return nil }
+        return lo...hi
+    }
 
     /// Below this a model's direction is noise and doesn't count as disagreement.
     public static let directionMinKn = 8.0
