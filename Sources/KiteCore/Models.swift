@@ -397,6 +397,23 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     /// The models blow more than 90° apart: the blended direction can't be trusted.
     public var modelsDisagreeOnDirection: Bool { directionSpreadDeg > Self.directionDisagreementDeg }
 
+    /// From this spread the spot page shows the models' direction range ("NE–E", WHE-242):
+    /// two compass points, so a few degrees either side of a point boundary stay quiet.
+    public static let directionRangeShownDeg = 45.0
+
+    /// The smallest clockwise arc holding every model's direction (`from` → `to`, compass
+    /// degrees, across north when needed), or nil when the models are within
+    /// `directionRangeShownDeg` of each other (display only, WHE-242).
+    public var modelDirectionArcDeg: (from: Double, to: Double)? {
+        guard let raw = modelDirectionsDeg, raw.count > 1 else { return nil }
+        let d = raw.map { ($0.truncatingRemainder(dividingBy: 360) + 360).truncatingRemainder(dividingBy: 360) }.sorted()
+        // The arc is everything but the largest gap between neighbours (the wrap gap included).
+        var gapAfter = d.count - 1, widest = d[0] + 360 - d[d.count - 1]
+        for i in 0..<(d.count - 1) where d[i + 1] - d[i] > widest { widest = d[i + 1] - d[i]; gapAfter = i }
+        guard 360 - widest >= Self.directionRangeShownDeg else { return nil }
+        return (d[(gapAfter + 1) % d.count], d[gapAfter])
+    }
+
     /// Thunderstorm forecast, or unstable air (high CAPE) with showers / rain in the same hour:
     /// never a kite hour. High CAPE alone is common on calm summer afternoons and doesn't
     /// count (see `unstableAir`).

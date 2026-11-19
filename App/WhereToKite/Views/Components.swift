@@ -105,11 +105,40 @@ struct ScoreRing: View {
 /// Arrow pointing where the wind blows TO (direction is where it comes FROM).
 struct WindArrow: View {
     let directionDeg: Double
+    /// The models' direction range (`HourlyWind.modelDirectionArcDeg`): a faint fan behind the
+    /// arrow covers every way the models make it point (WHE-242). nil = models agree.
+    var modelArc: (from: Double, to: Double)? = nil
 
     var body: some View {
         Image(systemName: "location.north.fill")
             .rotationEffect(.degrees(directionDeg + 180))
+            .background {
+                if let arc = modelArc {
+                    // The arrow points downwind: the fan is the range turned by 180°.
+                    WindFan(fromDeg: arc.from + 180, toDeg: arc.to + 180)
+                        .fill(Color.secondary.opacity(0.3))
+                        .scaleEffect(1.5)
+                }
+            }
             .accessibilityLabel("Wind from \(Vocab.compass(directionDeg))")
+    }
+}
+
+/// A pie slice from the centre, clockwise from one compass bearing to another.
+private struct WindFan: Shape {
+    let fromDeg: Double
+    let toDeg: Double
+
+    func path(in rect: CGRect) -> Path {
+        let c = CGPoint(x: rect.midX, y: rect.midY), r = min(rect.width, rect.height) / 2
+        let sweep = (toDeg - fromDeg).truncatingRemainder(dividingBy: 360) + (toDeg >= fromDeg ? 0 : 360)
+        var p = Path()
+        p.move(to: c)
+        // Bearing 0 is up; screen angles start at +x with y down, so turning by +θ is clockwise.
+        p.addArc(center: c, radius: r, startAngle: .degrees(fromDeg - 90),
+                 endAngle: .degrees(fromDeg - 90 + sweep), clockwise: false)
+        p.closeSubpath()
+        return p
     }
 }
 

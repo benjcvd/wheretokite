@@ -298,13 +298,23 @@ struct SpotDetailView: View {
                 }
             }
             .frame(height: 190)
-            WindFitLegend(fits: Set(rec.hours.map { $0.windFit(for: chartKite) }))
-            Group {
-                if hasModelBand {
-                    Text("Bars: average wind (kn) · Dots: gusts · Shade: lowest to highest model")
-                } else {
-                    Text("Bars: average wind (kn) · Dots: gusts")
+            WindFitLegend(fits: Set(rec.hours.map { $0.windFit(for: chartKite) }), noGoLabel: noGoLegend)
+            if modelBandCount > 1 {
+                // WHE-242: the band says what it is where it's drawn.
+                HStack(spacing: 4) {
+                    RoundedRectangle(cornerRadius: 2, style: .continuous)
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(width: 12, height: 8)
+                    Text("Grey band: lowest to highest of the \(modelBandCount) models",
+                         comment: "Wind chart legend: the grey band behind each bar spans the weather models' winds")
                 }
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .accessibilityElement(children: .combine)
+                .accessibilityIdentifier("modelBandLegend")
+            }
+            Group {
+                Text("Bars: average wind (kn) · Dots: gusts")
                 if let source = ForecastSource.summary(rec.hours.map(\.wind)) {
                     Group {
                         if rec.hours.contains(where: { ($0.wind.models?.count ?? 0) > 1 }) {
@@ -341,7 +351,18 @@ struct SpotDetailView: View {
         rec.hours.isEmpty ? 0 : rec.hours.map(\.wind.speedKn).reduce(0, +) / Double(rec.hours.count)
     }
 
-    private var hasModelBand: Bool { rec.hours.contains { $0.wind.modelSpeedRangeKn != nil } }
+    /// How many models the grey band spans (0 when there's no band).
+    private var modelBandCount: Int {
+        rec.hours.filter { $0.wind.modelSpeedRangeKn != nil }.map { $0.wind.modelSpeedsKn?.count ?? 0 }.max() ?? 0
+    }
+
+    /// "No go: storm, dark": the chart legend names why its grey hours can't be ridden.
+    private var noGoLegend: String {
+        let words = WindFit.noGoWords(rec.hours.filter { $0.windFit(for: chartKite) == .noGo })
+        return words.isEmpty ? WindFit.noGo.label
+            : String(localized: "No go: \(words.joined(separator: ", "))",
+                     comment: "Wind chart legend: grey hours and why, e.g. 'No go: storm, dark'")
+    }
 
     /// Covers the gusts and the suggested kite's range; grows only when the picked kite's range
     /// starts above that, so its band stays visible (the top of a tall band is clipped).
@@ -426,7 +447,7 @@ struct SpotDetailView: View {
                     .foregroundStyle(gustRuled ? fit.color : .secondary)
                     .frame(width: gustColumn)
                 HStack(spacing: 6) {
-                    WindArrow(directionDeg: h.wind.directionDeg)
+                    WindArrow(directionDeg: h.wind.directionDeg, modelArc: h.wind.modelDirectionArcDeg)
                         .font(.footnote)
                     Text(hourDirection(h))
                         .font(.footnote)
@@ -461,9 +482,13 @@ struct SpotDetailView: View {
         .accessibilityIdentifier("hourRow")
     }
 
-    /// "SE side-onshore": where the wind comes from and how it meets the beach.
+    /// "SE side-onshore": where the wind comes from and how it meets the beach. When the
+    /// models differ by two compass points or more, their range instead: "ENE–SE side-onshore".
     private func hourDirection(_ h: HourScore) -> String {
-        var text = Vocab.compass(h.wind.directionDeg)
+        var text = h.wind.modelDirectionArcDeg.map { arc in
+            let from = Vocab.compass(arc.from), to = Vocab.compass(arc.to)
+            return from == to ? from : "\(from)–\(to)"
+        } ?? Vocab.compass(h.wind.directionDeg)
         if let a = h.relativeAngle { text += " " + Vocab.angle(a) }
         return text
     }
@@ -473,6 +498,9 @@ struct SpotDetailView: View {
         var parts = h.flags.map { flag in
             flag == "too strong for level" && h.gustOverLimit
                 ? String(localized: "gusts too strong for your level", comment: "Hour ruled out: the gusts, not the mean wind, are over the rider's limit")
+                : flag == Scorer.directionDisagreementFlag
+                ? String(localized: "models disagree on direction: the worse one counts",
+                         comment: "Hour note: the weather models' directions are far apart, so the hour is judged on the worse one")
                 : Vocab.term(flag)
         }
         if let side = h.side, h.score > 0 { parts.append(side) }
@@ -758,8 +786,31 @@ enum WindFit: Hashable, CaseIterable {
         case .rideable: String(localized: "Rideable", comment: "Chart legend: wind fits your kite")
         case .tooLight: String(localized: "Too light", comment: "Chart legend: not enough wind")
         case .tooStrong: String(localized: "Too strong", comment: "Chart legend: too much wind")
-        case .noGo: String(localized: "Ruled out", comment: "Chart legend: storm, dark, offshore, ban or tide")
+        case .noGo: String(localized: "No go", comment: "Verdict: grade under 20")
         }
+    }
+
+    /// Why these no-go hours can't be ridden, short and safety first ("storm", "dark"…), each
+    /// word once. Empty when none of them has a named reason.
+    static func noGoWords(_ hours: [HourScore]) -> [String] {
+        let flags = Set(hours.flatMap(\.flags))
+        var words: [String] = []
+        if flags.contains("thunderstorm risk") { words.append(String(localized: "storm", comment: "Chart legend reason: thunderstorm risk")) }
+        if flags.contains("kiting banned") { words.append(String(localized: "ban", comment: "Chart legend reason: kiting is banned then")) }
+        if flags.contains("too late") { words.append(String(localized: "too late", comment: "This hour is over, or over before you can get there")) }
+        if flags.contains("dark") { words.append(String(localized: "dark", comment: "Before sunrise or after sunset")) }
+        // An offshore hour that only one model sees offshore (WHE-231) says so.
+        let offshore = hours.filter { $0.flags.contains("offshore component") }
+        if offshore.contains(where: { $0.flags.contains(Scorer.directionDisagreementFlag) }) {
+            words.append(String(localized: "unsure direction", comment: "Chart legend reason: the weather models disagree on the direction, one says offshore"))
+        }
+        if offshore.contains(where: { !$0.flags.contains(Scorer.directionDisagreementFlag) }) {
+            words.append(String(localized: "offshore", comment: "Wind angle to the beach"))
+        }
+        if flags.contains("tide too low") || flags.contains("tide too high") {
+            words.append(String(localized: "tide", comment: "Chart legend reason: wrong tide for this spot"))
+        }
+        return words
     }
 }
 
@@ -790,18 +841,29 @@ extension HourScore {
 
 private struct WindFitLegend: View {
     let fits: Set<WindFit>
+    /// The no-go item's text, with its reasons ("No go: storm, dark").
+    let noGoLabel: String
 
     var body: some View {
-        HStack(spacing: 12) {
-            ForEach(WindFit.allCases.filter(fits.contains), id: \.self) { f in
-                HStack(spacing: 4) {
-                    Circle().fill(f.color).frame(width: 8, height: 8)
-                    Text(f.label)
-                }
+        // A long no-go reason moves to its own line rather than squeezing the others.
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 12) { items(WindFit.allCases) }
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(spacing: 12) { items(WindFit.allCases.filter { $0 != .noGo }) }
+                items([.noGo])
             }
         }
         .font(.caption2)
         .foregroundStyle(.secondary)
         .accessibilityElement(children: .combine)
+    }
+
+    private func items(_ list: [WindFit]) -> some View {
+        ForEach(list.filter(fits.contains), id: \.self) { f in
+            HStack(spacing: 4) {
+                Circle().fill(f.color).frame(width: 8, height: 8)
+                Text(f == .noGo ? noGoLabel : f.label)
+            }
+        }
     }
 }
