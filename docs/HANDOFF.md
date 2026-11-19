@@ -553,3 +553,12 @@ running on 2d9374e. Next: deploy + live 100-spot check, then archive 1.1 for Ben
 `wrangler dev` dies in the agent shell (test live, rollback ready); `tools/.osm_cache` is a symlink to
 /Users/ben/Documents/wheretokite/tools/.osm_cache (tar with -h); `gh run watch` drops on network blips, poll
 `gh run view --json status` instead; an Xcode-generated xcstrings change is in `git stash`.
+
+## Forecast accuracy: one model set (WHE-239, 19 Nov), in review
+On branch atlas/t/whe-239 the wind check (ConfidenceEstimator) uses the forecast's own models and cells:
+MF seamless beach, ECMWF 9 km and GFS sea, MF dropped from day 4. `Scoring.chanceTuning` is re-fitted
+(`tools/backtest/whe239.py`, report section in `docs/MODEL_BACKTEST.md`). Against the shipped check on unseen
+weeks it's a tie at days 0–3, and from +4 fewer kite days get capped. Abroad, Go stays reliable in the
+Netherlands and Greece, but day 1 catches ~10 points fewer kite days; Morocco fails with both checks (weak
+airport truth). The old check counted Météo-France twice in France (best match = AROME). KiteChance API is unchanged.
+Merge only after Ben picks on the card.
