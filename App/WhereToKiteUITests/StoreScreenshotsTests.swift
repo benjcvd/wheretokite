@@ -184,6 +184,36 @@ final class StoreScreenshotsTests: XCTestCase {
         snapshot(app.screenshot(), "side-offshore-spot")
     }
 
+    /// WHE-238: the top spot's page on DOUBT_DAY (yyyy-MM-dd, live forecast) from Barcelona,
+    /// 3 h drive: the "models disagree" note when the grade is held back, the model band and the
+    /// models under the chart. DOUBT_SHOTS=1, DOUBT_NAME names the shots, DOUBT_LANG=es|fr.
+    @MainActor
+    func testModelDoubt() throws {
+        let env = ProcessInfo.processInfo.environment
+        try XCTSkipUnless(env["DOUBT_SHOTS"] == "1", "on demand")
+        let day = try XCTUnwrap(env["DOUBT_DAY"])
+        let name = env["DOUBT_NAME"] ?? "doubt"
+        func plist(_ json: String) -> String { "<" + json.utf8.map { String(format: "%02x", $0) }.joined() + ">" }
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "-AppleLanguages", "(\(env["DOUBT_LANG"] ?? "en"))", "-disclaimerAccepted", "YES",
+            "-riderProfile", plist(#"{"weightKg":75,"kites":[9,12],"level":"intermediate"}"#),
+            "-searchOptions", plist(#"{"start":{"name":"Barcelona","coordinate":{"latitude":41.3874,"longitude":2.1686}},"maxDriveMinutes":180,"day":"\#(day)","slot":"afternoon","distanceMatters":false}"#),
+            "-searchDay", day, "-searchOrigin", "41.3874,2.1686",
+        ]
+        app.launch()
+        let topSpot = app.buttons["topSpot"]
+        XCTAssertTrue(topSpot.waitForExistence(timeout: 90), "results never loaded")
+        sleep(1)
+        topSpot.tap()
+        _ = app.buttons["directions"].waitForExistence(timeout: 5)
+        sleep(3)  // map tiles
+        snapshot(app.screenshot(), "\(name)-top")
+        app.swipeUp()
+        sleep(1)
+        snapshot(app.screenshot(), "\(name)-chart")
+    }
+
     @MainActor
     private func snapshot(_ shot: XCUIScreenshot, _ name: String) {
         let a = XCTAttachment(screenshot: shot)

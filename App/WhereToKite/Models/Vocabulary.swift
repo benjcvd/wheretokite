@@ -114,6 +114,39 @@ enum Vocab {
         }
     }
 
+    /// The spot page's one-line note when the models held the grade back (WHE-238).
+    static func modelDoubt(_ doubt: ModelDoubt) -> String {
+        switch doubt {
+        case .fewSeeWind(0, let total):
+            String(localized: "None of the \(total) models we check sees enough wind",
+                   comment: "Spot page note: no weather model reaches the rider's minimum wind")
+        case .fewSeeWind(1, let total):
+            String(localized: "Only 1 of \(total) models sees enough wind",
+                   comment: "Spot page note: one weather model alone reaches the rider's minimum wind")
+        case .fewSeeWind(let seeing, let total):
+            String(localized: "Only \(seeing) of \(total) models see enough wind",
+                   comment: "Spot page note: a few weather models reach the rider's minimum wind")
+        case .disagree(let low, let high):
+            String(localized: "Models disagree: \(low)–\(high) kn",
+                   comment: "Spot page note: the weather models' best wind ranges from low to high knots")
+        case .justEnough(let low, let high) where low == high:
+            String(localized: "Models agree on about \(low) kn, just over your minimum",
+                   comment: "Spot page note: the models agree but only just reach the rider's minimum wind")
+        case .justEnough(let low, let high):
+            String(localized: "Models agree on \(low)–\(high) kn, just over your minimum",
+                   comment: "Spot page note: the models agree on a range that only just reaches the rider's minimum wind")
+        }
+    }
+
+    /// The note's second line: each checked model's best hours, and the rider's minimum.
+    static func modelDoubtDetail(_ chance: KiteChance, sessionHours: Int = ScoringRules().sessionHours) -> String {
+        let models = chance.modelBests.map { "\(ForecastSource.shortName($0.model)) \(Int($0.kn.rounded()))" }
+            .joined(separator: " · ")
+        let need = Int(chance.minWindKn.rounded())
+        return String(localized: "Best \(sessionHours) h per model: \(models) kn. You need \(need) kn.",
+                      comment: "Spot page note, detail: each weather model's best wind (e.g. ECMWF 18 · ICON 11), then the rider's minimum")
+    }
+
     /// "70–100": the grades of a verdict.
     static func verdictBand(_ v: KiteVerdict) -> String {
         let b = ScoringRules().verdictFromGrade

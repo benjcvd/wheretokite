@@ -543,7 +543,13 @@ An Open-Meteo 429 now makes the Worker file one "Forecast quota hit: <day>" GitH
 
 The Kite tab's top options are now a 2×2 grid of labelled tiles (Rider, From, Max drive, Water & weather), each with its own sheet; the old single "options" sheet is gone and My hours lives only on the session strip. In review with before/after shots in docs/review/. Two UI tests (language relaunch, spot map slider) already fail on the base branch: new card.
 
-## Lead, 18 Nov 09:15: where I stopped
+## Lead, 18 Nov 21:30: where I stopped
+Catalogue published on Ben's option 1 (allow_drop): f2fa1e0, 741 spots, bans 60 → 39 (21 archived spots + Saunton Sands, whose unsourced summer ban WHE-188 removed). 1.0 phones refuse it (their gate) and keep the bundled list; 1.1 bundles it. The workflow now pulls with `--autostash` and saves the map cache even on failure (a failed run used to waste an hour). Product has a card to stop the gate counting archived spots. The latest main is not yet on Ben's iPhone (phone unreachable at 21:30); next step: install, then archive 1.1. Gotcha: the agent permission guard blocks `npx wrangler deploy`; Ben runs it from Terminal (`cd ~/Documents/claude_projects/wheretokite/server && PATH=~/.local/node/bin:$PATH npx wrangler deploy`), then the Lead checks live. Live Worker: version 6e0f6d1f (18 Nov, waves + quota alert).
+
+### 18 Nov 19:20
+Worker deployed by Ben from his Terminal (version 6e0f6d1f; the agent guard blocks `wrangler deploy`, so hand him the command). Live check passed: 100-spot forecast MISS then HIT, wave heights flow. The note below is otherwise current.
+
+### 18 Nov 09:15
 1.0 live since 9 Nov. Main (638f162, pushed) holds every workstream, including Product's WHE-223 option tiles and
 WHE-226 spot-page cleanup; the same build is on Ben's iPhone (Debug). Ben's WHE-221 calls: sky = middle model for
 "good weather only" (storm safety still reads the gloomiest model, `skyCode` vs `weatherCode`), wave cuts as proposed.
@@ -553,3 +559,9 @@ running on 2d9374e. Next: deploy + live 100-spot check, then archive 1.1 for Ben
 `wrangler dev` dies in the agent shell (test live, rollback ready); `tools/.osm_cache` is a symlink to
 /Users/ben/Documents/wheretokite/tools/.osm_cache (tar with -h); `gh run watch` drops on network blips, poll
 `gh run view --json status` instead; an Xcode-generated xcstrings change is in `git stash`.
+
+## Lead, 18 Nov 23:45: 1.1 archived
+Ben tested main on his iPhone and asked to release. Last fix before the archive (WHE-236): when only the gusts are over the rider's limit, the gust number (hour list) and gust dot (chart) go red instead of the wind, and the chart colours follow the kite picked. The gust limit itself is unchanged; the knife-edge case (11:00 passing at exactly 37.0 kn between two failing hours) was left as is on Ben's word. Version 1.1 build 3 (92783fc, pushed) is in Xcode's Organizer; `xcodebuild -exportArchive` upload still fails with "Failed to Use Accounts", so Ben uploads and submits with docs/store/RELEASE_1.1.md (What's New in three languages). Store screenshots still show the 1.0 layout.
+
+## Product, 19 Nov: WHE-238 models disagree on the spot page (review)
+When the model check caps a grade, the spot page now opens with a one-line note ("Models disagree: 11–19 kn" / "Only 1 of 4 models sees enough wind") naming each checked model's best 2 h. The wind chart has a grey low–high band from the blend's own models, and a line naming them. The note and the band show different model sets on purpose (four-model check vs the three-model average), and each says which it shows. No scoring change. Screens in `docs/review/whe238-*`; waiting on Ben's OK of the look.

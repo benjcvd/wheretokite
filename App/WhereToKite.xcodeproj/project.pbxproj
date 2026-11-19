@@ -38,6 +38,7 @@
 		C33CFF9FE4F75EE2B827DB06 /* SearchModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66484E74D379FF3397D4C6E /* SearchModelTests.swift */; };
 		C21C7AD71B7201BBCFAFAA54 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */; };
 		C694F79125A59EC8A6268398 /* MapsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D35348AD7B31AFA19D67E0F /* MapsAppTests.swift */; };
+		CD0C5F4FF2128F1C50AD16A5 /* ModelDoubtTextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AFFFFFE1CAC7FC2C52A8DF /* ModelDoubtTextTests.swift */; };
 		C8A02A7815AAA5B7F3D18D83 /* WindFitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420BEB43C9A76CCC59E6D63D /* WindFitTests.swift */; };
 		DBFAD74148CD789970E3059C /* StoreScreenshotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB70D90A52779BDFCAB5DB /* StoreScreenshotsTests.swift */; };
 		E382C9BF6E85FA58BC21B22D /* WhereToKiteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F345D2CC8B0885A814F117E /* WhereToKiteApp.swift */; };
@@ -72,6 +73,7 @@
 		2C0933D9C88094846F2BC285 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3BA1E1DA350A2D5CEA7151B0 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		41A114E78467ACC8F7715B2A /* SearchOptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOptionsTests.swift; sourceTree = "<group>"; };
+		F5AFFFFFE1CAC7FC2C52A8DF /* ModelDoubtTextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDoubtTextTests.swift; sourceTree = "<group>"; };
 		420BEB43C9A76CCC59E6D63D /* WindFitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindFitTests.swift; sourceTree = "<group>"; };
 		44AE32A31EE4299CD90381BF /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		45F5C20E40546E26686279F0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				A66484E74D379FF3397D4C6E /* SearchModelTests.swift */,
 				41A114E78467ACC8F7715B2A /* SearchOptionsTests.swift */,
 				9277E1AB34764B92F4C025FD /* UserSpotStoreTests.swift */,
+				F5AFFFFFE1CAC7FC2C52A8DF /* ModelDoubtTextTests.swift */,
 				420BEB43C9A76CCC59E6D63D /* WindFitTests.swift */,
 			);
 			path = WhereToKiteTests;
@@ -365,6 +368,7 @@
 				C33CFF9FE4F75EE2B827DB06 /* SearchModelTests.swift in Sources */,
 				A9BFA4D8B51A20B57616E486 /* SearchOptionsTests.swift in Sources */,
 				5C8142654A0B9DBA7BF0CF94 /* UserSpotStoreTests.swift in Sources */,
+				CD0C5F4FF2128F1C50AD16A5 /* ModelDoubtTextTests.swift in Sources */,
 				C8A02A7815AAA5B7F3D18D83 /* WindFitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,7 +595,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = WhereToKite;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
@@ -605,7 +609,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.benjcvd.wheretokite;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -621,7 +625,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = WhereToKite;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
@@ -635,7 +639,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.benjcvd.wheretokite;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
