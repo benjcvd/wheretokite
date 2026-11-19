@@ -54,6 +54,18 @@ public enum ForecastSource {
         }
     }
 
+    /// The provider alone ("ECMWF", "Météo-France"), for lines that list each model's value.
+    public static func shortName(_ id: String) -> String {
+        switch family(id) {
+        case "meteofrance": "Météo-France"
+        case "ecmwf": "ECMWF"
+        case "gfs": "GFS"
+        case "icon": "ICON"
+        case "best_match": "Open-Meteo"
+        default: id
+        }
+    }
+
     /// The models behind these hours, e.g. "AROME 1.3 km · ECMWF 9 km · GFS", or
     /// "AROME 1.3 km → ARPEGE 11 km · ECMWF 9 km · GFS" when Météo-France switches model
     /// within the hours. nil when no hour says (old cache).

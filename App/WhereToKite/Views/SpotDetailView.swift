@@ -56,6 +56,9 @@ struct SpotDetailView: View {
                     .accessibilityElement(children: .combine)
                     .accessibilityIdentifier("sideOffshoreAlertDetail")
                 }
+                if let doubt = rec.modelDoubt, let chance = rec.chance {
+                    modelDoubtNote(doubt, chance: chance)
+                }
                 facts
                 VerdictBanner(rec: rec)
                 chart
@@ -215,6 +218,29 @@ struct SpotDetailView: View {
         }
     }
 
+    // MARK: Models disagree (WHE-238)
+
+    /// Why the grade is held back although the chart shows one clean forecast. Its numbers are
+    /// the checked models' best hours (the chance check), named, so they can differ from the bars.
+    private func modelDoubtNote(_ doubt: ModelDoubt, chance: KiteChance) -> some View {
+        Label {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(Vocab.modelDoubt(doubt)).font(.subheadline.weight(.bold))
+                Text(Vocab.modelDoubtDetail(chance))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        } icon: {
+            Image(systemName: "arrow.up.and.down.circle.fill").font(.title3)
+                .foregroundStyle(rec.kiteVerdict.color)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(rec.kiteVerdict.color.opacity(0.1), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("modelDoubtNote")
+    }
+
     // MARK: Chart
 
     private var chart: some View {
@@ -235,6 +261,20 @@ struct SpotDetailView: View {
                             Text("\(k.size.formatted()) m range").font(.caption2.weight(.semibold))
                                 .foregroundStyle(ScoreStyle.color(80))
                         }
+                }
+                // The blended models' low–high wind, behind the bars: wider than a bar, light, so it
+                // shows as a halo where the models spread and the bars and gust dots stay readable.
+                ForEach(rec.hours.filter { $0.wind.modelSpeedRangeKn != nil }, id: \.wind.localTime) { h in
+                    if let r = h.wind.modelSpeedRangeKn {
+                        RectangleMark(x: .value("Hour", h.wind.hour),
+                                      yStart: .value("Lowest model", min(r.lowerBound, yMax)),
+                                      yEnd: .value("Highest model", min(r.upperBound, yMax)), width: 28)
+                            .foregroundStyle(Color.gray.opacity(0.3))
+                            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                            .accessibilityLabel(Text(verbatim: "\(h.wind.hour)h"))
+                            .accessibilityValue(Text("Models \(Int(r.lowerBound.rounded())) to \(Int(r.upperBound.rounded())) knots",
+                                                     comment: "VoiceOver, wind chart: lowest to highest weather model this hour"))
+                    }
                 }
                 ForEach(rec.hours, id: \.wind.localTime) { h in
                     let fit = h.windFit(for: chartKite)
@@ -259,9 +299,26 @@ struct SpotDetailView: View {
             }
             .frame(height: 190)
             WindFitLegend(fits: Set(rec.hours.map { $0.windFit(for: chartKite) }))
-            Text("Bars: average wind (kn) · Dots: gusts")
-                .font(.caption2)
-                .foregroundStyle(.secondary)
+            Group {
+                if hasModelBand {
+                    Text("Bars: average wind (kn) · Dots: gusts · Shade: lowest to highest model")
+                } else {
+                    Text("Bars: average wind (kn) · Dots: gusts")
+                }
+                if let source = ForecastSource.summary(rec.hours.map(\.wind)) {
+                    Group {
+                        if rec.hours.contains(where: { ($0.wind.models?.count ?? 0) > 1 }) {
+                            Text("Forecast: average of \(source)",
+                                 comment: "Under the wind chart: the weather models the bars average, e.g. AROME 1.3 km · ECMWF 9 km · GFS")
+                        } else {
+                            Text("Forecast: \(source)", comment: "Under the wind chart: the one weather model behind the bars")
+                        }
+                    }
+                    .accessibilityIdentifier("chartModels")
+                }
+            }
+            .font(.caption2)
+            .foregroundStyle(.secondary)
         }
         .padding(16)
         .card()
@@ -284,10 +341,13 @@ struct SpotDetailView: View {
         rec.hours.isEmpty ? 0 : rec.hours.map(\.wind.speedKn).reduce(0, +) / Double(rec.hours.count)
     }
 
+    private var hasModelBand: Bool { rec.hours.contains { $0.wind.modelSpeedRangeKn != nil } }
+
     /// Covers the gusts and the suggested kite's range; grows only when the picked kite's range
     /// starts above that, so its band stays visible (the top of a tall band is clipped).
     private var yMax: Double {
         let peak = max(rec.hours.map(\.wind.gustKn).max() ?? 0, rec.suggestedKite?.maxKn ?? 0,
+                       rec.hours.compactMap { $0.wind.modelSpeedRangeKn?.upperBound }.max() ?? 0,
                        (chartKite?.minKn ?? 0) + 4)
         return (peak / 5).rounded(.up) * 5 + 5
     }

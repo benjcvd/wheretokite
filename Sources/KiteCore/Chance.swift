@@ -54,6 +54,14 @@ public struct KiteChance: Sendable {
     /// `uncertain`: Worth a try at best). The app says why.
     public var goHeldBack: GoHeldBack? = nil
 
+    public init(chance: Double, outlook: WindOutlook, leadDays: Int, minWindKn: Double, modelBestKn: [String: Double]) {
+        self.chance = chance
+        self.outlook = outlook
+        self.leadDays = leadDays
+        self.minWindKn = minWindKn
+        self.modelBestKn = modelBestKn
+    }
+
     public var percent: Int { Int((chance * 100).rounded()) }
 
     public var summary: String {
@@ -134,4 +142,47 @@ extension Scorer {
 
     /// Standard normal cumulative distribution.
     static func phi(_ z: Double) -> Double { 0.5 * erfc(-z / 2.squareRoot()) }
+}
+
+/// Why the models held a spot's grade back, in words a rider gets at a glance (WHE-238, Ben's
+/// pick 19 Nov): the spot page shows it above the forecast, which is one clean average and
+/// would otherwise look like a Go. Numbers are each checked model's best `sessionHours`
+/// (`KiteChance.modelBestKn`), not the blend the bars show.
+public enum ModelDoubt: Equatable, Sendable {
+    /// Only `seeing` of `total` models reach the rider's minimum wind (0 = none of them).
+    case fewSeeWind(seeing: Int, total: Int)
+    /// Enough models see the wind, but their best hours range from `lowKn` to `highKn`.
+    case disagree(lowKn: Int, highKn: Int)
+    /// The models agree, but only just above the rider's minimum.
+    case justEnough(lowKn: Int, highKn: Int)
+
+    /// Below this gap between the lowest and highest model the models count as agreeing, kn.
+    public static let agreeWithinKn = 5.0
+}
+
+extension KiteChance {
+    /// What the models' best hours say against the rider's minimum wind.
+    public var doubt: ModelDoubt? {
+        let values = Array(modelBestKn.values)
+        guard values.count >= 2, let lo = values.min(), let hi = values.max() else { return nil }
+        let seeing = values.filter { $0 >= minWindKn }.count
+        if seeing * 2 <= values.count { return .fewSeeWind(seeing: seeing, total: values.count) }
+        let low = Int(lo.rounded()), high = Int(hi.rounded())
+        return hi - lo >= ModelDoubt.agreeWithinKn ? .disagree(lowKn: low, highKn: high) : .justEnough(lowKn: low, highKn: high)
+    }
+
+    /// The checked models with their best hours, highest first, for the note's detail line.
+    public var modelBests: [(model: String, kn: Double)] {
+        modelBestKn.map { ($0.key, $0.value) }.sorted { $0.kn != $1.kn ? $0.kn > $1.kn : $0.model < $1.model }
+    }
+}
+
+extension SpotRecommendation {
+    /// Set when uncertain / unlikely wind capped this spot's grade because the models disagree
+    /// or sit near the rider's minimum. nil when nothing was capped, or when the cap only comes
+    /// from the day being too far ahead (the models agree: `goHeldBack` says so).
+    public var modelDoubt: ModelDoubt? {
+        guard scoreBeforeChance != nil, let c = chance, c.outlook != .likely, c.goHeldBack == nil else { return nil }
+        return c.doubt
+    }
 }

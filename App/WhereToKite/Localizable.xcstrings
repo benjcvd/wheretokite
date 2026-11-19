@@ -1157,6 +1157,22 @@
         }
       }
     },
+    "Bars: average wind (kn) · Dots: gusts · Shade: lowest to highest model" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barras: viento medio (kn) · Puntos: rachas · Sombra: del modelo más bajo al más alto"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barres : vent moyen (kn) · Points : rafales · Ombre : du modèle le plus bas au plus haut"
+          }
+        }
+      }
+    },
     "Beach direction" : {
       "localizations" : {
         "es" : {
@@ -1281,6 +1297,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Débutant"
+          }
+        }
+      }
+    },
+    "Best %lld h per model: %@ kn. You need %lld kn." : {
+      "comment" : "Spot page note, detail: each weather model's best wind (e.g. ECMWF 18 · ICON 11), then the rider's minimum",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mejores %1$lld h por modelo: %2$@ kn. Necesitas %3$lld kn."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meilleures %1$lld h par modèle : %2$@ kn. Il te faut %3$lld kn."
           }
         }
       }
@@ -2248,6 +2281,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Estimation fondée sur les prévisions. Vérifie les conditions sur place ; tu navigues à tes risques."
+          }
+        }
+      }
+    },
+    "Forecast: %@" : {
+      "comment" : "Under the wind chart: the one weather model behind the bars",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previsión: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévision : %@"
+          }
+        }
+      }
+    },
+    "Forecast: average of %@" : {
+      "comment" : "Under the wind chart: the weather models the bars average, e.g. AROME 1.3 km · ECMWF 9 km · GFS",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previsión: media de %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prévision : moyenne de %@"
           }
         }
       }
@@ -3258,6 +3325,74 @@
         }
       }
     },
+    "Models %lld to %lld knots" : {
+      "comment" : "VoiceOver, wind chart: lowest to highest weather model this hour",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modelos de %1$lld a %2$lld nudos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modèles de %1$lld à %2$lld nœuds"
+          }
+        }
+      }
+    },
+    "Models agree on %lld–%lld kn, just over your minimum" : {
+      "comment" : "Spot page note: the models agree on a range that only just reaches the rider's minimum wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos coinciden en %1$lld–%2$lld kn, justo por encima de tu mínimo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles s'accordent sur %1$lld–%2$lld kn, juste au-dessus de ton minimum"
+          }
+        }
+      }
+    },
+    "Models agree on about %lld kn, just over your minimum" : {
+      "comment" : "Spot page note: the models agree but only just reach the rider's minimum wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos coinciden en unos %lld kn, justo por encima de tu mínimo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles s'accordent sur environ %lld kn, juste au-dessus de ton minimum"
+          }
+        }
+      }
+    },
+    "Models disagree: %lld–%lld kn" : {
+      "comment" : "Spot page note: the weather models' best wind ranges from low to high knots",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos no coinciden: %1$lld–%2$lld kn"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles divergent : %1$lld–%2$lld kn"
+          }
+        }
+      }
+    },
     "More" : {
       "comment" : "Score weight",
       "localizations" : {
@@ -3649,6 +3784,23 @@
         }
       }
     },
+    "None of the %lld models we check sees enough wind" : {
+      "comment" : "Spot page note: no weather model reaches the rider's minimum wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ninguno de los %lld modelos que consultamos ve viento suficiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun des %lld modèles qu'on consulte ne voit assez de vent"
+          }
+        }
+      }
+    },
     "Normal" : {
       "comment" : "Score weight",
       "localizations" : {
@@ -4000,6 +4152,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Un spot gratuit, illimité avec Pro"
+          }
+        }
+      }
+    },
+    "Only %lld of %lld models see enough wind" : {
+      "comment" : "Spot page note: a few weather models reach the rider's minimum wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo %1$lld de %2$lld modelos ven viento suficiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seuls %1$lld modèles sur %2$lld voient assez de vent"
+          }
+        }
+      }
+    },
+    "Only 1 of %lld models sees enough wind" : {
+      "comment" : "Spot page note: one weather model alone reaches the rider's minimum wind",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo 1 de %lld modelos ve viento suficiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seul 1 modèle sur %lld voit assez de vent"
           }
         }
       }
