@@ -1,5 +1,38 @@
 # WHE-243: clearer model winds, in the hour list and on the map
 
+## Round 2 (20 Nov): built, A3 and B4
+
+You picked A3 for the hour list (A2 as the fallback) and B4 for the map, unless a field of arrows could be made tidy. Both are now built in the app, shown here on real forecasts.
+
+### Field of arrows: tested, too messy
+
+The only field that can show disagreement gives each model its own arrows, mixed across the water. When the models agree it looks great, but then it says nothing a single arrow doesn't. As soon as they disagree it turns into a checkerboard of arrows crossing each other (Leucate, Sète), which reads as turbulence rather than "two forecasts". So: B4.
+
+![](whe243/B5-field-per-model.png)
+
+### Hour list: A3 built
+
+One arrow per hour, the direction **the score used** (on a "worse one counts" hour, the worse model's, not the average), so the arrow, the words and the colour always agree. When the models are 45°+ apart, a small **≠** sits beside it: orange, or **red when one of them is offshore**. Tap the hour to open each model's arrow, name, speed and angle to the beach. A legend line under the list explains it. The full "≠ offshore?" label from the mock-up didn't fit next to "side-onshore" on a real phone, so it's just the symbol.
+
+| Leucate 25 Nov, 13 h opened | Empuriabrava 22 Nov, 14 h opened (3 models, ARPEGE offshore) |
+|---|---|
+| ![](whe243/A3-built-leucate-open.png) | ![](whe243/A3-built-empuria-open.png) |
+
+### Map: B4 built
+
+When the models disagree, each gets its own arrow from the launch, coloured by its own angle, with "GFS 10" at the tail on the full-screen map. The fan is gone. The chip says "Models disagree: one arrow per model".
+
+| Full map, Leucate 25 Nov 16 h | Full map, Empuriabrava 22 Nov 14 h | Spot page, Leucate 25 Nov |
+|---|---|---|
+| ![](whe243/B4-built-leucate-map-16h.png) | ![](whe243/B4-built-empuria-map.png) | ![](whe243/B4-built-leucate-top.png) |
+
+Known limits:
+- The small map on the spot page has never shown the tail labels (same before this change), so there you get the colours but not the names. The full-screen map has them.
+- The map colours by angle alone (orange from 100°, red from 130°), while the hour list's red follows your level's offshore rule. At Empuriabrava ARPEGE is orange on the map and red in the list.
+- The safety question below is still open: between 45° and 90° apart, a red ≠ can sit on a rideable hour (one model offshore, the score doesn't count it).
+
+## Round 1: options
+
 Design study only: nothing is built in the app. Mock-ups are real simulator screens (iPhone 17 Pro Max) fed with real forecasts pulled on 20 Nov 2026 from the live Worker (`kite --hourly`), rider 75 kg, 9/12 m, intermediate.
 
 | Case | Models | What it shows |
