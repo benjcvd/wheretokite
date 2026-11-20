@@ -23,7 +23,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.benjcvd.wheretokite
         MARKETING_VERSION: "1.1"
-        CURRENT_PROJECT_VERSION: "3"
+        CURRENT_PROJECT_VERSION: "4"
         SWIFT_VERSION: "6.0"
         TARGETED_DEVICE_FAMILY: "1"
         # Text is in Localizable.xcstrings (English source, Spanish), Info.plist text in InfoPlist.xcstrings.
