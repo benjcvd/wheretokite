@@ -517,11 +517,9 @@ struct SpotDetailView: View {
         return dirs.map { scorer.isOffshore(directionDeg: $0, side: side) }
     }
 
-    /// "SE side-onshore": where the wind comes from and how it meets the beach.
+    /// "side-onshore": how the wind meets the beach; the compass point only when that's unknown.
     private func hourDirection(_ h: HourScore) -> String {
-        var text = Vocab.compass(h.wind.directionDeg)
-        if let a = h.relativeAngle { text += " " + Vocab.angle(a) }
-        return text
+        h.relativeAngle.map(Vocab.angle) ?? Vocab.compass(h.wind.directionDeg)
     }
 
     /// Warnings (safety first, as applySafety orders them) and the side of a multi-side spot.
