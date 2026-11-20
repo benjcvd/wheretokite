@@ -1157,22 +1157,6 @@
         }
       }
     },
-    "Bars: average wind (kn) · Dots: gusts · Shade: lowest to highest model" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Barras: viento medio (kn) · Puntos: rachas · Sombra: del modelo más bajo al más alto"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Barres : vent moyen (kn) · Points : rafales · Ombre : du modèle le plus bas au plus haut"
-          }
-        }
-      }
-    },
     "Beach direction" : {
       "localizations" : {
         "es" : {
@@ -4723,23 +4707,6 @@
         }
       }
     },
-    "Ruled out" : {
-      "comment" : "Chart legend: storm, dark, offshore, ban or tide",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Descartado"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exclu"
-          }
-        }
-      }
-    },
     "Safety" : {
       "localizations" : {
         "es" : {
@@ -7318,6 +7285,226 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les spots comptent aussi quand le vent vient un peu de la terre. Ce vent est plus rafaleux et te pousse vers le large, donc ils sont signalés. Le vent qui vient droit de la terre ne compte jamais."
+          }
+        }
+      }
+    },
+    "models disagree on direction" : {
+      "comment" : "Flag: the weather models forecast very different wind directions, so the worse one is scored",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "los modelos no coinciden en la dirección"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "les modèles divergent sur la direction"
+          }
+        }
+      }
+    },
+    "Unsure direction" : {
+      "comment" : "Not-kiteable tag: the weather models disagree on the wind direction, one of them offshore",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección dudosa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction incertaine"
+          }
+        }
+      }
+    },
+    "The weather models disagree on the wind direction, and one says offshore." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos no coinciden en la dirección del viento, y uno dice offshore."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles ne sont pas d'accord sur la direction du vent, et l'un d'eux annonce de l'offshore."
+          }
+        }
+      }
+    },
+    "Grey band: lowest to highest of the %lld models" : {
+      "comment" : "Wind chart legend: the grey band behind each bar spans the weather models' winds",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banda gris: del más bajo al más alto de los %lld modelos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bande grise : du plus bas au plus haut des %lld modèles"
+          }
+        }
+      }
+    },
+    "No go: %@" : {
+      "comment" : "Wind chart legend: grey hours and why, e.g. 'No go: storm, dark'",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No go: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No go : %@"
+          }
+        }
+      }
+    },
+    "storm" : {
+      "comment" : "Chart legend reason: thunderstorm risk",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tormenta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "orage"
+          }
+        }
+      }
+    },
+    "ban" : {
+      "comment" : "Chart legend reason: kiting is banned then",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "prohibido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "interdit"
+          }
+        }
+      }
+    },
+    "unsure direction" : {
+      "comment" : "Chart legend reason: the weather models disagree on the direction, one says offshore",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dirección dudosa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "direction incertaine"
+          }
+        }
+      }
+    },
+    "tide" : {
+      "comment" : "Chart legend reason: wrong tide for this spot",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marea"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marée"
+          }
+        }
+      }
+    },
+    "models disagree on direction: the worse one counts" : {
+      "comment" : "Hour note: the weather models' directions are far apart, so the hour is judged on the worse one",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "los modelos no coinciden en la dirección: cuenta la peor"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "les modèles divergent sur la direction : la pire compte"
+          }
+        }
+      }
+    },
+    "Fan: models %@–%@" : {
+      "comment" : "Spot map: the light fan behind the wind arrow spans the weather models' directions, e.g. 'Fan: models ENE–SE'",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abanico: modelos %1$@–%2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Éventail : modèles %1$@–%2$@"
+          }
+        }
+      }
+    },
+    "%@ offshore" : {
+      "comment" : "VoiceOver: one model's wind direction, offshore, e.g. 'ESE offshore'",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ offshore"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ offshore"
+          }
+        }
+      }
+    },
+    "Models: %@" : {
+      "comment" : "VoiceOver: each weather model's wind direction this hour",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modelos: %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modèles : %@"
           }
         }
       }
