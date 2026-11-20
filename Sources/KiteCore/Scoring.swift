@@ -239,6 +239,13 @@ public struct HourScore: Sendable {
     /// "too strong for level" came from the gusts alone (mean wind within the limit), so the
     /// app can point at the gust number rather than the wind.
     public var gustOverLimit = false
+    /// The direction the score was worked out on, when it isn't the blended one: the worse
+    /// model's on an hour where they disagree (WHE-231). nil = `wind.directionDeg`.
+    public var scoredDirectionDeg: Double? = nil
+
+    /// The direction to draw for this hour: the one its score and angle to the beach come
+    /// from, so the arrow, the words and the colour always agree (WHE-243).
+    public var shownDirectionDeg: Double { scoredDirectionDeg ?? wind.directionDeg }
 }
 
 public struct Scorer: Sendable {
@@ -294,6 +301,7 @@ public struct Scorer: Sendable {
             a.score != b.score ? a.score < b.score : (a.relativeAngle ?? 0) > (b.relativeAngle ?? 0)
         }!
         var h = worst
+        if worst.wind.directionDeg != w.directionDeg { h.scoredDirectionDeg = worst.wind.directionDeg }
         h.wind = w
         h.flags.append(Self.directionDisagreementFlag)
         return h
@@ -304,18 +312,27 @@ public struct Scorer: Sendable {
     /// the spot page reddens each model arrow that is offshore). A shore that curves (sector
     /// over 180°) uses its best-placed part, as the scorer does.
     public func isOffshore(directionDeg: Double, side: SpotSide) -> Bool {
-        let sector = min(360, max(0, side.waterSectorDeg ?? 180))
-        let off = Geo.angleDiff(directionDeg, side.seaFacingDeg)
-        let angle: Double
-        if sector <= 180 {
-            angle = min(180, max(0, off - sector / 2 + 90))
-        } else {
-            let span = min(360, 2 * (sector - 180))
-            let steps = max(1, Int((span / 5).rounded(.up)))
-            angle = (0...steps).map { Geo.angleDiff(directionDeg, side.seaFacingDeg - span / 2 + span * Double($0) / Double(steps)) }.min()!
-        }
+        let angle = relativeAngle(directionDeg: directionDeg, side: side)
         return angle >= 90 && rules.directionScore(relativeAngle: angle, level: profile.level,
                                                    offshore: profile.offshoreTolerance) == 0
+    }
+
+    /// The angle to the beach (0 onshore … 180 offshore) a wind from `directionDeg` is judged
+    /// on for this side, as `isOffshore` uses it (WHE-243: each model's words on the spot page).
+    public func relativeAngle(directionDeg: Double, side: SpotSide) -> Double {
+        Self.relativeAngle(directionDeg: directionDeg, side: side)
+    }
+
+    /// Same as the instance method: the angle doesn't depend on the rider (WHE-243: the map).
+    public static func relativeAngle(directionDeg: Double, side: SpotSide) -> Double {
+        let sector = min(360, max(0, side.waterSectorDeg ?? 180))
+        let off = Geo.angleDiff(directionDeg, side.seaFacingDeg)
+        if sector <= 180 {
+            return min(180, max(0, off - sector / 2 + 90))
+        }
+        let span = min(360, 2 * (sector - 180))
+        let steps = max(1, Int((span / 5).rounded(.up)))
+        return (0...steps).map { Geo.angleDiff(directionDeg, side.seaFacingDeg - span / 2 + span * Double($0) / Double(steps)) }.min()!
     }
 
     /// Flag on an hour scored on the worse of the models' directions.

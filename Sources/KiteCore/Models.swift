@@ -373,6 +373,24 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     /// the spot page's low–high band). nil for a single model and in old caches.
     public var modelSpeedsKn: [Double]?
 
+    /// Each blended model's wind this hour, in blend order: its id, speed and direction
+    /// (nil when it blows under `directionMinKn`, too light to tell). nil for a single model,
+    /// old caches, or arrays that don't line up (WHE-243: the hour list's per-model detail).
+    public var modelWinds: [(model: String, speedKn: Double, directionDeg: Double?)]? {
+        guard let ids = models, let speeds = modelSpeedsKn, ids.count == speeds.count, ids.count > 1 else { return nil }
+        var dirs = (modelDirectionsDeg ?? [])[...]
+        var out: [(model: String, speedKn: Double, directionDeg: Double?)] = []
+        for (id, kn) in zip(ids, speeds) {
+            if kn >= Self.directionMinKn {
+                guard let d = dirs.popFirst() else { return nil }
+                out.append((id, kn, d))
+            } else {
+                out.append((id, kn, nil))
+            }
+        }
+        return dirs.isEmpty ? out : nil
+    }
+
     /// Lowest to highest blended model wind this hour, kn. nil without at least two models.
     public var modelSpeedRangeKn: ClosedRange<Double>? {
         // Cache files are read back: implausible values are dropped, not drawn.
