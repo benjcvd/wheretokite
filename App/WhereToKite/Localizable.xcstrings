@@ -7508,6 +7508,57 @@
           }
         }
       }
+    },
+    "%lld knots" : {
+      "comment" : "VoiceOver: one model's wind speed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld nudos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld nœuds"
+          }
+        }
+      }
+    },
+    "too light to tell" : {
+      "comment" : "A weather model's wind is too light to give a direction",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "demasiado flojo para saberlo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "trop faible pour le dire"
+          }
+        }
+      }
+    },
+    "≠ The weather models disagree on direction: tap the hour to see each one. Red ≠: one of them says offshore." : {
+      "comment" : "Legend under the wind hour by hour (WHE-243)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "≠ Los modelos meteorológicos no coinciden en la dirección: toca la hora para ver cada uno. ≠ rojo: uno de ellos dice offshore."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "≠ Les modèles météo divergent sur la direction : touche l’heure pour voir chacun. ≠ rouge : l’un d’eux annonce de l’offshore."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

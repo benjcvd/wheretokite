@@ -227,6 +227,14 @@ final class StoreScreenshotsTests: XCTestCase {
         app.swipeUp()
         sleep(1)
         snapshot(app.screenshot(), "\(name)-hours")
+        // WHE-243: open the first hour whose models disagree.
+        let split = app.otherElements.matching(NSPredicate(format: "identifier == 'hourRow' AND label CONTAINS 'Models:'")).firstMatch
+        if split.exists {
+            if !split.isHittable { app.swipeUp() }
+            split.tap()
+            sleep(1)
+            snapshot(app.screenshot(), "\(name)-open")
+        }
     }
 
     @MainActor
