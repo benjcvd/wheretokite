@@ -549,17 +549,16 @@ extension SpotRecommendation {
         return l == h ? "\(h) kn" : "\(l)–\(h) kn"
     }
 
-    /// "SSW side-onshore"
+    /// "side-onshore" (the compass point, "SSW", only when the beach angle is unknown).
     var windDirectionLabel: String? {
         let hs = windowHours
         guard !hs.isEmpty else { return nil }
-        let dir = Vocab.compass(Geo.circularStats(hs.map(\.wind.directionDeg)).mean)
         let angles = hs.compactMap(\.relativeAngle)
-        let side = angles.isEmpty ? "" : " " + Vocab.angle(angles.reduce(0, +) / Double(angles.count))
-        return dir + side
+        if !angles.isEmpty { return Vocab.angle(angles.reduce(0, +) / Double(angles.count)) }
+        return Vocab.compass(Geo.circularStats(hs.map(\.wind.directionDeg)).mean)
     }
 
-    /// "15–18 kn · gusts 22 · SSW side-onshore"
+    /// "15–18 kn · gusts 22 · side-onshore"
     var windSummary: String? {
         guard let speed = windRange, let gust = windowHours.map(\.wind.gustKn).max(),
               let dir = windDirectionLabel else { return nil }

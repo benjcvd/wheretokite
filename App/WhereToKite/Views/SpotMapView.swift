@@ -26,6 +26,9 @@ enum ShoreAngleStyle {
 struct SpotWindOverlay: MapContent {
     let spot: Spot
     let wind: MapWind.Summary
+    /// The models' direction range (`MapWind.modelArc`): a light fan behind the arrow, from
+    /// the launch upwind over every way the models blow (WHE-242). nil = models agree.
+    var modelArc: (from: Double, to: Double)? = nil
     /// Arrow length on the ground; sized for the spot page's 4 km map.
     var lengthM: Double = 1100
 
@@ -41,6 +44,11 @@ struct SpotWindOverlay: MapContent {
                 .stroke(.black.opacity(0.55), style: StrokeStyle(lineWidth: 7, lineCap: .round))
             MapPolyline(coordinates: shore)
                 .stroke(.white, style: StrokeStyle(lineWidth: 3, lineCap: .round))
+        }
+        if let arc = modelArc {
+            MapPolygon(coordinates: cl(MapWind.fan(at: at, arc: arc, lengthM: lengthM)))
+                .foregroundStyle(.white.opacity(0.22))
+                .stroke(.white.opacity(0.6), lineWidth: 1)
         }
         let arrow = MapWind.arrow(at: at, fromDeg: wind.directionDeg, lengthM: lengthM)
         let color = ShoreAngleStyle.color(wind.relativeAngle)
@@ -91,7 +99,7 @@ struct SpotMapScreen: View {
                    coordinate: CLLocationCoordinate2D(latitude: rec.spot.latitude, longitude: rec.spot.longitude))
                 .tint(ScoreStyle.color(rec.finalScore))
             if let h = hour, let wind = MapWind.summary([h]) {
-                SpotWindOverlay(spot: rec.spot, wind: wind)
+                SpotWindOverlay(spot: rec.spot, wind: wind, modelArc: h.wind.modelDirectionArcDeg)
             }
         }
         .mapStyle(satellite ? .hybrid(elevation: .realistic) : .standard(elevation: .realistic))
@@ -149,6 +157,13 @@ struct SpotMapScreen: View {
                         Image(systemName: "circle.fill").foregroundStyle(ShoreAngleStyle.color(a))
                     }
                     .font(.subheadline.weight(.semibold))
+                }
+                if let arc = h.wind.modelDirectionArcDeg {
+                    Text("Fan: models \(Vocab.compass(arc.from))–\(Vocab.compass(arc.to))",
+                         comment: "Spot map: the light fan behind the wind arrow spans the weather models' directions, e.g. 'Fan: models ENE–SE'")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .accessibilityIdentifier("spotMapModelFan")
                 }
                 if rec.hours.count > 1 {
                     Slider(value: $index, in: 0...Double(rec.hours.count - 1), step: 1) {

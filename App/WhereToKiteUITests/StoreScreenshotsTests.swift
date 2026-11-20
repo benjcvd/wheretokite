@@ -198,20 +198,35 @@ final class StoreScreenshotsTests: XCTestCase {
         app.launchArguments = [
             "-AppleLanguages", "(\(env["DOUBT_LANG"] ?? "en"))", "-disclaimerAccepted", "YES",
             "-riderProfile", plist(#"{"weightKg":75,"kites":[9,12],"level":"intermediate"}"#),
-            "-searchOptions", plist(#"{"start":{"name":"Barcelona","coordinate":{"latitude":41.3874,"longitude":2.1686}},"maxDriveMinutes":180,"day":"\#(day)","slot":"afternoon","distanceMatters":false}"#),
+            "-searchOptions", plist(#"{"start":{"name":"Barcelona","coordinate":{"latitude":41.3874,"longitude":2.1686}},"maxDriveMinutes":180,"day":"\#(day)","slot":"\#(env["DOUBT_SLOT"] ?? "afternoon")","distanceMatters":false}"#),
             "-searchDay", day, "-searchOrigin", "41.3874,2.1686",
         ]
         app.launch()
         let topSpot = app.buttons["topSpot"]
         XCTAssertTrue(topSpot.waitForExistence(timeout: 90), "results never loaded")
         sleep(1)
-        topSpot.tap()
+        if let spot = env["DOUBT_SPOT"] {
+            // A named spot further down the list (WHE-242).
+            let row = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", spot)).firstMatch
+            for _ in 0..<8 where !(row.exists && row.isHittable) { app.swipeUp() }
+            if !row.exists {
+                // Not kiteable spots sit in a folded list at the bottom.
+                app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Not kiteable")).firstMatch.tap()
+                for _ in 0..<8 where !(row.exists && row.isHittable) { app.swipeUp() }
+            }
+            row.tap()
+        } else {
+            topSpot.tap()
+        }
         _ = app.buttons["directions"].waitForExistence(timeout: 5)
         sleep(3)  // map tiles
         snapshot(app.screenshot(), "\(name)-top")
         app.swipeUp()
         sleep(1)
         snapshot(app.screenshot(), "\(name)-chart")
+        app.swipeUp()
+        sleep(1)
+        snapshot(app.screenshot(), "\(name)-hours")
     }
 
     @MainActor

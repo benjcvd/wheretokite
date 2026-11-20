@@ -113,6 +113,37 @@ struct WindArrow: View {
     }
 }
 
+/// One small arrow per weather model, each pointing the way its wind blows, side by side;
+/// red when that model's wind is offshore for the beach (WHE-242). Shown instead of the single
+/// arrow when the models are 45° or more apart.
+struct ModelArrows: View {
+    let directions: [Double]
+    let offshore: [Bool]
+
+    var body: some View {
+        HStack(spacing: 4) {
+            ForEach(Array(directions.enumerated()), id: \.offset) { i, d in
+                Image(systemName: "location.north.fill")
+                    .rotationEffect(.degrees(d + 180))
+                    .foregroundStyle(offshore.indices.contains(i) && offshore[i] ? Color.red : Color.primary)
+            }
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(label))
+        .accessibilityIdentifier("modelArrows")
+    }
+
+    private var label: String {
+        let each = directions.enumerated().map { i, d in
+            offshore.indices.contains(i) && offshore[i]
+                ? String(localized: "\(Vocab.compass(d)) offshore", comment: "VoiceOver: one model's wind direction, offshore, e.g. 'ESE offshore'")
+                : Vocab.compass(d)
+        }
+        return String(localized: "Models: \(each.joined(separator: ", "))",
+                      comment: "VoiceOver: each weather model's wind direction this hour")
+    }
+}
+
 extension KiteVerdict {
     /// Green (Go) to grey (No go).
     var color: Color {

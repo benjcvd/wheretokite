@@ -70,3 +70,27 @@ final class DirectionDisagreementTests: XCTestCase {
         XCTAssertEqual(NoGoReason(problem: Recommender.mainProblem([doubt])), .directionUnclear)
     }
 }
+
+/// WHE-242: the spot page's per-model arrows go red by the scorer's own offshore rule.
+final class ModelArrowOffshoreTests: XCTestCase {
+    let scorer = Scorer(profile: RiderProfile(weightKg: 75, kites: [9, 12], level: .intermediate), intensity: nil)
+    let berck = SpotSide(name: nil, seaFacingDeg: 292, waterSectorDeg: nil)
+
+    func testMatchesTheScorersOffshoreFlag() {
+        let cove = SpotSide(name: nil, seaFacingDeg: 180, waterSectorDeg: 120)
+        let point = SpotSide(name: nil, seaFacingDeg: 90, waterSectorDeg: 270)
+        for side in [berck, cove, point] {
+            for dir in stride(from: 0.0, to: 360, by: 15) {
+                let w = HourlyWind(localTime: "2026-11-22T14:00", speedKn: 15, gustKn: 18, directionDeg: dir)
+                let flagged = scorer.score(w, side: side).flags.contains("offshore component")
+                XCTAssertEqual(scorer.isOffshore(directionDeg: dir, side: side), flagged,
+                               "\(dir)° on a side facing \(side.seaFacingDeg)°")
+            }
+        }
+    }
+
+    func testBerckModels() {
+        XCTAssertTrue(scorer.isOffshore(directionDeg: 112, side: berck))    // ESE: from the land
+        XCTAssertFalse(scorer.isOffshore(directionDeg: 292, side: berck))   // WNW: onshore
+    }
+}
