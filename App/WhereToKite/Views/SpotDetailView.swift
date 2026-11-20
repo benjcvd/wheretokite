@@ -139,7 +139,8 @@ struct SpotDetailView: View {
     private var heroMap: some View {
         let hours = MapWind.highlightedHours(rec)
         let wind = MapWind.summary(hours)
-        let models = wind.flatMap { MapWind.modelArrows(hours, spot: rec.spot, side: $0.side) }
+        // Always one arrow per model, so the preview names them (Ben, WHE-243).
+        let models = wind.flatMap { MapWind.modelArrows(hours, spot: rec.spot, side: $0.side, onlyWhenApart: false) }
         return MapReader { proxy in
             Map(initialPosition: .region(MKCoordinateRegion(
                 center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)), interactionModes: []) {
@@ -534,7 +535,7 @@ struct SpotDetailView: View {
             if let note = hourNote(h) {
                 Text(note)
                     .font(.caption)
-                    .foregroundStyle(h.flags.isEmpty ? Color.secondary : fit == .noGo ? Color.red : Color.orange)
+                    .foregroundStyle(h.flags.isEmpty && !modelsSplit(h) ? Color.secondary : fit == .noGo ? Color.red : Color.orange)
                     .padding(.leading, timeColumn + 8)
             }
         }
@@ -578,6 +579,9 @@ struct SpotDetailView: View {
             flag == "too strong for level" && h.gustOverLimit
                 ? String(localized: "gusts too strong for your level", comment: "Hour ruled out: the gusts, not the mean wind, are over the rider's limit")
                 : Vocab.term(flag)
+        }
+        if modelsSplit(h) {
+            parts.append(String(localized: "models disagree", comment: "Hour note beside the ≠ badge: the weather models' directions are 45°+ apart"))
         }
         if let side = h.side, h.score > 0 { parts.append(side) }
         return parts.isEmpty ? nil : parts.joined(separator: " · ")

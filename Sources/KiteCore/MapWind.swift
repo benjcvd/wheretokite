@@ -75,10 +75,12 @@ public enum MapWind {
         public var relativeAngle: Double?
     }
 
-    /// One arrow per model when they are 45°+ apart over these hours (`modelArc`), nil when they
-    /// agree (one arrow says it all). A model too light to give a direction in every hour is left out.
-    public static func modelArrows(_ hours: [HourScore], spot: Spot, side: String?) -> [ModelArrow]? {
-        guard modelArc(hours) != nil else { return nil }
+    /// One arrow per model over these hours. `onlyWhenApart`: nil when the models are within
+    /// 45° (`modelArc`); false: whenever two or more models give a direction, so the map always
+    /// names them (WHE-243, Ben). A model too light to give a direction in every hour is left out.
+    public static func modelArrows(_ hours: [HourScore], spot: Spot, side: String?,
+                                   onlyWhenApart: Bool = true) -> [ModelArrow]? {
+        if onlyWhenApart, modelArc(hours) == nil { return nil }
         let winds = hours.compactMap(\.wind.modelWinds)
         guard let ids = winds.first?.map(\.model) else { return nil }
         let sides = spot.allSides
@@ -92,7 +94,31 @@ public enum MapWind {
                               directionDeg: dir,
                               relativeAngle: chosen.map { Scorer.relativeAngle(directionDeg: dir, side: $0) })
         }
-        return arrows.count > 1 ? arrows : nil
+        // Asked always: even one model with a direction is named (the others too light).
+        return arrows.count > (onlyWhenApart ? 1 : 0) ? arrows : nil
+    }
+
+    /// Arrows within `withinDeg` of each other share one arrow on the map (their tags would
+    /// overlap): groups in clockwise order, each holding neighbours chained by ≤ `withinDeg`.
+    public static func group(_ arrows: [ModelArrow], withinDeg: Double = 20) -> [[ModelArrow]] {
+        guard arrows.count > 1 else { return arrows.map { [$0] } }
+        let sorted = arrows.sorted { $0.directionDeg < $1.directionDeg }
+        // Start after the widest gap, so a group never straddles the cut.
+        let gaps = sorted.indices.map { i -> Double in
+            let next = sorted[(i + 1) % sorted.count].directionDeg
+            return (next - sorted[i].directionDeg + 360).truncatingRemainder(dividingBy: 360)
+        }
+        let start = (gaps.indices.max { gaps[$0] < gaps[$1] }! + 1) % sorted.count
+        let ring = Array(sorted[start...] + sorted[..<start])
+        var groups: [[ModelArrow]] = [[ring[0]]]
+        for a in ring.dropFirst() {
+            if Geo.angleDiff(a.directionDeg, groups[groups.count - 1].last!.directionDeg) <= withinDeg {
+                groups[groups.count - 1].append(a)
+            } else {
+                groups.append([a])
+            }
+        }
+        return groups
     }
 
     /// The beach line through the spot: perpendicular to the way it faces, `halfLengthM` each side.

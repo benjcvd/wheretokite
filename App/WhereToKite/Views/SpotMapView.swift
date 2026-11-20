@@ -48,8 +48,8 @@ struct SpotWindOverlay: MapContent {
                 .stroke(.white, style: StrokeStyle(lineWidth: 3, lineCap: .round))
         }
         if let models = modelArrows {
-            ForEach(Array(models.enumerated()), id: \.offset) { _, m in
-                arrow(from: m.directionDeg, color: ShoreAngleStyle.color(m.relativeAngle), width: 5)
+            ForEach(Array(MapWind.group(models).enumerated()), id: \.offset) { _, g in
+                arrow(from: Self.direction(g), color: ShoreAngleStyle.color(Self.worstAngle(g)), width: 5)
             }
         } else {
             arrow(from: wind.directionDeg, color: ShoreAngleStyle.color(wind.relativeAngle), width: 6)
@@ -71,15 +71,20 @@ struct SpotWindOverlay: MapContent {
         let at = Coordinate(latitude: spot.latitude, longitude: spot.longitude)
         func tail(_ deg: Double) -> Coordinate { MapWind.arrow(at: at, fromDeg: deg, lengthM: lengthM).shaft[0] }
         if let models = modelArrows {
-            return models.map { m in
-                (tail(m.directionDeg), "\(ModelWindsDetail.shortName(m.model)) \(Int(m.speedKn.rounded()))",
-                 ShoreAngleStyle.color(m.relativeAngle))
+            // Models within 20° share one arrow and one tag: "ECMWF 14 · GFS 13".
+            return MapWind.group(models).map { g in
+                (tail(direction(g)),
+                 g.map { "\(ModelWindsDetail.shortName($0.model)) \(Int($0.speedKn.rounded()))" }.joined(separator: " · "),
+                 ShoreAngleStyle.color(worstAngle(g)))
             }
         }
         return [(tail(wind.directionDeg),
                  String(localized: "\(Int(wind.speedKn.rounded())) kn", comment: "Wind speed at the tail of the map's wind arrow"),
                  ShoreAngleStyle.color(wind.relativeAngle))]
     }
+
+    static func direction(_ g: [MapWind.ModelArrow]) -> Double { Geo.circularStats(g.map(\.directionDeg)).mean }
+    static func worstAngle(_ g: [MapWind.ModelArrow]) -> Double? { g.compactMap(\.relativeAngle).max() }
 
     static func tag(_ label: String, _ color: Color) -> some View {
         Text(verbatim: label)
@@ -132,7 +137,7 @@ struct SpotMapScreen: View {
                    coordinate: CLLocationCoordinate2D(latitude: rec.spot.latitude, longitude: rec.spot.longitude))
                 .tint(ScoreStyle.color(rec.finalScore))
             if let h = hour, let wind = MapWind.summary([h]) {
-                SpotWindOverlay(spot: rec.spot, wind: wind, modelArrows: MapWind.modelArrows([h], spot: rec.spot, side: h.side))
+                SpotWindOverlay(spot: rec.spot, wind: wind, modelArrows: MapWind.modelArrows([h], spot: rec.spot, side: h.side, onlyWhenApart: false))
             }
         }
         .mapStyle(satellite ? .hybrid(elevation: .realistic) : .standard(elevation: .realistic))

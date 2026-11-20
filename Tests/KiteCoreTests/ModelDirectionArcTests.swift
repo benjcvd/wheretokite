@@ -94,4 +94,25 @@ final class MapModelArrowsTests: XCTestCase {
         h.wind.modelDirectionsDeg = [149]
         XCTAssertNil(MapWind.modelArrows([h], spot: leucate, side: nil))
     }
+
+    /// The spot page's map always names the models, even when they agree (Ben, WHE-243).
+    func testAlwaysWhenAsked() throws {
+        let arrows = try XCTUnwrap(MapWind.modelArrows([hour(16, ecmwf: (22, 149), gfs: (18, 160))],
+                                                        spot: leucate, side: nil, onlyWhenApart: false))
+        XCTAssertEqual(arrows.count, 2)
+    }
+
+    func testCloseArrowsShareOneGroupAcrossNorth() {
+        func a(_ d: Double) -> MapWind.ModelArrow { .init(model: "\(d)", speedKn: 10, directionDeg: d, relativeAngle: nil) }
+        let g = MapWind.group([a(350), a(5), a(120)])
+        XCTAssertEqual(g.map { $0.map(\.directionDeg) }, [[350, 5], [120]])
+        XCTAssertEqual(MapWind.group([a(100), a(150)]).count, 2)
+    }
+
+    func testAlwaysNamesTheOnlyModelWithADirection() throws {
+        var h = hour(16, ecmwf: (21, 152), gfs: (2, 0))
+        h.wind.modelDirectionsDeg = [152]
+        let arrows = try XCTUnwrap(MapWind.modelArrows([h], spot: leucate, side: nil, onlyWhenApart: false))
+        XCTAssertEqual(arrows.map(\.model), ["ecmwf_ifs"])
+    }
 }

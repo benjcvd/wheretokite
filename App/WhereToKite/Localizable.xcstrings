@@ -7576,6 +7576,23 @@
           }
         }
       }
+    },
+    "models disagree" : {
+      "comment" : "Hour note beside the ≠ badge: the weather models' directions are 45°+ apart",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "los modelos no coinciden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "les modèles divergent"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
