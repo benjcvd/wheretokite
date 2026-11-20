@@ -590,3 +590,7 @@ WHE-242 (Product, review, b9d0913 on atlas/t/whe-242, contains WHE-231): Ben fou
 
 ## Lead, 20 Nov 10:30: WHE-242 + WHE-231 shipped into 1.1 build 4
 Ben approved the model arrows on his phone and asked to drop the compass letters before onshore/offshore (the hour rows and the results line now show only "side-onshore" etc., with the compass point only when the beach angle is unknown). Merged to main (f4a9d67), tests green, pushed. Build 1.1 (4) is archived; `xcodebuild -exportArchive` still fails with "Failed to Use Accounts", so Ben uploads from the Organizer and swaps build 3 for 4 on the 1.1 page (WHE-235).
+
+## Product, 20 Nov: WHE-243 wind readability study
+
+Design study only, in review: [options and recommendation](review/whe243-options.md#recommendation). Recommended: hour list A3 (one arrow, the scored direction, plus a tap-to-open "models disagree" badge), map B4 (one arrow per model, no fan). A vector field was rejected: one forecast point per spot, so every arrow would be the same. Two real inconsistencies found, both wait on Ben's pick: arrows split at 45° while "the worse one counts" starts at 90° (red arrow on rideable hours), and the map arrow takes the average direction but the worse model's colour. Mock-up code lives on the throwaway branch `atlas/t/whe-243-mockups`.
