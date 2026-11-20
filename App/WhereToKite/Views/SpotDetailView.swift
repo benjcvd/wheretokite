@@ -139,13 +139,27 @@ struct SpotDetailView: View {
     private var heroMap: some View {
         let hours = MapWind.highlightedHours(rec)
         let wind = MapWind.summary(hours)
-        return Map(initialPosition: .region(MKCoordinateRegion(
-            center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)), interactionModes: []) {
-            Marker(rec.spot.name, systemImage: "wind", coordinate: coordinate)
-                .tint(ScoreStyle.color(rec.finalScore))
-            if let wind { SpotWindOverlay(spot: rec.spot, wind: wind, modelArrows: MapWind.modelArrows(hours, spot: rec.spot, side: wind.side)) }
+        let models = wind.flatMap { MapWind.modelArrows(hours, spot: rec.spot, side: $0.side) }
+        return MapReader { proxy in
+            Map(initialPosition: .region(MKCoordinateRegion(
+                center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)), interactionModes: []) {
+                Marker(rec.spot.name, systemImage: "wind", coordinate: coordinate)
+                    .tint(ScoreStyle.color(rec.finalScore))
+                if let wind { SpotWindOverlay(spot: rec.spot, wind: wind, modelArrows: models, showsTags: false) }
+            }
+            .mapStyle(.hybrid(elevation: .realistic))
+            // This still map drops annotations, so each arrow's tag (model and speed, WHE-243)
+            // is drawn over it at the arrow's tail.
+            .overlay {
+                if let wind {
+                    ForEach(Array(SpotWindOverlay.tags(spot: rec.spot, wind: wind, modelArrows: models).enumerated()), id: \.offset) { _, t in
+                        if let p = proxy.convert(CLLocationCoordinate2D(latitude: t.at.latitude, longitude: t.at.longitude), to: .local) {
+                            SpotWindOverlay.tag(t.label, t.color).position(p)
+                        }
+                    }
+                }
+            }
         }
-        .mapStyle(.hybrid(elevation: .realistic))
         .frame(height: 210)
         .overlay(alignment: .topLeading) {
             if let wind {
@@ -559,12 +573,10 @@ struct SpotDetailView: View {
 
     /// Warnings (safety first, as applySafety orders them) and the side of a multi-side spot.
     private func hourNote(_ h: HourScore) -> String? {
-        var parts = h.flags.map { flag in
+        // The ≠ badge says the models disagree (WHE-243, Ben: no extra words for it).
+        var parts = h.flags.filter { $0 != Scorer.directionDisagreementFlag }.map { flag in
             flag == "too strong for level" && h.gustOverLimit
                 ? String(localized: "gusts too strong for your level", comment: "Hour ruled out: the gusts, not the mean wind, are over the rider's limit")
-                : flag == Scorer.directionDisagreementFlag
-                ? String(localized: "models disagree on direction: the worse one counts",
-                         comment: "Hour note: the weather models' directions are far apart, so the hour is judged on the worse one")
                 : Vocab.term(flag)
         }
         if let side = h.side, h.score > 0 { parts.append(side) }

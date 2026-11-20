@@ -31,6 +31,8 @@ struct SpotWindOverlay: MapContent {
     var modelArrows: [MapWind.ModelArrow]? = nil
     /// Arrow length on the ground; sized for the spot page's 4 km map.
     var lengthM: Double = 1100
+    /// Tags as map annotations. Off where the map can't show them and draws them itself.
+    var showsTags = true
 
     private var at: Coordinate { Coordinate(latitude: spot.latitude, longitude: spot.longitude) }
     private func cl(_ c: [Coordinate]) -> [CLLocationCoordinate2D] {
@@ -45,31 +47,41 @@ struct SpotWindOverlay: MapContent {
             MapPolyline(coordinates: shore)
                 .stroke(.white, style: StrokeStyle(lineWidth: 3, lineCap: .round))
         }
-        // Annotations stay in the body: built inside a helper they don't show (WHE-243).
         if let models = modelArrows {
             ForEach(Array(models.enumerated()), id: \.offset) { _, m in
-                let color = ShoreAngleStyle.color(m.relativeAngle)
-                arrow(from: m.directionDeg, color: color, width: 5)
-                Annotation("", coordinate: tail(m.directionDeg), anchor: .center) {
-                    tag("\(ModelWindsDetail.shortName(m.model)) \(Int(m.speedKn.rounded()))", color)
+                arrow(from: m.directionDeg, color: ShoreAngleStyle.color(m.relativeAngle), width: 5)
+            }
+        } else {
+            arrow(from: wind.directionDeg, color: ShoreAngleStyle.color(wind.relativeAngle), width: 6)
+        }
+        // Annotations stay in the body: built inside a helper they don't show (WHE-243).
+        if showsTags {
+            ForEach(Array(Self.tags(spot: spot, wind: wind, modelArrows: modelArrows, lengthM: lengthM).enumerated()), id: \.offset) { _, t in
+                Annotation("", coordinate: CLLocationCoordinate2D(latitude: t.at.latitude, longitude: t.at.longitude), anchor: .center) {
+                    Self.tag(t.label, t.color)
                 }
                 .annotationTitles(.hidden)
             }
-        } else {
-            let color = ShoreAngleStyle.color(wind.relativeAngle)
-            arrow(from: wind.directionDeg, color: color, width: 6)
-            Annotation("", coordinate: tail(wind.directionDeg), anchor: .center) {
-                tag(String(localized: "\(Int(wind.speedKn.rounded())) kn", comment: "Wind speed at the tail of the map's wind arrow"), color)
-            }
-            .annotationTitles(.hidden)
         }
     }
 
-    private func tail(_ deg: Double) -> CLLocationCoordinate2D {
-        cl([MapWind.arrow(at: at, fromDeg: deg, lengthM: lengthM).shaft[0]])[0]
+    /// The tag at each arrow's tail: "GFS 10" per model, or the wind speed for a single arrow.
+    static func tags(spot: Spot, wind: MapWind.Summary, modelArrows: [MapWind.ModelArrow]?, lengthM: Double = 1100)
+        -> [(at: Coordinate, label: String, color: Color)] {
+        let at = Coordinate(latitude: spot.latitude, longitude: spot.longitude)
+        func tail(_ deg: Double) -> Coordinate { MapWind.arrow(at: at, fromDeg: deg, lengthM: lengthM).shaft[0] }
+        if let models = modelArrows {
+            return models.map { m in
+                (tail(m.directionDeg), "\(ModelWindsDetail.shortName(m.model)) \(Int(m.speedKn.rounded()))",
+                 ShoreAngleStyle.color(m.relativeAngle))
+            }
+        }
+        return [(tail(wind.directionDeg),
+                 String(localized: "\(Int(wind.speedKn.rounded())) kn", comment: "Wind speed at the tail of the map's wind arrow"),
+                 ShoreAngleStyle.color(wind.relativeAngle))]
     }
 
-    private func tag(_ label: String, _ color: Color) -> some View {
+    static func tag(_ label: String, _ color: Color) -> some View {
         Text(verbatim: label)
             .font(.caption.weight(.bold))
             .monospacedDigit()
