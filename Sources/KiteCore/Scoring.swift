@@ -320,6 +320,11 @@ public struct Scorer: Sendable {
     /// The angle to the beach (0 onshore … 180 offshore) a wind from `directionDeg` is judged
     /// on for this side, as `isOffshore` uses it (WHE-243: each model's words on the spot page).
     public func relativeAngle(directionDeg: Double, side: SpotSide) -> Double {
+        Self.relativeAngle(directionDeg: directionDeg, side: side)
+    }
+
+    /// Same as the instance method: the angle doesn't depend on the rider (WHE-243: the map).
+    public static func relativeAngle(directionDeg: Double, side: SpotSide) -> Double {
         let sector = min(360, max(0, side.waterSectorDeg ?? 180))
         let off = Geo.angleDiff(directionDeg, side.seaFacingDeg)
         if sector <= 180 {

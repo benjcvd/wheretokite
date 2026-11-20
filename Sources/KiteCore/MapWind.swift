@@ -26,7 +26,7 @@ public enum MapWind {
         return Summary(
             speedKn: hours.map(\.wind.speedKn).reduce(0, +) / n,
             gustKn: hours.map(\.wind.gustKn).reduce(0, +) / n,
-            directionDeg: Geo.circularStats(hours.map(\.wind.directionDeg)).mean,
+            directionDeg: Geo.circularStats(hours.map(\.shownDirectionDeg)).mean,
             relativeAngle: angles.isEmpty ? nil : angles.reduce(0, +) / Double(angles.count),
             side: sides.max { $0.value.count < $1.value.count }?.key)
     }
@@ -65,13 +65,34 @@ public enum MapWind {
         HourlyWind.directionArc(hours.flatMap { $0.wind.modelDirectionsDeg ?? [] })
     }
 
-    /// A pie slice from the spot reaching `lengthM` upwind, clockwise over the arc, as a polygon.
-    public static func fan(at spot: Coordinate, arc: (from: Double, to: Double), lengthM: Double) -> [Coordinate] {
-        let sweep = (arc.to - arc.from + 360).truncatingRemainder(dividingBy: 360)
-        let steps = max(2, Int(sweep / 5))
-        return [spot] + (0...steps).map {
-            Geo.destination(spot, bearingDeg: arc.from + sweep * Double($0) / Double(steps), distanceM: lengthM)
+    /// One weather model's wind over a group of hours, for its own arrow on the map (WHE-243).
+    public struct ModelArrow: Sendable, Equatable {
+        public var model: String
+        public var speedKn: Double
+        /// Where it comes FROM, compass degrees (vector mean over the hours it has a direction).
+        public var directionDeg: Double
+        /// 0 onshore … 180 offshore on the side drawn; nil when the beach direction is unknown.
+        public var relativeAngle: Double?
+    }
+
+    /// One arrow per model when they are 45°+ apart over these hours (`modelArc`), nil when they
+    /// agree (one arrow says it all). A model too light to give a direction in every hour is left out.
+    public static func modelArrows(_ hours: [HourScore], spot: Spot, side: String?) -> [ModelArrow]? {
+        guard modelArc(hours) != nil else { return nil }
+        let winds = hours.compactMap(\.wind.modelWinds)
+        guard let ids = winds.first?.map(\.model) else { return nil }
+        let sides = spot.allSides
+        let chosen = sides.first { $0.name != nil && $0.name == side } ?? sides.first
+        let arrows: [ModelArrow] = ids.compactMap { id in
+            let mine = winds.flatMap { $0.filter { $0.model == id } }
+            let dirs = mine.compactMap(\.directionDeg)
+            guard !dirs.isEmpty else { return nil }
+            let dir = Geo.circularStats(dirs).mean
+            return ModelArrow(model: id, speedKn: mine.map(\.speedKn).reduce(0, +) / Double(mine.count),
+                              directionDeg: dir,
+                              relativeAngle: chosen.map { Scorer.relativeAngle(directionDeg: dir, side: $0) })
         }
+        return arrows.count > 1 ? arrows : nil
     }
 
     /// The beach line through the spot: perpendicular to the way it faces, `halfLengthM` each side.

@@ -143,7 +143,7 @@ struct SpotDetailView: View {
             center: coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)), interactionModes: []) {
             Marker(rec.spot.name, systemImage: "wind", coordinate: coordinate)
                 .tint(ScoreStyle.color(rec.finalScore))
-            if let wind { SpotWindOverlay(spot: rec.spot, wind: wind, modelArc: MapWind.modelArc(hours)) }
+            if let wind { SpotWindOverlay(spot: rec.spot, wind: wind, modelArrows: MapWind.modelArrows(hours, spot: rec.spot, side: wind.side)) }
         }
         .mapStyle(.hybrid(elevation: .realistic))
         .frame(height: 210)
@@ -151,10 +151,9 @@ struct SpotDetailView: View {
             if let wind {
                 VStack(alignment: .leading, spacing: 1) {
                     Label(ShoreAngleStyle.label(wind), systemImage: "wind")
-                    // WHE-242: the fan says what it is, beside the arrow's own label.
-                    if let arc = MapWind.modelArc(hours) {
-                        Text("Fan: models \(Vocab.compass(arc.from))–\(Vocab.compass(arc.to))",
-                             comment: "Spot map: the light fan behind the wind arrow spans the weather models' directions, e.g. 'Fan: models ENE–SE'")
+                    // WHE-243: say why there are several arrows.
+                    if MapWind.modelArrows(hours, spot: rec.spot, side: wind.side) != nil {
+                        Text("Models disagree: one arrow per model", comment: "Spot map: the weather models blow different ways, so each gets its own arrow (WHE-243)")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }

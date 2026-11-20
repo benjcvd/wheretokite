@@ -52,12 +52,46 @@ final class MapModelFanTests: XCTestCase {
         let arc = try XCTUnwrap(MapWind.modelArc([hour([330, 355]), hour([10, 20])]))
         XCTAssertEqual(arc.from, 330)
         XCTAssertEqual(arc.to, 20)
-        let pts = MapWind.fan(at: Coordinate(latitude: 41, longitude: 2), arc: arc, lengthM: 1000)
-        XCTAssertEqual(pts.first?.latitude, 41)
-        XCTAssertGreaterThan(pts.count, 3)
     }
 
     func testNoFanWhenModelsAgree() {
         XCTAssertNil(MapWind.modelArc([hour([90, 100]), hour([95, 110])]))
+    }
+}
+
+/// WHE-243: the map draws one arrow per model when they disagree, each with its own angle.
+final class MapModelArrowsTests: XCTestCase {
+    /// Leucate faces ESE (102°).
+    let leucate = Spot(id: "leucate", name: "Leucate", latitude: 42.9, longitude: 3.05, seaFacingDeg: 102)
+
+    private func hour(_ t: Int, ecmwf: (Double, Double), gfs: (Double, Double)) -> HourScore {
+        var w = HourlyWind(localTime: String(format: "2026-11-25T%02d:00", t), speedKn: 16, gustKn: 20, directionDeg: 157)
+        w.models = ["ecmwf_ifs", "gfs_seamless"]
+        w.modelSpeedsKn = [ecmwf.0, gfs.0]
+        w.modelDirectionsDeg = [ecmwf.1, gfs.1]
+        return HourScore(wind: w, score: 0, kite: nil, relativeAngle: 142, flags: [])
+    }
+
+    /// Leucate, 25 Nov 16–17 h: ECMWF SSE (side-onshore), GFS NW (offshore).
+    func testOneArrowPerModelWithItsOwnAngle() throws {
+        let arrows = try XCTUnwrap(MapWind.modelArrows([hour(16, ecmwf: (22, 149), gfs: (10, 320)),
+                                                         hour(17, ecmwf: (21, 152), gfs: (15, 313))],
+                                                        spot: leucate, side: nil))
+        XCTAssertEqual(arrows.map(\.model), ["ecmwf_ifs", "gfs_seamless"])
+        XCTAssertEqual(arrows[0].directionDeg, 150.5, accuracy: 0.5)
+        XCTAssertEqual(arrows[1].speedKn, 12.5, accuracy: 1e-9)
+        XCTAssertLessThan(arrows[0].relativeAngle ?? 180, 90)      // onshore side
+        XCTAssertGreaterThan(arrows[1].relativeAngle ?? 0, 130)    // offshore
+    }
+
+    func testNilWhenModelsAgree() {
+        XCTAssertNil(MapWind.modelArrows([hour(16, ecmwf: (22, 149), gfs: (18, 160))], spot: leucate, side: nil))
+    }
+
+    /// A model too light for a direction all window long gets no arrow; one arrow left → nil.
+    func testTooLightModelIsLeftOut() {
+        var h = hour(16, ecmwf: (22, 149), gfs: (5, 0))
+        h.wind.modelDirectionsDeg = [149]
+        XCTAssertNil(MapWind.modelArrows([h], spot: leucate, side: nil))
     }
 }

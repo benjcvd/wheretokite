@@ -26,9 +26,9 @@ enum ShoreAngleStyle {
 struct SpotWindOverlay: MapContent {
     let spot: Spot
     let wind: MapWind.Summary
-    /// The models' direction range (`MapWind.modelArc`): a light fan behind the arrow, from
-    /// the launch upwind over every way the models blow (WHE-242). nil = models agree.
-    var modelArc: (from: Double, to: Double)? = nil
+    /// One arrow per weather model when they are 45°+ apart (`MapWind.modelArrows`), each
+    /// coloured by its own angle to the beach, instead of the single arrow (WHE-243). nil = agree.
+    var modelArrows: [MapWind.ModelArrow]? = nil
     /// Arrow length on the ground; sized for the spot page's 4 km map.
     var lengthM: Double = 1100
 
@@ -45,29 +45,50 @@ struct SpotWindOverlay: MapContent {
             MapPolyline(coordinates: shore)
                 .stroke(.white, style: StrokeStyle(lineWidth: 3, lineCap: .round))
         }
-        if let arc = modelArc {
-            MapPolygon(coordinates: cl(MapWind.fan(at: at, arc: arc, lengthM: lengthM)))
-                .foregroundStyle(.white.opacity(0.22))
-                .stroke(.white.opacity(0.6), lineWidth: 1)
+        // Annotations stay in the body: built inside a helper they don't show (WHE-243).
+        if let models = modelArrows {
+            ForEach(Array(models.enumerated()), id: \.offset) { _, m in
+                let color = ShoreAngleStyle.color(m.relativeAngle)
+                arrow(from: m.directionDeg, color: color, width: 5)
+                Annotation("", coordinate: tail(m.directionDeg), anchor: .center) {
+                    tag("\(ModelWindsDetail.shortName(m.model)) \(Int(m.speedKn.rounded()))", color)
+                }
+                .annotationTitles(.hidden)
+            }
+        } else {
+            let color = ShoreAngleStyle.color(wind.relativeAngle)
+            arrow(from: wind.directionDeg, color: color, width: 6)
+            Annotation("", coordinate: tail(wind.directionDeg), anchor: .center) {
+                tag(String(localized: "\(Int(wind.speedKn.rounded())) kn", comment: "Wind speed at the tail of the map's wind arrow"), color)
+            }
+            .annotationTitles(.hidden)
         }
-        let arrow = MapWind.arrow(at: at, fromDeg: wind.directionDeg, lengthM: lengthM)
-        let color = ShoreAngleStyle.color(wind.relativeAngle)
-        let outline = StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round)
-        let stroke = StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round)
+    }
+
+    private func tail(_ deg: Double) -> CLLocationCoordinate2D {
+        cl([MapWind.arrow(at: at, fromDeg: deg, lengthM: lengthM).shaft[0]])[0]
+    }
+
+    private func tag(_ label: String, _ color: Color) -> some View {
+        Text(verbatim: label)
+            .font(.caption.weight(.bold))
+            .monospacedDigit()
+            .padding(.horizontal, 7)
+            .padding(.vertical, 3)
+            .background(color, in: Capsule())
+            .foregroundStyle(.black)
+    }
+
+    /// An arrow whose tip is on the launch and tail upwind, outlined, with a label at the tail.
+    @MapContentBuilder
+    private func arrow(from deg: Double, color: Color, width: CGFloat) -> some MapContent {
+        let arrow = MapWind.arrow(at: at, fromDeg: deg, lengthM: lengthM)
+        let outline = StrokeStyle(lineWidth: width + 4, lineCap: .round, lineJoin: .round)
+        let stroke = StrokeStyle(lineWidth: width, lineCap: .round, lineJoin: .round)
         MapPolyline(coordinates: cl(arrow.shaft)).stroke(.black.opacity(0.45), style: outline)
         MapPolyline(coordinates: cl(arrow.head)).stroke(.black.opacity(0.45), style: outline)
         MapPolyline(coordinates: cl(arrow.shaft)).stroke(color, style: stroke)
         MapPolyline(coordinates: cl(arrow.head)).stroke(color, style: stroke)
-        Annotation("", coordinate: cl([arrow.shaft[0]])[0], anchor: .center) {
-            Text("\(Int(wind.speedKn.rounded())) kn", comment: "Wind speed at the tail of the map's wind arrow")
-                .font(.caption.weight(.bold))
-                .monospacedDigit()
-                .padding(.horizontal, 7)
-                .padding(.vertical, 3)
-                .background(color, in: Capsule())
-                .foregroundStyle(.black)
-        }
-        .annotationTitles(.hidden)
     }
 }
 
@@ -99,7 +120,7 @@ struct SpotMapScreen: View {
                    coordinate: CLLocationCoordinate2D(latitude: rec.spot.latitude, longitude: rec.spot.longitude))
                 .tint(ScoreStyle.color(rec.finalScore))
             if let h = hour, let wind = MapWind.summary([h]) {
-                SpotWindOverlay(spot: rec.spot, wind: wind, modelArc: h.wind.modelDirectionArcDeg)
+                SpotWindOverlay(spot: rec.spot, wind: wind, modelArrows: MapWind.modelArrows([h], spot: rec.spot, side: h.side))
             }
         }
         .mapStyle(satellite ? .hybrid(elevation: .realistic) : .standard(elevation: .realistic))
@@ -141,7 +162,7 @@ struct SpotMapScreen: View {
                     Text(String(format: "%02d:00", h.wind.hour))
                         .font(.title3.weight(.bold))
                         .monospacedDigit()
-                    WindArrow(directionDeg: h.wind.directionDeg)
+                    WindArrow(directionDeg: h.shownDirectionDeg)
                         .foregroundStyle(WindStyle.color(h.wind.speedKn))
                     Text("\(Int(h.wind.speedKn.rounded())) kn · gusts \(Int(h.wind.gustKn.rounded()))", comment: "Hourly wind")
                         .font(.headline)
@@ -158,9 +179,8 @@ struct SpotMapScreen: View {
                     }
                     .font(.subheadline.weight(.semibold))
                 }
-                if let arc = h.wind.modelDirectionArcDeg {
-                    Text("Fan: models \(Vocab.compass(arc.from))–\(Vocab.compass(arc.to))",
-                         comment: "Spot map: the light fan behind the wind arrow spans the weather models' directions, e.g. 'Fan: models ENE–SE'")
+                if MapWind.modelArrows([h], spot: rec.spot, side: h.side) != nil {
+                    Text("Models disagree: one arrow per model", comment: "Spot map: the weather models blow different ways, so each gets its own arrow (WHE-243)")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .accessibilityIdentifier("spotMapModelFan")

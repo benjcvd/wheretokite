@@ -221,6 +221,16 @@ final class StoreScreenshotsTests: XCTestCase {
         _ = app.buttons["directions"].waitForExistence(timeout: 5)
         sleep(3)  // map tiles
         snapshot(app.screenshot(), "\(name)-top")
+        // WHE-243: the full-screen map at DOUBT_MAP_POS (0…1 along the hour slider).
+        if let pos = env["DOUBT_MAP_POS"].flatMap(Double.init) {
+            app.descendants(matching: .any)["spotMapHero"].firstMatch.tap()
+            let slider = app.sliders.firstMatch
+            if slider.waitForExistence(timeout: 5) { slider.adjust(toNormalizedSliderPosition: CGFloat(pos)) }
+            sleep(4)  // map tiles
+            snapshot(app.screenshot(), "\(name)-map")
+            app.buttons["spotMapClose"].tap()
+            sleep(1)
+        }
         app.swipeUp()
         sleep(1)
         snapshot(app.screenshot(), "\(name)-chart")

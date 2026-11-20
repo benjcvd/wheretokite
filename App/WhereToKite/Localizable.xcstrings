@@ -7559,6 +7559,23 @@
           }
         }
       }
+    },
+    "Models disagree: one arrow per model" : {
+      "comment" : "Spot map: the weather models blow different ways, so each gets its own arrow (WHE-243)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los modelos no coinciden: una flecha por modelo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les modèles divergent : une flèche par modèle"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
