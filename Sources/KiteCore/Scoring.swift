@@ -20,21 +20,23 @@ public struct ScoringRules: Sendable {
 
     public init() {}
 
-    // MARK: Chance to kite (WHE-81 method, WHE-84 tuning: docs/MODEL_BACKTEST.md)
+    // MARK: Chance to kite (WHE-81 method, WHE-239 tuning: docs/MODEL_BACKTEST.md)
 
-    /// chance = Φ((models' mean best 2 h − rider's min wind + bias) / √(spread² + error²)).
-    /// Fitted per day ahead on France, southern Spain and the buoys (Catalan masts left out),
-    /// Go cut-off tuned so a Go came true ≥ 85 % on the tuning weeks. Each lead had two fits
-    /// (even / odd weeks): bias and error are their mean, the cut-off the stricter of the two.
-    /// Days 5+ were never tested: day 4's numbers with a stricter cut-off.
+    /// chance = Φ((models' mean best 2 h − rider's min wind + bias) / √(spread² + error²)), on the
+    /// forecast's own models (`ConfidenceEstimator.models`: MF + ECMWF + GFS to day 3, ECMWF + GFS after).
+    /// Fitted per day ahead on France, southern Spain and the POEM buoy (Catalan masts left out),
+    /// 8 Aug – 16 Nov 2026, all weeks together; Go cut-off = lowest chance at which a Go came true
+    /// ≥ 85 %. Scored on unseen weeks (even/odd halves) a Go came true 84–85 % at days 0–3.
+    /// Days 4–5: no cut-off reaches 85 % (two models) and Go is held back anyway (`GoPolicy`);
+    /// 0.80 only decides when the "too far ahead" note shows. Day 5's numbers serve every later day.
     public func chanceTuning(leadDays: Int) -> ChanceTuning {
         switch max(0, leadDays) {
-        case 0: ChanceTuning(biasKn: -0.25, errorKn: 2.0, goFrom: 0.68)
-        case 1: ChanceTuning(biasKn: -0.25, errorKn: 2.25, goFrom: 0.73)
-        case 2: ChanceTuning(biasKn: 0, errorKn: 2.5, goFrom: 0.70)
-        case 3: ChanceTuning(biasKn: 0, errorKn: 2.75, goFrom: 0.79)
-        case 4: ChanceTuning(biasKn: -1, errorKn: 4.5, goFrom: 0.71)
-        default: ChanceTuning(biasKn: -1, errorKn: 5, goFrom: 0.80)
+        case 0: ChanceTuning(biasKn: -1.25, errorKn: 2.25, goFrom: 0.69)
+        case 1: ChanceTuning(biasKn: -1.5, errorKn: 2.75, goFrom: 0.77)
+        case 2: ChanceTuning(biasKn: -1.0, errorKn: 2.75, goFrom: 0.68)
+        case 3: ChanceTuning(biasKn: -1.25, errorKn: 3.25, goFrom: 0.80)
+        case 4: ChanceTuning(biasKn: -2.25, errorKn: 5.0, goFrom: 0.80)
+        default: ChanceTuning(biasKn: -2.75, errorKn: 5.75, goFrom: 0.80)
         }
     }
 
@@ -234,6 +236,16 @@ public struct HourScore: Sendable {
     /// Flat / wavy and good-weather factors (nil = the rider didn't ask; WHE-221).
     public var waterFactor: Double?
     public var weatherFactor: Double?
+    /// "too strong for level" came from the gusts alone (mean wind within the limit), so the
+    /// app can point at the gust number rather than the wind.
+    public var gustOverLimit = false
+    /// The direction the score was worked out on, when it isn't the blended one: the worse
+    /// model's on an hour where they disagree (WHE-231). nil = `wind.directionDeg`.
+    public var scoredDirectionDeg: Double? = nil
+
+    /// The direction to draw for this hour: the one its score and angle to the beach come
+    /// from, so the arrow, the words and the colour always agree (WHE-243).
+    public var shownDirectionDeg: Double { scoredDirectionDeg ?? wind.directionDeg }
 }
 
 public struct Scorer: Sendable {
@@ -271,7 +283,62 @@ public struct Scorer: Sendable {
     ///   cross-shore and winds beyond them as increasingly offshore.
     /// - > 180 (point, headland, small lake): the shore curves, so its normals span
     ///   2 × (sector − 180) (360° at 360); the best-placed part of the shore is used.
+    ///
+    /// When the models blow more than 90° apart (`HourlyWind.modelsDisagreeOnDirection`), the
+    /// blended direction is one none of them forecasts: the hour is scored with each model's
+    /// direction and the blend, and the worst one is kept, flagged "models disagree on
+    /// direction" (WHE-218 / WHE-231, Ben's option 1). `wind` stays the blended hour.
     public func score(_ w: HourlyWind, side: SpotSide) -> HourScore {
+        guard w.modelsDisagreeOnDirection, let dirs = w.modelDirectionsDeg else {
+            return scoreOneDirection(w, side: side)
+        }
+        let worst = ([w.directionDeg] + dirs).map { d -> HourScore in
+            var copy = w
+            copy.directionDeg = d
+            return scoreOneDirection(copy, side: side)
+        }.min { a, b in
+            // Ties (e.g. too light whichever way) go to the most offshore angle.
+            a.score != b.score ? a.score < b.score : (a.relativeAngle ?? 0) > (b.relativeAngle ?? 0)
+        }!
+        var h = worst
+        if worst.wind.directionDeg != w.directionDeg { h.scoredDirectionDeg = worst.wind.directionDeg }
+        h.wind = w
+        h.flags.append(Self.directionDisagreementFlag)
+        return h
+    }
+
+    /// Whether a wind from `directionDeg` counts as offshore on this side, by the same angle
+    /// and rule `scoreOneDirection` flags "offshore component" with (display only, WHE-242:
+    /// the spot page reddens each model arrow that is offshore). A shore that curves (sector
+    /// over 180°) uses its best-placed part, as the scorer does.
+    public func isOffshore(directionDeg: Double, side: SpotSide) -> Bool {
+        let angle = relativeAngle(directionDeg: directionDeg, side: side)
+        return angle >= 90 && rules.directionScore(relativeAngle: angle, level: profile.level,
+                                                   offshore: profile.offshoreTolerance) == 0
+    }
+
+    /// The angle to the beach (0 onshore … 180 offshore) a wind from `directionDeg` is judged
+    /// on for this side, as `isOffshore` uses it (WHE-243: each model's words on the spot page).
+    public func relativeAngle(directionDeg: Double, side: SpotSide) -> Double {
+        Self.relativeAngle(directionDeg: directionDeg, side: side)
+    }
+
+    /// Same as the instance method: the angle doesn't depend on the rider (WHE-243: the map).
+    public static func relativeAngle(directionDeg: Double, side: SpotSide) -> Double {
+        let sector = min(360, max(0, side.waterSectorDeg ?? 180))
+        let off = Geo.angleDiff(directionDeg, side.seaFacingDeg)
+        if sector <= 180 {
+            return min(180, max(0, off - sector / 2 + 90))
+        }
+        let span = min(360, 2 * (sector - 180))
+        let steps = max(1, Int((span / 5).rounded(.up)))
+        return (0...steps).map { Geo.angleDiff(directionDeg, side.seaFacingDeg - span / 2 + span * Double($0) / Double(steps)) }.min()!
+    }
+
+    /// Flag on an hour scored on the worse of the models' directions.
+    public static let directionDisagreementFlag = "models disagree on direction"
+
+    func scoreOneDirection(_ w: HourlyWind, side: SpotSide) -> HourScore {
         let sector = min(360, max(0, side.waterSectorDeg ?? 180))
         let off = Geo.angleDiff(w.directionDeg, side.seaFacingDeg)
         if sector <= 180 {
@@ -299,7 +366,9 @@ public struct Scorer: Sendable {
         var flags: [String] = []
         let limits = rules.limits(profile.level, intensity: intensity)
         if w.speedKn > limits.wind || w.gustKn > limits.gust {
-            return HourScore(wind: w, score: 0, kite: nil, relativeAngle: angle, flags: ["too strong for level"])
+            var h = HourScore(wind: w, score: 0, kite: nil, relativeAngle: angle, flags: ["too strong for level"])
+            h.gustOverLimit = w.speedKn <= limits.wind
+            return h
         }
 
         // 1. Strength: pick the kite in the quiver that fits this wind best.

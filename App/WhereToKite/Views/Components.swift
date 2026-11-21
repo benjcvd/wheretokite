@@ -113,6 +113,81 @@ struct WindArrow: View {
     }
 }
 
+/// Beside an hour's arrow when the weather models are 45° or more apart (WHE-243): an orange
+/// "≠", red when one of them blows offshore. The row opens each model's wind on tap.
+struct ModelDoubtBadge: View {
+    let offshore: Bool
+    var open = false
+
+    var body: some View {
+        Text(verbatim: "≠")
+            .font(.caption.weight(.heavy))
+            .frame(width: 18, height: 18)
+            .foregroundStyle(open ? Color.white : offshore ? Color.red : Color.orange)
+            .background(open ? (offshore ? Color.red : Color.orange) : (offshore ? Color.red : Color.orange).opacity(0.18), in: Circle())
+            .accessibilityIdentifier("modelDoubtBadge")
+    }
+}
+
+/// Each weather model's wind for one hour, under the row (WHE-243): its arrow (red when
+/// offshore), name, speed and how it meets the beach, or "too light to tell".
+struct ModelWindsDetail: View {
+    let winds: [(model: String, speedKn: Double, directionDeg: Double?)]
+    let scorer: Scorer
+    let side: SpotSide
+
+    @ScaledMetric(relativeTo: .caption) private var nameColumn: CGFloat = 52
+
+    static func shortName(_ id: String) -> String {
+        String(ForecastSource.name(id).split(separator: " ").first ?? "")
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            ForEach(Array(winds.enumerated()), id: \.offset) { _, m in
+                let off = m.directionDeg.map { scorer.isOffshore(directionDeg: $0, side: side) } ?? false
+                HStack(spacing: 6) {
+                    Group {
+                        if let d = m.directionDeg { WindArrow(directionDeg: d) } else { Text(verbatim: "·") }
+                    }
+                    .foregroundStyle(off ? Color.red : Color.primary)
+                    .frame(width: 14)
+                    Text(verbatim: Self.shortName(m.model)).fontWeight(.semibold)
+                        .frame(minWidth: nameColumn, alignment: .leading)
+                    Text("\(Int(m.speedKn.rounded())) kn", comment: "One weather model's wind speed in the hour detail")
+                        .monospacedDigit()
+                    Text(words(m.directionDeg))
+                        .foregroundStyle(off ? Color.red : Color.secondary)
+                }
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+            }
+        }
+        .font(.caption)
+        .padding(6)
+        .background(Color.orange.opacity(0.08), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .accessibilityIdentifier("modelWinds")
+    }
+
+    private func words(_ d: Double?) -> String {
+        guard let d else {
+            return String(localized: "too light to tell", comment: "A weather model's wind is too light to give a direction")
+        }
+        return Vocab.angle(scorer.relativeAngle(directionDeg: d, side: side))
+    }
+
+    /// For VoiceOver: "Models: ECMWF 22 knots side-onshore, GFS 10 knots offshore".
+    var spoken: String {
+        let each = winds.map { m in
+            "\(Self.shortName(m.model)) "
+                + String(localized: "\(Int(m.speedKn.rounded())) knots", comment: "VoiceOver: one model's wind speed")
+                + " " + words(m.directionDeg)
+        }
+        return String(localized: "Models: \(each.joined(separator: ", "))",
+                      comment: "VoiceOver: each weather model's wind direction this hour")
+    }
+}
+
 extension KiteVerdict {
     /// Green (Go) to grey (No go).
     var color: Color {

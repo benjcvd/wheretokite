@@ -184,6 +184,69 @@ final class StoreScreenshotsTests: XCTestCase {
         snapshot(app.screenshot(), "side-offshore-spot")
     }
 
+    /// WHE-238: the top spot's page on DOUBT_DAY (yyyy-MM-dd, live forecast) from Barcelona,
+    /// 3 h drive: the "models disagree" note when the grade is held back, the model band and the
+    /// models under the chart. DOUBT_SHOTS=1, DOUBT_NAME names the shots, DOUBT_LANG=es|fr.
+    @MainActor
+    func testModelDoubt() throws {
+        let env = ProcessInfo.processInfo.environment
+        try XCTSkipUnless(env["DOUBT_SHOTS"] == "1", "on demand")
+        let day = try XCTUnwrap(env["DOUBT_DAY"])
+        let name = env["DOUBT_NAME"] ?? "doubt"
+        func plist(_ json: String) -> String { "<" + json.utf8.map { String(format: "%02x", $0) }.joined() + ">" }
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "-AppleLanguages", "(\(env["DOUBT_LANG"] ?? "en"))", "-disclaimerAccepted", "YES",
+            "-riderProfile", plist(#"{"weightKg":75,"kites":[9,12],"level":"intermediate"}"#),
+            "-searchOptions", plist(#"{"start":{"name":"Barcelona","coordinate":{"latitude":41.3874,"longitude":2.1686}},"maxDriveMinutes":180,"day":"\#(day)","slot":"\#(env["DOUBT_SLOT"] ?? "afternoon")","distanceMatters":false}"#),
+            "-searchDay", day, "-searchOrigin", "41.3874,2.1686",
+        ]
+        app.launch()
+        let topSpot = app.buttons["topSpot"]
+        XCTAssertTrue(topSpot.waitForExistence(timeout: 90), "results never loaded")
+        sleep(1)
+        if let spot = env["DOUBT_SPOT"] {
+            // A named spot further down the list (WHE-242).
+            let row = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", spot)).firstMatch
+            for _ in 0..<8 where !(row.exists && row.isHittable) { app.swipeUp() }
+            if !row.exists {
+                // Not kiteable spots sit in a folded list at the bottom.
+                app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Not kiteable")).firstMatch.tap()
+                for _ in 0..<8 where !(row.exists && row.isHittable) { app.swipeUp() }
+            }
+            row.tap()
+        } else {
+            topSpot.tap()
+        }
+        _ = app.buttons["directions"].waitForExistence(timeout: 5)
+        sleep(3)  // map tiles
+        snapshot(app.screenshot(), "\(name)-top")
+        // WHE-243: the full-screen map at DOUBT_MAP_POS (0…1 along the hour slider).
+        if let pos = env["DOUBT_MAP_POS"].flatMap(Double.init) {
+            app.descendants(matching: .any)["spotMapHero"].firstMatch.tap()
+            let slider = app.sliders.firstMatch
+            if slider.waitForExistence(timeout: 5) { slider.adjust(toNormalizedSliderPosition: CGFloat(pos)) }
+            sleep(4)  // map tiles
+            snapshot(app.screenshot(), "\(name)-map")
+            app.buttons["spotMapClose"].tap()
+            sleep(1)
+        }
+        app.swipeUp()
+        sleep(1)
+        snapshot(app.screenshot(), "\(name)-chart")
+        app.swipeUp()
+        sleep(1)
+        snapshot(app.screenshot(), "\(name)-hours")
+        // WHE-243: open the first hour whose models disagree.
+        let split = app.otherElements.matching(NSPredicate(format: "identifier == 'hourRow' AND label CONTAINS 'Models:'")).firstMatch
+        if split.exists {
+            if !split.isHittable { app.swipeUp() }
+            split.tap()
+            sleep(1)
+            snapshot(app.screenshot(), "\(name)-open")
+        }
+    }
+
     @MainActor
     private func snapshot(_ shot: XCUIScreenshot, _ name: String) {
         let a = XCTAttachment(screenshot: shot)

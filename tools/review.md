@@ -8,18 +8,17 @@ a lagoon or an isthmus. Fix a wrong one in `tools/curated_spots.csv` (pin it wit
 | Spot | Verdict | Faces | Detail | Map |
 |---|---|---|---|---|
 | Neusiedl am See | uncertain | S 184° | Apple water at 222° vs OSM 184° (38° apart) | [map](https://www.openstreetmap.org/?mlat=47.92852&mlon=16.83501#map=16/47.92852/16.83501) |
-| Oostduinkerke – Groenendijk | disagrees | NNW 333° | 15% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=51.14159&mlon=2.69691#map=16/51.14159/2.69691) |
+| Amrum – Wittdün Badebucht | uncertain | ESE 121° | Apple water at 74° vs OSM 121° (47° apart) | [map](https://www.openstreetmap.org/?mlat=54.62489&mlon=8.39072#map=16/54.62489/8.39072) |
+| Rügen – Schaprode | uncertain | N 9° | Apple water at 322° vs OSM 9° (47° apart) | [map](https://www.openstreetmap.org/?mlat=54.51244&mlon=13.16249#map=16/54.51244/13.16249) |
 | Liencres (Valdearenas) | uncertain | NW 320° | Apple water at 269° vs OSM 320° (51° apart) | [map](https://www.openstreetmap.org/?mlat=43.44479&mlon=-3.97111#map=16/43.44479/-3.97111) |
 | Los Caños de Meca | uncertain | SE 130° | Apple water at 172° vs OSM 130° (41° apart) | [map](https://www.openstreetmap.org/?mlat=36.18484&mlon=-6.03227#map=16/36.18484/-6.03227) |
 | Bassin d'Arcachon – La Hume | uncertain | NW 305° | Apple water at 354° vs OSM 305° (49° apart) | [map](https://www.openstreetmap.org/?mlat=44.64541&mlon=-1.11429#map=16/44.64541/-1.11429) |
 | Cherrueix | disagrees | N 355° | 0% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=48.60647&mlon=-1.70918#map=16/48.60647/-1.70918) |
 | Gâvres | uncertain | WSW 258°, NE 34° | 86% water on the claimed side; 41% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=47.68907&mlon=-3.35968#map=16/47.68907/-3.35968) |
 | Gravelines – Petit-Fort-Philippe | uncertain | NNW 334° | Apple water at 299° vs OSM 334° (36° apart) | [map](https://www.openstreetmap.org/?mlat=51.00662&mlon=2.11002#map=16/51.00662/2.11002) |
-| Lac du Salagou | uncertain | NW 316° | Apple water at 259° vs OSM 316° (57° apart) | [map](https://www.openstreetmap.org/?mlat=43.64754&mlon=3.38780#map=16/43.64754/3.38780) |
 | Le Barcarès – Parc des Dosses (Étang de Leucate) | disagrees | W 273° | Apple water at 26° vs OSM 273° (113° apart) | [map](https://www.openstreetmap.org/?mlat=42.84139&mlon=3.03156#map=16/42.84139/3.03156) |
 | Les Hemmes de Marck | disagrees | N 357° | Apple water at 271° vs OSM 357° (86° apart) | [map](https://www.openstreetmap.org/?mlat=50.98668&mlon=1.96195#map=16/50.98668/1.96195) |
 | Marseillan – Étang de Thau | uncertain | WNW 303° | Apple water at 261° vs OSM 303° (42° apart) | [map](https://www.openstreetmap.org/?mlat=43.32579&mlon=3.54803#map=16/43.32579/3.54803) |
-| Budle Bay | disagrees | ENE 60° | 1% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=55.61200&mlon=-1.77580#map=16/55.61200/-1.77580) |
 | Weymouth – Portland Harbour | uncertain | NNE 29° | Apple water at 348° vs OSM 29° (41° apart) | [map](https://www.openstreetmap.org/?mlat=50.57048&mlon=-2.45698#map=16/50.57048/-2.45698) |
 | Neretva delta | uncertain | S 185° | 59% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=43.01946&mlon=17.44707#map=16/43.01946/17.44707) |
 | Tramore | uncertain | SW 225° | Apple water at 183° vs OSM 225° (42° apart) | [map](https://www.openstreetmap.org/?mlat=52.17069&mlon=-7.13298#map=16/52.17069/-7.13298) |
@@ -28,6 +27,6 @@ a lagoon or an isthmus. Fix a wrong one in `tools/curated_spots.csv` (pin it wit
 | Vrouwenpolder | disagrees | N 350° | Apple water at 224° vs OSM 350° (126° apart) | [map](https://www.openstreetmap.org/?mlat=51.58917&mlon=3.64553#map=16/51.58917/3.64553) |
 | Zandmotor | uncertain | NW 307° | Apple water at 347° vs OSM 307° (40° apart) | [map](https://www.openstreetmap.org/?mlat=52.05489&mlon=4.18895#map=16/52.05489/4.18895) |
 | Rewa | uncertain | ESE 103° | Apple water at 67° vs OSM 103° (35° apart) | [map](https://www.openstreetmap.org/?mlat=54.63356&mlon=18.51381#map=16/54.63356/18.51381) |
+| Aveiro – Estacas (Costa Nova ria) | uncertain | E 88° | Apple water at 135° vs OSM 88° (47° apart) | [map](https://www.openstreetmap.org/?mlat=40.62978&mlon=-8.74479#map=16/40.62978/-8.74479) |
 | Lagoa de Albufeira | uncertain | NE 35° | Apple water at 350° vs OSM 35° (45° apart) | [map](https://www.openstreetmap.org/?mlat=38.50879&mlon=-9.17567#map=16/38.50879/-9.17567) |
 | Murtosa – Ria de Aveiro | uncertain | WSW 241° | Apple water at 294° vs OSM 241° (53° apart) | [map](https://www.openstreetmap.org/?mlat=40.72487&mlon=-8.66417#map=16/40.72487/-8.66417) |
-| Praia de Faro | uncertain | SW 220°, NE 41° | 100% water on the claimed side; 40% water on the claimed side | [map](https://www.openstreetmap.org/?mlat=37.00384&mlon=-7.99081#map=16/37.00384/-7.99081) |

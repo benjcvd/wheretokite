@@ -246,7 +246,10 @@ for r in shown.prefix(hourlyCount) {
                      Geo.compassName(h.wind.directionDeg), angle, kite, h.score * 100,
                      ((h.side.map { [$0] } ?? []) + h.flags).joined(separator: ", "))
               + (h.wind.waveHeightM.map { String(format: "  waves %.1f m", $0) } ?? "")
-              + (h.wind.weatherCode.map { "  wmo \($0)" } ?? ""))
+              + (h.wind.weatherCode.map { "  wmo \($0)" } ?? "")
+              + (h.wind.modelDirectionArcDeg.map {
+                  String(format: "  models %@–%@", Geo.compassName($0.from), Geo.compassName($0.to))
+              } ?? ""))
     }
 }
 

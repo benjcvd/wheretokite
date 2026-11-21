@@ -26,8 +26,13 @@ enum ShoreAngleStyle {
 struct SpotWindOverlay: MapContent {
     let spot: Spot
     let wind: MapWind.Summary
+    /// One arrow per weather model when they are 45°+ apart (`MapWind.modelArrows`), each
+    /// coloured by its own angle to the beach, instead of the single arrow (WHE-243). nil = agree.
+    var modelArrows: [MapWind.ModelArrow]? = nil
     /// Arrow length on the ground; sized for the spot page's 4 km map.
     var lengthM: Double = 1100
+    /// Tags as map annotations. Off where the map can't show them and draws them itself.
+    var showsTags = true
 
     private var at: Coordinate { Coordinate(latitude: spot.latitude, longitude: spot.longitude) }
     private func cl(_ c: [Coordinate]) -> [CLLocationCoordinate2D] {
@@ -42,24 +47,65 @@ struct SpotWindOverlay: MapContent {
             MapPolyline(coordinates: shore)
                 .stroke(.white, style: StrokeStyle(lineWidth: 3, lineCap: .round))
         }
-        let arrow = MapWind.arrow(at: at, fromDeg: wind.directionDeg, lengthM: lengthM)
-        let color = ShoreAngleStyle.color(wind.relativeAngle)
-        let outline = StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round)
-        let stroke = StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round)
+        if let models = modelArrows {
+            ForEach(Array(MapWind.group(models).enumerated()), id: \.offset) { _, g in
+                arrow(from: Self.direction(g), color: ShoreAngleStyle.color(Self.worstAngle(g)), width: 5)
+            }
+        } else {
+            arrow(from: wind.directionDeg, color: ShoreAngleStyle.color(wind.relativeAngle), width: 6)
+        }
+        // Annotations stay in the body: built inside a helper they don't show (WHE-243).
+        if showsTags {
+            ForEach(Array(Self.tags(spot: spot, wind: wind, modelArrows: modelArrows, lengthM: lengthM).enumerated()), id: \.offset) { _, t in
+                Annotation("", coordinate: CLLocationCoordinate2D(latitude: t.at.latitude, longitude: t.at.longitude), anchor: .center) {
+                    Self.tag(t.label, t.color)
+                }
+                .annotationTitles(.hidden)
+            }
+        }
+    }
+
+    /// The tag at each arrow's tail: "GFS 10" per model, or the wind speed for a single arrow.
+    static func tags(spot: Spot, wind: MapWind.Summary, modelArrows: [MapWind.ModelArrow]?, lengthM: Double = 1100)
+        -> [(at: Coordinate, label: String, color: Color)] {
+        let at = Coordinate(latitude: spot.latitude, longitude: spot.longitude)
+        func tail(_ deg: Double) -> Coordinate { MapWind.arrow(at: at, fromDeg: deg, lengthM: lengthM).shaft[0] }
+        if let models = modelArrows {
+            // Models within 20° share one arrow and one tag: "ECMWF 14 · GFS 13".
+            return MapWind.group(models).map { g in
+                (tail(direction(g)),
+                 g.map { "\(ModelWindsDetail.shortName($0.model)) \(Int($0.speedKn.rounded()))" }.joined(separator: " · "),
+                 ShoreAngleStyle.color(worstAngle(g)))
+            }
+        }
+        return [(tail(wind.directionDeg),
+                 String(localized: "\(Int(wind.speedKn.rounded())) kn", comment: "Wind speed at the tail of the map's wind arrow"),
+                 ShoreAngleStyle.color(wind.relativeAngle))]
+    }
+
+    static func direction(_ g: [MapWind.ModelArrow]) -> Double { Geo.circularStats(g.map(\.directionDeg)).mean }
+    static func worstAngle(_ g: [MapWind.ModelArrow]) -> Double? { g.compactMap(\.relativeAngle).max() }
+
+    static func tag(_ label: String, _ color: Color) -> some View {
+        Text(verbatim: label)
+            .font(.caption.weight(.bold))
+            .monospacedDigit()
+            .padding(.horizontal, 7)
+            .padding(.vertical, 3)
+            .background(color, in: Capsule())
+            .foregroundStyle(.black)
+    }
+
+    /// An arrow whose tip is on the launch and tail upwind, outlined, with a label at the tail.
+    @MapContentBuilder
+    private func arrow(from deg: Double, color: Color, width: CGFloat) -> some MapContent {
+        let arrow = MapWind.arrow(at: at, fromDeg: deg, lengthM: lengthM)
+        let outline = StrokeStyle(lineWidth: width + 4, lineCap: .round, lineJoin: .round)
+        let stroke = StrokeStyle(lineWidth: width, lineCap: .round, lineJoin: .round)
         MapPolyline(coordinates: cl(arrow.shaft)).stroke(.black.opacity(0.45), style: outline)
         MapPolyline(coordinates: cl(arrow.head)).stroke(.black.opacity(0.45), style: outline)
         MapPolyline(coordinates: cl(arrow.shaft)).stroke(color, style: stroke)
         MapPolyline(coordinates: cl(arrow.head)).stroke(color, style: stroke)
-        Annotation("", coordinate: cl([arrow.shaft[0]])[0], anchor: .center) {
-            Text("\(Int(wind.speedKn.rounded())) kn", comment: "Wind speed at the tail of the map's wind arrow")
-                .font(.caption.weight(.bold))
-                .monospacedDigit()
-                .padding(.horizontal, 7)
-                .padding(.vertical, 3)
-                .background(color, in: Capsule())
-                .foregroundStyle(.black)
-        }
-        .annotationTitles(.hidden)
     }
 }
 
@@ -91,7 +137,7 @@ struct SpotMapScreen: View {
                    coordinate: CLLocationCoordinate2D(latitude: rec.spot.latitude, longitude: rec.spot.longitude))
                 .tint(ScoreStyle.color(rec.finalScore))
             if let h = hour, let wind = MapWind.summary([h]) {
-                SpotWindOverlay(spot: rec.spot, wind: wind)
+                SpotWindOverlay(spot: rec.spot, wind: wind, modelArrows: MapWind.modelArrows([h], spot: rec.spot, side: h.side, onlyWhenApart: false))
             }
         }
         .mapStyle(satellite ? .hybrid(elevation: .realistic) : .standard(elevation: .realistic))
@@ -133,7 +179,7 @@ struct SpotMapScreen: View {
                     Text(String(format: "%02d:00", h.wind.hour))
                         .font(.title3.weight(.bold))
                         .monospacedDigit()
-                    WindArrow(directionDeg: h.wind.directionDeg)
+                    WindArrow(directionDeg: h.shownDirectionDeg)
                         .foregroundStyle(WindStyle.color(h.wind.speedKn))
                     Text("\(Int(h.wind.speedKn.rounded())) kn · gusts \(Int(h.wind.gustKn.rounded()))", comment: "Hourly wind")
                         .font(.headline)
@@ -149,6 +195,12 @@ struct SpotMapScreen: View {
                         Image(systemName: "circle.fill").foregroundStyle(ShoreAngleStyle.color(a))
                     }
                     .font(.subheadline.weight(.semibold))
+                }
+                if MapWind.modelArrows([h], spot: rec.spot, side: h.side) != nil {
+                    Text("Models disagree: one arrow per model", comment: "Spot map: the weather models blow different ways, so each gets its own arrow (WHE-243)")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .accessibilityIdentifier("spotMapModelFan")
                 }
                 if rec.hours.count > 1 {
                     Slider(value: $index, in: 0...Double(rec.hours.count - 1), step: 1) {

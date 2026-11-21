@@ -543,7 +543,13 @@ An Open-Meteo 429 now makes the Worker file one "Forecast quota hit: <day>" GitH
 
 The Kite tab's top options are now a 2×2 grid of labelled tiles (Rider, From, Max drive, Water & weather), each with its own sheet; the old single "options" sheet is gone and My hours lives only on the session strip. In review with before/after shots in docs/review/. Two UI tests (language relaunch, spot map slider) already fail on the base branch: new card.
 
-## Lead, 18 Nov 09:15: where I stopped
+## Lead, 18 Nov 21:30: where I stopped
+Catalogue published on Ben's option 1 (allow_drop): f2fa1e0, 741 spots, bans 60 → 39 (21 archived spots + Saunton Sands, whose unsourced summer ban WHE-188 removed). 1.0 phones refuse it (their gate) and keep the bundled list; 1.1 bundles it. The workflow now pulls with `--autostash` and saves the map cache even on failure (a failed run used to waste an hour). Product has a card to stop the gate counting archived spots. The latest main is not yet on Ben's iPhone (phone unreachable at 21:30); next step: install, then archive 1.1. Gotcha: the agent permission guard blocks `npx wrangler deploy`; Ben runs it from Terminal (`cd ~/Documents/claude_projects/wheretokite/server && PATH=~/.local/node/bin:$PATH npx wrangler deploy`), then the Lead checks live. Live Worker: version 6e0f6d1f (18 Nov, waves + quota alert).
+
+### 18 Nov 19:20
+Worker deployed by Ben from his Terminal (version 6e0f6d1f; the agent guard blocks `wrangler deploy`, so hand him the command). Live check passed: 100-spot forecast MISS then HIT, wave heights flow. The note below is otherwise current.
+
+### 18 Nov 09:15
 1.0 live since 9 Nov. Main (638f162, pushed) holds every workstream, including Product's WHE-223 option tiles and
 WHE-226 spot-page cleanup; the same build is on Ben's iPhone (Debug). Ben's WHE-221 calls: sky = middle model for
 "good weather only" (storm safety still reads the gloomiest model, `skyCode` vs `weatherCode`), wave cuts as proposed.
@@ -553,3 +559,45 @@ running on 2d9374e. Next: deploy + live 100-spot check, then archive 1.1 for Ben
 `wrangler dev` dies in the agent shell (test live, rollback ready); `tools/.osm_cache` is a symlink to
 /Users/ben/Documents/wheretokite/tools/.osm_cache (tar with -h); `gh run watch` drops on network blips, poll
 `gh run view --json status` instead; an Xcode-generated xcstrings change is in `git stash`.
+
+## Lead, 18 Nov 23:45: 1.1 archived
+Ben tested main on his iPhone and asked to release. Last fix before the archive (WHE-236): when only the gusts are over the rider's limit, the gust number (hour list) and gust dot (chart) go red instead of the wind, and the chart colours follow the kite picked. The gust limit itself is unchanged; the knife-edge case (11:00 passing at exactly 37.0 kn between two failing hours) was left as is on Ben's word. Version 1.1 build 3 (92783fc, pushed) is in Xcode's Organizer; `xcodebuild -exportArchive` upload still fails with "Failed to Use Accounts", so Ben uploads and submits with docs/store/RELEASE_1.1.md (What's New in three languages). Store screenshots still show the 1.0 layout.
+
+## Lead, 19 Nov 11:30: where I stopped
+1.1 (3) uploaded by Ben after midnight; he was filling the 1.1 page (build 3, What's New from docs/store/RELEASE_1.1.md). Not yet confirmed submitted (WHE-235). Apple's "iOS 27 SDK from April 2027" message is a warning only; card queued for Product. Ben's question on models led to two decisions: WHE-238 (Product, doing): spot page shows a note when the models hold the grade back, a low–high model band on the chart, and the model names (Ben picked options 1 + 3). WHE-239 (Forecast accuracy, doing): the "will there be wind" check still uses the pre-WHE-87 set (best match ≈ ICON-EU, Météo-France, ICON, ECMWF) while the bars use Météo-France + ECMWF + GFS; Ben wants one set. It needs a re-tune of the cut-offs (~85 % Go hit rate), so it's a backtest first, then a branch to merge after Ben's review. WHE-238's band/model line must match whatever WHE-239 settles: merge WHE-239 first if both land together. Gotchas: `xcodebuild -exportArchive` upload fails ("Failed to Use Accounts"), so Ben uploads from Organizer; archives go to ~/Library/Developer/Xcode/Archives/<date>; the version lives in both App/project.yml and project.pbxproj.
+
+## Forecast accuracy: one model set (WHE-239, 19 Nov), in review
+On branch atlas/t/whe-239 the wind check (ConfidenceEstimator) uses the forecast's own models and cells:
+MF seamless beach, ECMWF 9 km and GFS sea, MF dropped from day 4. `Scoring.chanceTuning` is re-fitted
+(`tools/backtest/whe239.py`, report section in `docs/MODEL_BACKTEST.md`). Against the shipped check on unseen
+weeks it's a tie at days 0–3, and from +4 fewer kite days get capped. Abroad, Go stays reliable in the
+Netherlands and Greece, but day 1 catches ~10 points fewer kite days; Morocco fails with both checks (weak
+airport truth). The old check counted Météo-France twice in France (best match = AROME). KiteChance API is unchanged.
+Ben said go; merged into main on 19 Nov.
+
+## Product, 19 Nov: WHE-238 models disagree on the spot page (review)
+When the model check caps a grade, the spot page now opens with a one-line note ("Models disagree: 11–19 kn" / "Only 1 of 4 models sees enough wind") naming each checked model's best 2 h. The wind chart has a grey low–high band from the blend's own models, and a line naming them. Merged after WHE-239, so the note and the band now read the same three models. No scoring change. Screens in `docs/review/whe238-*`; waiting on Ben's OK of the look.
+
+## Lead, 20 Nov 00:05: models agree on one set, disagreement shown
+Merged into main (local, not pushed; main ahead of origin): WHE-239 (wind check on the forecast's own 3 models MF + ECMWF 9 km + GFS, MF out from day 4, cut-offs re-tuned, Go still ~85 %) then WHE-238 (spot-page note when models cap the grade, grey low–high band, model line). Ben's principle (19 Nov): one tested way of measuring per day; grade = forecast of that mix + confidence from model agreement. Pro card added: rider picks their own model (low, after launch). New card: Morocco Go only 65–74 % true (Forecast accuracy, todo).
+Ben then asked (WHE-242, Product, doing, branch atlas/t/whe-242, includes WHE-231): explain the grey band (legend line), 'Ruled out' → 'No go: <reason>', and show the models' direction spread. 'ENE–SE' text was judged unreadable: Product is redoing it as one small arrow per model, red where offshore; map fan kept only if clean. WHE-231 rule decided 20 Nov: keep scoring the worse direction (data: those hours kiteable 25 %, offshore 19 %, rare 0.1–0.2 %). WHE-231 + WHE-242 merge together after Ben OKs the look. Gotcha: the WHE-242 ticket worktree had uncommitted map-fan edits; install builds from a clean detached worktree at the committed sha (git worktree add --detach /tmp/x <sha>), then remove it. iPhone device id D0A016F7-8F1B-5BBD-BC50-A175D58185E7.
+
+## Product, 19 Nov: WHE-231 worse direction when models disagree (review)
+
+`Scorer.score(_:side:)` now scores a disagreeing hour (`modelsDisagreeOnDirection`, >90°) with each model's direction plus the blend and keeps the worst, flagged `models disagree on direction`; `wind` stays the blended hour, so the arrow and the reason can differ. `mainProblem` returns that flag instead of "offshore" when every offshore hour is offshore only because of it → `NoGoReason.directionUnclear` ("Unsure direction", red, counted as safety). In live forecasts it only ever lowers grades, mostly Worth a try → No go when one model says offshore. Before/after in docs/review/whe231-before-after.md. Waits on Ben's OK of the rule.
+
+WHE-242 (Product, review, b9d0913 on atlas/t/whe-242, contains WHE-231): Ben found the grey model band and "Ruled out" unclear. The band now has its own legend line with the model count, "Ruled out" became "No go: <reasons>" (storm, ban, too late, dark, unsure direction, offshore, tide), and hours where the models are 45°+ apart show one small arrow per model, red when offshore (round 2: Ben found the first "ENE–SE" text unreadable on the phone) and the spot map draws a labelled fan of the models' directions over the beach (Ben asked to try both places; a mini fan on each hour's arrow was tried and dropped). Display only, no scoring change. Before/after: docs/review/whe242-before-after.md. Merge after WHE-231.
+
+## Lead, 20 Nov 10:30: WHE-242 + WHE-231 shipped into 1.1 build 4
+Ben approved the model arrows on his phone and asked to drop the compass letters before onshore/offshore (the hour rows and the results line now show only "side-onshore" etc., with the compass point only when the beach angle is unknown). Merged to main (f4a9d67), tests green, pushed. Build 1.1 (4) is archived; `xcodebuild -exportArchive` still fails with "Failed to Use Accounts", so Ben uploads from the Organizer and swaps build 3 for 4 on the 1.1 page (WHE-235).
+
+## Product, 20 Nov: WHE-243 wind readability study
+
+Design study only, in review: [options and recommendation](review/whe243-options.md#recommendation). Recommended: hour list A3 (one arrow, the scored direction, plus a tap-to-open "models disagree" badge), map B4 (one arrow per model, no fan). A vector field was rejected: one forecast point per spot, so every arrow would be the same. Two real inconsistencies found, both wait on Ben's pick: arrows split at 45° while "the worse one counts" starts at 90° (red arrow on rideable hours), and the map arrow takes the average direction but the worse model's colour. Mock-up code lives on the throwaway branch `atlas/t/whe-243-mockups`.
+Round 2 (same day): Ben picked A3 and B4. The field of arrows was tested and gets messy once the models disagree, so B4 it is. Both are built on the ticket branch and in review; the 45°/90° safety question is still open.
+
+## Lead, 20 Nov 17:15: 1.3 build 1 archived
+Ben said "ready to release 1.3". I merged WHE-243 (one arrow plus a ≠ badge per hour that opens each model's wind; the spot map names each model's arrow), tests are green (engine 199, app unit tests), and I set the version to 1.3 (1), skipping 1.2 on Ben's word, then archived. What's New in three languages: docs/store/RELEASE_1.3.md. The upload from the command line still fails ("Failed to Use Accounts"), so Ben uploads from the Organizer (WHE-235). Still open from Product: should the worse model count whenever any model says offshore (now only past 90° of disagreement)? It's a safety rule, so Ben decides.
+
+## Lead, 21 Nov 13:40: back to 1.2
+Ben corrected the version number: it is 1.2, not 1.3. I re-archived it as 1.2 (1), deleted the 1.3 archive, and renamed the release doc to docs/store/RELEASE_1.2.md. Ben uploads it from the Organizer (WHE-235).

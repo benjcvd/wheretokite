@@ -369,6 +369,35 @@ public struct HourlyWind: Codable, Hashable, Sendable {
     /// `directionDeg` is the mean wind vector: when models blow opposite ways it is a direction
     /// none of them forecasts. nil for a single model and in old caches.
     public var modelDirectionsDeg: [Double]?
+    /// Each blended model's mean wind this hour, kn, in the same order as `models` (WHE-238:
+    /// the spot page's low–high band). nil for a single model and in old caches.
+    public var modelSpeedsKn: [Double]?
+
+    /// Each blended model's wind this hour, in blend order: its id, speed and direction
+    /// (nil when it blows under `directionMinKn`, too light to tell). nil for a single model,
+    /// old caches, or arrays that don't line up (WHE-243: the hour list's per-model detail).
+    public var modelWinds: [(model: String, speedKn: Double, directionDeg: Double?)]? {
+        guard let ids = models, let speeds = modelSpeedsKn, ids.count == speeds.count, ids.count > 1 else { return nil }
+        var dirs = (modelDirectionsDeg ?? [])[...]
+        var out: [(model: String, speedKn: Double, directionDeg: Double?)] = []
+        for (id, kn) in zip(ids, speeds) {
+            if kn >= Self.directionMinKn {
+                guard let d = dirs.popFirst() else { return nil }
+                out.append((id, kn, d))
+            } else {
+                out.append((id, kn, nil))
+            }
+        }
+        return dirs.isEmpty ? out : nil
+    }
+
+    /// Lowest to highest blended model wind this hour, kn. nil without at least two models.
+    public var modelSpeedRangeKn: ClosedRange<Double>? {
+        // Cache files are read back: implausible values are dropped, not drawn.
+        guard let s = modelSpeedsKn?.filter({ (0...250).contains($0) }), s.count > 1,
+              let lo = s.min(), let hi = s.max() else { return nil }
+        return lo...hi
+    }
 
     /// Below this a model's direction is noise and doesn't count as disagreement.
     public static let directionMinKn = 8.0
@@ -385,6 +414,28 @@ public struct HourlyWind: Codable, Hashable, Sendable {
 
     /// The models blow more than 90° apart: the blended direction can't be trusted.
     public var modelsDisagreeOnDirection: Bool { directionSpreadDeg > Self.directionDisagreementDeg }
+
+    /// From this spread the spot page shows the models' direction range ("NE–E", WHE-242):
+    /// two compass points, so a few degrees either side of a point boundary stay quiet.
+    public static let directionRangeShownDeg = 45.0
+
+    /// The smallest clockwise arc holding every model's direction (`from` → `to`, compass
+    /// degrees, across north when needed), or nil when the models are within
+    /// `directionRangeShownDeg` of each other (display only, WHE-242).
+    public var modelDirectionArcDeg: (from: Double, to: Double)? {
+        Self.directionArc(modelDirectionsDeg ?? [])
+    }
+
+    /// The smallest clockwise arc holding these directions, nil under `directionRangeShownDeg`.
+    public static func directionArc(_ raw: [Double]) -> (from: Double, to: Double)? {
+        guard raw.count > 1 else { return nil }
+        let d = raw.map { ($0.truncatingRemainder(dividingBy: 360) + 360).truncatingRemainder(dividingBy: 360) }.sorted()
+        // The arc is everything but the largest gap between neighbours (the wrap gap included).
+        var gapAfter = d.count - 1, widest = d[0] + 360 - d[d.count - 1]
+        for i in 0..<(d.count - 1) where d[i + 1] - d[i] > widest { widest = d[i + 1] - d[i]; gapAfter = i }
+        guard 360 - widest >= directionRangeShownDeg else { return nil }
+        return (d[(gapAfter + 1) % d.count], d[gapAfter])
+    }
 
     /// Thunderstorm forecast, or unstable air (high CAPE) with showers / rain in the same hour:
     /// never a kite hour. High CAPE alone is common on calm summer afternoons and doesn't

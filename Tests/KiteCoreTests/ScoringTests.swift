@@ -79,6 +79,15 @@ final class ScoringTests: XCTestCase {
         XCTAssertEqual(steady(.advanced, 1), 1)
     }
 
+    func testGustOnlyLimitIsMarked() {
+        var b = rider; b.level = .beginner
+        let s = Scorer(profile: b, intensity: nil)
+        // Beginner limits: 20 kn mean, 25 kn gust.
+        XCTAssertTrue(s.score(hour(15, gust: 26, from: 210), seaFacingDeg: facing).gustOverLimit)
+        XCTAssertFalse(s.score(hour(22, gust: 26, from: 210), seaFacingDeg: facing).gustOverLimit)
+        XCTAssertFalse(s.score(hour(15, gust: 20, from: 210), seaFacingDeg: facing).gustOverLimit)
+    }
+
     func testBeginnersStayStrictOnGusts() {
         var b = rider; b.level = .beginner
         let s = Scorer(profile: b, intensity: 1)
