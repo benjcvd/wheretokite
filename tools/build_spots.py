@@ -84,6 +84,9 @@ HINT_SNAP_RADIUS = 1500.0   # how far we may move a spot to the hinted shore
 DUP_RADIUS = 1000.0   # same water, same facing: closer than this = one spot (Ben, 5 Nov)
 DUP_FACING_DEG = 45.0  # beaches facing this much apart are different spots, even side by side
 SNAP_IF_FARTHER = 300.0    # move located points this far from the shore onto it
+SNAP_CLOSE = 100.0         # ...or this far, if that keeps the facing and the pin nearby (WHE-245)
+SNAP_CLOSE_MAX_TURN = 10.0   # degrees the facing may turn when the closer snap applies
+SNAP_CLOSE_MAX_MOVE = 500.0  # metres the pin may move when the closer snap applies
 MIN_WATER_EXTENT = 800.0    # ignore ponds smaller than this (bbox diagonal)
 
 COMPASS16 = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
@@ -842,6 +845,27 @@ def locate(locator, country):
 
 
 def orient(lat, lon, water, hint):
+    """Pins 100-300 m inland (the middle of a wide beach) go onto the shore too, but only
+    when that keeps the beach's facing (within SNAP_CLOSE_MAX_TURN) and moves the pin less
+    than SNAP_CLOSE_MAX_MOVE; otherwise the 300 m rule's result stands (WHE-245)."""
+    global SNAP_IF_FARTHER
+    legacy = SNAP_IF_FARTHER
+    base = _orient(lat, lon, water, hint)
+    SNAP_IF_FARTHER = SNAP_CLOSE
+    try:
+        close = _orient(lat, lon, water, hint)
+    finally:
+        SNAP_IF_FARTHER = legacy
+    if base is None or close is None:
+        return base
+    p = LocalProj(base["lat"], base["lon"])
+    moved = math.hypot(*p.xy(close["lat"], close["lon"]))
+    if angdiff(close["facing"], base["facing"]) <= SNAP_CLOSE_MAX_TURN and moved <= SNAP_CLOSE_MAX_MOVE:
+        return close
+    return base
+
+
+def _orient(lat, lon, water, hint):
     if water == "sea":
         return sea_orientation(lat, lon, hint)
     res = water_orientation(lat, lon, hint)
