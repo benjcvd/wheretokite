@@ -1,16 +1,16 @@
-# Release 1.3: upload and submit
+# Release 1.2: upload and submit
 
-Build **1.3 (1)**, archived on 20 Nov from main. It adds the weather-model work (WHE-238, 239, 231, 242, 243) on top of 1.1 build 3.
+Build **1.2 (1)**, archived on 21 Nov from main. It adds the weather-model work (WHE-238, 239, 231, 242, 243) on top of 1.1 build 3.
 
 ## 1. Upload (5 min)
 
-1. Xcode → **Window → Organizer** → WhereToKite **1.3 (1)** → **Distribute App** → **App Store Connect** → Upload.
+1. Xcode → **Window → Organizer** → WhereToKite **1.2 (1)** → **Distribute App** → **App Store Connect** → Upload.
 2. Wait for the "processing complete" email from Apple (10–30 min).
 
 ## 2. Create the version (5 min)
 
-1. App Store Connect → WhereToKite → **+ Version** → `1.3`. (If 1.1 is still waiting for review, you can instead remove it from review, then submit 1.3: Apple only reviews one version at a time.)
-2. Under **Build**, pick 1.3 (1).
+1. App Store Connect → WhereToKite → **+ Version** → `1.2`. (If 1.1 is still waiting for review, you can instead remove it from review, then submit 1.2: Apple only reviews one version at a time.)
+2. Under **Build**, pick 1.2 (1).
 3. Paste **What's New** below, once per language (language menu at the top right).
 4. Everything else carries over. Screenshots can stay for now.
 5. **Add for Review** → **Submit**. Pick automatic release if you want it live as soon as Apple approves it.

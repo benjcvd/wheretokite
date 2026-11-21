@@ -598,3 +598,6 @@ Round 2 (same day): Ben picked A3 and B4. The field of arrows was tested and get
 
 ## Lead, 20 Nov 17:15: 1.3 build 1 archived
 Ben said "ready to release 1.3". I merged WHE-243 (one arrow plus a ≠ badge per hour that opens each model's wind; the spot map names each model's arrow), tests are green (engine 199, app unit tests), and I set the version to 1.3 (1), skipping 1.2 on Ben's word, then archived. What's New in three languages: docs/store/RELEASE_1.3.md. The upload from the command line still fails ("Failed to Use Accounts"), so Ben uploads from the Organizer (WHE-235). Still open from Product: should the worse model count whenever any model says offshore (now only past 90° of disagreement)? It's a safety rule, so Ben decides.
+
+## Lead, 21 Nov 13:40: back to 1.2
+Ben corrected the version number: it is 1.2, not 1.3. I re-archived it as 1.2 (1), deleted the 1.3 archive, and renamed the release doc to docs/store/RELEASE_1.2.md. Ben uploads it from the Organizer (WHE-235).
