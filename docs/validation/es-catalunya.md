@@ -87,7 +87,7 @@ belongs to the Roussillon zone.
 | (none) | Torredembarra | stays archived: no marker, no source |
 | (none) | Palamós (La Fosca) | **back to Pro** (Ben, 2 Nov: Pro, not archived; the 16 Nov bulk archive had overridden it) |
 
-Counts: 33 Windy markers; 20 matched a live spot before this pass; now 30 matched, 2 added (Pro), 1 left out (Premià, same beach), 11 revived from archived (Palamós is not a Windy marker). Live spots 20 → 31 (free 11, Pro 20), archived 3 in the zone.
+Counts: 33 Windy markers; 20 matched a live spot before this pass; now 30 matched, 2 added (Pro), 1 left out (Premià, same beach), 11 revived from archived (Palamós is not a Windy marker). Live spots 20 → 31, all free (Ben, 23 Nov: everything free), archived 3 in the zone.
 **Gap:** none left. Windy has no Catalan kite marker without a counterpart of ours.
 
 ## Not verified
