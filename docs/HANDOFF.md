@@ -601,3 +601,6 @@ Ben said "ready to release 1.3". I merged WHE-243 (one arrow plus a ≠ badge pe
 
 ## Lead, 21 Nov 13:40: back to 1.2
 Ben corrected the version number: it is 1.2, not 1.3. I re-archived it as 1.2 (1), deleted the 1.3 archive, and renamed the release doc to docs/store/RELEASE_1.2.md. Ben uploads it from the Organizer (WHE-235).
+
+## Lead, 25 Nov: Catalonia and the pin fix published
+Merged WHE-246 (Catalonia validated against Windy: 31 live spots, all free) and cherry-picked only the re-pin commit of WHE-247: the two Catalonia branches overlapped, and WHE-246 is the later one. The pin fix (WHE-245) moves a pin onto the shore when it sits 100-300 m inland, but only if the beach direction holds within 10° and the pin moves less than 500 m. Pushed on Ben's OK; the catalogue build published 754 spots (891917f). The live /v1/catalog still showed 741 right after, because of the server cache (about 1 h). Arc count (WHE-266): 70 % of sea spots are straight, 81 clearly are not. Ben approved storing arcs for the non-straight ones (<150° or >210°), with a report before publishing; not started yet.
