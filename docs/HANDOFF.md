@@ -604,3 +604,10 @@ Ben corrected the version number: it is 1.2, not 1.3. I re-archived it as 1.2 (1
 
 ## Lead, 25 Nov: Catalonia and the pin fix published
 Merged WHE-246 (Catalonia validated against Windy: 31 live spots, all free) and cherry-picked only the re-pin commit of WHE-247: the two Catalonia branches overlapped, and WHE-246 is the later one. The pin fix (WHE-245) moves a pin onto the shore when it sits 100-300 m inland, but only if the beach direction holds within 10° and the pin moves less than 500 m. Pushed on Ben's OK; the catalogue build published 754 spots (891917f). The live /v1/catalog still showed 741 right after, because of the server cache (about 1 h). Arc count (WHE-266): 70 % of sea spots are straight, 81 clearly are not. Ben approved storing arcs for the non-straight ones (<150° or >210°), with a report before publishing; not started yet.
+
+## Lead, 25 Nov 19:50: resume point
+- 1.2 is live on the App Store. Spot changes reach 1.1+ apps through the server catalogue (about 1 h after the GitHub rebuild), with no app release. 1.0 refuses new catalogues (its ban gate).
+- Main is pushed and clean. Catalogue 891917f: 754 spots, Catalonia 31.
+- Decisions: the paid Open-Meteo plan is on hold (Ben, 23 Nov); domain first when it matters. Expansion order: USA, Brazil, Australia, then South Africa, Egypt, Mexico ([EXPANSION.md](EXPANSION.md)), all waiting on WHE-265 (road anchors), WHE-255 (open the app outside Europe) and WHE-256 (models outside Europe). Map arrows split at 20° (WHE-268, Product); the hour-list ≠ badge stays at 45°; the 90° safety rule is unchanged.
+- In flight: App reviewer is auditing the backend/scalability (WHE-269) and UX/bugs (WHE-270). Product's WHE-240 (Pro picks one model) waits on Ben's OK of the wording. Lead's next steps: WHE-266 (arcs, approved, report before publishing), then WHE-265.
+- Gotchas: two workstream branches on the same zone conflict in the CSV; take the later one and cherry-pick fixes (that's what was done for WHE-246/247). `gh run watch` can die on a GitHub 500: poll `gh run view` instead. `.atlas/` is gitignored, so commit board changes never.
