@@ -155,6 +155,13 @@ second pass with web research is worth doing.
 - Not added: Cubelles / Cunit (under 5 km from Segur de Calafell, same beach and winds), Garraf (small cove, no kite
   reputation found), Sitges (no school or zone found). Tell me if any of them deserves its own row.
 
+### Full validation (WHE-246 / WHE-247, 21 Nov 2026, settled without Ben): docs/validation/es-catalunya.md
+- **2026 summer zones**: a school-side guide ([wearerbels.com](https://wearerbels.com/zonas-kite-catalunya.html)) lists the only legal summer kite zones: La Rubina, Sant Pere (two channels), L'Estartit, Malgrat, Castelldefels, and Riumar + El Trabucador as open all year. No official text found; used as a second source only, so every summer ban stays as is.
+- **Riumar summer question** (above): answered by that guide and the schools, no seasonal ban; kept without ban, notes say check the signs.
+- **Windy Pro additions** (4 Nov rule): Blanes – s'Abanell and Sant Antoni de Calonge added (one guide each, no school). Premià not added: same beach as Vilassar (884 m).
+- **Archived in bulk on 16 Nov (WHE-213) and now back to Pro** because each has a kite spot page or school listing and a Windy marker: Palamós (Ben, 2 Nov), Sant Martí d'Empúries, L'Escala, Calafell, Creixell, Altafulla, Vilanova, L'Ampolla, L'Almadrava, Salou, La Pineda (the build decides which survive the 2 km rule). Stay archived: Torredembarra, Barceloneta, Punta del Fangar.
+- **Do you know**: Blanes, Sant Antoni and the revived Maresme / Tarragona beaches are off-season only (summer ban). If you'd rather keep thin spots out of the app, say so and I archive them again.
+
 ### Checked, for the record
 - Settled (Ben, 2026-11-02): Palamós (La Fosca) moved to pro, not archived. El Trabucador (mid-bar pin) and the
   Sant Pere Pescador pin both stay as they are (WHE-59).

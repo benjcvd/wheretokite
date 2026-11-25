@@ -1,11 +1,11 @@
 country,region,name,water,locate,hint,notes,sector,tide,tier,banned
 # Spain — format: tools/spots/README.md
 # Catalunya: kiting is banned on all Catalan beaches 1 Jun–30 Sep except in authorised kite zones.
-ES,Catalunya,Sant Pere Pescador,sea,osm:w110579310,E,"Kite areas of about 200 m each: Cortal de la Vila (schools and free riding) and Cortal de la Devesa (run by the La Ballena Alegre campsite); authorised summer kite zone, stay in the marked channels. Tramuntana and summer thermal. Also: Empuriabrava – La Rubina (5 km north, easterlies).",,,,
-ES,Catalunya,Castelldefels,sea,osm:w1084529243,S,"Town kite zone 1 Jun–mid Sep at Platja de la Pineda, between Carrer 9 and Carrer 11: weekdays 15–19 h only (2026), closed weekends and holidays, free licence and vest from the office at Passeig Marítim 159. Outside those hours kiting is banned in summer. Free the rest of the year.",,,,"06-01..09-30 00:00-15:00;06-01..09-30 19:00-24:00;06-01..09-30 sat,sun;06-24..06-24;08-15..08-15;09-11..09-11"
-ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,NE,"Mainly an autumn–spring spot: best in mestral (NW, cross-shore); summer southerlies are offshore. Schools ride a signposted zone; one guide says the beach is closed to kites in summer. Check the signs on site.",,,,
+ES,Catalunya,Sant Pere Pescador,sea,osm:w110579310,E,"Kite areas of about 200 m each: Cortal de la Vila (schools and free riding) and Cortal de la Devesa (run by the La Ballena Alegre campsite and ION Club). Authorised summer kite zone, stay in the marked channels. Tramuntana and summer thermal. A 2026 zone guide says the summer kite activity is concentrated here. Also: Empuriabrava – La Rubina (5 km north, easterlies).",,,,
+ES,Catalunya,Castelldefels,sea,osm:w1084529243,S,"Town kite zone 1 Jun–18 Sep 2026 at Platja de la Pineda, between Carrer 9 and Carrer 11: weekdays 15–19 h only, closed weekends and holidays. Free, but you must register online and collect the vest first; minimum wind about 14 kn twin-tip, 12 kn surfboard, 7 kn foil; intermediate to advanced. Outside those hours kiting is banned in summer. Free the rest of the year.",,,,"06-01..09-30 00:00-15:00;06-01..09-30 19:00-24:00;06-01..09-30 sat,sun;06-24..06-24;08-15..08-15;09-11..09-11"
+ES,Catalunya,Riumar (Ebro delta),sea,q:Platja de Riumar,NE,"Mainly an autumn–spring spot: best in mestral (NW, cross-shore); summer southerlies are offshore. Schools ride a signposted zone and a 2026 zone guide says there is no seasonal ban here (left bank of the Ebro, next to Ebre Surfers); one older guide says the beach is closed to kites in summer. No official text found: check the signs on site.",,,,
 ES,Catalunya,Platja dels Eucaliptus (Ebro delta),sea,osm:r14500385,SE,"Shallow water at the root of the Trabucador, where the schools teach; beginner-friendly. In summer ride only the signposted kite zone.",,,,
-ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W:bay side:bay|E:sea side,"Summer thermal (S) spot; flat, shallow water on the Badia dels Alfacs (west) side, about 1 m deep in places. Schools report signposted kite zones in summer.",,,,
+ES,Catalunya,El Trabucador (Ebro delta),sea,q:Platja del Trabucador,W:bay side:bay|E:sea side,"Summer thermal (S) spot; flat, shallow water on the Badia dels Alfacs (west) side, about 1 m deep in places; waves on the open sea side. Schools and a 2026 zone guide report no seasonal ban and signposted kite zones in summer; no official text found.",,,,
 # Comunitat Valenciana: summer kiting only in the few buoyed channels / zones.
 ES,Comunitat Valenciana,Valencia – El Perellonet,sea,osm:w168406914,E,"Municipal buoyed kite zone south of the Perellonet river mouth with Kitezone club (municipal lifeguard 14:30–19:30 in summer, 2017–18 tenders). Rules changed more than once: the Albufera park refused the canals in 2023, so check the club for the current season. Also: Sueca – Mareny de Barraquetes (summer channel for club members, free off-season).",,,,
 ES,Comunitat Valenciana,Oliva,sea,osm:r21201264,ENE,Oliva Nova; in summer kiting only in the authorised zone (club rescue boat). Also: Dénia – Les Deveses (marked kite zone just south).,,,,
@@ -48,18 +48,17 @@ ES,Canarias,Tenerife – El Médano,sea,osm:w28492650,SE,Trade wind May–Oct; s
 
 # ---- Pro / archived spots (moved here from the trim; reason in the comment above each row)
 # pro: cluster duplicate — 5 km from Sant Pere Pescador
-ES,Catalunya,Empuriabrava – La Rubina,sea,osm:r2318195,SE,"The only kite beach in Castelló d'Empúries: signposted zone at the Santa Margarida end (Aiguamolls natural park, use the marked dune paths); best in easterlies.",,,pro,
+ES,Catalunya,Empuriabrava – La Rubina,sea,osm:r2318195,SE,"The only kite beach in Castelló d'Empúries: signposted zone at the Santa Margarida end (Aiguamolls natural park, use the marked dune paths); best in easterlies.",,,,
 # basic again since 1aed7f2 (Barcelona-area benchmark): school-run summer zone, kite pass required
-ES,Catalunya,L'Estartit – Gola del Ter,sea,osm:r1692854,E,"Kite zone on La Pletera beach, a beach concession run by the local school; in summer launch there only, other water sports stay beyond the swim buoys. Easterlies and summer thermal; tramuntana side-off.",,,,
+ES,Catalunya,L'Estartit – Gola del Ter,sea,osm:r1692854,E,"Kite zone on La Pletera beach, a beach concession run by the local school (Eolis Kite, which also handles the summer registration); in summer launch there only, other water sports stay beyond the swim buoys. Easterlies and summer thermal; tramuntana side-off.",,,,
 # pro: local / secondary beach — local club zone
-ES,Catalunya,Malgrat de Mar – La Pomareda,sea,osm:w702224528,SE,Municipal kite zone looked after by Club Kite Malgrat; SW thermal Mar–Sep.,,,pro,
+ES,Catalunya,Malgrat de Mar – La Pomareda,sea,osm:w702224528,SE,Municipal kite zone looked after by Club Kite Malgrat; SW thermal Mar–Sep.,,,,
 # pro: local / secondary beach — no kite zone, off-season only
-ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,"No kite zone: the city bans kiting 1 Jun–30 Sep (Capitania Marítima rule); off-season levante / gregal days only, away from the boat channels.",,,pro,06-01..09-30
+ES,Catalunya,Barcelona – Nova Mar Bella,sea,q:Platja de la Nova Mar Bella,SE,"No kite zone: the city bans kiting 1 Jun–30 Sep (Capitania Marítima rule); off-season levante / gregal days only, away from the boat channels.",,,,06-01..09-30
 # archived: no kite source (no school, club, zone or Windy kite marker; WHE-2, 2026-11-02); 3–4 km from Creixell and Altafulla, same beach and winds
 ES,Catalunya,Torredembarra,sea,osm:r12040184,SE,Off-season spot: kiting banned 1 Jun–30 Sep. Keep off the protected Muntanyans dunes east of town.,,,archived,06-01..09-30
 # pro: local / secondary beach — off-season local spot
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,La Pineda,sea,q:Platja de la Pineda Vila-seca,SE,Kiting banned 1 Jun–30 Sep (Catalan coast rule).,,,archived,06-01..09-30
+ES,Catalunya,La Pineda,sea,q:Platja de la Pineda Vila-seca,SE,Large calm beach at Vila-seca; kiting banned 1 Jun–30 Sep (Catalan coast rule). Listed on Kite Jungle; no kite school found.,,,,06-01..09-30
 # pro: added from the Windy comparison (WHE-93, 2026-11-04) — regional spot, sources thinner than a basic spot
 ES,Comunitat Valenciana,Gandía – Playa Norte,sea,osm:w29141808,E,"Authorised kite channel in front of the town beach (a hotel guide and Kiteforum list it); crowded in summer, side-shore NNW and SSE. Another channel at L'Ahuir (Xeraco) run by a local association.",,,pro,
 # pro: added from the Windy comparison (WHE-93, 2026-11-04)
@@ -256,35 +255,27 @@ ES,Catalunya,Pals,sea,osm:r8266439,E,"Long open beach south of the Ter mouth; ea
 ES,Catalunya,Segur de Calafell,sea,osm:r10255772,SSE,Wide sandy beach; garbí (SW) summer thermal and levante.,,,,06-01..09-30
 ES,Catalunya,Cambrils (Platja del Regueral),sea,osm:r1747893,SE,Shallow sandy bay west of the port; garbí and levante; mestral offshore.,,,,06-01..09-30
 # pro: no kite school or zone found on site; Ben's call (2026-11-02), Pals and Platja d'Aro nearby
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,Palamós (La Fosca),sea,osm:r8268914,SE,Sheltered bay north of Palamós; easterlies and summer thermal; N/NW winds blow offshore.,,,archived,06-01..09-30
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,Calafell,sea,osm:r12075608,SSE,Town beach next to Segur de Calafell; garbí and levante.,,,archived,06-01..09-30
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,Salou (Platja de Llevant),sea,osm:r5208459,S,Town beach; levante and garbí.,,,archived,06-01..09-30
-ES,Catalunya,L'Hospitalet de l'Infant,sea,osm:r2173868,SE,"Long beach south of the village; garbí and levante. The council has opened a marked kite zone on Platja de l'Arenal (before Camping Cala d'Oques); if it runs this summer, kiting is allowed there.",,,pro,06-01..09-30
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,L'Almadrava (Vandellòs),sea,osm:r2862387,SE,Quiet beach south of L'Hospitalet; garbí and levante.,,,archived,06-01..09-30
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,L'Ampolla (Platja de l'Arenal),sea,osm:r14507565,E,Shallow beach facing the Badia del Fangar; good for learning.,,,archived,06-01..09-30
+ES,Catalunya,Palamós (La Fosca),sea,osm:r8268914,SE,Sheltered bay north of Palamós; easterlies and summer thermal; N/NW winds blow offshore. Best in light garbí at nearby Sant Antoni de Calonge. Kite-and-windsurfing guide spot page; no marked summer zone found.,,,,06-01..09-30
+ES,Catalunya,Calafell,sea,osm:r12075608,SSE,Town beach next to Segur de Calafell; garbí and levante. Kiteforum lists it as a spot with school and rescue; kiting banned in summer in the old guides.,,,,06-01..09-30
+ES,Catalunya,Salou (Platja de Llevant),sea,osm:r5208459,S,"Town beach; levante and garbí. Kiteforum: flat to choppy water, but packed with tourists in summer and not recommended for kiting then. No school found.",,,,06-01..09-30
+ES,Catalunya,L'Hospitalet de l'Infant,sea,osm:r2173868,SE,"Long beach south of the village; garbí and levante. The council once opened a marked kite zone on Platja de l'Arenal (before Camping Cala d'Oques), but it is not in the 2026 list of summer kite zones, so the summer ban stays.",,,,06-01..09-30
+ES,Catalunya,L'Almadrava (Vandellòs),sea,osm:r2862387,SE,Quiet beach south of L'Hospitalet; garbí and levante; intermediate (Unplug spot page). No school or zone found.,,,,06-01..09-30
+ES,Catalunya,L'Ampolla (Platja de l'Arenal),sea,osm:r14507565,E,"Big shallow sandy beach facing the Badia del Fangar, sheltered by the delta: good for learning in garbí and mestral (a bit gusty). Spot guides (Unplug, Kiteforum, kite-and-windsurfing-guide): kites only seen out of season, summer is a sunbathing beach.",,,,06-01..09-30
 # archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
 ES,Catalunya,Punta del Fangar (Ebro delta),sea,osm:n1241794242,NE:sea side|SW:Fangar bay:bay,Remote sandspit at the north of the delta; access on foot; flat water in the bay. No school or marked kite zone here: ride only if you know the spot.,,,archived,06-01..09-30
-ES,Catalunya,Badalona,sea,osm:r2154291,SE,City beach north of Barcelona; levante and gregal days.,,,pro,06-01..09-30
-ES,Catalunya,Montgat,sea,osm:w1101490505,SE,Small beach north of Badalona; levante.,,,pro,06-01..09-30
-ES,Catalunya,Vilassar de Mar,sea,osm:r2154205,SE,Maresme beach; levante and summer garbí.,,,pro,06-01..09-30
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,Vilanova i la Geltrú (La Farola),sea,osm:r10224714,S,Town beach by the lighthouse; garbí and levante.,,,archived,06-01..09-30
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,Creixell,sea,osm:r12040635,SSE,Beach west of Torredembarra; garbí and levante.,,,archived,06-01..09-30
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,Altafulla,sea,osm:r2172793,SSE,Beach east of Tarragona; garbí and levante.,,,archived,06-01..09-30
+ES,Catalunya,Badalona,sea,osm:r2154291,SE,City beach north of Barcelona; levante and gregal days.,,,,06-01..09-30
+ES,Catalunya,Montgat,sea,osm:w1101490505,SE,Small beach north of Badalona; levante.,,,,06-01..09-30
+ES,Catalunya,Vilassar de Mar,sea,osm:r2154205,SE,"Maresme beach; garbí (SW) is the best direction, levante is poor. Guides disagree on summer: one says no kiting in summer, the other rides September to May. Premià de Mar's Platja de Llevant (KiteExperience and Escola Catalana de Kitesurf list it; rocks in the water) is the same stretch, 900 m east.",,,,06-01..09-30
+ES,Catalunya,Blanes – Platja de s'Abanell,sea,osm:w161151452,SE,Long sandy beach between Blanes and the Tordera mouth. Garbí (SW) is cross-offshore and gusty in the first 50 m; in levante the shorebreak is messy. No school or marked kite zone in Blanes (the nearest are in Malgrat).,,,,06-01..09-30
+ES,Catalunya,Sant Antoni de Calonge,sea,osm:r8277307,SE,Small sheltered bay with T-shaped breakwaters; best in light garbí according to spot guides. No school based here (nearest in L'Estartit and Malgrat) and no marked kite zone found.,,,,06-01..09-30
+ES,Catalunya,Vilanova i la Geltrú (La Farola),sea,osm:r10224714,S,"Town beach by the lighthouse; garbí and levante; beach break. Global Kite school works from Ribes Roges beach in town, afternoons only in summer (older directory listing); summer ban stays.",,,,06-01..09-30
+ES,Catalunya,Creixell,sea,osm:r12040635,SSE,"Beach west of Torredembarra; garbí and levante; small waves (Unplug spot page, deportesdeaventura listing). No school or marked zone found.",,,,06-01..09-30
+ES,Catalunya,Altafulla,sea,osm:r2172793,SSE,Beach east of Tarragona; garbí and levante (Unplug spot page). No school or marked zone found.,,,,06-01..09-30
 # archived: duplicate of Nova Mar Bella 2 km away, city ban in summer, boat channels
 ES,Catalunya,Barcelona – Barceloneta,sea,osm:r7333373,SE,"City beach; the city bans kiting 1 Jun–30 Sep. Off-season levante / gregal days only, away from the boat channels.",,,archived,06-01..09-30
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,Sant Martí d'Empúries,sea,osm:r4018289,E,Beach in the Gulf of Roses south of Sant Pere Pescador; easterlies; tramuntana side-off.,,,archived,06-01..09-30
-# archived: no independent source confirms kiting here (generic or single-source entry); also banned 1 Jun-30 Sep on Catalan beaches
-ES,Catalunya,L'Escala (Platja dels Riells),sea,osm:r1669340,NE,Town beach at the south end of the Gulf of Roses; tramuntana and easterlies. Packed with swimmers in summer.,,,archived,06-01..09-30
-ES,Catalunya,Platja d'Aro,sea,osm:r8280402,SE,"Town beach; garbí (SW summer thermal) cross-shore. Gregal and levante bring shorebreak and chop, not for beginners. Quieter by the Ridaura mouth; the wind drops south of the harbour wall.",,,pro,06-01..09-30
+ES,Catalunya,Sant Martí d'Empúries,sea,osm:r4018289,E,"Beach in the Gulf of Roses south of Sant Pere Pescador; easterlies; tramuntana side-off. Older spot guides (Kiteforum, Unplug) say kiting is not allowed here in summer; El Riuet next door is inside the Aiguamolls park, kites not allowed. ION Club is nearby at the La Ballena Alegre campsite.",,,,06-01..09-30
+ES,Catalunya,L'Escala (Platja dels Riells),sea,osm:r1669340,NE,"Town beach at the south end of the Gulf of Roses; tramuntana and easterlies. KiteExperience school is listed by the L'Escala tourist office. Packed with swimmers in summer, so the summer ban stays.",,,,06-01..09-30
+ES,Catalunya,Platja d'Aro,sea,osm:r8280402,SE,"Town beach; garbí (SW summer thermal) cross-shore. Gregal and levante bring shorebreak and chop, not for beginners. Quieter by the Ridaura mouth; the wind drops south of the harbour wall.",,,,06-01..09-30
 # archived: secondary Mallorca bay beach, summer restrictions, generic entry
 ES,Illes Balears,Mallorca – Es Barcarès (Alcúdia),sea,osm:w214618872,N,Bay of Pollença side of Alcúdia; northerlies; summer restrictions.,,,archived,
 # archived: secondary Mallorca bay beach, summer restrictions, generic entry
